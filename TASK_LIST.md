@@ -1,6 +1,6 @@
 # Sherman Art Works — Product Task List
 
-> Last updated: May 2026 (Sprint 3 complete) | PM: Claude | Owner: Sherman Family
+> Last updated: May 2026 (Sprints 3, 6, 7 complete) | PM: Claude | Owner: Sherman Family
 > Active file: `sherman-artworks-site/index.html` | Repo: github.com/jshermanj1-cpu/sherman-artworks-site
 
 ---
@@ -204,55 +204,55 @@
 
 ---
 
-## MILESTONE 6 — Custom Orders Page 🔜
+## MILESTONE 6 — Custom Orders Page ✅ COMPLETE
 
 *Dedicated page for bespoke commissions — makes the custom offer feel premium.*
 
 ### 6.1 — Page Build
-| ID | Task | Effort |
+| ID | Task | Status |
 |---|---|---|
-| 6.1.1 | Create `custom-orders.html` with shared header/footer | M |
-| 6.1.2 | Hero: "Commission a One-of-a-Kind Piece" — headline + brand copy | S |
-| 6.1.3 | How It Works section — 3–4 steps (enquire → design → craft → deliver) | M |
-| 6.1.4 | What can be customised: size, color, shape, inscription, gift packaging | S |
-| 6.1.5 | Primary CTA: WhatsApp button with pre-filled "I'd like to commission a piece" | XS |
-| 6.1.6 | Custom order enquiry form: product type, size, color preference, budget, deadline, message | M |
-| 6.1.7 | Timeline/expectations copy: typical lead time, what happens next | S |
-| 6.1.8 | Gallery of past custom pieces (pull from Cloudinary) | M |
+| 6.1.1 | Create `custom-orders.html` with shared header/footer | ✅ |
+| 6.1.2 | Hero: "Commission a One-of-a-Kind Piece" — headline + brand copy | ✅ |
+| 6.1.3 | How It Works — 4 steps (enquire → design → craft → deliver) with arrows | ✅ |
+| 6.1.4 | What can be customised: size, colour, inscription, gift packaging, quantity | ✅ |
+| 6.1.5 | WhatsApp CTA button in hero with pre-filled message | ✅ |
+| 6.1.6 | Enquiry form: name, email, piece type dropdown, vision textarea → WhatsApp | ✅ |
+| 6.1.7 | Lead time copy: 2–4 weeks, reply within 24h | ✅ |
+| 6.1.8 | Gallery of past custom pieces | 🔜 Deferred — waiting on new photos |
 
 ### 6.2 — Polish
-| ID | Task | Effort |
+| ID | Task | Status |
 |---|---|---|
-| 6.2.1 | Mobile responsive | S |
-| 6.2.2 | SEO meta — "custom glass art Israel", "bespoke Judaica gift" | S |
-| 6.2.3 | Translate to Hebrew | S |
-| 6.2.4 | Wire nav "Custom Orders" link to `custom-orders.html` | XS |
+| 6.2.1 | Mobile responsive | ✅ |
+| 6.2.2 | SEO meta — "custom glass art Israel", "bespoke Judaica gift" | ✅ |
+| 6.2.3 | Translate to Hebrew | ✅ |
+| 6.2.4 | Nav "Custom Orders" → `custom-orders.html` | ✅ |
 
 ---
 
-## MILESTONE 7 — About Page 🔜
+## MILESTONE 7 — About Page ✅ COMPLETE
 
 *Builds brand trust and emotional connection — critical for premium pricing.*
 
 ### 7.1 — Page Build
-| ID | Task | Effort |
+| ID | Task | Status |
 |---|---|---|
-| 7.1.1 | Create `about.html` with shared header/footer | M |
-| 7.1.2 | Hero: studio/workshop photo + "The Sherman Family" headline | S |
-| 7.1.3 | Full brand story: family history, how it started, generations of craft | M |
-| 7.1.4 | Our Craft section: glass-blowing process, techniques, what makes each piece unique | M |
-| 7.1.5 | Meet the Family section: names, roles, photo (with owner permission) | M |
-| 7.1.6 | Studio photos gallery — 6–8 behind-the-scenes images from Cloudinary | S |
-| 7.1.7 | "Made in Israel" values section: heritage, pride, craftsmanship | S |
-| 7.1.8 | CTA at bottom → "Explore the Collection" + "Get in Touch" | XS |
+| 7.1.1 | Create `about.html` with shared header/footer | ✅ |
+| 7.1.2 | Hero: "Three Generations of Glass" dark headline | ✅ |
+| 7.1.3 | Origin story: grandfather's passion, 3 generations narrative | ✅ |
+| 7.1.4 | Our Craft section: unique methods, art-first philosophy | ✅ |
+| 7.1.5 | Three Generations band (I · II · III cards, dark bg) | ✅ |
+| 7.1.6 | Values: Entirely Handmade · Our Own Methods · Made in Israel | ✅ |
+| 7.1.7 | CTA bottom → "Explore Gallery" + "Commission a Piece" | ✅ |
+| 7.1.8 | Studio/family photos — update when reshoot complete | 🔜 New photos pending |
 
 ### 7.2 — Polish
-| ID | Task | Effort |
+| ID | Task | Status |
 |---|---|---|
-| 7.2.1 | Mobile responsive | S |
-| 7.2.2 | SEO meta — "handmade glass art Israel family studio" | S |
-| 7.2.3 | Translate to Hebrew | S |
-| 7.2.4 | Wire nav "About" link to `about.html` | XS |
+| 7.2.1 | Mobile responsive | ✅ |
+| 7.2.2 | SEO meta — "handmade glass art Israel family studio" | ✅ |
+| 7.2.3 | Translate to Hebrew | ✅ |
+| 7.2.4 | Nav "About" → `about.html` | ✅ |
 
 ---
 
@@ -353,11 +353,11 @@
 | Sprint 2 | M2 | Trust: contact, SEO, currency | ✅ Done |
 | **→ SOFT LAUNCH** | — | Wire real WhatsApp number, enable custom domain | 🔜 1 input away (M0-1) |
 | Sprint 3 | M3 | Homepage enhancements (announcement bar, best sellers, corporate CTA, Instagram) | ✅ Done (3.3 + 3.5 deferred) |
-| **→ Sprint 4** | M4 | Glass page | 🔜 **CURRENT** |
+| Sprint 4 | M4 | Glass page | 🔜 Blocked — waiting on photo reshoot |
 | Sprint 5 | M5 | Judaica page | 🔜 |
-| Sprint 6 | M6 | Custom Orders page | 🔜 |
-| Sprint 7 | M7 | About page | 🔜 |
-| Sprint 8 | M8 | Contact page | 🔜 |
+| Sprint 6 | M6 | Custom Orders page | ✅ Done |
+| Sprint 7 | M7 | About page | ✅ Done |
+| **→ Sprint 8** | M8 | Contact page | 🔜 **NEXT** |
 | Sprint 9 | M9 | Full product catalogue | 🔜 |
 | Sprint 10 | M10 | Hebrew quality pass | 🔜 |
 | Sprint 11 | M11 | Marketing & analytics | 🔜 |
