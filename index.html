@@ -11,7 +11,7 @@
   <meta property="og:description" content="Handmade blown and fused glass Judaica and decorative art from Israel. Kiddush cups, Shabbat candleholders, decorative bowls. Free international shipping." />
   <meta property="og:type" content="website" />
   <!-- ⚠️ Replace with real Cloudinary hero image URL before launch -->
-  <meta property="og:image" content="https://res.cloudinary.com/doesupaf9/image/upload/w_1200,h_630,c_fill,q_auto,f_auto/WhatsApp_Image_2026-05-23_at_14.50.45_2_lutcx6.jpg" />
+  <meta property="og:image" content="https://res.cloudinary.com/doesupaf9/image/upload/w_1200,h_630,c_fit,q_auto,f_auto/WhatsApp_Image_2026-05-23_at_14.50.45_2_lutcx6.jpg" />
 
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='4' fill='%232a1f0e'/><text x='16' y='23' font-family='serif' font-size='20' fill='%23c9a85c' text-anchor='middle'>S</text></svg>" />
@@ -176,9 +176,9 @@
 
     .hero-images { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
     .hero-img-main { grid-column: 1 / -1; border-radius: 4px; overflow: hidden; }
-    .hero-img-main img { width: 100%; height: 290px; object-fit: cover; }
+    .hero-img-main img { width: 100%; height: auto; display: block; }
     .hero-img-sm   { border-radius: 4px; overflow: hidden; }
-    .hero-img-sm img { width: 100%; height: 175px; object-fit: cover; }
+    .hero-img-sm img { width: 100%; height: auto; display: block; }
 
     /* ── SHIPPING BANNER ─────────────────────── */
     .shipping-banner {
@@ -209,9 +209,9 @@
     }
     .product-card:hover { box-shadow: 0 8px 32px rgba(42,31,14,0.1); transform: translateY(-3px); }
 
-    .product-img-wrap { overflow: hidden; }
-    .product-img-wrap img { width: 100%; height: 280px; object-fit: cover; transition: transform 0.4s; }
-    .product-card:hover .product-img-wrap img { transform: scale(1.04); }
+    .product-img-wrap { background: #f9f7f4; }
+    .product-img-wrap img { width: 100%; height: auto; display: block; transition: transform 0.3s; }
+    .product-card:hover .product-img-wrap img { transform: scale(1.03); }
 
     .product-body { padding: 1.5rem; display: flex; flex-direction: column; flex: 1; }
     .product-cats { display: flex; gap: 0.45rem; flex-wrap: wrap; margin-bottom: 0.65rem; }
@@ -252,9 +252,9 @@
     .story-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
     .story-images { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
     .story-img-main { grid-column: 1 / -1; border-radius: 4px; overflow: hidden; }
-    .story-img-main img { width: 100%; height: 255px; object-fit: cover; }
+    .story-img-main img { width: 100%; height: auto; display: block; }
     .story-img-sm   { border-radius: 4px; overflow: hidden; }
-    .story-img-sm img { width: 100%; height: 155px; object-fit: cover; }
+    .story-img-sm img { width: 100%; height: auto; display: block; }
 
     .story-tag  { font-family: var(--ff-disp); font-size: 0.62rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; }
     .story-title { font-family: var(--ff-disp); font-size: clamp(1.5rem, 2.4vw, 2.2rem); font-weight: 600; color: var(--dark); margin-bottom: 1.5rem; line-height: 1.2; }
@@ -372,14 +372,12 @@
         gap: 2rem;
       }
       .hero-images { order: -1; }
-      .hero-img-main img { height: 220px; }
-      .hero-img-sm img   { height: 130px; }
+      /* hero image heights are auto — no override needed */
 
       .section { padding: 3rem 1rem; }
       .contact-inner { padding: 3rem 1rem; }
 
-      .story-img-main img { height: 200px; }
-      .story-img-sm img   { height: 130px; }
+      /* story image heights are auto — no override needed */
 
       .footer-top { grid-template-columns: 1fr; gap: 2rem; }
       .footer-bottom { flex-direction: column; gap: 0.5rem; text-align: center; }
@@ -464,19 +462,19 @@
     <!-- ⚠️ Replace src values with Cloudinary URLs after upload -->
     <div class="hero-img-main">
       <img id="hi1"
-           src="https://res.cloudinary.com/doesupaf9/image/upload/w_900,h_300,c_fill,q_auto,f_auto/WhatsApp_Image_2026-05-23_at_14.50.45_2_lutcx6.jpg"
+           src="https://res.cloudinary.com/doesupaf9/image/upload/w_900,h_300,c_fit,q_auto,f_auto/WhatsApp_Image_2026-05-23_at_14.50.45_2_lutcx6.jpg"
            alt="Handmade glass decorative bowl by Sherman Art Works"
            width="900" height="300" />
     </div>
     <div class="hero-img-sm">
       <img id="hi2"
-           src="https://res.cloudinary.com/doesupaf9/image/upload/w_450,h_180,c_fill,q_auto,f_auto/WhatsApp_Image_2026-05-23_at_14.47.17_1_w7evub.jpg"
+           src="https://res.cloudinary.com/doesupaf9/image/upload/w_450,h_180,c_fit,q_auto,f_auto/WhatsApp_Image_2026-05-23_at_14.47.17_1_w7evub.jpg"
            alt="Handmade glass art by Sherman Art Works"
            width="450" height="180" loading="lazy" />
     </div>
     <div class="hero-img-sm">
       <img id="hi3"
-           src="https://res.cloudinary.com/doesupaf9/image/upload/w_450,h_180,c_fill,q_auto,f_auto/WhatsApp_Image_2026-05-23_at_14.47.18_2_gubqeq.jpg"
+           src="https://res.cloudinary.com/doesupaf9/image/upload/w_450,h_180,c_fit,q_auto,f_auto/WhatsApp_Image_2026-05-23_at_14.47.18_2_gubqeq.jpg"
            alt="Handmade glass art by Sherman Art Works"
            width="450" height="180" loading="lazy" />
     </div>
@@ -506,7 +504,7 @@
       <div class="product-img-wrap">
         <!-- ⚠️ Replace with Cloudinary URL (key: hero / bowl) -->
         <img id="bowlImg"
-             src="https://res.cloudinary.com/doesupaf9/image/upload/w_600,h_400,c_fill,q_auto,f_auto/WhatsApp_Image_2026-05-23_at_14.50.45_2_lutcx6.jpg"
+             src="https://res.cloudinary.com/doesupaf9/image/upload/w_600,h_400,c_fit,q_auto,f_auto/WhatsApp_Image_2026-05-23_at_14.50.45_2_lutcx6.jpg"
              alt="Handmade glass decorative bowl — seafoam white marbled finish"
              width="600" height="400" loading="lazy" />
       </div>
@@ -532,7 +530,7 @@
       <div class="product-img-wrap">
         <!-- ⚠️ Replace with Cloudinary URL (key: platter_blue / candle_clr) -->
         <img id="candleImg"
-             src="https://res.cloudinary.com/doesupaf9/image/upload/w_600,h_400,c_fill,q_auto,f_auto/WhatsApp_Image_2026-05-23_at_14.51.21_1_dawyk2.jpg"
+             src="https://res.cloudinary.com/doesupaf9/image/upload/w_600,h_400,c_fit,q_auto,f_auto/WhatsApp_Image_2026-05-23_at_14.51.21_1_dawyk2.jpg"
              alt="Handmade Murano style glass candlesticks for Shabbat"
              width="600" height="400" loading="lazy" />
       </div>
@@ -571,19 +569,19 @@
     <div class="story-images">
       <div class="story-img-main">
         <img id="sg1"
-             src="https://res.cloudinary.com/doesupaf9/image/upload/w_700,h_260,c_fill,q_auto,f_auto/WhatsApp_Image_2026-05-23_at_14.47.18_5_rg7nep.jpg"
+             src="https://res.cloudinary.com/doesupaf9/image/upload/w_700,h_260,c_fit,q_auto,f_auto/WhatsApp_Image_2026-05-23_at_14.47.18_5_rg7nep.jpg"
              alt="Sherman Art Works craft and studio"
              width="700" height="260" loading="lazy" />
       </div>
       <div class="story-img-sm">
         <img id="sg2"
-             src="https://res.cloudinary.com/doesupaf9/image/upload/w_340,h_160,c_fill,q_auto,f_auto/WhatsApp_Image_2026-05-23_at_14.47.48_a4ymml.jpg"
+             src="https://res.cloudinary.com/doesupaf9/image/upload/w_340,h_160,c_fit,q_auto,f_auto/WhatsApp_Image_2026-05-23_at_14.47.48_a4ymml.jpg"
              alt="Handmade glass art detail"
              width="340" height="160" loading="lazy" />
       </div>
       <div class="story-img-sm">
         <img id="sg3"
-             src="https://res.cloudinary.com/doesupaf9/image/upload/w_340,h_160,c_fill,q_auto,f_auto/WhatsApp_Image_2026-05-23_at_14.47.49_cjcoum.jpg"
+             src="https://res.cloudinary.com/doesupaf9/image/upload/w_340,h_160,c_fit,q_auto,f_auto/WhatsApp_Image_2026-05-23_at_14.47.49_cjcoum.jpg"
              alt="Handcrafted Judaica pieces"
              width="340" height="160" loading="lazy" />
       </div>
