@@ -1,6 +1,6 @@
 # Sherman Art Works — Product Task List
 
-> Last updated: May 2026 | PM: Claude | Owner: Sherman Family
+> Last updated: May 2026 (Sprint 3 complete) | PM: Claude | Owner: Sherman Family
 > Active file: `sherman-artworks-site/index.html` | Repo: github.com/jshermanj1-cpu/sherman-artworks-site
 
 ---
@@ -30,10 +30,10 @@
 | M0-5 | Confirm candlestick color variants (if any) | Sherman | 🟡 M9 | 🔜 |
 | M0-6 | Identify a native Hebrew speaker to review all copy | Sherman | 🟡 M10 | 🔜 |
 | M0-7 | Decide: direct purchase, inquiry only, or both? | Sherman | — | ✅ WhatsApp-first chosen |
-| M0-8 | Choose hosting platform | Sherman | — | ✅ GitHub Pages |
+| M0-8 | Choose hosting platform | Sherman | — | ✅ GitHub Pages (gh-pages branch + .nojekyll) |
 | M0-9 | Contact form backend | Sherman | — | ✅ Replaced with WhatsApp + mailto (no backend needed) |
-| M0-10 | Confirm free shipping threshold (for announcement bar) | Sherman | 🟡 M3 | 🔜 |
-| M0-11 | Confirm Instagram + TikTok handles | Sherman | 🟡 M3 | 🔜 |
+| M0-10 | Confirm free shipping threshold (for announcement bar) | Sherman | 🟡 M3 | ✅ Free on all orders |
+| M0-11 | Confirm Instagram + TikTok handles | Sherman | 🟡 M3 | ✅ Instagram: shermanartworks |
 
 ---
 
@@ -99,59 +99,56 @@
 
 ---
 
-## MILESTONE 3 — Homepage Enhancements 🔜
+## MILESTONE 3 — Homepage Enhancements ✅ COMPLETE
 
 *Competitor-inspired improvements to the homepage (based on Hazorfim analysis). Quick wins that strengthen trust and conversion — prioritised before new pages as they improve the site visitors already see.*
 
-### 3.1 — Trust Badge Strip 🟡
-| ID | Task | Effort |
+### 3.1 — Announcement Bar ✅
+| ID | Task | Status |
 |---|---|---|
-| 3.1.1 | Add horizontal 4-badge strip below hero: "Handmade in Israel" · "Unique — no two pieces alike" · "Ships worldwide" · "Custom orders welcome" | XS |
-| 3.1.2 | Translate badge strip to Hebrew | XS |
+| 3.1.1 | Announcement bar top of page: "✦ Free Worldwide Shipping on All Orders · Custom Orders Welcome ✦" | ✅ |
+| 3.1.2 | Translated to Hebrew | ✅ |
 
-### 3.2 — Free Shipping Announcement Bar 🟡
-| ID | Task | Effort |
+### 3.2 — Free Shipping ✅
+| ID | Task | Status |
 |---|---|---|
-| 3.2.1 | Add announcement bar at top of page: "Free worldwide shipping on orders over ₪X" | XS |
-| 3.2.2 | Owner to confirm free shipping threshold (M0-10) | 👤 |
-| 3.2.3 | Translate bar to Hebrew | XS |
+| 3.2.1 | Free shipping confirmed (all orders, no threshold) | ✅ M0-10 |
+| 3.2.2 | Bar copy updated to reflect "all orders" | ✅ |
 
-### 3.3 — Shop by Occasion 🟡
-| ID | Task | Effort |
+### 3.3 — Shop by Occasion 🔜 *Deferred*
+| ID | Task | Status |
 |---|---|---|
-| 3.3.1 | Add "Shop by Occasion" section with 4 cards: Wedding · Bar/Bat Mitzvah · Shabbat · Home Décor | M |
-| 3.3.2 | Each occasion card links to relevant section or page (Judaica page for Shabbat, etc.) | S |
-| 3.3.3 | Add "Shop by Price" row below: Under $50 · $50–$150 · $150+ | S |
-| 3.3.4 | Translate Occasion + Price sections to Hebrew | S |
+| 3.3.1 | "Shop by Occasion" section — Wedding · Bar/Bat Mitzvah · Shabbat · Home Décor | 🔜 Deferred |
+| 3.3.2 | "Shop by Price" row — Under $50 · $50–$150 · $150+ | 🔜 Deferred |
 
-### 3.4 — Best Sellers Section 🟡
-| ID | Task | Effort |
+### 3.4 — Best Sellers Badges ✅
+| ID | Task | Status |
 |---|---|---|
-| 3.4.1 | Add "Best Sellers" row — 3 curated product cards with "bestseller" badge | S |
-| 3.4.2 | Translate section heading to Hebrew | XS |
+| 3.4.1 | "Bestseller" gold badge added to both current product cards | ✅ |
+| 3.4.2 | Translated to Hebrew | ✅ |
 
-### 3.5 — Personalisation / Engraving Badge 🟡
-| ID | Task | Effort |
+### 3.5 — Personalisation Badge 🔜 *Deferred*
+| ID | Task | Status |
 |---|---|---|
-| 3.5.1 | Add "Personal inscription available" badge to product cards | S |
-| 3.5.2 | Add note to Custom Orders CTA: "Size · Colour · Shape · Inscription · Gift packaging" | XS |
+| 3.5.1 | "Personal inscription available" badge on product cards | 🔜 No current products support this yet |
+| 3.5.2 | Custom Orders CTA note: Size · Colour · Shape · Inscription · Gift packaging | 🔜 Deferred |
 
-### 3.6 — Founder Story Teaser 🟢
-| ID | Task | Effort |
+### 3.6 — Founder Story Teaser ✅
+| ID | Task | Status |
 |---|---|---|
-| 3.6.1 | Add 2-line family story teaser on homepage ("A family workshop in Israel...") linking to About page | S |
+| 3.6.1 | "Read Our Full Story →" link added below story section, links to `about.html` | ✅ |
 
-### 3.7 — Corporate & Bulk Gifts CTA 🟢
-| ID | Task | Effort |
+### 3.7 — Corporate & Bulk Gifts CTA ✅
+| ID | Task | Status |
 |---|---|---|
-| 3.7.1 | Add "Buying for an event or company?" section with WhatsApp CTA | S |
-| 3.7.2 | Translate to Hebrew | XS |
+| 3.7.1 | Dark "Corporate & Events" band added with WhatsApp CTA pre-filled message | ✅ |
+| 3.7.2 | Translated to Hebrew | ✅ |
 
-### 3.8 — Social Media Links 🟢
-| ID | Task | Effort |
+### 3.8 — Social Media Links ✅
+| ID | Task | Status |
 |---|---|---|
-| 3.8.1 | Add Instagram + TikTok icon links to footer and contact section | XS |
-| 3.8.2 | Owner to confirm handles (M0-11) | 👤 |
+| 3.8.1 | Instagram icon link added to footer → instagram.com/shermanartworks | ✅ |
+| 3.8.2 | TikTok link — handle not provided yet | 🔜 M0-11 |
 
 ---
 
@@ -355,8 +352,8 @@
 | Sprint 1 | M1 | Foundation: mobile, links, images | ✅ Done |
 | Sprint 2 | M2 | Trust: contact, SEO, currency | ✅ Done |
 | **→ SOFT LAUNCH** | — | Wire real WhatsApp number, enable custom domain | 🔜 1 input away (M0-1) |
-| Sprint 3 | M3 | Homepage enhancements (trust badges, occasions, best sellers, personalisation) | 🔜 |
-| Sprint 4 | M4 | Glass page | 🔜 |
+| Sprint 3 | M3 | Homepage enhancements (announcement bar, best sellers, corporate CTA, Instagram) | ✅ Done (3.3 + 3.5 deferred) |
+| **→ Sprint 4** | M4 | Glass page | 🔜 **CURRENT** |
 | Sprint 5 | M5 | Judaica page | 🔜 |
 | Sprint 6 | M6 | Custom Orders page | 🔜 |
 | Sprint 7 | M7 | About page | 🔜 |
