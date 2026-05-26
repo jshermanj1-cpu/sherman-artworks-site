@@ -317,6 +317,33 @@
     .form-email-alt:hover { border-color: var(--dark); color: var(--dark); }
     .form-note { font-size: 0.74rem; color: var(--brown); text-align: center; margin-top: 0.75rem; }
 
+    /* ── BESTSELLER BADGE ────────────────────── */
+    .product-card { position: relative; }
+    .bestseller-badge {
+      position: absolute; top: 0.75rem; left: 0.75rem; z-index: 1;
+      background: var(--gold); color: var(--dark);
+      font-family: var(--ff-disp); font-size: 0.55rem; letter-spacing: 0.15em; text-transform: uppercase;
+      padding: 0.22rem 0.6rem; border-radius: 2px; pointer-events: none;
+    }
+    [dir="rtl"] .bestseller-badge { left: auto; right: 0.75rem; }
+
+    /* ── CORPORATE BAND ──────────────────────── */
+    .corporate-band  { background: var(--dark); padding: 4.5rem 2rem; text-align: center; }
+    .corporate-inner { max-width: 640px; margin: 0 auto; }
+    .corporate-tag   { font-family: var(--ff-disp); font-size: 0.62rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; }
+    .corporate-title { font-family: var(--ff-disp); font-size: clamp(1.4rem, 2.4vw, 2rem); font-weight: 600; color: #faf7f2; margin-bottom: 1rem; line-height: 1.2; }
+    .corporate-sub   { font-size: 0.93rem; color: #9a8870; font-weight: 300; line-height: 1.85; margin-bottom: 2.5rem; }
+    [dir="rtl"] .corporate-band { direction: rtl; }
+
+    /* ── SOCIAL LINKS ────────────────────────── */
+    .social-links { display: flex; gap: 0.6rem; margin-top: 0.85rem; }
+    .social-link  {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 34px; height: 34px; border: 1px solid rgba(201,168,92,0.25);
+      border-radius: 3px; color: #7a6a50; transition: all 0.2s;
+    }
+    .social-link:hover { border-color: var(--gold); color: var(--gold); }
+
     /* ── FOOTER ──────────────────────────────── */
     footer { background: var(--dark); color: #d4c5aa; padding: 3.5rem 2rem 2rem; }
     .footer-inner { max-width: 1200px; margin: 0 auto; }
@@ -401,6 +428,11 @@
   </style>
 </head>
 <body>
+
+<!-- ══════════════════════════════════════════════
+     ANNOUNCEMENT BAR
+══════════════════════════════════════════════ -->
+<div class="shipping-banner" data-t="shipping_banner" role="note"></div>
 
 <!-- ══════════════════════════════════════════════
      TOP BAR
@@ -491,11 +523,6 @@
 </section>
 
 <!-- ══════════════════════════════════════════════
-     SHIPPING BANNER
-══════════════════════════════════════════════ -->
-<div class="shipping-banner" data-t="shipping_banner" role="note"></div>
-
-<!-- ══════════════════════════════════════════════
      SHOP — Featured Pieces
 ══════════════════════════════════════════════ -->
 <section id="shop" class="section section-divider">
@@ -510,6 +537,7 @@
 
     <!-- Product: Glass Decorative Bowl -->
     <article class="product-card">
+      <span class="bestseller-badge" data-t="bestseller_badge"></span>
       <div class="product-img-wrap">
         <!-- ⚠️ Replace with Cloudinary URL (key: hero / bowl) -->
         <img id="bowlImg"
@@ -536,6 +564,7 @@
 
     <!-- Product: Murano Glass Candlesticks -->
     <article class="product-card">
+      <span class="bestseller-badge" data-t="bestseller_badge"></span>
       <div class="product-img-wrap">
         <!-- ⚠️ Replace with Cloudinary URL (key: platter_blue / candle_clr) -->
         <img id="candleImg"
@@ -600,9 +629,27 @@
       <h2  class="story-title" data-t="story_title"></h2>
       <div class="story-body"  data-t="story_body"></div>
       <div class="story-sig">— The Sherman Family</div>
+      <a href="about.html" class="btn-outline" style="margin-top: 2rem; font-size: 0.65rem; letter-spacing: 0.12em;" data-t="story_more"></a>
     </div>
   </div>
 </section>
+
+<!-- ══════════════════════════════════════════════
+     CORPORATE & EVENTS
+══════════════════════════════════════════════ -->
+<div class="corporate-band">
+  <div class="corporate-inner">
+    <div class="corporate-tag" data-t="corporate_tag"></div>
+    <h2 class="corporate-title" data-t="corporate_title"></h2>
+    <p  class="corporate-sub"   data-t="corporate_sub"></p>
+    <a id="waCorporateLink" href="#"
+       class="cta-link wa" target="_blank" rel="noopener noreferrer"
+       style="margin: 0 auto; width: fit-content;">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      <span data-t="corporate_cta"></span>
+    </a>
+  </div>
+</div>
 
 <!-- ══════════════════════════════════════════════
      CONTACT
@@ -679,6 +726,15 @@
         </a>
         <p class="footer-tagline" data-t="footer_tagline"></p>
         <p class="footer-email"><a href="mailto:shermanartwork@gmail.com">shermanartwork@gmail.com</a></p>
+        <div class="social-links">
+          <a href="https://www.instagram.com/shermanartworks" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Instagram">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+            </svg>
+          </a>
+        </div>
       </div>
       <div>
         <div class="footer-col-title" data-t="footer_col_shop"></div>
@@ -733,7 +789,7 @@
       hero_cta1:           'Explore Gallery',
       hero_cta2:           'Custom Orders',
 
-      shipping_banner:     '✦ Free International Shipping on All Orders ✦',
+      shipping_banner:     '✦  Free Worldwide Shipping on All Orders  ·  Custom Orders Welcome  ✦',
 
       shop_tag:            'Our Collection',
       shop_title:          'Featured Pieces',
@@ -750,9 +806,17 @@
       coming_soon:         'More Pieces Coming Soon',
       coming_soon_sub:     'New additions to our collection — check back soon.',
 
+      bestseller_badge:    'Best Seller',
+
       story_tag:           'Our Heritage',
       story_title:         'A Family of Artisans',
+      story_more:          'Read Our Full Story →',
       story_body:          'At Sherman Art Works, we create a wide variety of handmade glass art, including glass candlestick holders, custom-designed glass bowls, elegant glass goblets, and unique decorative trays, each crafted with artistic vision and attention to detail. Our passion for creating glass art and silver-plated Judaica has been passed down through generations, combining tradition, craftsmanship, and timeless design. Our collection also includes silver-plated shofars, Kiddush cups, and a variety of meaningful Judaica pieces, proudly handcrafted by our family business in Israel.',
+
+      corporate_tag:       'Corporate & Events',
+      corporate_title:     'Ordering for a Company or Special Event?',
+      corporate_sub:       'We create custom sets for corporate gifts, synagogues, bar and bat mitzvahs, and special occasions. Each piece handmade to order — contact us to discuss your needs.',
+      corporate_cta:       'Get in Touch on WhatsApp',
 
       contact_section_tag: 'Contact',
       contact_title:       'Get in Touch',
@@ -786,7 +850,7 @@
       hero_cta1:           'לגלריה',
       hero_cta2:           'הזמנות מיוחדות',
 
-      shipping_banner:     '✦ משלוח חינם לכל העולם על כל הזמנה ✦',
+      shipping_banner:     '✦  משלוח חינם לכל העולם על כל הזמנה  ·  הזמנות מיוחדות בברוכות הבאות  ✦',
 
       shop_tag:            'האוסף שלנו',
       shop_title:          'יצירות נבחרות',
@@ -803,9 +867,17 @@
       coming_soon:         'יצירות נוספות בקרוב',
       coming_soon_sub:     'תוספות חדשות לאוסף — חזרו לבקר.',
 
+      bestseller_badge:    'נמכר ביותר',
+
       story_tag:           'המורשת שלנו',
       story_title:         'משפחת אמנים',
+      story_more:          '← קראו את הסיפור שלנו',
       story_body:          'בשרמן ארט וורקס אנו יוצרים מגוון רחב של יצירות זכוכית עשויות ביד, כולל פמוטי זכוכית, קערות זכוכית בעיצוב מיוחד, גביעים אלגנטיים ומגשים דקורטיביים ייחודיים, כל אחד נוצר עם חזון אמנותי ותשומת לב לפרטים. התשוקה שלנו ליצירת אמנות זכוכית ויודאיקה מצופה כסף עוברת מדור לדור, משלבת מסורת, אומנות ועיצוב נצחי. האוסף שלנו כולל גם שופרות מצופות כסף, גביעי קידוש ומגוון פריטי יודאיקה משמעותיים, בגאווה עשויים ביד על ידי עסק המשפחה שלנו בישראל.',
+
+      corporate_tag:       'עסקי ואירועים',
+      corporate_title:     'מזמינים עבור חברה או אירוע מיוחד?',
+      corporate_sub:       'אנו יוצרים סטים מיוחדים למתנות עסקיות, בתי כנסת, בר ובת מצווה ואירועים מיוחדים. כל יצירה עשויה ביד לפי הזמנה — צרו קשר לדיון בצרכים שלכם.',
+      corporate_cta:       'צרו קשר ב-WhatsApp',
 
       contact_section_tag: 'יצירת קשר',
       contact_title:       'צרו קשר',
@@ -975,6 +1047,9 @@
     // Sync all WhatsApp links to the WA_NUMBER constant
     const waLink = document.getElementById('waDirectLink');
     if (waLink) waLink.href = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent("Hi, I'm interested in your handmade glass art")}`;
+
+    const waCorp = document.getElementById('waCorporateLink');
+    if (waCorp) waCorp.href = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent("Hi, I'm interested in a corporate or bulk order.")}`;
 
     setLang('en');
     setCurrency('USD');
