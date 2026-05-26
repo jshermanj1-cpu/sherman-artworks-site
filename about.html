@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About — Sherman Art Works</title>
+  <meta name="description" content="Three generations of the Sherman family, handcrafting glass art in Israel. A passion for glass that began with a grandfather's love of the medium, carried forward through generations." />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="About — Sherman Art Works" />
+  <meta property="og:description" content="Three generations of the Sherman family, creating handmade glass art and Judaica in Israel. A craft built on passion, passed down through generations." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://res.cloudinary.com/doesupaf9/image/upload/w_1200,h_630,c_fit,q_auto,f_auto/WhatsApp_Image_2026-05-23_at_14.50.45_2_lutcx6.jpg" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/jpeg" href="https://res.cloudinary.com/doesupaf9/image/upload/w_32,h_32,c_fit,q_auto/WhatsApp_Image_2026-05-23_at_14.51.54_xv8lbd.jpg" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Cormorant+Garamond:ital,wght@0,600;1,400&family=Heebo:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ── TOKENS ──────────────────────────────── */
+    :root {
+      --bg:      #faf7f2;
+      --dark:    #2a1f0e;
+      --gold:    #c9a85c;
+      --brown:   #8a6f40;
+      --border:  #ede5d8;
+      --ff-body: 'Heebo', sans-serif;
+      --ff-disp: 'Cinzel', serif;
+      --ff-ital: 'Cormorant Garamond', serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--ff-body); background: var(--bg); color: var(--dark); line-height: 1.6; }
+    img  { max-width: 100%; display: block; }
+    a    { color: inherit; text-decoration: none; }
+    button { cursor: pointer; font-family: inherit; border: none; background: none; }
+
+    /* ── TOP BAR ─────────────────────────────── */
+    .top-bar {
+      background: var(--dark); color: #d4c5aa;
+      font-size: 0.75rem; letter-spacing: 0.04em;
+      padding: 0.45rem 2rem;
+      display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+    }
+    .top-bar-group { display: flex; align-items: center; gap: 0.5rem; }
+    .top-divider   { color: rgba(201,168,92,0.35); }
+    .toggle-btn {
+      background: none; border: 1px solid rgba(201,168,92,0.3);
+      color: #d4c5aa; padding: 0.2rem 0.65rem; border-radius: 2px;
+      font-size: 0.72rem; font-family: var(--ff-body); letter-spacing: 0.04em; transition: all 0.2s;
+    }
+    .toggle-btn.active             { background: var(--gold); color: var(--dark); border-color: var(--gold); font-weight: 500; }
+    .toggle-btn:hover:not(.active) { border-color: var(--gold); color: var(--gold); }
+
+    /* ── NAV ─────────────────────────────────── */
+    .nav-wrap {
+      background: var(--bg); border-bottom: 1px solid var(--border);
+      position: sticky; top: 0; z-index: 100;
+    }
+    nav {
+      max-width: 1200px; margin: 0 auto;
+      padding: 1rem 2rem; display: flex; align-items: center; justify-content: space-between;
+    }
+    .logo { display: flex; align-items: center; gap: 0.75rem; }
+    .logo-mark { height: 42px; width: auto; border-radius: 3px; display: block; flex-shrink: 0; object-fit: contain; }
+    .logo-text { display: flex; flex-direction: column; line-height: 1.15; }
+    .logo-name { font-family: var(--ff-disp); font-size: 0.9rem; font-weight: 600; letter-spacing: 0.08em; color: var(--dark); }
+    .logo-sub  { font-family: var(--ff-ital); font-style: italic; font-size: 0.7rem; color: var(--brown); letter-spacing: 0.03em; }
+    .nav-links   { display: flex; align-items: center; gap: 2rem; list-style: none; }
+    .nav-links a { font-family: var(--ff-disp); font-size: 0.68rem; letter-spacing: 0.13em; text-transform: uppercase; color: var(--dark); transition: color 0.2s; }
+    .nav-links a:hover      { color: var(--gold); }
+    .nav-links a.nav-active { color: var(--gold); border-bottom: 1px solid var(--gold); padding-bottom: 2px; }
+    .hamburger { display: none; flex-direction: column; gap: 5px; padding: 0.4rem; }
+    .hamburger span { display: block; width: 24px; height: 2px; background: var(--dark); border-radius: 2px; transition: all 0.3s; }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .mobile-nav { display: none; background: var(--bg); border-top: 1px solid var(--border); padding: 1rem 2rem 1.5rem; }
+    .mobile-nav.open { display: block; }
+    .mobile-nav ul { list-style: none; display: flex; flex-direction: column; }
+    .mobile-nav a {
+      font-family: var(--ff-disp); font-size: 0.82rem; letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--dark); padding: 0.85rem 0; border-bottom: 1px solid var(--border);
+      min-height: 44px; display: flex; align-items: center;
+    }
+    .mobile-nav a:hover { color: var(--gold); }
+
+    /* ── SHIPPING BANNER ─────────────────────── */
+    .shipping-banner {
+      background: var(--dark); color: var(--gold); text-align: center;
+      padding: 0.9rem 2rem; font-family: var(--ff-disp); font-size: 0.72rem; letter-spacing: 0.22em;
+    }
+
+    /* ── PAGE HERO ───────────────────────────── */
+    .page-hero { background: var(--dark); padding: 6rem 2rem 5rem; text-align: center; }
+    .page-hero-inner { max-width: 720px; margin: 0 auto; }
+    .page-eyebrow {
+      font-family: var(--ff-disp); font-size: 0.65rem; letter-spacing: 0.28em;
+      text-transform: uppercase; color: var(--gold); margin-bottom: 1.25rem;
+    }
+    .page-headline {
+      font-family: var(--ff-disp);
+      font-size: clamp(2rem, 4vw, 3.4rem);
+      font-weight: 600; line-height: 1.1; color: #faf7f2; margin-bottom: 1.25rem;
+    }
+    .page-subtitle {
+      font-family: var(--ff-ital); font-style: italic;
+      font-size: clamp(1rem, 1.8vw, 1.3rem);
+      color: #9a8870; margin-bottom: 0;
+    }
+
+    /* ── SECTION COMMONS ─────────────────────── */
+    .section { max-width: 1200px; margin: 0 auto; padding: 5.5rem 2rem; }
+    .section-divider { border-top: 1px solid var(--border); }
+    .ornament { text-align: center; color: var(--gold); letter-spacing: 0.5rem; margin-bottom: 1rem; opacity: 0.55; font-size: 0.8rem; }
+    .section-tag   { font-family: var(--ff-disp); font-size: 0.62rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.75rem; }
+    .section-title { font-family: var(--ff-disp); font-size: clamp(1.6rem, 2.8vw, 2.4rem); font-weight: 600; color: var(--dark); margin-bottom: 0.75rem; }
+    .section-sub   { font-family: var(--ff-ital); font-style: italic; font-size: 1.05rem; color: var(--brown); }
+
+    /* ── ORIGIN STORY ────────────────────────── */
+    .story-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 5rem; align-items: center;
+    }
+    .story-images { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+    .story-img-main { grid-column: 1 / -1; border-radius: 4px; overflow: hidden; }
+    .story-img-main img { width: 100%; height: auto; }
+    .story-img-sm   { border-radius: 4px; overflow: hidden; }
+    .story-img-sm img { width: 100%; height: auto; }
+
+    .story-tag   { font-family: var(--ff-disp); font-size: 0.62rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; }
+    .story-title { font-family: var(--ff-disp); font-size: clamp(1.5rem, 2.4vw, 2.2rem); font-weight: 600; color: var(--dark); margin-bottom: 1.5rem; line-height: 1.2; }
+    .story-body  { font-size: 0.95rem; line-height: 1.95; color: var(--brown); font-weight: 300; }
+    .story-body p + p { margin-top: 1.25rem; }
+    .story-sig   { margin-top: 2rem; font-family: var(--ff-ital); font-style: italic; font-size: 1.15rem; color: var(--gold); }
+
+    /* ── GENERATIONS BAND ────────────────────── */
+    .gen-band { background: var(--dark); padding: 5rem 2rem; }
+    .gen-inner { max-width: 1200px; margin: 0 auto; }
+    .gen-header { text-align: center; margin-bottom: 3.5rem; }
+    .gen-tag   { font-family: var(--ff-disp); font-size: 0.62rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.75rem; }
+    .gen-title { font-family: var(--ff-disp); font-size: clamp(1.5rem, 2.4vw, 2rem); font-weight: 600; color: #faf7f2; }
+
+    .gen-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+    .gen-card {
+      border: 1px solid rgba(201,168,92,0.2);
+      border-radius: 4px; padding: 2.25rem 1.75rem;
+      text-align: center; position: relative;
+    }
+    .gen-num {
+      font-family: var(--ff-disp); font-size: 3rem; font-weight: 600;
+      color: var(--gold); opacity: 0.2; line-height: 1; margin-bottom: 1rem;
+    }
+    .gen-label {
+      font-family: var(--ff-disp); font-size: 0.7rem; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--gold); margin-bottom: 0.85rem;
+    }
+    .gen-name  {
+      font-family: var(--ff-ital); font-style: italic;
+      font-size: 1.2rem; color: #faf7f2; margin-bottom: 0.85rem;
+    }
+    .gen-body  { font-size: 0.84rem; color: #7a6a50; font-weight: 300; line-height: 1.75; }
+
+    /* ── CRAFT SECTION ───────────────────────── */
+    .craft-grid {
+      display: grid; grid-template-columns: 1.1fr 1fr;
+      gap: 5rem; align-items: center;
+    }
+    .craft-text .section-tag   { display: block; margin-bottom: 0.75rem; }
+    .craft-text .section-title { display: block; margin-bottom: 1.5rem; }
+    .craft-body { font-size: 0.95rem; line-height: 1.95; color: var(--brown); font-weight: 300; }
+    .craft-body p + p { margin-top: 1.25rem; }
+
+    .craft-values { margin-top: 2.5rem; display: flex; flex-direction: column; gap: 1rem; }
+    .craft-value {
+      display: flex; align-items: flex-start; gap: 1rem;
+      padding: 1.1rem 1.25rem;
+      border: 1px solid var(--border); border-radius: 4px;
+      background: #fff;
+    }
+    .craft-value-icon { font-size: 1.25rem; flex-shrink: 0; margin-top: 0.1rem; }
+    .craft-value-text {}
+    .craft-value-title { font-family: var(--ff-disp); font-size: 0.78rem; letter-spacing: 0.06em; color: var(--dark); margin-bottom: 0.3rem; }
+    .craft-value-body  { font-size: 0.82rem; color: var(--brown); font-weight: 300; line-height: 1.65; }
+
+    .craft-images { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+    .craft-img-main { grid-column: 1 / -1; border-radius: 4px; overflow: hidden; }
+    .craft-img-main img { width: 100%; height: auto; }
+    .craft-img-sm   { border-radius: 4px; overflow: hidden; }
+    .craft-img-sm img { width: 100%; height: auto; }
+
+    /* ── CTA BAND ────────────────────────────── */
+    .cta-band { background: #f5f0e8; padding: 5rem 2rem; text-align: center; border-top: 1px solid var(--border); }
+    .cta-inner { max-width: 640px; margin: 0 auto; }
+    .cta-tag   { font-family: var(--ff-disp); font-size: 0.62rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; }
+    .cta-title { font-family: var(--ff-disp); font-size: clamp(1.4rem, 2.4vw, 2rem); font-weight: 600; color: var(--dark); margin-bottom: 1rem; line-height: 1.2; }
+    .cta-sub   { font-size: 0.93rem; color: var(--brown); font-weight: 300; line-height: 1.85; margin-bottom: 2.5rem; }
+    .cta-btns  { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    .btn-primary {
+      font-family: var(--ff-disp); font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase;
+      background: var(--dark); color: var(--bg);
+      padding: 0.85rem 1.9rem; border: 2px solid var(--dark); border-radius: 2px;
+      transition: all 0.25s; min-height: 44px; display: inline-flex; align-items: center; cursor: pointer;
+    }
+    .btn-primary:hover { background: var(--gold); border-color: var(--gold); color: var(--dark); }
+    .btn-outline {
+      font-family: var(--ff-disp); font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase;
+      background: transparent; color: var(--dark);
+      padding: 0.85rem 1.9rem; border: 2px solid var(--dark); border-radius: 2px;
+      transition: all 0.25s; min-height: 44px; display: inline-flex; align-items: center; cursor: pointer;
+    }
+    .btn-outline:hover { background: var(--dark); color: var(--bg); }
+
+    /* ── FOOTER ──────────────────────────────── */
+    footer { background: var(--dark); color: #d4c5aa; padding: 3.5rem 2rem 2rem; }
+    .footer-inner { max-width: 1200px; margin: 0 auto; }
+    .footer-top {
+      display: grid; grid-template-columns: 1.6fr 1fr 1fr;
+      gap: 3rem; padding-bottom: 2rem;
+      border-bottom: 1px solid rgba(255,255,255,0.08); margin-bottom: 1.5rem;
+    }
+    footer .logo-name { color: var(--gold); }
+    footer .logo-sub  { color: #9a8870; }
+    .footer-tagline   { font-size: 0.85rem; color: #7a6a50; font-weight: 300; line-height: 1.65; margin-top: 0.75rem; }
+    .footer-email     { font-size: 0.8rem; color: var(--gold); margin-top: 0.5rem; }
+    .footer-email a:hover { text-decoration: underline; }
+    .footer-col-title { font-family: var(--ff-disp); font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; }
+    .footer-links     { list-style: none; display: flex; flex-direction: column; gap: 0.65rem; }
+    .footer-links a   { font-size: 0.84rem; color: #7a6a50; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--gold); }
+    .footer-bottom { display: flex; align-items: center; justify-content: space-between; font-size: 0.74rem; color: #5a4a32; }
+    .footer-badge  { display: flex; align-items: center; gap: 0.4rem; }
+    .social-links  { display: flex; gap: 0.6rem; margin-top: 0.85rem; }
+    .social-link   {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 34px; height: 34px; border: 1px solid rgba(201,168,92,0.25);
+      border-radius: 3px; color: #7a6a50; transition: all 0.2s;
+    }
+    .social-link:hover { border-color: var(--gold); color: var(--gold); }
+
+    /* ── RTL ─────────────────────────────────── */
+    [dir="rtl"] .top-bar       { flex-direction: row-reverse; }
+    [dir="rtl"] .top-bar-group { flex-direction: row-reverse; }
+    [dir="rtl"] nav            { flex-direction: row-reverse; }
+    [dir="rtl"] .nav-links     { flex-direction: row-reverse; }
+    [dir="rtl"] .story-grid    { direction: rtl; }
+    [dir="rtl"] .craft-grid    { direction: rtl; }
+    [dir="rtl"] .craft-value   { flex-direction: row-reverse; text-align: right; }
+    [dir="rtl"] .footer-top    { direction: rtl; }
+    [dir="rtl"] .footer-bottom { flex-direction: row-reverse; }
+    [dir="rtl"] .mobile-nav ul { direction: rtl; }
+    [dir="rtl"] .cta-btns      { flex-direction: row-reverse; }
+    [dir="rtl"] .page-hero     { direction: rtl; }
+
+    /* ── RESPONSIVE ──────────────────────────── */
+    @media (max-width: 900px) {
+      .story-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .craft-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .craft-images { order: -1; }
+      .gen-grid   { grid-template-columns: 1fr; gap: 1rem; }
+      .footer-top { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 768px) {
+      .top-bar   { padding: 0.4rem 1rem; }
+      .hamburger { display: flex; }
+      .nav-links { display: none; }
+      nav        { padding: 0.75rem 1rem; }
+      .section   { padding: 3rem 1rem; }
+      .gen-band  { padding: 3rem 1rem; }
+      .cta-band  { padding: 3rem 1rem; }
+      .page-hero { padding: 3.5rem 1rem 3rem; }
+      .footer-top    { grid-template-columns: 1fr; gap: 2rem; }
+      .footer-bottom { flex-direction: column; gap: 0.5rem; text-align: center; }
+    }
+    @media (max-width: 480px) {
+      .cta-btns { flex-direction: column; align-items: center; }
+      .story-images { grid-template-columns: 1fr; }
+      .story-img-sm:last-child { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════════
+     ANNOUNCEMENT BAR
+══════════════════════════════════════════════ -->
+<div class="shipping-banner" data-t="shipping_banner" role="note"></div>
+
+<!-- ══════════════════════════════════════════════
+     TOP BAR
+══════════════════════════════════════════════ -->
+<div class="top-bar">
+  <div class="top-bar-group">
+    <button id="btnEN" class="toggle-btn" onclick="setLang('en')">EN</button>
+    <span class="top-divider">|</span>
+    <button id="btnHE" class="toggle-btn" onclick="setLang('he')">עברית</button>
+  </div>
+  <div class="top-bar-group" style="font-size:0.72rem;color:#7a6a50;letter-spacing:0.04em;" data-t="topbar_right"></div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     NAVIGATION
+══════════════════════════════════════════════ -->
+<div class="nav-wrap">
+  <nav>
+    <a href="index.html" class="logo" aria-label="Sherman Art Works — Home">
+      <img class="logo-mark"
+           src="https://res.cloudinary.com/doesupaf9/image/upload/h_84,c_fit,q_auto,f_auto/WhatsApp_Image_2026-05-23_at_14.51.54_xv8lbd.jpg"
+           alt="Sherman Art Works logo" width="71" height="84" />
+      <div class="logo-text">
+        <span class="logo-name">Sherman Art Works</span>
+        <span class="logo-sub">Handcrafted Glass &amp; Judaica</span>
+      </div>
+    </a>
+    <ul class="nav-links" role="list">
+      <li><a href="index.html#shop"    data-t="nav_gallery"></a></li>
+      <li><a href="index.html#shop"    data-t="nav_judaica"></a></li>
+      <li><a href="custom-orders.html" data-t="nav_custom"></a></li>
+      <li><a href="about.html"         data-t="nav_about" class="nav-active"></a></li>
+      <li><a href="index.html#contact" data-t="nav_contact"></a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false" onclick="toggleNav()">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+  <div class="mobile-nav" id="mobileNav" aria-hidden="true">
+    <ul role="list">
+      <li><a href="index.html#shop"    onclick="closeMobileNav()" data-t="nav_gallery"></a></li>
+      <li><a href="index.html#shop"    onclick="closeMobileNav()" data-t="nav_judaica"></a></li>
+      <li><a href="custom-orders.html" onclick="closeMobileNav()" data-t="nav_custom"></a></li>
+      <li><a href="about.html"         onclick="closeMobileNav()" data-t="nav_about"></a></li>
+      <li><a href="index.html#contact" onclick="closeMobileNav()" data-t="nav_contact"></a></li>
+    </ul>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     PAGE HERO
+══════════════════════════════════════════════ -->
+<section class="page-hero">
+  <div class="page-hero-inner">
+    <div class="page-eyebrow" data-t="hero_eyebrow"></div>
+    <h1 class="page-headline"  data-t="hero_headline"></h1>
+    <p  class="page-subtitle"  data-t="hero_subtitle"></p>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     THE ORIGIN STORY
+══════════════════════════════════════════════ -->
+<section class="section" id="story">
+  <div class="story-grid">
+    <div class="story-images">
+      <div class="story-img-main">
+        <img src="https://res.cloudinary.com/doesupaf9/image/upload/w_700,h_500,c_fit,q_auto,f_auto/WhatsApp_Image_2026-05-23_at_14.50.45_2_lutcx6.jpg"
+             alt="Sherman Art Works handmade glass piece" width="700" height="500" loading="lazy" />
+      </div>
+      <div class="story-img-sm">
+        <img src="https://res.cloudinary.com/doesupaf9/image/upload/w_340,h_240,c_fit,q_auto,f_auto/WhatsApp_Image_2026-05-23_at_14.47.18_rxgkng.jpg"
+             alt="Handcrafted glass art detail" width="340" height="240" loading="lazy" />
+      </div>
+      <div class="story-img-sm">
+        <img src="https://res.cloudinary.com/doesupaf9/image/upload/w_340,h_240,c_fit,q_auto,f_auto/WhatsApp_Image_2026-05-23_at_14.51.21_srqp13.jpg"
+             alt="Sherman Art Works collection" width="340" height="240" loading="lazy" />
+      </div>
+    </div>
+
+    <div class="story-text">
+      <div class="story-tag"   data-t="story_tag"></div>
+      <h2  class="story-title" data-t="story_title"></h2>
+      <div class="story-body"  data-t="story_body"></div>
+      <div class="story-sig">— The Sherman Family</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     THREE GENERATIONS
+══════════════════════════════════════════════ -->
+<div class="gen-band">
+  <div class="gen-inner">
+    <div class="gen-header">
+      <div class="ornament" aria-hidden="true">✦ ✦ ✦</div>
+      <div class="gen-tag"   data-t="gen_tag"></div>
+      <h2  class="gen-title" data-t="gen_title"></h2>
+    </div>
+    <div class="gen-grid">
+      <div class="gen-card">
+        <div class="gen-num">I</div>
+        <div class="gen-label" data-t="gen1_label"></div>
+        <div class="gen-name"  data-t="gen1_name"></div>
+        <p   class="gen-body"  data-t="gen1_body"></p>
+      </div>
+      <div class="gen-card">
+        <div class="gen-num">II</div>
+        <div class="gen-label" data-t="gen2_label"></div>
+        <div class="gen-name"  data-t="gen2_name"></div>
+        <p   class="gen-body"  data-t="gen2_body"></p>
+      </div>
+      <div class="gen-card">
+        <div class="gen-num">III</div>
+        <div class="gen-label" data-t="gen3_label"></div>
+        <div class="gen-name"  data-t="gen3_name"></div>
+        <p   class="gen-body"  data-t="gen3_body"></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     OUR CRAFT
+══════════════════════════════════════════════ -->
+<section class="section section-divider" id="craft">
+  <div class="craft-grid">
+    <div class="craft-text">
+      <div class="section-tag"   data-t="craft_tag"></div>
+      <h2  class="section-title" data-t="craft_title"></h2>
+      <div class="craft-body"    data-t="craft_body"></div>
+
+      <div class="craft-values">
+        <div class="craft-value">
+          <span class="craft-value-icon" aria-hidden="true">🤲</span>
+          <div>
+            <div class="craft-value-title" data-t="val1_title"></div>
+            <div class="craft-value-body"  data-t="val1_body"></div>
+          </div>
+        </div>
+        <div class="craft-value">
+          <span class="craft-value-icon" aria-hidden="true">✦</span>
+          <div>
+            <div class="craft-value-title" data-t="val2_title"></div>
+            <div class="craft-value-body"  data-t="val2_body"></div>
+          </div>
+        </div>
+        <div class="craft-value">
+          <span class="craft-value-icon" aria-hidden="true">🇮🇱</span>
+          <div>
+            <div class="craft-value-title" data-t="val3_title"></div>
+            <div class="craft-value-body"  data-t="val3_body"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="craft-images">
+      <div class="craft-img-main">
+        <img src="https://res.cloudinary.com/doesupaf9/image/upload/w_700,h_480,c_fit,q_auto,f_auto/WhatsApp_Image_2026-05-23_at_14.47.18_5_rg7nep.jpg"
+             alt="Sherman Art Works glass craft" width="700" height="480" loading="lazy" />
+      </div>
+      <div class="craft-img-sm">
+        <img src="https://res.cloudinary.com/doesupaf9/image/upload/w_340,h_220,c_fit,q_auto,f_auto/WhatsApp_Image_2026-05-23_at_14.50.52_opdvh0.jpg"
+             alt="Handmade glass detail" width="340" height="220" loading="lazy" />
+      </div>
+      <div class="craft-img-sm">
+        <img src="https://res.cloudinary.com/doesupaf9/image/upload/w_340,h_220,c_fit,q_auto,f_auto/WhatsApp_Image_2026-05-23_at_14.50.51_olwq5k.jpg"
+             alt="Sherman glass art" width="340" height="220" loading="lazy" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     CTA BAND
+══════════════════════════════════════════════ -->
+<div class="cta-band">
+  <div class="cta-inner">
+    <div class="ornament" aria-hidden="true">✦ ✦ ✦</div>
+    <div class="cta-tag"   data-t="cta_tag"></div>
+    <h2  class="cta-title" data-t="cta_title"></h2>
+    <p   class="cta-sub"   data-t="cta_sub"></p>
+    <div class="cta-btns">
+      <a href="index.html#shop"    class="btn-primary" data-t="cta_btn1"></a>
+      <a href="custom-orders.html" class="btn-outline"  data-t="cta_btn2"></a>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     FOOTER
+══════════════════════════════════════════════ -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <a href="index.html" class="logo" aria-label="Sherman Art Works">
+          <img class="logo-mark"
+               src="https://res.cloudinary.com/doesupaf9/image/upload/h_84,c_fit,q_auto,f_auto/WhatsApp_Image_2026-05-23_at_14.51.54_xv8lbd.jpg"
+               alt="Sherman Art Works logo" width="71" height="84" loading="lazy" />
+          <div class="logo-text">
+            <span class="logo-name">Sherman Art Works</span>
+            <span class="logo-sub">Handcrafted Glass &amp; Judaica</span>
+          </div>
+        </a>
+        <p class="footer-tagline" data-t="footer_tagline"></p>
+        <p class="footer-email"><a href="mailto:shermanartwork@gmail.com">shermanartwork@gmail.com</a></p>
+        <div class="social-links">
+          <a href="https://www.instagram.com/shermanartworks" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Instagram">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title" data-t="footer_col_shop"></div>
+        <ul class="footer-links" role="list">
+          <li><a href="index.html#shop"    data-t="nav_gallery"></a></li>
+          <li><a href="index.html#shop"    data-t="nav_judaica"></a></li>
+          <li><a href="custom-orders.html" data-t="nav_custom"></a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title" data-t="footer_col_studio"></div>
+        <ul class="footer-links" role="list">
+          <li><a href="about.html"         data-t="nav_about"></a></li>
+          <li><a href="index.html#contact" data-t="nav_contact"></a></li>
+          <li><a href="mailto:shermanartwork@gmail.com">shermanartwork@gmail.com</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span data-t="footer_copy"></span>
+      <span class="footer-badge">✦ <span data-t="footer_badge"></span></span>
+    </div>
+  </div>
+</footer>
+
+<!-- ══════════════════════════════════════════════
+     JAVASCRIPT
+══════════════════════════════════════════════ -->
+<script>
+  const T = {
+    en: {
+      nav_gallery: 'Gallery',
+      nav_judaica: 'Judaica',
+      nav_custom:  'Custom Orders',
+      nav_about:   'About',
+      nav_contact: 'Contact',
+
+      shipping_banner: '✦  Free Worldwide Shipping on All Orders  ·  Custom Orders Welcome  ✦',
+      topbar_right:    'Handcrafted in Israel',
+
+      hero_eyebrow:  'Our Story',
+      hero_headline: 'Three Generations of Glass',
+      hero_subtitle: 'A grandfather\'s passion. A family\'s calling. A craft that keeps growing.',
+
+      story_tag:   'Where It All Began',
+      story_title: 'A Love of Glass That Started with One Man',
+      story_body:  `<p>It began with a grandfather who could not pass a piece of glass without seeing something in it — the way it held light differently at every angle, the depth of colour you could coax from something that started as nothing more than sand and heat.</p><p>His passion became more than a hobby. It became a craft, then a workshop, then a legacy. What he discovered alone, he passed on to the next generation — not just the techniques, but the way of seeing: that glass is not a material to work with, but a medium to think through.</p><p>Today, three generations of the Sherman family carry that founding spirit. Every piece that leaves our hands carries something of where we started — a grandfather's eye, a family's dedication, and years of methods quietly refined.</p>`,
+
+      gen_tag:   'The Sherman Family',
+      gen_title: 'Three Generations, One Craft',
+
+      gen1_label: 'First Generation',
+      gen1_name:  'The Founder',
+      gen1_body:  'Driven by a lifelong passion for glass and art, he built the foundation — developing techniques, discovering possibilities, and creating the first pieces that would define the family\'s style.',
+
+      gen2_label: 'Second Generation',
+      gen2_name:  'The Craftsmen',
+      gen2_body:  'The craft was passed down hand to hand. The second generation grew up surrounded by glass, learning by watching and doing — expanding the range of forms and deepening the mastery of the medium.',
+
+      gen3_label: 'Third Generation',
+      gen3_name:  'Today',
+      gen3_body:  'The family workshop continues. Three generations of knowledge, technique and artistic vision come together in every piece — handmade in Israel, shipped to collectors and families around the world.',
+
+      craft_tag:   'The Craft',
+      craft_title: 'Not a Product. A Work of Art.',
+      craft_body:  `<p>There is no mould, no template, no two pieces exactly alike. Each piece is shaped by hand using methods the Sherman family has developed and refined over three generations — part inherited technique, part personal discovery.</p><p>The guiding principle has never changed: every piece must be art. Not décor, not a commodity — something made with intention, shaped with care, and finished to a standard that makes it worth passing on.</p>`,
+
+      val1_title: 'Entirely Handmade',
+      val1_body:  'Every piece is made by hand, from raw materials to finished form. No two are identical.',
+      val2_title: 'Our Own Methods',
+      val2_body:  'Techniques developed over three generations — inherited, refined, and in some cases invented by the family.',
+      val3_title: 'Made in Israel',
+      val3_body:  'Our studio is in Israel. Every piece carries something of this place — its light, its heritage, its craft traditions.',
+
+      cta_tag:   'Explore the Collection',
+      cta_title: 'Every Piece Has a Story',
+      cta_sub:   'Browse the collection or commission something made just for you.',
+      cta_btn1:  'Explore the Gallery',
+      cta_btn2:  'Commission a Custom Piece',
+
+      footer_tagline:    'Handmade glass art & Judaica from Israel',
+      footer_col_shop:   'Shop',
+      footer_col_studio: 'Studio',
+      footer_copy:       '© 2026 Sherman Art Works. All rights reserved.',
+      footer_badge:      'Handcrafted in Israel',
+    },
+
+    he: {
+      nav_gallery: 'גלריה',
+      nav_judaica: 'יודאיקה',
+      nav_custom:  'הזמנות מיוחדות',
+      nav_about:   'אודות',
+      nav_contact: 'צור קשר',
+
+      shipping_banner: '✦  משלוח חינם לכל העולם על כל הזמנה  ·  הזמנות מיוחדות בברוכות הבאות  ✦',
+      topbar_right:    'עשוי ביד בישראל',
+
+      hero_eyebrow:  'הסיפור שלנו',
+      hero_headline: 'שלושה דורות של זכוכית',
+      hero_subtitle: 'התשוקה של סב. הייעוד של משפחה. אומנות שממשיכה לצמוח.',
+
+      story_tag:   'מאיפה הכל התחיל',
+      story_title: 'אהבה לזכוכית שהתחילה עם אדם אחד',
+      story_body:  `<p>הכל התחיל עם סב שלא יכל לעבור ליד חתיכת זכוכית מבלי לראות בה משהו — את האופן שבו היא מחזיקה את האור אחרת בכל זווית, את עומק הצבע שאפשר להפיק ממשהו שהתחיל כלא יותר מחול וחום.</p><p>התשוקה שלו הפכה ליותר מתחביב. היא הפכה לאומנות, ואחר כך לסדנה, ואחר כך למורשת. מה שגילה לבד, הוא העביר לדור הבא — לא רק את הטכניקות, אלא את דרך הראייה: שזכוכית אינה חומר לעבוד איתו, אלא מדיום לחשוב דרכו.</p><p>היום, שלושה דורות של משפחת שרמן נושאים את הרוח המייסדת הזו. כל יצירה שיוצאת מהידיים שלנו נושאת משהו מהמקום שממנו התחלנו — עין של סב, מסירות של משפחה, ושנים של שיטות שפוצחו בשקט.</p>`,
+
+      gen_tag:   'משפחת שרמן',
+      gen_title: 'שלושה דורות, אומנות אחת',
+
+      gen1_label: 'דור ראשון',
+      gen1_name:  'המייסד',
+      gen1_body:  'מתוך תשוקה עמוקה לזכוכית ולאמנות, הוא בנה את היסוד — פיתח טכניקות, גילה אפשרויות, ויצר את היצירות הראשונות שיגדירו את הסגנון המשפחתי.',
+
+      gen2_label: 'דור שני',
+      gen2_name:  'האומנים',
+      gen2_body:  'האומנות עברה מיד ליד. הדור השני גדל מוקף בזכוכית, למד על ידי צפייה ועשייה — הרחיב את מגוון הצורות והעמיק את השליטה במדיום.',
+
+      gen3_label: 'דור שלישי',
+      gen3_name:  'היום',
+      gen3_body:  'סדנת המשפחה ממשיכה. שלושה דורות של ידע, טכניקה וחזון אמנותי מתאחדים בכל יצירה — עשויה ביד בישראל, נשלחת לאוספים ולמשפחות ברחבי העולם.',
+
+      craft_tag:   'האומנות',
+      craft_title: 'לא מוצר. יצירת אמנות.',
+      craft_body:  `<p>אין תבנית, אין שני דברים זהים. כל יצירה מעוצבת ביד תוך שימוש בשיטות שמשפחת שרמן פיתחה וחידדה לאורך שלושה דורות — חלק טכניקה שהועברה בירושה, חלק גילוי אישי.</p><p>העיקרון המנחה לא השתנה מעולם: כל יצירה חייבת להיות אמנות. לא דקורציה, לא מוצר — משהו שנעשה עם כוונה, עוצב בטיפול, ומגומר לרמה שמצדיקה להעביר אותו הלאה.</p>`,
+
+      val1_title: 'עשוי לחלוטין ביד',
+      val1_body:  'כל יצירה נעשית ביד, מחומרים גולמיים עד לצורה המוגמרת. אין שתיים זהות.',
+      val2_title: 'השיטות שלנו',
+      val2_body:  'טכניקות שפותחו לאורך שלושה דורות — שהועברו בירושה, שוכללו, ובחלקן הומצאו על ידי המשפחה.',
+      val3_title: 'עשוי בישראל',
+      val3_body:  'הסטודיו שלנו בישראל. כל יצירה נושאת משהו מהמקום הזה — האור שלו, המורשת שלו, מסורות האומנות שלו.',
+
+      cta_tag:   'גלו את האוסף',
+      cta_title: 'לכל יצירה יש סיפור',
+      cta_sub:   'עיינו באוסף או הזמינו משהו שנעשה במיוחד עבורכם.',
+      cta_btn1:  'לגלריה',
+      cta_btn2:  'הזמינו יצירה מותאמת אישית',
+
+      footer_tagline:    'אמנות זכוכית ויודאיקה עשויות ביד מישראל',
+      footer_col_shop:   'חנות',
+      footer_col_studio: 'הסטודיו',
+      footer_copy:       '© 2026 שרמן ארט וורקס. כל הזכויות שמורות.',
+      footer_badge:      'עשוי ביד בישראל',
+    }
+  };
+
+  let currentLang = 'en';
+
+  function setLang(l) {
+    currentLang = l;
+    const dict = T[l];
+    const html = document.documentElement;
+
+    document.querySelectorAll('[data-t]').forEach(el => {
+      const val = dict[el.dataset.t];
+      if (val === undefined) return;
+      // Allow HTML in story_body and craft_body
+      if (el.dataset.t === 'story_body' || el.dataset.t === 'craft_body') {
+        el.innerHTML = val;
+      } else {
+        el.textContent = val;
+      }
+    });
+
+    html.lang = l;
+    html.dir  = l === 'he' ? 'rtl' : 'ltr';
+    document.getElementById('btnEN').classList.toggle('active', l === 'en');
+    document.getElementById('btnHE').classList.toggle('active', l === 'he');
+  }
+
+  function toggleNav() {
+    const burger = document.getElementById('hamburger');
+    const nav    = document.getElementById('mobileNav');
+    const open   = burger.classList.toggle('open');
+    nav.classList.toggle('open', open);
+    burger.setAttribute('aria-expanded', open);
+    nav.setAttribute('aria-hidden', !open);
+  }
+  function closeMobileNav() {
+    const burger = document.getElementById('hamburger');
+    const nav    = document.getElementById('mobileNav');
+    burger.classList.remove('open');
+    nav.classList.remove('open');
+    burger.setAttribute('aria-expanded', 'false');
+    nav.setAttribute('aria-hidden', 'true');
+  }
+
+  document.addEventListener('DOMContentLoaded', () => setLang('en'));
+</script>
+
+</body>
+</html>
