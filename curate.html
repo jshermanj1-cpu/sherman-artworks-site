@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Curate — Sherman Art Works Photos</title>
+<style>
+  body { font-family: sans-serif; background: #f5f0e8; padding: 2rem; color: #2a1f0e; }
+  h1   { font-size: 1.2rem; margin-bottom: 0.5rem; }
+  p    { font-size: 0.85rem; color: #8a6f40; margin-bottom: 2rem; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 1rem; }
+  .card {
+    background: #fff; border: 2px solid #ede5d8; border-radius: 4px;
+    overflow: hidden; cursor: pointer; transition: border-color 0.2s;
+  }
+  .card:hover { border-color: #c9a85c; }
+  .card.selected { border-color: #c9a85c; background: #fdf8ee; }
+  .card img   { width: 100%; height: 180px; object-fit: cover; display: block; }
+  .card-body  { padding: 0.5rem; }
+  .card-id    { font-size: 0.65rem; color: #8a6f40; word-break: break-all; line-height: 1.3; }
+  .card-num   { font-weight: bold; font-size: 0.8rem; color: #2a1f0e; margin-bottom: 0.2rem; }
+  .slot-picker { margin-top: 0.5rem; }
+  .slot-picker select {
+    width: 100%; font-size: 0.72rem; padding: 0.25rem;
+    border: 1px solid #ede5d8; border-radius: 2px; background: #faf7f2;
+  }
+  .summary {
+    position: fixed; bottom: 0; left: 0; right: 0;
+    background: #2a1f0e; color: #c9a85c;
+    padding: 1rem 2rem; font-size: 0.8rem;
+    display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+  }
+  .summary pre { color: #faf7f2; font-size: 0.72rem; white-space: pre-wrap; flex: 1; max-height: 120px; overflow-y: auto; }
+  .copy-btn {
+    background: #c9a85c; color: #2a1f0e; border: none; padding: 0.5rem 1.2rem;
+    border-radius: 2px; font-weight: bold; cursor: pointer; white-space: nowrap;
+  }
+</style>
+</head>
+<body>
+<h1>Photo Curation — Sherman Art Works</h1>
+<p>Use the dropdown on each photo to assign it to a slot. Copy the result at the bottom and send it to Claude.</p>
+<div class="grid" id="grid"></div>
+<div class="summary">
+  <pre id="output">Assign slots above to see the mapping here.</pre>
+  <button class="copy-btn" onclick="copyOutput()">Copy Mapping</button>
+</div>
+
+<script>
+const CLOUD = 'doesupaf9';
+const SLOTS = [
+  '',
+  'hero_main        — Hero section: large top image',
+  'hero_sm1         — Hero section: small image left',
+  'hero_sm2         — Hero section: small image right',
+  'bowl_product     — Bowl product card image',
+  'candle_product   — Candlesticks product card image',
+  'story_main       — Story section: large top image',
+  'story_sm1        — Story section: small image left',
+  'story_sm2        — Story section: small image right',
+];
+
+const IDS = [
+  "WhatsApp_Image_2026-05-23_at_14.47.17_ei89jh",
+  "WhatsApp_Image_2026-05-23_at_14.47.17_1_w7evub",
+  "WhatsApp_Image_2026-05-23_at_14.47.18_rxgkng",
+  "WhatsApp_Image_2026-05-23_at_14.47.18_1_hinis1",
+  "WhatsApp_Image_2026-05-23_at_14.47.48_a4ymml",
+  "WhatsApp_Image_2026-05-23_at_14.47.49_cjcoum",
+  "WhatsApp_Image_2026-05-23_at_14.47.18_2_gubqeq",
+  "WhatsApp_Image_2026-05-23_at_14.47.18_3_fe1p8e",
+  "WhatsApp_Image_2026-05-23_at_14.47.48_1_rusxl4",
+  "WhatsApp_Image_2026-05-23_at_14.47.49_1_wztlyk",
+  "WhatsApp_Image_2026-05-23_at_14.47.18_5_rg7nep",
+  "WhatsApp_Image_2026-05-23_at_14.47.18_4_dhonht",
+  "WhatsApp_Image_2026-05-23_at_14.50.45_seyvux",
+  "WhatsApp_Image_2026-05-23_at_14.50.46_uqm7mk",
+  "WhatsApp_Image_2026-05-23_at_14.50.44_nhsc3g",
+  "WhatsApp_Image_2026-05-23_at_14.51.54_xv8lbd",
+  "WhatsApp_Image_2026-05-23_at_14.50.45_1_vgebgg",
+  "WhatsApp_Image_2026-05-23_at_14.50.47_ayz1zr",
+  "WhatsApp_Image_2026-05-23_at_14.50.45_3_qpy5d7",
+  "WhatsApp_Image_2026-05-23_at_14.50.45_2_lutcx6",
+  "WhatsApp_Image_2026-05-23_at_14.50.46_1_qwv3yf",
+  "WhatsApp_Image_2026-05-23_at_14.50.51_olwq5k",
+  "WhatsApp_Image_2026-05-23_at_14.50.46_2_kntbww",
+  "WhatsApp_Image_2026-05-23_at_14.50.51_2_ip0kj7",
+  "WhatsApp_Image_2026-05-23_at_14.50.49_g26yog",
+  "WhatsApp_Image_2026-05-23_at_14.50.51_1_gkwolq",
+  "WhatsApp_Image_2026-05-23_at_14.50.53_xy8w0g",
+  "WhatsApp_Image_2026-05-23_at_14.50.52_1_f3wmsi",
+  "WhatsApp_Image_2026-05-23_at_14.50.52_2_wsmt98",
+  "WhatsApp_Image_2026-05-23_at_14.50.52_opdvh0",
+  "WhatsApp_Image_2026-05-23_at_14.50.53_1_rwdl7l",
+  "WhatsApp_Image_2026-05-23_at_14.51.06_1_q8pfxh",
+  "WhatsApp_Image_2026-05-23_at_14.50.55_vo8zq2",
+  "WhatsApp_Image_2026-05-23_at_14.51.04_lthb5r",
+  "WhatsApp_Image_2026-05-23_at_14.50.54_ji8gjm",
+  "WhatsApp_Image_2026-05-23_at_14.51.06_yzie1j",
+  "WhatsApp_Image_2026-05-23_at_14.50.54_1_bfjyft",
+  "WhatsApp_Image_2026-05-23_at_14.51.08_y1dxs6",
+  "WhatsApp_Image_2026-05-23_at_14.50.44_1_vndhwv",
+  "WhatsApp_Image_2026-05-23_at_14.51.21_srqp13",
+  "WhatsApp_Image_2026-05-23_at_14.51.21_1_dawyk2",
+  "WhatsApp_Image_2026-05-23_at_14.51.11_iqlwia",
+  "WhatsApp_Image_2026-05-23_at_14.50.47_1_nearhj",
+  "WhatsApp_Image_2026-05-23_at_14.50.45_4_cvqrgf",
+  "WhatsApp_Image_2026-05-23_at_14.50.44_1_topdvq",
+];
+
+const assignments = {};
+const grid = document.getElementById('grid');
+
+IDS.forEach((id, i) => {
+  const url = `https://res.cloudinary.com/${CLOUD}/image/upload/w_360,h_360,c_fill,q_auto,f_auto/${id}.jpg`;
+  const card = document.createElement('div');
+  card.className = 'card';
+  card.innerHTML = `
+    <img src="${url}" alt="Photo ${i+1}" loading="lazy"/>
+    <div class="card-body">
+      <div class="card-num">#${i+1}</div>
+      <div class="card-id">${id.replace('WhatsApp_Image_2026-05-23_at_','').replace(/_[a-z0-9]+$/,'')}</div>
+      <div class="slot-picker">
+        <select onchange="assign('${id}', this.value)">
+          ${SLOTS.map(s => `<option value="${s}">${s || '— unassigned —'}</option>`).join('')}
+        </select>
+      </div>
+    </div>`;
+  grid.appendChild(card);
+});
+
+function assign(id, slot) {
+  const key = slot.split(' ')[0];
+  // Remove any previous assignment of same slot
+  Object.keys(assignments).forEach(k => { if (assignments[k] === key && k !== id) delete assignments[k]; });
+  if (key) assignments[id] = key;
+  else delete assignments[id];
+  renderOutput();
+}
+
+function renderOutput() {
+  const lines = Object.entries(assignments).map(([id,slot]) => `${slot}: ${id}`);
+  document.getElementById('output').textContent = lines.length
+    ? lines.join('\n')
+    : 'Assign slots above to see the mapping here.';
+}
+
+function copyOutput() {
+  const text = document.getElementById('output').textContent;
+  navigator.clipboard.writeText(text).then(() => alert('Mapping copied!'));
+}
+</script>
+<div style="height:160px"></div>
+</body>
+</html>
