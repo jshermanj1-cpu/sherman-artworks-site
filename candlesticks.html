@@ -15,10 +15,10 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Cormorant+Garamond:ital,wght@0,600;1,400&family=Heebo:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Cormorant+Garamond:ital,wght@0,600;1,400&display=swap" rel="stylesheet" />
 
   <style>
-    :root { --bg:#faf7f2; --dark:#2a1f0e; --gold:#c9a85c; --brown:#8a6f40; --border:#ede5d8; --ff-body:'Heebo',sans-serif; --ff-disp:'Cinzel',serif; --ff-ital:'Cormorant Garamond',serif; }
+    :root { --bg:#faf7f2; --dark:#202020; --gold:#c9a85c; --brown:#8a6f40; --border:#ede5d8; --ff-body:Arial,sans-serif; --ff-disp:'Cinzel',serif; --ff-ital:'Cormorant Garamond',serif; }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
     body { font-family: var(--ff-body); background: var(--bg); color: var(--dark); line-height: 1.6; }
@@ -86,7 +86,7 @@
     }
     .photo-card:hover {
       transform: translateY(-3px);
-      box-shadow: 0 10px 28px rgba(42,31,14,0.08);
+      box-shadow: 0 10px 28px rgba(32,32,32,0.08);
       border-color: var(--gold);
     }
     .photo-card-img-wrap {
@@ -106,7 +106,7 @@
     .photo-card:hover .photo-card-img { transform: scale(1.03); }
     .photo-card-overlay {
       position: absolute; inset: 0;
-      background: rgba(42,31,14,0.55);
+      background: rgba(32,32,32,0.55);
       display: flex; align-items: center; justify-content: center;
       opacity: 0; transition: opacity 0.25s;
       pointer-events: none;
@@ -116,7 +116,7 @@
       font-family: var(--ff-disp); font-size: 0.65rem;
       letter-spacing: 0.18em; text-transform: uppercase;
       color: var(--gold);
-      background: rgba(42,31,14,0.85);
+      background: rgba(32,32,32,0.85);
       padding: 0.55rem 1.1rem; border-radius: 2px;
     }
     .photo-card-body {
