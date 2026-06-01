@@ -1,6 +1,6 @@
 # Sherman Art Works — Product Task List
 
-> Last updated: June 2026 (Sprints 3, 4, 6, 7, 8 complete; Sprint 5 partial — 3 of 6 categories live as product cards, 3 Coming Soon. Shop now lives on homepage; category pages use product-card system with carousel + modal) | PM: Claude | Owner: Sherman Family
+> Last updated: June 2026 (Sprints 3, 4, 6, 7, 8 complete; Sprint 5 partial — 3 of 6 categories live as product cards, 3 Coming Soon. Shop lives on homepage; category pages use product-card system. Bug bash + security review run, findings logged as M13) | PM: Claude | Owner: Sherman Family
 > Active file: `sherman-artworks-site/index.html` | Repo: github.com/jshermanj1-cpu/sherman-artworks-site
 
 ---
@@ -423,6 +423,59 @@
 
 ---
 
+## MILESTONE 13 — Bug Bash & Polish 🔜
+
+*Findings from a full bug bash + security review (June 2026). Pages tested: all 10 customer-facing pages. Grouped by severity.*
+
+### 13.1 — 🔴 Blockers (security / launch-readiness)
+
+| ID | Task | Owner action | Dev action | Effort |
+|---|---|---|---|---|
+| 13.1.1 | Rotate GitHub PAT — `ghp_pDwEnvm...` was shown in chat (not in git history, but chat logs are a leak vector) | Revoke at github.com/settings/tokens, generate a new one, send to dev | Update local push workflow to use new PAT | XS · 👤 Owner |
+| 13.1.2 | Replace temp WhatsApp number `+972523482278` site-wide (20 occurrences) | Provide official business WhatsApp number | Single-line site-wide find-and-replace | XS — *covered by M0-1* |
+
+### 13.2 — 🟡 Important (fix soon)
+
+| ID | Task | Detail | Effort |
+|---|---|---|---|
+| 13.2.1 | Diversify OG (social-share) images — 6 pages currently use the same bowl image (index, about, contact, custom-orders, mezuzahs, trays-bowls). Visitors sharing different page links get identical previews. | trays-bowls correctly shows a bowl. Pick more representative photos for the other 5: about → studio shot, contact → workshop, custom-orders → handcrafting close-up, index → hero collection shot, mezuzahs → keep as fallback OR pick analogue (👤 owner picks) | S · 👤 Owner-dependent |
+| 13.2.2 | Add `sitemap.xml` listing all 10 customer URLs | Required for M11.1.2 (Google Search Console submission) | XS |
+| 13.2.3 | Add `robots.txt` pointing at sitemap, blocking `product-builder.html` and any other internal tools | Required for M11.1.2; also hides the internal tool from search engines | XS |
+| 13.2.4 | Add `aria-label` fallback on JS-populated nav links — 17-20 empty `<a data-t="...">` per page have no accessible text if JS fails to load | Single Python script across all pages | S |
+
+### 13.3 — 🟢 Nice-to-have polish
+
+| ID | Task | Detail | Effort |
+|---|---|---|---|
+| 13.3.1 | Remove unused `bestseller_badge` translation key in index.html | Leftover from old "Best Seller" badges that were removed | XS |
+| 13.3.2 | Delete orphan `glass-curate.html` from working tree | Old curation tool, never committed, never linked. Already not deployed. | XS |
+| 13.3.3 | Consider blocking `product-builder.html` from public discovery | Internal tool currently accessible at shermanartworks.com/product-builder.html. Not a security risk (no live API), just clutter. Could exclude via robots.txt (covered by 13.2.3) or accept as-is. | XS |
+| 13.3.4 | Security headers (HSTS, CSP, X-Frame-Options, X-Content-Type-Options) — NOT set | GitHub Pages doesn't expose response-header config. Would require Cloudflare proxy in front. HTTPS + 301 redirect already work, so the practical risk is low. Defer unless we move off GitHub Pages. | 👤 Decision |
+
+### 13.4 — ✅ Verified clean (no action needed)
+
+*For the record, these were checked and passed:*
+- All 10 customer pages return HTTP 200, no broken internal links, no broken anchors
+- Every `data-t` key has matching EN + HE translation
+- All `<title>` and `<meta description>` unique
+- `lang` + `dir` + viewport set on all customer pages
+- Every `<img>` has an `alt` attribute
+- All `target="_blank"` links use `rel="noopener noreferrer"` (no tabnabbing)
+- No `eval` / `new Function` / dynamic code execution anywhere
+- Product cards use `escapeHtml` / `escapeAttr` for all interpolated values (no XSS)
+- Forms have no `action` attribute — all JS-handled via WhatsApp + mailto (no server POST)
+- No sensitive input fields (password, card, SSN) anywhere
+- No secrets in git history (no Cloudinary `api_secret`, no GitHub PAT, no API keys)
+- Cloudinary delivery URLs use the public cloud name only — API credentials never appear in client HTML
+- External resources load from only 3 trusted hosts: `fonts.googleapis.com`, `fonts.gstatic.com`, `res.cloudinary.com`
+- Live currency API (`open.er-api.com`) is a GET-only call with no user data sent
+- Modal interactions verified end-to-end (open, photo nav, close, body scroll lock, keyboard ←/→/Esc)
+- Language toggle EN↔HE verified across all pages
+- Floating WhatsApp button persists across language switches and scroll positions
+- HTTPS works on the live site, HTTP→HTTPS 301 redirect confirmed
+
+---
+
 ## Sprint Summary
 
 | Sprint | Milestone | Goal | Status |
@@ -441,6 +494,7 @@
 | Sprint 10 | M10 | Hebrew quality pass | 🔜 |
 | Sprint 11 | M11 | Marketing & analytics (3 tiers — foundational / growth / strategic; full plan in §M11) | 🔜 fully unblocked |
 | Sprint 12 | M12 | Stripe checkout | 🔜 |
+| Sprint 13 | M13 | Bug bash & polish (2 blockers, 4 important, 4 polish — full list in §M13) | 🔜 |
 | **→ FULL LAUNCH** | — | Marketing push | 🔜 |
 
 ---
