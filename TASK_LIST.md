@@ -1,6 +1,6 @@
 # Sherman Art Works — Product Task List
 
-> Last updated: June 2026 (Sprints 3, 4, 6, 7, 8 complete; Sprint 5 partial — 3 of 6 category pages built, 3 Coming Soon) | PM: Claude | Owner: Sherman Family
+> Last updated: June 2026 (Sprints 3, 4, 6, 7, 8 complete; Sprint 5 partial — 3 of 6 categories live as product cards, 3 Coming Soon. Shop now lives on homepage; category pages use product-card system with carousel + modal) | PM: Claude | Owner: Sherman Family
 > Active file: `sherman-artworks-site/index.html` | Repo: github.com/jshermanj1-cpu/sherman-artworks-site
 
 ---
@@ -152,9 +152,9 @@
 
 ---
 
-## MILESTONE 4 — Shop Landing Page ✅ COMPLETE
+## MILESTONE 4 — Shop Section (merged into homepage) ✅ COMPLETE
 
-*Category-selection hub. Users arrive here and choose which type of piece to browse. Replaces the old flat "Glass page" concept. Extensible: add or remove categories by editing the card grid and this list.*
+*Originally built as a separate `shop.html` page. **Restructured: the shop section now lives directly on the homepage** (`index.html#shop`), so visitors land on the shop experience immediately. The old `shop.html` was deleted, and all "Shop" nav links across the site point to `index.html#shop`.*
 
 **Current categories (6):**
 1. Candlesticks ✅ photos
@@ -167,75 +167,82 @@
 ### 4.1 — Nav & Naming
 | ID | Task | Status |
 |---|---|---|
-| 4.1.1 | Update nav link → `shop.html` (EN: "Shop", HE: "חנות") | ✅ |
+| 4.1.1 | Update nav link → `index.html#shop` (EN: "Shop", HE: "חנות") | ✅ |
 | 4.1.2 | Remove old "Gallery" / "Judaica" nav references site-wide | ✅ |
 
-### 4.2 — Landing Page Build
+### 4.2 — Shop Section on Homepage
 | ID | Task | Status |
 |---|---|---|
-| 4.2.1 | Create `shop.html` with shared header/footer | ✅ |
-| 4.2.2 | Hero: "Explore Our Handmade Glass" — introductory headline + brand copy | ✅ |
-| 4.2.3 | Category card grid — one card per category (photo + title + short description) | ✅ |
-| 4.2.4 | Each card links to its category page (e.g., `candlesticks.html`) | ✅ |
-| 4.2.5 | "Coming Soon" badge + dark placeholder for categories without photos yet | ✅ |
-| 4.2.6 | Bottom "Don't see what you're after?" Custom Orders CTA | ✅ |
+| 4.2.1 | Replace the homepage's old "Featured Pieces" (2 hardcoded products) with the category card grid | ✅ |
+| 4.2.2 | Category card grid — one card per category (photo + title + short description) | ✅ |
+| 4.2.3 | Each card links to its category page (e.g., `candlesticks.html`) | ✅ |
+| 4.2.4 | "Coming Soon" badge + dark placeholder for categories without photos yet | ✅ |
+| 4.2.5 | Delete old `shop.html`, update Shop links to `index.html#shop` (or `#shop` when already on homepage) | ✅ |
 
 ### 4.3 — Polish
 | ID | Task | Status |
 |---|---|---|
 | 4.3.1 | Mobile responsive grid (2-col tablet, 1-col mobile) | ✅ |
-| 4.3.2 | SEO meta: title, description, OG image for shop landing | ✅ |
-| 4.3.3 | Translate all UI strings to Hebrew + RTL | ✅ |
-| 4.3.4 | Update homepage hero CTA "Browse the Shop" → `shop.html` (was `#shop`) | ✅ |
+| 4.3.2 | Translate all UI strings to Hebrew + RTL | ✅ |
+| 4.3.3 | Homepage hero CTA "Browse the Shop" scrolls to `#shop` section | ✅ |
+| 4.3.4 | Remove dead `PRODUCTS`/`addToCart` JS from homepage (no longer needed) | ✅ |
 
 ---
 
-## MILESTONE 5 — Category Pages ⚠️ PARTIAL (3 of 6 live with photos, 3 Coming Soon)
+## MILESTONE 5 — Category Pages (Product Cards) ⚠️ PARTIAL (3 of 6 live with real products, 3 Coming Soon)
 
-*One page per product category. All pages share the same template. To add a new category: create a new HTML file from the template and add a card to `shop.html`. To remove: delete the file and remove its card.*
+*The 3 active category pages were **restructured from a flat photo grid to a true product catalog**. Each product card groups multiple photos of the same item, shows price + measurements + short description, and opens a full **View Details modal** with photo carousel, full description, and order CTA.*
 
-### 5.1 — Shared Category Page Template
+### 5.1 — Product Card System (shared component)
 | ID | Task | Status |
 |---|---|---|
-| 5.1.1 | Build reusable category page template (hero, photo grid, lightbox, WhatsApp CTA, footer) | ✅ |
-| 5.1.2 | Photo grid — Cloudinary photos for each category | ✅ for ready categories |
-| 5.1.3 | Lightbox — click photo → full-screen view, Escape to close | ✅ |
-| 5.1.4 | "Enquire about this piece" CTA per photo → WhatsApp with photo URL pre-filled | ✅ |
-| 5.1.5 | "Commission a custom one" Custom Orders CTA on every page | ✅ |
-| 5.1.6 | Breadcrumb (Shop → Category) on every page | ✅ |
+| 5.1.1 | Build product card component: photo + name + price + measurements + description + 2 buttons | ✅ |
+| 5.1.2 | "+N photos" badge on cards when product has multiple photos | ✅ |
+| 5.1.3 | Live ILS→USD conversion via open.er-api.com (shown as `₪X ≈ $Y`) | ✅ |
+| 5.1.4 | View Details modal — split-screen layout with photo gallery left, info right | ✅ |
+| 5.1.5 | Modal photo carousel: prev/next arrows, clickable thumbnail strip, ←/→ keyboard nav | ✅ |
+| 5.1.6 | Modal "Order on WhatsApp" CTA with product name pre-filled | ✅ |
+| 5.1.7 | Modal "Email" fallback CTA with product name in subject + body | ✅ |
+| 5.1.8 | Esc to close, click outside to close, body scroll lock when open | ✅ |
+| 5.1.9 | Mobile responsive: modal stacks gallery + info | ✅ |
+| 5.1.10 | Full bilingual EN/HE with RTL — product names, descriptions, all UI strings | ✅ |
+| 5.1.11 | Breadcrumb (Shop → Category) on every page | ✅ |
+| 5.1.12 | "Commission a custom one" Custom Orders CTA band on every page | ✅ |
 
-### 5.2 — Shofars & Goblets: Design Picker (special case)
-*This page is more than a grid — it's a configurator. Visitors pick a design (Jerusalem/Grapes/Crown for shofars, Lion/Menorah for goblets) and the WhatsApp CTA pre-fills with that design + an offer to customize the inscription.*
-
-| ID | Task | Status |
-|---|---|---|
-| 5.2.1 | Two product sections on one page: Silver-Plated Shofars + Goblets | ✅ |
-| 5.2.2 | Design cards per product type (4 shofars + 3 goblets) — photo + name + description | ✅ |
-| 5.2.3 | "Order this design" CTA per card → WhatsApp with design name pre-filled | ✅ |
-| 5.2.4 | Custom inscription example callout (using horn-grape-name photo) | ✅ |
-| 5.2.5 | Click photo to enlarge in lightbox | ✅ |
-
-### 5.3 — Per-Category Pages
-| ID | Page | Photos | Status |
+### 5.2 — Per-Category Product Catalogue
+| ID | Page | Products | Status |
 |---|---|---|---|
-| 5.3.1 | `candlesticks.html` — Candlesticks | 4 | ✅ live |
-| 5.3.2 | `shofars-goblets.html` — Shofars & Goblets (design picker) | 12 (7 used) | ✅ live |
-| 5.3.3 | `kiddush-cups.html` — Kiddush Cups | 0 | ⏳ Coming Soon page live |
-| 5.3.4 | `trays-bowls.html` — Glass Trays & Bowls | 4 bowls, 0 trays | ✅ live (Trays band Coming Soon) |
-| 5.3.5 | `business-gifts.html` — Business Gifts | 0 | ⏳ Coming Soon page live |
-| 5.3.6 | `mezuzahs.html` — Mezuzahs | 0 | ⏳ Coming Soon page live |
+| 5.2.1 | `candlesticks.html` | 1 product (Glass Circle Candlesticks, 4 photos, ₪775) | ✅ live |
+| 5.2.2 | `shofars-goblets.html` | 3 products: Jerusalem Wine Horn (5 photos, ₪850), Lion of Judah Goblet (4 photos, ₪473), Menorah Goblet (3 photos, ₪473) | ✅ live |
+| 5.2.3 | `kiddush-cups.html` | 0 — Coming Soon stub | ⏳ |
+| 5.2.4 | `trays-bowls.html` | 1 product (Glass Decorative Bowl, 4 photos, ₪1,190) | ✅ live |
+| 5.2.5 | `business-gifts.html` | 0 — Coming Soon stub | ⏳ |
+| 5.2.6 | `mezuzahs.html` | 0 — Coming Soon stub | ⏳ |
 
-### 5.4 — Polish
+### 5.3 — Polish
 | ID | Task | Status |
 |---|---|---|
-| 5.4.1 | Mobile responsive — all 6 pages | ✅ |
-| 5.4.2 | SEO meta per page — category-specific titles + descriptions + OG | ✅ |
-| 5.4.3 | Translate all UI strings to Hebrew — all 6 pages + RTL | ✅ |
-| 5.4.4 | Wire category pages from `shop.html` cards | ✅ |
-| 5.4.5 | "Browse other collections" link row on each Coming Soon page | ✅ |
+| 5.3.1 | Mobile responsive — all 6 pages | ✅ |
+| 5.3.2 | SEO meta per page — category-specific titles + descriptions + OG | ✅ |
+| 5.3.3 | Translate all UI strings to Hebrew — all 6 pages + RTL | ✅ |
+| 5.3.4 | Wire category pages from homepage `#shop` cards | ✅ |
+| 5.3.5 | "Browse other collections" link row on each Coming Soon page | ✅ |
+| 5.3.6 | Floating WhatsApp button on every page | ✅ |
+
+### 5.4 — Product Builder Tool
+*Standalone tool at `/product-builder.html` (not linked from the site) for owner to update product data. Pre-fills with current products, supports adding/regrouping photos, outputs JSON to paste back to dev.*
+
+| ID | Task | Status |
+|---|---|---|
+| 5.4.1 | Build `product-builder.html` with tabs per category, photo groupings, metadata forms, JSON export | ✅ |
+| 5.4.2 | LocalStorage persistence so progress isn't lost on refresh | ✅ |
 
 ### 5.5 — When new photos arrive
-*To activate a Coming Soon category page: upload photos to Cloudinary, replace the hero+about content with the standard photo grid (see `candlesticks.html` as template), update the `cat-card-placeholder` on `shop.html` with a real `<img>`, and remove the `Coming Soon` badge.*
+*To add new products or activate a Coming Soon category:*
+1. *Upload photos to Cloudinary*
+2. *Open `/product-builder.html`, group the new photos, fill in name/description/measurements/price, generate JSON*
+3. *Paste JSON to dev; dev updates the `PRODUCTS` array in the relevant `*.html` file*
+4. *For a previously-Coming-Soon category: also replace the `cat-card-placeholder` on `index.html#shop` with a real `<img>` and remove the `Coming Soon` badge*
 
 ---
 
