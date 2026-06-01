@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Custom Orders, Sherman Art Works</title>
-  <meta name="description" content="Commission a one-of-a-kind handmade glass piece from Sherman Art Works. Custom size, colour, shape and inscription. Free worldwide shipping from Israel." />
+  <title>Contact, Sherman Art Works</title>
+  <meta name="description" content="Get in touch with Sherman Art Works. WhatsApp, email or enquiry form. We reply to every message within 24 hours. Handmade glass art shipped worldwide from Israel." />
 
   <!-- Open Graph -->
-  <meta property="og:title" content="Custom Orders, Sherman Art Works" />
-  <meta property="og:description" content="Commission a bespoke handmade glass piece, Judaica, decorative bowls, corporate gifts. Every piece made to your specifications in Israel." />
+  <meta property="og:title" content="Contact, Sherman Art Works" />
+  <meta property="og:description" content="Reach out for orders, custom commissions or any question. We reply within 24 hours. Handmade in Israel, shipped worldwide." />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="https://res.cloudinary.com/doesupaf9/image/upload/w_1200,h_630,c_fit,q_auto,f_auto/WhatsApp_Image_2026-05-23_at_14.50.45_2_lutcx6.jpg" />
 
@@ -148,6 +148,9 @@
       font-size: 0.95rem; line-height: 1.9; color: #7a6a50;
       font-weight: 300; max-width: 580px; margin: 0 auto 2.5rem;
     }
+    .hero-cta-row {
+      display: flex; justify-content: center; gap: 0.85rem; flex-wrap: wrap;
+    }
 
     /* ── BUTTONS ─────────────────────────────── */
     .btn-primary {
@@ -159,11 +162,11 @@
     .btn-primary:hover { background: var(--gold); border-color: var(--gold); color: var(--dark); }
     .btn-outline {
       font-family: var(--ff-disp); font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase;
-      background: transparent; color: var(--dark);
-      padding: 0.85rem 1.9rem; border: 2px solid var(--dark); border-radius: 2px;
+      background: transparent; color: var(--bg);
+      padding: 0.85rem 1.9rem; border: 2px solid var(--gold); border-radius: 2px;
       transition: all 0.25s; min-height: 44px; display: inline-flex; align-items: center; gap: 0.6rem; cursor: pointer;
     }
-    .btn-outline:hover { background: var(--dark); color: var(--bg); }
+    .btn-outline:hover { background: var(--gold); color: var(--dark); }
     .btn-wa {
       font-family: var(--ff-disp); font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase;
       background: #25d366; color: #fff;
@@ -181,82 +184,56 @@
     .section-sub   { font-family: var(--ff-ital); font-style: italic; font-size: 1.05rem; color: var(--brown); }
     .ornament      { text-align: center; color: var(--gold); letter-spacing: 0.5rem; margin-bottom: 1rem; opacity: 0.55; font-size: 0.8rem; }
 
-    /* ── HOW IT WORKS ────────────────────────── */
-    .steps-grid {
+    /* ── CONTACT METHODS ─────────────────────── */
+    .methods-grid {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(3, 1fr);
       gap: 1.5rem;
     }
-    .step {
-      text-align: center;
-      padding: 2rem 1.25rem;
+    .method-card {
       background: #fff;
       border: 1px solid var(--border);
       border-radius: 4px;
-      position: relative;
+      padding: 2.25rem 1.5rem 2rem;
+      text-align: center;
+      transition: all 0.25s;
+      display: flex; flex-direction: column; align-items: center;
     }
-    .step-num {
-      font-family: var(--ff-disp);
-      font-size: 2rem; font-weight: 600;
-      color: var(--gold); opacity: 0.35;
-      line-height: 1; margin-bottom: 1rem;
-    }
-    .step-icon {
-      font-size: 1.75rem;
+    .method-card:hover { border-color: var(--gold); transform: translateY(-2px); }
+    .method-icon {
+      width: 52px; height: 52px;
+      border-radius: 50%;
+      background: #f5f0e8;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--gold);
       margin-bottom: 1rem;
-      display: block;
     }
-    .step-title {
+    .method-title {
       font-family: var(--ff-disp); font-size: 0.85rem;
-      letter-spacing: 0.06em; font-weight: 600;
-      color: var(--dark); margin-bottom: 0.75rem;
-    }
-    .step-body {
-      font-size: 0.84rem; color: var(--brown);
-      font-weight: 300; line-height: 1.75;
-    }
-    /* arrow connectors between steps */
-    .step:not(:last-child)::after {
-      content: '→';
-      position: absolute;
-      right: -0.95rem;
-      top: 50%; transform: translateY(-50%);
-      color: var(--gold); opacity: 0.4;
-      font-size: 1.1rem;
-      z-index: 1;
-    }
-
-    /* ── CUSTOMISE OPTIONS ───────────────────── */
-    .options-band { background: #f5f0e8; padding: 4.5rem 2rem; }
-    .options-inner { max-width: 1200px; margin: 0 auto; }
-    .options-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
-      gap: 1.25rem;
-      margin-top: 3rem;
-    }
-    .option-card {
-      background: #fff;
-      border: 1px solid var(--border);
-      border-radius: 4px;
-      padding: 2rem 1.25rem;
-      text-align: center;
-    }
-    .option-icon {
-      font-size: 2rem; margin-bottom: 1rem; display: block;
-    }
-    .option-title {
-      font-family: var(--ff-disp); font-size: 0.78rem;
       letter-spacing: 0.08em; font-weight: 600;
       color: var(--dark); margin-bottom: 0.5rem;
     }
-    .option-body {
-      font-size: 0.8rem; color: var(--brown);
-      font-weight: 300; line-height: 1.6;
+    .method-value {
+      font-family: var(--ff-ital); font-style: italic;
+      font-size: 0.95rem; color: var(--brown);
+      margin-bottom: 1.25rem;
     }
+    .method-cta {
+      font-family: var(--ff-disp); font-size: 0.65rem;
+      letter-spacing: 0.15em; text-transform: uppercase;
+      color: var(--dark); border: 1px solid var(--dark);
+      padding: 0.55rem 1.25rem; border-radius: 2px;
+      transition: all 0.25s; min-height: 38px;
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      margin-top: auto;
+    }
+    .method-cta:hover { background: var(--dark); color: var(--bg); }
+    .method-card.wa .method-icon  { background: rgba(37,211,102,0.12); color: #1da851; }
+    .method-card.wa .method-cta   { color: #fff; background: #25d366; border-color: #25d366; }
+    .method-card.wa .method-cta:hover { background: #1da851; border-color: #1da851; }
 
     /* ── ENQUIRY FORM ────────────────────────── */
-    .form-band { background: var(--bg); }
+    .form-band { background: #f5f0e8; }
     .form-inner {
       max-width: 1200px; margin: 0 auto;
       padding: 5rem 2rem;
@@ -318,6 +295,81 @@
     .form-email-alt:hover { border-color: var(--dark); color: var(--dark); }
     .form-note { font-size: 0.74rem; color: var(--brown); text-align: center; margin-top: 0.75rem; }
 
+    /* ── FAQ ─────────────────────────────────── */
+    .faq-list {
+      max-width: 820px;
+      margin: 0 auto;
+      display: flex; flex-direction: column; gap: 0.85rem;
+    }
+    .faq-item {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      overflow: hidden;
+      transition: border-color 0.2s;
+    }
+    .faq-item[open] { border-color: var(--gold); }
+    .faq-item summary {
+      list-style: none;
+      cursor: pointer;
+      padding: 1.25rem 1.5rem;
+      font-family: var(--ff-disp);
+      font-size: 0.88rem;
+      letter-spacing: 0.05em;
+      color: var(--dark);
+      font-weight: 600;
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 1rem;
+      transition: color 0.2s;
+    }
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-item summary:hover { color: var(--gold); }
+    .faq-item summary::after {
+      content: '+';
+      font-size: 1.5rem; font-weight: 400;
+      color: var(--gold);
+      line-height: 1;
+      transition: transform 0.25s;
+      flex-shrink: 0;
+    }
+    .faq-item[open] summary::after { transform: rotate(45deg); }
+    .faq-answer {
+      padding: 0 1.5rem 1.5rem;
+      font-size: 0.92rem; color: var(--brown);
+      font-weight: 300; line-height: 1.85;
+    }
+
+    /* ── TRUST BAND ──────────────────────────── */
+    .trust-band {
+      background: var(--dark);
+      padding: 3.5rem 2rem;
+      text-align: center;
+      color: #d4c5aa;
+    }
+    .trust-band-inner { max-width: 1000px; margin: 0 auto; }
+    .trust-band-title {
+      font-family: var(--ff-disp);
+      font-size: clamp(1.2rem, 2.2vw, 1.7rem);
+      color: var(--gold);
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      margin-bottom: 0.6rem;
+    }
+    .trust-band-sub {
+      font-family: var(--ff-ital); font-style: italic;
+      font-size: 1rem; color: #9a8870;
+      margin-bottom: 2rem;
+    }
+    .trust-band-row {
+      display: flex; justify-content: center; flex-wrap: wrap;
+      gap: 2.5rem;
+      font-size: 0.85rem; color: #d4c5aa;
+    }
+    .trust-band-row > div {
+      display: flex; align-items: center; gap: 0.5rem;
+    }
+    .trust-band-row svg { color: var(--gold); flex-shrink: 0; }
+
     /* ── FOOTER ──────────────────────────────── */
     footer { background: var(--dark); color: #d4c5aa; padding: 3.5rem 2rem 2rem; }
     .footer-inner { max-width: 1200px; margin: 0 auto; }
@@ -355,40 +407,38 @@
     [dir="rtl"] nav               { flex-direction: row-reverse; }
     [dir="rtl"] .nav-links        { flex-direction: row-reverse; }
     [dir="rtl"] .page-hero        { direction: rtl; }
-    [dir="rtl"] .step::after      { right: auto; left: -0.95rem; content: '←'; }
     [dir="rtl"] .form-inner       { direction: rtl; }
+    [dir="rtl"] .faq-list         { direction: rtl; }
+    [dir="rtl"] .faq-item summary { text-align: right; }
     [dir="rtl"] .footer-top       { direction: rtl; }
     [dir="rtl"] .footer-bottom    { flex-direction: row-reverse; }
     [dir="rtl"] .mobile-nav ul    { direction: rtl; }
     [dir="rtl"] .trust-item       { flex-direction: row-reverse; text-align: right; }
+    [dir="rtl"] .trust-band       { direction: rtl; }
 
     /* ── RESPONSIVE ──────────────────────────── */
-    @media (max-width: 1000px) {
-      .steps-grid { grid-template-columns: 1fr 1fr; }
-      .step:nth-child(2)::after { display: none; }
-      .step:nth-child(4)::after { display: none; }
-    }
     @media (max-width: 900px) {
-      .form-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+      .form-inner   { grid-template-columns: 1fr; gap: 2.5rem; }
+      .methods-grid { grid-template-columns: 1fr; }
     }
     @media (max-width: 768px) {
-      .top-bar    { padding: 0.4rem 1rem; }
-      .hamburger  { display: flex; }
-      .nav-links  { display: none; }
-      nav         { padding: 0.75rem 1rem; }
-      .section    { padding: 3rem 1rem; }
-      .options-band  { padding: 3rem 1rem; }
-      .form-inner    { padding: 3rem 1rem; }
-      .footer-top { grid-template-columns: 1fr 1fr; }
+      .top-bar      { padding: 0.4rem 1rem; }
+      .hamburger    { display: flex; }
+      .nav-links    { display: none; }
+      nav           { padding: 0.75rem 1rem; }
+      .section      { padding: 3rem 1rem; }
+      .form-inner   { padding: 3rem 1rem; }
+      .trust-band   { padding: 2.5rem 1rem; }
+      .trust-band-row { gap: 1rem 2rem; }
+      .footer-top   { grid-template-columns: 1fr 1fr; }
       .footer-bottom { flex-direction: column; gap: 0.5rem; text-align: center; }
     }
     @media (max-width: 600px) {
-      .steps-grid { grid-template-columns: 1fr; }
-      .step::after { display: none; }
-      .page-hero  { padding: 3.5rem 1rem 3rem; }
+      .page-hero    { padding: 3.5rem 1rem 3rem; }
+      .enquiry-form { padding: 1.75rem 1.25rem; }
     }
     @media (max-width: 480px) {
-      .footer-top { grid-template-columns: 1fr; gap: 2rem; }
+      .footer-top   { grid-template-columns: 1fr; gap: 2rem; }
     }
   </style>
 </head>
@@ -428,9 +478,9 @@
     <ul class="nav-links" role="list">
       <li><a href="index.html#shop"    data-t="nav_gallery"></a></li>
       <li><a href="index.html#shop"    data-t="nav_judaica"></a></li>
-      <li><a href="custom-orders.html" data-t="nav_custom" class="nav-active"></a></li>
+      <li><a href="custom-orders.html" data-t="nav_custom"></a></li>
       <li><a href="about.html"         data-t="nav_about"></a></li>
-      <li><a href="contact.html"       data-t="nav_contact"></a></li>
+      <li><a href="contact.html"       data-t="nav_contact" class="nav-active"></a></li>
     </ul>
     <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false" onclick="toggleNav()">
       <span></span><span></span><span></span>
@@ -456,97 +506,62 @@
     <h1 class="page-headline" data-t="hero_headline"></h1>
     <p class="page-subtitle"  data-t="hero_subtitle"></p>
     <p class="page-body"      data-t="hero_body"></p>
-    <a id="waHeroLink" href="#" class="btn-wa" target="_blank" rel="noopener noreferrer">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-      <span data-t="hero_cta"></span>
-    </a>
+    <div class="hero-cta-row">
+      <a id="waHeroLink" href="#" class="btn-wa" target="_blank" rel="noopener noreferrer">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        <span data-t="hero_cta_wa"></span>
+      </a>
+      <a href="mailto:shermanartwork@gmail.com" class="btn-outline">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+        <span data-t="hero_cta_email"></span>
+      </a>
+    </div>
   </div>
 </section>
 
 <!-- ══════════════════════════════════════════════
-     HOW IT WORKS
+     CONTACT METHODS
 ══════════════════════════════════════════════ -->
-<section class="section" id="how-it-works">
+<section class="section" id="methods">
   <div class="section-header">
     <div class="ornament" aria-hidden="true">✦ ✦ ✦</div>
-    <div class="section-tag"   data-t="steps_tag"></div>
-    <h2 class="section-title"  data-t="steps_title"></h2>
-    <p  class="section-sub"    data-t="steps_sub"></p>
+    <div class="section-tag"   data-t="methods_tag"></div>
+    <h2 class="section-title"  data-t="methods_title"></h2>
+    <p  class="section-sub"    data-t="methods_sub"></p>
   </div>
 
-  <div class="steps-grid">
-    <div class="step">
-      <div class="step-num">01</div>
-      <span class="step-icon" aria-hidden="true">💬</span>
-      <div class="step-title" data-t="step1_title"></div>
-      <p   class="step-body"  data-t="step1_body"></p>
+  <div class="methods-grid">
+    <div class="method-card wa">
+      <div class="method-icon" aria-hidden="true">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      </div>
+      <div class="method-title" data-t="method1_title"></div>
+      <p class="method-value">+972 52 348 2278</p>
+      <a id="waMethodLink" href="#" class="method-cta" target="_blank" rel="noopener noreferrer" data-t="method1_cta"></a>
     </div>
-    <div class="step">
-      <div class="step-num">02</div>
-      <span class="step-icon" aria-hidden="true">🎨</span>
-      <div class="step-title" data-t="step2_title"></div>
-      <p   class="step-body"  data-t="step2_body"></p>
+    <div class="method-card">
+      <div class="method-icon" aria-hidden="true">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+      </div>
+      <div class="method-title" data-t="method2_title"></div>
+      <p class="method-value">shermanartwork<br>@gmail.com</p>
+      <a href="mailto:shermanartwork@gmail.com" class="method-cta" data-t="method2_cta"></a>
     </div>
-    <div class="step">
-      <div class="step-num">03</div>
-      <span class="step-icon" aria-hidden="true">🔥</span>
-      <div class="step-title" data-t="step3_title"></div>
-      <p   class="step-body"  data-t="step3_body"></p>
-    </div>
-    <div class="step">
-      <div class="step-num">04</div>
-      <span class="step-icon" aria-hidden="true">📦</span>
-      <div class="step-title" data-t="step4_title"></div>
-      <p   class="step-body"  data-t="step4_body"></p>
+    <div class="method-card">
+      <div class="method-icon" aria-hidden="true">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+      </div>
+      <div class="method-title" data-t="method3_title"></div>
+      <p class="method-value">@shermanartworks</p>
+      <a href="https://www.instagram.com/shermanartworks" target="_blank" rel="noopener noreferrer" class="method-cta" data-t="method3_cta"></a>
     </div>
   </div>
 </section>
-
-<!-- ══════════════════════════════════════════════
-     WHAT YOU CAN CUSTOMISE
-══════════════════════════════════════════════ -->
-<div class="options-band">
-  <div class="options-inner">
-    <div class="section-header">
-      <div class="ornament" aria-hidden="true">✦ ✦ ✦</div>
-      <div class="section-tag"   data-t="options_tag"></div>
-      <h2 class="section-title"  data-t="options_title"></h2>
-      <p  class="section-sub"    data-t="options_sub"></p>
-    </div>
-    <div class="options-grid">
-      <div class="option-card">
-        <span class="option-icon" aria-hidden="true">📐</span>
-        <div class="option-title" data-t="opt1_title"></div>
-        <p   class="option-body"  data-t="opt1_body"></p>
-      </div>
-      <div class="option-card">
-        <span class="option-icon" aria-hidden="true">🎨</span>
-        <div class="option-title" data-t="opt2_title"></div>
-        <p   class="option-body"  data-t="opt2_body"></p>
-      </div>
-      <div class="option-card">
-        <span class="option-icon" aria-hidden="true">✍️</span>
-        <div class="option-title" data-t="opt3_title"></div>
-        <p   class="option-body"  data-t="opt3_body"></p>
-      </div>
-      <div class="option-card">
-        <span class="option-icon" aria-hidden="true">🎁</span>
-        <div class="option-title" data-t="opt4_title"></div>
-        <p   class="option-body"  data-t="opt4_body"></p>
-      </div>
-      <div class="option-card">
-        <span class="option-icon" aria-hidden="true">📦</span>
-        <div class="option-title" data-t="opt5_title"></div>
-        <p   class="option-body"  data-t="opt5_body"></p>
-      </div>
-    </div>
-  </div>
-</div>
 
 <!-- ══════════════════════════════════════════════
      ENQUIRY FORM
 ══════════════════════════════════════════════ -->
-<div class="form-band section-divider" id="enquire">
+<div class="form-band" id="enquire">
   <div class="form-inner">
 
     <div class="form-lede">
@@ -562,7 +577,7 @@
     </div>
 
     <div class="enquiry-form">
-      <form id="customForm" onsubmit="submitCustomOrder(event)">
+      <form id="contactForm" onsubmit="submitContact(event)">
         <div class="form-field">
           <label for="cf-name" data-t="field_name"></label>
           <input id="cf-name" type="text" name="name" required autocomplete="name" />
@@ -572,16 +587,15 @@
           <input id="cf-email" type="email" name="email" required autocomplete="email" />
         </div>
         <div class="form-field">
-          <label for="cf-type" data-t="field_type"></label>
-          <select id="cf-type" name="type" required>
-            <option value="" disabled selected data-t="field_type_placeholder"></option>
-            <option data-t="type_bowl"></option>
-            <option data-t="type_candles"></option>
-            <option data-t="type_kiddush"></option>
-            <option data-t="type_goblet"></option>
-            <option data-t="type_tray"></option>
-            <option data-t="type_shofar"></option>
-            <option data-t="type_other"></option>
+          <label for="cf-subject" data-t="field_subject"></label>
+          <select id="cf-subject" name="subject" required>
+            <option value="" disabled selected data-t="subject_placeholder"></option>
+            <option data-t="subject_general"></option>
+            <option data-t="subject_order"></option>
+            <option data-t="subject_custom"></option>
+            <option data-t="subject_shipping"></option>
+            <option data-t="subject_wholesale"></option>
+            <option data-t="subject_other"></option>
           </select>
         </div>
         <div class="form-field">
@@ -602,6 +616,69 @@
 
   </div>
 </div>
+
+<!-- ══════════════════════════════════════════════
+     FAQ
+══════════════════════════════════════════════ -->
+<section class="section" id="faq">
+  <div class="section-header">
+    <div class="ornament" aria-hidden="true">✦ ✦ ✦</div>
+    <div class="section-tag"   data-t="faq_tag"></div>
+    <h2 class="section-title"  data-t="faq_title"></h2>
+    <p  class="section-sub"    data-t="faq_sub"></p>
+  </div>
+
+  <div class="faq-list">
+    <details class="faq-item">
+      <summary data-t="faq1_q"></summary>
+      <div class="faq-answer" data-t="faq1_a"></div>
+    </details>
+    <details class="faq-item">
+      <summary data-t="faq2_q"></summary>
+      <div class="faq-answer" data-t="faq2_a"></div>
+    </details>
+    <details class="faq-item">
+      <summary data-t="faq3_q"></summary>
+      <div class="faq-answer" data-t="faq3_a"></div>
+    </details>
+    <details class="faq-item">
+      <summary data-t="faq4_q"></summary>
+      <div class="faq-answer" data-t="faq4_a"></div>
+    </details>
+    <details class="faq-item">
+      <summary data-t="faq5_q"></summary>
+      <div class="faq-answer" data-t="faq5_a"></div>
+    </details>
+    <details class="faq-item">
+      <summary data-t="faq6_q"></summary>
+      <div class="faq-answer" data-t="faq6_a"></div>
+    </details>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     TRUST BAND
+══════════════════════════════════════════════ -->
+<section class="trust-band">
+  <div class="trust-band-inner">
+    <h2 class="trust-band-title"  data-t="trust_band_title"></h2>
+    <p  class="trust-band-sub"    data-t="trust_band_sub"></p>
+    <div class="trust-band-row">
+      <div>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        <span data-t="trust_band_loc"></span>
+      </div>
+      <div>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        <span data-t="trust_band_ship"></span>
+      </div>
+      <div>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+        <span data-t="trust_band_reply"></span>
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- ══════════════════════════════════════════════
      FOOTER
@@ -673,63 +750,69 @@
       shipping_banner: '✦  Free Worldwide Shipping on All Orders  ·  Custom Orders Are Welcome  ✦',
       topbar_right:    'Handcrafted in Israel',
 
-      hero_eyebrow: 'Bespoke Glass Art',
-      hero_headline: 'Commission a One-of-a-Kind Piece',
-      hero_subtitle: 'Your vision. Our hands. A piece that exists nowhere else in the world.',
-      hero_body: 'Whether you have a clear idea or just a feeling, we will work with you to bring it to life. Every custom order starts with a conversation.',
-      hero_cta: 'Start a Conversation on WhatsApp',
+      hero_eyebrow:  'Get in Touch',
+      hero_headline: "We'd Love to Hear From You",
+      hero_subtitle: 'A question, an order, a custom idea, anything at all.',
+      hero_body:     'The fastest way to reach us is WhatsApp. Email and the form below work just as well. We reply to every message, usually within a few hours, always within 24.',
+      hero_cta_wa:    'Message on WhatsApp',
+      hero_cta_email: 'Send an Email',
 
-      steps_tag:   'The Process',
-      steps_title: 'How It Works',
-      steps_sub:   'From first message to finished piece, simple, personal and transparent.',
+      methods_tag:   'Reach Us',
+      methods_title: 'Three Ways to Get in Touch',
+      methods_sub:   'Pick whichever is easiest for you.',
 
-      step1_title: 'Tell Us Your Vision',
-      step1_body:  'Reach out via WhatsApp or email. Share your idea, your occasion, your inspiration, however rough. There are no wrong answers.',
-      step2_title: 'We Design Together',
-      step2_body:  'We discuss size, shape, colour and finish. We may share photos of similar pieces or material samples to help you choose.',
-      step3_title: 'Handcrafted for You',
-      step3_body:  'Your piece is made entirely by hand in our studio in Israel, blown, fused and finished to your exact specifications.',
-      step4_title: 'Delivered Worldwide',
-      step4_body:  'Carefully packed and shipped to you anywhere in the world. Free delivery, always. Typical lead time: 2–4 weeks.',
+      method1_title: 'WhatsApp',
+      method1_cta:   'Open Chat',
+      method2_title: 'Email',
+      method2_cta:   'Compose',
+      method3_title: 'Instagram',
+      method3_cta:   'Follow',
 
-      options_tag:   'What You Can Customise',
-      options_title: 'Every Detail, Your Choice',
-      options_sub:   'No request is too specific. We love a challenge.',
-
-      opt1_title: 'Size & Shape',
-      opt1_body:  'From a small gift bowl to a large centrepiece, tell us the dimensions and form you have in mind.',
-      opt2_title: 'Colour & Finish',
-      opt2_body:  'Choose from our colour palette or describe the tones you want. Matte, glossy, marbled, gradient, all possible.',
-      opt3_title: 'Inscription',
-      opt3_body:  'Add a name, date, Hebrew phrase or short message. Engraved or incorporated into the glass.',
-      opt4_title: 'Gift Packaging',
-      opt4_body:  'Every piece can be gift-wrapped and boxed for presentation. Just let us know the occasion.',
-      opt5_title: 'Quantity',
-      opt5_body:  'Ordering for a corporate event, wedding or bar mitzvah? We can produce sets and bulk orders.',
-
-      form_tag:   'Start Your Order',
-      form_title: 'Tell Us What You Have in Mind',
-      form_body:  'Fill in the form and we will get back to you within 24 hours to discuss the details.',
+      form_tag:   'Send a Message',
+      form_title: "Tell us how we can help",
+      form_body:  'Fill in the form and we will get back to you, usually within a few hours.',
       trust1: 'We reply to every enquiry within 24 hours',
-      trust2: 'No commitment required, just a conversation',
+      trust2: 'No commitment, just a friendly conversation',
       trust3: 'Free worldwide shipping on all orders',
-      trust4: 'Secure payment, WhatsApp-first, Stripe coming soon',
+      trust4: 'We speak Hebrew, English and basic Russian',
 
-      field_name:             'Your Name',
-      field_email:            'Your Email',
-      field_type:             'Type of Piece',
-      field_type_placeholder: 'Select a piece type…',
-      type_bowl:              'Decorative Bowl',
-      type_candles:           'Candlesticks',
-      type_kiddush:           'Kiddush Cup',
-      type_goblet:            'Goblet',
-      type_tray:              'Decorative Tray',
-      type_shofar:            'Silver-Plated Shofar',
-      type_other:             'Other / Not Sure Yet',
-      field_msg:              'Describe Your Vision',
-      form_submit:            'Send via WhatsApp',
-      form_email_alt:         'Or send by email instead',
-      form_note:              'We reply to every message within 24 hours.',
+      field_name:           'Your Name',
+      field_email:          'Your Email',
+      field_subject:        'Subject',
+      subject_placeholder:  'What can we help with?',
+      subject_general:      'General Enquiry',
+      subject_order:        'Question About an Order',
+      subject_custom:       'Custom Piece',
+      subject_shipping:     'Shipping & Delivery',
+      subject_wholesale:    'Wholesale or Corporate Gift',
+      subject_other:        'Other',
+      field_msg:            'Your Message',
+      form_submit:          'Send via WhatsApp',
+      form_email_alt:       'Or send by email instead',
+      form_note:            'We reply to every message within 24 hours.',
+
+      faq_tag:   'Common Questions',
+      faq_title: 'Frequently Asked',
+      faq_sub:   'Quick answers to what people usually want to know.',
+
+      faq1_q: 'How long does shipping take?',
+      faq1_a: 'Ready pieces ship from Israel within 2–3 business days. Worldwide delivery typically takes 7–14 days depending on destination. All shipments are tracked, insured and gift-wrapped at no extra cost.',
+      faq2_q: 'How long does a custom order take?',
+      faq2_a: 'Most custom pieces are designed, made and shipped within 2–4 weeks from the day we agree on the design. Larger or more complex commissions can take longer, we will always give you a clear timeline upfront.',
+      faq3_q: 'What if my piece arrives damaged?',
+      faq3_a: 'Everything is packed with great care, but if anything arrives damaged we will replace it free of charge. Just send us a photo within 7 days of delivery.',
+      faq4_q: 'How do I pay?',
+      faq4_a: 'For now, orders are confirmed via WhatsApp or email and paid by bank transfer or PayPal. A full Stripe checkout for card payment is coming soon. Either way, no payment is taken until you have approved the piece and the price.',
+      faq5_q: 'Do you ship worldwide?',
+      faq5_a: 'Yes, we ship to anywhere in the world and shipping is always free on every order. There are no minimums and no hidden fees.',
+      faq6_q: 'Can I return a piece?',
+      faq6_a: 'Standard pieces can be returned within 14 days of delivery if they are in their original condition. Custom and personalised pieces are not returnable, which is why we work closely with you during the design phase to make sure everything is exactly right.',
+
+      trust_band_title: 'Crafted in Israel, Sent With Care',
+      trust_band_sub:   'Three generations of glass artists. Every piece signed, packed and shipped by family.',
+      trust_band_loc:   'Made in Israel',
+      trust_band_ship:  'Free Worldwide Shipping',
+      trust_band_reply: 'Reply within 24 hours',
 
       footer_tagline:    'Handmade glass art & Judaica from Israel',
       footer_col_shop:   'Shop',
@@ -747,63 +830,69 @@
       shipping_banner: '✦  משלוח חינם לכל העולם על כל הזמנה  ·  הזמנות מיוחדות בברוכות הבאות  ✦',
       topbar_right:    'עשוי ביד בישראל',
 
-      hero_eyebrow: 'אמנות זכוכית בהזמנה אישית',
-      hero_headline: 'הזמינו יצירה ייחודית',
-      hero_subtitle: 'החזון שלכם. הידיים שלנו. יצירה שלא קיימת בשום מקום אחר בעולם.',
-      hero_body: 'בין אם יש לכם רעיון ברור או רק תחושה, נעבוד איתכם להגשים אותו. כל הזמנה מותאמת מתחילה בשיחה.',
-      hero_cta: 'התחילו שיחה ב-WhatsApp',
+      hero_eyebrow:  'צרו איתנו קשר',
+      hero_headline: 'נשמח לשמוע מכם',
+      hero_subtitle: 'שאלה, הזמנה, רעיון מיוחד, כל דבר.',
+      hero_body:     'הדרך המהירה ביותר היא ב-WhatsApp. גם מייל והטופס למטה עובדים מצוין. אנחנו מגיבים לכל הודעה, בדרך כלל תוך מספר שעות, תמיד תוך 24.',
+      hero_cta_wa:    'שלחו הודעה ב-WhatsApp',
+      hero_cta_email: 'שלחו מייל',
 
-      steps_tag:   'התהליך',
-      steps_title: 'איך זה עובד',
-      steps_sub:   'מהפנייה הראשונה ועד היצירה המוגמרת, פשוט, אישי ושקוף.',
+      methods_tag:   'איך ליצור קשר',
+      methods_title: 'שלוש דרכים להגיע אלינו',
+      methods_sub:   'בחרו את הדרך הנוחה לכם.',
 
-      step1_title: 'ספרו לנו על הרעיון שלכם',
-      step1_body:  'פנו אלינו ב-WhatsApp או במייל. שתפו את הרעיון, האירוע, ההשראה, כמה שיש לכם. אין תשובות שגויות.',
-      step2_title: 'מעצבים יחד',
-      step2_body:  'נדון בגודל, צורה, צבע וגימור. נוכל לשלוח תמונות של יצירות דומות או דוגמאות חומרים שיעזרו לכם לבחור.',
-      step3_title: 'עשוי ביד עבורכם',
-      step3_body:  'היצירה שלכם נעשית כולה ביד בסטודיו שלנו בישראל, נפוחה, מחוברת ומוגמרת לפי המפרט המדויק שלכם.',
-      step4_title: 'משלוח לכל העולם',
-      step4_body:  'ארוז בקפידה ונשלח אליכם לכל מקום בעולם. משלוח חינם, תמיד. זמן אספקה טיפוסי: 2–4 שבועות.',
+      method1_title: 'WhatsApp',
+      method1_cta:   'פתחו צ\'אט',
+      method2_title: 'מייל',
+      method2_cta:   'כתבו לנו',
+      method3_title: 'אינסטגרם',
+      method3_cta:   'עקבו',
 
-      options_tag:   'מה ניתן להתאים אישית',
-      options_title: 'כל פרט, הבחירה שלכם',
-      options_sub:   'אין בקשה ספציפית מדי. אנחנו אוהבים אתגרים.',
-
-      opt1_title: 'גודל וצורה',
-      opt1_body:  'מקערית מתנה קטנה ועד מרכז שולחן גדול, ספרו לנו את הממדים והצורה שיש לכם בראש.',
-      opt2_title: 'צבע וגימור',
-      opt2_body:  'בחרו מהפלטה שלנו או תארו את הגוונים הרצויים. מט, מבריק, משויש, גרדיאנט, הכל אפשרי.',
-      opt3_title: 'כיתוב',
-      opt3_body:  'הוסיפו שם, תאריך, פסוק בעברית או הקדשה קצרה. חרוט או משולב בזכוכית.',
-      opt4_title: 'אריזת מתנה',
-      opt4_body:  'כל יצירה יכולה להיות עטופה ומוארזת לצגייה. פשוט ספרו לנו את האירוע.',
-      opt5_title: 'כמות',
-      opt5_body:  'מזמינים לאירוע עסקי, חתונה או בר מצווה? אנחנו יכולים לייצר סטים והזמנות בכמויות.',
-
-      form_tag:   'התחילו את ההזמנה שלכם',
-      form_title: 'ספרו לנו מה יש לכם בראש',
-      form_body:  'מלאו את הטופס ונחזור אליכם תוך 24 שעות לדון בפרטים.',
+      form_tag:   'שלחו הודעה',
+      form_title: 'ספרו לנו במה נוכל לעזור',
+      form_body:  'מלאו את הטופס ונחזור אליכם, בדרך כלל תוך מספר שעות.',
       trust1: 'אנחנו מגיבים לכל פנייה תוך 24 שעות',
-      trust2: 'אין התחייבות, רק שיחה',
+      trust2: 'אין התחייבות, רק שיחה ידידותית',
       trust3: 'משלוח חינם לכל העולם על כל הזמנה',
-      trust4: 'תשלום בטוח, WhatsApp ראשוני, Stripe בקרוב',
+      trust4: 'אנחנו דוברים עברית, אנגלית ורוסית בסיסית',
 
-      field_name:             'שמכם',
-      field_email:            'כתובת המייל',
-      field_type:             'סוג היצירה',
-      field_type_placeholder: 'בחרו סוג יצירה…',
-      type_bowl:              'קערה דקורטיבית',
-      type_candles:           'פמוטים',
-      type_kiddush:           'גביע קידוש',
-      type_goblet:            'גביע',
-      type_tray:              'מגש דקורטיבי',
-      type_shofar:            'שופר מצופה כסף',
-      type_other:             'אחר / עדיין לא בטוח',
-      field_msg:              'תארו את הרעיון שלכם',
-      form_submit:            'שלחו דרך WhatsApp',
-      form_email_alt:         'או שלחו במייל',
-      form_note:              'אנחנו מגיבים לכל הודעה תוך 24 שעות.',
+      field_name:           'שמכם',
+      field_email:          'כתובת המייל',
+      field_subject:        'נושא',
+      subject_placeholder:  'במה נוכל לעזור?',
+      subject_general:      'פנייה כללית',
+      subject_order:        'שאלה על הזמנה',
+      subject_custom:       'יצירה מותאמת אישית',
+      subject_shipping:     'משלוח ומסירה',
+      subject_wholesale:    'סיטונאות או מתנות עסקיות',
+      subject_other:        'אחר',
+      field_msg:            'ההודעה שלכם',
+      form_submit:          'שלחו דרך WhatsApp',
+      form_email_alt:       'או שלחו במייל',
+      form_note:            'אנחנו מגיבים לכל הודעה תוך 24 שעות.',
+
+      faq_tag:   'שאלות נפוצות',
+      faq_title: 'שאלות שאתם שואלים',
+      faq_sub:   'תשובות מהירות למה שאתם בדרך כלל רוצים לדעת.',
+
+      faq1_q: 'כמה זמן לוקח המשלוח?',
+      faq1_a: 'יצירות מוכנות נשלחות מישראל תוך 2–3 ימי עסקים. המשלוח לכל העולם לוקח בדרך כלל 7–14 ימים, תלוי ביעד. כל המשלוחים עוקבים, מבוטחים ומגיעים באריזת מתנה ללא תוספת תשלום.',
+      faq2_q: 'כמה זמן לוקחת הזמנה מיוחדת?',
+      faq2_a: 'רוב היצירות המותאמות מעוצבות, נעשות ונשלחות תוך 2–4 שבועות מהיום שמסכמים את העיצוב. הזמנות גדולות או מורכבות יותר יכולות לקחת זמן רב יותר, תמיד ניתן לכם לוח זמנים ברור מראש.',
+      faq3_q: 'מה אם היצירה מגיעה פגומה?',
+      faq3_a: 'הכל ארוז בקפידה רבה, אבל אם משהו מגיע פגום, נחליף אותו ללא עלות. פשוט שלחו לנו תמונה תוך 7 ימים מקבלת המשלוח.',
+      faq4_q: 'איך משלמים?',
+      faq4_a: 'בשלב זה, הזמנות מאושרות ב-WhatsApp או במייל ומשולמות בהעברה בנקאית או PayPal. עמוד תשלום מלא דרך Stripe לתשלום בכרטיס אשראי בקרוב. בכל מקרה, התשלום נגבה רק אחרי שאישרתם את היצירה ואת המחיר.',
+      faq5_q: 'האם אתם שולחים לכל העולם?',
+      faq5_a: 'כן, אנחנו שולחים לכל מקום בעולם והמשלוח תמיד חינם, על כל הזמנה. אין מינימום ואין עלויות נסתרות.',
+      faq6_q: 'האם אפשר להחזיר יצירה?',
+      faq6_a: 'יצירות סטנדרטיות ניתנות להחזרה תוך 14 ימים מהמסירה אם הן במצב המקורי. יצירות מותאמות אישית ועם כיתוב אינן ניתנות להחזרה, ולכן אנחנו עובדים איתכם בצמוד בשלב העיצוב כדי לוודא שהכל בדיוק כפי שרציתם.',
+
+      trust_band_title: 'עשוי בישראל, נשלח באהבה',
+      trust_band_sub:   'שלושה דורות של אמני זכוכית. כל יצירה חתומה, ארוזה ונשלחת על ידי המשפחה.',
+      trust_band_loc:   'עשוי בישראל',
+      trust_band_ship:  'משלוח חינם לכל העולם',
+      trust_band_reply: 'מגיבים תוך 24 שעות',
 
       footer_tagline:    'אמנות זכוכית ויודאיקה עשויות ביד מישראל',
       footer_col_shop:   'חנות',
@@ -826,7 +915,6 @@
       const key = el.dataset.t;
       const val = dict[key];
       if (val !== undefined) {
-        // For select options, set value attribute too
         if (el.tagName === 'OPTION') {
           el.textContent = val;
           if (!el.value) el.value = val;
@@ -840,8 +928,8 @@
     const msgField = document.getElementById('cf-msg');
     if (msgField) {
       msgField.placeholder = l === 'he'
-        ? 'לדוגמה: קערה בגוון כחול-טורקיז, קוטר כ-30 ס"מ, עם כיתוב \'שבת שלום\' בפנים'
-        : 'e.g. A teal-blue bowl, about 30cm across, with \'Shabbat Shalom\' inscribed inside';
+        ? 'לדוגמה: שאלה על הזמנה שביצעתי בשבוע שעבר…'
+        : 'e.g. A question about an order I placed last week…';
     }
 
     html.lang = l;
@@ -852,31 +940,31 @@
 
   // ── FORM SUBMISSION ────────────────────────────
   function getFormData() {
-    const typeEl = document.getElementById('cf-type');
+    const subjectEl = document.getElementById('cf-subject');
     return {
       name:    document.getElementById('cf-name').value.trim(),
       email:   document.getElementById('cf-email').value.trim(),
-      type:    typeEl.options[typeEl.selectedIndex]?.text || '',
+      subject: subjectEl.options[subjectEl.selectedIndex]?.text || '',
       message: document.getElementById('cf-msg').value.trim(),
     };
   }
 
-  function submitCustomOrder(e) {
+  function submitContact(e) {
     e.preventDefault();
-    const { name, email, type, message } = getFormData();
+    const { name, email, subject, message } = getFormData();
     const text = currentLang === 'he'
-      ? `שלום, שמי ${name} (${email}).\n\nסוג יצירה: ${type}\n\n${message}`
-      : `Hi, my name is ${name} (${email}).\n\nPiece type: ${type}\n\n${message}`;
+      ? `שלום, שמי ${name} (${email}).\n\nנושא: ${subject}\n\n${message}`
+      : `Hi, my name is ${name} (${email}).\n\nSubject: ${subject}\n\n${message}`;
     window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(text)}`, '_blank');
   }
 
   function submitViaEmail() {
-    const form = document.getElementById('customForm');
+    const form = document.getElementById('contactForm');
     if (!form.checkValidity()) { form.reportValidity(); return; }
-    const { name, email, type, message } = getFormData();
-    const subject = encodeURIComponent('Custom Order Enquiry, Sherman Art Works');
-    const body    = encodeURIComponent(`Name: ${name}\nEmail: ${email}\nPiece type: ${type}\n\nVision:\n${message}`);
-    window.location.href = `mailto:shermanartwork@gmail.com?subject=${subject}&body=${body}`;
+    const { name, email, subject, message } = getFormData();
+    const subjectLine = encodeURIComponent(`${subject}, Sherman Art Works`);
+    const body        = encodeURIComponent(`Name: ${name}\nEmail: ${email}\nSubject: ${subject}\n\nMessage:\n${message}`);
+    window.location.href = `mailto:shermanartwork@gmail.com?subject=${subjectLine}&body=${body}`;
   }
 
   // ── MOBILE NAV ─────────────────────────────────
@@ -899,8 +987,12 @@
 
   // ── INIT ───────────────────────────────────────
   document.addEventListener('DOMContentLoaded', () => {
-    const waHero = document.getElementById('waHeroLink');
-    if (waHero) waHero.href = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent("Hi, I'd like to commission a custom piece.")}`;
+    const waHeroMsg = "Hi, I have a question about Sherman Art Works.";
+    const waLink = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(waHeroMsg)}`;
+    const heroLink   = document.getElementById('waHeroLink');
+    const methodLink = document.getElementById('waMethodLink');
+    if (heroLink)   heroLink.href   = waLink;
+    if (methodLink) methodLink.href = waLink;
 
     setLang('en');
   });

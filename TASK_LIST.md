@@ -1,6 +1,6 @@
 # Sherman Art Works — Product Task List
 
-> Last updated: June 2026 (Sprints 3, 6, 7 complete; M4–M5 restructured to category model) | PM: Claude | Owner: Sherman Family
+> Last updated: June 2026 (Sprints 3, 6, 7, 8 complete; M4–M5 restructured to category model) | PM: Claude | Owner: Sherman Family
 > Active file: `sherman-artworks-site/index.html` | Repo: github.com/jshermanj1-cpu/sherman-artworks-site
 
 ---
@@ -284,27 +284,29 @@
 
 ---
 
-## MILESTONE 8 — Contact Page 🔜
+## MILESTONE 8 — Contact Page ✅ COMPLETE
 
 *Standalone contact page — more detailed than the homepage section.*
 
 ### 8.1 — Page Build
-| ID | Task | Effort |
+| ID | Task | Status |
 |---|---|---|
-| 8.1.1 | Create `contact.html` with shared header/footer | M |
-| 8.1.2 | Hero: "We'd love to hear from you" — warm, personal copy | S |
-| 8.1.3 | WhatsApp button (primary) + Email button | XS |
-| 8.1.4 | Full enquiry form: name, email, subject (dropdown: order / custom / general), message | S |
-| 8.1.5 | FAQ section: shipping times, custom order lead time, returns, payment methods | M |
-| 8.1.6 | "Based in Israel, shipping worldwide" trust line + free shipping reminder | XS |
+| 8.1.1 | Create `contact.html` with shared header/footer | ✅ |
+| 8.1.2 | Hero: "We'd love to hear from you" — warm, personal copy | ✅ |
+| 8.1.3 | WhatsApp button (primary) + Email button in hero | ✅ |
+| 8.1.4 | Three-way methods band: WhatsApp · Email · Instagram cards | ✅ |
+| 8.1.5 | Full enquiry form: name, email, subject (6 options), message → WhatsApp + email fallback | ✅ |
+| 8.1.6 | FAQ accordion: shipping, custom lead time, damage, payment, worldwide, returns | ✅ |
+| 8.1.7 | "Crafted in Israel, Sent With Care" trust band — Made in Israel · Free Worldwide · 24h reply | ✅ |
 
 ### 8.2 — Polish
-| ID | Task | Effort |
+| ID | Task | Status |
 |---|---|---|
-| 8.2.1 | Mobile responsive | S |
-| 8.2.2 | SEO meta | XS |
-| 8.2.3 | Translate to Hebrew | S |
-| 8.2.4 | Wire nav "Contact" link to `contact.html` (currently → #contact section) | XS |
+| 8.2.1 | Mobile responsive | ✅ |
+| 8.2.2 | SEO meta (title, description, OG image) | ✅ |
+| 8.2.3 | Translate to Hebrew (full bilingual + RTL) | ✅ |
+| 8.2.4 | Wire nav "Contact" link to `contact.html` across index, about, custom-orders | ✅ |
+| 8.2.5 | Fix homepage hero "Custom Orders" button → `custom-orders.html` (was → #contact) | ✅ |
 
 ---
 
@@ -385,8 +387,8 @@
 | Sprint 5 | M5 | Category pages × 6 (Candlesticks, Shofars & Goblets, Kiddush Cups, Trays & Bowls, Business Gifts, Mezuzahs) | 🔜 Blocked — waiting on photo reshoot |
 | Sprint 6 | M6 | Custom Orders page | ✅ Done |
 | Sprint 7 | M7 | About page | ✅ Done |
-| **→ Sprint 8** | M8 | Contact page | 🔜 **NEXT** |
-| Sprint 9 | M9 | Full product catalogue | 🔜 |
+| Sprint 8 | M8 | Contact page | ✅ Done |
+| **→ Sprint 9** | M9 | Full product catalogue | 🔜 **NEXT** (blocked on photo reshoot) |
 | Sprint 10 | M10 | Hebrew quality pass | 🔜 |
 | Sprint 11 | M11 | Marketing & analytics | 🔜 |
 | Sprint 12 | M12 | Stripe checkout | 🔜 |
