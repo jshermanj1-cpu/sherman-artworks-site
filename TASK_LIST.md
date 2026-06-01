@@ -353,16 +353,51 @@
 
 ## MILESTONE 11 — Marketing & Distribution 🔜
 
-| ID | Task | Effort |
-|---|---|---|
-| 11.1 | Set up Google Analytics 4 | S |
-| 11.2 | Set up Google Search Console + submit sitemap | S |
-| 11.3 | Wire Instagram + TikTok links (handles from M0-11) | XS |
-| 11.4 | Create WhatsApp Business profile | S |
-| 11.5 | Set up email newsletter list (Mailchimp free / Brevo) | M |
-| 11.6 | Add newsletter signup bar to homepage | S |
-| 11.7 | Add Pinterest share button to product cards | XS |
-| 11.8 | Explore Etsy / Not on the High Street as parallel channel | 👤 Owner |
+*Eight tasks in three tiers. Tier 1 = foundational, install before any marketing push so you can measure what's working. Tier 2 = growth channels. Tier 3 = strategic decision the owner leads.*
+
+### 11.1 — Tier 1: Foundational (install first)
+
+| ID | Task | Owner action | Dev action | Effort |
+|---|---|---|---|---|
+| 11.1.1 | Set up Google Analytics 4 (GA4) — tracks visitors, page views, CTA clicks, sources. Free. | Create a free GA4 property at analytics.google.com (~15 min, needs a Google account). Send the Measurement ID (looks like `G-XXXXXXX`) to dev. | Inject the GA4 snippet into every page via Python script. Verify events fire in real-time view. | S |
+| 11.1.2 | Set up Google Search Console + sitemap.xml — gets pages indexed by Google, reports on queries that bring traffic. Free. | Verify ownership of shermanartworks.com in Search Console (~5 min, needs Google account). | Generate `sitemap.xml` with all URLs (auto). Add `robots.txt`. Submit sitemap from Search Console. | S |
+| 11.1.3 | Upgrade to WhatsApp Business profile — adds business name, logo, hours, away message, quick replies. Visitors see "Sherman Art Works" not a personal number. Free app. | Install WhatsApp Business app. Configure profile (logo, hours, address, away-message template). Coordinate with replacing the temp WA number (M0-1). | None. | S |
+
+### 11.2 — Tier 2: Growth Channels
+
+| ID | Task | Owner action | Dev action | Effort |
+|---|---|---|---|---|
+| 11.2.1 | Wire real Instagram + TikTok handles in footer | Confirm Instagram handle is `shermanartworks`. Provide TikTok handle (M0-11). | Update the social-link URLs in the footer site-wide. | XS |
+| 11.2.2 | Choose + set up email newsletter service (Brevo / Mailchimp / Buttondown). Free tiers exist. | Sign up, decide on a welcome email template. | Wire up the API key / embed if needed. | S |
+| 11.2.3 | Add newsletter signup bar to homepage (after the shop section) | Approve copy + visual treatment. | Build inline form + connect to provider. Style to match. | M |
+| 11.2.4 | Add Pinterest "Pin it" button to product cards — Pinterest is the highest-converting visual platform for handmade goods. | Confirm visual addition is desired. | Add Pinterest pinit.js to product cards. Each card becomes pinnable to user boards (= evergreen marketing). | XS |
+
+### 11.3 — Tier 3: Strategic (owner-led)
+
+| ID | Task | Owner action | Dev action | Effort |
+|---|---|---|---|---|
+| 11.3.1 | Evaluate Etsy / Not on the High Street / Aisle Society as parallel sales channel — ~10-12% fees but huge built-in traffic. | Decide whether to explore. If yes: register as a seller, list a few products via their own upload UI. | None initially. Later we may add "Also available on Etsy" badges to product pages. | 👤 Owner |
+
+### 11.4 — Recommended Order
+
+**Week 1 (do all 3 — foundational):**
+1. GA4 install → start measuring from now (11.1.1)
+2. Search Console + sitemap → get indexed by Google (11.1.2)
+3. WhatsApp Business profile → upgrade the main contact channel (11.1.3) — pair with M0-1 number swap
+
+**Week 2-3 (when time allows):**
+4. Wire Instagram + TikTok (11.2.1) — quick, just need handles
+5. Newsletter setup + signup bar (11.2.2 + 11.2.3) — biggest long-term ROI for repeat sales
+6. Pinterest button (11.2.4) — visual platform, fits the brand
+
+**Whenever (no urgency):**
+7. Etsy evaluation (11.3.1)
+
+### 11.5 — Dependencies
+
+- **11.1.3** (WhatsApp Business) should happen *alongside* **M0-1** (replace temp WhatsApp number with official one) — don't upgrade twice
+- **11.2.1** (social links) blocked on owner confirming handles (M0-11)
+- **11.2.3** (signup bar on homepage) blocked on 11.2.2 (newsletter service chosen)
 
 ---
 
@@ -404,7 +439,7 @@
 | Sprint 8 | M8 | Contact page | ✅ Done |
 | **→ Sprint 9** | M9 | Full product catalogue | 🔜 **NEXT** (blocked on photo reshoot) |
 | Sprint 10 | M10 | Hebrew quality pass | 🔜 |
-| Sprint 11 | M11 | Marketing & analytics | 🔜 |
+| Sprint 11 | M11 | Marketing & analytics (3 tiers — foundational / growth / strategic; full plan in §M11) | 🔜 fully unblocked |
 | Sprint 12 | M12 | Stripe checkout | 🔜 |
 | **→ FULL LAUNCH** | — | Marketing push | 🔜 |
 
