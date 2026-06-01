@@ -1,6 +1,6 @@
 # Sherman Art Works — Product Task List
 
-> Last updated: May 2026 (Sprints 3, 6, 7 complete) | PM: Claude | Owner: Sherman Family
+> Last updated: June 2026 (Sprints 3, 6, 7 complete) | PM: Claude | Owner: Sherman Family
 > Active file: `sherman-artworks-site/index.html` | Repo: github.com/jshermanj1-cpu/sherman-artworks-site
 
 ---
@@ -23,7 +23,7 @@
 
 | ID | Task | Owner | Blocking | Status |
 |---|---|---|---|---|
-| M0-1 | Provide real WhatsApp number for `wa.me/972XXXXXXXXX` | Sherman | 🔴 Site-wide | 🔜 |
+| M0-1 | Provide real WhatsApp number for `wa.me/972XXXXXXXXX` | Sherman | 🔴 Site-wide | ⚠️ Temp number set: +972523482278 — replace with official business number when ready |
 | M0-2 | Decide on domain name and register it | Sherman | 🔴 Launch | ✅ shermanartworks.com |
 | M0-3 | Create Stripe account (stripe.com) | Sherman | 🔴 M12 | 🔜 |
 | M0-4 | Confirm prices for unlisted products (goblets, shofars, trays, Kiddush cups) | Sherman | 🟡 M9 | 🔜 |
@@ -351,7 +351,7 @@
 | Sprint 0 | M0 | Collect owner inputs | ⚠️ 5/11 done |
 | Sprint 1 | M1 | Foundation: mobile, links, images | ✅ Done |
 | Sprint 2 | M2 | Trust: contact, SEO, currency | ✅ Done |
-| **→ SOFT LAUNCH** | — | Wire real WhatsApp number, enable custom domain | 🔜 1 input away (M0-1) |
+| **→ SOFT LAUNCH** | — | Wire real WhatsApp number, enable custom domain | ⚠️ Temp WA number active, custom domain live |
 | Sprint 3 | M3 | Homepage enhancements (announcement bar, best sellers, corporate CTA, Instagram) | ✅ Done (3.3 + 3.5 deferred) |
 | Sprint 4 | M4 | Glass page | 🔜 Blocked — waiting on photo reshoot |
 | Sprint 5 | M5 | Judaica page | 🔜 |
