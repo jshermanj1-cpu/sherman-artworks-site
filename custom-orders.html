@@ -426,8 +426,7 @@
       </div>
     </a>
     <ul class="nav-links" role="list">
-      <li><a href="index.html#shop"    data-t="nav_gallery"></a></li>
-      <li><a href="index.html#shop"    data-t="nav_judaica"></a></li>
+      <li><a href="shop.html"          data-t="nav_shop"></a></li>
       <li><a href="custom-orders.html" data-t="nav_custom" class="nav-active"></a></li>
       <li><a href="about.html"         data-t="nav_about"></a></li>
       <li><a href="contact.html"       data-t="nav_contact"></a></li>
@@ -438,8 +437,7 @@
   </nav>
   <div class="mobile-nav" id="mobileNav" aria-hidden="true">
     <ul role="list">
-      <li><a href="index.html#shop"    onclick="closeMobileNav()" data-t="nav_gallery"></a></li>
-      <li><a href="index.html#shop"    onclick="closeMobileNav()" data-t="nav_judaica"></a></li>
+      <li><a href="shop.html"          onclick="closeMobileNav()" data-t="nav_shop"></a></li>
       <li><a href="custom-orders.html" onclick="closeMobileNav()" data-t="nav_custom"></a></li>
       <li><a href="about.html"         onclick="closeMobileNav()" data-t="nav_about"></a></li>
       <li><a href="contact.html"       onclick="closeMobileNav()" data-t="nav_contact"></a></li>
@@ -634,8 +632,10 @@
       <div>
         <div class="footer-col-title" data-t="footer_col_shop"></div>
         <ul class="footer-links" role="list">
-          <li><a href="index.html#shop"    data-t="nav_gallery"></a></li>
-          <li><a href="index.html#shop"    data-t="nav_judaica"></a></li>
+          <li><a href="candlesticks.html"     data-t="footer_link_candles"></a></li>
+          <li><a href="shofars-goblets.html"  data-t="footer_link_shofars"></a></li>
+          <li><a href="trays-bowls.html"      data-t="footer_link_bowls"></a></li>
+          <li><a href="shop.html"             data-t="footer_all_collections"></a></li>
           <li><a href="custom-orders.html" data-t="nav_custom"></a></li>
         </ul>
       </div>
@@ -664,8 +664,12 @@
   // ── TRANSLATIONS ──────────────────────────────
   const T = {
     en: {
-      nav_gallery: 'Gallery',
-      nav_judaica: 'Judaica',
+      nav_shop:    'Shop',
+
+      footer_link_candles:    'Candlesticks',
+      footer_link_shofars:    'Shofars & Goblets',
+      footer_link_bowls:      'Trays & Bowls',
+      footer_all_collections: 'All Collections',
       nav_custom:  'Custom Orders',
       nav_about:   'About',
       nav_contact: 'Contact',
@@ -738,8 +742,12 @@
       footer_badge:      'Handcrafted in Israel',
     },
     he: {
-      nav_gallery: 'גלריה',
-      nav_judaica: 'יודאיקה',
+      nav_shop:    'חנות',
+
+      footer_link_candles:    'פמוטים',
+      footer_link_shofars:    'שופרות וגביעים',
+      footer_link_bowls:      'מגשים וקערות',
+      footer_all_collections: 'כל הקולקציות',
       nav_custom:  'הזמנות מיוחדות',
       nav_about:   'אודות',
       nav_contact: 'צור קשר',

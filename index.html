@@ -463,8 +463,7 @@
       </div>
     </a>
     <ul class="nav-links" role="list">
-      <li><a href="#shop"              data-t="nav_gallery"></a></li>
-      <li><a href="#shop"              data-t="nav_judaica"></a></li>
+      <li><a href="shop.html"          data-t="nav_shop"></a></li>
       <li><a href="custom-orders.html" data-t="nav_custom"></a></li>
       <li><a href="about.html"         data-t="nav_about"></a></li>
       <li><a href="contact.html"       data-t="nav_contact"></a></li>
@@ -475,8 +474,7 @@
   </nav>
   <div class="mobile-nav" id="mobileNav" aria-hidden="true">
     <ul role="list">
-      <li><a href="#shop"              onclick="closeMobileNav()" data-t="nav_gallery"></a></li>
-      <li><a href="#shop"              onclick="closeMobileNav()" data-t="nav_judaica"></a></li>
+      <li><a href="shop.html"          onclick="closeMobileNav()" data-t="nav_shop"></a></li>
       <li><a href="custom-orders.html" onclick="closeMobileNav()" data-t="nav_custom"></a></li>
       <li><a href="about.html"         onclick="closeMobileNav()" data-t="nav_about"></a></li>
       <li><a href="contact.html"       onclick="closeMobileNav()" data-t="nav_contact"></a></li>
@@ -494,7 +492,7 @@
     <p class="hero-subtitle" data-t="hero_subtitle"></p>
     <p class="hero-body" data-t="hero_body"></p>
     <div class="hero-ctas">
-      <a href="#shop"              class="btn-primary" data-t="hero_cta1"></a>
+      <a href="shop.html"          class="btn-primary" data-t="hero_cta1"></a>
       <a href="custom-orders.html" class="btn-outline" data-t="hero_cta2"></a>
     </div>
   </div>
@@ -740,9 +738,11 @@
       <div>
         <div class="footer-col-title" data-t="footer_col_shop"></div>
         <ul class="footer-links" role="list">
-          <li><a href="#shop"              data-t="nav_gallery"></a></li>
-          <li><a href="#shop"              data-t="nav_judaica"></a></li>
-          <li><a href="custom-orders.html" data-t="nav_custom"></a></li>
+          <li><a href="candlesticks.html"     data-t="footer_link_candles"></a></li>
+          <li><a href="shofars-goblets.html"  data-t="footer_link_shofars"></a></li>
+          <li><a href="trays-bowls.html"      data-t="footer_link_bowls"></a></li>
+          <li><a href="shop.html"             data-t="footer_all_collections"></a></li>
+          <li><a href="custom-orders.html"    data-t="nav_custom"></a></li>
         </ul>
       </div>
       <div>
@@ -777,17 +777,21 @@
   // ── TRANSLATIONS ──────────────────────────────
   const T = {
     en: {
-      nav_gallery:         'Gallery',
-      nav_judaica:         'Judaica',
+      nav_shop:            'Shop',
       nav_custom:          'Custom Orders',
       nav_about:           'About',
       nav_contact:         'Contact',
+
+      footer_link_candles:    'Candlesticks',
+      footer_link_shofars:    'Shofars & Goblets',
+      footer_link_bowls:      'Trays & Bowls',
+      footer_all_collections: 'All Collections',
 
       hero_eyebrow:        'Handcrafted in Israel · Since Generations',
       hero_headline:       'Where Light Meets Glass',
       hero_subtitle:       'Each piece, a singular creation',
       hero_body:           'Sherman Art Works creates blown and fused glass Judaica and decorative art of rare beauty, kiddush cups, Shabbat candleholders, decorative bowls and sculptural trays, each one unique and unrepeatable.',
-      hero_cta1:           'Explore Gallery',
+      hero_cta1:           'Browse the Shop',
       hero_cta2:           'Custom Orders',
 
       shipping_banner:     '✦  Free Worldwide Shipping on All Orders  ·  Custom Orders Are Welcome  ✦',
@@ -838,17 +842,21 @@
       footer_badge:        'Handcrafted in Israel',
     },
     he: {
-      nav_gallery:         'גלריה',
-      nav_judaica:         'יודאיקה',
+      nav_shop:            'חנות',
       nav_custom:          'הזמנות מיוחדות',
       nav_about:           'אודות',
       nav_contact:         'צור קשר',
+
+      footer_link_candles:    'פמוטים',
+      footer_link_shofars:    'שופרות וגביעים',
+      footer_link_bowls:      'מגשים וקערות',
+      footer_all_collections: 'כל הקולקציות',
 
       hero_eyebrow:        'עבודת יד מישראל · מסורת דורות',
       hero_headline:       'כשאור פוגש זכוכית',
       hero_subtitle:       'כל יצירה, בלתי ניתנת לחזרה',
       hero_body:           'שרמן ארט וורקס יוצרת יצירות זכוכית נפוחה ומשולבת ויודאיקה דקורטיבית בעלת יופי נדיר, גביעי קידוש, פמוטי שבת, קערות דקורטיביות ומגשים פיסוליים, כל אחת ייחודית ובלתי ניתנת לחזרה.',
-      hero_cta1:           'לגלריה',
+      hero_cta1:           'לחנות',
       hero_cta2:           'הזמנות מיוחדות',
 
       shipping_banner:     '✦  משלוח חינם לכל העולם על כל הזמנה  ·  הזמנות מיוחדות בברוכות הבאות  ✦',

@@ -1,6 +1,6 @@
 # Sherman Art Works — Product Task List
 
-> Last updated: June 2026 (Sprints 3, 6, 7, 8 complete; M4–M5 restructured to category model) | PM: Claude | Owner: Sherman Family
+> Last updated: June 2026 (Sprints 3, 4, 6, 7, 8 complete; Sprint 5 partial — 3 of 6 category pages built, 3 Coming Soon) | PM: Claude | Owner: Sherman Family
 > Active file: `sherman-artworks-site/index.html` | Repo: github.com/jshermanj1-cpu/sherman-artworks-site
 
 ---
@@ -152,83 +152,90 @@
 
 ---
 
-## MILESTONE 4 — Shop Landing Page 🔜 Blocked — waiting on photo reshoot
+## MILESTONE 4 — Shop Landing Page ✅ COMPLETE
 
 *Category-selection hub. Users arrive here and choose which type of piece to browse. Replaces the old flat "Glass page" concept. Extensible: add or remove categories by editing the card grid and this list.*
 
 **Current categories (6):**
-1. Candlesticks
-2. Shofars & Goblets
-3. Kiddush Cups
-4. Glass Trays & Bowls
-5. Business Gifts
-6. Mezuzahs
+1. Candlesticks ✅ photos
+2. Shofars & Goblets ✅ photos
+3. Kiddush Cups ⏳ Coming Soon
+4. Glass Trays & Bowls ✅ bowls only (trays Coming Soon)
+5. Business Gifts ⏳ Coming Soon
+6. Mezuzahs ⏳ Coming Soon
 
 ### 4.1 — Nav & Naming
-| ID | Task | Effort |
+| ID | Task | Status |
 |---|---|---|
-| 4.1.1 | Update nav link → `shop.html` (EN: "Shop", HE: "חנות") | XS |
-| 4.1.2 | Remove old "Gallery" / "Glass" nav references site-wide | XS |
+| 4.1.1 | Update nav link → `shop.html` (EN: "Shop", HE: "חנות") | ✅ |
+| 4.1.2 | Remove old "Gallery" / "Judaica" nav references site-wide | ✅ |
 
 ### 4.2 — Landing Page Build
-| ID | Task | Effort |
+| ID | Task | Status |
 |---|---|---|
-| 4.2.1 | Create `shop.html` with shared header/footer | M |
-| 4.2.2 | Hero: "Explore Our Handmade Glass Pieces" — introductory headline + brand copy | S |
-| 4.2.3 | Category card grid — one card per category (photo + title + short description) | M |
-| 4.2.4 | Each card links to its category page (e.g., `candlesticks.html`) | XS |
-| 4.2.5 | WhatsApp CTA: "Can't find what you're looking for? Ask us." | XS |
+| 4.2.1 | Create `shop.html` with shared header/footer | ✅ |
+| 4.2.2 | Hero: "Explore Our Handmade Glass" — introductory headline + brand copy | ✅ |
+| 4.2.3 | Category card grid — one card per category (photo + title + short description) | ✅ |
+| 4.2.4 | Each card links to its category page (e.g., `candlesticks.html`) | ✅ |
+| 4.2.5 | "Coming Soon" badge + dark placeholder for categories without photos yet | ✅ |
+| 4.2.6 | Bottom "Don't see what you're after?" Custom Orders CTA | ✅ |
 
 ### 4.3 — Polish
-| ID | Task | Effort |
+| ID | Task | Status |
 |---|---|---|
-| 4.3.1 | Mobile responsive grid (2-col tablet, 1-col mobile) | S |
-| 4.3.2 | SEO meta: title, description, OG image for shop landing | XS |
-| 4.3.3 | Translate all UI strings to Hebrew | S |
+| 4.3.1 | Mobile responsive grid (2-col tablet, 1-col mobile) | ✅ |
+| 4.3.2 | SEO meta: title, description, OG image for shop landing | ✅ |
+| 4.3.3 | Translate all UI strings to Hebrew + RTL | ✅ |
+| 4.3.4 | Update homepage hero CTA "Browse the Shop" → `shop.html` (was `#shop`) | ✅ |
 
 ---
 
-## MILESTONE 5 — Category Pages 🔜 Blocked — waiting on photo reshoot
+## MILESTONE 5 — Category Pages ⚠️ PARTIAL (3 of 6 live with photos, 3 Coming Soon)
 
 *One page per product category. All pages share the same template. To add a new category: create a new HTML file from the template and add a card to `shop.html`. To remove: delete the file and remove its card.*
 
-**Pages to build (6 initial):**
-
-| Slug | Category | Hebrew |
-|---|---|---|
-| `candlesticks.html` | Candlesticks | נרות שבת |
-| `shofars-goblets.html` | Shofars & Goblets | שופרות וגביעים |
-| `kiddush-cups.html` | Kiddush Cups | כוסות קידוש |
-| `trays-bowls.html` | Glass Trays & Bowls | מגשים וקערות |
-| `business-gifts.html` | Business Gifts | מתנות עסקיות |
-| `mezuzahs.html` | Mezuzahs | מזוזות |
-
 ### 5.1 — Shared Category Page Template
-| ID | Task | Effort |
+| ID | Task | Status |
 |---|---|---|
-| 5.1.1 | Build reusable category page template (hero, photo grid, lightbox, WhatsApp CTA, footer) | L |
-| 5.1.2 | Photo grid — Cloudinary photos for each category, curated after reshoot | M |
-| 5.1.3 | Lightbox — click photo → full-screen with prev/next navigation | M |
-| 5.1.4 | "Enquire about this piece" CTA per photo → WhatsApp with piece name pre-filled | S |
-| 5.1.5 | "Commission a custom one" link → `custom-orders.html` | XS |
+| 5.1.1 | Build reusable category page template (hero, photo grid, lightbox, WhatsApp CTA, footer) | ✅ |
+| 5.1.2 | Photo grid — Cloudinary photos for each category | ✅ for ready categories |
+| 5.1.3 | Lightbox — click photo → full-screen view, Escape to close | ✅ |
+| 5.1.4 | "Enquire about this piece" CTA per photo → WhatsApp with photo URL pre-filled | ✅ |
+| 5.1.5 | "Commission a custom one" Custom Orders CTA on every page | ✅ |
+| 5.1.6 | Breadcrumb (Shop → Category) on every page | ✅ |
 
-### 5.2 — Per-Category Pages
-| ID | Page | Status |
-|---|---|---|
-| 5.2.1 | `candlesticks.html` — Candlesticks | 🔜 |
-| 5.2.2 | `shofars-goblets.html` — Shofars & Goblets | 🔜 |
-| 5.2.3 | `kiddush-cups.html` — Kiddush Cups | 🔜 |
-| 5.2.4 | `trays-bowls.html` — Glass Trays & Bowls | 🔜 |
-| 5.2.5 | `business-gifts.html` — Business Gifts | 🔜 |
-| 5.2.6 | `mezuzahs.html` — Mezuzahs | 🔜 |
+### 5.2 — Shofars & Goblets: Design Picker (special case)
+*This page is more than a grid — it's a configurator. Visitors pick a design (Jerusalem/Grapes/Crown for shofars, Lion/Menorah for goblets) and the WhatsApp CTA pre-fills with that design + an offer to customize the inscription.*
 
-### 5.3 — Polish
-| ID | Task | Effort |
+| ID | Task | Status |
 |---|---|---|
-| 5.3.1 | Mobile responsive — all 6 pages | S |
-| 5.3.2 | SEO meta per page — category-specific keywords | S |
-| 5.3.3 | Translate all UI strings to Hebrew — all 6 pages | M |
-| 5.3.4 | Wire category pages from `shop.html` cards | XS |
+| 5.2.1 | Two product sections on one page: Silver-Plated Shofars + Goblets | ✅ |
+| 5.2.2 | Design cards per product type (4 shofars + 3 goblets) — photo + name + description | ✅ |
+| 5.2.3 | "Order this design" CTA per card → WhatsApp with design name pre-filled | ✅ |
+| 5.2.4 | Custom inscription example callout (using horn-grape-name photo) | ✅ |
+| 5.2.5 | Click photo to enlarge in lightbox | ✅ |
+
+### 5.3 — Per-Category Pages
+| ID | Page | Photos | Status |
+|---|---|---|---|
+| 5.3.1 | `candlesticks.html` — Candlesticks | 4 | ✅ live |
+| 5.3.2 | `shofars-goblets.html` — Shofars & Goblets (design picker) | 12 (7 used) | ✅ live |
+| 5.3.3 | `kiddush-cups.html` — Kiddush Cups | 0 | ⏳ Coming Soon page live |
+| 5.3.4 | `trays-bowls.html` — Glass Trays & Bowls | 4 bowls, 0 trays | ✅ live (Trays band Coming Soon) |
+| 5.3.5 | `business-gifts.html` — Business Gifts | 0 | ⏳ Coming Soon page live |
+| 5.3.6 | `mezuzahs.html` — Mezuzahs | 0 | ⏳ Coming Soon page live |
+
+### 5.4 — Polish
+| ID | Task | Status |
+|---|---|---|
+| 5.4.1 | Mobile responsive — all 6 pages | ✅ |
+| 5.4.2 | SEO meta per page — category-specific titles + descriptions + OG | ✅ |
+| 5.4.3 | Translate all UI strings to Hebrew — all 6 pages + RTL | ✅ |
+| 5.4.4 | Wire category pages from `shop.html` cards | ✅ |
+| 5.4.5 | "Browse other collections" link row on each Coming Soon page | ✅ |
+
+### 5.5 — When new photos arrive
+*To activate a Coming Soon category page: upload photos to Cloudinary, replace the hero+about content with the standard photo grid (see `candlesticks.html` as template), update the `cat-card-placeholder` on `shop.html` with a real `<img>`, and remove the `Coming Soon` badge.*
 
 ---
 
@@ -383,8 +390,8 @@
 | Sprint 2 | M2 | Trust: contact, SEO, currency | ✅ Done |
 | **→ SOFT LAUNCH** | — | Wire real WhatsApp number, enable custom domain | ⚠️ Temp WA number active, custom domain live |
 | Sprint 3 | M3 | Homepage enhancements (announcement bar, best sellers, corporate CTA, Instagram) | ✅ Done (3.3 + 3.5 deferred) |
-| Sprint 4 | M4 | Shop landing page (category hub) | 🔜 Blocked — waiting on photo reshoot |
-| Sprint 5 | M5 | Category pages × 6 (Candlesticks, Shofars & Goblets, Kiddush Cups, Trays & Bowls, Business Gifts, Mezuzahs) | 🔜 Blocked — waiting on photo reshoot |
+| Sprint 4 | M4 | Shop landing page (category hub) | ✅ Done |
+| Sprint 5 | M5 | Category pages × 6 (Candlesticks, Shofars & Goblets w/ picker, Trays & Bowls live; Kiddush, Business, Mezuzahs Coming Soon) | ⚠️ Partial (3/6 with photos) |
 | Sprint 6 | M6 | Custom Orders page | ✅ Done |
 | Sprint 7 | M7 | About page | ✅ Done |
 | Sprint 8 | M8 | Contact page | ✅ Done |
