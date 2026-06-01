@@ -9,7 +9,7 @@
   <meta property="og:title" content="Kiddush Cups, Sherman Art Works" />
   <meta property="og:description" content="Handmade glass Kiddush cups from Sherman Art Works. New photos coming soon, commission yours today, made in Israel and shipped worldwide." />
   <meta property="og:type" content="website" />
-  <meta property="og:image" content="https://res.cloudinary.com/doesupaf9/image/upload/w_1200,h_630,c_fit,q_auto,f_auto/WhatsApp_Image_2026-05-23_at_14.50.45_2_lutcx6.jpg" />
+  <meta property="og:image" content="https://res.cloudinary.com/doesupaf9/image/upload/w_1200,h_630,c_fit,q_auto,f_auto/goblet-menorah_va4q5g.jpg" />
 
   <link rel="icon" type="image/jpeg" href="https://res.cloudinary.com/doesupaf9/image/upload/w_32,h_32,c_fit,q_auto/WhatsApp_Image_2026-05-23_at_14.51.54_xv8lbd.jpg" />
 
@@ -18,7 +18,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Cormorant+Garamond:ital,wght@0,600;1,400&display=swap" rel="stylesheet" />
 
   <style>
-    :root { --bg:#faf7f2; --dark:#202020; --gold:#c9a85c; --brown:#8a6f40; --border:#ede5d8; --ff-body:Arial,sans-serif; --ff-disp:'Cinzel',serif; --ff-ital:'Cormorant Garamond',serif; }
+    :root { --bg:#faf7f2; --dark:#202020; --gold:#d4b572; --brown:#8a6f40; --border:#ede5d8; --ff-body:Arial,sans-serif; --ff-disp:'Cinzel',serif; --ff-ital:'Cormorant Garamond',serif; }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
     body { font-family: var(--ff-body); background: var(--bg); color: var(--dark); line-height: 1.6; }
@@ -66,7 +66,7 @@
     .breadcrumb-sep { color: rgba(201,168,92,0.4); margin: 0 0.5rem; }
     .hero-icon { font-size: 3.5rem; margin-bottom: 1.5rem; opacity: 0.7; }
     .page-eyebrow { font-family: var(--ff-disp); font-size: 0.65rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.25rem; }
-    .page-headline { font-family: var(--ff-disp); font-size: clamp(2rem, 4vw, 3rem); font-weight: 600; line-height: 1.1; color: #faf7f2; margin-bottom: 1.25rem; }
+    .page-headline { font-family: var(--ff-disp); font-size: clamp(1.55rem, 5.5vw, 3rem); font-weight: 600; line-height: 1.1; color: #faf7f2; margin-bottom: 1.25rem; }
     .page-subtitle { font-family: var(--ff-ital); font-style: italic; font-size: clamp(1rem, 1.8vw, 1.25rem); color: #9a8870; margin-bottom: 1.5rem; }
     .page-body { font-size: 0.95rem; line-height: 1.85; color: #7a6a50; font-weight: 300; max-width: 580px; margin: 0 auto 2.5rem; }
 
@@ -127,6 +127,29 @@
     }
     @media (max-width: 480px) {
       .footer-top { grid-template-columns: 1fr; gap: 2rem; }
+    }
+  
+    /* ── FLOATING WHATSAPP BUTTON ────────────── */
+    .floating-wa {
+      position: fixed;
+      bottom: 1.5rem; right: 1.5rem;
+      width: 56px; height: 56px;
+      background: #25d366; color: #fff;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+      z-index: 998;
+      transition: transform 0.2s, background 0.2s, box-shadow 0.2s;
+    }
+    .floating-wa:hover {
+      background: #1da851;
+      transform: scale(1.08);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+    }
+    [dir="rtl"] .floating-wa { right: auto; left: 1.5rem; }
+    @media (max-width: 600px) {
+      .floating-wa { bottom: 1rem; right: 1rem; width: 52px; height: 52px; }
+      [dir="rtl"] .floating-wa { right: auto; left: 1rem; }
     }
   </style>
 </head>
@@ -364,6 +387,14 @@
 
   document.addEventListener('DOMContentLoaded', () => setLang('en'));
 </script>
+
+
+<a id="floatingWa"
+   href="https://wa.me/972523482278?text=Hi%2C%20I%20have%20a%20question%20about%20Sherman%20Art%20Works."
+   target="_blank" rel="noopener noreferrer"
+   class="floating-wa" aria-label="Chat on WhatsApp" title="Chat on WhatsApp">
+  <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
 
 </body>
 </html>
