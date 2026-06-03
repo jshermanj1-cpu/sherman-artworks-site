@@ -167,6 +167,37 @@
     .btn-order { background: var(--green); color: #fff; border: 1px solid var(--green); text-decoration: none; }
     .btn-order:hover { background: #1da851; border-color: #1da851; }
 
+
+    /* CARD CAROUSEL */
+    .card-nav {
+      position: absolute; top: 50%; transform: translateY(-50%);
+      width: 34px; height: 34px;
+      background: rgba(32,32,32,0.65); color: var(--gold);
+      border-radius: 50%; border: none;
+      font-size: 1.4rem; line-height: 1;
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0; transition: opacity 0.2s, background 0.2s;
+      z-index: 2; cursor: pointer;
+    }
+    .product-card-img-wrap:hover .card-nav { opacity: 1; }
+    @media (hover: none) { .card-nav { opacity: 1; } }
+    .card-nav:hover { background: rgba(32,32,32,0.9); }
+    .card-prev { left: 0.45rem; }
+    .card-next { right: 0.45rem; }
+    [dir="rtl"] .card-prev { left: auto; right: 0.45rem; }
+    [dir="rtl"] .card-next { right: auto; left: 0.45rem; }
+    .card-dots {
+      position: absolute; bottom: 0.55rem;
+      left: 50%; transform: translateX(-50%);
+      display: flex; gap: 5px; z-index: 2;
+    }
+    .card-dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: rgba(255,255,255,0.5);
+      transition: background 0.2s;
+    }
+    .card-dot.active { background: var(--gold); }
+
     /* MODAL */
     .product-modal {
       position: fixed; inset: 0;
@@ -890,17 +921,20 @@
     const name = l === 'he' && product.name_he ? product.name_he : product.name_en;
     const desc = l === 'he' && product.description_he ? product.description_he : product.description_en;
     const firstPhoto = product.photos[0];
-    const extra = product.photos.length - 1;
+    const hasMany = product.photos.length > 1;
+    const dotsHtml = hasMany ? product.photos.map((_, i) =>
+      '<span class="card-dot' + (i === 0 ? ' active' : '') + '" id="dot-' + idx + '-' + i + '"></span>'
+    ).join('') : '';
     const measurementsHtml = product.measurements
       ? `<span class="product-card-measurements">${product.measurements}</span>`
       : '';
     return `
       <article class="product-card" onclick="openModal(${idx})">
-        <div class="product-card-img-wrap">
-          <img class="product-card-img" loading="lazy"
+        <div class="product-card-img-wrap" data-product-idx="${idx}">
+          <img class="product-card-img" id="card-img-${idx}" loading="lazy"
                src="${CDN}/w_600,c_fit,q_auto,f_auto/${firstPhoto}.jpg"
                alt="${escapeAttr(name)}" />
-          ${extra > 0 ? `<span class="photo-count-badge">+${extra}</span>` : ''}
+          ${hasMany ? `<button class="card-nav card-prev" onclick="cardPrev(${idx}, event)" aria-label="Previous photo">&#8249;</button><button class="card-nav card-next" onclick="cardNext(${idx}, event)" aria-label="Next photo">&#8250;</button><div class="card-dots" aria-hidden="true">${dotsHtml}</div>` : ''}
         </div>
         <div class="product-card-body">
           <h3 class="product-card-name">${escapeHtml(name)}</h3>
@@ -933,6 +967,39 @@
 
   function escapeHtml(s) { return (s || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); }
   function escapeAttr(s) { return (s || '').replace(/&/g, '&amp;').replace(/"/g, '&quot;'); }
+  // ── CARD CAROUSEL ──
+  const cardPhotoIdx = {};
+
+  function cardGoTo(productIdx, photoIdx) {
+    const p = PRODUCTS[productIdx];
+    if (!p || p.photos.length < 2) return;
+    const n = p.photos.length;
+    const i = ((photoIdx % n) + n) % n;
+    cardPhotoIdx[productIdx] = i;
+    const img = document.getElementById('card-img-' + productIdx);
+    if (img) {
+      img.src = CDN + '/w_600,c_fit,q_auto,f_auto/' + p.photos[i] + '.jpg';
+      const l = currentLang;
+      const name = l === 'he' && p.name_he ? p.name_he : p.name_en;
+      img.alt = name + ' — photo ' + (i + 1) + ' of ' + n;
+    }
+    p.photos.forEach(function(_, j) {
+      const dot = document.getElementById('dot-' + productIdx + '-' + j);
+      if (dot) dot.classList.toggle('active', j === i);
+    });
+  }
+
+  function cardPrev(productIdx, e) {
+    e.stopPropagation();
+    cardGoTo(productIdx, (cardPhotoIdx[productIdx] || 0) - 1);
+  }
+
+  function cardNext(productIdx, e) {
+    e.stopPropagation();
+    cardGoTo(productIdx, (cardPhotoIdx[productIdx] || 0) + 1);
+  }
+
+
 
   // ── MODAL ──
   let currentModalIdx = null;
