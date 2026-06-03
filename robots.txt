@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# Internal tools — not for public indexing
+Disallow: /product-builder.html
+Disallow: /glass-curate.html
+
+Sitemap: https://shermanartworks.com/sitemap.xml
