@@ -14,12 +14,18 @@
   <meta property="og:image" content="https://res.cloudinary.com/doesupaf9/image/upload/w_1200,h_630,c_fit,q_auto,f_auto/WhatsApp_Image_2026-05-23_at_14.50.45_2_lutcx6.jpg" />
 
   <!-- Favicon -->
-  <link rel="icon" type="image/jpeg" href="https://res.cloudinary.com/doesupaf9/image/upload/w_32,h_32,c_fit,q_auto/WhatsApp_Image_2026-05-23_at_14.51.54_xv8lbd.jpg" />
+  <link rel="icon" type="image/png" sizes="32x32" href="https://res.cloudinary.com/doesupaf9/image/upload/w_32,h_32,c_fill,g_auto,q_auto,f_png/WhatsApp_Image_2026-05-23_at_14.51.54_xv8lbd.jpg" />
+  <link rel="icon" type="image/png" sizes="16x16" href="https://res.cloudinary.com/doesupaf9/image/upload/w_16,h_16,c_fill,g_auto,q_auto,f_png/WhatsApp_Image_2026-05-23_at_14.51.54_xv8lbd.jpg" />
+  <link rel="apple-touch-icon" sizes="180x180" href="https://res.cloudinary.com/doesupaf9/image/upload/w_180,h_180,c_fill,g_auto,q_auto,f_png/WhatsApp_Image_2026-05-23_at_14.51.54_xv8lbd.jpg" />
 
   <!-- Google Fonts: Cinzel (display headlines), Cormorant Garamond (italic accent). Body uses system Arial. -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=Frank+Ruhl+Libre:wght@500;700&family=Heebo:wght@400;500;700&family=Cormorant+Garamond:ital,wght@1,400&display=swap" rel="stylesheet" />
+
+  <!-- LCP preload: hero image fetched early to improve Largest Contentful Paint -->
+  <link rel="preload" as="image" fetchpriority="high"
+        href="https://res.cloudinary.com/doesupaf9/image/upload/w_900,h_300,c_fit,q_auto,f_auto/WhatsApp_Image_2026-05-23_at_14.50.45_2_lutcx6.jpg" />
 
   <style>
     /* ── TOKENS ──────────────────────────────── */
@@ -327,6 +333,10 @@
       font-family: var(--ff-ital); font-style: italic;
       font-size: 0.92rem; color: var(--brown);
       margin-bottom: 1rem; min-height: 2.6em;
+    }
+    .cat-card-from {
+      font-family: var(--ff-disp); font-size: 0.78rem; letter-spacing: 0.04em;
+      color: var(--brown); margin-bottom: 0.75rem; display: block;
     }
     .cat-card-cta {
       display: inline-flex; align-items: center; gap: 0.45rem;
@@ -773,7 +783,7 @@
       <img id="hi1"
            src="https://res.cloudinary.com/doesupaf9/image/upload/w_900,h_300,c_fit,q_auto,f_auto/WhatsApp_Image_2026-05-23_at_14.50.45_2_lutcx6.jpg"
            alt="Handmade glass decorative bowl by Sherman Art Works"
-           width="900" height="300" />
+           width="900" height="300" fetchpriority="high" />
     </div>
     <div class="hero-img-sm">
       <img id="hi2"
@@ -812,6 +822,7 @@
       <div class="cat-card-body">
         <h3 class="cat-card-title" data-t="cat1_title"></h3>
         <p class="cat-card-desc"   data-t="cat1_desc"></p>
+        <span class="cat-card-from" data-min-ils="775"></span>
         <span class="cat-card-cta">
           <span data-t="cat_cta_browse"></span>
           <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 10 H16 M11 5 L16 10 L11 15"/></svg>
@@ -828,6 +839,7 @@
       <div class="cat-card-body">
         <h3 class="cat-card-title" data-t="cat2_title"></h3>
         <p class="cat-card-desc"   data-t="cat2_desc"></p>
+        <span class="cat-card-from" data-min-ils="473"></span>
         <span class="cat-card-cta">
           <span data-t="cat_cta_browse"></span>
           <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 10 H16 M11 5 L16 10 L11 15"/></svg>
@@ -837,25 +849,16 @@
 
     <a href="kiddush-cups.html" class="cat-card">
       <div class="cat-card-img-wrap">
-        <div class="cat-card-placeholder">
-          <span class="cat-card-placeholder-icon" aria-hidden="true">
-            <svg viewBox="0 0 64 80" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M14 6 H50 V22 C50 32 42 38 32 38 C22 38 14 32 14 22 Z"/>
-              <line x1="14" y1="12" x2="50" y2="12"/>
-              <path d="M32 38 V60"/>
-              <circle cx="32" cy="50" r="2.5"/>
-              <path d="M22 60 L18 70 H46 L42 60"/>
-              <line x1="32" y1="60" x2="32" y2="70"/>
-            </svg>
-          </span>
-        </div>
-        <div class="cat-card-badge" data-t="badge_soon"></div>
+        <img class="cat-card-img" loading="lazy" width="800" height="600"
+             src="https://res.cloudinary.com/doesupaf9/image/upload/w_800,h_600,c_fill,g_auto,q_auto,f_auto/goblet-menorah_va4q5g.jpg"
+             alt="Sherman Art Works kiddush cups and goblets" />
       </div>
       <div class="cat-card-body">
         <h3 class="cat-card-title" data-t="cat3_title"></h3>
         <p class="cat-card-desc"   data-t="cat3_desc"></p>
+        <span class="cat-card-from" data-min-ils="473"></span>
         <span class="cat-card-cta">
-          <span data-t="cat_cta_commission"></span>
+          <span data-t="cat_cta_browse"></span>
           <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 10 H16 M11 5 L16 10 L11 15"/></svg>
         </span>
       </div>
@@ -870,6 +873,7 @@
       <div class="cat-card-body">
         <h3 class="cat-card-title" data-t="cat4_title"></h3>
         <p class="cat-card-desc"   data-t="cat4_desc"></p>
+        <span class="cat-card-from" data-min-ils="1190"></span>
         <span class="cat-card-cta">
           <span data-t="cat_cta_browse"></span>
           <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 10 H16 M11 5 L16 10 L11 15"/></svg>
@@ -1136,6 +1140,7 @@
       badge_soon:          'Coming Soon',
       cat_cta_browse:      'Browse Collection',
       cat_cta_commission:  'Commission Yours',
+      cat_from:            'from',
 
       cat1_title:          'Candlesticks',
       cat1_desc:           'Shabbat candlesticks and ceremonial pairs, ready for your table.',
@@ -1214,6 +1219,7 @@
       badge_soon:          'בקרוב',
       cat_cta_browse:      'לקולקציה',
       cat_cta_commission:  'הזמינו אצלנו',
+      cat_from:            'מ-',
 
       cat1_title:          'פמוטים',
       cat1_desc:           'פמוטי שבת וזוגות לאירועים, מוכנים לשולחן שלכם.',
@@ -1316,8 +1322,16 @@
   }
 
   function updatePrices() {
-    // No product prices on the homepage anymore; product cards live on category pages.
-    // Currency state is preserved so category pages can use it when they're product-card based.
+    // Update "from ₪X" / "from $X" on category cards
+    const fromLabel = T[currentLang] && T[currentLang].cat_from ? T[currentLang].cat_from : 'from';
+    document.querySelectorAll('.cat-card-from[data-min-ils]').forEach(el => {
+      const ils = parseInt(el.dataset.minIls, 10);
+      if (currentCurrency === 'ILS' || !usdRate) {
+        el.textContent = fromLabel + ' ₪' + ils.toLocaleString('en-IL');
+      } else {
+        el.textContent = fromLabel + ' $' + Math.round(ils / usdRate).toLocaleString('en-US');
+      }
+    });
   }
 
   function setCurrency(cur) {
@@ -1342,6 +1356,7 @@
     html.dir  = l === 'he' ? 'rtl' : 'ltr';
     document.getElementById('btnEN').classList.toggle('active', l === 'en');
     document.getElementById('btnHE').classList.toggle('active', l === 'he');
+    updatePrices(); // re-render "from" label in current language + currency
   }
 
   // ── CONTACT FORM ───────────────────────────────
