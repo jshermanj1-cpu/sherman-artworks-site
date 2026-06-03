@@ -3,11 +3,28 @@
 
 ---
 
+## ⛔ COMMIT RULE — READ THIS FIRST
+
+**NEVER commit or push without the owner's explicit written approval.**
+
+- Always stop after completing and previewing work.
+- Show the owner what was done (screenshot + summary).
+- Wait for the owner to reply with **"approve"** or **"approved"** before running any `git commit` or `git push`.
+- This rule has no exceptions — not even for small fixes, typos, or "obvious" changes.
+- Violating this rule has happened before. Do not repeat it.
+
+The approval workflow:
+1. Do the work
+2. Preview + verify
+3. Summarise what changed
+4. **Wait for "approve"**
+5. Only then: `git add … && git commit … && git push`
+
+---
+
 ## Project Overview
 
 Sherman Art Works is a family-run handmade glass & Judaica business in Israel. The site is a **single-owner, vanilla HTML/CSS/JS site** (no framework, no backend, no build step) deployed to GitHub Pages. All pages are self-contained HTML files. There are two always-in-sync branches: `main` and `gh-pages`.
-
-**The golden rule: never commit without the owner's explicit "approve" or "approved".**
 
 ---
 
