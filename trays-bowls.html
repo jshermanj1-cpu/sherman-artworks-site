@@ -402,6 +402,77 @@
     [lang="he"] .about-title,
     [lang="he"] h1, [lang="he"] h2, [lang="he"] h3, [lang="he"] h4 { font-family: var(--ff-disp-he); letter-spacing: 0.02em; }
 
+  
+    /* ── SHOP DROPDOWN ────────────────────────── */
+    .nav-dropdown { position: relative; }
+    .nav-dropdown-toggle {
+      font-family: var(--ff-disp); font-size: 0.68rem; letter-spacing: 0.13em;
+      text-transform: uppercase; color: var(--dark);
+      background: none; border: none; padding: 0.5rem 0; cursor: pointer;
+      display: inline-flex; align-items: center; gap: 0.35rem;
+      transition: color 0.2s; min-height: 44px;
+    }
+    .nav-dropdown-toggle:hover,
+    .nav-dropdown-toggle[aria-expanded="true"] { color: var(--gold); }
+    .nav-dropdown-caret { width: 10px; height: 10px; transition: transform 0.2s; flex-shrink: 0; }
+    .nav-dropdown-toggle[aria-expanded="true"] .nav-dropdown-caret { transform: rotate(180deg); }
+    .nav-dropdown-menu {
+      position: absolute; top: calc(100% + 0.4rem); left: 0;
+      background: var(--bg); border: 1px solid var(--border); border-radius: 4px;
+      padding: 0.4rem 0; min-width: 250px;
+      box-shadow: 0 8px 24px rgba(32,32,32,0.1);
+      opacity: 0; visibility: hidden; transform: translateY(-4px);
+      transition: opacity 0.2s, transform 0.2s, visibility 0.2s;
+      z-index: 200;
+    }
+    .nav-dropdown-menu.open { opacity: 1; visibility: visible; transform: translateY(0); }
+    .nav-dropdown-menu a {
+      display: flex; align-items: center; justify-content: space-between; gap: 0.6rem;
+      padding: 0.7rem 1.25rem;
+      font-family: var(--ff-disp); font-size: 0.72rem;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--dark); min-height: 44px;
+      transition: background 0.15s, color 0.15s;
+    }
+    .nav-dropdown-menu a:hover { background: #f5f0e8; color: var(--gold); }
+    .nav-dropdown-badge {
+      font-family: var(--ff-disp); font-size: 0.5rem; letter-spacing: 0.12em;
+      color: var(--brown); border: 1px solid var(--border);
+      padding: 0.12rem 0.45rem; border-radius: 2px; white-space: nowrap;
+    }
+    .nav-dropdown-divider { height: 1px; background: var(--border); margin: 0.4rem 0; }
+    .nav-dropdown-all { color: var(--gold) !important; font-weight: 500; }
+    [dir="rtl"] .nav-dropdown-menu { left: auto; right: 0; }
+
+    /* Mobile shop accordion */
+    .mobile-shop { display: flex; flex-direction: column; border-bottom: 1px solid var(--border); }
+    .mobile-shop-toggle {
+      font-family: var(--ff-disp); font-size: 0.82rem; letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--dark); background: none; border: none;
+      padding: 0.85rem 0; min-height: 44px;
+      display: flex; align-items: center; justify-content: space-between;
+      cursor: pointer; width: 100%;
+    }
+    .mobile-shop-toggle svg { width: 14px; height: 14px; transition: transform 0.2s; flex-shrink: 0; }
+    .mobile-shop-toggle[aria-expanded="true"] svg { transform: rotate(180deg); }
+    .mobile-shop-toggle[aria-expanded="true"] { color: var(--gold); }
+    .mobile-shop-menu {
+      max-height: 0; overflow: hidden;
+      transition: max-height 0.3s ease-out;
+    }
+    .mobile-shop-menu.open { max-height: 600px; }
+    .mobile-shop-menu a {
+      display: flex; align-items: center; justify-content: space-between; gap: 0.6rem;
+      padding: 0.7rem 1.25rem;
+      font-family: var(--ff-disp); font-size: 0.72rem;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--brown);
+      min-height: 44px;
+    }
+    .mobile-shop-menu a:hover { color: var(--gold); }
+    .mobile-shop-menu a + a { border-top: 1px solid var(--border); }
+    .mobile-shop-all { color: var(--gold) !important; font-weight: 500; }
+
   </style>
 </head>
 <body>
@@ -427,7 +498,22 @@
       </div>
     </a>
     <ul class="nav-links" role="list">
-      <li><a href="index.html#shop"    data-t="nav_shop" class="nav-active"></a></li>
+      <li class="nav-dropdown">
+        <button type="button" class="nav-dropdown-toggle" aria-expanded="false" aria-haspopup="true" onclick="toggleShopDropdown(event)">
+          <span data-t="nav_shop"></span>
+          <svg class="nav-dropdown-caret" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 4.5 L6 7.5 L9 4.5" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="nav-dropdown-menu" role="menu">
+          <a href="candlesticks.html" role="menuitem" data-t="cat1_title"></a>
+          <a href="shofars-goblets.html" role="menuitem" data-t="cat2_title"></a>
+          <a href="kiddush-cups.html" role="menuitem"><span data-t="cat3_title"></span><span class="nav-dropdown-badge" data-t="badge_soon"></span></a>
+          <a href="trays-bowls.html" role="menuitem" data-t="cat4_title"></a>
+          <a href="business-gifts.html" role="menuitem"><span data-t="cat5_title"></span><span class="nav-dropdown-badge" data-t="badge_soon"></span></a>
+          <a href="mezuzahs.html" role="menuitem"><span data-t="cat6_title"></span><span class="nav-dropdown-badge" data-t="badge_soon"></span></a>
+          <div class="nav-dropdown-divider" role="separator"></div>
+          <a href="index.html#shop" role="menuitem" class="nav-dropdown-all" data-t="footer_all_collections"></a>
+        </div>
+      </li>
       <li><a href="custom-orders.html" data-t="nav_custom"></a></li>
       <li><a href="about.html"         data-t="nav_about"></a></li>
       <li><a href="contact.html"       data-t="nav_contact"></a></li>
@@ -438,7 +524,21 @@
   </nav>
   <div class="mobile-nav" id="mobileNav" aria-hidden="true">
     <ul role="list">
-      <li><a href="index.html#shop"    onclick="closeMobileNav()" data-t="nav_shop"></a></li>
+      <li class="mobile-shop">
+        <button type="button" class="mobile-shop-toggle" aria-expanded="true" aria-haspopup="true" onclick="toggleMobileShop(event)">
+          <span data-t="nav_shop"></span>
+          <svg viewBox="0 0 12 12" aria-hidden="true"><path d="M3 4.5 L6 7.5 L9 4.5" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="mobile-shop-menu open">
+          <a href="candlesticks.html" onclick="closeMobileNav()" data-t="cat1_title"></a>
+          <a href="shofars-goblets.html" onclick="closeMobileNav()" data-t="cat2_title"></a>
+          <a href="kiddush-cups.html" onclick="closeMobileNav()"><span data-t="cat3_title"></span><span class="nav-dropdown-badge" data-t="badge_soon"></span></a>
+          <a href="trays-bowls.html" onclick="closeMobileNav()" data-t="cat4_title"></a>
+          <a href="business-gifts.html" onclick="closeMobileNav()"><span data-t="cat5_title"></span><span class="nav-dropdown-badge" data-t="badge_soon"></span></a>
+          <a href="mezuzahs.html" onclick="closeMobileNav()"><span data-t="cat6_title"></span><span class="nav-dropdown-badge" data-t="badge_soon"></span></a>
+          <a href="index.html#shop" onclick="closeMobileNav()" class="mobile-shop-all" data-t="footer_all_collections"></a>
+        </div>
+      </li>
       <li><a href="custom-orders.html" onclick="closeMobileNav()" data-t="nav_custom"></a></li>
       <li><a href="about.html"         onclick="closeMobileNav()" data-t="nav_about"></a></li>
       <li><a href="contact.html"       onclick="closeMobileNav()" data-t="nav_contact"></a></li>
@@ -589,6 +689,13 @@
   const T = {
     en: {
       nav_shop:    'Shop',
+      cat1_title:  'Candlesticks',
+      cat2_title:  'Shofars & Goblets',
+      cat3_title:  'Kiddush Cups',
+      cat4_title:  'Trays & Bowls',
+      cat5_title:  'Business Gifts',
+      cat6_title:  'Mezuzahs',
+      badge_soon:  'Coming Soon',
       nav_custom:  'Custom Orders',
       nav_about:   'About',
       nav_contact: 'Contact',
@@ -625,6 +732,13 @@
     },
     he: {
       nav_shop:    'חנות',
+      cat1_title:  'פמוטים',
+      cat2_title:  'שופרות וגביעים',
+      cat3_title:  'כוסות קידוש',
+      cat4_title:  'מגשים וקערות',
+      cat5_title:  'מתנות עסקיות',
+      cat6_title:  'מזוזות',
+      badge_soon:  'בקרוב',
       nav_custom:  'הזמנות מיוחדות',
       nav_about:   'אודות',
       nav_contact: 'צור קשר',
@@ -881,6 +995,43 @@
   document.addEventListener('DOMContentLoaded', () => {
     setLang('en');
     loadUsdRate();
+  });
+</script>
+
+
+<script>
+  // Shop dropdown handlers (self-contained, no DOMContentLoaded dependency)
+  function toggleShopDropdown(e) {
+    if (e) e.stopPropagation();
+    const t = document.querySelector('.nav-dropdown-toggle');
+    const m = document.querySelector('.nav-dropdown-menu');
+    if (!t || !m) return;
+    const open = t.getAttribute('aria-expanded') === 'true';
+    t.setAttribute('aria-expanded', String(!open));
+    m.classList.toggle('open', !open);
+  }
+  function toggleMobileShop(e) {
+    if (e) e.stopPropagation();
+    const t = document.querySelector('.mobile-shop-toggle');
+    const m = document.querySelector('.mobile-shop-menu');
+    if (!t || !m) return;
+    const open = t.getAttribute('aria-expanded') === 'true';
+    t.setAttribute('aria-expanded', String(!open));
+    m.classList.toggle('open', !open);
+  }
+  document.addEventListener('click', (e) => {
+    if (e.target.closest('.nav-dropdown')) return;
+    const t = document.querySelector('.nav-dropdown-toggle');
+    const m = document.querySelector('.nav-dropdown-menu');
+    if (t && m) { t.setAttribute('aria-expanded','false'); m.classList.remove('open'); }
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key !== 'Escape') return;
+    document.querySelectorAll('.nav-dropdown-toggle, .mobile-shop-toggle').forEach(t => {
+      t.setAttribute('aria-expanded', 'false');
+      const sib = t.nextElementSibling;
+      if (sib) sib.classList.remove('open');
+    });
   });
 </script>
 
