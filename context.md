@@ -1,5 +1,5 @@
 # Sherman Art Works — New Chat Context Document
-**Date:** June 2026 | **Repo:** github.com/jshermanj1-cpu/sherman-artworks-site | **Live:** shermanartworks.com (GitHub Pages, gh-pages branch)
+**Date:** June 2026 (Sprint 15 complete) | **Repo:** github.com/jshermanj1-cpu/sherman-artworks-site | **Live:** shermanartworks.com (GitHub Pages, gh-pages branch)
 
 ---
 
@@ -69,25 +69,29 @@ Sherman Art Works is a family-run handmade glass & Judaica business in Israel. T
 |---|---|---|
 | `index.html` | Homepage — hero + 6-category shop grid + story + contact + footer | ✅ Live |
 | `candlesticks.html` | Category page — 1 product, 4 photos, ₪775 | ✅ Live |
-| `shofars-goblets.html` | Category page — 3 products (2 sections: Shofars + Goblets) | ✅ Live |
+| `shofars-goblets.html` | Category page — 3 products (Jerusalem Wine Horn + 2 goblets) | ✅ Live |
+| `kiddush-cups.html` | Category page — 2 cross-listed goblets + "more coming soon" section | ✅ Live (upgraded from Coming Soon) |
 | `trays-bowls.html` | Category page — 1 product (bowl, 4 photos, ₪1,190) | ✅ Live |
-| `kiddush-cups.html` | Coming Soon stub — SVG chalice icon, commission CTAs | ✅ Live |
 | `business-gifts.html` | Coming Soon stub — SVG gift-box icon, commission CTAs | ✅ Live |
 | `mezuzahs.html` | Coming Soon stub — SVG mezuzah icon, commission CTAs | ✅ Live |
 | `custom-orders.html` | Custom commissions page — 4-step flow + WhatsApp form | ✅ Live |
 | `about.html` | Brand story — 3 generations, craft values, studio | ✅ Live |
 | `contact.html` | Contact page — 3-method cards + form + FAQ accordion | ✅ Live |
+| `404.html` | Branded 404 page — full nav, hero, 3 CTAs, EN/HE, floating WA | ✅ Live |
+| `sitemap.xml` | 10 customer URLs, priorities (homepage 1.0 → coming soon 0.6) | ✅ Live |
+| `robots.txt` | Allows all; disallows product-builder.html + glass-curate.html | ✅ Live |
 | `product-builder.html` | Internal tool — photo grouping + JSON export for owner (not linked from site) | Tool only |
-| `glass-curate.html` | Old curation tool — orphaned, never committed, never linked | Delete when ready |
-| `TASK_LIST.md` | Full project roadmap (living doc) | Up to date |
-| `context.md` | This file — full context for new chat sessions | Up to date |
+| `TASK_LIST.md` | Full project roadmap (living doc) | ✅ Up to date |
+| `context.md` | This file — full context for new chat sessions | ✅ Up to date |
+
+> `glass-curate.html` was an orphaned internal tool — deleted in Sprint 15.
 
 ---
 
 ## Product Catalogue (current)
 
 ### Candlesticks (`candlesticks.html`)
-- **Glass Circle Candlesticks** — ₪775, 20cm × 25cm, "Handmade Murano-style glass candlesticks"
+- **Glass Circle Candlesticks** — ₪775, 20cm × 25cm
 - Photos: `IMG_9845_wsxhug`, `WhatsApp_Image_2026-05-23_at_14.51.06_1_q8pfxh`, `WhatsApp_Image_2026-05-23_at_14.51.06_2_mmafna`, `WhatsApp_Image_2026-05-23_at_14.51.06_e7jg95`
 
 ### Shofars & Goblets (`shofars-goblets.html`) — 2 sections
@@ -95,9 +99,40 @@ Sherman Art Works is a family-run handmade glass & Judaica business in Israel. T
 - **Lion of Judah Goblet** — ₪473, 4 photos: `goblet-lion` + variants
 - **Menorah Goblet** — ₪473, 3 photos: `goblet-menorah`, `goblets-jerusalem-menorah`
 
+### Kiddush Cups (`kiddush-cups.html`) — cross-listed from Shofars & Goblets
+- **Lion of Judah Goblet** — ₪473, 4 photos (same product, cross-listed)
+- **Menorah Goblet** — ₪473, 3 photos (same product, cross-listed)
+- "More designs coming soon" section with commission CTAs
+- Cross-listing is manual: if goblet prices/photos change, update both pages.
+
 ### Trays & Bowls (`trays-bowls.html`)
-- **Glass Decorative Bowl** — ₪1,190, 15cm × 30cm, long handcrafted description
+- **Glass Decorative Bowl** — ₪1,190, 15cm × 30cm
 - Photos: 4 × `WhatsApp_Image_2026-05-23_at_14.50.45_*` variants
+
+---
+
+## Homepage Category Cards (`index.html` — `.cat-card` grid)
+
+All 4 live category cards use **square frames** (1:1 aspect ratio) with Cloudinary smart crop:
+
+| Card | Cloudinary public_id | Transformation |
+|---|---|---|
+| Candlesticks | `WhatsApp_Image_2026-05-23_at_14.51.06_1_q8pfxh` | `w_600,h_600,c_fill,g_auto,q_auto,f_auto` |
+| Shofars & Goblets | `horn-jerusalem_k5fryr` | `w_600,h_600,c_fill,g_auto,q_auto,f_auto` |
+| Kiddush Cups | `goblet-menorah_va4q5g` | `w_600,h_600,c_fill,g_auto,q_auto,f_auto` |
+| Trays & Bowls | `WhatsApp_Image_2026-05-23_at_14.50.45_2_lutcx6` | `w_600,h_600,c_fill,g_auto,q_auto,f_auto` |
+
+Note: Shofars card uses `horn-jerusalem_k5fryr` (close-up horn photo) instead of the original panoramic goblets photo, because the wide panoramic (800×403) cropped badly to a square — the horn close-up crops dramatically and cleanly.
+
+CSS:
+```css
+.cat-card-img-wrap { width: 100%; aspect-ratio: 1 / 1; overflow: hidden; background: #f5f0e8; }
+.cat-card-img      { width: 100%; height: 100%; object-fit: cover; object-position: center; transition: transform 0.5s; }
+```
+
+Coming Soon cards (Business Gifts, Mezuzahs) use inline SVG placeholders in the same square frame.
+
+"From ₪X / $Y" prices are shown on all 4 live cards. The min price is stored as `data-min-ils="XXX"` on `.cat-card-from` spans and populated by `updatePrices()` (respects the ₪/$ toggle).
 
 ---
 
@@ -108,7 +143,7 @@ Sherman Art Works is a family-run handmade glass & Judaica business in Israel. T
 **Shop dropdown:**
 - Candlesticks → `candlesticks.html`
 - Shofars & Goblets → `shofars-goblets.html`
-- Kiddush Cups `[Coming Soon]` → `kiddush-cups.html`
+- Kiddush Cups → `kiddush-cups.html` (live product page — no "Coming Soon" badge in nav)
 - Trays & Bowls → `trays-bowls.html`
 - Business Gifts `[Coming Soon]` → `business-gifts.html`
 - Mezuzahs `[Coming Soon]` → `mezuzahs.html`
@@ -117,6 +152,25 @@ Sherman Art Works is a family-run handmade glass & Judaica business in Israel. T
 **Mobile hamburger**: Same 4 items; Shop expands as an accordion, **categories shown by default (expanded)**, tap to collapse.
 
 **Dropdown JS**: Self-contained `toggleShopDropdown()` + `toggleMobileShop()` functions injected into every page. Click-outside closes dropdown. Escape key closes. RTL-aware (menu anchors to right in Hebrew).
+
+---
+
+## GA4 Analytics (`G-J55QNV6GF1`)
+
+Installed on all 11 pages (including 404.html). Each page has:
+1. The GA4 `<script>` snippet immediately after the viewport `<meta>` tag.
+2. A `trackGA4(eventName, params)` helper function.
+3. A delegated `document.addEventListener('click', ...)` that fires these 5 event types:
+
+| Event name | Trigger |
+|---|---|
+| `whatsapp_click` | Any `[href*="wa.me"]` link |
+| `view_details` | Any `[data-action="view-details"]` button |
+| `email_click` | Any `[href^="mailto:"]` link |
+| `category_browse` | Any `[data-action="browse-category"]` link |
+| `commission_click` | Any `[data-action="commission"]` link |
+
+GA4 property verified in Google Search Console. Sitemap (`sitemap.xml`) submitted at Search Console.
 
 ---
 
@@ -135,6 +189,10 @@ Sherman Art Works is a family-run handmade glass & Judaica business in Israel. T
       .btn-cart      ← "Order on WhatsApp"
 ```
 Photo badge `+N photos` when product has multiple images.
+
+### Inline Photo Carousel
+Scroll through product photos directly on the card (no modal needed). Arrows + dot indicators.
+Dots update on scroll; arrows call `scrollCarousel(card, dir)`. Touch-swipe works via `scroll-snap-type`.
 
 ### View Details Modal
 Split-screen (gallery left + info right on desktop, stacked on mobile).
@@ -162,9 +220,26 @@ Fixed bottom-right, 56px circle, green `#25d366`, on every page. `[dir="rtl"]` f
 
 ### Coming Soon Pages
 - Page hero uses inline SVG icon (NOT emoji — ui-ux-pro-max rule: no-emoji-icons)
-- Kiddush Cups: chalice SVG | Business Gifts: gift-box SVG | Mezuzahs: mezuzah-case SVG
-- Each has: breadcrumb → eyebrow "Coming Soon" → headline → subtitle → body → 2 CTAs (Commission + WhatsApp)
+- Kiddush Cups: now a real page. Business Gifts: gift-box SVG. Mezuzahs: mezuzah-case SVG.
+- Each Coming Soon page has: breadcrumb → eyebrow "Coming Soon" → headline → subtitle → body → 2 CTAs (Commission + WhatsApp)
 - "Browse Our Other Collections" row at bottom (no second ornament)
+
+---
+
+## Favicon
+
+Three sizes, all served from Cloudinary as PNG with square smart crop:
+- 16×16: `w_16,h_16,c_fill,g_auto,f_png`
+- 32×32: `w_32,h_32,c_fill,g_auto,f_png`
+- 180×180 (apple-touch-icon): `w_180,h_180,c_fill,g_auto,f_png`
+
+Image used: `WhatsApp_Image_2026-05-23_at_14.51.06_1_q8pfxh` (candlestick close-up).
+
+---
+
+## LCP Optimisation
+
+Homepage hero image has a `<link rel="preload" as="image" fetchpriority="high">` in `<head>` to improve Largest Contentful Paint. This is the only page with the preload — add to other pages if their hero image is identified as LCP element.
 
 ---
 
@@ -183,40 +258,41 @@ Fixed bottom-right, 56px circle, green `#25d366`, on every page. `[dir="rtl"]` f
 
 | Commit | Description |
 |---|---|
+| `10381e9` | Fix category card image display — square frames, smart crop, horn photo for Shofars |
+| `036953a` | Fix category card images + update task list |
+| `cc0cd2a` | Remove dead bestseller_badge keys + delete glass-curate.html |
+| `4dcf51a` | Add aria fallbacks + GA4 event tracking to all 11 pages |
+| `21ae72d` | Add GA4 analytics to all 11 pages (M11.1.1) |
+| `9dbb996` | Add sitemap.xml + robots.txt (M11.1.2 dev work) |
+| `22a2570` | Strengthen commit rule in context.md |
+| `376b75a` | Add 404 page, upgrade favicons, add from-prices, fix Kiddush card, LCP preload |
+| `7126208` | Update TASK_LIST.md: Sprint 14 complete |
+| `cbfc25a` | Add goblets to Kiddush Cups; remove Coming Soon badge from nav |
+| `8c51bac` | Add inline photo carousel to product cards |
+| `cb31962` | Add context.md — full session onboarding document |
 | `f6715df` | Add Shop dropdown nav with 6 categories (desktop + mobile) |
 | `98625de` | UI/UX overhaul: Fraunces + Inter, AA contrast, SVG icons, CTA hierarchy |
-| `9518efb` | Add M13: bug bash & security review findings |
-| `5c3d36c` | Expand M11 plan: 3 tiers, owner-vs-dev split, recommended order |
-| `debc41d` | Shop merge + product card system with carousel & modal |
-| `a1281e0` | Add floating WhatsApp + per-category OG + brighter gold + mobile headlines |
-| `81ffa83` | Restyle: charcoal dark + Arial body font |
-| `d5df83b` | M4-M5: shop landing + 6 category pages + nav rewire |
-| `ad5bc54` | M8: add standalone contact page + wire nav links site-wide |
 
 ---
 
 ## Pending / Open Issues
 
-### 🔴 Blockers
-1. **Replace temp WhatsApp number** `+972523482278` — 20 occurrences across all pages. Owner provides official business number → single Python find-and-replace script.
-2. **Rotate GitHub PAT** — was shown in chat. Owner revokes at github.com/settings/tokens, generates new one, sends to dev.
+### 🔴 Blockers (owner action required)
+1. **Replace temp WhatsApp number** `+972523482278` — ~20 occurrences across all pages. Owner provides official business number → single Python find-and-replace script, done in 5 min.
+2. **Rotate GitHub PAT** — was shown in chat. Owner revokes at github.com/settings/tokens, generates new one.
 
-### 🟡 Important (fix soon)
-3. **sitemap.xml + robots.txt** — needed for Google Search Console (M11.1.2). `robots.txt` should block `product-builder.html`.
-4. **aria-label fallbacks** on JS-populated nav `<a data-t="...">` links — empty if JS fails to load.
-5. **Diversify OG images** — 5 pages share the same bowl photo (index, about, contact, custom-orders, mezuzahs). Owner needs to pick better representative photos.
-
-### 🟢 Polish
-6. Remove unused `bestseller_badge` translation key from `index.html`
-7. Delete orphaned `glass-curate.html` from working tree
-8. Block `product-builder.html` via robots.txt (or accept it's publicly accessible — no security risk)
+### 🟡 Important (owner action required)
+3. **WhatsApp Business profile** — install WA Business app, configure logo/hours/away message (M11.1.3)
+4. **New product photos** (M9) — photograph kiddush cups, trays, business gifts, mezuzahs → upload to Cloudinary → use `product-builder.html` to group + export JSON → paste JSON to dev
+5. **Diversify OG images** (M13.2.1) — 5 pages share the same bowl photo (index, about, contact, custom-orders, mezuzahs). Owner picks better photos.
+6. **TikTok handle** (M0-11) — send handle → dev adds to footer site-wide (XS task)
 
 ### 🔜 Major upcoming milestones
-- **M9**: Full product catalogue — needs new photos for kiddush cups / trays / business gifts / mezuzahs. Use `product-builder.html` to group photos + export JSON, then paste JSON to dev to update `PRODUCTS` array in the relevant page.
+- **M9**: Full product catalogue — needs new photos. Use `product-builder.html` to group photos + export JSON, then paste JSON to dev to update `PRODUCTS` array.
 - **M10**: Hebrew quality pass — needs native Hebrew speaker (M0-6)
-- **M11**: Marketing — GA4, Google Search Console + sitemap, WhatsApp Business profile, Instagram/TikTok wiring, newsletter signup bar
+- **M11 Tier 2**: Newsletter bar, Pinterest "Pin It", TikTok footer link
 - **M12**: Stripe checkout — owner creates Stripe account first (M0-3)
-- **Full launch**: After M9 photos + M11 foundational tier (GA4 + Search Console + WA Business)
+- **Full launch**: After M9 photos + M0-1 real WhatsApp number
 
 ---
 
@@ -243,18 +319,18 @@ GitHub Pages serves from `gh-pages` branch. `.nojekyll` file in root suppresses 
 
 Installed globally at `C:\Users\User\.claude\skills\` — 7 sub-skills: `ui-ux-pro-max`, `design`, `design-system`, `ui-styling`, `brand`, `banner-design`, `slides`. Requires session restart to activate. Python 3.8 available on this machine.
 
-**Skill audit verdict for Sherman (June 2026):**
-- Style: "Liquid Glass" / Artisan warmth direction chosen
-- Typography: Fraunces + Inter (English), Frank Ruhl Libre + Heebo (Hebrew) — **already implemented**
-- Contrast: `--brown` upgraded from #8a6f40 to #6a5530 (passes AA 4.5:1) — **already implemented**
-- Icons: no emoji as structural icons — use inline SVG — **already implemented**
-- CTA hierarchy: one primary per screen — **already implemented**
+**Skill audit verdict for Sherman (June 2026) — all implemented:**
+- Style: "Liquid Glass" / Artisan warmth direction
+- Typography: Fraunces + Inter (English), Frank Ruhl Libre + Heebo (Hebrew)
+- Contrast: `--brown` #6a5530 (passes AA 4.5:1), `--footer-text` #a89678 (AA on dark)
+- Icons: no emoji as structural icons — inline SVG only
+- CTA hierarchy: one primary per screen
 
 ---
 
 ## Python Helper Scripts (site root)
 
-All Python 3.8 compatible (no lowercase generic type hints). All already applied — safe to delete after confirming.
+All Python 3.8 compatible (no lowercase generic type hints). All already applied — safe to delete.
 
 | Script | Purpose | Safe to delete? |
 |---|---|---|
