@@ -1,0 +1,110 @@
+[
+  {
+    "id": "glass-circle-candlesticks",
+    "category": "candlesticks",
+    "pages": ["candlesticks.html"],
+    "name_en": "Glass Circle Candlesticks",
+    "name_he": "פמוטי זכוכית עגולות",
+    "description_en": "Handmade Murano-style glass candlesticks — traditional family method candle holders.",
+    "description_he": "פמוטי זכוכית בעבודת יד בסגנון מוראנו — בשיטה המסורתית המשפחתית.",
+    "measurements": "20cm × 25cm",
+    "price_ils": 775,
+    "photos": [
+      "IMG_9845_wsxhug",
+      "WhatsApp_Image_2026-05-23_at_14.51.06_1_q8pfxh",
+      "WhatsApp_Image_2026-05-23_at_14.51.21_srqp13",
+      "WhatsApp_Image_2026-05-23_at_14.51.21_1_dawyk2"
+    ],
+    "personalisable": false
+  },
+  {
+    "id": "jerusalem-wine-horn",
+    "category": "shofars-goblets",
+    "pages": ["shofars-goblets.html"],
+    "name_en": "Jerusalem Wine Horn",
+    "name_he": "שופר ירושלים",
+    "description_en": "Traditional wine horn covered in silver and symbols.",
+    "description_he": "שופר מסורתי מצופה כסף ומעוטר בסמלים.",
+    "measurements": "",
+    "price_ils": 850,
+    "photos": [
+      "horn-jerusalem_k5fryr",
+      "horn-grapes_al7x2k",
+      "horn-grape-name_kwnrnd",
+      "horn-crown_d5xewt",
+      "horn-edge_jo4dqu"
+    ],
+    "personalisable": true
+  },
+  {
+    "id": "lion-of-judah-goblet",
+    "category": "shofars-goblets",
+    "pages": ["shofars-goblets.html", "kiddush-cups.html"],
+    "name_en": "Lion of Judah Goblet",
+    "name_he": "גביע אריה יהודה",
+    "description_en": "Traditional wine goblet made from a rams horn. Lion in repoussé silver on an ornate base.",
+    "description_he": "גביע יין מסורתי העשוי מקרן איל. אריה בעבודת ריקוע כסף על בסיס מעוטר.",
+    "measurements": "",
+    "price_ils": 473,
+    "photos": [
+      "goblet-lion_dcyxhp",
+      "goblet-lion-02_zm8s7n",
+      "goblet-lion-03_pde785",
+      "goblets-lion_rwk2wu"
+    ],
+    "personalisable": false
+  },
+  {
+    "id": "menorah-goblet",
+    "category": "shofars-goblets",
+    "pages": ["shofars-goblets.html", "kiddush-cups.html"],
+    "name_en": "Menorah Goblet",
+    "name_he": "גביע מנורה",
+    "description_en": "Traditional wine goblet made from a rams horn, with a seven-branched menorah encircling the cup.",
+    "description_he": "גביע יין מסורתי העשוי מקרן איל, עם מנורה בעלת שבעה קנים סביב הגביע.",
+    "measurements": "",
+    "price_ils": 473,
+    "photos": [
+      "goblet-menorah_va4q5g",
+      "goblet-menorah-02_cm6vnc",
+      "goblets-jerusalem-menorah_xms7et"
+    ],
+    "personalisable": false
+  },
+  {
+    "id": "glass-decorative-bowl",
+    "category": "trays-bowls",
+    "pages": ["trays-bowls.html"],
+    "name_en": "Glass Decorative Bowl",
+    "name_he": "קערת נוי גדולה",
+    "description_en": "A handcrafted decorative bowl with a unique custom design, featuring an organic, asymmetrical silhouette and a glossy marbled finish in soft seafoam white tones. The bowl's fluid, irregular edges resemble flowing fabric or flower petals, giving it a modern sculptural aesthetic. Its semi-translucent surface reflects light beautifully, with subtle earthy veining throughout, emphasising its artisanal, one-of-a-kind character.",
+    "description_he": "קערת נוי גדולה בעבודת יד עם עיצוב ייחודי, צללית אורגנית א-סימטרית וגימור משויש מבריק בגווני לבן ים רכים. הקצוות הזורמים והלא-סדירים מזכירים בד או עלי כותרת, ומקנים לקערה אסתטיקה פיסולית מודרנית. המשטח החצי שקוף משקף אור בצורה מרהיבה, עם עידון אדמתי לאורכו, ומדגיש את האופי האישי וייחודי שלה.",
+    "measurements": "15cm × 30cm",
+    "price_ils": 1190,
+    "photos": [
+      "WhatsApp_Image_2026-05-23_at_14.50.45_2_lutcx6",
+      "WhatsApp_Image_2026-05-23_at_14.50.45_3_qpy5d7",
+      "WhatsApp_Image_2026-05-23_at_14.50.46_uqm7mk",
+      "WhatsApp_Image_2026-05-23_at_14.50.47_ayz1zr"
+    ],
+    "personalisable": false
+  },
+  {
+    "id": "ram-mezuzah",
+    "category": "mezuzahs",
+    "pages": ["mezuzahs.html"],
+    "name_en": "Ram Mezuzah",
+    "name_he": "מזוזת ראם",
+    "description_en": "Handmade Ram horn Mezuzah case covered in 925 silver, shaped and finished by hand in our studio in Israel. A unique and meaningful piece for your home or as a gift.\n* mezuzah case doesn't include the parchment",
+    "description_he": "בית מזוזה מקרן ראם מצופה כסף 925, עשוי ביד בסטודיו שלנו בישראל. יצירה ייחודית ומשמעותית לביתכם או כמתנה.\n* בית המזוזה אינו כולל את הקלף",
+    "measurements": "",
+    "price_ils": 700,
+    "photos": [
+      "mezuzah_reem_01_fwfvrc",
+      "mezuzah_reem_02_mh0szh",
+      "mezuzah_reem_03_eb6ink",
+      "mezuzah_reem_04_e7gjcb"
+    ],
+    "personalisable": false
+  }
+]
