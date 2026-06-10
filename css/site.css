@@ -562,15 +562,16 @@ footer .logo-sub  { color: var(--footer-text); }
   .modal-info         { padding: 1.5rem 1.25rem; }
 }
 @media (max-width: 768px) {
-  .top-bar            { padding: 0.4rem 1rem; }
-  #rateNote           { display: none; }
-  .hamburger          { display: flex; }
-  .nav-links          { display: none; }
-  nav                 { padding: 0.75rem 1rem; }
-  .products-section   { padding: 2.5rem 1rem 1rem; }
-  .custom-band        { padding: 3rem 1rem; }
-  .footer-top         { grid-template-columns: 1fr 1fr; }
-  .footer-bottom      { flex-direction: column; gap: 0.5rem; text-align: center; }
+  .top-bar                  { padding: 0.4rem 1rem; }
+  #rateNote                 { display: none; }
+  [data-t="topbar_right"]   { display: none; }
+  .hamburger                { display: flex; }
+  .nav-links                { display: none; }
+  nav                       { padding: 0.75rem 1rem; }
+  .products-section         { padding: 2.5rem 1rem 1rem; }
+  .custom-band              { padding: 3rem 1rem; }
+  .footer-top               { grid-template-columns: 1fr 1fr; }
+  .footer-bottom            { flex-direction: column; gap: 0.5rem; text-align: center; }
 }
 @media (max-width: 600px) {
   .floating-wa { bottom: 1rem; right: 1rem; width: 52px; height: 52px; }

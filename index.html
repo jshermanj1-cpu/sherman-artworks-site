@@ -286,6 +286,18 @@
 .corporate-tag   { font-family: var(--ff-disp); font-size: 0.62rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; }
 .corporate-title { font-family: var(--ff-disp); font-size: clamp(1.4rem, 2.4vw, 2rem); font-weight: 600; color: #faf7f2; margin-bottom: 1rem; line-height: 1.2; }
 .corporate-sub   { font-size: 0.93rem; color: var(--footer-text); font-weight: 300; line-height: 1.85; margin-bottom: 2.5rem; }
+@media (max-width: 768px) {
+  .hero          { grid-template-columns: 1fr; padding: 3rem 1.25rem 2.5rem; gap: 1.5rem; }
+  .category-grid { grid-template-columns: repeat(2, 1fr); gap: 1.25rem; }
+  .story-grid    { grid-template-columns: 1fr; gap: 2rem; }
+  .contact-grid  { grid-template-columns: 1fr; gap: 2.5rem; }
+  .contact-inner { padding: 3rem 1.25rem; }
+  .section       { padding: 3.5rem 1.25rem; }
+  .hero-body     { max-width: 100%; margin-bottom: 1.75rem; }
+}
+@media (max-width: 480px) {
+  .category-grid { grid-template-columns: 1fr; }
+}
 </style>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Sherman Art Works","url":"https://shermanartworks.com","logo":"https://res.cloudinary.com/doesupaf9/image/upload/w_400,h_400,c_fill,g_auto,q_auto,f_auto/WhatsApp_Image_2026-05-23_at_14.51.54_xv8lbd.jpg","description":"Handmade glass Judaica from Israel","contactPoint":{"@type":"ContactPoint","contactType":"customer service","url":"https://wa.me/972523482278"}}</script>
   <link rel="canonical" href="https://shermanartworks.com/" />

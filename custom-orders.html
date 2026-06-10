@@ -192,6 +192,13 @@
     }
 .form-email-alt:hover { border-color: var(--dark); color: var(--dark); }
 .form-note { font-size: 0.74rem; color: var(--brown); text-align: center; margin-top: 0.75rem; }
+@media (max-width: 768px) {
+  .steps-grid { grid-template-columns: repeat(2, 1fr); }
+  .form-inner   { grid-template-columns: 1fr; padding: 3rem 1.25rem; gap: 2.5rem; }
+}
+@media (max-width: 480px) {
+  .steps-grid { grid-template-columns: 1fr; }
+}
 </style>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Sherman Art Works","item":"https://shermanartworks.com"},{"@type":"ListItem","position":2,"name":"Custom Orders","item":"https://shermanartworks.com/custom-orders.html"}]}</script>
   <link rel="canonical" href="https://shermanartworks.com/custom-orders.html" />
