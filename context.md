@@ -24,18 +24,18 @@ The approval workflow:
 
 ## Project Overview
 
-Sherman Art Works is a family-run handmade glass & Judaica business in Israel. The site is a **single-owner, vanilla HTML/CSS/JS site** (no framework, no backend, no build step) deployed to GitHub Pages. All pages are self-contained HTML files. There are two always-in-sync branches: `main` and `gh-pages`.
+Sherman Art Works is a family-run handmade glass & Judaica business in Israel. The site is a **single-owner, vanilla HTML/CSS/JS site** (no framework, no backend, no build step) deployed to GitHub Pages. All pages are self-contained HTML files. **Single branch: `main`** — GitHub Pages serves directly from `main`. Push to main = live in ~1 minute. No merge step needed.
 
 ---
 
 ## Technology Stack
 
 - **HTML**: Self-contained per page (no shared JS/CSS files). Each page duplicates nav/footer/styles.
-- **Hosting**: GitHub Pages from `gh-pages` branch. After each commit to `main`, we manually `git merge main` into `gh-pages` and push.
+- **Hosting**: GitHub Pages from `main` branch. Push to `main` = live in ~1 min. `gh-pages` branch deleted June 2026.
 - **Fonts**: Fraunces (display/headlines, replaced Cinzel), Inter (body, replaced Arial), Cormorant Garamond (italic accents only). Hebrew: Frank Ruhl Libre (headlines), Heebo (body). All loaded via Google Fonts.
 - **i18n**: Runtime EN/HE switching via `data-t` attributes + a `T = { en: {...}, he: {...} }` object in each page's inline `<script>`. RTL via `html[dir="rtl"]`. `setLang('he')` swaps all text and flips layout.
 - **Currency**: Live ILS↔USD conversion via `open.er-api.com/v6/latest/USD` (GET-only, no user data sent). Fallback rate 3.75 ILS/USD with disclaimer. Conversion: `ils / usdRate`.
-- **Contact/Orders**: WhatsApp-first (no backend). `wa.me/972523482278` — **⚠️ TEMP NUMBER, needs replacing with official business WhatsApp**.
+- **Contact/Orders**: WhatsApp-first (no backend). `wa.me/972523482278` — ✅ official business number.
 - **Images**: Cloudinary CDN, cloud name `doesupaf9`. URL pattern: `https://res.cloudinary.com/doesupaf9/image/upload/{transformations}/{public_id}.jpg` — **folder names are NOT in URLs**, only the bare public_id.
 
 ---
@@ -59,7 +59,7 @@ Sherman Art Works is a family-run handmade glass & Judaica business in Israel. T
 --fs-lg: 1.125rem; --fs-xl: 1.5rem; --fs-2xl: 2.25rem; --fs-3xl: 3rem;
 ```
 
-`WA_NUMBER = '972523482278'` (appears ~20× across all pages as a JS constant — needs replacing)
+`WA_NUMBER = '972523482278'` — official business number, appears across all pages as a JS constant.
 
 ---
 
@@ -300,18 +300,12 @@ Homepage hero image has a `<link rel="preload" as="image" fetchpriority="high">`
 
 ```bash
 # After changes + owner approval:
-git add <specific files>     # never git add -A (risk of committing .env etc.)
+git add <specific files>     # never git add -A (risk of committing secrets etc.)
 git commit -m "..."
 git push origin main
-
-# Sync gh-pages:
-git checkout gh-pages
-git merge main --no-edit
-git push origin gh-pages
-git checkout main
 ```
 
-GitHub Pages serves from `gh-pages` branch. `.nojekyll` file in root suppresses Jekyll. CDN propagation ~1 minute after push.
+GitHub Pages serves directly from `main` branch. `.nojekyll` file suppresses Jekyll. Live in ~1 minute after push. No gh-pages merge step — that branch was deleted June 2026.
 
 ---
 
