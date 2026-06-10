@@ -1,6 +1,6 @@
 # Sherman Art Works — Product Task List
 
-> Last updated: June 2026 (Sprint 18 in progress — shopping cart Phase A) | PM: Claude | Owner: Sherman Family
+> Last updated: June 2026 (Sprint 19 in progress — legal, trust & social proof) | PM: Claude | Owner: Sherman Family
 > Active file: `sherman-artworks-site/` | Repo: github.com/jshermanj1-cpu/sherman-artworks-site
 
 ---
@@ -242,35 +242,37 @@ All category cards show real product photos. "From ₪X / $X" prices shown on al
 
 ---
 
-## MILESTONE 17 — Shopping Cart Phase A 🔜 IN PROGRESS (Sprint 18)
+## MILESTONE 17 — Shopping Cart Phase A ✅ COMPLETE (Sprint 18)
 
 **Goal:** WhatsApp-first cart — customers add items, review totals, then checkout via pre-filled WA message. No payment gateway needed for Phase A.
 
 | Step | Task | Files | Status |
 |---|---|---|---|
-| 0 | Verify `data/products.json` has all required fields (slug, category, priceIls, photos) | `data/products.json` | ✅ Done (Sprint 17) |
-| 1 | `js/cart.js` — cart store: `addItem()`, `removeItem()`, `updateQty()`, `getCart()`, `clearCart()`, localStorage key `sa_cart`, custom event `sa:cart-change` | `js/cart.js` | 🔜 |
-| 2 | `css/cart.css` — drawer styles: slide-in panel, cart badge (on nav icon), item rows, qty stepper, totals line, checkout CTA button | `css/cart.css` | 🔜 |
-| 3 | Cart drawer HTML — inject `#cart-drawer` + `#cart-overlay` into all 11 pages; nav badge `<span id="cart-count">` | all `.html` | 🔜 |
-| 4 | "Add to Cart" button on product cards (category pages) + in product modal | category `.html` | 🔜 |
-| 5 | `checkout.html` — order summary table, ILS/USD toggle, WhatsApp checkout CTA (builds itemised WA message from cart), empty-cart state, breadcrumb | `checkout.html` | 🔜 |
-| 6 | GA4 ecommerce events — `add_to_cart`, `view_cart`, `begin_checkout` (WA click = purchase intent) | `js/site.js` + `js/cart.js` | 🔜 |
-| 7 | Wire `<script src="js/cart.js">` into all 11 pages + `checkout.html` | all `.html` | 🔜 |
-| 8 | QA: add items → adjust qty → remove item → checkout → empty cart → HE locale → mobile 375px | browser | 🔜 |
+| 0 | Verify `data/products.json` has all required fields (slug, category, priceIls, photos) | `data/products.json` | ✅ |
+| 1 | `js/cart.js` — cart store, WA message builder, slide-in drawer, nav badge, modal btn, GA4 events | `js/cart.js` | ✅ |
+| 2 | `css/cart.css` — drawer, nav badge, card stacked layout, modal CTA, checkout page styles | `css/cart.css` | ✅ |
+| 3 | Cart drawer + nav badge injected by cart.js (idempotent) on all 11 pages | all `.html` | ✅ |
+| 4 | Gold "Add to Cart" button in all 5 category page `buildCard()` templates + modal btn | category `.html` | ✅ |
+| 5 | `checkout.html` — order table, ILS/USD totals, WA CTA, empty state, bilingual, canonical, JSON-LD | `checkout.html` | ✅ |
+| 6 | GA4 ecommerce: `add_to_cart`, `view_cart`, `begin_checkout` | `js/cart.js` | ✅ |
+| 7 | `<script src="js/cart.js">` wired into all 11 pages + checkout.html | all `.html` | ✅ |
+| 8 | QA: add items → qty adjust → remove → checkout → empty cart → HE locale → WA message verified | browser | ✅ |
+
+**Bugs caught + fixed during QA:** `renderCheckout` not re-called on rate load or lang switch → added duck-typed hooks to `loadUsdRate()` and `setLang()` in site.js.
 
 **Out of scope (Phase B / M19):** actual payment processing, stock tracking, order database, email receipts.
 
 ---
 
-## MILESTONE 18 — Legal, Trust & Social Proof 🔜
+## MILESTONE 18 — Legal, Trust & Social Proof ⚠️ IN PROGRESS (Sprint 19)
 
-| ID | Task | Priority |
-|---|---|---|
-| 18.1 | Privacy policy page (`privacy.html`) | 🔴 Required for GA4 + future payments |
-| 18.2 | Testimonials section on homepage | 🟡 |
-| 18.3 | Trust badges: secure checkout, handcrafted, shipped from Israel | 🟡 |
-| 18.4 | Instagram feed embed or gallery strip | 🟢 |
-| 18.5 | TikTok footer link (M0-11) | 🟢 |
+| ID | Task | Priority | Status |
+|---|---|---|---|
+| 18.1 | Privacy policy page (`privacy.html`) | 🔴 Required for GA4 + future payments | ⚠️ In progress |
+| 18.2 | Testimonials section on homepage | 🟡 | 🔜 Blocked: owner collects quotes |
+| 18.3 | Trust badges: secure checkout, handcrafted, shipped from Israel | 🟡 | 🔜 |
+| 18.4 | Instagram feed embed or gallery strip | 🟢 | 🔜 |
+| 18.5 | TikTok footer link (M0-11) | 🟢 | 🔜 Blocked: owner sends handle |
 
 ---
 
@@ -290,9 +292,9 @@ All category cards show real product photos. "From ₪X / $X" prices shown on al
 | Sprint 15 | M15 | 404, favicons, prices, GA4, Search Console, aria, cleanup | ✅ |
 | Sprint 16 | M13 / M14 cleanup | Security lockdown, Varela Round fonts, exchange rate, localStorage, .gitignore | ✅ |
 | Sprint 17 | M16 | Shared CSS/JS, products.json, SEO baking, JSON-LD, T_PAGE fix | ✅ |
-| **→ Sprint 18** | **M17** | **Shopping Cart Phase A** (Steps 1–8) | **⚠️ Approved, in progress** |
+| Sprint 18 | M17 | Shopping Cart Phase A (Steps 1–8) | ✅ |
+| **→ Sprint 19** | **M18** | **Legal, trust & social proof** | **⚠️ In progress** |
 | — | M9 | Full product catalogue | 🔜 Blocked: owner photos for kiddush cups, business gifts |
-| — | M18 | Legal, trust, testimonials | 🔜 Blocked: collect quotes + Brevo |
 | — | M11 Tier 2 | Newsletter, Pinterest, TikTok | 🔜 |
 | — | M10 | Hebrew quality pass | 🔜 Blocked: native speaker |
 | — | M19 (was M12) | Payments integration | 🔜 Blocked: M0-3 provider decision |
