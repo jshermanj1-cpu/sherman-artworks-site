@@ -1,7 +1,7 @@
 # Sherman Art Works — Product Task List
 
-> Last updated: June 2026 (Sprint 15 complete — 404 page, favicon upgrade, from-prices, GA4, Search Console, sitemap, aria fallbacks, event tracking, cleanup) | PM: Claude | Owner: Sherman Family
-> Active file: `sherman-artworks-site/index.html` | Repo: github.com/jshermanj1-cpu/sherman-artworks-site
+> Last updated: June 2026 (Sprint 18 in progress — shopping cart Phase A) | PM: Claude | Owner: Sherman Family
+> Active file: `sherman-artworks-site/` | Repo: github.com/jshermanj1-cpu/sherman-artworks-site
 
 ---
 
@@ -29,10 +29,10 @@
 
 | ID | Task | Owner | Blocking | Status |
 |---|---|---|---|---|
-| M0-1 | Provide real WhatsApp number | Sherman | 🔴 Site-wide | ⚠️ Temp +972523482278 active — **send real number ASAP** |
+| M0-1 | Confirm WhatsApp business number | Sherman | 🔴 Site-wide | ✅ `972523482278` confirmed as official business number |
 | M0-2 | Domain name | Sherman | — | ✅ shermanartworks.com |
-| M0-3 | Create Stripe account | Sherman | 🔴 M12 | 🔜 |
-| M0-4 | Confirm prices for remaining products | Sherman | 🟡 M9 | ⚠️ Live products have prices. Missing: dedicated kiddush cups, mezuzahs, business gifts |
+| M0-3 | Choose payment provider | Sherman | 🔴 M19 | 🔜 Stripe not available for Israel; alternatives: PayPal, Payoneer, Cardcom, PayMe |
+| M0-4 | Confirm prices for remaining products | Sherman | 🟡 M9 | ⚠️ Live products have prices. Missing: dedicated kiddush cups, business gifts. Ram mezuzah ✅ ₪700 |
 | M0-5 | Confirm candlestick color variants | Sherman | 🟡 M9 | 🔜 |
 | M0-6 | Native Hebrew speaker for copy review | Sherman | 🟡 M10 | 🔜 |
 | M0-7 | Purchase model decision | Sherman | — | ✅ WhatsApp-first |
@@ -58,9 +58,9 @@
 3. Kiddush Cups ✅ live — goblets cross-listed; dedicated designs coming soon
 4. Trays & Bowls ✅ live with products
 5. Business Gifts ⏳ Coming Soon
-6. Mezuzahs ⏳ Coming Soon
+6. Mezuzahs ✅ Ram Mezuzah live (₪700); more designs needed
 
-All category cards show real product photos. "From ₪X / $X" prices shown on all 4 live categories, updating on currency toggle.
+All category cards show real product photos. "From ₪X / $X" prices shown on all live categories, updating on currency toggle.
 
 ---
 
@@ -74,7 +74,7 @@ All category cards show real product photos. "From ₪X / $X" prices shown on al
 | `kiddush-cups.html` | Lion of Judah Goblet + Menorah Goblet (cross-listed) + more coming soon | ✅ |
 | `trays-bowls.html` | Glass Decorative Bowl (4 photos, ₪1,190) | ✅ |
 | `business-gifts.html` | 0 — Coming Soon stub | ⏳ |
-| `mezuzahs.html` | 0 — Coming Soon stub | ⏳ |
+| `mezuzahs.html` | Ram Mezuzah (4 photos, ₪700) | ✅ |
 
 ### 5.5 — When new photos arrive
 1. Upload to Cloudinary
@@ -110,7 +110,7 @@ All category cards show real product photos. "From ₪X / $X" prices shown on al
 | 10.1 | Full Hebrew copy review by native speaker — all pages | M · 👤 Blocked M0-6 |
 | 10.2 | Judaica-specific Hebrew terminology review | S |
 | 10.3 | RTL layout test on real device (iOS Safari + Android Chrome) | S |
-| 10.4 | Frank Ruhl Libre + Heebo rendering check | XS |
+| 10.4 | Varela Round rendering check across EN + HE (single font for both) | XS |
 | 10.5 | Add `hreflang` meta tags | XS |
 
 ---
@@ -142,8 +142,8 @@ All category cards show real product photos. "From ₪X / $X" prices shown on al
 
 ---
 
-## MILESTONE 12 — Stripe Checkout 🔜
-*Blocked on M0-3 (owner creates Stripe account).*
+## MILESTONE 12 — Payments Integration 🔜
+*Blocked on M0-3 (owner chooses payment provider; Stripe not available for Israel). Candidate: PayPal, Payoneer, Cardcom, PayMe.*
 
 ---
 
@@ -153,8 +153,8 @@ All category cards show real product photos. "From ₪X / $X" prices shown on al
 
 | ID | Task | Status |
 |---|---|---|
-| 13.1.1 | Rotate GitHub PAT (`ghp_pDwEnvm…` exposed in chat) | 🔜 👤 Owner: revoke at github.com/settings/tokens |
-| 13.1.2 | Replace temp WA number `+972523482278` (20× across pages) | 🔜 Covered by M0-1 |
+| 13.1.1 | Rotate GitHub PAT (`ghp_pDwEnvm…` exposed in chat) | ✅ Old token revoked; fine-grained PAT in owner's password manager |
+| 13.1.2 | Confirm real WA number + update all pages | ✅ `972523482278` confirmed official; already in all pages |
 
 ### 13.2 — 🟡 Important
 
@@ -180,7 +180,7 @@ All category cards show real product photos. "From ₪X / $X" prices shown on al
 
 | Item | Status |
 |---|---|
-| Fraunces + Inter fonts, Frank Ruhl Libre + Heebo for Hebrew | ✅ |
+| Varela Round for all text (EN + HE), token-based via `--ff-body/--ff-disp` | ✅ |
 | AA contrast (`--brown` #6a5530, `--footer-text` #a89678) | ✅ |
 | SVG icons replace emoji on all Coming Soon placeholders | ✅ |
 | Single hero CTA hierarchy, `.btn-link` secondary | ✅ |
@@ -212,13 +212,65 @@ All category cards show real product photos. "From ₪X / $X" prices shown on al
 
 | Priority | Task | Your action |
 |---|---|---|
-| 🔴 | **Replace temp WhatsApp number** (M0-1) | Send me the real business number → I update 20 occurrences in 5 min |
-| 🔴 | **Rotate GitHub PAT** (M13.1.1) | Revoke at github.com/settings/tokens, generate new one |
+| 🔴 | **Choose payment provider** (M0-3) | Decide between PayPal, Payoneer, Cardcom, PayMe — create account → unblocks M19 |
 | 🟡 | **WhatsApp Business profile** (M11.1.3) | Install WA Business app, set up logo/hours/away message |
-| 🟡 | **New product photos** (M9) | Photograph kiddush cups, mezuzahs, business gifts → upload to Cloudinary |
-| 🟡 | **Diversify OG images** (M13.2.1) | Pick better social-share photos for about/contact/custom-orders/index/mezuzahs |
+| 🟡 | **New product photos** (M9) | Photograph kiddush cups, business gifts → upload to Cloudinary |
+| 🟡 | **Product dimensions** (M5.2) | Measure 5 products that are missing dimensions (messaging each size) |
+| 🟡 | **Native Hebrew reviewer** (M0-6) | Arrange review of all HE copy before marketing launch |
+| 🟡 | **Testimonials** (M20) | Collect 3–5 short quotes from happy customers with first name + city |
+| 🟡 | **Brevo / newsletter signup** (M11.2.2) | Sign up at brevo.com → I wire the embed |
 | 🟡 | **TikTok handle** (M0-11) | Send handle → I add to footer site-wide |
-| 🟡 | **GA4 property** (M11.1.1) | ✅ Done — check analytics.google.com for real-time data |
+| 🟡 | **Diversify OG images** (M13.2.1) | Pick better social-share photos for about/contact/custom-orders/index |
+| 🟡 | **Business Gifts strategy** | Decide: custom branded sets? gift cards? consignment? → enables M9 stub removal |
+
+---
+
+## MILESTONE 16 — Shared Foundation & SEO ✅ COMPLETE (Sprint 17)
+
+| Item | Status |
+|---|---|
+| `css/site.css` — 615-line shared stylesheet extracted from all 11 pages | ✅ |
+| `js/site.js` — 285-line shared script: constants, translations, state, helpers, GA4, init | ✅ |
+| `data/products.json` — 6 products with slugs, categories, ILS prices, Cloudinary photo arrays | ✅ |
+| JSON-LD structured data injected in `<head>` (Organization, Product+Offer, BreadcrumbList) | ✅ |
+| Static EN content baked into `data-t` elements for SEO crawlers | ✅ |
+| Static product cards baked into category page grids for SEO fallback | ✅ |
+| canonical, og:url, twitter:card added to all 11 pages | ✅ |
+| og:image updated to `c_fill,g_auto` (was `c_fit`) | ✅ |
+| T_PAGE regression fix: `${T[l].` → `${T_PAGE[l].` across 5 category pages | ✅ |
+| `_sprint17.py` idempotent extraction script (excluded from repo via `.gitignore`) | ✅ |
+
+---
+
+## MILESTONE 17 — Shopping Cart Phase A 🔜 IN PROGRESS (Sprint 18)
+
+**Goal:** WhatsApp-first cart — customers add items, review totals, then checkout via pre-filled WA message. No payment gateway needed for Phase A.
+
+| Step | Task | Files | Status |
+|---|---|---|---|
+| 0 | Verify `data/products.json` has all required fields (slug, category, priceIls, photos) | `data/products.json` | ✅ Done (Sprint 17) |
+| 1 | `js/cart.js` — cart store: `addItem()`, `removeItem()`, `updateQty()`, `getCart()`, `clearCart()`, localStorage key `sa_cart`, custom event `sa:cart-change` | `js/cart.js` | 🔜 |
+| 2 | `css/cart.css` — drawer styles: slide-in panel, cart badge (on nav icon), item rows, qty stepper, totals line, checkout CTA button | `css/cart.css` | 🔜 |
+| 3 | Cart drawer HTML — inject `#cart-drawer` + `#cart-overlay` into all 11 pages; nav badge `<span id="cart-count">` | all `.html` | 🔜 |
+| 4 | "Add to Cart" button on product cards (category pages) + in product modal | category `.html` | 🔜 |
+| 5 | `checkout.html` — order summary table, ILS/USD toggle, WhatsApp checkout CTA (builds itemised WA message from cart), empty-cart state, breadcrumb | `checkout.html` | 🔜 |
+| 6 | GA4 ecommerce events — `add_to_cart`, `view_cart`, `begin_checkout` (WA click = purchase intent) | `js/site.js` + `js/cart.js` | 🔜 |
+| 7 | Wire `<script src="js/cart.js">` into all 11 pages + `checkout.html` | all `.html` | 🔜 |
+| 8 | QA: add items → adjust qty → remove item → checkout → empty cart → HE locale → mobile 375px | browser | 🔜 |
+
+**Out of scope (Phase B / M19):** actual payment processing, stock tracking, order database, email receipts.
+
+---
+
+## MILESTONE 18 — Legal, Trust & Social Proof 🔜
+
+| ID | Task | Priority |
+|---|---|---|
+| 18.1 | Privacy policy page (`privacy.html`) | 🔴 Required for GA4 + future payments |
+| 18.2 | Testimonials section on homepage | 🟡 |
+| 18.3 | Trust badges: secure checkout, handcrafted, shipped from Israel | 🟡 |
+| 18.4 | Instagram feed embed or gallery strip | 🟢 |
+| 18.5 | TikTok footer link (M0-11) | 🟢 |
 
 ---
 
@@ -226,20 +278,24 @@ All category cards show real product photos. "From ₪X / $X" prices shown on al
 
 | Sprint | Milestone | Goal | Status |
 |---|---|---|---|
-| Sprint 0 | M0 | Collect owner inputs | ⚠️ 7/11 done |
+| Sprint 0 | M0 | Collect owner inputs | ⚠️ 8/11 done (WA + PAT resolved) |
 | Sprint 1 | M1 | Foundation | ✅ |
 | Sprint 2 | M2 | Trust & conversion | ✅ |
 | Sprint 3 | M3 | Homepage enhancements | ✅ |
 | Sprint 4 | M4 | Shop category hub | ✅ |
-| Sprint 5 | M5 | Category pages | ✅ 4/6 live |
+| Sprint 5 | M5 | Category pages | ✅ 5/6 live (mezuzahs now has Ram Mezuzah) |
 | Sprint 6–8 | M6–M8 | Custom Orders, About, Contact pages | ✅ |
-| Sprint 13 | M13 | Bug bash + security audit | ✅ Mostly done |
+| Sprint 13 | M13 | Bug bash + security audit | ✅ Security blockers cleared |
 | Sprint 14 | M14 | UI/UX overhaul, dropdown, carousel, cross-category | ✅ |
-| **Sprint 15** | M15 | 404 page, favicons, prices, GA4, Search Console, aria, cleanup | ✅ **Done** |
-| **→ Next** | M9 | Full product catalogue | 🔜 Blocked: owner photos |
+| Sprint 15 | M15 | 404, favicons, prices, GA4, Search Console, aria, cleanup | ✅ |
+| Sprint 16 | M13 / M14 cleanup | Security lockdown, Varela Round fonts, exchange rate, localStorage, .gitignore | ✅ |
+| Sprint 17 | M16 | Shared CSS/JS, products.json, SEO baking, JSON-LD, T_PAGE fix | ✅ |
+| **→ Sprint 18** | **M17** | **Shopping Cart Phase A** (Steps 1–8) | **⚠️ Approved, in progress** |
+| — | M9 | Full product catalogue | 🔜 Blocked: owner photos for kiddush cups, business gifts |
+| — | M18 | Legal, trust, testimonials | 🔜 Blocked: collect quotes + Brevo |
 | — | M11 Tier 2 | Newsletter, Pinterest, TikTok | 🔜 |
 | — | M10 | Hebrew quality pass | 🔜 Blocked: native speaker |
-| — | M12 | Stripe checkout | 🔜 Blocked: M0-3 |
+| — | M19 (was M12) | Payments integration | 🔜 Blocked: M0-3 provider decision |
 | **→ FULL LAUNCH** | — | Marketing push | 🔜 |
 
 ---
