@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-J55QNV6GF1"></script>
+  <script>window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-J55QNV6GF1');</script>
+  <title>Your Cart — Sherman Art Works | Handmade Glass Judaica</title>
+  <meta name="description" content="Review your cart and place your order via WhatsApp. Handmade glass art and Judaica from Israel, shipped worldwide." />
+  <meta name="robots" content="noindex" />
+  <link rel="canonical" href="https://shermanartworks.com/checkout.html" />
+
+  <link rel="icon" type="image/png" sizes="32x32" href="https://res.cloudinary.com/doesupaf9/image/upload/w_32,h_32,c_fill,g_auto,q_auto,f_png/WhatsApp_Image_2026-05-23_at_14.51.54_xv8lbd.jpg" />
+  <link rel="icon" type="image/png" sizes="16x16" href="https://res.cloudinary.com/doesupaf9/image/upload/w_16,h_16,c_fill,g_auto,q_auto,f_png/WhatsApp_Image_2026-05-23_at_14.51.54_xv8lbd.jpg" />
+  <link rel="apple-touch-icon" sizes="180x180" href="https://res.cloudinary.com/doesupaf9/image/upload/w_180,h_180,c_fill,g_auto,q_auto,f_png/WhatsApp_Image_2026-05-23_at_14.51.54_xv8lbd.jpg" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/site.css" />
+  <link rel="stylesheet" href="css/cart.css" />
+</head>
+<body>
+
+<div class="shipping-banner" data-t="shipping_banner" role="note">✦  Launch Offer: Free Worldwide Shipping on All Orders  ·  Custom Orders Are Welcome  ✦</div>
+
+<div class="top-bar">
+  <div class="top-bar-group">
+    <button id="btnEN" class="toggle-btn" onclick="setLang('en')">EN</button>
+    <span class="top-divider">|</span>
+    <button id="btnHE" class="toggle-btn" onclick="setLang('he')">עברית</button>
+  </div>
+  <div class="top-bar-group" data-t="topbar_right" style="font-size:0.72rem;color:var(--footer-text);letter-spacing:0.04em;"></div>
+</div>
+
+<div class="nav-wrap">
+  <nav>
+    <a href="index.html" class="logo" aria-label="Sherman Art Works">
+      <img class="logo-mark" src="https://res.cloudinary.com/doesupaf9/image/upload/h_84,c_fit,q_auto,f_auto/WhatsApp_Image_2026-05-23_at_14.51.54_xv8lbd.jpg" alt="Sherman Art Works logo" width="71" height="84" />
+      <div class="logo-text">
+        <span class="logo-name">Sherman Art Works</span>
+        <span class="logo-sub">Handcrafted Glass &amp; Judaica</span>
+      </div>
+    </a>
+    <ul class="nav-links" role="list">
+      <li class="nav-dropdown">
+        <button type="button" class="nav-dropdown-toggle" aria-expanded="false" aria-haspopup="true" onclick="toggleShopDropdown(event)">
+          <span data-t="nav_shop">Shop</span>
+          <svg class="nav-dropdown-caret" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 4.5 L6 7.5 L9 4.5" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="nav-dropdown-menu" role="menu">
+          <a href="candlesticks.html" role="menuitem" data-t="cat1_title">Candlesticks</a>
+          <a href="shofars-goblets.html" role="menuitem" data-t="cat2_title">Shofars &amp; Goblets</a>
+          <a href="kiddush-cups.html" role="menuitem" data-t="cat3_title">Kiddush Cups</a>
+          <a href="trays-bowls.html" role="menuitem" data-t="cat4_title">Trays &amp; Bowls</a>
+          <a href="business-gifts.html" role="menuitem"><span data-t="cat5_title">Business Gifts</span><span class="nav-dropdown-badge" data-t="badge_soon">Coming Soon</span></a>
+          <a href="mezuzahs.html" role="menuitem" data-t="cat6_title">Mezuzahs</a>
+          <div class="nav-dropdown-divider" role="separator"></div>
+          <a href="index.html#shop" role="menuitem" class="nav-dropdown-all" data-t="footer_all_collections">All Collections</a>
+        </div>
+      </li>
+      <li><a href="custom-orders.html" data-t="nav_custom">Custom Orders</a></li>
+      <li><a href="about.html"         data-t="nav_about">About</a></li>
+      <li><a href="contact.html"       data-t="nav_contact">Contact</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false" onclick="toggleNav()">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+  <div class="mobile-nav" id="mobileNav" aria-hidden="true">
+    <ul role="list">
+      <li class="mobile-shop">
+        <button type="button" class="mobile-shop-toggle" aria-expanded="true" aria-haspopup="true" onclick="toggleMobileShop(event)">
+          <span data-t="nav_shop">Shop</span>
+          <svg viewBox="0 0 12 12" aria-hidden="true"><path d="M3 4.5 L6 7.5 L9 4.5" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="mobile-shop-menu open">
+          <a href="candlesticks.html" onclick="closeMobileNav()" data-t="cat1_title">Candlesticks</a>
+          <a href="shofars-goblets.html" onclick="closeMobileNav()" data-t="cat2_title">Shofars &amp; Goblets</a>
+          <a href="kiddush-cups.html" onclick="closeMobileNav()" data-t="cat3_title">Kiddush Cups</a>
+          <a href="trays-bowls.html" onclick="closeMobileNav()" data-t="cat4_title">Trays &amp; Bowls</a>
+          <a href="business-gifts.html" onclick="closeMobileNav()"><span data-t="cat5_title">Business Gifts</span><span class="nav-dropdown-badge" data-t="badge_soon">Coming Soon</span></a>
+          <a href="mezuzahs.html" onclick="closeMobileNav()" data-t="cat6_title">Mezuzahs</a>
+          <a href="index.html#shop" onclick="closeMobileNav()" class="mobile-shop-all" data-t="footer_all_collections">All Collections</a>
+        </div>
+      </li>
+      <li><a href="custom-orders.html" onclick="closeMobileNav()" data-t="nav_custom">Custom Orders</a></li>
+      <li><a href="about.html"         onclick="closeMobileNav()" data-t="nav_about">About</a></li>
+      <li><a href="contact.html"       onclick="closeMobileNav()" data-t="nav_contact">Contact</a></li>
+    </ul>
+  </div>
+</div>
+
+<section class="page-hero">
+  <div class="page-hero-inner">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="index.html#shop" data-t="bc_shop">Shop</a>
+      <span class="breadcrumb-sep">·</span>
+      <span data-t="bc_current">Your Cart</span>
+    </nav>
+    <h1 class="page-headline" data-t="hero_headline">Your Cart</h1>
+  </div>
+</section>
+
+<section class="checkout-section">
+  <div id="checkout-content"></div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <a href="index.html" class="logo" aria-label="Sherman Art Works">
+          <img class="logo-mark" src="https://res.cloudinary.com/doesupaf9/image/upload/h_84,c_fit,q_auto,f_auto/WhatsApp_Image_2026-05-23_at_14.51.54_xv8lbd.jpg" alt="Sherman Art Works logo" width="71" height="84" loading="lazy" />
+          <div class="logo-text">
+            <span class="logo-name">Sherman Art Works</span>
+            <span class="logo-sub">Handcrafted Glass &amp; Judaica</span>
+          </div>
+        </a>
+        <p class="footer-tagline" data-t="footer_tagline">Handmade glass art &amp; Judaica from Israel</p>
+        <p class="footer-email"><a href="mailto:shermanartwork@gmail.com">shermanartwork@gmail.com</a></p>
+        <div class="social-links">
+          <a href="https://www.instagram.com/shermanartworks" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Instagram">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title" data-t="footer_col_shop">Shop</div>
+        <ul class="footer-links" role="list">
+          <li><a href="candlesticks.html"     data-t="footer_link_candles">Candlesticks</a></li>
+          <li><a href="shofars-goblets.html"  data-t="footer_link_shofars">Shofars &amp; Goblets</a></li>
+          <li><a href="trays-bowls.html"      data-t="footer_link_bowls">Trays &amp; Bowls</a></li>
+          <li><a href="index.html#shop"       data-t="footer_all_collections">All Collections</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title" data-t="footer_col_studio">Studio</div>
+        <ul class="footer-links" role="list">
+          <li><a href="about.html"         data-t="nav_about">About</a></li>
+          <li><a href="custom-orders.html" data-t="nav_custom">Custom Orders</a></li>
+          <li><a href="contact.html"       data-t="nav_contact">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span data-t="footer_copy">© 2026 Sherman Art Works. All rights reserved.</span>
+      <span class="footer-badge">✦ <span data-t="footer_badge">Handcrafted in Israel</span></span>
+    </div>
+  </div>
+</footer>
+
+<a id="floatingWa" href="https://wa.me/972523482278?text=Hi%2C%20I%20have%20a%20question%20about%20Sherman%20Art%20Works." target="_blank" rel="noopener noreferrer" class="floating-wa" aria-label="Chat on WhatsApp" title="Chat on WhatsApp"><svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
+
+<script src="js/site.js"></script>
+<script src="js/cart.js"></script>
+<script>
+  const T_PAGE = {
+    en: {
+      topbar_right:   'Handcrafted in Israel',
+      bc_shop:        'Shop',
+      bc_current:     'Your Cart',
+      hero_headline:  'Your Cart',
+      checkout_empty_title: 'Your cart is empty',
+      checkout_empty_body:  'Browse our handmade glass art and Judaica.',
+      checkout_browse:      'Browse Shop',
+      checkout_col_item:    'Item',
+      checkout_col_qty:     'Qty',
+      checkout_col_price:   'Price',
+      checkout_total:       'Total',
+      checkout_wa_btn:      'Order on WhatsApp',
+      checkout_note:        '✦  Free worldwide shipping  ·  Handcrafted in Israel',
+      checkout_clear:       'Clear cart',
+      footer_tagline:        'Handmade glass art & Judaica from Israel',
+      footer_col_shop:       'Shop',
+      footer_col_studio:     'Studio',
+      footer_link_candles:   'Candlesticks',
+      footer_link_shofars:   'Shofars & Goblets',
+      footer_link_bowls:     'Trays & Bowls',
+      footer_all_collections:'All Collections',
+      footer_copy:           '© 2026 Sherman Art Works. All rights reserved.',
+      footer_badge:          'Handcrafted in Israel',
+    },
+    he: {
+      topbar_right:   'עשוי ביד בישראל',
+      bc_shop:        'חנות',
+      bc_current:     'עגלת הקניות',
+      hero_headline:  'עגלת הקניות',
+      checkout_empty_title: 'עגלת הקניות ריקה',
+      checkout_empty_body:  'גלו את אמנות הזכוכית והיודאיקה שלנו.',
+      checkout_browse:      'לחנות',
+      checkout_col_item:    'פריט',
+      checkout_col_qty:     'כמות',
+      checkout_col_price:   'מחיר',
+      checkout_total:       'סה"כ',
+      checkout_wa_btn:      'הזמינו ב-WhatsApp',
+      checkout_note:        '✦  משלוח חינם לכל העולם  ·  עשוי ביד בישראל',
+      checkout_clear:       'נקה עגלה',
+      footer_tagline:        'אמנות זכוכית ויודאיקה עשויות ביד מישראל',
+      footer_col_shop:       'חנות',
+      footer_col_studio:     'הסטודיו',
+      footer_link_candles:   'פמוטים',
+      footer_link_shofars:   'שופרות וגביעים',
+      footer_link_bowls:     'מגשים וקערות',
+      footer_all_collections:'כל הקולקציות',
+      footer_copy:           '© 2026 שרמן ארט וורקס. כל הזכויות שמורות.',
+      footer_badge:          'עשוי ביד בישראל',
+    }
+  };
+
+  var _WA_SVG_LG = '<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>';
+
+  function renderCheckout() {
+    var items = getCart();
+    var l = currentLang;
+    var isHe = l === 'he';
+    var t = T_PAGE[l];
+    var el = document.getElementById('checkout-content');
+    if (!el) return;
+
+    if (items.length === 0) {
+      el.innerHTML =
+        '<div class="checkout-empty">' +
+          '<h2>' + escapeHtml(t.checkout_empty_title) + '</h2>' +
+          '<p>' + escapeHtml(t.checkout_empty_body) + '</p>' +
+          '<a href="index.html#shop" class="btn-gold">' + escapeHtml(t.checkout_browse) + '</a>' +
+        '</div>';
+      return;
+    }
+
+    var rate = (typeof usdRate === 'number') ? usdRate : null;
+    var showUsd = rate && (typeof currentCurrency === 'undefined' || currentCurrency !== 'ILS');
+    var total = getCartTotal();
+
+    var rows = items.map(function (item) {
+      var name = (isHe && item.name_he) ? item.name_he : item.name_en;
+      var thumb = CDN + '/w_80,h_80,c_fill,g_auto,q_auto,f_auto/' + item.photo + '.jpg';
+      var lineIls = item.price_ils * item.qty;
+      var priceStr = '₪' + lineIls.toLocaleString('en-IL');
+      if (showUsd) priceStr += ' <span class="cart-price-alt">≈ $' + Math.round(lineIls / rate) + '</span>';
+      var slug = escapeAttr(item.slug);
+      return '<tr>' +
+        '<td class="col-thumb"><img class="checkout-thumb" src="' + escapeAttr(thumb) + '" alt="' + escapeAttr(name) + '" loading="lazy" /></td>' +
+        '<td>' + escapeHtml(name) + '</td>' +
+        '<td class="col-qty"><div class="checkout-qty-row">' +
+          '<button class="cart-qty-btn" onclick="updateCartQty(\'' + slug + '\',' + (item.qty - 1) + ');renderCheckout()">−</button>' +
+          '<span class="cart-qty-val">' + item.qty + '</span>' +
+          '<button class="cart-qty-btn" onclick="updateCartQty(\'' + slug + '\',' + (item.qty + 1) + ');renderCheckout()">+</button>' +
+          '<button class="cart-remove-btn" onclick="removeFromCart(\'' + slug + '\');renderCheckout()" style="margin-left:0.5rem">' +
+            '<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>' +
+          '</button>' +
+        '</div></td>' +
+        '<td class="col-price">' + priceStr + '</td>' +
+      '</tr>';
+    }).join('');
+
+    var totalStr = '₪' + total.toLocaleString('en-IL');
+    if (showUsd) totalStr += ' <span class="cart-price-alt">≈ $' + Math.round(total / rate) + '</span>';
+
+    el.innerHTML =
+      '<table class="checkout-table">' +
+        '<thead><tr>' +
+          '<th class="col-thumb"></th>' +
+          '<th>' + escapeHtml(t.checkout_col_item) + '</th>' +
+          '<th class="col-qty">' + escapeHtml(t.checkout_col_qty) + '</th>' +
+          '<th class="col-price">' + escapeHtml(t.checkout_col_price) + '</th>' +
+        '</tr></thead>' +
+        '<tbody>' + rows + '</tbody>' +
+      '</table>' +
+      '<div class="checkout-total-row">' +
+        '<span>' + escapeHtml(t.checkout_total) + '</span>' +
+        '<span class="checkout-total-price">' + totalStr + '</span>' +
+      '</div>' +
+      '<a class="checkout-wa-btn" href="' + buildCheckoutWaLink() + '" target="_blank" rel="noopener noreferrer"' +
+         ' onclick="if(typeof trackGA4===\'function\')trackGA4(\'begin_checkout\',{currency:\'ILS\',value:' + total + '})">' +
+        _WA_SVG_LG + ' ' + escapeHtml(t.checkout_wa_btn) +
+      '</a>' +
+      '<p class="checkout-note">' + escapeHtml(t.checkout_note) + '</p>' +
+      '<button class="checkout-clear-btn" onclick="clearCart();renderCheckout()">' + escapeHtml(t.checkout_clear) + '</button>';
+  }
+
+  document.addEventListener('DOMContentLoaded', function () { renderCheckout(); });
+  document.addEventListener('sa:cart-change', function () { renderCheckout(); });
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home",     "item": "https://shermanartworks.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Shop",     "item": "https://shermanartworks.com/#shop" },
+    { "@type": "ListItem", "position": 3, "name": "Your Cart","item": "https://shermanartworks.com/checkout.html" }
+  ]
+}
+</script>
+
+</body>
+</html>

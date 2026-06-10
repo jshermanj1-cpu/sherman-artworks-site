@@ -39,6 +39,11 @@ const T_SITE = {
     footer_all_collections: 'All Collections',
     footer_copy:         '© 2026 Sherman Art Works. All rights reserved.',
     footer_badge:        'Handcrafted in Israel',
+    add_cart:            'Add to Cart',
+    cart_title:          'Cart',
+    cart_total:          'Total',
+    cart_checkout:       'Order on WhatsApp',
+    cart_review:         'Review order →',
   },
   he: {
     nav_shop:            'חנות',
@@ -70,6 +75,11 @@ const T_SITE = {
     footer_all_collections: 'כל הקולקציות',
     footer_copy:         '© 2026 שרמן ארט וורקס. כל הזכויות שמורות.',
     footer_badge:        'עשוי ביד בישראל',
+    add_cart:            'הוסף לסל',
+    cart_title:          'עגלה',
+    cart_total:          'סה"כ',
+    cart_checkout:       'הזמינו ב-WhatsApp',
+    cart_review:         'לסיכום הזמנה ←',
   }
 };
 
@@ -104,6 +114,7 @@ async function loadUsdRate() {
   }
   // Duck-typed hooks — only run if page defines them
   if (typeof renderProducts === 'function') renderProducts();
+  if (typeof renderCheckout === 'function') renderCheckout();
   updatePrices();
 }
 
@@ -161,6 +172,7 @@ function setLang(l) {
   if (btnHE) btnHE.classList.toggle('active', l === 'he');
   localStorage.setItem('sa_lang', l);
   if (typeof renderProducts === 'function') renderProducts();
+  if (typeof renderCheckout === 'function') renderCheckout();
   if (typeof renderModal === 'function' && typeof currentModalIdx !== 'undefined' && currentModalIdx != null) renderModal();
 }
 
