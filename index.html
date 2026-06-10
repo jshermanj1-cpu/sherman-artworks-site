@@ -1127,7 +1127,7 @@
       hero_cta1:           'Browse the Shop',
       hero_cta2:           'Custom Orders',
 
-      shipping_banner:     '✦  Launch Offer: Free Worldwide Shipping on All Orders  ·  Delivered Within 14 Business Days  ✦',
+      shipping_banner:     '✦  Launch Offer: Free Worldwide Shipping on All Orders  ·  Custom Orders Are Welcome  ✦',
 
       shop_tag:            'Our Collections',
       shop_title:          'Browse the Shop',
@@ -1143,7 +1143,7 @@
       cat2_title:          'Shofars & Goblets',
       cat2_desc:           'Silver-plated shofars and ornate goblets in classic designs.',
       cat3_title:          'Kiddush Cups',
-      cat3_desc:           'Photos coming soon — commission yours today.',
+      cat3_desc:           'Silver-plated wine goblets for Kiddush, in classic Judaica designs.',
       cat4_title:          'Trays & Bowls',
       cat4_desc:           'Decorative pieces for the home and centrepiece arrangements.',
       cat5_title:          'Business Gifts',
@@ -1204,7 +1204,7 @@
       hero_cta1:           'לחנות',
       hero_cta2:           'הזמנות מיוחדות',
 
-      shipping_banner:     '✦  מבצע השקה: משלוח חינם לכל העולם  ·  מסירה תוך 14 ימי עסקים  ✦',
+      shipping_banner:     '✦  מבצע השקה: משלוח חינם לכל העולם  ·  הזמנות מיוחדות מתקבלות בשמחה  ✦',
 
       shop_tag:            'הקולקציות שלנו',
       shop_title:          'דפדפו בחנות',
@@ -1220,7 +1220,7 @@
       cat2_title:          'שופרות וגביעים',
       cat2_desc:           'שופרות מצופים כסף וגביעים מעוטרים בעיצובים קלאסיים.',
       cat3_title:          'כוסות קידוש',
-      cat3_desc:           'תמונות בקרוב — הזמינו אצלנו היום.',
+      cat3_desc:           'גביעי יין מצופי כסף לקידוש, בעיצובי יודאיקה קלאסיים.',
       cat4_title:          'מגשים וקערות',
       cat4_desc:           'יצירות דקורטיביות לבית ומרכזי שולחן.',
       cat5_title:          'מתנות עסקיות',
@@ -1331,6 +1331,7 @@
     document.getElementById('btnILS').classList.toggle('active', cur === 'ILS');
     document.getElementById('btnUSD').classList.toggle('active', cur === 'USD');
     updatePrices();
+    localStorage.setItem('sa_cur', cur);
   }
 
   // ── LANGUAGE ───────────────────────────────────
@@ -1348,6 +1349,7 @@
     html.dir  = l === 'he' ? 'rtl' : 'ltr';
     document.getElementById('btnEN').classList.toggle('active', l === 'en');
     document.getElementById('btnHE').classList.toggle('active', l === 'he');
+    localStorage.setItem('sa_lang', l);
     updatePrices(); // re-render "from" label in current language + currency
   }
 
@@ -1406,8 +1408,8 @@
     const waCorp = document.getElementById('waCorporateLink');
     if (waCorp) waCorp.href = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent("Hi, I'm interested in a corporate or bulk order.")}`;
 
-    setLang('en');
-    setCurrency('USD');
+    setLang(localStorage.getItem('sa_lang')||'en');
+    setCurrency(localStorage.getItem('sa_cur')||'USD');
     fetchRate();
   });
 </script>

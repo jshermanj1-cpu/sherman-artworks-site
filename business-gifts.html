@@ -443,7 +443,7 @@
       nav_custom:  'Custom Orders',
       nav_about:   'About',
       nav_contact: 'Contact',
-      shipping_banner: '✦  Free Worldwide Shipping on All Orders  ·  Custom Orders Are Welcome  ✦',
+      shipping_banner: '✦  Launch Offer: Free Worldwide Shipping on All Orders  ·  Custom Orders Are Welcome  ✦',
       topbar_right:    'Handcrafted in Israel',
 
       bc_shop:        'Shop',
@@ -483,7 +483,7 @@
       nav_custom:  'הזמנות מיוחדות',
       nav_about:   'אודות',
       nav_contact: 'צור קשר',
-      shipping_banner: '✦  משלוח חינם לכל העולם על כל הזמנה  ·  הזמנות מיוחדות בברוכים הבאים  ✦',
+      shipping_banner: '✦  מבצע השקה: משלוח חינם לכל העולם  ·  הזמנות מיוחדות מתקבלות בשמחה  ✦',
       topbar_right:    'עשוי ביד בישראל',
 
       bc_shop:        'חנות',
@@ -529,6 +529,7 @@
     html.dir  = l === 'he' ? 'rtl' : 'ltr';
     document.getElementById('btnEN').classList.toggle('active', l === 'en');
     document.getElementById('btnHE').classList.toggle('active', l === 'he');
+    localStorage.setItem('sa_lang', l);
     document.getElementById('waLink').href = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(WA_MSG[l])}`;
   }
 
@@ -549,7 +550,7 @@
     nav.setAttribute('aria-hidden', 'true');
   }
 
-  document.addEventListener('DOMContentLoaded', () => setLang('en'));
+  document.addEventListener('DOMContentLoaded', () => setLang(localStorage.getItem('sa_lang')||'en'));
 </script>
 
 

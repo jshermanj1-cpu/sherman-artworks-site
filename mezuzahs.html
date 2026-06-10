@@ -725,7 +725,7 @@
       nav_custom:  'Custom Orders',
       nav_about:   'About',
       nav_contact: 'Contact',
-      shipping_banner: '✦  Launch Offer: Free Worldwide Shipping on All Orders  ·  Delivered Within 14 Business Days  ✦',
+      shipping_banner: '✦  Launch Offer: Free Worldwide Shipping on All Orders  ·  Custom Orders Are Welcome  ✦',
       topbar_right:    'Handcrafted in Israel',
 
       bc_shop:        'Shop',
@@ -768,7 +768,7 @@
       nav_custom:  'הזמנות מיוחדות',
       nav_about:   'אודות',
       nav_contact: 'צור קשר',
-      shipping_banner: '✦  מבצע השקה: משלוח חינם לכל העולם  ·  מסירה תוך 14 ימי עסקים  ✦',
+      shipping_banner: '✦  מבצע השקה: משלוח חינם לכל העולם  ·  הזמנות מיוחדות מתקבלות בשמחה  ✦',
       topbar_right:    'עשוי ביד בישראל',
 
       bc_shop:        'חנות',
@@ -806,26 +806,33 @@
 
   async function loadUsdRate() {
     try {
-      const res = await fetch('https://open.er-api.com/v6/latest/ILS');
+      const c = new AbortController();
+      const t = setTimeout(() => c.abort(), 6000);
+      const res = await fetch('https://open.er-api.com/v6/latest/USD', { signal: c.signal });
+      clearTimeout(t);
+      if (!res.ok) throw new Error('API error');
       const data = await res.json();
-      if (data && data.rates && typeof data.rates.USD === 'number') {
-        usdRate = data.rates.USD;
-        renderProducts();
-      }
-    } catch (e) {}
+      const raw = data.rates && data.rates.ILS;
+      if (!raw) throw new Error('No ILS rate');
+      usdRate = raw / 0.98;
+      renderProducts();
+    } catch {
+      usdRate = 3.75 / 0.98;
+      renderProducts();
+    }
   }
 
   function formatPrice(ils) {
     const main = '₪' + ils.toLocaleString('en-IL');
     if (!usdRate) return main;
-    const usd = ils * usdRate;
+    const usd = ils / usdRate;
     return `${main} <span class="product-card-price-alt">≈ $${usd.toFixed(0)}</span>`;
   }
 
   function formatPriceModal(ils) {
     const main = '₪' + ils.toLocaleString('en-IL');
     if (!usdRate) return main;
-    const usd = ils * usdRate;
+    const usd = ils / usdRate;
     return `${main} <span style="font-size:0.78rem;color:var(--brown);font-weight:400;">≈ $${usd.toFixed(0)}</span>`;
   }
 
@@ -995,6 +1002,7 @@
     html.dir  = l === 'he' ? 'rtl' : 'ltr';
     document.getElementById('btnEN').classList.toggle('active', l === 'en');
     document.getElementById('btnHE').classList.toggle('active', l === 'he');
+    localStorage.setItem('sa_lang', l);
     renderProducts();
     if (currentModalIdx != null) renderModal();
   }
@@ -1025,7 +1033,7 @@
   });
 
   document.addEventListener('DOMContentLoaded', () => {
-    setLang('en');
+    setLang(localStorage.getItem('sa_lang')||'en');
     loadUsdRate();
   });
 </script>

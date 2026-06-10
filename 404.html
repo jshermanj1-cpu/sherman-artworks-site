@@ -340,6 +340,7 @@
     html.dir  = l === 'he' ? 'rtl' : 'ltr';
     document.getElementById('btnEN').classList.toggle('active', l === 'en');
     document.getElementById('btnHE').classList.toggle('active', l === 'he');
+    localStorage.setItem('sa_lang', l);
   }
 
   function toggleNav() {
@@ -381,7 +382,7 @@
     });
   });
 
-  document.addEventListener('DOMContentLoaded', () => setLang('en'));
+  document.addEventListener('DOMContentLoaded', () => setLang(localStorage.getItem('sa_lang')||'en'));
 
   // ── GA4 EVENT TRACKING ────────────────────────
   function trackGA4(eventName, params) {
