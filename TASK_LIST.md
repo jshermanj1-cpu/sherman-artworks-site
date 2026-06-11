@@ -1,6 +1,6 @@
 # Sherman Art Works — Product Task List
 
-> Last updated: June 2026 (Sprint 19 in progress — legal, trust & social proof) | PM: Claude | Owner: Sherman Family
+> Last updated: 2026-06-11 (Sprint 19 dev complete — legal core; awaiting owner approval) | PM: Claude | Owner: Sherman Family
 > Active file: `sherman-artworks-site/` | Repo: github.com/jshermanj1-cpu/sherman-artworks-site
 
 ---
@@ -264,15 +264,25 @@ All category cards show real product photos. "From ₪X / $X" prices shown on al
 
 ---
 
-## MILESTONE 18 — Legal, Trust & Social Proof ⚠️ IN PROGRESS (Sprint 19)
+## MILESTONE 18 — Legal, Trust & Social Proof ⚠️ LEGAL CORE DONE (Sprint 19)
 
 | ID | Task | Priority | Status |
 |---|---|---|---|
-| 18.1 | Privacy policy page (`privacy.html`) | 🔴 Required for GA4 + future payments | ⚠️ In progress |
+| 18.1 | Privacy policy page (`privacy.html`) | 🔴 Required for GA4 + future payments | ✅ Live; static EN baked into HTML for SEO (Sprint 19) |
 | 18.2 | Testimonials section on homepage | 🟡 | 🔜 Blocked: owner collects quotes |
-| 18.3 | Trust badges: secure checkout, handcrafted, shipped from Israel | 🟡 | 🔜 |
-| 18.4 | Instagram feed embed or gallery strip | 🟢 | 🔜 |
+| 18.3 | Trust badges: secure checkout, handcrafted, shipped from Israel | 🟡 | 🔜 Next sprint |
+| 18.4 | Instagram feed embed or gallery strip | 🟢 | ⏸ Deferred — owner declined June 2026 |
 | 18.5 | TikTok footer link (M0-11) | 🟢 | 🔜 Blocked: owner sends handle |
+| 18.6 | Cookie consent banner gating GA4 — gtag.js loads only after Accept; `sa_consent` in localStorage; Decline = zero analytics | 🔴 EU-traffic prerequisite (FIX_PLAN 5.2) | ✅ Sprint 19 — `js/site.js` + `css/site.css`, applies to all 13 pages; hardcoded GA4 snippet removed from every `<head>` |
+| 18.7 | `terms.html` — bilingual, 10 sections, static EN baked, BreadcrumbList JSON-LD | 🟡 (FIX_PLAN 5.3) | ✅ Sprint 19 |
+| 18.8 | `shipping-returns.html` — bilingual, 9 sections, seeded from contact FAQ promises | 🔴 conversion-critical (FIX_PLAN 5.1) | ✅ Sprint 19 — **owner must approve policy decisions: buyer pays return shipping; customs = recipient's responsibility; refund ≤14 days after return received; custom non-cancellable once crafting begins** |
+| 18.9 | Footer "Policies" block (Shipping & Returns / Privacy / Terms) on all 13 pages incl. checkout | 🟡 (FIX_PLAN 5.4) | ✅ Sprint 19 |
+| 18.10 | `sitemap.xml`: + shipping-returns (0.5), privacy (0.3), terms (0.3) | 🟢 | ✅ Sprint 19 |
+| 18.11 | contact.html FAQ: removed false "Stripe checkout coming soon" claim (Stripe unavailable in Israel) → "card checkout coming soon" EN+HE | 🟡 accuracy | ✅ Sprint 19 |
+
+**Sprint 19 QA (browser-verified):** fresh visit = banner + zero GA4 requests → Accept = gtag loads + page_view fires → Decline = no GA4, persists across reload. HE/RTL verified on both new pages incl. translated banner (אישור / לא תודה). checkout.html keeps `noindex` and is deliberately NOT in robots.txt (disallow would hide the noindex from Google).
+
+**Found during QA (pre-existing, not fixed):** index.html requests 6 dead Cloudinary images (`…14.47.17/18/48/49…` variants, 404) — likely story/strip section. Needs owner to confirm correct public_ids.
 
 ---
 
@@ -293,7 +303,8 @@ All category cards show real product photos. "From ₪X / $X" prices shown on al
 | Sprint 16 | M13 / M14 cleanup | Security lockdown, Varela Round fonts, exchange rate, localStorage, .gitignore | ✅ |
 | Sprint 17 | M16 | Shared CSS/JS, products.json, SEO baking, JSON-LD, T_PAGE fix | ✅ |
 | Sprint 18 | M17 | Shopping Cart Phase A (Steps 1–8) | ✅ |
-| **→ Sprint 19** | **M18** | **Legal, trust & social proof** | **⚠️ In progress** |
+| Sprint 19 | M18 | Legal core: consent banner, terms, shipping-returns, footer policies, sitemap, privacy SEO bake (+ standalone mobile-breakpoints fix `dbbd00b`) | ✅ Dev done — awaiting owner approval of shipping-returns policy wording |
+| **→ Sprint 20** | **M18 rest + M11.2** | **Trust badges, testimonials, newsletter — per FIX_PLAN "Depth & launch"** | 🔜 |
 | — | M9 | Full product catalogue | 🔜 Blocked: owner photos for kiddush cups, business gifts |
 | — | M11 Tier 2 | Newsletter, Pinterest, TikTok | 🔜 |
 | — | M10 | Hebrew quality pass | 🔜 Blocked: native speaker |

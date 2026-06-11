@@ -40,6 +40,12 @@ const T_SITE = {
     footer_copy:         '© 2026 Sherman Art Works. All rights reserved.',
     footer_badge:        'Handcrafted in Israel',
     nav_privacy:         'Privacy Policy',
+    nav_terms:           'Terms of Service',
+    nav_shipping:        'Shipping & Returns',
+    consent_text:        'We use anonymous analytics cookies to understand how visitors use the site — no ads, no cross-site tracking.',
+    consent_more:        'Privacy Policy',
+    consent_accept:      'Accept',
+    consent_decline:     'Decline',
     add_cart:            'Add to Cart',
     cart_title:          'Cart',
     cart_total:          'Total',
@@ -77,6 +83,12 @@ const T_SITE = {
     footer_copy:         '© 2026 שרמן ארט וורקס. כל הזכויות שמורות.',
     footer_badge:        'עשוי ביד בישראל',
     nav_privacy:         'מדיניות פרטיות',
+    nav_terms:           'תנאי שימוש',
+    nav_shipping:        'משלוחים והחזרות',
+    consent_text:        'אנחנו משתמשים בעוגיות אנליטיקה אנונימיות כדי להבין איך מבקרים משתמשים באתר — ללא פרסומות וללא מעקב בין אתרים.',
+    consent_more:        'מדיניות פרטיות',
+    consent_accept:      'אישור',
+    consent_decline:     'לא תודה',
     add_cart:            'הוסף לסל',
     cart_title:          'עגלה',
     cart_total:          'סה"כ',
@@ -118,6 +130,8 @@ async function loadUsdRate() {
   if (typeof renderProducts === 'function') renderProducts();
   if (typeof renderCheckout === 'function') renderCheckout();
   if (typeof renderPrivacy  === 'function') renderPrivacy();
+  if (typeof renderTerms    === 'function') renderTerms();
+  if (typeof renderShipping === 'function') renderShipping();
   updatePrices();
 }
 
@@ -177,6 +191,8 @@ function setLang(l) {
   if (typeof renderProducts === 'function') renderProducts();
   if (typeof renderCheckout === 'function') renderCheckout();
   if (typeof renderPrivacy  === 'function') renderPrivacy();
+  if (typeof renderTerms    === 'function') renderTerms();
+  if (typeof renderShipping === 'function') renderShipping();
   if (typeof renderModal === 'function' && typeof currentModalIdx !== 'undefined' && currentModalIdx != null) renderModal();
 }
 
@@ -235,7 +251,58 @@ document.addEventListener('keydown', function(e) {
   if (typeof closeModal === 'function') closeModal();
 });
 
-// ── GA4 ─────────────────────────────────────────────────────────
+// ── GA4 — CONSENT-GATED ─────────────────────────────────────────
+// gtag.js loads only after the visitor accepts the cookie banner.
+// Choice persists in localStorage('sa_consent'): 'granted' | 'denied'.
+var GA4_ID = 'G-J55QNV6GF1';
+
+function loadGA4() {
+  if (window.__ga4Loaded) return;
+  window.__ga4Loaded = true;
+  window.dataLayer = window.dataLayer || [];
+  window.gtag = function () { window.dataLayer.push(arguments); };
+  gtag('js', new Date());
+  gtag('config', GA4_ID);
+  var s = document.createElement('script');
+  s.async = true;
+  s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA4_ID;
+  document.head.appendChild(s);
+}
+
+function hideConsentBanner() {
+  var b = document.getElementById('consentBanner');
+  if (b) b.remove();
+}
+function acceptConsent() {
+  localStorage.setItem('sa_consent', 'granted');
+  hideConsentBanner();
+  loadGA4();
+}
+function declineConsent() {
+  localStorage.setItem('sa_consent', 'denied');
+  hideConsentBanner();
+}
+
+function initConsent() {
+  var c = localStorage.getItem('sa_consent');
+  if (c === 'granted') { loadGA4(); return; }
+  if (c === 'denied') return;
+  if (document.getElementById('consentBanner')) return;
+  var div = document.createElement('div');
+  div.className = 'consent-banner';
+  div.id = 'consentBanner';
+  div.setAttribute('role', 'region');
+  div.setAttribute('aria-label', 'Cookie notice');
+  div.innerHTML =
+    '<p class="consent-text"><span data-t="consent_text">We use anonymous analytics cookies to understand how visitors use the site — no ads, no cross-site tracking.</span> ' +
+    '<a href="privacy.html" data-t="consent_more">Privacy Policy</a></p>' +
+    '<div class="consent-actions">' +
+      '<button type="button" class="consent-btn consent-accept" data-t="consent_accept" onclick="acceptConsent()">Accept</button>' +
+      '<button type="button" class="consent-btn consent-decline" data-t="consent_decline" onclick="declineConsent()">Decline</button>' +
+    '</div>';
+  document.body.appendChild(div);
+}
+
 function trackGA4(eventName, params) {
   if (typeof gtag === 'function') gtag('event', eventName, params || {});
 }
@@ -284,6 +351,7 @@ document.addEventListener('click', function(e) {
 
 // ── INIT ────────────────────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', function() {
+  initConsent();
   var lang = localStorage.getItem('sa_lang') || 'en';
   var cur  = localStorage.getItem('sa_cur')  || 'USD';
   setLang(lang);

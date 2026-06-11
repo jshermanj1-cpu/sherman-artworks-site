@@ -1,5 +1,7 @@
 # Sherman Art Works — New Chat Context Document
-**Date:** June 2026 (Sprint 15 complete) | **Repo:** github.com/jshermanj1-cpu/sherman-artworks-site | **Live:** shermanartworks.com (GitHub Pages, gh-pages branch)
+**Date:** 2026-06-11 (Sprint 19 dev complete) | **Repo:** github.com/jshermanj1-cpu/sherman-artworks-site | **Live:** shermanartworks.com (GitHub Pages, serves from `main`)
+
+> Fuller roadmap lives in `FIX_PLAN.md` (workstreams WS0–WS8 → Sprints 16–20); TASK_LIST.md tracks execution.
 
 ---
 
@@ -30,9 +32,9 @@ Sherman Art Works is a family-run handmade glass & Judaica business in Israel. T
 
 ## Technology Stack
 
-- **HTML**: Self-contained per page (no shared JS/CSS files). Each page duplicates nav/footer/styles.
+- **HTML**: Page-specific content per file; shared chrome/styles/logic extracted in Sprint 17 to `css/site.css`, `js/site.js` (+ `css/cart.css`, `js/cart.js`, `data/products.json`). Pages keep only their own `T_PAGE` dict and render functions.
 - **Hosting**: GitHub Pages from `main` branch. Push to `main` = live in ~1 min. `gh-pages` branch deleted June 2026.
-- **Fonts**: Fraunces (display/headlines, replaced Cinzel), Inter (body, replaced Arial), Cormorant Garamond (italic accents only). Hebrew: Frank Ruhl Libre (headlines), Heebo (body). All loaded via Google Fonts.
+- **Fonts**: **Varela Round for ALL text, EN + HE** (switched Sprint 16; tokens `--ff-body/--ff-disp/--ff-ital/--ff-body-he/--ff-disp-he` all point to it). ⚠️ WS8 in FIX_PLAN: owner never picked between Varela Round / Fraunces+Inter / hybrid — comparison screenshots still owed.
 - **i18n**: Runtime EN/HE switching via `data-t` attributes + a `T = { en: {...}, he: {...} }` object in each page's inline `<script>`. RTL via `html[dir="rtl"]`. `setLang('he')` swaps all text and flips layout.
 - **Currency**: Live ILS↔USD conversion via `open.er-api.com/v6/latest/USD` (GET-only, no user data sent). Fallback rate 3.75 ILS/USD with disclaimer. Conversion: `ils / usdRate`.
 - **Contact/Orders**: WhatsApp-first (no backend). `wa.me/972523482278` — ✅ official business number.
@@ -50,11 +52,11 @@ Sherman Art Works is a family-run handmade glass & Judaica business in Israel. T
 --border:    #ede5d8;
 --footer-text: #a89678; /* for text on --dark backgrounds, AA-compliant */
 --green:     #25d366;   /* WhatsApp */
---ff-body:   'Inter', Arial, sans-serif;
---ff-disp:   'Fraunces', 'Cinzel', serif;
---ff-ital:   'Cormorant Garamond', serif;
---ff-body-he:'Heebo', 'Arial Hebrew', sans-serif;  /* [lang="he"] body */
---ff-disp-he:'Frank Ruhl Libre', 'David', serif;   /* [lang="he"] headlines */
+--ff-body:   'Varela Round', Arial, sans-serif;
+--ff-disp:   'Varela Round', sans-serif;
+--ff-ital:   'Varela Round', sans-serif;
+--ff-body-he:'Varela Round', 'Arial Hebrew', sans-serif;  /* [lang="he"] body */
+--ff-disp-he:'Varela Round', sans-serif;                  /* [lang="he"] headlines */
 --fs-xs: 0.75rem; --fs-sm: 0.875rem; --fs-base: 1rem;
 --fs-lg: 1.125rem; --fs-xl: 1.5rem; --fs-2xl: 2.25rem; --fs-3xl: 3rem;
 ```
@@ -78,9 +80,19 @@ Sherman Art Works is a family-run handmade glass & Judaica business in Israel. T
 | `about.html` | Brand story — 3 generations, craft values, studio | ✅ Live |
 | `contact.html` | Contact page — 3-method cards + form + FAQ accordion | ✅ Live |
 | `404.html` | Branded 404 page — full nav, hero, 3 CTAs, EN/HE, floating WA | ✅ Live |
-| `sitemap.xml` | 10 customer URLs, priorities (homepage 1.0 → coming soon 0.6) | ✅ Live |
-| `robots.txt` | Allows all; disallows product-builder.html + glass-curate.html | ✅ Live |
+| `checkout.html` | Cart review page — order table, ILS/USD totals, WA checkout CTA, `noindex` | ✅ (Sprint 18) |
+| `privacy.html` | Privacy policy — 12 sections EN/HE, static EN baked in `<main>` | ✅ (Sprints 19) |
+| `terms.html` | Terms of service — 10 sections EN/HE, static EN baked | ✅ Sprint 19 (uncommitted) |
+| `shipping-returns.html` | Shipping & returns policy — 9 sections EN/HE, static EN baked | ✅ Sprint 19 (uncommitted) |
+| `css/site.css` | Shared stylesheet: tokens, chrome, components, consent banner (§18) | ✅ |
+| `css/cart.css` | Cart drawer / badge / checkout styles | ✅ |
+| `js/site.js` | Shared JS: `T_SITE`, state, `setLang`, rates, GA4 consent gate + events, nav | ✅ |
+| `js/cart.js` | Cart store (`sa_cart`), drawer UI, WA message builder, GA4 ecommerce | ✅ |
+| `data/products.json` | 6-product catalog (slug, category, priceIls, photos) | ✅ |
+| `sitemap.xml` | 13 customer URLs (10 + 3 policy pages); checkout deliberately excluded | ✅ |
+| `robots.txt` | Allows all; disallows product-builder.html. checkout.html handled via `noindex` meta, NOT robots (so Google can read the noindex) | ✅ Live |
 | `product-builder.html` | Internal tool — photo grouping + JSON export for owner (not linked from site) | Tool only |
+| `FIX_PLAN.md` | Post-audit roadmap WS0–WS8 → Sprints 16–20 | Reference |
 | `TASK_LIST.md` | Full project roadmap (living doc) | ✅ Up to date |
 | `context.md` | This file — full context for new chat sessions | ✅ Up to date |
 
@@ -155,12 +167,12 @@ Coming Soon cards (Business Gifts, Mezuzahs) use inline SVG placeholders in the 
 
 ---
 
-## GA4 Analytics (`G-J55QNV6GF1`)
+## GA4 Analytics (`G-J55QNV6GF1`) — CONSENT-GATED since Sprint 19
 
-Installed on all 11 pages (including 404.html). Each page has:
-1. The GA4 `<script>` snippet immediately after the viewport `<meta>` tag.
-2. A `trackGA4(eventName, params)` helper function.
-3. A delegated `document.addEventListener('click', ...)` that fires these 5 event types:
+**No GA4 snippet in any page `<head>` anymore.** `js/site.js` owns analytics:
+1. On load, `initConsent()` checks `localStorage('sa_consent')`: `'granted'` → `loadGA4()` injects gtag.js; `'denied'` → nothing; unset → cookie banner (bottom-fixed, EN/HE, Accept/Decline → `acceptConsent()`/`declineConsent()`).
+2. `trackGA4(eventName, params)` no-ops until consent granted (`typeof gtag` guard).
+3. A delegated `document.addEventListener('click', ...)` fires these 5 event types (plus cart.js ecommerce events `add_to_cart` / `view_cart` / `begin_checkout`):
 
 | Event name | Trigger |
 |---|---|
@@ -233,7 +245,7 @@ Three sizes, all served from Cloudinary as PNG with square smart crop:
 - 32×32: `w_32,h_32,c_fill,g_auto,f_png`
 - 180×180 (apple-touch-icon): `w_180,h_180,c_fill,g_auto,f_png`
 
-Image used: `WhatsApp_Image_2026-05-23_at_14.51.06_1_q8pfxh` (candlestick close-up).
+Image used: `WhatsApp_Image_2026-05-23_at_14.51.54_xv8lbd` (the Sherman logo — same asset as the nav logo).
 
 ---
 
@@ -258,41 +270,42 @@ Homepage hero image has a `<link rel="preload" as="image" fetchpriority="high">`
 
 | Commit | Description |
 |---|---|
-| `10381e9` | Fix category card image display — square frames, smart crop, horn photo for Shofars |
-| `036953a` | Fix category card images + update task list |
-| `cc0cd2a` | Remove dead bestseller_badge keys + delete glass-curate.html |
-| `4dcf51a` | Add aria fallbacks + GA4 event tracking to all 11 pages |
-| `21ae72d` | Add GA4 analytics to all 11 pages (M11.1.1) |
-| `9dbb996` | Add sitemap.xml + robots.txt (M11.1.2 dev work) |
-| `22a2570` | Strengthen commit rule in context.md |
-| `376b75a` | Add 404 page, upgrade favicons, add from-prices, fix Kiddush card, LCP preload |
-| `7126208` | Update TASK_LIST.md: Sprint 14 complete |
-| `cbfc25a` | Add goblets to Kiddush Cups; remove Coming Soon badge from nav |
-| `8c51bac` | Add inline photo carousel to product cards |
-| `cb31962` | Add context.md — full session onboarding document |
-| `f6715df` | Add Shop dropdown nav with 6 categories (desktop + mobile) |
-| `98625de` | UI/UX overhaul: Fraunces + Inter, AA contrast, SVG icons, CTA hierarchy |
+| *(pending)* | Sprint 19: consent banner, terms.html, shipping-returns.html, footer policies, sitemap — awaiting owner approval |
+| `dbbd00b` | Fix mobile layout: responsive breakpoints across all pages (375px, no overflow) |
+| `6ed58de` | Sprint 19: privacy policy page + footer link site-wide |
+| `5851784` | Sprint 18: shopping cart Phase A — WhatsApp-first cart |
+| `9dd807f` | Update TASK_LIST.md: add Sprints 16–18, fix stale entries |
+| `8ac5b35` | Fix T[l] → T_PAGE[l] in category page render functions |
+| `02d2998` | Sprint 17: shared CSS/JS, products.json, SEO baking, JSON-LD |
+| `f7973d1` | Sprint 16: banner, exchange rate, localStorage, kiddush desc, gitignore |
+| `d2c7e7f` | Security lockdown: purge credentials, fix deployment, correct docs |
+| `9b2b183`…`c72ae62` | Ram Mezuzah product launch (4 commits) |
+| `41a9a9c` | Switch all fonts to Varela Round across all 11 pages |
 
 ---
 
 ## Pending / Open Issues
 
+*(Resolved & removed: WA number — `972523482278` IS the official business number; GitHub PAT — rotated, fine-grained token in owner's password manager; Cloudinary keys — rotated June 2026.)*
+
 ### 🔴 Blockers (owner action required)
-1. **Replace temp WhatsApp number** `+972523482278` — ~20 occurrences across all pages. Owner provides official business number → single Python find-and-replace script, done in 5 min.
-2. **Rotate GitHub PAT** — was shown in chat. Owner revokes at github.com/settings/tokens, generates new one.
+1. **Choose payment provider** (M0-3) — Stripe unavailable for Israel. Shortlist + question checklist in FIX_PLAN 4.1 (PayPal, Grow/Meshulam, PayPlus, Tranzila, CardCom). Unblocks M19 payments.
+2. **Approve shipping-returns policy wording** (Sprint 19, uncommitted) — drafted decisions: buyer pays return shipping, customs = recipient's responsibility, refunds ≤14 days after return received, custom orders non-cancellable once crafting begins.
 
 ### 🟡 Important (owner action required)
 3. **WhatsApp Business profile** — install WA Business app, configure logo/hours/away message (M11.1.3)
-4. **New product photos** (M9) — photograph kiddush cups, trays, business gifts, mezuzahs → upload to Cloudinary → use `product-builder.html` to group + export JSON → paste JSON to dev
-5. **Diversify OG images** (M13.2.1) — 5 pages share the same bowl photo (index, about, contact, custom-orders, mezuzahs). Owner picks better photos.
+4. **Catalog from `pics/`** (FIX_PLAN 6.1) — finished photos already sit locally (Bowls/, IMG_9845/46/52, Shofar/, mezuzah/); owner sends name + price + measurements per piece, dev uploads + integrates. NOT blocked on a photo shoot.
+5. **Diversify OG images** (M13.2.1) — 5 pages share the same bowl photo. Owner picks better photos.
 6. **TikTok handle** (M0-11) — send handle → dev adds to footer site-wide (XS task)
+7. **Dead Cloudinary images on index.html** — 6 story/strip requests 404 (`…14.47.17/18/48/49…`). Owner confirms correct public_ids.
+8. **Font decision (WS8)** — dev owes side-by-side screenshots (all-Varela / Fraunces+Inter / hybrid); owner picks.
 
 ### 🔜 Major upcoming milestones
-- **M9**: Full product catalogue — needs new photos. Use `product-builder.html` to group photos + export JSON, then paste JSON to dev to update `PRODUCTS` array.
-- **M10**: Hebrew quality pass — needs native Hebrew speaker (M0-6)
-- **M11 Tier 2**: Newsletter bar, Pinterest "Pin It", TikTok footer link
-- **M12**: Stripe checkout — owner creates Stripe account first (M0-3)
-- **Full launch**: After M9 photos + M0-1 real WhatsApp number
+- **Sprint 20 (FIX_PLAN "Depth & launch")**: trust badges/strip, testimonials section, newsletter capture, catalog enrichment, Hebrew native pass
+- **M9**: Full product catalogue — `pics/` integration + remaining photos
+- **M10**: Hebrew quality pass — needs native speaker (M0-6); new Sprint-19 HE copy (terms/shipping/banner) included
+- **M19**: Payments Phase B — blocked on M0-3; integration paths in FIX_PLAN 4.3
+- **Full launch**: after M9 + Sprint 20 trust items
 
 ---
 
@@ -324,13 +337,14 @@ Installed globally at `C:\Users\User\.claude\skills\` — 7 sub-skills: `ui-ux-p
 
 ## Python Helper Scripts (site root)
 
-All Python 3.8 compatible (no lowercase generic type hints). All already applied — safe to delete.
+All Python 3.8 compatible. `_*.py` is gitignored (Sprint 16) — these live locally only, never in the repo. All already applied — safe to delete.
 
 | Script | Purpose | Safe to delete? |
 |---|---|---|
-| `_uiux_overhaul.py` | Font/token/colour/Hebrew sweep | ✅ Yes |
-| `_dedup_tokens.py` | Fixed double-insertion of token block | ✅ Yes |
-| `_shop_dropdown.py` | Shop dropdown sweep | ✅ Yes |
+| `_card_carousel.py` | Carousel sweep (FIX_PLAN 1.5 says delete) | ✅ Yes |
+| `_sprint16_fixes.py` | Banner/rate/localStorage sweep | ✅ Yes |
+| `_sprint17.py` | Shared CSS/JS extraction | ✅ Yes |
+| `_sprint19.py` | GA4-snippet strip + footer policy links sweep | ✅ Yes |
 
 ---
 
