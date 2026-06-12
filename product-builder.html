@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Product Builder - Sherman Art Works</title>
   <style>
-    :root { --bg:#faf7f2; --dark:#202020; --gold:#d4b572; --brown:#8a6f40; --border:#ede5d8; --green:#25d366; --red:#d04444; --ff:Arial,sans-serif; --ff-disp:'Georgia',serif; }
+    :root { --bg:#faf7f2; --dark:#202020; --gold:#d4b572; --brown:#6a5530; --border:#ede5d8; --green:#25d366; --red:#d04444; --ff:Arial,sans-serif; --ff-disp:'Georgia',serif; }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body { font-family: var(--ff); background: var(--bg); color: var(--dark); line-height: 1.5; padding: 1.5rem; }
     h1 { font-family: var(--ff-disp); font-weight: 600; font-size: 1.6rem; margin-bottom: 0.4rem; }
@@ -369,7 +369,7 @@ function renderPhotos(cat) {
       <div class="photo-card ${colorClass}">
         <img class="photo-thumb" src="${CDN}${photoId}.jpg" alt="${photoId}" loading="lazy" />
         <div class="photo-id">${photoId}</div>
-        <select onchange="onGroupChange('${cat}', '${photoId}', this.value)">
+        <select aria-label="Product group for ${photoId}" onchange="onGroupChange('${cat}', '${photoId}', this.value)">
           ${optionTags}
         </select>
       </div>

@@ -228,7 +228,7 @@ function _injectCartDrawer() {
       '</h2>' +
       '<button class="cart-close-btn" onclick="closeCartDrawer()" aria-label="Close cart">×</button>' +
     '</div>' +
-    '<div id="cart-items-list" class="cart-items-list"></div>' +
+    '<div id="cart-items-list" class="cart-items-list" tabindex="0"></div>' +
     '<div id="cart-drawer-footer" class="cart-drawer-footer" style="display:none">' +
       '<div class="cart-total-row">' +
         '<span data-t="cart_total">Total</span>' +
