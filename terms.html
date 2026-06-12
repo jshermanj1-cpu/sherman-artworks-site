@@ -266,7 +266,7 @@ const T_PAGE = {
     topbar_right: 'עבודת יד מישראל',
 
     terms_h1:       'תקנון האתר ומדיניות משלוחים מלאה',
-    terms_subtitle: 'גרסה עברית מקיפה - כולל סעיפי הגבלת אחריות וסמכות שיפוטית',
+    terms_subtitle: '',
     terms_updated:  'עודכן לאחרונה: יוני 2026',
     terms_callout:  '<p>קודם כל, חשוב לנו שתדעו - אנחנו עושים הכל כדי שההזמנה שלכם תגיע אליכם הכי מהר שאפשר! ברוב המוחלט של המקרים, המשלוחים מגיעים הרבה, הרבה לפני הזמן הנקוב.</p>',
 
@@ -300,7 +300,7 @@ function renderTerms() {
 
   var html =
     '<h1>' + escapeHtml(t.terms_h1) + '</h1>' +
-    '<p class="legal-subtitle">' + escapeHtml(t.terms_subtitle) + '</p>' +
+    (t.terms_subtitle ? '<p class="legal-subtitle">' + escapeHtml(t.terms_subtitle) + '</p>' : '') +
     '<p class="legal-meta">' + escapeHtml(t.terms_updated) + '</p>' +
     '<div class="terms-callout">' + t.terms_callout + '</div>';
 
