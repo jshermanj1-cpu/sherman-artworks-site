@@ -442,7 +442,7 @@ footer { background: var(--dark); color: #d4c5aa; padding: 3.5rem 2rem 2rem; }
 footer .logo-name { color: var(--gold); }
 footer .logo-sub  { color: var(--footer-text); }
 .footer-tagline   { font-size: 0.85rem; color: var(--footer-text); font-weight: 300; line-height: 1.65; margin-top: 0.75rem; }
-.footer-email     { font-size: 0.8rem; color: var(--gold); margin-top: 0.5rem; }
+.footer-email     { font-size: 0.8rem; color: var(--gold); margin-top: 0.5rem; white-space: nowrap; }
 .footer-email a:hover { text-decoration: underline; }
 .footer-col-title { font-family: var(--ff-disp); font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; }
 .footer-links     { list-style: none; display: flex; flex-direction: column; gap: 0.65rem; }

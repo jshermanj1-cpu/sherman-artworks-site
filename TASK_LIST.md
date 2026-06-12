@@ -287,6 +287,36 @@ All category cards show real product photos. "From ₪X / $X" prices shown on al
 
 ---
 
+## MILESTONE 19 — Owner Feedback Round (Sprint 20) ⚠️ AWAITING APPROVAL
+
+Owner provided site + Hebrew wording feedback; implemented 2026-06-12.
+
+| ID | Item | Status |
+|---|---|---|
+| 20.1 | HE nav label `הזמנות מיוחדות` → `הזמנות בהתאמה אישית` — all 16 files (site.js + 13 HTML pages + policy pages + 404) | ✅ |
+| 20.2 | Cat1 HE rename: `פמוטים` → `פמוטי חן` (category title + footer + product name_he + description_he) | ✅ |
+| 20.3 | Cat2 rename: EN `Shofars & Goblets` → `Shofars & Horn Goblets`; HE `שופרות וגביעים` → `שופרות וגביעי קרן` — all pages, static HTML, T_SITE, T_PAGE | ✅ |
+| 20.4 | Cat5 HE `מתנות עסקיות` → `מתנות לעסקים` | ✅ |
+| 20.5 | `עשוי ביד` → `עבודת יד` phrasing: footer_badge `עשוי ביד בישראל` → `עבודת יד מישראל`; footer_tagline; topbar_right | ✅ |
+| 20.6 | Homepage restructure: shop category grid moved above hero banner — visitor sees shop immediately | ✅ |
+| 20.7 | Candlesticks: `description_he` updated to owner-specified text (translucent-blue round glass, Shabbat/decorative); removed "custom candlesticks" `custom-band` section | ✅ |
+| 20.8 | Shofars page: added handmade-variation disclaimer HE + EN (minor differences, each piece unique) to hero_body and section sub-header | ✅ |
+| 20.9 | Jerusalem Wine Horn corrected: it is NOT a shofar — it's a wine goblet made of kudu horn. Updated `name_he`, `description_en`, `description_he`, section header, static SEO cards (shofars-goblets.html + kiddush-cups.html) | ✅ |
+| 20.10 | Lion of Judah Goblet description: `description_he` → "סמל אריה על רקע ציפוי כסף 925"; `description_en` updated — both pages | ✅ |
+| 20.11 | Menorah Goblet description: `description_he` → "מנורה בעלת שבעה קנים" only — both pages | ✅ |
+| 20.12 | Mezuzahs intro: new `hero_body` HE (variety of styles, personal design, each unique, minor differences); `custom_title` HE → `הזמינו מזוזה מיוחדת` (removed "מותאמת אישית"); `description_he` updated to include `עבודת יד` + `עשוי בעבודת יד*` note | ✅ |
+| 20.13 | About page: new HE `story_body` (grandfather saw more than raw material, three generations, same love, belief every creation tells a story) | ✅ |
+| 20.14 | Email nowrap fix: `.footer-email { white-space: nowrap; }` in site.css | ✅ |
+| 20.15 | Image buttons investigation: modal arrows confirmed working (all pages, desktop + mobile-width). In-card carousel was removed in Sprint 17 rebuild — not yet reinstated (separate work item) | 🔜 TBD |
+| 20.16 | FAQ displays in Hebrew — confirmed working in previous session | ✅ No fix needed |
+
+**Still pending owner decisions (not implemented):**
+- 925 silver consistency pass across all products (need full list from owner)
+- In-card carousel reinstatement (sprint 17 casualty — medium effort to rebuild)
+- Shofars category split vs. rename (implemented rename only — "Shofars & Horn Goblets")
+
+---
+
 ## Sprint Summary
 
 | Sprint | Milestone | Goal | Status |
@@ -304,8 +334,9 @@ All category cards show real product photos. "From ₪X / $X" prices shown on al
 | Sprint 16 | M13 / M14 cleanup | Security lockdown, Varela Round fonts, exchange rate, localStorage, .gitignore | ✅ |
 | Sprint 17 | M16 | Shared CSS/JS, products.json, SEO baking, JSON-LD, T_PAGE fix | ✅ |
 | Sprint 18 | M17 | Shopping Cart Phase A (Steps 1–8) | ✅ |
-| Sprint 19 | M18 | Legal core: consent banner, terms, shipping-returns, footer policies, sitemap, privacy SEO bake (+ standalone mobile-breakpoints fix `dbbd00b`) | ✅ Dev done — awaiting owner approval of shipping-returns policy wording |
-| **→ Sprint 20** | **M18 rest + M11.2** | **Trust badges, testimonials, newsletter — per FIX_PLAN "Depth & launch"** | 🔜 |
+| Sprint 19 | M18 | Legal core: consent banner, terms, shipping-returns, footer policies, sitemap, privacy SEO bake (+ standalone mobile-breakpoints fix `dbbd00b`) | ✅ |
+| Sprint 20 | M10 / M14 | Owner feedback round: Hebrew copy + product accuracy pass — details below | ✅ Dev done — awaiting owner approval |
+| **→ Sprint 21** | **M18 rest + M11.2** | **Trust badges, testimonials, newsletter — per FIX_PLAN "Depth & launch"** | 🔜 |
 | — | M9 | Full product catalogue | 🔜 Blocked: owner photos for kiddush cups, business gifts |
 | — | M11 Tier 2 | Newsletter, Pinterest, TikTok | 🔜 |
 | — | M10 | Hebrew quality pass | 🔜 Blocked: native speaker |

@@ -23,9 +23,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet" />
 
-  <!-- LCP preload: hero image fetched early to improve Largest Contentful Paint -->
-  <link rel="preload" as="image" fetchpriority="high"
-        href="https://res.cloudinary.com/doesupaf9/image/upload/w_900,h_300,c_fit,q_auto,f_auto/WhatsApp_Image_2026-05-23_at_14.50.45_2_lutcx6.jpg" />
+
 
   <link rel="stylesheet" href="css/site.css" />
   <link rel="stylesheet" href="css/cart.css" />
@@ -344,7 +342,7 @@
         </button>
         <div class="nav-dropdown-menu" role="menu">
           <a href="candlesticks.html" role="menuitem" data-t="cat1_title">Candlesticks</a>
-          <a href="shofars-goblets.html" role="menuitem" data-t="cat2_title">Shofars & Goblets</a>
+          <a href="shofars-goblets.html" role="menuitem" data-t="cat2_title">Shofars & Horn Goblets</a>
           <a href="kiddush-cups.html" role="menuitem" data-t="cat3_title">Kiddush Cups</a>
           <a href="trays-bowls.html" role="menuitem" data-t="cat4_title">Trays & Bowls</a>
           <a href="business-gifts.html" role="menuitem"><span data-t="cat5_title">Business Gifts</span><span class="nav-dropdown-badge" data-t="badge_soon">Coming Soon</span></a>
@@ -370,7 +368,7 @@
         </button>
         <div class="mobile-shop-menu open">
           <a href="candlesticks.html" onclick="closeMobileNav()" data-t="cat1_title">Candlesticks</a>
-          <a href="shofars-goblets.html" onclick="closeMobileNav()" data-t="cat2_title">Shofars & Goblets</a>
+          <a href="shofars-goblets.html" onclick="closeMobileNav()" data-t="cat2_title">Shofars & Horn Goblets</a>
           <a href="kiddush-cups.html" onclick="closeMobileNav()" data-t="cat3_title">Kiddush Cups</a>
           <a href="trays-bowls.html" onclick="closeMobileNav()" data-t="cat4_title">Trays & Bowls</a>
           <a href="business-gifts.html" onclick="closeMobileNav()"><span data-t="cat5_title">Business Gifts</span><span class="nav-dropdown-badge" data-t="badge_soon">Coming Soon</span></a>
@@ -384,46 +382,6 @@
     </ul>
   </div>
 </div>
-
-<!-- ══════════════════════════════════════════════
-     HERO
-══════════════════════════════════════════════ -->
-<section class="hero" id="home">
-  <div class="hero-text">
-    <div class="hero-eyebrow" data-t="hero_eyebrow">Handcrafted in Israel · Since Generations</div>
-    <h1 class="hero-headline" data-t="hero_headline">Where Light Meets Glass</h1>
-    <p class="hero-subtitle" data-t="hero_subtitle">Each piece, a singular creation</p>
-    <p class="hero-body" data-t="hero_body">Sherman Art Works creates blown and fused glass Judaica and decorative art of rare beauty, kiddush cups, Shabbat candleholders, decorative bowls and sculptural trays, each one unique and unrepeatable.</p>
-    <div class="hero-ctas">
-      <a href="#shop"          class="btn-primary" data-t="hero_cta1">Browse the Shop</a>
-      <a href="custom-orders.html" class="btn-link">
-        <span data-t="hero_cta2">Custom Orders</span>
-        <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 10 H16 M11 5 L16 10 L11 15"/></svg>
-      </a>
-    </div>
-  </div>
-  <div class="hero-images">
-    <!-- ⚠️ Replace src values with Cloudinary URLs after upload -->
-    <div class="hero-img-main">
-      <img id="hi1"
-           src="https://res.cloudinary.com/doesupaf9/image/upload/w_900,h_300,c_fit,q_auto,f_auto/WhatsApp_Image_2026-05-23_at_14.50.45_2_lutcx6.jpg"
-           alt="Handmade glass decorative bowl by Sherman Art Works"
-           width="900" height="300" fetchpriority="high" />
-    </div>
-    <div class="hero-img-sm">
-      <img id="hi2"
-           src="https://res.cloudinary.com/doesupaf9/image/upload/w_450,h_180,c_fit,q_auto,f_auto/WhatsApp_Image_2026-05-23_at_14.47.17_1_w7evub.jpg"
-           alt="Handmade glass art by Sherman Art Works"
-           width="450" height="180" loading="lazy" />
-    </div>
-    <div class="hero-img-sm">
-      <img id="hi3"
-           src="https://res.cloudinary.com/doesupaf9/image/upload/w_450,h_180,c_fit,q_auto,f_auto/WhatsApp_Image_2026-05-23_at_14.47.18_2_gubqeq.jpg"
-           alt="Handmade glass art by Sherman Art Works"
-           width="450" height="180" loading="lazy" />
-    </div>
-  </div>
-</section>
 
 <!-- ══════════════════════════════════════════════
      SHOP, Featured Pieces
@@ -462,7 +420,7 @@
              alt="Sherman Art Works shofars and goblets" />
       </div>
       <div class="cat-card-body">
-        <h3 class="cat-card-title" data-t="cat2_title">Shofars &amp; Goblets</h3>
+        <h3 class="cat-card-title" data-t="cat2_title">Shofars &amp; Horn Goblets</h3>
         <p class="cat-card-desc"   data-t="cat2_desc">Silver-plated shofars and ornate goblets in classic designs.</p>
         <span class="cat-card-from" data-min-ils="473"></span>
         <span class="cat-card-cta">
@@ -549,6 +507,45 @@
       </div>
     </a>
 
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     HERO
+══════════════════════════════════════════════ -->
+<section class="hero" id="home">
+  <div class="hero-text">
+    <div class="hero-eyebrow" data-t="hero_eyebrow">Handcrafted in Israel · Since Generations</div>
+    <h1 class="hero-headline" data-t="hero_headline">Where Light Meets Glass</h1>
+    <p class="hero-subtitle" data-t="hero_subtitle">Each piece, a singular creation</p>
+    <p class="hero-body" data-t="hero_body">Sherman Art Works creates blown and fused glass Judaica and decorative art of rare beauty, kiddush cups, Shabbat candleholders, decorative bowls and sculptural trays, each one unique and unrepeatable.</p>
+    <div class="hero-ctas">
+      <a href="#shop"          class="btn-primary" data-t="hero_cta1">Browse the Shop</a>
+      <a href="custom-orders.html" class="btn-link">
+        <span data-t="hero_cta2">Custom Orders</span>
+        <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 10 H16 M11 5 L16 10 L11 15"/></svg>
+      </a>
+    </div>
+  </div>
+  <div class="hero-images">
+    <div class="hero-img-main">
+      <img id="hi1"
+           src="https://res.cloudinary.com/doesupaf9/image/upload/w_900,h_300,c_fit,q_auto,f_auto/WhatsApp_Image_2026-05-23_at_14.50.45_2_lutcx6.jpg"
+           alt="Handmade glass decorative bowl by Sherman Art Works"
+           width="900" height="300" loading="lazy" />
+    </div>
+    <div class="hero-img-sm">
+      <img id="hi2"
+           src="https://res.cloudinary.com/doesupaf9/image/upload/w_450,h_180,c_fit,q_auto,f_auto/WhatsApp_Image_2026-05-23_at_14.47.17_1_w7evub.jpg"
+           alt="Handmade glass art by Sherman Art Works"
+           width="450" height="180" loading="lazy" />
+    </div>
+    <div class="hero-img-sm">
+      <img id="hi3"
+           src="https://res.cloudinary.com/doesupaf9/image/upload/w_450,h_180,c_fit,q_auto,f_auto/WhatsApp_Image_2026-05-23_at_14.47.18_2_gubqeq.jpg"
+           alt="Handmade glass art by Sherman Art Works"
+           width="450" height="180" loading="lazy" />
+    </div>
   </div>
 </section>
 
@@ -695,7 +692,7 @@
         <div class="footer-col-title" data-t="footer_col_shop">Shop</div>
         <ul class="footer-links" role="list">
           <li><a href="candlesticks.html"     data-t="footer_link_candles">Candlesticks</a></li>
-          <li><a href="shofars-goblets.html"  data-t="footer_link_shofars">Shofars &amp; Goblets</a></li>
+          <li><a href="shofars-goblets.html"  data-t="footer_link_shofars">Shofars &amp; Horn Goblets</a></li>
           <li><a href="trays-bowls.html"      data-t="footer_link_bowls">Trays &amp; Bowls</a></li>
           <li><a href="#shop"             data-t="footer_all_collections">All Collections</a></li>
           <li><a href="custom-orders.html"    data-t="nav_custom">Custom Orders</a></li>
@@ -737,7 +734,7 @@
       nav_contact:         'Contact',
 
       footer_link_candles:    'Candlesticks',
-      footer_link_shofars:    'Shofars & Goblets',
+      footer_link_shofars:    'Shofars & Horn Goblets',
       footer_link_bowls:      'Trays & Bowls',
       footer_all_collections: 'All Collections',
 
@@ -761,7 +758,7 @@
 
       cat1_title:          'Candlesticks',
       cat1_desc:           'Shabbat candlesticks and ceremonial pairs, ready for your table.',
-      cat2_title:          'Shofars & Goblets',
+      cat2_title:          'Shofars & Horn Goblets',
       cat2_desc:           'Silver-plated shofars and ornate goblets in classic designs.',
       cat3_title:          'Kiddush Cups',
       cat3_desc:           'Silver-plated wine goblets for Kiddush, in classic Judaica designs.',
@@ -802,19 +799,19 @@
     },
     he: {
       nav_shop:            'חנות',
-      cat1_title:  'פמוטים',
-      cat2_title:  'שופרות וגביעים',
+      cat1_title:  'פמוטי חן',
+      cat2_title:  'שופרות וגביעי קרן',
       cat3_title:  'כוסות קידוש',
       cat4_title:  'מגשים וקערות',
-      cat5_title:  'מתנות עסקיות',
+      cat5_title:  'מתנות לעסקים',
       cat6_title:  'מזוזות',
       badge_soon:  'בקרוב',
-      nav_custom:          'הזמנות מיוחדות',
+      nav_custom:          'הזמנות בהתאמה אישית',
       nav_about:           'אודות',
       nav_contact:         'צור קשר',
 
-      footer_link_candles:    'פמוטים',
-      footer_link_shofars:    'שופרות וגביעים',
+      footer_link_candles:    'פמוטי חן',
+      footer_link_shofars:    'שופרות וגביעי קרן',
       footer_link_bowls:      'מגשים וקערות',
       footer_all_collections: 'כל הקולקציות',
 
@@ -823,9 +820,9 @@
       hero_subtitle:       'כל יצירה, בלתי ניתנת לחזרה',
       hero_body:           'שרמן ארט וורקס יוצרת יצירות זכוכית נפוחה ומשולבת ויודאיקה דקורטיבית בעלת יופי נדיר, גביעי קידוש, פמוטי שבת, קערות דקורטיביות ומגשים פיסוליים, כל אחת ייחודית ובלתי ניתנת לחזרה.',
       hero_cta1:           'לחנות',
-      hero_cta2:           'הזמנות מיוחדות',
+      hero_cta2:           'הזמנות בהתאמה אישית',
 
-      shipping_banner:     '✦  מבצע השקה: משלוח חינם לכל העולם  ·  הזמנות מיוחדות מתקבלות בשמחה  ✦',
+      shipping_banner:     '✦  מבצע השקה: משלוח חינם לכל העולם  ·  הזמנות בהתאמה אישית מתקבלות בשמחה  ✦',
 
       shop_tag:            'הקולקציות שלנו',
       shop_title:          'דפדפו בחנות',
@@ -836,15 +833,15 @@
       cat_cta_commission:  'הזמינו אצלנו',
       cat_from:            'מ-',
 
-      cat1_title:          'פמוטים',
+      cat1_title:          'פמוטי חן',
       cat1_desc:           'פמוטי שבת וזוגות לאירועים, מוכנים לשולחן שלכם.',
-      cat2_title:          'שופרות וגביעים',
+      cat2_title:          'שופרות וגביעי קרן',
       cat2_desc:           'שופרות מצופים כסף וגביעים מעוטרים בעיצובים קלאסיים.',
       cat3_title:          'כוסות קידוש',
       cat3_desc:           'גביעי יין מצופי כסף לקידוש, בעיצובי יודאיקה קלאסיים.',
       cat4_title:          'מגשים וקערות',
       cat4_desc:           'יצירות דקורטיביות לבית ומרכזי שולחן.',
-      cat5_title:          'מתנות עסקיות',
+      cat5_title:          'מתנות לעסקים',
       cat5_desc:           'תמונות בקרוב — הזמנות עסקיות מוזמנות.',
       cat6_title:          'מזוזות',
       cat6_desc:           'בתי מזוזה מקרן ראם מצופה כסף 925 בעבודת יד.',
@@ -871,11 +868,11 @@
       contact_form_email_alt:  'או שלחו במייל',
       form_note:               'אנו מגיבים לכל פנייה תוך 24 שעות.',
 
-      footer_tagline:      'אמנות זכוכית ויודאיקה עשויות ביד מישראל',
+      footer_tagline:      'אמנות זכוכית ויודאיקה בעבודת יד מישראל',
       footer_col_shop:     'חנות',
       footer_col_studio:   'הסטודיו',
       footer_copy:         '© 2026 שרמן ארט וורקס. כל הזכויות שמורות.',
-      footer_badge:        'עשוי ביד בישראל',
+      footer_badge:        'עבודת יד מישראל',
     }
   };
 
