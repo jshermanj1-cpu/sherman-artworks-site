@@ -495,9 +495,12 @@
     document.getElementById('modalMainImg').alt = `${name} - photo ${currentPhotoIdx + 1} of ${p.photos.length}`;
 
     document.getElementById('modalThumbs').innerHTML = p.photos.map((id, i) => `
-      <img class="modal-thumb ${i === currentPhotoIdx ? 'active' : ''}"
-           src="${CDN}/w_120,h_120,c_fill,g_auto,q_auto,f_auto/${id}.jpg"
-           onclick="setModalPhoto(${i})" alt="" />
+      <button type="button" class="modal-thumb ${i === currentPhotoIdx ? 'active' : ''}"
+              onclick="setModalPhoto(${i})"
+              aria-label="${escapeAttr(name)} - photo ${i + 1} of ${p.photos.length}"
+              aria-pressed="${i === currentPhotoIdx ? 'true' : 'false'}">
+        <img src="${CDN}/w_120,h_120,c_fill,g_auto,q_auto,f_auto/${id}.jpg" alt="" />
+      </button>
     `).join('');
 
     const showNav = p.photos.length > 1;

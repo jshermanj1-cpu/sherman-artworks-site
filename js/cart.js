@@ -31,10 +31,19 @@ function addToCart(slug, name_en, name_he, price_ils, photo) {
       items: [{ item_id: slug, item_name: name_en, price: price_ils, quantity: 1 }]
     });
   }
+  if (typeof a11yAnnounce === 'function') {
+    var addedMsg = (typeof T_SITE !== 'undefined' && T_SITE[currentLang] && T_SITE[currentLang].cart_item_added) || 'Item added to cart';
+    var itemName = (currentLang === 'he' && name_he) ? name_he : name_en;
+    a11yAnnounce(itemName + ': ' + addedMsg);
+  }
   openCartDrawer();
 }
 
 function removeFromCart(slug) {
+  if (typeof a11yAnnounce === 'function') {
+    var removedMsg = (typeof T_SITE !== 'undefined' && T_SITE[currentLang] && T_SITE[currentLang].cart_item_removed) || 'Item removed from cart';
+    a11yAnnounce(removedMsg);
+  }
   _saveCart(getCart().filter(function (i) { return i.slug !== slug; }));
 }
 

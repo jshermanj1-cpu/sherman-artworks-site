@@ -42,6 +42,10 @@ const T_SITE = {
     nav_privacy:         'Privacy Policy',
     nav_terms:           'Terms of Service',
     nav_shipping:        'Shipping & Returns',
+    nav_accessibility:   'Accessibility Statement',
+    skip_to_content:     'Skip to main content',
+    cart_item_added:     'Item added to cart',
+    cart_item_removed:   'Item removed from cart',
     consent_text:        'We use anonymous analytics cookies to understand how visitors use the site - no ads, no cross-site tracking.',
     consent_more:        'Privacy Policy',
     consent_accept:      'Accept',
@@ -85,6 +89,10 @@ const T_SITE = {
     nav_privacy:         'מדיניות פרטיות',
     nav_terms:           'תנאי שימוש',
     nav_shipping:        'משלוחים והחזרות',
+    nav_accessibility:   'הצהרת נגישות',
+    skip_to_content:     'דלג לתוכן הראשי',
+    cart_item_added:     'פריט נוסף לסל',
+    cart_item_removed:   'פריט הוסר מהסל',
     consent_text:        'אנחנו משתמשים בעוגיות אנליטיקה אנונימיות כדי להבין איך מבקרים משתמשים באתר - ללא פרסומות וללא מעקב בין אתרים.',
     consent_more:        'מדיניות פרטיות',
     consent_accept:      'אישור',
@@ -132,6 +140,7 @@ async function loadUsdRate() {
   if (typeof renderPrivacy  === 'function') renderPrivacy();
   if (typeof renderTerms    === 'function') renderTerms();
   if (typeof renderShipping === 'function') renderShipping();
+  if (typeof renderA11y     === 'function') renderA11y();
   updatePrices();
 }
 
@@ -193,6 +202,7 @@ function setLang(l) {
   if (typeof renderPrivacy  === 'function') renderPrivacy();
   if (typeof renderTerms    === 'function') renderTerms();
   if (typeof renderShipping === 'function') renderShipping();
+  if (typeof renderA11y     === 'function') renderA11y();
   if (typeof renderModal === 'function' && typeof currentModalIdx !== 'undefined' && currentModalIdx != null) renderModal();
 }
 
@@ -349,9 +359,89 @@ document.addEventListener('click', function(e) {
   }
 });
 
+// ── ACCESSIBILITY HELPERS ────────────────────────────────────────
+function a11yAnnounce(msg) {
+  var el = document.getElementById('a11y-announce');
+  if (!el) return;
+  el.textContent = '';
+  setTimeout(function() { el.textContent = msg; }, 50);
+}
+
+function initA11y() {
+  // Skip-to-content link — targets existing main id or falls back to 'main-content'
+  var lang = localStorage.getItem('sa_lang') || 'en';
+  var main = document.querySelector('main');
+  if (main && !main.id) main.id = 'main-content';
+  if (main) main.setAttribute('tabindex', '-1');
+  var mainId = (main && main.id) ? main.id : 'main-content';
+  var skipText = (T_SITE[lang] && T_SITE[lang].skip_to_content) || 'Skip to main content';
+  var skip = document.createElement('a');
+  skip.href = '#' + mainId;
+  skip.className = 'skip-to-content';
+  skip.textContent = skipText;
+  document.body.insertBefore(skip, document.body.firstChild);
+
+  // Aria-live region for cart + dynamic announcements
+  var live = document.createElement('div');
+  live.id = 'a11y-announce';
+  live.setAttribute('aria-live', 'polite');
+  live.setAttribute('aria-atomic', 'true');
+  live.className = 'sr-only';
+  document.body.appendChild(live);
+
+  // Add accessibility link to footer Studio column if not already present
+  if (!document.querySelector('a[href="accessibility.html"]')) {
+    var footerStudio = document.querySelector('.footer-links');
+    if (footerStudio) {
+      var li = document.createElement('li');
+      var a = document.createElement('a');
+      a.href = 'accessibility.html';
+      a.dataset.t = 'nav_accessibility';
+      a.textContent = (T_SITE[lang] && T_SITE[lang].nav_accessibility) || 'Accessibility Statement';
+      li.appendChild(a);
+      // append to LAST footer-links column (Studio column)
+      var allFooterLists = document.querySelectorAll('.footer-links');
+      var studioList = allFooterLists[allFooterLists.length - 1];
+      if (studioList) studioList.appendChild(li);
+    }
+  }
+
+  // Modal accessibility: focus trap + focus return (works on any page with #productModal)
+  var modal = document.getElementById('productModal');
+  if (modal) {
+    var _lastFocus = null;
+
+    new MutationObserver(function(mutations) {
+      mutations.forEach(function(m) {
+        if (m.attributeName !== 'class') return;
+        if (modal.classList.contains('open')) {
+          _lastFocus = document.activeElement;
+          var firstBtn = modal.querySelector('button:not([disabled]), a[href]');
+          if (firstBtn) firstBtn.focus();
+        } else {
+          if (_lastFocus) { _lastFocus.focus(); _lastFocus = null; }
+        }
+      });
+    }).observe(modal, { attributes: true, attributeFilter: ['class'] });
+
+    modal.addEventListener('keydown', function(e) {
+      if (e.key !== 'Tab') return;
+      var focusable = Array.from(modal.querySelectorAll(
+        'button:not([disabled]), a[href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+      )).filter(function(el) { return el.offsetParent !== null; });
+      if (!focusable.length) return;
+      var first = focusable[0];
+      var last  = focusable[focusable.length - 1];
+      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+    });
+  }
+}
+
 // ── INIT ────────────────────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', function() {
   initConsent();
+  initA11y();
   var lang = localStorage.getItem('sa_lang') || 'en';
   var cur  = localStorage.getItem('sa_cur')  || 'USD';
   setLang(lang);
