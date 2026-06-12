@@ -1,6 +1,6 @@
 /* ═══════════════════════════════════════════════════════════════
-   site.js — Shared JavaScript for Sherman Art Works
-   Sprint 17 — extracted from all 11 HTML pages
+   site.js - Shared JavaScript for Sherman Art Works
+   Sprint 17 - extracted from all 11 HTML pages
    ═══════════════════════════════════════════════════════════════ */
 
 // ── CONSTANTS ──────────────────────────────────────────────────
@@ -42,7 +42,7 @@ const T_SITE = {
     nav_privacy:         'Privacy Policy',
     nav_terms:           'Terms of Service',
     nav_shipping:        'Shipping & Returns',
-    consent_text:        'We use anonymous analytics cookies to understand how visitors use the site — no ads, no cross-site tracking.',
+    consent_text:        'We use anonymous analytics cookies to understand how visitors use the site - no ads, no cross-site tracking.',
     consent_more:        'Privacy Policy',
     consent_accept:      'Accept',
     consent_decline:     'Decline',
@@ -85,7 +85,7 @@ const T_SITE = {
     nav_privacy:         'מדיניות פרטיות',
     nav_terms:           'תנאי שימוש',
     nav_shipping:        'משלוחים והחזרות',
-    consent_text:        'אנחנו משתמשים בעוגיות אנליטיקה אנונימיות כדי להבין איך מבקרים משתמשים באתר — ללא פרסומות וללא מעקב בין אתרים.',
+    consent_text:        'אנחנו משתמשים בעוגיות אנליטיקה אנונימיות כדי להבין איך מבקרים משתמשים באתר - ללא פרסומות וללא מעקב בין אתרים.',
     consent_more:        'מדיניות פרטיות',
     consent_accept:      'אישור',
     consent_decline:     'לא תודה',
@@ -126,7 +126,7 @@ async function loadUsdRate() {
     const rn = document.getElementById('rateNote');
     if (rn) rn.textContent = 'Est. rate';
   }
-  // Duck-typed hooks — only run if page defines them
+  // Duck-typed hooks - only run if page defines them
   if (typeof renderProducts === 'function') renderProducts();
   if (typeof renderCheckout === 'function') renderCheckout();
   if (typeof renderPrivacy  === 'function') renderPrivacy();
@@ -251,7 +251,7 @@ document.addEventListener('keydown', function(e) {
   if (typeof closeModal === 'function') closeModal();
 });
 
-// ── GA4 — CONSENT-GATED ─────────────────────────────────────────
+// ── GA4 - CONSENT-GATED ─────────────────────────────────────────
 // gtag.js loads only after the visitor accepts the cookie banner.
 // Choice persists in localStorage('sa_consent'): 'granted' | 'denied'.
 var GA4_ID = 'G-J55QNV6GF1';
@@ -294,7 +294,7 @@ function initConsent() {
   div.setAttribute('role', 'region');
   div.setAttribute('aria-label', 'Cookie notice');
   div.innerHTML =
-    '<p class="consent-text"><span data-t="consent_text">We use anonymous analytics cookies to understand how visitors use the site — no ads, no cross-site tracking.</span> ' +
+    '<p class="consent-text"><span data-t="consent_text">We use anonymous analytics cookies to understand how visitors use the site - no ads, no cross-site tracking.</span> ' +
     '<a href="privacy.html" data-t="consent_more">Privacy Policy</a></p>' +
     '<div class="consent-actions">' +
       '<button type="button" class="consent-btn consent-accept" data-t="consent_accept" onclick="acceptConsent()">Accept</button>' +

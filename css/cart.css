@@ -1,5 +1,5 @@
 /* ═══════════════════════════════════════════════════════════════
-   cart.css — Shopping cart styles for Sherman Art Works
+   cart.css - Shopping cart styles for Sherman Art Works
    Sprint 18
    ═══════════════════════════════════════════════════════════════ */
 
@@ -268,7 +268,7 @@ html[dir="rtl"] .cart-remove-btn { margin-left: 0; margin-right: auto; }
 }
 .cart-view-full-btn:hover { color: var(--dark); }
 
-/* ── PRODUCT CARD — ADD TO CART BUTTON ────────────────────────── */
+/* ── PRODUCT CARD - ADD TO CART BUTTON ────────────────────────── */
 .btn-cart {
   display: flex;
   align-items: center;
@@ -302,7 +302,7 @@ html[dir="rtl"] .cart-remove-btn { margin-left: 0; margin-right: auto; }
 .product-card-secondary-actions .btn-details { flex: 1; }
 .product-card-secondary-actions .btn-order   { flex: 1; }
 
-/* ── MODAL — ADD TO CART CTA ──────────────────────────────────── */
+/* ── MODAL - ADD TO CART CTA ──────────────────────────────────── */
 .modal-cta.cart-cta {
   display: flex;
   align-items: center;

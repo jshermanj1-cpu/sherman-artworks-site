@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Kiddush Cups — Sherman Art Works | Handmade Glass Judaica</title>
+  <title>Kiddush Cups - Sherman Art Works | Handmade Glass Judaica</title>
   <meta name="description" content="Handmade glass Kiddush cups from Sherman Art Works. New photos coming soon, commission yours today, made in Israel and shipped worldwide." />
 
   <meta property="og:title" content="Kiddush Cups, Sherman Art Works" />
@@ -139,7 +139,7 @@
     </div>
     <h1 class="page-headline" data-t="hero_headline">Kiddush Cups</h1>
     <p class="page-subtitle"  data-t="hero_subtitle">Glass goblets for Shabbat and Yom Tov, handcrafted in Israel.</p>
-    <p class="page-body"      data-t="hero_body">Explore our glass goblets — each individually handcrafted and perfect for Kiddush. More dedicated Kiddush cup designs are in progress. Commission yours today.</p>
+    <p class="page-body"      data-t="hero_body">Explore our glass goblets - each individually handcrafted and perfect for Kiddush. More dedicated Kiddush cup designs are in progress. Commission yours today.</p>
     <div class="hero-cta-row">
       <a href="custom-orders.html" class="btn-gold" data-t="cta_commission"></a>
       <a id="waLink" href="#" target="_blank" rel="noopener noreferrer" class="btn-wa">
@@ -155,7 +155,7 @@
   <!-- Static EN product cards for SEO -->
     <article class="product-card">
       <div class="product-card-img-wrap">
-        <img src="https://res.cloudinary.com/doesupaf9/image/upload/w_600,c_fit,q_auto,f_auto/goblet-lion_dcyxhp.jpg" alt="Lion of Judah Goblet — rams horn kiddush wine goblet with silver-plated lion emblem" loading="lazy" />
+        <img src="https://res.cloudinary.com/doesupaf9/image/upload/w_600,c_fit,q_auto,f_auto/goblet-lion_dcyxhp.jpg" alt="Lion of Judah Goblet - rams horn kiddush wine goblet with silver-plated lion emblem" loading="lazy" />
       </div>
       <div class="product-card-body">
         <h3 class="product-card-name">Lion of Judah Goblet</h3>
@@ -167,7 +167,7 @@
     </article>
     <article class="product-card">
       <div class="product-card-img-wrap">
-        <img src="https://res.cloudinary.com/doesupaf9/image/upload/w_600,c_fit,q_auto,f_auto/goblet-menorah_va4q5g.jpg" alt="Menorah Goblet — rams horn kiddush wine goblet with seven-branched menorah" loading="lazy" />
+        <img src="https://res.cloudinary.com/doesupaf9/image/upload/w_600,c_fit,q_auto,f_auto/goblet-menorah_va4q5g.jpg" alt="Menorah Goblet - rams horn kiddush wine goblet with seven-branched menorah" loading="lazy" />
       </div>
       <div class="product-card-body">
         <h3 class="product-card-name">Menorah Goblet</h3>
@@ -340,7 +340,7 @@
       bc_current:     'Kiddush Cups',
       hero_headline:  'Kiddush Cups',
       hero_subtitle:  'Glass goblets for Shabbat and Yom Tov, handcrafted in Israel.',
-      hero_body:      'Explore our glass goblets — each individually handcrafted and perfect for Kiddush. More dedicated Kiddush cup designs are in progress. Commission yours today.',
+      hero_body:      'Explore our glass goblets - each individually handcrafted and perfect for Kiddush. More dedicated Kiddush cup designs are in progress. Commission yours today.',
 
       view_details:      'View Details',
       order_btn:         'Order',
@@ -383,7 +383,7 @@
       bc_current:     'כוסות קידוש',
       hero_headline:  'כוסות קידוש',
       hero_subtitle:  'גביעי זכוכית לשבת ויום טוב, עשויים ביד בישראל.',
-      hero_body:      'גלו את גביעי הזכוכית שלנו — כל אחד עשוי ביד ומושלם לקידוש. עיצובים ייעודיים נוספים בדרך. הזמינו את שלכם היום.',
+      hero_body:      'גלו את גביעי הזכוכית שלנו - כל אחד עשוי ביד ומושלם לקידוש. עיצובים ייעודיים נוספים בדרך. הזמינו את שלכם היום.',
 
       view_details:      'פרטים נוספים',
       order_btn:         'הזמן',
@@ -524,7 +524,7 @@
       img.src = CDN + '/w_600,c_fit,q_auto,f_auto/' + p.photos[i] + '.jpg';
       const l = currentLang;
       const name = l === 'he' && p.name_he ? p.name_he : p.name_en;
-      img.alt = name + ' — photo ' + (i + 1) + ' of ' + n;
+      img.alt = name + ' - photo ' + (i + 1) + ' of ' + n;
     }
     p.photos.forEach(function(_, j) {
       const dot = document.getElementById('dot-' + productIdx + '-' + j);
@@ -557,7 +557,7 @@
     document.getElementById('modalPrice').innerHTML = formatPriceModal(p.price_ils);
     const photo = p.photos[currentPhotoIdx];
     document.getElementById('modalMainImg').src = `${CDN}/q_auto,f_auto/${photo}.jpg`;
-    document.getElementById('modalMainImg').alt = `${name} — photo ${currentPhotoIdx + 1} of ${p.photos.length}`;
+    document.getElementById('modalMainImg').alt = `${name} - photo ${currentPhotoIdx + 1} of ${p.photos.length}`;
     document.getElementById('modalThumbs').innerHTML = p.photos.map((id, i) =>
       `<img class="modal-thumb ${i === currentPhotoIdx ? 'active' : ''}" src="${CDN}/w_120,h_120,c_fill,g_auto,q_auto,f_auto/${id}.jpg" onclick="setModalPhoto(${i})" alt="" />`
     ).join('');

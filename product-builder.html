@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Product Builder — Sherman Art Works</title>
+  <title>Product Builder - Sherman Art Works</title>
   <style>
     :root { --bg:#faf7f2; --dark:#202020; --gold:#d4b572; --brown:#8a6f40; --border:#ede5d8; --green:#25d366; --red:#d04444; --ff:Arial,sans-serif; --ff-disp:'Georgia',serif; }
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -145,7 +145,7 @@
 </head>
 <body>
 
-<h1>Product Builder — Sherman Art Works</h1>
+<h1>Product Builder - Sherman Art Works</h1>
 <p class="lead">
   Group photos into products and fill in the details for each.
   Use the dropdown under each photo to assign it to a product (P1, P2, etc.)
@@ -154,7 +154,7 @@
 
 <div class="help-box">
   <strong>How groupings work:</strong> Photos with the same dropdown selection get grouped into one product.
-  Set a photo to <code>—</code> to exclude it (e.g. for the inscription-example shofar).
+  Set a photo to <code>-</code> to exclude it (e.g. for the inscription-example shofar).
   I've pre-filled my best guess for each category, so you can just adjust and fill in the form fields.
 </div>
 
@@ -167,7 +167,7 @@
 <div class="tab-panel active" data-tab-panel="candlesticks">
   <div class="layout">
     <div>
-      <h2>Photos — drag to group</h2>
+      <h2>Photos - drag to group</h2>
       <div class="photo-grid" id="photos-candlesticks"></div>
     </div>
     <div>
@@ -180,7 +180,7 @@
 <div class="tab-panel" data-tab-panel="trays-bowls">
   <div class="layout">
     <div>
-      <h2>Photos — drag to group</h2>
+      <h2>Photos - drag to group</h2>
       <div class="photo-grid" id="photos-trays-bowls"></div>
     </div>
     <div>
@@ -193,7 +193,7 @@
 <div class="tab-panel" data-tab-panel="shofars-goblets">
   <div class="layout">
     <div>
-      <h2>Photos — drag to group</h2>
+      <h2>Photos - drag to group</h2>
       <div class="photo-grid" id="photos-shofars-goblets"></div>
     </div>
     <div>
@@ -361,7 +361,7 @@ function renderPhotos(cat) {
     const current = groupings[cat][photoId] || '';
     const colorClass = current ? colorClassFor(current, keys) : '';
     const optionTags = [
-      `<option value="">— exclude —</option>`,
+      `<option value="">- exclude -</option>`,
       ...keys.map(k => `<option value="${k}" ${k === current ? 'selected' : ''}>${k.toUpperCase()} (${productCountLabel(cat, k)})</option>`),
       `<option value="__new__">+ New product</option>`,
     ].join('');
@@ -405,7 +405,7 @@ function renderProducts(cat) {
   const panel = document.getElementById(`products-${cat}`);
   const keys = getProductKeys(cat);
   if (keys.length === 0) {
-    panel.innerHTML = '<p style="color:var(--brown);font-style:italic;">No products yet — assign photos to groups on the left.</p>';
+    panel.innerHTML = '<p style="color:var(--brown);font-style:italic;">No products yet - assign photos to groups on the left.</p>';
     return;
   }
   panel.innerHTML = keys.map(key => {
@@ -530,7 +530,7 @@ function copyOutput() {
     const sel = window.getSelection();
     sel.removeAllRanges();
     sel.addRange(range);
-    alert('Could not auto-copy. The text is selected — press Cmd/Ctrl+C.');
+    alert('Could not auto-copy. The text is selected - press Cmd/Ctrl+C.');
   });
 }
 

@@ -1,6 +1,6 @@
 /* ═══════════════════════════════════════════════════════════════
-   cart.js — Shopping cart for Sherman Art Works
-   Sprint 18 — WhatsApp-first cart, Phase A
+   cart.js - Shopping cart for Sherman Art Works
+   Sprint 18 - WhatsApp-first cart, Phase A
    ═══════════════════════════════════════════════════════════════ */
 
 // ── CART STORE ─────────────────────────────────────────────────
