@@ -282,6 +282,8 @@ function loadGA4() {
 function hideConsentBanner() {
   var b = document.getElementById('consentBanner');
   if (b) b.remove();
+  var main = document.querySelector('main');
+  if (main) main.focus();
 }
 function acceptConsent() {
   localStorage.setItem('sa_consent', 'granted');
@@ -301,16 +303,23 @@ function initConsent() {
   var div = document.createElement('div');
   div.className = 'consent-banner';
   div.id = 'consentBanner';
-  div.setAttribute('role', 'region');
-  div.setAttribute('aria-label', 'Cookie notice');
+  div.setAttribute('role', 'dialog');
+  div.setAttribute('aria-modal', 'false');
+  div.setAttribute('aria-labelledby', 'consentBannerTitle');
   div.innerHTML =
+    '<p class="sr-only" id="consentBannerTitle">Cookie consent</p>' +
     '<p class="consent-text"><span data-t="consent_text">We use anonymous analytics cookies to understand how visitors use the site - no ads, no cross-site tracking.</span> ' +
     '<a href="privacy.html" data-t="consent_more">Privacy Policy</a></p>' +
     '<div class="consent-actions">' +
-      '<button type="button" class="consent-btn consent-accept" data-t="consent_accept" onclick="acceptConsent()">Accept</button>' +
+      '<button type="button" class="consent-btn consent-accept" id="consentAcceptBtn" data-t="consent_accept" onclick="acceptConsent()">Accept</button>' +
       '<button type="button" class="consent-btn consent-decline" data-t="consent_decline" onclick="declineConsent()">Decline</button>' +
     '</div>';
+  div.addEventListener('keydown', function(e) { if (e.key === 'Escape') declineConsent(); });
   document.body.appendChild(div);
+  setTimeout(function() {
+    var btn = document.getElementById('consentAcceptBtn');
+    if (btn) btn.focus();
+  }, 200);
 }
 
 function trackGA4(eventName, params) {
