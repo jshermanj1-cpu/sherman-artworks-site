@@ -287,7 +287,7 @@ All category cards show real product photos. "From ₪X / $X" prices shown on al
 
 ---
 
-## MILESTONE 19 — Owner Feedback Round (Sprint 20) ⚠️ AWAITING APPROVAL
+## MILESTONE 19 — Owner Feedback Round (Sprint 20) ✅ COMPLETE (approved, pushed `2aa6f7c` + gift-wrap/4-day removal follow-up `0823fbc`)
 
 Owner provided site + Hebrew wording feedback; implemented 2026-06-12.
 
@@ -317,6 +317,30 @@ Owner provided site + Hebrew wording feedback; implemented 2026-06-12.
 
 ---
 
+## MILESTONE 20 — SEO Hardening (Sprint 21)
+
+On-page SEO audit + fixes; implemented 2026-06-12.
+
+| ID | Item | Status |
+|---|---|---|
+| 21.1 | JSON-LD Product descriptions resynced with Sprint 20 copy: Jerusalem Wine Horn (kudu-horn goblet), Lion of Judah, Menorah — shofars-goblets.html (×3) + kiddush-cups.html (×2) | ✅ |
+| 21.2 | shofars-goblets.html head metadata renamed: `<title>`, og:title, meta/og description, BreadcrumbList name → "Shofars & Horn Goblets" (missed in Sprint 20's visible-content rename) | ✅ |
+| 21.3 | Static SEO card alt texts enriched on all 5 category pages (descriptive, keyword-bearing — e.g. "rams horn kiddush wine goblet with silver-plated lion emblem") | ✅ |
+| 21.4 | FAQPage JSON-LD added to contact.html (6 EN Q&As, synced with current T_PAGE text incl. new shipping answer). NOTE: must be re-synced whenever FAQ copy changes | ✅ |
+| 21.5 | Organization schema (index.html) enriched: `email`, `sameAs` → Instagram | ✅ |
+| 21.6 | Verified: GSC verified + sitemap submitted in Sprint 15; robots.txt, canonicals, og tags, per-page titles/descriptions all present | ✅ No action |
+
+**Known limitation:** JS card rendering overwrites enriched static alts with bare product names at runtime (`buildCard`). Static HTML (crawler first pass) carries the rich alts. Optional follow-up: enrich `buildCard` alt generation.
+
+**Open SEO items (owner action / future sprints):**
+- Google Business Profile (owner: business.google.com)
+- Google Merchant Center free product listings (feed can be generated from PRODUCTS data)
+- Hebrew SEO: HE exists only as JS toggle on same URLs — invisible to Google. Needs separate `/he/` pages + hreflang (L effort)
+- Content pages targeting search queries (e.g. "What is a kiddush cup?")
+- Backlinks: Judaica/artisan directories, marketplace profiles
+
+---
+
 ## Sprint Summary
 
 | Sprint | Milestone | Goal | Status |
@@ -335,8 +359,9 @@ Owner provided site + Hebrew wording feedback; implemented 2026-06-12.
 | Sprint 17 | M16 | Shared CSS/JS, products.json, SEO baking, JSON-LD, T_PAGE fix | ✅ |
 | Sprint 18 | M17 | Shopping Cart Phase A (Steps 1–8) | ✅ |
 | Sprint 19 | M18 | Legal core: consent banner, terms, shipping-returns, footer policies, sitemap, privacy SEO bake (+ standalone mobile-breakpoints fix `dbbd00b`) | ✅ |
-| Sprint 20 | M10 / M14 | Owner feedback round: Hebrew copy + product accuracy pass — details below | ✅ Dev done — awaiting owner approval |
-| **→ Sprint 21** | **M18 rest + M11.2** | **Trust badges, testimonials, newsletter — per FIX_PLAN "Depth & launch"** | 🔜 |
+| Sprint 20 | M10 / M14 | Owner feedback round: Hebrew copy + product accuracy pass (`2aa6f7c`) + gift-wrap/4-day removal (`0823fbc`) | ✅ |
+| Sprint 21 | M20 | SEO hardening: JSON-LD resync, shofars head rename, alt texts, FAQPage + Organization schema | ✅ Dev done — awaiting owner approval |
+| **→ Sprint 22** | **M18 rest + M11.2** | **Trust badges, testimonials, newsletter — per FIX_PLAN "Depth & launch"** | 🔜 |
 | — | M9 | Full product catalogue | 🔜 Blocked: owner photos for kiddush cups, business gifts |
 | — | M11 Tier 2 | Newsletter, Pinterest, TikTok | 🔜 |
 | — | M10 | Hebrew quality pass | 🔜 Blocked: native speaker |
