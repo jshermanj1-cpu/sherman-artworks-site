@@ -108,6 +108,70 @@
     "personalisable": false
   },
   {
+    "id": "black-white-stripes-candlesticks",
+    "category": "candlesticks",
+    "pages": ["candlesticks.html"],
+    "name_en": "Black and White Stripes Candlesticks",
+    "name_he": "פמוטי זכוכית פסים שחור-לבן",
+    "description_en": "Handmade glass candlesticks with bold black and white stripe pattern - traditional family method candle holders.",
+    "description_he": "פמוטי זכוכית בעבודת יד עם דוגמת פסים שחור-לבן - בשיטה המסורתית המשפחתית.",
+    "measurements": "",
+    "price_ils": 775,
+    "photos": [
+      "Black_and_white_stripes_white_background_m4vknl",
+      "Black_and_white_stripes_window_background_wft2im"
+    ],
+    "personalisable": false
+  },
+  {
+    "id": "gold-red-stripes-candlesticks",
+    "category": "candlesticks",
+    "pages": ["candlesticks.html"],
+    "name_en": "Gold and Red Stripes Candlesticks",
+    "name_he": "פמוטי זכוכית פסים זהב-אדום",
+    "description_en": "Handmade glass candlesticks with rich gold and red stripe pattern - traditional family method candle holders.",
+    "description_he": "פמוטי זכוכית בעבודת יד עם דוגמת פסים זהב-אדום - בשיטה המסורתית המשפחתית.",
+    "measurements": "",
+    "price_ils": 775,
+    "photos": [
+      "Gold_and_red_stripes_white_background_zts3yi",
+      "Gold_and_red_stripes_window_background_cvzrhz"
+    ],
+    "personalisable": false
+  },
+  {
+    "id": "green-dots-candlesticks",
+    "category": "candlesticks",
+    "pages": ["candlesticks.html"],
+    "name_en": "Green Dots Candlesticks",
+    "name_he": "פמוטי זכוכית נקודות ירוקות",
+    "description_en": "Handmade glass candlesticks with playful green dot pattern - traditional family method candle holders.",
+    "description_he": "פמוטי זכוכית בעבודת יד עם דוגמת נקודות ירוקות - בשיטה המסורתית המשפחתית.",
+    "measurements": "",
+    "price_ils": 775,
+    "photos": [
+      "Green_dots_white_background_vtwzqs",
+      "Green_dots_window_background_a1xifs"
+    ],
+    "personalisable": false
+  },
+  {
+    "id": "black-white-dots-candlesticks",
+    "category": "candlesticks",
+    "pages": ["candlesticks.html"],
+    "name_en": "Black and White Dots Candlesticks",
+    "name_he": "פמוטי זכוכית נקודות שחור-לבן",
+    "description_en": "Handmade glass candlesticks with classic black and white dot pattern - traditional family method candle holders.",
+    "description_he": "פמוטי זכוכית בעבודת יד עם דוגמת נקודות שחור-לבן - בשיטה המסורתית המשפחתית.",
+    "measurements": "",
+    "price_ils": 775,
+    "photos": [
+      "Black_and_white_dots_white_background_dp2ql0",
+      "Black_and_white_dots_window_background_c2ylte"
+    ],
+    "personalisable": false
+  },
+  {
     "id": "ram-mezuzah",
     "category": "mezuzahs",
     "pages": ["mezuzahs.html"],
