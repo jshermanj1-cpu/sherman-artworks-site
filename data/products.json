@@ -90,13 +90,13 @@
     "personalisable": false
   },
   {
-    "id": "ram-mezuzah",
+    "id": "oryx-mezuzah",
     "category": "mezuzahs",
     "pages": ["mezuzahs.html"],
-    "name_en": "Ram Mezuzah",
-    "name_he": "מזוזת ראם",
-    "description_en": "Handmade Ram horn Mezuzah case covered in 925 silver, shaped and finished by hand in our studio in Israel. A unique and meaningful piece for your home or as a gift.\n* mezuzah case doesn't include the parchment",
-    "description_he": "בית מזוזה מקרן ראם מצופה כסף 925, עשוי ביד בסטודיו שלנו בישראל. יצירה ייחודית ומשמעותית לביתכם או כמתנה.\n* בית המזוזה אינו כולל את הקלף",
+    "name_en": "Oryx Mezuzah",
+    "name_he": "מזוזת ריים",
+    "description_en": "Handmade Oryx horn Mezuzah case covered in silver, shaped and finished by hand in our studio in Israel. A unique and meaningful piece for your home or as a gift.\n* mezuzah case doesn't include the parchment",
+    "description_he": "בית מזוזה מקרן ריים מצופה כסף, עשוי ביד בסטודיו שלנו בישראל. יצירה ייחודית ומשמעותית לביתכם או כמתנה.\n* בית המזוזה אינו כולל את הקלף",
     "measurements": "",
     "price_ils": 700,
     "photos": [
@@ -104,6 +104,40 @@
       "mezuzah_reem_02_mh0szh",
       "mezuzah_reem_03_eb6ink",
       "mezuzah_reem_04_e7gjcb"
+    ],
+    "personalisable": false
+  },
+  {
+    "id": "ram-mezuzah",
+    "category": "mezuzahs",
+    "pages": ["mezuzahs.html"],
+    "name_en": "Ram Mezuzah",
+    "name_he": "מזוזת אייל",
+    "description_en": "Handmade Ram horn Mezuzah case covered in silver, shaped and finished by hand in our studio in Israel. A unique and meaningful piece for your home or as a gift.\n* mezuzah case doesn't include the parchment",
+    "description_he": "בית מזוזה מקרן אייל מצופה כסף, עשוי ביד בסטודיו שלנו בישראל. יצירה ייחודית ומשמעותית לביתכם או כמתנה.\n* בית המזוזה אינו כולל את הקלף",
+    "measurements": "",
+    "price_ils": 700,
+    "photos": [
+      "Ram_mezuzah_ixe7f8",
+      "Ram_mezuzah_2_abtfb4",
+      "Ram_mezuzah_door_qnglmv"
+    ],
+    "personalisable": false
+  },
+  {
+    "id": "kudu-mezuzah",
+    "category": "mezuzahs",
+    "pages": ["mezuzahs.html"],
+    "name_en": "Kudu Mezuzah",
+    "name_he": "מזוזת קודו",
+    "description_en": "Handmade Kudu horn Mezuzah case covered in silver, shaped and finished by hand in our studio in Israel. A unique and meaningful piece for your home or as a gift.\n* mezuzah case doesn't include the parchment",
+    "description_he": "בית מזוזה מקרן קודו מצופה כסף, עשוי ביד בסטודיו שלנו בישראל. יצירה ייחודית ומשמעותית לביתכם או כמתנה.\n* בית המזוזה אינו כולל את הקלף",
+    "measurements": "",
+    "price_ils": 700,
+    "photos": [
+      "Kudu_mezuzah_z5jg3w",
+      "Kudu_mezuzah_2_tyo1bt",
+      "Kudu_mezuzah_door_xofxh9"
     ],
     "personalisable": false
   }
