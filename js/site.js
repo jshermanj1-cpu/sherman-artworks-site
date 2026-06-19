@@ -63,7 +63,7 @@ const T_SITE = {
 
     badge_soon:          'בקרוב',
 
-    cat1_title:          'פמוטי חן',
+    cat1_title:          'פמוטים',
     cat2_title:          'שופרות וגביעי קרן',
     cat3_title:          'כוסות קידוש',
     cat4_title:          'מגשים וקערות',
@@ -79,7 +79,7 @@ const T_SITE = {
     footer_tagline:      'אמנות זכוכית ויודאיקה בעבודת יד מישראל',
     footer_col_shop:     'חנות',
     footer_col_studio:   'הסטודיו',
-    footer_link_candles: 'פמוטי חן',
+    footer_link_candles: 'פמוטים',
     footer_link_shofars: 'שופרות וגביעי קרן',
     footer_link_bowls:   'מגשים וקערות',
     footer_all_collections: 'כל הקולקציות',
