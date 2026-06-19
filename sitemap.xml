@@ -69,12 +69,6 @@
 
   <!-- Policy pages -->
   <url>
-    <loc>https://shermanartworks.com/shipping-returns.html</loc>
-    <lastmod>2026-06-11</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
     <loc>https://shermanartworks.com/privacy.html</loc>
     <lastmod>2026-06-11</lastmod>
     <changefreq>yearly</changefreq>
