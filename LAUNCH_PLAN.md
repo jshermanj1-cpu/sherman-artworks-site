@@ -21,13 +21,13 @@ Everything here is either broken or was flagged in QA and never closed.
 | # | Task | Who | Effort | Status |
 |---|------|-----|--------|--------|
 | 1.1 | **Swap פמוטי חן (candlesticks) photos** to new images | Owner sends photos → Dev | S | 🔜 Blocked on owner |
-| 1.2 | **Dead Cloudinary images on index.html** — 6 requests 404 (`…14.47.17/18/48/49…` variants, found Sprint 19 QA). Remove or fix the public_ids | Dev (Owner confirms correct IDs) | XS | 🔜 |
-| 1.3 | **og:image on index.html** still uses `h_630 c_fill` crop of the portrait bowl photo — same cropping problem we just fixed in the hero. Re-crop or pick a landscape photo | Dev | XS | 🔜 |
-| 1.4 | **Diversify OG images** — 5 pages share the same bowl photo for social shares. Each page should share its own category hero | Owner picks → Dev | S | 🔜 |
+| 1.2 | **Dead Cloudinary images on index.html** — 6 requests 404 (`…14.47.17/18/48/49…` variants, found Sprint 19 QA). Remove or fix the public_ids | Dev (Owner confirms correct IDs) | XS | ✅ 2026-07-06 — verified no broken images remain; the dead references were removed in later sprints |
+| 1.3 | **og:image on index.html** still uses `h_630 c_fill` crop of the portrait bowl photo — same cropping problem we just fixed in the hero. Re-crop or pick a landscape photo | Dev | XS | ✅ 2026-07-06 — all 11 pages switched to `c_pad` (never crops); kiddush-cups og:image updated to cup+plate hero |
+| 1.4 | **Diversify OG images** — 3 pages (index/about/custom-orders/contact) share the same bowl photo for social shares. Each page should share its own photo | Owner picks → Dev | S | 🔜 Crop fixed (1.3); photo diversification still needs owner picks |
 | 1.5 | **Product dimensions** — 5 products missing measurements (customers ask; each answer costs a WhatsApp round-trip) | Owner measures → Dev | S | 🔜 |
 | 1.6 | **Full-site QA sweep** — every page, EN + HE, desktop + real mobile device (iOS Safari + Android Chrome): links, cart, modals, carousels, RTL layout, WhatsApp deep links | Dev | M | 🔜 |
-| 1.7 | **Verify in-card photo carousel** works on every category page (Sprint 17 rebuild casualty, partially reinstated since) | Dev | XS | 🔜 |
-| 1.8 | **sitemap.xml lastmod refresh** — most dates say 2026-06-19; kiddush-cups/trays-bowls/index changed heavily since | Dev | XS | 🔜 |
+| 1.7 | **Verify in-card photo carousel** works on every category page (Sprint 17 rebuild casualty, partially reinstated since) | Dev | XS | ✅ 2026-07-06 — arrows/dots present, click advances photo (verified on kiddush-cups) |
+| 1.8 | **sitemap.xml lastmod refresh** — most dates say 2026-06-19; kiddush-cups/trays-bowls/index changed heavily since | Dev | XS | ✅ 2026-07-06 — all 14 URLs updated |
 
 ---
 
