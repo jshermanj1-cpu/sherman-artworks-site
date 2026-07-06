@@ -206,6 +206,54 @@
     "personalisable": false
   },
   {
+    "id": "tall-blue-glass-cup",
+    "category": "kiddush-cups",
+    "pages": ["kiddush-cups.html"],
+    "name_en": "Tall Blue Glass Cup",
+    "name_he": "כוס קידוש גבוהה כחולה",
+    "description_en": "Handmade tall glass Kiddush cup with a rich blue tone and a silver-plated rim. Made to order in our studio in Israel.",
+    "description_he": "כוס קידוש גבוהה מזכוכית בעבודת יד עם גוון כחול עשיר ומסגרת מצופה כסף. מיוצרת לפי הזמנה בסטודיו שלנו בישראל.",
+    "measurements": "",
+    "price_ils": 422,
+    "photos": [
+      "Blue_cup_white_background_wsc8xt",
+      "Blue_cup_window_background_ezxbdg"
+    ],
+    "personalisable": false
+  },
+  {
+    "id": "tall-colorful-glass-cup",
+    "category": "kiddush-cups",
+    "pages": ["kiddush-cups.html"],
+    "name_en": "Tall Colorful Glass Cup",
+    "name_he": "כוס קידוש גבוהה צבעונית",
+    "description_en": "Handmade tall glass Kiddush cup with vibrant swirling colours and a silver-plated rim. Made to order in our studio in Israel.",
+    "description_he": "כוס קידוש גבוהה מזכוכית בעבודת יד עם צבעים עשירים ומסגרת מצופה כסף. מיוצרת לפי הזמנה בסטודיו שלנו בישראל.",
+    "measurements": "",
+    "price_ils": 422,
+    "photos": [
+      "Colorful_cup_white_background_u9sijr",
+      "Colorful_cup_window_background_jinabf"
+    ],
+    "personalisable": false
+  },
+  {
+    "id": "tall-red-glass-cup",
+    "category": "kiddush-cups",
+    "pages": ["kiddush-cups.html"],
+    "name_en": "Tall Red Glass Cup",
+    "name_he": "כוס קידוש גבוהה אדומה",
+    "description_en": "Handmade tall glass Kiddush cup in deep red with a silver-plated rim. Made to order in our studio in Israel.",
+    "description_he": "כוס קידוש גבוהה מזכוכית בעבודת יד בגוון אדום עמוק ומסגרת מצופה כסף. מיוצרת לפי הזמנה בסטודיו שלנו בישראל.",
+    "measurements": "",
+    "price_ils": 422,
+    "photos": [
+      "Red_cup_white_background_qfy7xn",
+      "Red_cup_window_background_z0nsg5"
+    ],
+    "personalisable": false
+  },
+  {
     "id": "custom-shofar",
     "category": "shofars-goblets",
     "pages": ["shofars-goblets.html", "business-gifts.html"],
