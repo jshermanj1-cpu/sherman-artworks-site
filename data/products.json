@@ -96,7 +96,7 @@
     "name_en": "Oryx Mezuzah",
     "name_he": "מזוזת ראם",
     "description_en": "Handmade Oryx horn Mezuzah case covered in silver, shaped and finished by hand in our studio in Israel. A unique and meaningful piece for your home or as a gift.\n* mezuzah case doesn't include the parchment",
-    "description_he": "בית מזוזה מקרן ראם מצופה כסף, עשוי ביד בסטודיו שלנו בישראל. יצירה ייחודית ומשמעותית לביתכם או כמתנה.\n* בית המזוזה אינו כולל את הקלף",
+    "description_he": "בית מזוזה מקרן ראם מצופה כסף, עשוי בעבודת יד בסטודיו שלנו בישראל. יצירה ייחודית ומשמעותית לביתכם או כמתנה.\n* בית המזוזה אינו כולל את הקלף",
     "measurements": "",
     "price_ils": 700,
     "photos": [
@@ -176,9 +176,9 @@
     "category": "mezuzahs",
     "pages": ["mezuzahs.html"],
     "name_en": "Ram Mezuzah",
-    "name_he": "מזוזת אייל",
+    "name_he": "מזוזת איל",
     "description_en": "Handmade Ram horn Mezuzah case covered in silver, shaped and finished by hand in our studio in Israel. A unique and meaningful piece for your home or as a gift.\n* mezuzah case doesn't include the parchment",
-    "description_he": "בית מזוזה מקרן אייל מצופה כסף, עשוי ביד בסטודיו שלנו בישראל. יצירה ייחודית ומשמעותית לביתכם או כמתנה.\n* בית המזוזה אינו כולל את הקלף",
+    "description_he": "בית מזוזה מקרן איל מצופה כסף, עשוי בעבודת יד בסטודיו שלנו בישראל. יצירה ייחודית ומשמעותית לביתכם או כמתנה.\n* בית המזוזה אינו כולל את הקלף",
     "measurements": "",
     "price_ils": 700,
     "photos": [
@@ -195,7 +195,7 @@
     "name_en": "Kudu Mezuzah",
     "name_he": "מזוזת קודו",
     "description_en": "Handmade Kudu horn Mezuzah case covered in silver, shaped and finished by hand in our studio in Israel. A unique and meaningful piece for your home or as a gift.\n* mezuzah case doesn't include the parchment",
-    "description_he": "בית מזוזה מקרן קודו מצופה כסף, עשוי ביד בסטודיו שלנו בישראל. יצירה ייחודית ומשמעותית לביתכם או כמתנה.\n* בית המזוזה אינו כולל את הקלף",
+    "description_he": "בית מזוזה מקרן קודו מצופה כסף, עשוי בעבודת יד בסטודיו שלנו בישראל. יצירה ייחודית ומשמעותית לביתכם או כמתנה.\n* בית המזוזה אינו כולל את הקלף",
     "measurements": "",
     "price_ils": 700,
     "photos": [
@@ -211,8 +211,8 @@
     "pages": ["shofars-goblets.html", "business-gifts.html"],
     "name_en": "Custom Shofar, Symbol & Text",
     "name_he": "שופר מותאם אישית, סמל וטקסט",
-    "description_en": "A handmade shofar personalised with your choice of symbol and an optional text inscription. Made to order in our studio in Israel.",
-    "description_he": "שופר עשוי בעבודת יד, מותאם אישית עם בחירת סמל וכיתוב אישי. מיוצר לפי הזמנה בסטודיו שלנו בישראל.",
+    "description_en": "A handmade shofar personalised with your choice of symbol and an optional text inscription (Hebrew/English). Made to order in our studio in Israel.",
+    "description_he": "שופר עשוי בעבודת יד, מותאם אישית עם בחירת סמל וכיתוב אישי (עברית/English). מיוצר לפי הזמנה בסטודיו שלנו בישראל.",
     "measurements": "",
     "price_ils": 1050,
     "photos": [

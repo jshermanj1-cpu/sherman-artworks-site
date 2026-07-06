@@ -23,12 +23,13 @@ const T_SITE = {
     cat4_title:          'Trays & Bowls',
     cat5_title:          'Business Gifts',
     cat6_title:          'Mezuzahs',
+    cat7_title:          'Custom Shofars',
 
     cat_from:            'from',
     cat_cta_browse:      'Browse Collection',
     cat_cta_commission:  'Commission Yours',
 
-    shipping_banner:     '✦  Launch Offer: Free Worldwide Shipping on All Orders  ·  Custom Orders Are Welcome  ✦',
+    shipping_banner:     '✦  Shipping: Israel ₪30 (free over ₪800) · International ₪120 (free over $300)  ·  Custom Orders Are Welcome  ✦',
 
     footer_tagline:      'Handmade glass art & Judaica from Israel',
     footer_col_shop:     'Shop',
@@ -69,12 +70,13 @@ const T_SITE = {
     cat4_title:          'מגשים וקערות',
     cat5_title:          'מתנות לעסקים',
     cat6_title:          'מזוזות',
+    cat7_title:          'שופרות בהתאמה אישית',
 
     cat_from:            'מ-',
     cat_cta_browse:      'לקולקציה',
     cat_cta_commission:  'הזמינו אצלנו',
 
-    shipping_banner:     '✦  מבצע השקה: משלוח חינם לכל העולם  ·  הזמנות בהתאמה אישית מתקבלות בשמחה  ✦',
+    shipping_banner:     '✦  משלוח בארץ 30 ₪ (חינם מעל 800 ₪) · משלוח בינלאומי 120 ₪ (חינם מעל $300)  ·  הזמנות בהתאמה אישית מתקבלות בשמחה  ✦',
 
     footer_tagline:      'אמנות זכוכית ויודאיקה בעבודת יד מישראל',
     footer_col_shop:     'חנות',
@@ -86,7 +88,7 @@ const T_SITE = {
     footer_copy:         '© 2026 שרמן ארט וורקס. כל הזכויות שמורות.',
     footer_badge:        'עבודת יד מישראל',
     nav_privacy:         'מדיניות פרטיות',
-    nav_terms:           'תנאי שימוש',
+    nav_terms:           'תקנון',
     nav_accessibility:   'הצהרת נגישות',
     skip_to_content:     'דלג לתוכן הראשי',
     cart_item_added:     'פריט נוסף לסל',
@@ -261,8 +263,31 @@ document.addEventListener('keydown', function(e) {
 
 // ── GA4 - CONSENT-GATED ─────────────────────────────────────────
 // gtag.js loads only after the visitor accepts the cookie banner.
-// Choice persists in localStorage('sa_consent'): 'granted' | 'denied'.
+// Choice persists in localStorage('sa_consent') with a cookie fallback:
+// in-app browsers (WhatsApp/Instagram) and private mode can drop
+// localStorage writes, and cookies also survive www/apex host switches.
 var GA4_ID = 'G-J55QNV6GF1';
+
+function _consentCookieDomain() {
+  var h = location.hostname;
+  if (h === 'localhost' || /^[0-9.:]+$/.test(h)) return '';
+  var parts = h.split('.');
+  if (parts.length < 2) return '';
+  return '; domain=.' + parts.slice(-2).join('.');
+}
+function _setConsent(v) {
+  try { localStorage.setItem('sa_consent', v); } catch (e) {}
+  try {
+    document.cookie = 'sa_consent=' + v + '; max-age=31536000; path=/; SameSite=Lax' + _consentCookieDomain();
+  } catch (e) {}
+}
+function _getConsent() {
+  var v = null;
+  try { v = localStorage.getItem('sa_consent'); } catch (e) {}
+  if (v === 'granted' || v === 'denied') return v;
+  var m = document.cookie.match(/(?:^|;\s*)sa_consent=(granted|denied)/);
+  return m ? m[1] : null;
+}
 
 function loadGA4() {
   if (window.__ga4Loaded) return;
@@ -284,17 +309,17 @@ function hideConsentBanner() {
   if (main) main.focus();
 }
 function acceptConsent() {
-  localStorage.setItem('sa_consent', 'granted');
+  _setConsent('granted');
   hideConsentBanner();
   loadGA4();
 }
 function declineConsent() {
-  localStorage.setItem('sa_consent', 'denied');
+  _setConsent('denied');
   hideConsentBanner();
 }
 
 function initConsent() {
-  var c = localStorage.getItem('sa_consent');
+  var c = _getConsent();
   if (c === 'granted') { loadGA4(); return; }
   if (c === 'denied') return;
   if (document.getElementById('consentBanner')) return;
