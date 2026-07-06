@@ -304,6 +304,38 @@
     "personalisable": false
   },
   {
+    "id": "colorful-glass-cup-and-plate",
+    "category": "kiddush-cups",
+    "pages": ["kiddush-cups.html"],
+    "name_en": "Colorful Glass Cup and Plate",
+    "name_he": "כוס קידוש ותחתית זכוכית צבעונית",
+    "description_en": "Handmade glass Kiddush cup and matching plate with a vibrant orange palette and silver-plated details. Made to order in our studio in Israel.",
+    "description_he": "כוס קידוש ותחתית זכוכית עשויות בעבודת יד בגוונים כתומים עשירים עם פרטים מצופי כסף. מיוצרות לפי הזמנה בסטודיו שלנו בישראל.",
+    "measurements": "",
+    "price_ils": 770,
+    "photos": [
+      "Orange_plate_cup_white_background_hmvdcr",
+      "Orange_plate_cup_window_tlsiv6"
+    ],
+    "personalisable": false
+  },
+  {
+    "id": "kiddush-cup-plate",
+    "category": "kiddush-cups",
+    "pages": ["kiddush-cups.html", "trays-bowls.html"],
+    "name_en": "Kiddush Cup Plate",
+    "name_he": "תחתית לכוס קידוש",
+    "description_en": "Handmade glass Kiddush cup plate with a vibrant orange palette and a silver-plated rim. A beautiful complement to any Kiddush cup. Made to order in our studio in Israel.",
+    "description_he": "תחתית לכוס קידוש עשויה בעבודת יד מזכוכית עם גוונים כתומים ומסגרת מצופה כסף. תוספת יפה לכל כוס קידוש. מיוצרת לפי הזמנה בסטודיו שלנו בישראל.",
+    "measurements": "",
+    "price_ils": 364,
+    "photos": [
+      "Orange_plate_white_background_npkcwp",
+      "Orange_plate_window_background_sjfp6h"
+    ],
+    "personalisable": false
+  },
+  {
     "id": "custom-shofar",
     "category": "shofars-goblets",
     "pages": ["shofars-goblets.html", "business-gifts.html"],
