@@ -254,6 +254,56 @@
     "personalisable": false
   },
   {
+    "id": "low-white-glass-cup",
+    "category": "kiddush-cups",
+    "pages": ["kiddush-cups.html"],
+    "name_en": "Low White Glass Cup",
+    "name_he": "כוס קידוש נמוכה לבנה",
+    "description_en": "Handmade low glass Kiddush cup in clean white with a silver-plated rim. Made to order in our studio in Israel.",
+    "description_he": "כוס קידוש נמוכה מזכוכית בעבודת יד בגוון לבן נקי עם מסגרת מצופה כסף. מיוצרת לפי הזמנה בסטודיו שלנו בישראל.",
+    "measurements": "",
+    "price_ils": 422,
+    "photos": [
+      "White_low_cup_white_background_qkjsnp",
+      "White_low_cup_window_background_zr7zfl"
+    ],
+    "personalisable": false
+  },
+  {
+    "id": "low-colorful-glass-cup",
+    "category": "kiddush-cups",
+    "pages": ["kiddush-cups.html"],
+    "name_en": "Low Colorful Glass Cup",
+    "name_he": "כוס קידוש נמוכה צבעונית",
+    "description_en": "Handmade low glass Kiddush cup with vibrant orange tones and a silver-plated rim. Made to order in our studio in Israel.",
+    "description_he": "כוס קידוש נמוכה מזכוכית בעבודת יד עם גוונים כתומים עשירים ומסגרת מצופה כסף. מיוצרת לפי הזמנה בסטודיו שלנו בישראל.",
+    "measurements": "",
+    "price_ils": 422,
+    "photos": [
+      "Orange_low_cup_white_background_zj5qr5",
+      "Orange_low_cup_window_background_hurvb0"
+    ],
+    "personalisable": false
+  },
+  {
+    "id": "ceramic-kiddush-cup",
+    "category": "kiddush-cups",
+    "pages": ["kiddush-cups.html"],
+    "name_en": "Ceramic Kiddush Cup",
+    "name_he": "כוס קידוש קרמיקה",
+    "description_en": "Handmade ceramic Kiddush cup with a silver-plated rim, decorated with a Menorah symbol and Aramaic lettering. Made to order in our studio in Israel.",
+    "description_he": "כוס קידוש קרמיקה בעבודת יד עם מסגרת מצופה כסף, מעוטרת בסמל מנורה וכיתוב בארמית. מיוצרת לפי הזמנה בסטודיו שלנו בישראל.",
+    "measurements": "",
+    "price_ils": 422,
+    "photos": [
+      "Ceramic_cup_menorah_white_background_kvyw2b",
+      "Ceramic_cup_aramic_white_background_tmqnm8",
+      "Ceramic_cup_aramic_window_background_seqjqa",
+      "Ceramic_cup_menorah_window_background_nmm7mu"
+    ],
+    "personalisable": false
+  },
+  {
     "id": "custom-shofar",
     "category": "shofars-goblets",
     "pages": ["shofars-goblets.html", "business-gifts.html"],
