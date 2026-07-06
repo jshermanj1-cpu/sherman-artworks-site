@@ -29,7 +29,7 @@ const T_SITE = {
     cat_cta_browse:      'Browse Collection',
     cat_cta_commission:  'Commission Yours',
 
-    shipping_banner:     '✦  Shipping: Israel ₪30 (free over ₪800) · International $45 (free over $500)  ·  Custom Orders Are Welcome  ✦',
+    shipping_banner:     '✦  Custom Orders Are Welcome  ✦',
 
     footer_tagline:      'Handmade glass art & Judaica from Israel',
     footer_col_shop:     'Shop',
@@ -76,7 +76,7 @@ const T_SITE = {
     cat_cta_browse:      'לקולקציה',
     cat_cta_commission:  'הזמינו אצלנו',
 
-    shipping_banner:     '✦  משלוח בארץ 30 ₪ (חינם מעל 800 ₪) · משלוח בינלאומי $45 (חינם מעל $500)  ·  הזמנות בהתאמה אישית מתקבלות בשמחה  ✦',
+    shipping_banner:     '✦  הזמנות בהתאמה אישית מתקבלות בשמחה  ✦',
 
     footer_tagline:      'אמנות זכוכית ויודאיקה בעבודת יד מישראל',
     footer_col_shop:     'חנות',
