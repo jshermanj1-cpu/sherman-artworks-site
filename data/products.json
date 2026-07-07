@@ -240,6 +240,23 @@
     "personalisable": false
   },
   {
+    "id": "clear-glass-mezuzah",
+    "category": "mezuzahs",
+    "pages": ["mezuzahs.html"],
+    "name_en": "Clear Glass Mezuzah",
+    "name_he": "מזוזת זכוכית שקופה",
+    "description_en": "Handmade clear glass Mezuzah case, shaped and finished by hand in our studio in Israel. A unique and meaningful piece for your home or as a gift.\n* mezuzah case doesn't include the parchment",
+    "description_he": "בית מזוזה מזכוכית שקופה, עשוי בעבודת יד בסטודיו שלנו בישראל. יצירה ייחודית ומשמעותית לביתכם או כמתנה.\n* בית המזוזה אינו כולל את הקלף",
+    "measurements": "",
+    "price_ils": 311,
+    "photos": [
+      "Clear_glass_mezuzah_white_background_q5fbks",
+      "Clear_glass_mezuzah_side_white_background_av1qak",
+      "Clear_glass_mezuzah_door_jbzvg2"
+    ],
+    "personalisable": false
+  },
+  {
     "id": "tall-blue-glass-cup",
     "category": "kiddush-cups",
     "pages": ["kiddush-cups.html"],
