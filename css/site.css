@@ -399,6 +399,9 @@ nav {
 .modal-cta.primary:hover   { background: #1da851; border-color: #1da851; }
 .modal-cta.secondary { background: transparent; color: var(--dark); border: 2px solid var(--border); }
 .modal-cta.secondary:hover { border-color: var(--dark); }
+.modal-shipping-note   { margin-top: 0.9rem; font-size: 0.78rem; line-height: 1.55; color: var(--brown); }
+.modal-shipping-note a { color: var(--brown); text-decoration: underline; }
+.modal-shipping-note a:hover { color: var(--gold); }
 
 .modal-close {
   position: absolute; top: 0.75rem; right: 0.75rem;
