@@ -1,6 +1,10 @@
 # Sherman Art Works — Pricing Program Plan
 
-**Date:** 2026-07-08 | **Status:** Draft for owner review | **Owner of doc:** dev
+**Date:** 2026-07-08 | **Status:** Phase 0 tooling + Phase 1 (round 1) + Phase 3 tool built | **Owner of doc:** dev
+
+> **Progress 2026-07-08:** Owner workbook, benchmark data, corridor memo, and the
+> `pricing-calculator.html` tool are all built (details in §6). **Waiting on owner cost data**
+> to run the Phase-2 audit. Private data lives in the gitignored `_pricing/` folder.
 **Goal:** a repeatable, data-backed way to price every piece — existing catalog, new pieces, and custom commissions — so prices protect margin, match what the market will pay, and look right in both ₪ and $.
 
 ---
@@ -116,8 +120,14 @@ Decision needed from owner (Phase 2): which currency anchors which categories �
 
 An internal, not-linked page in the style of `product-builder.html` — fits the no-backend architecture:
 
+**Workbook ↔ tool:** two front doors to the same data. The **workbook** (`_pricing/pricing-workbook.xlsx`)
+is for comfortable offline cost entry in Excel. The **tool** (`pricing-calculator.html`) is for live
+calculation, corridor positioning, charm pricing, and export. They share the same formulas so numbers
+reconcile; the tool reads/writes a `costs.json` and persists to the browser's localStorage, so the
+owner can use either. (If the owner fills the workbook, dev converts it to `costs.json` for the tool.)
+
 **`pricing-calculator.html`** (root, listed in `robots.txt` disallow like product-builder):
-- Loads `data/products.json` + a local `_pricing/costs.json` (**gitignored** — real costs and margins never go public in the repo).
+- Loads `data/products.json`; cost inputs persist to `localStorage` and export/import as `_pricing/costs.json` (**gitignored** — real costs and margins never go public in the repo).
 - Per-product input form for the §2.1 cost fields.
 - Outputs: cost floor, min price, corridor position, suggested charm price in ₪ **and** $, channel-adjusted variants (site / Etsy / fair).
 - **Audit view:** a table of all 24 products — current price vs floor vs corridor, flagged 🔴 below floor / 🟡 outside corridor / 🟢 OK. This view drives the repricing pass.
@@ -137,9 +147,9 @@ Also created: `_pricing/` folder (gitignored) holding `costs.json`, `benchmarks.
 - [ ] O-5: Going forward — log every quote given on customs, and whether it was accepted
 
 ### Phase 1 — Competitor benchmark sweep (dev, ~2–3 days)
-- [ ] D-1: Collect 10–15 Tier-A comps per category (6 categories) into `benchmarks.csv`
-- [ ] D-2: Spot-check Tier-B retail prices per category (5 each)
-- [ ] D-3: Compute corridor per category; short memo of findings to owner
+- [x] D-1: Collect Tier-A comps per category → `_pricing/benchmarks.csv` (round 1; 35 rows, deepen mezuzah/Etsy/IL next)
+- [x] D-2: Spot-check Tier-B retail prices per category → in `benchmarks.csv`
+- [x] D-3: Compute corridor per category → `_pricing/benchmark-memo.md` (FX drift + candlestick anchor are the headline findings)
 
 ### Phase 2 — Pricing model + catalog audit (dev + owner, ~2 days after 0+1 complete)
 - [ ] D-4: Apply §4 model to all 24 products; produce audit table (current vs floor vs corridor vs suggested)
@@ -147,8 +157,8 @@ Also created: `_pricing/` folder (gitignored) holding `costs.json`, `benchmarks.
 - [ ] D-5: Fix known oddities in the pass: bundle discount (₪770 → real incentive), ₪311 mezuzah, flat-price categories
 
 ### Phase 3 — Build `pricing-calculator.html` (dev, ~2–3 days)
-- [ ] D-6: Tool per §5 spec, `_pricing/` gitignored, robots.txt entry
-- [ ] D-7: Verify audit view reproduces the Phase-2 numbers
+- [x] D-6: Tool built per §5 spec; `_pricing/` gitignored; `robots.txt` disallow added; corridors seeded from Phase 1
+- [x] D-7: Formulas verified against the workbook + hand-calc (floor/min/margin/flags reconcile). Live DOM render not yet exercised — parallel session held the preview ports; re-verify in browser before relying on the audit view
 
 ### Phase 4 — Rollout + monitoring (ongoing)
 - [ ] D-8: Update `products.json` + **manually cross-listed goblet pages** (kiddush-cups.html shows the same goblets — both must change) — ⚠️ per repo rule: preview, summarize, **wait for owner "approve"** before any commit

@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Pricing Calculator — Sherman Art Works (internal)</title>
+<style>
+  :root{
+    --bg:#faf7f2; --dark:#202020; --gold:#d4b572; --brown:#6a5530;
+    --border:#ede5d8; --red:#c0392b; --amber:#c8901e; --green:#2e7d32;
+    --panel:#fff;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--dark);
+    font-family:'Varela Round',Arial,sans-serif;font-size:14px;line-height:1.5}
+  header{background:var(--dark);color:#fff;padding:16px 24px}
+  header h1{margin:0;font-size:1.3rem}
+  header .sub{color:var(--gold);font-size:.85rem;margin-top:4px}
+  .wrap{max-width:1500px;margin:0 auto;padding:20px 24px 80px}
+  .panel{background:var(--panel);border:1px solid var(--border);border-radius:10px;
+    padding:16px 18px;margin-bottom:18px}
+  .panel h2{margin:0 0 12px;font-size:1.05rem;color:var(--brown)}
+  .panel .note{font-size:.8rem;color:#8a7a5c;margin:-6px 0 12px}
+  .grid{display:grid;gap:12px 20px}
+  .settings-grid{grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
+  label{display:block;font-size:.78rem;color:var(--brown);margin-bottom:3px}
+  input[type=number],input[type=text],select{
+    width:100%;padding:6px 8px;border:1px solid var(--border);border-radius:6px;
+    font-family:inherit;font-size:.9rem;background:#fffdf9}
+  input:focus,select:focus{outline:2px solid var(--gold);border-color:var(--gold)}
+  .btnrow{display:flex;flex-wrap:wrap;gap:10px;margin-top:6px}
+  button{font-family:inherit;font-size:.85rem;padding:8px 14px;border-radius:7px;
+    border:1px solid var(--brown);background:var(--dark);color:#fff;cursor:pointer}
+  button.ghost{background:#fff;color:var(--brown)}
+  button:hover{background:var(--brown);color:#fff}
+  .summary{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:8px}
+  .chip{padding:8px 14px;border-radius:20px;font-weight:bold;font-size:.85rem}
+  .chip.red{background:#fbeae8;color:var(--red)}
+  .chip.amber{background:#fbf1dc;color:var(--amber)}
+  .chip.green{background:#e7f3e8;color:var(--green)}
+  .tablewrap{overflow-x:auto}
+  table{border-collapse:collapse;width:100%;font-size:.82rem;min-width:1300px}
+  th,td{border:1px solid var(--border);padding:5px 7px;text-align:right;white-space:nowrap}
+  th{background:var(--dark);color:#fff;position:sticky;top:0;font-weight:normal;font-size:.75rem}
+  td.name,th.name{text-align:left;white-space:normal;min-width:150px}
+  td.cat{text-align:left;color:#8a7a5c;font-size:.75rem}
+  tbody tr:nth-child(even){background:#fdfbf6}
+  td input{width:66px;padding:3px 5px;text-align:right;font-size:.8rem}
+  td input.oneoff{width:38px;text-align:center}
+  .calc{color:#555}
+  .flag{font-weight:bold}
+  .flag.red{color:var(--red)}
+  .flag.amber{color:var(--amber)}
+  .flag.green{color:var(--green)}
+  .money{font-variant-numeric:tabular-nums}
+  .corr-grid{grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+  .corr-card{border:1px solid var(--border);border-radius:8px;padding:10px}
+  .corr-card h3{margin:0 0 6px;font-size:.9rem;text-transform:capitalize}
+  .corr-card .row{display:flex;gap:8px;align-items:center;margin-top:4px}
+  .corr-card .row label{margin:0;flex:0 0 auto;width:52px}
+  .status{font-size:.85rem;color:var(--brown);margin-top:8px}
+  .legend{font-size:.75rem;color:#8a7a5c;margin-top:8px}
+  details{margin-top:10px}
+  summary{cursor:pointer;color:var(--brown);font-size:.85rem}
+</style>
+</head>
+<body>
+<header>
+  <h1>Pricing Calculator</h1>
+  <div class="sub">Internal tool — Sherman Art Works · not linked, not indexed · data stays in this browser (localStorage)</div>
+</header>
+
+<div class="wrap">
+
+  <div class="panel">
+    <h2>1 · Studio settings</h2>
+    <div class="note">Mirror these to the workbook's "Studio Settings" tab so both agree. All money in ₪ unless noted.</div>
+    <div class="grid settings-grid">
+      <div><label>Hourly rate (₪/hr)</label><input type="number" id="rate" step="1"></div>
+      <div><label>Monthly overhead (₪)</label><input type="number" id="overheadMonth" step="10"></div>
+      <div><label>Pieces made / month</label><input type="number" id="piecesMonth" step="1"></div>
+      <div><label>Overhead / piece (₪) — auto</label><input type="number" id="overheadPiece" readonly></div>
+      <div><label>Target margin %</label><input type="number" id="margin" step="1"></div>
+      <div><label>Channel fee %</label><input type="number" id="channel" step="0.5"></div>
+      <div><label>Silver spot (₪/gram)</label><input type="number" id="silverSpot" step="0.5"></div>
+      <div><label>ILS per USD</label><input type="number" id="fx" step="0.01"></div>
+    </div>
+  </div>
+
+  <div class="panel">
+    <h2>2 · Category corridors (USD)</h2>
+    <div class="note">Seeded from the July 2026 benchmark sweep (<code>_pricing/benchmark-memo.md</code>). Editable — refine as more comps come in. "Anchor" = the currency each category's price should round cleanly in.</div>
+    <div class="grid corr-grid" id="corridors"></div>
+    <div class="legend">Notes: <b>candlesticks</b> corridor is US artisan ($72–130 core, $420 statement tier); the Israeli ₪ market runs far lower (₪145–299) — the anchor choice flips this category. <b>mezuzahs</b> corridor is the horn/artisan tier; the glass mezuzah belongs to a lower ~$60–120 band and will read "below". <b>horn-goblets</b> spans goblets (low end) and the decorated wine horn (mid).</div>
+  </div>
+
+  <div class="panel">
+    <h2>3 · Cost inputs &amp; audit</h2>
+    <div class="note">Fill the white cells per product (same fields as the workbook). Grey cells calculate live. Nothing here is uploaded — export a JSON to share.</div>
+    <div class="summary" id="summary"></div>
+    <div class="btnrow">
+      <button onclick="exportCosts()">⬇ Export costs.json</button>
+      <button class="ghost" onclick="document.getElementById('importFile').click()">⬆ Import costs.json</button>
+      <input type="file" id="importFile" accept=".json" style="display:none" onchange="importCosts(event)">
+      <button onclick="exportDiff()">⬇ Export price-diff (proposed products.json)</button>
+      <button class="ghost" onclick="resetAll()">Reset all inputs</button>
+    </div>
+    <div class="tablewrap" style="margin-top:12px">
+      <table id="tbl">
+        <thead><tr>
+          <th class="name">Product</th><th>Cat</th>
+          <th>Cur ₪</th><th>Cur $</th>
+          <th>Mat ₪</th><th>Ag g</th><th>Hrs</th><th>Pack ₪</th><th>Waste %</th><th>1-off</th>
+          <th>Labor ₪</th><th>Ag ₪</th><th>Floor ₪</th><th>Min ₪</th><th>Margin</th>
+          <th>Corridor $</th><th>Pos</th><th>Suggest ₪</th><th>Suggest $</th><th>Flags</th>
+        </tr></thead>
+        <tbody id="rows"></tbody>
+      </table>
+    </div>
+    <div class="legend" style="margin-top:10px">
+      <span class="flag red">🔴 below cost-min</span> (current price doesn't cover cost + target margin) ·
+      <span class="flag amber">🟡 outside corridor</span> (above/below comparable market) ·
+      <span class="flag green">🟢 ok</span>. Suggested price = corridor 60th-percentile (or cost-min if higher), charm-rounded in the category's anchor currency.
+    </div>
+    <details>
+      <summary>How the numbers are computed (matches the workbook)</summary>
+      <div class="legend" style="margin-top:8px">
+        labor = hours × rate · silver = grams × spot ·
+        <b>floor = (materials + packaging + labor + silver) × (1 + waste%) + overhead/piece</b> ·
+        min price = floor ÷ (1 − margin% − channel%) ·
+        margin@current = (current − floor) ÷ current ·
+        current $ = current ₪ ÷ FX.
+      </div>
+    </details>
+  </div>
+
+</div>
+
+<script>
+const LS_SET='sa_pricing_settings', LS_COR='sa_pricing_corridors', LS_COST='sa_pricing_costs';
+
+const DEFAULT_SETTINGS={rate:80, overheadMonth:'', piecesMonth:'', margin:30, channel:0, silverSpot:'', fx:3.04};
+const DEFAULT_CORRIDORS={
+  candlesticks:{low:72,high:130,anchor:'ILS'},
+  'horn-goblets':{low:124,high:298,anchor:'USD'},
+  'kiddush-cups':{low:68,high:159,anchor:'ILS'},
+  'trays-bowls':{low:123,high:139,anchor:'ILS'},
+  mezuzahs:{low:100,high:250,anchor:'USD'},
+  shofars:{low:129,high:323,anchor:'USD'}
+};
+const COST_FIELDS=['materials','silverG','hours','packaging','wastePct','oneOff'];
+
+let products=[], settings={}, corridors={}, costs={};
+
+const load=(k,d)=>{try{const v=JSON.parse(localStorage.getItem(k));return v||d;}catch(e){return d;}};
+const save=(k,v)=>localStorage.setItem(k,JSON.stringify(v));
+const num=v=>{const n=parseFloat(v);return isNaN(n)?0:n;};
+const ils=v=>v||v===0?'₪'+Math.round(v).toLocaleString():'';
+const usd=v=>v||v===0?'$'+Math.round(v).toLocaleString():'';
+
+function charmRound(value,ccy){
+  if(!value||value<=0) return 0;
+  const step = value<(ccy==='ILS'?300:100) ? 5 : 10;
+  return Math.round(value/step)*step;
+}
+
+async function init(){
+  settings=Object.assign({},DEFAULT_SETTINGS,load(LS_SET,{}));
+  corridors=Object.assign({},DEFAULT_CORRIDORS,load(LS_COR,{}));
+  costs=load(LS_COST,{});
+  try{
+    const r=await fetch('data/products.json');
+    products=await r.json();
+  }catch(e){
+    document.getElementById('rows').innerHTML=
+      '<tr><td colspan="20" class="name">Could not load data/products.json — serve the site (python -m http.server 8787) and open this page through it, not as a file://.</td></tr>';
+    return;
+  }
+  renderSettings(); renderCorridors(); renderRows(); recompute();
+}
+
+function renderSettings(){
+  ['rate','overheadMonth','piecesMonth','margin','channel','silverSpot','fx'].forEach(id=>{
+    const el=document.getElementById(id);
+    el.value=settings[id];
+    el.oninput=()=>{settings[id]=el.value===''?'':num(el.value);save(LS_SET,settings);recompute();};
+  });
+}
+
+function renderCorridors(){
+  const box=document.getElementById('corridors');
+  box.innerHTML='';
+  Object.keys(corridors).forEach(cat=>{
+    const c=corridors[cat];
+    const card=document.createElement('div');
+    card.className='corr-card';
+    card.innerHTML=`<h3>${cat.replace(/-/g,' ')}</h3>
+      <div class="row"><label>Low $</label><input type="number" data-cat="${cat}" data-k="low" value="${c.low}"></div>
+      <div class="row"><label>High $</label><input type="number" data-cat="${cat}" data-k="high" value="${c.high}"></div>
+      <div class="row"><label>Anchor</label>
+        <select data-cat="${cat}" data-k="anchor">
+          <option value="ILS" ${c.anchor==='ILS'?'selected':''}>₪ ILS (local)</option>
+          <option value="USD" ${c.anchor==='USD'?'selected':''}>$ USD (diaspora)</option>
+        </select></div>`;
+    box.appendChild(card);
+  });
+  box.querySelectorAll('input,select').forEach(el=>{
+    el.onchange=()=>{
+      const cat=el.dataset.cat,k=el.dataset.k;
+      corridors[cat][k]= k==='anchor'?el.value:num(el.value);
+      save(LS_COR,corridors);recompute();
+    };
+  });
+}
+
+function renderRows(){
+  const tb=document.getElementById('rows');
+  tb.innerHTML='';
+  products.forEach(p=>{
+    const c=costs[p.id]||{};
+    const tr=document.createElement('tr');
+    tr.dataset.id=p.id;
+    const inp=(f,cls='')=>`<input class="${cls}" type="${f==='oneOff'?'text':'number'}" data-id="${p.id}" data-f="${f}" value="${c[f]!=null?c[f]:''}">`;
+    tr.innerHTML=`
+      <td class="name">${p.name_en}</td>
+      <td class="cat">${p.category}</td>
+      <td class="money" data-col="curIls"></td>
+      <td class="money calc" data-col="curUsd"></td>
+      <td>${inp('materials')}</td>
+      <td>${inp('silverG')}</td>
+      <td>${inp('hours')}</td>
+      <td>${inp('packaging')}</td>
+      <td>${inp('wastePct')}</td>
+      <td>${inp('oneOff','oneoff')}</td>
+      <td class="money calc" data-col="labor"></td>
+      <td class="money calc" data-col="silver"></td>
+      <td class="money calc" data-col="floor"></td>
+      <td class="money calc" data-col="min"></td>
+      <td class="calc" data-col="margin"></td>
+      <td class="calc" data-col="corridor"></td>
+      <td class="flag" data-col="pos"></td>
+      <td class="money" data-col="sugIls"></td>
+      <td class="money" data-col="sugUsd"></td>
+      <td class="flag" data-col="flags"></td>`;
+    tb.appendChild(tr);
+  });
+  tb.querySelectorAll('input').forEach(el=>{
+    el.oninput=()=>{
+      const id=el.dataset.id,f=el.dataset.f;
+      costs[id]=costs[id]||{};
+      costs[id][f]= f==='oneOff' ? el.value.trim().toUpperCase() : (el.value===''?'':num(el.value));
+      save(LS_COST,costs);
+      recomputeRow(id);
+      recomputeSummary();
+    };
+  });
+}
+
+function computeRow(p){
+  const c=costs[p.id]||{};
+  const rate=num(settings.rate), spot=num(settings.silverSpot), fx=num(settings.fx)||3.04;
+  const margin=num(settings.margin)/100, channel=num(settings.channel)/100;
+  const ohPiece = num(settings.piecesMonth)>0 ? num(settings.overheadMonth)/num(settings.piecesMonth) : 0;
+  const materials=num(c.materials), silverG=num(c.silverG), hours=num(c.hours),
+        packaging=num(c.packaging), waste=num(c.wastePct)/100;
+  const hasCost = c.materials!=null&&c.materials!=='' || c.hours!=null&&c.hours!=='' ||
+                  c.silverG!=null&&c.silverG!=='';
+  const labor=hours*rate, silver=silverG*spot;
+  const floor=(materials+packaging+labor+silver)*(1+waste)+ohPiece;
+  const denom=1-margin-channel;
+  const min= denom>0 ? floor/denom : 0;
+  const curIls=p.price_ils, curUsd=curIls/fx;
+  const marginCur= curIls>0 ? (curIls-floor)/curIls : 0;
+
+  const corr=corridors[p.category]||{low:0,high:0,anchor:'ILS'};
+  let pos='—', posClass='';
+  if(corr.high>0){
+    if(curUsd<corr.low){pos='under';posClass='amber';}
+    else if(curUsd>corr.high){pos='over';posClass='amber';}
+    else{pos='in';posClass='green';}
+  }
+
+  // suggested: 60th pct of corridor, but not below cost-min (in USD); charm-round in anchor ccy
+  const target60=corr.low+0.6*(corr.high-corr.low);
+  const minUsd=min/fx;
+  let sugUsdRaw = Math.max(target60, hasCost?minUsd:0);
+  let costAboveCorridor = hasCost && minUsd>corr.high;
+  let sugIls,sugUsdV;
+  if(corr.anchor==='USD'){
+    sugUsdV=charmRound(sugUsdRaw,'USD');
+    sugIls=charmRound(sugUsdV*fx,'ILS');
+  }else{
+    sugIls=charmRound(sugUsdRaw*fx,'ILS');
+    sugUsdV=Math.round(sugIls/fx);
+  }
+
+  const flags=[];
+  if(hasCost && curIls<min) flags.push({t:'🔴 below-min',c:'red'});
+  if(pos==='over') flags.push({t:'🟡 above corridor',c:'amber'});
+  if(pos==='under') flags.push({t:'🟡 below corridor',c:'amber'});
+  if(costAboveCorridor) flags.push({t:'🔴 cost>corridor',c:'red'});
+  if(!flags.length && corr.high>0) flags.push({t:'🟢 ok',c:'green'});
+
+  return {labor,silver,floor,min,curIls,curUsd,marginCur,corr,pos,posClass,
+          sugIls,sugUsdV,hasCost,flags};
+}
+
+function recomputeRow(id){
+  const p=products.find(x=>x.id===id); if(!p) return;
+  const tr=document.querySelector(`tr[data-id="${id}"]`); if(!tr) return;
+  const r=computeRow(p);
+  tr.querySelector('[data-col="curIls"]').textContent=ils(r.curIls);
+  tr.querySelector('[data-col="curUsd"]').textContent=usd(r.curUsd);
+  tr.querySelector('[data-col="labor"]').textContent=r.hasCost?ils(r.labor):'';
+  tr.querySelector('[data-col="silver"]').textContent=r.hasCost?ils(r.silver):'';
+  tr.querySelector('[data-col="floor"]').textContent=r.hasCost?ils(r.floor):'';
+  tr.querySelector('[data-col="min"]').textContent=r.hasCost?ils(r.min):'';
+  const mt=tr.querySelector('[data-col="margin"]');
+  mt.textContent=r.hasCost?(r.marginCur*100).toFixed(0)+'%':'';
+  mt.style.color = r.hasCost&&r.marginCur<num(settings.margin)/100 ? 'var(--red)':'';
+  tr.querySelector('[data-col="corridor"]').textContent=r.corr.high>0?`$${r.corr.low}–${r.corr.high}`:'—';
+  const pt=tr.querySelector('[data-col="pos"]');
+  pt.textContent=r.pos; pt.className='flag '+r.posClass;
+  tr.querySelector('[data-col="sugIls"]').textContent=ils(r.sugIls);
+  tr.querySelector('[data-col="sugUsd"]').textContent=usd(r.sugUsdV);
+  const ft=tr.querySelector('[data-col="flags"]');
+  ft.innerHTML=r.flags.map(f=>`<span class="flag ${f.c}">${f.t}</span>`).join('<br>');
+}
+
+function recomputeSummary(){
+  let red=0,amber=0,green=0,costed=0;
+  products.forEach(p=>{
+    const r=computeRow(p);
+    if(r.hasCost) costed++;
+    const hasRed=r.flags.some(f=>f.c==='red');
+    const hasAmber=r.flags.some(f=>f.c==='amber');
+    if(hasRed) red++; else if(hasAmber) amber++; else green++;
+  });
+  document.getElementById('summary').innerHTML=
+    `<span class="chip red">🔴 ${red} need attention</span>`+
+    `<span class="chip amber">🟡 ${amber} outside corridor</span>`+
+    `<span class="chip green">🟢 ${green} ok</span>`+
+    `<span class="chip" style="background:#f0ece4;color:#6a5530">${costed}/${products.length} cost data entered</span>`;
+}
+
+function recompute(){
+  const oh = num(settings.piecesMonth)>0 ? num(settings.overheadMonth)/num(settings.piecesMonth) : 0;
+  document.getElementById('overheadPiece').value = oh?Math.round(oh):'';
+  products.forEach(p=>recomputeRow(p.id));
+  recomputeSummary();
+}
+
+function exportCosts(){
+  const blob=new Blob([JSON.stringify({settings,corridors,costs},null,2)],{type:'application/json'});
+  dl(blob,'costs.json');
+}
+function importCosts(e){
+  const f=e.target.files[0]; if(!f) return;
+  const rd=new FileReader();
+  rd.onload=()=>{try{
+    const d=JSON.parse(rd.result);
+    if(d.settings) settings=Object.assign({},DEFAULT_SETTINGS,d.settings);
+    if(d.corridors) corridors=Object.assign({},DEFAULT_CORRIDORS,d.corridors);
+    if(d.costs) costs=d.costs;
+    save(LS_SET,settings);save(LS_COR,corridors);save(LS_COST,costs);
+    renderSettings();renderCorridors();renderRows();recompute();
+    alert('Imported.');
+  }catch(err){alert('Bad JSON: '+err.message);}};
+  rd.readAsText(f);
+  e.target.value='';
+}
+function exportDiff(){
+  const rows=products.map(p=>{
+    const r=computeRow(p);
+    return {id:p.id, name:p.name_en, category:p.category,
+      current_ils:p.price_ils, suggested_ils:r.sugIls,
+      delta_ils:r.sugIls-p.price_ils,
+      delta_pct: p.price_ils?+(100*(r.sugIls-p.price_ils)/p.price_ils).toFixed(1):null,
+      cost_floor_ils: r.hasCost?Math.round(r.floor):null,
+      min_price_ils: r.hasCost?Math.round(r.min):null,
+      position:r.pos};
+  });
+  const blob=new Blob([JSON.stringify({generated:new Date().toISOString(),fx:num(settings.fx),rows},null,2)],{type:'application/json'});
+  dl(blob,'price-diff.json');
+}
+function dl(blob,name){
+  const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=name;a.click();
+  setTimeout(()=>URL.revokeObjectURL(a.href),1000);
+}
+function resetAll(){
+  if(!confirm('Clear all cost inputs, settings and corridors from this browser?')) return;
+  localStorage.removeItem(LS_SET);localStorage.removeItem(LS_COR);localStorage.removeItem(LS_COST);
+  settings=Object.assign({},DEFAULT_SETTINGS);corridors=Object.assign({},DEFAULT_CORRIDORS);costs={};
+  renderSettings();renderCorridors();renderRows();recompute();
+}
+
+init();
+</script>
+</body>
+</html>

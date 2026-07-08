@@ -4,5 +4,6 @@ Allow: /
 # Internal tools - not for public indexing
 Disallow: /product-builder.html
 Disallow: /sales-dashboard.html
+Disallow: /pricing-calculator.html
 
 Sitemap: https://shermanartworks.com/sitemap.xml
