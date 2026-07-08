@@ -1,6 +1,6 @@
 # Sherman Art Works — Product Task List
 
-> Last updated: 2026-06-11 (Sprint 19 dev complete — legal core; awaiting owner approval) | PM: Claude | Owner: Sherman Family
+> Last updated: 2026-07-08 (Sprint 22 planned — owner feedback round 2 + product anchors) | PM: Claude | Owner: Sherman Family
 > Active file: `sherman-artworks-site/` | Repo: github.com/jshermanj1-cpu/sherman-artworks-site
 
 ---
@@ -341,6 +341,82 @@ On-page SEO audit + fixes; implemented 2026-06-12.
 
 ---
 
+## MILESTONE 21 — Owner Feedback Round 2 + Product Anchors (Sprint 22) 🔜
+
+Owner feedback received 2026-07-08 (WhatsApp + screenshot of cropped mobile modal) + W14-B from SEO_GEO_WORK_PLAN. Planned 2026-07-08 — awaiting owner approval before commit.
+
+**Recommended execution order: 22.3 → 22.2 → 22.4 → 22.1 → 22.5** (two quick fixes first, then descriptions, then the big split, anchors last since they depend on the final category structure).
+
+### 22.1 — Category split: "Shofars & Horn Goblets" → "Horn Goblets" + separate "Shofars" 🔴 M
+
+**Goal:** `shofars-goblets.html` becomes **Horn Goblets / גביעי קרן** (Jerusalem Wine Horn + Lion of Judah + Menorah goblets only). **Shofars / שופרות** becomes its own category containing the personalisation option (Custom Shofar builder).
+
+**Recommended approach — no URL churn:** keep both existing filenames. `shofars-goblets.html` is renamed in place; `custom-shofars.html` (already in nav as "Custom Shofars" + in sitemap) is retitled to be THE Shofars category page. No new files, no redirect stubs, no sitemap URL changes — important while the W1/W2 indexing push is still in flight. *(Alternative rejected: new `horn-goblets.html`/`shofars.html` + meta-refresh stubs — cleaner slugs but URL churn mid-indexing and 2 extra stub pages.)*
+
+| Step | Task | Files |
+|---|---|---|
+| 1 | 👤 Owner confirms: (a) naming above, (b) Jerusalem Wine Horn stays on Horn Goblets page (it's a drinking horn, NOT a shofar — per Sprint 20.9), (c) nav order (suggest Shofars directly after Horn Goblets) | — |
+| 2 | `shofars-goblets.html` rename sweep EN+HE: `<title>`, meta/og/twitter description, page-hero H1 + breadcrumb, `T_PAGE` dict, JSON-LD (BreadcrumbList, ItemList name), static SEO card category tags. EN "Shofars & Horn Goblets"→"Horn Goblets", HE "שופרות וגביעי קרן"→"גביעי קרן" | `shofars-goblets.html` |
+| 3 | Remove Custom Shofar product from `shofars-goblets.html`: PRODUCTS array entry, static SEO card, JSON-LD Product, its "custom" section markup + the now-dead personalisable form branch | `shofars-goblets.html` |
+| 4 | `custom-shofars.html` retitle "Custom Shofars"→"Shofars / שופרות": `<title>`, meta/og, H1, breadcrumb, JSON-LD names. Keep builder + Custom Shofar card (this IS the "אופציה להתאמה אישית" inside the category); hero copy: category intro + "ready-made designs — contact us" line | `custom-shofars.html` |
+| 5 | Site-wide nav sweep: `cat2_title` → "Horn Goblets"/"גביעי קרן", `cat7_title` → "Shofars"/"שופרות" in `T_SITE` (js/site.js) + hardcoded nav fallback text + mobile accordion in ALL HTML pages (~17 files; grep `cat2_title`/`cat7_title` + both old strings). Footer `footer_link_shofars` label likewise | all `.html`, `js/site.js` |
+| 6 | Homepage category grid: card at index.html:428 → Horn Goblets (title/alt), card at :512 → Shofars (title/alt); verify `data-min-ils` prices still correct per card | `index.html` |
+| 7 | `kiddush-cups.html` cross-listed goblets: category tag labels → "Horn Goblets" (8 old-name occurrences) | `kiddush-cups.html` |
+| 8 | `data/products.json`: `category` 'shofars-goblets'→'horn-goblets' (3 goblets), custom-shofar `category`→'shofars' + drop 'shofars-goblets.html' from its `pages`. Grep all consumers of the category string (cart.js, GA4 params, product-builder.html) and sync | `data/products.json`, consumers |
+| 9 | `llms.txt` category rename; `sitemap.xml` — URLs unchanged, bump `<lastmod>` on both pages + index | `llms.txt`, `sitemap.xml` |
+| 10 | QA: EN/HE toggle on every touched page, Shop dropdown desktop + mobile + RTL, cart add-goblet→checkout, builder still works on custom-shofars.html + business-gifts.html, grep returns ZERO old-name occurrences (currently 119 across 19 files) | browser |
+
+### 22.2 — Inscription hint: add "עברית/English" where missing 🟡 XS
+
+`custom-shofars.html` already shows "(אופציונלי, עד 8 תווים, עברית/English)" — the same builder cloned on two other pages doesn't:
+
+| Step | Task |
+|---|---|
+| 1 | `shofars-goblets.html:709` — append ", עברית/English" (HE) / ", Hebrew/English" (EN) to `l_hint_txt`. *(Becomes dead code after 22.1 step 3 — fix anyway in case 22.2 ships first)* |
+| 2 | `business-gifts.html:387` (`custom_text_hint`) + `:605` (`l_hint_txt`) — same append, EN + HE |
+| 3 | QA: open Custom Shofar modal on business-gifts.html in EN + HE → hint shows language note |
+
+### 22.3 — Mobile modal: content clipped, can't scroll 🔴 XS–S (bug, screenshot 2026-07-08)
+
+**Root cause:** `css/site.css:562` — at ≤800px `.modal-inner` is a single-column grid, `max-height: 96vh`, `overflow: hidden`; `.modal-info`'s `overflow-y: auto` never engages because its auto-sized grid row grows to full content height → anything past 96vh (e.g. the shofar order form) is clipped with no scroll.
+
+| Step | Task |
+|---|---|
+| 1 | In the ≤800px block: `.modal-inner { overflow-y: auto; }` + `.modal-info { overflow-y: visible; }` — whole modal becomes ONE scroll container (gallery scrolls away as you read; standard mobile sheet pattern). Prefer `max-height: 96dvh` with 96vh fallback for iOS URL-bar resize |
+| 2 | Keep close button reachable while scrolled: make `.modal-close` `position: sticky` (or fixed within modal) at top in the mobile block; verify RTL position |
+| 3 | QA at 375px + real phone: long product (Custom Shofar form) scrolls fully, short product unaffected, body scroll-lock still works, Esc/backdrop close, RTL |
+
+### 22.4 — FDA-approved epoxy coating note on horn + ceramic cups 🟡 S
+
+**Products (👤 confirm list):** Jerusalem Wine Horn, Lion of Judah Goblet, Menorah Goblet (horn), Ceramic Kiddush Cup (ceramic). *(Owner said "all horn cups and all ceramic cups" — wine horn included as a horn drinking vessel.)*
+
+**Text to append:** HE: `בציפוי אפוקסי קריסטל באישור ה-FDA.` *(owner wrote "הFDA" — suggest hyphenated ה-FDA, confirm)* · EN: `Coated with FDA-approved crystal epoxy.`
+
+| Step | Task |
+|---|---|
+| 1 | `data/products.json` — append to `description_en` + `description_he` of the 4 products |
+| 2 | Inline PRODUCTS arrays — same 4 products: `shofars-goblets.html` (wine horn, lion, menorah), `kiddush-cups.html` (lion, menorah, ceramic) — cross-listed goblets appear in BOTH files |
+| 3 | Static SEO cards — same descriptions baked in HTML on both pages |
+| 4 | JSON-LD `Product.description` in `<head>` of both pages |
+| 5 | QA: open each of the 4 products' modals EN + HE on both pages → note visible; grep confirms all 4 sync points updated per product |
+
+### 22.5 — Per-product anchor URLs (= SEO_GEO_WORK_PLAN W14 option B) 🟡 S–M
+
+Products can't be linked/ranked individually (cards + modal only). Cheap first step before deciding on full per-product pages (W14-A).
+
+| Step | Task |
+|---|---|
+| 1 | `buildCard()` on all category pages: set `id="{product.id}"` on `.product-card` (ids = products.json slugs, e.g. `#ceramic-kiddush-cup`); same id on the static SEO cards (JS render replaces them, so no duplicate ids at runtime) |
+| 2 | On page load: if `location.hash` matches a product id → `scrollIntoView` + open its modal. On modal open, `history.replaceState` the hash; clear on close (no history spam, shareable URL) |
+| 3 | JSON-LD: add `"url": "https://shermanartworks.com/{page}#{id}"` to every Product object + ItemList entries on all category pages |
+| 4 | `llms.txt`: add per-product anchor URLs under each category |
+| 5 | Share/copy affordance in modal (optional, owner call): small "copy link" icon next to product name |
+| 6 | QA: direct-load each anchor URL (EN + HE + RTL + mobile), hash opens correct modal, no scroll-jump when opening without hash; after 22.1, anchors must use FINAL page assignments (custom-shofar → custom-shofars.html) |
+
+**+2 weeks after deploy:** check GSC whether anchor URLs surface in queries; then decide W14-A (full product pages).
+
+---
+
 ## Sprint Summary
 
 | Sprint | Milestone | Goal | Status |
@@ -361,7 +437,8 @@ On-page SEO audit + fixes; implemented 2026-06-12.
 | Sprint 19 | M18 | Legal core: consent banner, terms, shipping-returns, footer policies, sitemap, privacy SEO bake (+ standalone mobile-breakpoints fix `dbbd00b`) | ✅ |
 | Sprint 20 | M10 / M14 | Owner feedback round: Hebrew copy + product accuracy pass (`2aa6f7c`) + gift-wrap/4-day removal (`0823fbc`) | ✅ |
 | Sprint 21 | M20 | SEO hardening: JSON-LD resync, shofars head rename, alt texts, FAQPage + Organization schema | ✅ Dev done — awaiting owner approval |
-| **→ Sprint 22** | **M18 rest + M11.2** | **Trust badges, testimonials, newsletter — per FIX_PLAN "Depth & launch"** | 🔜 |
+| **→ Sprint 22** | **M21** | **Owner feedback round 2: category split (Horn Goblets / Shofars), inscription hint, mobile modal scroll fix, FDA epoxy note, per-product anchors (W14-B)** | 🔜 Planned 2026-07-08 |
+| Sprint 23 | M18 rest + M11.2 | Trust badges, testimonials, newsletter — per FIX_PLAN "Depth & launch" | 🔜 |
 | — | M9 | Full product catalogue | 🔜 Blocked: owner photos for kiddush cups, business gifts |
 | — | M11 Tier 2 | Newsletter, Pinterest, TikTok | 🔜 |
 | — | M10 | Hebrew quality pass | 🔜 Blocked: native speaker |

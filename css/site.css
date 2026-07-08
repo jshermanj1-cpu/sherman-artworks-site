@@ -559,11 +559,12 @@ footer .logo-sub  { color: var(--footer-text); }
 
 /* ── 16. RESPONSIVE ──────────────────────────────────────────── */
 @media (max-width: 800px) {
-  .modal-inner        { grid-template-columns: 1fr; max-height: 96vh; }
+  .modal-inner        { grid-template-columns: 1fr; max-height: 96vh; max-height: 96dvh; overflow-y: auto; }
   .modal-gallery      { padding: 1.25rem 1.25rem 0.75rem; }
   .modal-main-wrap    { min-height: 220px; }
   .modal-main-img     { max-height: 40vh; }
-  .modal-info         { padding: 1.5rem 1.25rem; }
+  .modal-info         { padding: 1.5rem 1.25rem; overflow-y: visible; }
+  .modal-close        { position: sticky; top: 0.5rem; z-index: 10; align-self: flex-start; }
 }
 @media (max-width: 768px) {
   .top-bar                  { padding: 0.4rem 1rem; }

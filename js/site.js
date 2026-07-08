@@ -18,12 +18,12 @@ const T_SITE = {
     badge_soon:          'Coming Soon',
 
     cat1_title:          'Candlesticks',
-    cat2_title:          'Shofars & Horn Goblets',
+    cat2_title:          'Horn Goblets',
     cat3_title:          'Kiddush Cups',
     cat4_title:          'Trays & Bowls',
     cat5_title:          'Business Gifts',
     cat6_title:          'Mezuzahs',
-    cat7_title:          'Custom Shofars',
+    cat7_title:          'Shofars',
 
     cat_from:            'from',
     cat_cta_browse:      'Browse Collection',
@@ -35,7 +35,7 @@ const T_SITE = {
     footer_col_shop:     'Shop',
     footer_col_studio:   'Studio',
     footer_link_candles: 'Candlesticks',
-    footer_link_shofars: 'Shofars & Horn Goblets',
+    footer_link_shofars: 'Horn Goblets',
     footer_link_bowls:   'Trays & Bowls',
     footer_all_collections: 'All Collections',
     footer_copy:         '© 2026 Sherman Art Works. All rights reserved.',
@@ -65,12 +65,12 @@ const T_SITE = {
     badge_soon:          'בקרוב',
 
     cat1_title:          'פמוטים',
-    cat2_title:          'שופרות וגביעי קרן',
+    cat2_title:          'גביעי קרן',
     cat3_title:          'כוסות קידוש',
     cat4_title:          'מגשים וקערות',
     cat5_title:          'מתנות לעסקים',
     cat6_title:          'מזוזות',
-    cat7_title:          'שופרות בהתאמה אישית',
+    cat7_title:          'שופרות',
 
     cat_from:            'מ-',
     cat_cta_browse:      'לקולקציה',
@@ -82,7 +82,7 @@ const T_SITE = {
     footer_col_shop:     'חנות',
     footer_col_studio:   'הסטודיו',
     footer_link_candles: 'פמוטים',
-    footer_link_shofars: 'שופרות וגביעי קרן',
+    footer_link_shofars: 'גביעי קרן',
     footer_link_bowls:   'מגשים וקערות',
     footer_all_collections: 'כל הקולקציות',
     footer_copy:         '© 2026 שרמן ארט וורקס. כל הזכויות שמורות.',
@@ -479,6 +479,17 @@ document.addEventListener('DOMContentLoaded', function() {
   setLang(lang);
   setCurrency(cur);
   loadUsdRate();
+
+  // Hash-based product anchor open (22.5)
+  if (typeof PRODUCTS !== 'undefined' && typeof openModal === 'function' && location.hash) {
+    var _hId  = location.hash.slice(1);
+    var _hIdx = PRODUCTS.findIndex(function(p) { return p.id === _hId; });
+    if (_hIdx >= 0) {
+      var _hCard = document.getElementById(_hId);
+      if (_hCard) _hCard.scrollIntoView({ block: 'center' });
+      openModal(_hIdx);
+    }
+  }
 
   // Sync WA links to WA_NUMBER
   var waMsg = "Hi, I'm interested in your handmade glass art";

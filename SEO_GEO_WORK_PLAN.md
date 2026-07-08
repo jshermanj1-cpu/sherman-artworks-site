@@ -69,7 +69,7 @@ New work — in no existing plan. Google and AI assistants currently describe th
 |---|---|---|---|---|
 | W12 | **Name an artisan** — "The Sherman Family" is anonymous, so AI can't attribute the work to a citable person. Owner picks at least one named artisan + short bio for about.html; dev adds `Person` schema linked from `Organization` | 👤 Owner decides → 💻 Dev | S | 🔜 |
 | W13 | **Testimonials** (= L-2.1 / FIX 5.5, Sprint 20) — report independently confirms zero social proof is the top conversion + GEO gap. No new work, but raise priority | 👤 + 💻 | M | already planned |
-| W14 | **Per-product URLs — decide** — products live as cards + modal, so no product can rank on its own. Option A: generate per-product pages from products.json (best for SEO, effort M). Option B: stable `#anchors` per product now (effort XS) and revisit A after Phase 1 shows indexing results. Recommend B now, A later | 💻 Dev after 👤 decision | XS→M | 🔜 |
+| W14 | **Per-product URLs — decide** — products live as cards + modal, so no product can rank on its own. Option A: generate per-product pages from products.json (best for SEO, effort M). Option B: stable `#anchors` per product now (effort XS) and revisit A after Phase 1 shows indexing results. Recommend B now, A later | 💻 Dev after 👤 decision | XS→M | 🔜 Option B planned as **TASK_LIST 22.5** (Sprint 22, 2026-07-08) |
 | W15 | **Content pages** (= L-3.4) — buyer-intent queries the site is invisible for ("shofar buying guide", "handmade Shabbat candlesticks from Israel", …). Already planned; the report's competitor list (Judaica Web Store, Nadav Art, Etsy, ProShofar…) tells us which queries to target first | 💻 Dev drafts → 👤 Owner reviews | M each | already planned |
 
 ---
