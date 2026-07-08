@@ -376,6 +376,7 @@ nav {
 .modal-info {
   padding: 2rem 1.75rem;
   overflow-y: auto;
+  max-height: 92vh; max-height: 92dvh;
   display: flex; flex-direction: column;
   min-height: 0;
 }
@@ -585,7 +586,7 @@ footer .logo-sub  { color: var(--footer-text); }
   .modal-gallery      { padding: 1.25rem 1.25rem 0.75rem; }
   .modal-main-wrap    { min-height: 220px; }
   .modal-main-img     { max-height: 40vh; }
-  .modal-info         { padding: 1.5rem 1.25rem; overflow-y: visible; }
+  .modal-info         { padding: 1.5rem 1.25rem; overflow-y: visible; max-height: none; }
   .modal-close        { position: sticky; top: 0.5rem; z-index: 10; align-self: flex-start; }
 }
 @media (max-width: 768px) {
