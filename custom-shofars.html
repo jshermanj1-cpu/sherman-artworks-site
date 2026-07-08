@@ -44,7 +44,12 @@
     <span class="top-divider">|</span>
     <button id="btnHE" class="toggle-btn" onclick="setLang('he')">עברית</button>
   </div>
-  <div class="top-bar-group" data-t="topbar_right" style="font-size:0.72rem;color:var(--footer-text);letter-spacing:0.04em;"></div>
+  <div class="top-bar-group">
+    <button id="btnILS" class="toggle-btn" onclick="setCurrency('ILS')">&#8362; ILS</button>
+    <span class="top-divider">|</span>
+    <button id="btnUSD" class="toggle-btn" onclick="setCurrency('USD')">$ USD</button>
+    <span id="rateNote"></span>
+  </div>
 </div>
 
 <div class="nav-wrap">
@@ -160,7 +165,7 @@
     <button class="modal-close" onclick="closeModal()" aria-label="Close">×</button>
     <div class="modal-gallery">
       <div class="modal-main-wrap">
-        <img id="modalMainImg" class="modal-main-img" src="" alt="" />
+        <img id="modalMainImg" class="modal-main-img" src="data:," alt="" />
         <button id="modalPrev" class="modal-nav prev" onclick="prevModalPhoto()" aria-label="Previous photo">◀</button>
         <button id="modalNext" class="modal-nav next" onclick="nextModalPhoto()" aria-label="Next photo">▶</button>
       </div>

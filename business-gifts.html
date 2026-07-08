@@ -61,7 +61,12 @@
     <span class="top-divider">|</span>
     <button id="btnHE" class="toggle-btn" onclick="setLang('he')">עברית</button>
   </div>
-  <div class="top-bar-group" data-t="topbar_right" style="font-size:0.72rem;color:var(--footer-text);letter-spacing:0.04em;"></div>
+  <div class="top-bar-group">
+    <button id="btnILS" class="toggle-btn" onclick="setCurrency('ILS')">&#8362; ILS</button>
+    <span class="top-divider">|</span>
+    <button id="btnUSD" class="toggle-btn" onclick="setCurrency('USD')">$ USD</button>
+    <span id="rateNote"></span>
+  </div>
 </div>
 
 <div class="nav-wrap">
@@ -188,9 +193,9 @@
     <p  class="about-body"   data-t="about_body"></p>
     <p class="about-tag" style="margin-top: 2.5rem; margin-bottom: 1.5rem;" data-t="other_label"></p>
     <div class="other-cats">
-      <a href="candlesticks.html"    class="other-cat-link" data-t="other_candles"></a>
-      <a href="shofars-goblets.html" class="other-cat-link" data-t="other_shofars"></a>
-      <a href="trays-bowls.html"     class="other-cat-link" data-t="other_bowls"></a>
+      <a href="candlesticks.html"    class="other-cat-link" data-t="other_candles">Candlesticks</a>
+      <a href="shofars-goblets.html" class="other-cat-link" data-t="other_shofars">Horn Goblets</a>
+      <a href="trays-bowls.html"     class="other-cat-link" data-t="other_bowls">Trays &amp; Bowls</a>
     </div>
   </div>
 </section>
@@ -201,7 +206,7 @@
     <button class="modal-close" onclick="closeModal()" aria-label="Close">×</button>
     <div class="modal-gallery">
       <div class="modal-main-wrap">
-        <img id="modalMainImg" class="modal-main-img" src="" alt="" />
+        <img id="modalMainImg" class="modal-main-img" src="data:," alt="" />
         <button id="modalPrev" class="modal-nav prev" onclick="prevModalPhoto()" aria-label="Previous photo">◀</button>
         <button id="modalNext" class="modal-nav next" onclick="nextModalPhoto()" aria-label="Next photo">▶</button>
       </div>
@@ -262,9 +267,9 @@
       <div>
         <div class="footer-col-title" data-t="footer_col_shop">Shop</div>
         <ul class="footer-links" role="list">
-          <li><a href="candlesticks.html"     data-t="other_candles"></a></li>
-          <li><a href="shofars-goblets.html"  data-t="other_shofars"></a></li>
-          <li><a href="trays-bowls.html"      data-t="other_bowls"></a></li>
+          <li><a href="candlesticks.html"     data-t="other_candles">Candlesticks</a></li>
+          <li><a href="shofars-goblets.html"  data-t="other_shofars">Horn Goblets</a></li>
+          <li><a href="trays-bowls.html"      data-t="other_bowls">Trays &amp; Bowls</a></li>
           <li><a href="index.html#shop"             data-t="footer_all_collections">All Collections</a></li>
         </ul>
       </div>
@@ -336,7 +341,7 @@
 
       other_label:   'Browse Our Other Collections',
       other_candles: 'Candlesticks',
-      other_shofars: 'Shofars & Horn Goblets',
+      other_shofars: 'Horn Goblets',
       other_bowls:   'Trays & Bowls',
 
       footer_tagline:        'Handmade glass art & Judaica from Israel',
@@ -393,7 +398,7 @@
 
       other_label:   'לקולקציות אחרות',
       other_candles: 'פמוטים',
-      other_shofars: 'שופרות וגביעי קרן',
+      other_shofars: 'גביעי קרן',
       other_bowls:   'מגשים וקערות',
 
       footer_tagline:        'אמנות זכוכית ויודאיקה בעבודת יד מישראל',

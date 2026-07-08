@@ -44,7 +44,12 @@
     <span class="top-divider">|</span>
     <button id="btnHE" class="toggle-btn" onclick="setLang('he')">עברית</button>
   </div>
-  <div class="top-bar-group" data-t="topbar_right" style="font-size:0.72rem;color:var(--footer-text);letter-spacing:0.04em;"></div>
+  <div class="top-bar-group">
+    <button id="btnILS" class="toggle-btn" onclick="setCurrency('ILS')">&#8362; ILS</button>
+    <span class="top-divider">|</span>
+    <button id="btnUSD" class="toggle-btn" onclick="setCurrency('USD')">$ USD</button>
+    <span id="rateNote"></span>
+  </div>
 </div>
 
 <div class="nav-wrap">
@@ -142,30 +147,6 @@
         </div>
       </div>
     </article>
-    <article class="product-card">
-      <div class="product-card-img-wrap">
-        <img src="https://res.cloudinary.com/doesupaf9/image/upload/w_600,c_fit,q_auto,f_auto/goblet-lion_dcyxhp.jpg" alt="Lion of Judah Goblet - rams horn wine goblet with silver-plated lion emblem" loading="lazy" />
-      </div>
-      <div class="product-card-body">
-        <h3 class="product-card-name">Lion of Judah Goblet</h3>
-        <p class="product-card-desc">Wine goblet made from a rams horn. Lion emblem on a silver-plated background. Coated with FDA-approved crystal epoxy.</p>
-        <div class="product-card-meta">
-          <span class="product-card-price">&#8362;473 <span class="product-card-price-alt">≈ $155</span></span>
-        </div>
-      </div>
-    </article>
-    <article class="product-card">
-      <div class="product-card-img-wrap">
-        <img src="https://res.cloudinary.com/doesupaf9/image/upload/w_600,c_fit,q_auto,f_auto/goblet-menorah_va4q5g.jpg" alt="Menorah Goblet - rams horn wine goblet with seven-branched menorah" loading="lazy" />
-      </div>
-      <div class="product-card-body">
-        <h3 class="product-card-name">Menorah Goblet</h3>
-        <p class="product-card-desc">Wine goblet made from a rams horn. Seven-branched menorah. Coated with FDA-approved crystal epoxy.</p>
-        <div class="product-card-meta">
-          <span class="product-card-price">&#8362;473 <span class="product-card-price-alt">≈ $155</span></span>
-        </div>
-      </div>
-    </article>
 </div>
 </section>
 
@@ -179,18 +160,6 @@
 
   <div class="products-grid" id="grid-goblets">
   <!-- Static EN product cards for SEO -->
-    <article class="product-card">
-      <div class="product-card-img-wrap">
-        <img src="https://res.cloudinary.com/doesupaf9/image/upload/w_600,c_fit,q_auto,f_auto/horn-jerusalem_k5fryr.jpg" alt="Jerusalem Wine Horn - kudu horn wine goblet covered in silver with Jerusalem motifs" loading="lazy" />
-      </div>
-      <div class="product-card-body">
-        <h3 class="product-card-name">Jerusalem Wine Horn</h3>
-        <p class="product-card-desc">A wine goblet crafted from kudu horn, covered in silver and adorned with symbols of Jerusalem. Coated with FDA-approved crystal epoxy.</p>
-        <div class="product-card-meta">
-          <span class="product-card-price">&#8362;850 <span class="product-card-price-alt">≈ $278</span></span>
-        </div>
-      </div>
-    </article>
     <article class="product-card">
       <div class="product-card-img-wrap">
         <img src="https://res.cloudinary.com/doesupaf9/image/upload/w_600,c_fit,q_auto,f_auto/goblet-lion_dcyxhp.jpg" alt="Lion of Judah Goblet - rams horn wine goblet with silver-plated lion emblem" loading="lazy" />
@@ -233,7 +202,7 @@
     <button class="modal-close" onclick="closeModal()" aria-label="Close">×</button>
     <div class="modal-gallery">
       <div class="modal-main-wrap">
-        <img id="modalMainImg" class="modal-main-img" src="" alt="" />
+        <img id="modalMainImg" class="modal-main-img" src="data:," alt="" />
         <button id="modalPrev" class="modal-nav prev" onclick="prevModalPhoto()" aria-label="Previous photo">◀</button>
         <button id="modalNext" class="modal-nav next" onclick="nextModalPhoto()" aria-label="Next photo">▶</button>
       </div>
