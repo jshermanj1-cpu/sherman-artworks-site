@@ -36,7 +36,7 @@ Sherman Art Works is a family-run handmade glass & Judaica business in Israel. T
 - **Hosting**: GitHub Pages from `main` branch. Push to `main` = live in ~1 min. `gh-pages` branch deleted June 2026.
 - **Fonts**: **Varela Round for ALL text, EN + HE** (switched Sprint 16; tokens `--ff-body/--ff-disp/--ff-ital/--ff-body-he/--ff-disp-he` all point to it). ⚠️ WS8 in FIX_PLAN: owner never picked between Varela Round / Fraunces+Inter / hybrid — comparison screenshots still owed.
 - **i18n**: Runtime EN/HE switching via `data-t` attributes + a `T = { en: {...}, he: {...} }` object in each page's inline `<script>`. RTL via `html[dir="rtl"]`. `setLang('he')` swaps all text and flips layout.
-- **Currency**: Live ILS↔USD conversion via `open.er-api.com/v6/latest/USD` (GET-only, no user data sent). Fallback rate 3.75 ILS/USD with disclaimer. Conversion: `ils / usdRate`.
+- **Currency**: Live ILS↔USD conversion via `open.er-api.com/v6/latest/USD` (GET-only, no user data sent). Fallback rate 3.05 ILS/USD with disclaimer (set 2026-07-08 from live ~3.04; re-check quarterly). Conversion: `ils / usdRate`.
 - **Contact/Orders**: WhatsApp-first (no backend). `wa.me/972523482278` — ✅ official business number.
 - **Images**: Cloudinary CDN, cloud name `doesupaf9`. URL pattern: `https://res.cloudinary.com/doesupaf9/image/upload/{transformations}/{public_id}.jpg` — **folder names are NOT in URLs**, only the bare public_id.
 

@@ -758,3 +758,46 @@ button.modal-thumb:focus-visible { outline: 3px solid var(--gold-text); outline-
 .corporate-tag, .gen-tag { color: var(--gold) !important; }
 .btn-link:hover { color: var(--gold-text) !important; }
 .other-cat-link:hover { color: var(--gold-text) !important; }
+
+/* ── Trust strip (LAUNCH_PLAN 2.2 / TASK_LIST 18.3) ─────────────
+   Row of 4 reassurance badges shown above the footer on
+   conversion pages (home, categories, custom orders, checkout). */
+.trust-strip {
+  background: #fff;
+  border-top: 1px solid var(--border);
+  padding: 1.15rem 1.5rem;
+}
+.trust-strip-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.75rem 2.5rem;
+}
+.trust-item {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  color: var(--brown);
+  font-size: var(--fs-sm);
+  white-space: nowrap;
+}
+.trust-item svg {
+  width: 20px;
+  height: 20px;
+  color: var(--gold-text);
+  flex-shrink: 0;
+}
+@media (max-width: 640px) {
+  .trust-strip-inner {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, auto));
+    gap: 0.8rem 1.6rem;
+    justify-content: center;
+    justify-items: start;
+  }
+  /* Let labels wrap on narrow phones so the strip can never
+     force horizontal page scroll */
+  .trust-item { white-space: normal; }
+}

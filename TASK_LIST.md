@@ -270,7 +270,7 @@ All category cards show real product photos. "From ₪X / $X" prices shown on al
 |---|---|---|---|
 | 18.1 | Privacy policy page (`privacy.html`) | 🔴 Required for GA4 + future payments | ✅ Live; static EN baked into HTML for SEO (Sprint 19) |
 | 18.2 | Testimonials section on homepage | 🟡 | 🔜 Blocked: owner collects quotes |
-| 18.3 | Trust badges: secure checkout, handcrafted, shipped from Israel | 🟡 | 🔜 Next sprint |
+| 18.3 | Trust badges: secure checkout, handcrafted, shipped from Israel | 🟡 | ✅ 2026-07-20 (Sprint 24) — `.trust-strip` on 10 conversion pages, EN+HE, 4 badges + SVG icons; uncommitted pending owner approval |
 | 18.4 | Instagram feed embed or gallery strip | 🟢 | ⏸ Deferred — owner declined June 2026 |
 | 18.5 | TikTok footer link (M0-11) | 🟢 | 🔜 Blocked: owner sends handle |
 | 18.6 | Cookie consent banner gating GA4 — gtag.js loads only after Accept; `sa_consent` in localStorage; Decline = zero analytics | 🔴 EU-traffic prerequisite (FIX_PLAN 5.2) | ✅ Sprint 19 — `js/site.js` + `css/site.css`, applies to all 13 pages; hardcoded GA4 snippet removed from every `<head>` |
@@ -438,7 +438,8 @@ Products can't be linked/ranked individually (cards + modal only). Cheap first s
 | Sprint 20 | M10 / M14 | Owner feedback round: Hebrew copy + product accuracy pass (`2aa6f7c`) + gift-wrap/4-day removal (`0823fbc`) | ✅ |
 | Sprint 21 | M20 | SEO hardening: JSON-LD resync, shofars head rename, alt texts, FAQPage + Organization schema | ✅ Dev done — awaiting owner approval |
 | **→ Sprint 22** | **M21** | **Owner feedback round 2: category split (Horn Goblets / Shofars), inscription hint, mobile modal scroll fix, FDA epoxy note, per-product anchors (W14-B)** | 🔜 Planned 2026-07-08 |
-| Sprint 23 | M18 rest + M11.2 | Trust badges, testimonials, newsletter — per FIX_PLAN "Depth & launch" | 🔜 |
+| Sprint 23 | M18 rest + M11.2 | Trust badges, testimonials, newsletter — per FIX_PLAN "Depth & launch" | ⚠️ Trust badges done in Sprint 24; testimonials/newsletter still blocked on owner |
+| **Sprint 24** | M18.3 / M20 / launch prep | **2026-07-20 dev-side launch batch: trust strip (10 pages); products.json + llms.txt resynced (3 candlesticks were missing: white, clear-round, clear-rectangular); Google Merchant feed `merchant-feed.xml` (27 products) + `_merchant_feed.py` generator; sitemap lastmod bump ×9; WA quick replies drafted (`WHATSAPP_QUICK_REPLIES.md`); order tracker built (`Documents\Sherman_Art_Works_Order_Tracker.xlsx`). Browser QA: strip EN/HE/RTL/mobile, cart→checkout flow, zero console errors. UNCOMMITTED — awaiting owner approval** | ✅ dev done |
 | — | M9 | Full product catalogue | 🔜 Blocked: owner photos for kiddush cups, business gifts |
 | — | M11 Tier 2 | Newsletter, Pinterest, TikTok | 🔜 |
 | — | M10 | Hebrew quality pass | 🔜 Blocked: native speaker |

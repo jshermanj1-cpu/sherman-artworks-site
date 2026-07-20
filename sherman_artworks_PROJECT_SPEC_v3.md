@@ -86,7 +86,7 @@ Each product card must display:
 | **Secondary currency** | US Dollar ($ USD) |
 | **Conversion rate source** | Live — `https://open.er-api.com/v6/latest/USD` |
 | **Markup** | +2% applied on top of live rate |
-| **Fallback rate** | 3.75 ILS/USD (if API blocked) |
+| **Fallback rate** | 3.05 ILS/USD (if API blocked; set 2026-07-08, re-check quarterly) |
 | **Rate display** | "Rate live · +2% margin" shown in top bar |
 | **Default on load** | USD (primary market is international) |
 

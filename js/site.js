@@ -55,6 +55,11 @@ const T_SITE = {
     cart_total:          'Total',
     cart_checkout:       'Order on WhatsApp',
     cart_review:         'Review order →',
+
+    trust_handcrafted:   'Handcrafted in Israel',
+    trust_generations:   'Three generations of artisans',
+    trust_shipping:      'Ships worldwide',
+    trust_secure:        'Secure ordering',
   },
   he: {
     nav_shop:            'חנות',
@@ -102,6 +107,11 @@ const T_SITE = {
     cart_total:          'סה"כ',
     cart_checkout:       'הזמינו ב-WhatsApp',
     cart_review:         'לסיכום הזמנה ←',
+
+    trust_handcrafted:   'עבודת יד מישראל',
+    trust_generations:   'שלושה דורות של אומנים',
+    trust_shipping:      'משלוחים לכל העולם',
+    trust_secure:        'הזמנה מאובטחת',
   }
 };
 
@@ -130,7 +140,10 @@ async function loadUsdRate() {
     const rn = document.getElementById('rateNote');
     if (rn) rn.textContent = 'Rate live · +2%';
   } catch (e) {
-    usdRate = 3.75 / 0.98;
+    // Fallback base rate 3.05 ILS/USD (live rate ~3.04 as of 2026-07-08).
+    // Re-check quarterly against open.er-api.com — a stale base skews all USD prices.
+    // /0.98 keeps the same +2% markup applied to the live rate above.
+    usdRate = 3.05 / 0.98;
     const rn = document.getElementById('rateNote');
     if (rn) rn.textContent = 'Est. rate';
   }

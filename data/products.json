@@ -206,6 +206,56 @@
     "personalisable": false
   },
   {
+    "id": "white-glass-candlesticks",
+    "category": "candlesticks",
+    "pages": ["candlesticks.html"],
+    "name_en": "White Glass Candlesticks",
+    "name_he": "פמוטי זכוכית לבנה",
+    "description_en": "Handmade white glass candlesticks - traditional family method candle holders.",
+    "description_he": "פמוטי זכוכית לבנה בעבודת יד - בשיטה המסורתית המשפחתית.",
+    "measurements": "",
+    "price_ils": 775,
+    "photos": [
+      "White_Pamotim_white_background_1_chox7b",
+      "White_Pamotim_white_background_2_cmnps6",
+      "White_Pamotim_window_background_wvrmlh"
+    ],
+    "personalisable": false
+  },
+  {
+    "id": "clear-round-glass-candlesticks",
+    "category": "candlesticks",
+    "pages": ["candlesticks.html"],
+    "name_en": "Clear Round Glass Candlesticks",
+    "name_he": "פמוטי זכוכית שקופים עגולים",
+    "description_en": "Handmade clear round glass candlesticks - traditional family method candle holders.",
+    "description_he": "פמוטי זכוכית שקופים עגולים בעבודת יד - בשיטה המסורתית המשפחתית.",
+    "measurements": "",
+    "price_ils": 775,
+    "photos": [
+      "Clear_round_Pamotim_white_background_fkjocs",
+      "Pamotim_round_clear_tree_background_dxzzec"
+    ],
+    "personalisable": false
+  },
+  {
+    "id": "clear-rectangular-glass-candlesticks",
+    "category": "candlesticks",
+    "pages": ["candlesticks.html"],
+    "name_en": "Clear Rectangular Glass Candlesticks",
+    "name_he": "פמוטי זכוכית שקופים מלבניים",
+    "description_en": "Handmade clear rectangular glass candlesticks - traditional family method candle holders.",
+    "description_he": "פמוטי זכוכית שקופים מלבניים בעבודת יד - בשיטה המסורתית המשפחתית.",
+    "measurements": "",
+    "price_ils": 775,
+    "photos": [
+      "Clear_glass_rectangle_Pamotim_white_backround_d1j8ys",
+      "Clear_glass_rectangle_Pamotim_table_background_2_coat4j",
+      "Clear_glass_rectangle_Pamotim_table_background_1_gyh61x"
+    ],
+    "personalisable": false
+  },
+  {
     "id": "ram-mezuzah",
     "category": "mezuzahs",
     "pages": ["mezuzahs.html"],

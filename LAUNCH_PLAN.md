@@ -38,7 +38,7 @@ These directly move conversion. A visitor deciding whether to send ₪770 to a s
 | # | Task | Who | Effort |
 |---|------|-----|--------|
 | 2.1 | **Testimonials** — collect 3–5 quotes from past customers (first name + city + product). Add a homepage strip + quotes on relevant category pages | Owner collects → Dev builds | M |
-| 2.2 | **Trust badges row** — "Handcrafted in Israel · Three generations · Ships worldwide · Secure ordering" near cart/checkout CTAs | Dev | S |
+| 2.2 | **Trust badges row** — "Handcrafted in Israel · Three generations · Ships worldwide · Secure ordering" near cart/checkout CTAs | Dev | S — ✅ 2026-07-20 built (trust strip on 10 pages, EN+HE, uncommitted pending approval) |
 | 2.3 | **Native Hebrew copy review** — all pages. HE copy is dev-translated; a native pass before marketing spend is essential | Owner arranges | 👤 |
 | 2.4 | **Process/story photos** — workshop, hands shaping glass, packing. Humanizes the About page and feeds social content. Even phone photos work | Owner | 👤 |
 | 2.5 | **Business Gifts page content** — decide the offer (branded sets? volume pricing? lead form?) and fill the page, or hide the category until ready. A "Coming Soon" at launch looks unfinished | Owner decides → Dev | M |
@@ -53,7 +53,7 @@ Search Console + sitemap + JSON-LD are done. What's left, in impact order:
 | # | Task | Who | Effort |
 |---|------|-----|--------|
 | 3.1 | **Google Business Profile** (business.google.com) — free, high-intent local + brand searches, shows reviews. Biggest single free win | Owner (15 min) | 👤 |
-| 3.2 | **Google Merchant Center free listings** — product feed generated from `data/products.json`; products appear in Google Shopping tab for free | Dev generates feed, Owner opens account | M |
+| 3.2 | **Google Merchant Center free listings** — product feed generated from `data/products.json`; products appear in Google Shopping tab for free | Dev generates feed, Owner opens account | M — ✅ dev half 2026-07-20: `merchant-feed.xml` (27 products, regenerate via `_merchant_feed.py`); owner opens Merchant Center account + points it at https://shermanartworks.com/merchant-feed.xml |
 | 3.3 | **Hebrew SEO** — HE currently exists only as a JS toggle on the same URLs, invisible to Google. Build `/he/` static pages + `hreflang` tags. Large effort but unlocks the entire Hebrew-speaking market on search | Dev | L |
 | 3.4 | **Content pages** targeting buyer-intent queries: "What is a Kiddush cup?", "Jewish wedding gift ideas", "Shofar buying guide", "Bar Mitzvah gifts from Israel". 1 page every 1–2 weeks; each links to products | Dev drafts → Owner reviews | M each |
 | 3.5 | **Backlinks / directories** — Judaica directories, Israeli artisan directories, Jewish community sites, synagogue gift-shop outreach. 5–10 quality listings | Owner + Dev list-building | M |
@@ -99,8 +99,8 @@ The site is WhatsApp-first — orders arrive as chats. Without a system, orders 
 
 | # | Task | Who | Effort |
 |---|------|-----|--------|
-| 6.1 | **Order tracking sheet** — Google Sheet (or Notion): date, customer, product, price, status (quoted → paid → crafting → shipped → delivered), tracking #, source. Dev builds the template with status dropdowns | Dev builds → Owner uses | S |
-| 6.2 | **WhatsApp quick replies** — templates for: price quote, payment instructions, "your order shipped" + tracking, review request. Consistent, fast, professional | Dev drafts EN+HE → Owner installs | S |
+| 6.1 | **Order tracking sheet** — Google Sheet (or Notion): date, customer, product, price, status (quoted → paid → crafting → shipped → delivered), tracking #, source. Dev builds the template with status dropdowns | Dev builds → Owner uses | S — ✅ 2026-07-20: `Documents\Sherman_Art_Works_Order_Tracker.xlsx` (status/paid/source dropdowns, colour-coded statuses, auto Summary tab; kept OUT of the repo so customer data never deploys). Import to Google Sheets if preferred |
+| 6.2 | **WhatsApp quick replies** — templates for: price quote, payment instructions, "your order shipped" + tracking, review request. Consistent, fast, professional | Dev drafts EN+HE → Owner installs | S — ✅ 2026-07-20 drafted: `WHATSAPP_QUICK_REPLIES.md` (9 templates EN+HE; /pay placeholder until M0-3; HE needs M10 native pass) |
 | 6.3 | **Post-sale flow** — day after delivery: "how does it look?" message → ask for photo + review → feeds testimonials (2.1) and social (4.7). This loop is the growth engine | Owner (ongoing) | 👤 |
 | 6.4 | **Analytics review ritual** — monthly 30-min look at GA4 (which products get views/add-to-carts, where visitors come from, where they drop) + Search Console (which queries impress). Dev prepares a simple dashboard/report format | Dev sets up → both review | S |
 | 6.5 | **Conversion experiments** — after ~1 month of data: test hero photo, category order, price display (₪ vs $ first for foreign traffic), CTA wording. One change at a time, measured via GA4 | Dev | ongoing |
