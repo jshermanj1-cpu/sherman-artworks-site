@@ -19,6 +19,11 @@
     <g:brand>Sherman Art Works</g:brand>
     <g:identifier_exists>no</g:identifier_exists>
     <g:product_type>Candlesticks</g:product_type>
+    <g:google_product_category>2784</g:google_product_category>
+    <g:shipping>
+      <g:country>IL</g:country>
+      <g:price>30.00 ILS</g:price>
+    </g:shipping>
   </item>
   <item>
     <g:id>gold-colorful-glass-candlesticks</g:id>
@@ -34,6 +39,11 @@
     <g:brand>Sherman Art Works</g:brand>
     <g:identifier_exists>no</g:identifier_exists>
     <g:product_type>Candlesticks</g:product_type>
+    <g:google_product_category>2784</g:google_product_category>
+    <g:shipping>
+      <g:country>IL</g:country>
+      <g:price>30.00 ILS</g:price>
+    </g:shipping>
   </item>
   <item>
     <g:id>burgundy-glass-candlesticks</g:id>
@@ -49,6 +59,11 @@
     <g:brand>Sherman Art Works</g:brand>
     <g:identifier_exists>no</g:identifier_exists>
     <g:product_type>Candlesticks</g:product_type>
+    <g:google_product_category>2784</g:google_product_category>
+    <g:shipping>
+      <g:country>IL</g:country>
+      <g:price>30.00 ILS</g:price>
+    </g:shipping>
   </item>
   <item>
     <g:id>jerusalem-wine-horn</g:id>
@@ -66,6 +81,11 @@
     <g:brand>Sherman Art Works</g:brand>
     <g:identifier_exists>no</g:identifier_exists>
     <g:product_type>Horn Goblets</g:product_type>
+    <g:google_product_category>97</g:google_product_category>
+    <g:shipping>
+      <g:country>IL</g:country>
+      <g:price>30.00 ILS</g:price>
+    </g:shipping>
   </item>
   <item>
     <g:id>lion-of-judah-goblet</g:id>
@@ -82,6 +102,11 @@
     <g:brand>Sherman Art Works</g:brand>
     <g:identifier_exists>no</g:identifier_exists>
     <g:product_type>Horn Goblets</g:product_type>
+    <g:google_product_category>97</g:google_product_category>
+    <g:shipping>
+      <g:country>IL</g:country>
+      <g:price>30.00 ILS</g:price>
+    </g:shipping>
   </item>
   <item>
     <g:id>menorah-goblet</g:id>
@@ -97,6 +122,11 @@
     <g:brand>Sherman Art Works</g:brand>
     <g:identifier_exists>no</g:identifier_exists>
     <g:product_type>Horn Goblets</g:product_type>
+    <g:google_product_category>97</g:google_product_category>
+    <g:shipping>
+      <g:country>IL</g:country>
+      <g:price>30.00 ILS</g:price>
+    </g:shipping>
   </item>
   <item>
     <g:id>glass-decorative-bowl</g:id>
@@ -113,6 +143,11 @@
     <g:brand>Sherman Art Works</g:brand>
     <g:identifier_exists>no</g:identifier_exists>
     <g:product_type>Trays &amp; Bowls</g:product_type>
+    <g:google_product_category>6457</g:google_product_category>
+    <g:shipping>
+      <g:country>IL</g:country>
+      <g:price>30.00 ILS</g:price>
+    </g:shipping>
   </item>
   <item>
     <g:id>oryx-mezuzah</g:id>
@@ -129,6 +164,11 @@
     <g:brand>Sherman Art Works</g:brand>
     <g:identifier_exists>no</g:identifier_exists>
     <g:product_type>Mezuzahs</g:product_type>
+    <g:google_product_category>97</g:google_product_category>
+    <g:shipping>
+      <g:country>IL</g:country>
+      <g:price>30.00 ILS</g:price>
+    </g:shipping>
   </item>
   <item>
     <g:id>black-white-stripes-candlesticks</g:id>
@@ -143,6 +183,11 @@
     <g:brand>Sherman Art Works</g:brand>
     <g:identifier_exists>no</g:identifier_exists>
     <g:product_type>Candlesticks</g:product_type>
+    <g:google_product_category>2784</g:google_product_category>
+    <g:shipping>
+      <g:country>IL</g:country>
+      <g:price>30.00 ILS</g:price>
+    </g:shipping>
   </item>
   <item>
     <g:id>gold-red-stripes-candlesticks</g:id>
@@ -157,6 +202,11 @@
     <g:brand>Sherman Art Works</g:brand>
     <g:identifier_exists>no</g:identifier_exists>
     <g:product_type>Candlesticks</g:product_type>
+    <g:google_product_category>2784</g:google_product_category>
+    <g:shipping>
+      <g:country>IL</g:country>
+      <g:price>30.00 ILS</g:price>
+    </g:shipping>
   </item>
   <item>
     <g:id>green-dots-candlesticks</g:id>
@@ -171,6 +221,11 @@
     <g:brand>Sherman Art Works</g:brand>
     <g:identifier_exists>no</g:identifier_exists>
     <g:product_type>Candlesticks</g:product_type>
+    <g:google_product_category>2784</g:google_product_category>
+    <g:shipping>
+      <g:country>IL</g:country>
+      <g:price>30.00 ILS</g:price>
+    </g:shipping>
   </item>
   <item>
     <g:id>black-white-dots-candlesticks</g:id>
@@ -185,6 +240,11 @@
     <g:brand>Sherman Art Works</g:brand>
     <g:identifier_exists>no</g:identifier_exists>
     <g:product_type>Candlesticks</g:product_type>
+    <g:google_product_category>2784</g:google_product_category>
+    <g:shipping>
+      <g:country>IL</g:country>
+      <g:price>30.00 ILS</g:price>
+    </g:shipping>
   </item>
   <item>
     <g:id>white-glass-candlesticks</g:id>
@@ -200,6 +260,11 @@
     <g:brand>Sherman Art Works</g:brand>
     <g:identifier_exists>no</g:identifier_exists>
     <g:product_type>Candlesticks</g:product_type>
+    <g:google_product_category>2784</g:google_product_category>
+    <g:shipping>
+      <g:country>IL</g:country>
+      <g:price>30.00 ILS</g:price>
+    </g:shipping>
   </item>
   <item>
     <g:id>clear-round-glass-candlesticks</g:id>
@@ -214,6 +279,11 @@
     <g:brand>Sherman Art Works</g:brand>
     <g:identifier_exists>no</g:identifier_exists>
     <g:product_type>Candlesticks</g:product_type>
+    <g:google_product_category>2784</g:google_product_category>
+    <g:shipping>
+      <g:country>IL</g:country>
+      <g:price>30.00 ILS</g:price>
+    </g:shipping>
   </item>
   <item>
     <g:id>clear-rectangular-glass-candlesticks</g:id>
@@ -229,6 +299,11 @@
     <g:brand>Sherman Art Works</g:brand>
     <g:identifier_exists>no</g:identifier_exists>
     <g:product_type>Candlesticks</g:product_type>
+    <g:google_product_category>2784</g:google_product_category>
+    <g:shipping>
+      <g:country>IL</g:country>
+      <g:price>30.00 ILS</g:price>
+    </g:shipping>
   </item>
   <item>
     <g:id>ram-mezuzah</g:id>
@@ -244,6 +319,11 @@
     <g:brand>Sherman Art Works</g:brand>
     <g:identifier_exists>no</g:identifier_exists>
     <g:product_type>Mezuzahs</g:product_type>
+    <g:google_product_category>97</g:google_product_category>
+    <g:shipping>
+      <g:country>IL</g:country>
+      <g:price>30.00 ILS</g:price>
+    </g:shipping>
   </item>
   <item>
     <g:id>kudu-mezuzah</g:id>
@@ -259,6 +339,11 @@
     <g:brand>Sherman Art Works</g:brand>
     <g:identifier_exists>no</g:identifier_exists>
     <g:product_type>Mezuzahs</g:product_type>
+    <g:google_product_category>97</g:google_product_category>
+    <g:shipping>
+      <g:country>IL</g:country>
+      <g:price>30.00 ILS</g:price>
+    </g:shipping>
   </item>
   <item>
     <g:id>clear-glass-mezuzah</g:id>
@@ -274,6 +359,11 @@
     <g:brand>Sherman Art Works</g:brand>
     <g:identifier_exists>no</g:identifier_exists>
     <g:product_type>Mezuzahs</g:product_type>
+    <g:google_product_category>97</g:google_product_category>
+    <g:shipping>
+      <g:country>IL</g:country>
+      <g:price>30.00 ILS</g:price>
+    </g:shipping>
   </item>
   <item>
     <g:id>tall-blue-glass-cup</g:id>
@@ -288,6 +378,11 @@
     <g:brand>Sherman Art Works</g:brand>
     <g:identifier_exists>no</g:identifier_exists>
     <g:product_type>Kiddush Cups</g:product_type>
+    <g:google_product_category>97</g:google_product_category>
+    <g:shipping>
+      <g:country>IL</g:country>
+      <g:price>30.00 ILS</g:price>
+    </g:shipping>
   </item>
   <item>
     <g:id>tall-colorful-glass-cup</g:id>
@@ -302,6 +397,11 @@
     <g:brand>Sherman Art Works</g:brand>
     <g:identifier_exists>no</g:identifier_exists>
     <g:product_type>Kiddush Cups</g:product_type>
+    <g:google_product_category>97</g:google_product_category>
+    <g:shipping>
+      <g:country>IL</g:country>
+      <g:price>30.00 ILS</g:price>
+    </g:shipping>
   </item>
   <item>
     <g:id>tall-red-glass-cup</g:id>
@@ -316,6 +416,11 @@
     <g:brand>Sherman Art Works</g:brand>
     <g:identifier_exists>no</g:identifier_exists>
     <g:product_type>Kiddush Cups</g:product_type>
+    <g:google_product_category>97</g:google_product_category>
+    <g:shipping>
+      <g:country>IL</g:country>
+      <g:price>30.00 ILS</g:price>
+    </g:shipping>
   </item>
   <item>
     <g:id>low-white-glass-cup</g:id>
@@ -330,6 +435,11 @@
     <g:brand>Sherman Art Works</g:brand>
     <g:identifier_exists>no</g:identifier_exists>
     <g:product_type>Kiddush Cups</g:product_type>
+    <g:google_product_category>97</g:google_product_category>
+    <g:shipping>
+      <g:country>IL</g:country>
+      <g:price>30.00 ILS</g:price>
+    </g:shipping>
   </item>
   <item>
     <g:id>low-colorful-glass-cup</g:id>
@@ -344,6 +454,11 @@
     <g:brand>Sherman Art Works</g:brand>
     <g:identifier_exists>no</g:identifier_exists>
     <g:product_type>Kiddush Cups</g:product_type>
+    <g:google_product_category>97</g:google_product_category>
+    <g:shipping>
+      <g:country>IL</g:country>
+      <g:price>30.00 ILS</g:price>
+    </g:shipping>
   </item>
   <item>
     <g:id>ceramic-kiddush-cup</g:id>
@@ -360,6 +475,11 @@
     <g:brand>Sherman Art Works</g:brand>
     <g:identifier_exists>no</g:identifier_exists>
     <g:product_type>Kiddush Cups</g:product_type>
+    <g:google_product_category>97</g:google_product_category>
+    <g:shipping>
+      <g:country>IL</g:country>
+      <g:price>30.00 ILS</g:price>
+    </g:shipping>
   </item>
   <item>
     <g:id>colorful-glass-cup-and-plate</g:id>
@@ -374,6 +494,11 @@
     <g:brand>Sherman Art Works</g:brand>
     <g:identifier_exists>no</g:identifier_exists>
     <g:product_type>Kiddush Cups</g:product_type>
+    <g:google_product_category>97</g:google_product_category>
+    <g:shipping>
+      <g:country>IL</g:country>
+      <g:price>30.00 ILS</g:price>
+    </g:shipping>
   </item>
   <item>
     <g:id>kiddush-cup-plate</g:id>
@@ -388,6 +513,11 @@
     <g:brand>Sherman Art Works</g:brand>
     <g:identifier_exists>no</g:identifier_exists>
     <g:product_type>Kiddush Cups</g:product_type>
+    <g:google_product_category>97</g:google_product_category>
+    <g:shipping>
+      <g:country>IL</g:country>
+      <g:price>30.00 ILS</g:price>
+    </g:shipping>
   </item>
   <item>
     <g:id>custom-shofar</g:id>
@@ -401,6 +531,11 @@
     <g:brand>Sherman Art Works</g:brand>
     <g:identifier_exists>no</g:identifier_exists>
     <g:product_type>Shofars</g:product_type>
+    <g:google_product_category>97</g:google_product_category>
+    <g:shipping>
+      <g:country>IL</g:country>
+      <g:price>30.00 ILS</g:price>
+    </g:shipping>
   </item>
 </channel>
 </rss>

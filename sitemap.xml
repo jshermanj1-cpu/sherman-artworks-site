@@ -56,7 +56,7 @@
   <!-- Studio pages -->
   <url>
     <loc>https://shermanartworks.com/about.html</loc>
-    <lastmod>2026-07-06</lastmod>
+    <lastmod>2026-07-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -68,7 +68,7 @@
   </url>
   <url>
     <loc>https://shermanartworks.com/contact.html</loc>
-    <lastmod>2026-07-08</lastmod>
+    <lastmod>2026-07-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -76,19 +76,19 @@
   <!-- Policy pages -->
   <url>
     <loc>https://shermanartworks.com/privacy.html</loc>
-    <lastmod>2026-07-08</lastmod>
+    <lastmod>2026-07-20</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
     <loc>https://shermanartworks.com/terms.html</loc>
-    <lastmod>2026-07-08</lastmod>
+    <lastmod>2026-07-20</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
     <loc>https://shermanartworks.com/accessibility.html</loc>
-    <lastmod>2026-07-08</lastmod>
+    <lastmod>2026-07-20</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
