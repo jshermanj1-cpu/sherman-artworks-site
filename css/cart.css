@@ -168,6 +168,34 @@ html[dir="rtl"] .cart-drawer.open { transform: translateX(0); }
   font-weight: 700;
 }
 
+.cart-item-link {
+  color: inherit;
+  text-decoration: none;
+}
+.cart-item-link:hover,
+.checkout-item-link:hover {
+  color: var(--gold);
+  text-decoration: underline;
+}
+
+.cart-item-meta {
+  font-size: 0.72rem;
+  color: var(--brown);
+  line-height: 1.5;
+}
+
+.checkout-item-link {
+  color: inherit;
+  text-decoration: none;
+}
+
+.checkout-item-meta {
+  font-size: 0.76rem;
+  color: var(--brown);
+  line-height: 1.5;
+  margin-top: 0.25rem;
+}
+
 .cart-price-alt {
   font-weight: 400;
   font-size: 0.78em;

@@ -6,6 +6,52 @@
 // ── CART STORE ─────────────────────────────────────────────────
 const CART_KEY = 'sa_cart';
 
+// Product page per slug - lets cart items link back to their product page
+// even for items added before the `page` field existed.
+var _PAGE_BY_SLUG = {
+  'glass-circle-candlesticks': 'candlesticks.html',
+  'gold-colorful-glass-candlesticks': 'candlesticks.html',
+  'burgundy-glass-candlesticks': 'candlesticks.html',
+  'jerusalem-wine-horn': 'shofars-goblets.html',
+  'lion-of-judah-goblet': 'shofars-goblets.html',
+  'menorah-goblet': 'shofars-goblets.html',
+  'glass-decorative-bowl': 'trays-bowls.html',
+  'oryx-mezuzah': 'mezuzahs.html',
+  'black-white-stripes-candlesticks': 'candlesticks.html',
+  'gold-red-stripes-candlesticks': 'candlesticks.html',
+  'green-dots-candlesticks': 'candlesticks.html',
+  'black-white-dots-candlesticks': 'candlesticks.html',
+  'white-glass-candlesticks': 'candlesticks.html',
+  'clear-round-glass-candlesticks': 'candlesticks.html',
+  'clear-rectangular-glass-candlesticks': 'candlesticks.html',
+  'ram-mezuzah': 'mezuzahs.html',
+  'kudu-mezuzah': 'mezuzahs.html',
+  'clear-glass-mezuzah': 'mezuzahs.html',
+  'tall-blue-glass-cup': 'kiddush-cups.html',
+  'tall-colorful-glass-cup': 'kiddush-cups.html',
+  'tall-red-glass-cup': 'kiddush-cups.html',
+  'low-white-glass-cup': 'kiddush-cups.html',
+  'low-colorful-glass-cup': 'kiddush-cups.html',
+  'ceramic-kiddush-cup': 'kiddush-cups.html',
+  'colorful-glass-cup-and-plate': 'kiddush-cups.html',
+  'kiddush-cup-plate': 'kiddush-cups.html',
+  'custom-shofar': 'custom-shofars.html'
+};
+
+// Hebrew symbol names for personalised items (page SYMBOL_HE maps are function-scoped).
+var _SYMBOL_HE = { 'Menorah': 'מנורה', 'Jerusalem': 'ירושלים', 'Star of David': 'מגן דוד', 'Lion of Judah': 'אריה יהודה', 'Other': 'אחר', 'No Symbol': 'ללא סמל' };
+
+function _cartItemUrl(item) {
+  var page = item.page || _PAGE_BY_SLUG[item.slug];
+  return page ? page + '#' + item.slug : null;
+}
+
+// Line-item identity: personalised items carry their meta in the key so two
+// shofars with different inscriptions stay separate lines.
+function _cartKey(item) {
+  return item.key || item.slug;
+}
+
 function getCart() {
   try { return JSON.parse(localStorage.getItem(CART_KEY)) || []; }
   catch (e) { return []; }
@@ -16,13 +62,17 @@ function _saveCart(items) {
   document.dispatchEvent(new CustomEvent('sa:cart-change', { detail: { cart: items } }));
 }
 
-function addToCart(slug, name_en, name_he, price_ils, photo) {
+function addToCart(slug, name_en, name_he, price_ils, photo, meta) {
   var items = getCart();
-  var existing = items.find(function (i) { return i.slug === slug; });
+  var key = meta ? slug + '::' + [meta.symbol || '', meta.text || '', meta.comment || ''].join('|') : slug;
+  var page = (location.pathname.split('/').pop() || 'index.html');
+  var existing = items.find(function (i) { return _cartKey(i) === key; });
   if (existing) {
     existing.qty += 1;
   } else {
-    items.push({ slug: slug, name_en: name_en, name_he: name_he || '', price_ils: price_ils, photo: photo, qty: 1 });
+    var entry = { slug: slug, key: key, page: page, name_en: name_en, name_he: name_he || '', price_ils: price_ils, photo: photo, qty: 1 };
+    if (meta) entry.meta = meta;
+    items.push(entry);
   }
   _saveCart(items);
   if (typeof trackGA4 === 'function') {
@@ -39,19 +89,31 @@ function addToCart(slug, name_en, name_he, price_ils, photo) {
   openCartDrawer();
 }
 
-function removeFromCart(slug) {
+function removeFromCart(key) {
   if (typeof a11yAnnounce === 'function') {
     var removedMsg = (typeof T_SITE !== 'undefined' && T_SITE[currentLang] && T_SITE[currentLang].cart_item_removed) || 'Item removed from cart';
     a11yAnnounce(removedMsg);
   }
-  _saveCart(getCart().filter(function (i) { return i.slug !== slug; }));
+  _saveCart(getCart().filter(function (i) { return _cartKey(i) !== key; }));
 }
 
-function updateCartQty(slug, qty) {
-  if (qty < 1) { removeFromCart(slug); return; }
+function updateCartQty(key, qty) {
+  if (qty < 1) { removeFromCart(key); return; }
   var items = getCart();
-  var item = items.find(function (i) { return i.slug === slug; });
+  var item = items.find(function (i) { return _cartKey(i) === key; });
   if (item) { item.qty = qty; _saveCart(items); }
+}
+
+// Index-based wrappers for onclick handlers - avoids embedding user text
+// (personalisation keys) inside inline JS strings.
+function removeFromCartAt(idx) {
+  var item = getCart()[idx];
+  if (item) removeFromCart(_cartKey(item));
+}
+
+function updateCartQtyAt(idx, qty) {
+  var item = getCart()[idx];
+  if (item) updateCartQty(_cartKey(item), qty);
 }
 
 function clearCart() { _saveCart([]); }
@@ -69,6 +131,8 @@ function cartAddFromProduct(idx) {
   if (typeof PRODUCTS === 'undefined') return;
   var p = PRODUCTS[idx];
   if (!p) return;
+  // Personalised products need their options picked first - open the modal instead.
+  if (p.personalisable && typeof openModal === 'function') { openModal(idx); return; }
   addToCart(p.id, p.name_en, p.name_he || '', p.price_ils, p.photos[0]);
 }
 
@@ -76,7 +140,28 @@ function cartAddFromModal() {
   if (typeof PRODUCTS === 'undefined' || typeof currentModalIdx === 'undefined' || currentModalIdx == null) return;
   var p = PRODUCTS[currentModalIdx];
   if (!p) return;
-  addToCart(p.id, p.name_en, p.name_he || '', p.price_ils, p.photos[0]);
+  var meta = null;
+  if (p.personalisable) {
+    var symbolEl = document.getElementById('modalSymbol');
+    if (symbolEl) {
+      var symbol = symbolEl.value;
+      if (!symbol) {
+        var hint = document.getElementById('modalCustomHint');
+        if (hint) hint.style.display = 'block';
+        symbolEl.focus();
+        return;
+      }
+      var textEl = document.getElementById('modalText');
+      var commentEl = document.getElementById('modalComment');
+      meta = {
+        symbol: symbol,
+        symbol_he: _SYMBOL_HE[symbol] || symbol,
+        text: textEl ? textEl.value.trim() : '',
+        comment: commentEl ? commentEl.value.trim() : ''
+      };
+    }
+  }
+  addToCart(p.id, p.name_en, p.name_he || '', p.price_ils, p.photos[0], meta);
   if (typeof closeModal === 'function') closeModal();
 }
 
@@ -101,6 +186,11 @@ function buildCheckoutWaLink() {
     items.forEach(function (item) {
       var name = item.name_he || item.name_en;
       lines.push('• ' + name + ' × ' + item.qty + ' (₪' + (item.price_ils * item.qty).toLocaleString('en-IL') + ')');
+      if (item.meta) {
+        if (item.meta.symbol)  lines.push('   סמל: ' + (item.meta.symbol_he || item.meta.symbol));
+        if (item.meta.text)    lines.push('   כיתוב: ' + item.meta.text);
+        if (item.meta.comment) lines.push('   הערות: ' + item.meta.comment);
+      }
     });
     lines.push('');
     lines.push('סה"כ: ₪' + total.toLocaleString('en-IL'));
@@ -110,6 +200,11 @@ function buildCheckoutWaLink() {
     lines = ["Hi! I'd like to order:"];
     items.forEach(function (item) {
       lines.push('• ' + item.name_en + ' × ' + item.qty + ' (₪' + (item.price_ils * item.qty).toLocaleString('en-IL') + ')');
+      if (item.meta) {
+        if (item.meta.symbol)  lines.push('   Symbol: ' + item.meta.symbol);
+        if (item.meta.text)    lines.push('   Inscription: ' + item.meta.text);
+        if (item.meta.comment) lines.push('   Comment: ' + item.meta.comment);
+      }
     });
     lines.push('');
     lines.push('Total: ₪' + total.toLocaleString('en-IL'));
@@ -120,6 +215,18 @@ function buildCheckoutWaLink() {
 }
 
 // ── CART DRAWER RENDER ─────────────────────────────────────────
+// Personalisation lines (symbol / inscription / comment) shown under the item name.
+function _cartMetaHtml(item, isHe) {
+  if (!item.meta) return '';
+  var m = item.meta;
+  var rows = [];
+  if (m.symbol)  rows.push((isHe ? 'סמל: ' : 'Symbol: ') + escapeHtml(isHe ? (m.symbol_he || m.symbol) : m.symbol));
+  if (m.text)    rows.push((isHe ? 'כיתוב: ' : 'Inscription: ') + escapeHtml(m.text));
+  if (m.comment) rows.push((isHe ? 'הערות: ' : 'Comment: ') + escapeHtml(m.comment));
+  if (!rows.length) return '';
+  return '<div class="cart-item-meta">' + rows.join('<br>') + '</div>';
+}
+
 function renderCartDrawer() {
   var items = getCart();
   var l = (typeof currentLang !== 'undefined') ? currentLang : 'en';
@@ -142,23 +249,27 @@ function renderCartDrawer() {
   }
   if (footerEl) footerEl.style.display = '';
 
-  listEl.innerHTML = items.map(function (item) {
+  listEl.innerHTML = items.map(function (item, idx) {
     var name  = (isHe && item.name_he) ? item.name_he : item.name_en;
     var thumb = CDN + '/w_80,h_80,c_fill,g_auto,q_auto,f_auto/' + item.photo + '.jpg';
     var lineIls = item.price_ils * item.qty;
     var priceStr = '₪' + lineIls.toLocaleString('en-IL');
     if (showUsd) priceStr += ' <span class="cart-price-alt">≈ $' + Math.round(lineIls / rate) + '</span>';
     var slug = escapeAttr(item.slug);
+    var url = _cartItemUrl(item);
+    var thumbImg = `<img class="cart-item-thumb" src="${escapeAttr(thumb)}" alt="${escapeAttr(name)}" loading="lazy" />`;
+    var nameHtml = escapeHtml(name);
     return `<div class="cart-item" data-slug="${slug}">
-  <img class="cart-item-thumb" src="${escapeAttr(thumb)}" alt="${escapeAttr(name)}" loading="lazy" />
+  ${url ? `<a class="cart-item-link" href="${escapeAttr(url)}" aria-label="${escapeAttr(name)}">${thumbImg}</a>` : thumbImg}
   <div class="cart-item-info">
-    <div class="cart-item-name">${escapeHtml(name)}</div>
+    <div class="cart-item-name">${url ? `<a class="cart-item-link" href="${escapeAttr(url)}">${nameHtml}</a>` : nameHtml}</div>
+    ${_cartMetaHtml(item, isHe)}
     <div class="cart-item-price">${priceStr}</div>
     <div class="cart-item-controls">
-      <button class="cart-qty-btn" onclick="updateCartQty('${slug}',${item.qty - 1})" aria-label="Decrease">−</button>
+      <button class="cart-qty-btn" onclick="updateCartQtyAt(${idx},${item.qty - 1})" aria-label="Decrease">−</button>
       <span class="cart-qty-val">${item.qty}</span>
-      <button class="cart-qty-btn" onclick="updateCartQty('${slug}',${item.qty + 1})" aria-label="Increase">+</button>
-      <button class="cart-remove-btn" onclick="removeFromCart('${slug}')" aria-label="Remove">
+      <button class="cart-qty-btn" onclick="updateCartQtyAt(${idx},${item.qty + 1})" aria-label="Increase">+</button>
+      <button class="cart-remove-btn" onclick="removeFromCartAt(${idx})" aria-label="Remove">
         <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
       </button>
     </div>

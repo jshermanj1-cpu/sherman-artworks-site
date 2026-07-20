@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex, nofollow">
-<title>Pricing Calculator — Sherman Art Works (internal)</title>
+<title>Pricing Calculator - Sherman Art Works (internal)</title>
 <style>
   :root{
     --bg:#faf7f2; --dark:#202020; --gold:#d4b572; --brown:#6a5530;
@@ -68,7 +68,7 @@
 <body>
 <header>
   <h1>Pricing Calculator</h1>
-  <div class="sub">Internal tool — Sherman Art Works · not linked, not indexed · data stays in this browser (localStorage)</div>
+  <div class="sub">Internal tool - Sherman Art Works · not linked, not indexed · data stays in this browser (localStorage)</div>
 </header>
 
 <div class="wrap">
@@ -80,7 +80,7 @@
       <div><label>Hourly rate (₪/hr)</label><input type="number" id="rate" step="1"></div>
       <div><label>Monthly overhead (₪)</label><input type="number" id="overheadMonth" step="10"></div>
       <div><label>Pieces made / month</label><input type="number" id="piecesMonth" step="1"></div>
-      <div><label>Overhead / piece (₪) — auto</label><input type="number" id="overheadPiece" readonly></div>
+      <div><label>Overhead / piece (₪) - auto</label><input type="number" id="overheadPiece" readonly></div>
       <div><label>Target margin %</label><input type="number" id="margin" step="1"></div>
       <div><label>Channel fee %</label><input type="number" id="channel" step="0.5"></div>
       <div><label>Silver spot (₪/gram)</label><input type="number" id="silverSpot" step="0.5"></div>
@@ -90,14 +90,14 @@
 
   <div class="panel">
     <h2>2 · Category corridors (USD)</h2>
-    <div class="note">Seeded from the July 2026 benchmark sweep (<code>_pricing/benchmark-memo.md</code>). Editable — refine as more comps come in. "Anchor" = the currency each category's price should round cleanly in.</div>
+    <div class="note">Seeded from the July 2026 benchmark sweep (<code>_pricing/benchmark-memo.md</code>). Editable - refine as more comps come in. "Anchor" = the currency each category's price should round cleanly in.</div>
     <div class="grid corr-grid" id="corridors"></div>
-    <div class="legend">Notes: <b>candlesticks</b> corridor is US artisan ($72–130 core, $420 statement tier); the Israeli ₪ market runs far lower (₪145–299) — the anchor choice flips this category. <b>mezuzahs</b> corridor is the horn/artisan tier; the glass mezuzah belongs to a lower ~$60–120 band and will read "below". <b>horn-goblets</b> spans goblets (low end) and the decorated wine horn (mid).</div>
+    <div class="legend">Notes: <b>candlesticks</b> corridor is US artisan ($72-130 core, $420 statement tier); the Israeli ₪ market runs far lower (₪145-299) - the anchor choice flips this category. <b>mezuzahs</b> corridor is the horn/artisan tier; the glass mezuzah belongs to a lower ~$60-120 band and will read "below". <b>horn-goblets</b> spans goblets (low end) and the decorated wine horn (mid).</div>
   </div>
 
   <div class="panel">
     <h2>3 · Cost inputs &amp; audit</h2>
-    <div class="note">Fill the white cells per product (same fields as the workbook). Grey cells calculate live. Nothing here is uploaded — export a JSON to share.</div>
+    <div class="note">Fill the white cells per product (same fields as the workbook). Grey cells calculate live. Nothing here is uploaded - export a JSON to share.</div>
     <div class="summary" id="summary"></div>
     <div class="btnrow">
       <button onclick="exportCosts()">⬇ Export costs.json</button>
@@ -174,7 +174,7 @@ async function init(){
     products=await r.json();
   }catch(e){
     document.getElementById('rows').innerHTML=
-      '<tr><td colspan="20" class="name">Could not load data/products.json — serve the site (python -m http.server 8787) and open this page through it, not as a file://.</td></tr>';
+      '<tr><td colspan="20" class="name">Could not load data/products.json - serve the site (python -m http.server 8787) and open this page through it, not as a file://.</td></tr>';
     return;
   }
   renderSettings(); renderCorridors(); renderRows(); recompute();
@@ -274,7 +274,7 @@ function computeRow(p){
   const marginCur= curIls>0 ? (curIls-floor)/curIls : 0;
 
   const corr=corridors[p.category]||{low:0,high:0,anchor:'ILS'};
-  let pos='—', posClass='';
+  let pos='-', posClass='';
   if(corr.high>0){
     if(curUsd<corr.low){pos='under';posClass='amber';}
     else if(curUsd>corr.high){pos='over';posClass='amber';}
@@ -319,7 +319,7 @@ function recomputeRow(id){
   const mt=tr.querySelector('[data-col="margin"]');
   mt.textContent=r.hasCost?(r.marginCur*100).toFixed(0)+'%':'';
   mt.style.color = r.hasCost&&r.marginCur<num(settings.margin)/100 ? 'var(--red)':'';
-  tr.querySelector('[data-col="corridor"]').textContent=r.corr.high>0?`$${r.corr.low}–${r.corr.high}`:'—';
+  tr.querySelector('[data-col="corridor"]').textContent=r.corr.high>0?`$${r.corr.low}-${r.corr.high}`:'-';
   const pt=tr.querySelector('[data-col="pos"]');
   pt.textContent=r.pos; pt.className='flag '+r.posClass;
   tr.querySelector('[data-col="sugIls"]').textContent=ils(r.sugIls);

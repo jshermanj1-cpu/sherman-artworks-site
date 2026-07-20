@@ -264,6 +264,7 @@ nav {
 .product-card-price-alt { font-size: 0.75rem; color: var(--brown); font-weight: 400; margin-left: 0.3rem; }
 [dir="rtl"] .product-card-price-alt { margin-left: 0; margin-right: 0.3rem; }
 .product-card-measurements { font-size: 0.78rem; color: var(--brown); white-space: nowrap; }
+.product-color-note { font-size: 0.7rem; color: var(--brown); font-weight: 300; line-height: 1.5; margin: 0.4rem 0 0; }
 
 .product-card-actions { display: flex; gap: 0.4rem; }
 .product-card-actions > * {

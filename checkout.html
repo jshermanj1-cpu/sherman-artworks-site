@@ -140,7 +140,7 @@
           </div>
         </a>
         <p class="footer-tagline" data-t="footer_tagline">Handmade glass art &amp; Judaica from Israel</p>
-        <p class="footer-email"><a href="mailto:shermanartwork@gmail.com">shermanartwork@gmail.com</a></p>
+        <p class="footer-email"><a href="mailto:shermanartworks@gmail.com">shermanartworks@gmail.com</a></p>
         <div class="social-links">
           <a href="https://www.instagram.com/shermanartworks" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Instagram">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
@@ -256,21 +256,23 @@
     var showUsd = rate && (typeof currentCurrency === 'undefined' || currentCurrency !== 'ILS');
     var total = getCartTotal();
 
-    var rows = items.map(function (item) {
+    var rows = items.map(function (item, idx) {
       var name = (isHe && item.name_he) ? item.name_he : item.name_en;
       var thumb = CDN + '/w_80,h_80,c_fill,g_auto,q_auto,f_auto/' + item.photo + '.jpg';
       var lineIls = item.price_ils * item.qty;
       var priceStr = '₪' + lineIls.toLocaleString('en-IL');
       if (showUsd) priceStr += ' <span class="cart-price-alt">≈ $' + Math.round(lineIls / rate) + '</span>';
-      var slug = escapeAttr(item.slug);
+      var url = _cartItemUrl(item);
+      var thumbImg = '<img class="checkout-thumb" src="' + escapeAttr(thumb) + '" alt="' + escapeAttr(name) + '" loading="lazy" />';
+      var metaHtml = _cartMetaHtml(item, isHe).replace('cart-item-meta', 'checkout-item-meta');
       return '<tr>' +
-        '<td class="col-thumb"><img class="checkout-thumb" src="' + escapeAttr(thumb) + '" alt="' + escapeAttr(name) + '" loading="lazy" /></td>' +
-        '<td>' + escapeHtml(name) + '</td>' +
+        '<td class="col-thumb">' + (url ? '<a class="checkout-item-link" href="' + escapeAttr(url) + '" aria-label="' + escapeAttr(name) + '">' + thumbImg + '</a>' : thumbImg) + '</td>' +
+        '<td>' + (url ? '<a class="checkout-item-link" href="' + escapeAttr(url) + '">' + escapeHtml(name) + '</a>' : escapeHtml(name)) + metaHtml + '</td>' +
         '<td class="col-qty"><div class="checkout-qty-row">' +
-          '<button class="cart-qty-btn" onclick="updateCartQty(\'' + slug + '\',' + (item.qty - 1) + ');renderCheckout()">−</button>' +
+          '<button class="cart-qty-btn" onclick="updateCartQtyAt(' + idx + ',' + (item.qty - 1) + ');renderCheckout()">−</button>' +
           '<span class="cart-qty-val">' + item.qty + '</span>' +
-          '<button class="cart-qty-btn" onclick="updateCartQty(\'' + slug + '\',' + (item.qty + 1) + ');renderCheckout()">+</button>' +
-          '<button class="cart-remove-btn" onclick="removeFromCart(\'' + slug + '\');renderCheckout()" style="margin-left:0.5rem">' +
+          '<button class="cart-qty-btn" onclick="updateCartQtyAt(' + idx + ',' + (item.qty + 1) + ');renderCheckout()">+</button>' +
+          '<button class="cart-remove-btn" onclick="removeFromCartAt(' + idx + ');renderCheckout()" style="margin-left:0.5rem">' +
             '<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>' +
           '</button>' +
         '</div></td>' +

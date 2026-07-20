@@ -15,7 +15,7 @@
 | **Primary market** | International (diaspora Judaica buyers, collectors, gift buyers) |
 | **Secondary market** | Israeli domestic |
 | **Shipping** | Free international shipping on all orders |
-| **Contact email** | shermanartwork@gmail.com |
+| **Contact email** | shermanartworks@gmail.com |
 | **WhatsApp** | ⚠️ `wa.me/972XXXXXXXXX` — **REPLACE WITH REAL NUMBER BEFORE LAUNCH** |
 | **Domain** | ⚠️ TBD — needs to be registered and configured |
 

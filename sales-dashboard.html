@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sales Dashboard — Sherman Art Works</title>
+  <title>Sales Dashboard - Sherman Art Works</title>
   <meta name="robots" content="noindex, nofollow">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
@@ -194,10 +194,10 @@
 <div id="setup">
   <div class="eyebrow">Sherman Art Works</div>
   <h1>Sales Dashboard</h1>
-  <p class="lead">This dashboard is powered by Supabase — a free cloud database. Complete the two steps below once, and you're done.</p>
+  <p class="lead">This dashboard is powered by Supabase - a free cloud database. Complete the two steps below once, and you're done.</p>
 
   <div class="setup-card">
-    <h2>Step 1 — Create the table in Supabase</h2>
+    <h2>Step 1 - Create the table in Supabase</h2>
     <p style="color:var(--brown);font-size:13px;margin-bottom:12px">In your Supabase project, open the <strong>SQL Editor</strong> and run this once:</p>
     <div class="sql-block">create table if not exists sales (
   id          uuid primary key default gen_random_uuid(),
@@ -221,7 +221,7 @@ create policy "dashboard_access" on sales
   </div>
 
   <div class="setup-card">
-    <h2>Step 2 — Connect your project</h2>
+    <h2>Step 2 - Connect your project</h2>
     <p style="color:var(--brown);font-size:13px;margin-bottom:16px">Find these in Supabase → Project Settings → API:</p>
     <label for="s-url">Project URL</label>
     <input id="s-url" type="url" placeholder="https://xxxxxxxxxxxx.supabase.co" autocomplete="off">
@@ -257,29 +257,29 @@ create policy "dashboard_access" on sales
   <div class="kpi-grid">
     <div class="kpi">
       <div class="kpi-lbl">Total Revenue</div>
-      <div class="kpi-val" id="k-rev">—</div>
+      <div class="kpi-val" id="k-rev">-</div>
       <div class="kpi-sub">incl. VAT (מע"מ)</div>
     </div>
     <div class="kpi">
       <div class="kpi-lbl">Net Revenue</div>
-      <div class="kpi-val" id="k-net">—</div>
+      <div class="kpi-val" id="k-net">-</div>
       <div class="kpi-sub">before VAT</div>
     </div>
     <div class="kpi">
       <div class="kpi-lbl">VAT Collected (מע"מ 18%)</div>
-      <div class="kpi-val gold" id="k-vat">—</div>
+      <div class="kpi-val gold" id="k-vat">-</div>
       <div class="kpi-sub" id="k-period-lbl"></div>
     </div>
     <div class="kpi">
       <div class="kpi-lbl">Confirmed Orders</div>
-      <div class="kpi-val" id="k-count">—</div>
-      <div class="kpi-sub" id="k-avg">avg. order —</div>
+      <div class="kpi-val" id="k-count">-</div>
+      <div class="kpi-sub" id="k-avg">avg. order -</div>
     </div>
   </div>
 
   <div class="chart-grid">
     <div class="chart-card">
-      <h3>Monthly Revenue — Last 12 Months (₪)</h3>
+      <h3>Monthly Revenue - Last 12 Months (₪)</h3>
       <canvas id="trend-chart" height="180"></canvas>
     </div>
     <div class="chart-card">
@@ -320,20 +320,20 @@ create policy "dashboard_access" on sales
 
       <label for="f-product">Product</label>
       <select id="f-product" onchange="onProductPick()" required>
-        <option value="">— Select product —</option>
-        <option value="Glass Circle Candlesticks"  data-cat="Candlesticks"       data-price="775">Glass Circle Candlesticks — ₪775</option>
-        <option value="Black and White Stripes Candlesticks" data-cat="Candlesticks" data-price="775">Black and White Stripes Candlesticks — ₪775</option>
-        <option value="Gold and Red Stripes Candlesticks"    data-cat="Candlesticks" data-price="775">Gold and Red Stripes Candlesticks — ₪775</option>
-        <option value="Green Dots Candlesticks"              data-cat="Candlesticks" data-price="775">Green Dots Candlesticks — ₪775</option>
-        <option value="Black and White Dots Candlesticks"    data-cat="Candlesticks" data-price="775">Black and White Dots Candlesticks — ₪775</option>
-        <option value="Jerusalem Wine Horn"         data-cat="Shofars & Goblets"  data-price="850">Jerusalem Wine Horn — ₪850</option>
-        <option value="Lion of Judah Goblet"        data-cat="Shofars & Goblets"  data-price="473">Lion of Judah Goblet — ₪473</option>
-        <option value="Menorah Goblet"              data-cat="Shofars & Goblets"  data-price="473">Menorah Goblet — ₪473</option>
-        <option value="Glass Decorative Bowl"       data-cat="Trays & Bowls"      data-price="1190">Glass Decorative Bowl — ₪1,190</option>
-        <option value="Oryx Mezuzah"                data-cat="Mezuzahs"           data-price="700">Oryx Mezuzah — ₪700</option>
-        <option value="Ram Mezuzah"                 data-cat="Mezuzahs"           data-price="700">Ram Mezuzah — ₪700</option>
-        <option value="Kudu Mezuzah"                data-cat="Mezuzahs"           data-price="700">Kudu Mezuzah — ₪700</option>
-        <option value="Custom Shofar, Symbol & Text" data-cat="Shofars & Goblets" data-price="1050">Custom Shofar, Symbol &amp; Text — ₪1,050</option>
+        <option value="">- Select product -</option>
+        <option value="Glass Circle Candlesticks"  data-cat="Candlesticks"       data-price="775">Glass Circle Candlesticks - ₪775</option>
+        <option value="Black and White Stripes Candlesticks" data-cat="Candlesticks" data-price="775">Black and White Stripes Candlesticks - ₪775</option>
+        <option value="Gold and Red Stripes Candlesticks"    data-cat="Candlesticks" data-price="775">Gold and Red Stripes Candlesticks - ₪775</option>
+        <option value="Green Dots Candlesticks"              data-cat="Candlesticks" data-price="775">Green Dots Candlesticks - ₪775</option>
+        <option value="Black and White Dots Candlesticks"    data-cat="Candlesticks" data-price="775">Black and White Dots Candlesticks - ₪775</option>
+        <option value="Jerusalem Wine Horn"         data-cat="Shofars & Goblets"  data-price="850">Jerusalem Wine Horn - ₪850</option>
+        <option value="Lion of Judah Goblet"        data-cat="Shofars & Goblets"  data-price="473">Lion of Judah Goblet - ₪473</option>
+        <option value="Menorah Goblet"              data-cat="Shofars & Goblets"  data-price="473">Menorah Goblet - ₪473</option>
+        <option value="Glass Decorative Bowl"       data-cat="Trays & Bowls"      data-price="1190">Glass Decorative Bowl - ₪1,190</option>
+        <option value="Oryx Mezuzah"                data-cat="Mezuzahs"           data-price="700">Oryx Mezuzah - ₪700</option>
+        <option value="Ram Mezuzah"                 data-cat="Mezuzahs"           data-price="700">Ram Mezuzah - ₪700</option>
+        <option value="Kudu Mezuzah"                data-cat="Mezuzahs"           data-price="700">Kudu Mezuzah - ₪700</option>
+        <option value="Custom Shofar, Symbol & Text" data-cat="Shofars & Goblets" data-price="1050">Custom Shofar, Symbol &amp; Text - ₪1,050</option>
         <option value="Custom Order"                data-cat="Custom"             data-price="">Custom Order</option>
         <option value="Other"                       data-cat="Other"              data-price="">Other</option>
       </select>
@@ -351,9 +351,9 @@ create policy "dashboard_access" on sales
 
       <div class="price-prev" id="price-prev">
         <table>
-          <tr class="tot"><td>Total incl. VAT</td><td id="pv-total">—</td></tr>
-          <tr class="sub"><td>&nbsp;&nbsp;VAT (מע"מ 18%)</td><td id="pv-vat">—</td></tr>
-          <tr class="sub"><td>&nbsp;&nbsp;Net revenue</td><td id="pv-net">—</td></tr>
+          <tr class="tot"><td>Total incl. VAT</td><td id="pv-total">-</td></tr>
+          <tr class="sub"><td>&nbsp;&nbsp;VAT (מע"מ 18%)</td><td id="pv-vat">-</td></tr>
+          <tr class="sub"><td>&nbsp;&nbsp;Net revenue</td><td id="pv-net">-</td></tr>
         </table>
       </div>
 

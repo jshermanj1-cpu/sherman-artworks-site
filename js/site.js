@@ -51,6 +51,7 @@ const T_SITE = {
     consent_accept:      'Accept',
     consent_decline:     'Decline',
     add_cart:            'Add to Cart',
+    color_note:          '* Colors may appear slightly different in person, as each item is handmade.',
     cart_title:          'Cart',
     cart_total:          'Total',
     cart_checkout:       'Order on WhatsApp',
@@ -103,6 +104,7 @@ const T_SITE = {
     consent_accept:      'אישור',
     consent_decline:     'לא תודה',
     add_cart:            'הוסף לסל',
+    color_note:          '* הצבעים עשויים להראות מעט שונים במציאות, מכיוון שכל פריט נעשה בעבודת יד.',
     cart_title:          'עגלה',
     cart_total:          'סה"כ',
     cart_checkout:       'הזמינו ב-WhatsApp',
@@ -141,7 +143,7 @@ async function loadUsdRate() {
     if (rn) rn.textContent = 'Rate live · +2%';
   } catch (e) {
     // Fallback base rate 3.05 ILS/USD (live rate ~3.04 as of 2026-07-08).
-    // Re-check quarterly against open.er-api.com — a stale base skews all USD prices.
+    // Re-check quarterly against open.er-api.com - a stale base skews all USD prices.
     // /0.98 keeps the same +2% markup applied to the live rate above.
     usdRate = 3.05 / 0.98;
     const rn = document.getElementById('rateNote');
@@ -216,6 +218,7 @@ function setLang(l) {
   if (typeof renderTerms    === 'function') renderTerms();
   if (typeof renderShipping === 'function') renderShipping();
   if (typeof renderA11y     === 'function') renderA11y();
+  if (typeof renderCartDrawer === 'function') renderCartDrawer();
   if (typeof renderModal === 'function' && typeof currentModalIdx !== 'undefined' && currentModalIdx != null) renderModal();
 }
 
@@ -413,7 +416,7 @@ function a11yAnnounce(msg) {
 }
 
 function initA11y() {
-  // Skip-to-content link — targets existing main id or falls back to 'main-content'
+  // Skip-to-content link - targets existing main id or falls back to 'main-content'
   var lang = localStorage.getItem('sa_lang') || 'en';
   var main = document.querySelector('main');
   if (main && !main.id) main.id = 'main-content';
