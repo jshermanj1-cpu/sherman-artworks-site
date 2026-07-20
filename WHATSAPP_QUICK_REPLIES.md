@@ -1,4 +1,4 @@
-# WhatsApp Business — Quick Reply Templates
+﻿# WhatsApp Business — Quick Reply Templates
 
 > Drafted 2026-07-20 (LAUNCH_PLAN 6.2 / TASK_LIST M11.1.3 support). EN + HE per template.
 > Install: WhatsApp Business app → Settings → Business tools → Quick replies. Each template gets a `/shortcut`.
@@ -21,14 +21,14 @@
 **EN:**
 > Here is your quote:
 > • {product} — ₪{price} / ${usd_price}
-> • Shipping: ₪30 within Israel (free over ₪800) · $45 international (free over $500)
+> • Shipping: ₪30 within Israel (free over ₪1,100) · $45 international (free over $500)
 > • Total: {total}
 > Each piece is made to order by hand. Would you like to go ahead?
 
 **HE:**
 > הנה הצעת המחיר שלך:
 > • {product} — ‏₪{price} / ‏${usd_price}
-> • משלוח: ₪30 בארץ (חינם מעל ₪800) · ‏$45 לחו"ל (חינם מעל $500)
+> • משלוח: ₪30 בארץ (חינם מעל ₪1,100) · ‏$45 לחו"ל (חינם מעל $500)
 > • סה"כ: {total}
 > כל יצירה מיוצרת בעבודת יד לפי הזמנה. נתקדם?
 
