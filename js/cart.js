@@ -64,7 +64,7 @@ function _saveCart(items) {
 
 function addToCart(slug, name_en, name_he, price_ils, photo, meta) {
   var items = getCart();
-  var key = meta ? slug + '::' + [meta.symbol || '', meta.text || '', meta.comment || ''].join('|') : slug;
+  var key = meta ? slug + '::' + [meta.size || '', meta.symbol || '', meta.text || '', meta.comment || ''].join('|') : slug;
   var page = (location.pathname.split('/').pop() || 'index.html');
   var existing = items.find(function (i) { return _cartKey(i) === key; });
   if (existing) {
@@ -126,13 +126,18 @@ function getCartTotal() {
   return getCart().reduce(function (s, i) { return s + i.price_ils * i.qty; }, 0);
 }
 
+// Human-readable label for a size variant, e.g. "L · 90–99 cm / 35–39″".
+function _sizeText(sz) {
+  return sz.label + ' · ' + sz.range_cm + ' cm / ' + sz.range_in + '″';
+}
+
 // ── PAGE-LEVEL HELPERS (use PRODUCTS + currentModalIdx from category pages) ─
 function cartAddFromProduct(idx) {
   if (typeof PRODUCTS === 'undefined') return;
   var p = PRODUCTS[idx];
   if (!p) return;
-  // Personalised products need their options picked first - open the modal instead.
-  if (p.personalisable && typeof openModal === 'function') { openModal(idx); return; }
+  // Personalised or sized products need their options picked first - open the modal instead.
+  if ((p.personalisable || (p.sizes && p.sizes.length)) && typeof openModal === 'function') { openModal(idx); return; }
   addToCart(p.id, p.name_en, p.name_he || '', p.price_ils, p.photos[0]);
 }
 
@@ -141,6 +146,15 @@ function cartAddFromModal() {
   var p = PRODUCTS[currentModalIdx];
   if (!p) return;
   var meta = null;
+  var price = p.price_ils;
+  if (p.sizes && p.sizes.length) {
+    var sizeEl = document.getElementById('modalSize');
+    var si = sizeEl ? parseInt(sizeEl.value, 10) : 0;
+    if (isNaN(si) || si < 0 || si >= p.sizes.length) si = 0;
+    var sz = p.sizes[si];
+    price = sz.price_ils;
+    meta = { size: _sizeText(sz) };
+  }
   if (p.personalisable) {
     var symbolEl = document.getElementById('modalSymbol');
     if (symbolEl) {
@@ -153,15 +167,14 @@ function cartAddFromModal() {
       }
       var textEl = document.getElementById('modalText');
       var commentEl = document.getElementById('modalComment');
-      meta = {
-        symbol: symbol,
-        symbol_he: _SYMBOL_HE[symbol] || symbol,
-        text: textEl ? textEl.value.trim() : '',
-        comment: commentEl ? commentEl.value.trim() : ''
-      };
+      meta = meta || {};
+      meta.symbol = symbol;
+      meta.symbol_he = _SYMBOL_HE[symbol] || symbol;
+      meta.text = textEl ? textEl.value.trim() : '';
+      meta.comment = commentEl ? commentEl.value.trim() : '';
     }
   }
-  addToCart(p.id, p.name_en, p.name_he || '', p.price_ils, p.photos[0], meta);
+  addToCart(p.id, p.name_en, p.name_he || '', price, p.photos[0], meta);
   if (typeof closeModal === 'function') closeModal();
 }
 
@@ -187,6 +200,7 @@ function buildCheckoutWaLink() {
       var name = item.name_he || item.name_en;
       lines.push('• ' + name + ' × ' + item.qty + ' (₪' + (item.price_ils * item.qty).toLocaleString('en-IL') + ')');
       if (item.meta) {
+        if (item.meta.size)    lines.push('   מידה: ' + item.meta.size);
         if (item.meta.symbol)  lines.push('   סמל: ' + (item.meta.symbol_he || item.meta.symbol));
         if (item.meta.text)    lines.push('   כיתוב: ' + item.meta.text);
         if (item.meta.comment) lines.push('   הערות: ' + item.meta.comment);
@@ -201,6 +215,7 @@ function buildCheckoutWaLink() {
     items.forEach(function (item) {
       lines.push('• ' + item.name_en + ' × ' + item.qty + ' (₪' + (item.price_ils * item.qty).toLocaleString('en-IL') + ')');
       if (item.meta) {
+        if (item.meta.size)    lines.push('   Size: ' + item.meta.size);
         if (item.meta.symbol)  lines.push('   Symbol: ' + item.meta.symbol);
         if (item.meta.text)    lines.push('   Inscription: ' + item.meta.text);
         if (item.meta.comment) lines.push('   Comment: ' + item.meta.comment);
@@ -220,6 +235,7 @@ function _cartMetaHtml(item, isHe) {
   if (!item.meta) return '';
   var m = item.meta;
   var rows = [];
+  if (m.size)    rows.push((isHe ? 'מידה: ' : 'Size: ') + escapeHtml(m.size));
   if (m.symbol)  rows.push((isHe ? 'סמל: ' : 'Symbol: ') + escapeHtml(isHe ? (m.symbol_he || m.symbol) : m.symbol));
   if (m.text)    rows.push((isHe ? 'כיתוב: ' : 'Inscription: ') + escapeHtml(m.text));
   if (m.comment) rows.push((isHe ? 'הערות: ' : 'Comment: ') + escapeHtml(m.comment));
