@@ -12,9 +12,9 @@ var _PAGE_BY_SLUG = {
   'glass-circle-candlesticks': 'candlesticks.html',
   'gold-colorful-glass-candlesticks': 'candlesticks.html',
   'burgundy-glass-candlesticks': 'candlesticks.html',
-  'jerusalem-wine-horn': 'shofars-goblets.html',
-  'lion-of-judah-goblet': 'shofars-goblets.html',
-  'menorah-goblet': 'shofars-goblets.html',
+  'jerusalem-wine-horn': 'horn-goblets.html',
+  'lion-of-judah-goblet': 'horn-goblets.html',
+  'menorah-goblet': 'horn-goblets.html',
   'glass-decorative-bowl': 'trays-bowls.html',
   'oryx-mezuzah': 'mezuzahs.html',
   'black-white-stripes-candlesticks': 'candlesticks.html',
@@ -35,7 +35,7 @@ var _PAGE_BY_SLUG = {
   'ceramic-kiddush-cup': 'kiddush-cups.html',
   'colorful-glass-cup-and-plate': 'kiddush-cups.html',
   'kiddush-cup-plate': 'kiddush-cups.html',
-  'custom-shofar': 'custom-shofars.html'
+  'custom-shofar': 'shofars.html'
 };
 
 // Hebrew symbol names for personalised items (page SYMBOL_HE maps are function-scoped).

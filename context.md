@@ -71,7 +71,7 @@ Sherman Art Works is a family-run handmade glass & Judaica business in Israel. T
 |---|---|---|
 | `index.html` | Homepage — hero + 6-category shop grid + story + contact + footer | ✅ Live |
 | `candlesticks.html` | Category page — 1 product, 4 photos, ₪775 | ✅ Live |
-| `shofars-goblets.html` | Category page — 3 products (Jerusalem Wine Horn + 2 goblets) | ✅ Live |
+| `horn-goblets.html` | Category page — 3 products (Jerusalem Wine Horn + 2 goblets) | ✅ Live |
 | `kiddush-cups.html` | Category page — 2 cross-listed goblets + "more coming soon" section | ✅ Live (upgraded from Coming Soon) |
 | `trays-bowls.html` | Category page — 1 product (bowl, 4 photos, ₪1,190) | ✅ Live |
 | `business-gifts.html` | Coming Soon stub — SVG gift-box icon, commission CTAs | ✅ Live |
@@ -106,7 +106,7 @@ Sherman Art Works is a family-run handmade glass & Judaica business in Israel. T
 - **Glass Circle Candlesticks** — ₪775, 20cm × 25cm
 - Photos: `IMG_9845_wsxhug`, `WhatsApp_Image_2026-05-23_at_14.51.06_1_q8pfxh`, `WhatsApp_Image_2026-05-23_at_14.51.06_2_mmafna`, `WhatsApp_Image_2026-05-23_at_14.51.06_e7jg95`
 
-### Shofars & Goblets (`shofars-goblets.html`) — 2 sections
+### Shofars & Goblets (`horn-goblets.html`) — 2 sections
 - **Jerusalem Wine Horn** — ₪850, 5 photos: `horn-jerusalem`, `horn-grapes`, `horn-grape-name`, `horn-crown`, `horn-edge`
 - **Lion of Judah Goblet** — ₪473, 4 photos: `goblet-lion` + variants
 - **Menorah Goblet** — ₪473, 3 photos: `goblet-menorah`, `goblets-jerusalem-menorah`
@@ -154,7 +154,7 @@ Coming Soon cards (Business Gifts, Mezuzahs) use inline SVG placeholders in the 
 
 **Shop dropdown:**
 - Candlesticks → `candlesticks.html`
-- Shofars & Goblets → `shofars-goblets.html`
+- Shofars & Goblets → `horn-goblets.html`
 - Kiddush Cups → `kiddush-cups.html` (live product page — no "Coming Soon" badge in nav)
 - Trays & Bowls → `trays-bowls.html`
 - Business Gifts `[Coming Soon]` → `business-gifts.html`

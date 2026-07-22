@@ -54,7 +54,7 @@
   {
     "id": "jerusalem-wine-horn",
     "category": "horn-goblets",
-    "pages": ["shofars-goblets.html"],
+    "pages": ["horn-goblets.html"],
     "name_en": "Jerusalem Wine Horn",
     "name_he": "שופר ירושלים",
     "description_en": "Traditional wine horn covered in silver and symbols. Coated with FDA-approved crystal epoxy.",
@@ -73,7 +73,7 @@
   {
     "id": "lion-of-judah-goblet",
     "category": "horn-goblets",
-    "pages": ["shofars-goblets.html", "kiddush-cups.html"],
+    "pages": ["horn-goblets.html", "kiddush-cups.html"],
     "name_en": "Lion of Judah Goblet",
     "name_he": "גביע אריה יהודה",
     "description_en": "Traditional wine goblet made from a rams horn. Lion in repoussé silver on an ornate base. Coated with FDA-approved crystal epoxy.",
@@ -91,7 +91,7 @@
   {
     "id": "menorah-goblet",
     "category": "horn-goblets",
-    "pages": ["shofars-goblets.html", "kiddush-cups.html"],
+    "pages": ["horn-goblets.html", "kiddush-cups.html"],
     "name_en": "Menorah Goblet",
     "name_he": "גביע מנורה",
     "description_en": "Traditional wine goblet made from a rams horn, with a seven-branched menorah encircling the cup. Coated with FDA-approved crystal epoxy.",
@@ -439,7 +439,7 @@
   {
     "id": "custom-shofar",
     "category": "shofars",
-    "pages": ["custom-shofars.html", "business-gifts.html"],
+    "pages": ["shofars.html", "business-gifts.html"],
     "name_en": "Custom Shofar, Symbol & Text",
     "name_he": "שופר מותאם אישית, סמל וטקסט",
     "description_en": "A handmade shofar personalised with your choice of symbol and an optional text inscription (Hebrew/English). Made to order in our studio in Israel.",
