@@ -21,14 +21,14 @@
 **EN:**
 > Here is your quote:
 > • {product} — ₪{price} / ${usd_price}
-> • Shipping: ₪30 within Israel (free over ₪1,100) · $45 international (free over $500)
+> • Shipping: International $45 · Israel ₪35
 > • Total: {total}
 > Each piece is made to order by hand. Would you like to go ahead?
 
 **HE:**
 > הנה הצעת המחיר שלך:
 > • {product} — ‏₪{price} / ‏${usd_price}
-> • משלוח: ₪30 בארץ (חינם מעל ₪1,100) · ‏$45 לחו"ל (חינם מעל $500)
+> • משלוח: ₪35 בארץ · ‏$45 לחו"ל
 > • סה"כ: {total}
 > כל יצירה מיוצרת בעבודת יד לפי הזמנה. נתקדם?
 

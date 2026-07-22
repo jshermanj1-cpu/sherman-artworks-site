@@ -122,7 +122,7 @@ USD displayed = ILS price / usdRate
 │  3-image grid (product photos)              │
 ├─────────────────────────────────────────────┤
 │  SHIPPING BANNER                            │
-│  ✦ Free International Shipping on All Orders ✦ │
+│  ✦ Custom Orders Are Welcome ✦              │
 ├─────────────────────────────────────────────┤
 │  SHOP SECTION — "Featured Pieces"           │
 │  ├── Glass Decorative Bowl card             │
@@ -274,7 +274,7 @@ AWARENESS
 
 ENGAGEMENT
   ├── Hero: read headline, see product photography
-  ├── Shipping banner: free shipping removes friction
+  ├── Shipping banner: custom-orders welcome message removes friction
   ├── Shop section: browse products, read descriptions
   └── Story section: brand trust, generational craftsmanship
 
@@ -343,8 +343,8 @@ POST-PURCHASE
 At Sherman Art Works, we create a wide variety of handmade glass art, including glass candlestick holders, custom-designed glass bowls, elegant glass goblets, and unique decorative trays, each crafted with artistic vision and attention to detail. Our passion for creating glass art and silver-plated Judaica has been passed down through generations, combining tradition, craftsmanship, and timeless design. Our collection also includes silver-plated shofars, Kiddush cups, and a variety of meaningful Judaica pieces, proudly handcrafted by our family business in Israel.
 
 ### Shipping Banner
-- **EN:** ✦ Free International Shipping on All Orders ✦
-- **HE:** ✦ משלוח חינם לכל העולם על כל הזמנה ✦
+- **EN:** ✦ Custom Orders Are Welcome ✦
+- **HE:** ✦ הזמנות בהתאמה אישית מתקבלות בשמחה ✦
 
 ### Contact Section (to be written)
 - **EN headline:** Get in Touch

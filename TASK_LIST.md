@@ -38,7 +38,7 @@
 | M0-7 | Purchase model decision | Sherman | — | ✅ WhatsApp-first |
 | M0-8 | Hosting platform | Sherman | — | ✅ GitHub Pages |
 | M0-9 | Contact form backend | Sherman | — | ✅ WhatsApp + mailto (no backend) |
-| M0-10 | Free shipping threshold | Sherman | — | ✅ Free on all orders |
+| M0-10 | Shipping policy | Sherman | — | ✅ Flat rate — International $45 · Israel ₪35 |
 | M0-11 | Instagram + TikTok handles | Sherman | 🟡 M11 | ⚠️ Instagram ✅ shermanartworks. TikTok still missing. |
 
 ---

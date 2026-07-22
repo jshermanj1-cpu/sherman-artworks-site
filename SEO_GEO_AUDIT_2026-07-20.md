@@ -29,12 +29,12 @@ The site is in **strong technical SEO shape** — fundamentals that most small s
 ### P1 — affects Google product visibility now
 
 **1. Merchant feed: `g:shipping` missing from all 27 items (required field).**
-Google Merchant Center requires shipping info per item or account-level shipping settings; without either, items get disapproved or shown without shipping cost (a conversion killer for a ₪30/$45-shipping store with generous free-shipping thresholds worth advertising).
+Google Merchant Center requires shipping info per item or account-level shipping settings; without either, items get disapproved or shown without shipping cost (a conversion killer for a ₪35/$45-shipping store).
 *Fix:* extend `_merchant_feed.py` to emit per item:
 ```xml
-<g:shipping><g:country>IL</g:country><g:price>30.00 ILS</g:price></g:shipping>
+<g:shipping><g:country>IL</g:country><g:price>35.00 ILS</g:price></g:shipping>
 ```
-plus the international tier — or configure shipping once in Merchant Center settings (faster, no feed change). Also add free-shipping thresholds there (₪1,100 / $500).
+plus the international tier — or configure shipping once in Merchant Center settings (faster, no feed change).
 
 **2. Merchant feed: `g:google_product_category` missing from all 27 items (recommended, improves matching).**
 *Fix:* add in `_merchant_feed.py` by category — e.g. candlesticks → `2784` (Home & Garden > Decor > Candle Holders), cups/goblets → `674` (Kitchen & Dining > Tableware > Drinkware), bowls/trays → `6456` (Decor > Decorative Bowls), mezuzahs/shofars → `5609` (Religious Items). Verify IDs against Google's taxonomy file before shipping.

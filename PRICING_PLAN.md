@@ -49,7 +49,7 @@ Per product (a simple form/spreadsheet; ~15 min per piece):
 Studio-level (once, not per product):
 - Monthly overhead: studio space, tools, utilities, Cloudinary, domain → allocated per piece.
 - **VAT / business status** (osek patur vs murshe; exports typically zero-rated) — determines whether ₪ prices are VAT-inclusive. Owner confirms with accountant.
-- Shipping policy decision: price includes shipping, or shipping charged separately? (Competitors often bake in "free shipping.")
+- Shipping policy: charged separately — International $45 · Israel ₪35.
 
 ### 2.2 Demand & sales data — mostly DEV, some owner
 
