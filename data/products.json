@@ -450,5 +450,110 @@
       "Cover_silver_Magen_David_with_name_adq1oi"
     ],
     "personalisable": true
+  },
+  {
+    "id": "kudu-hoshen-stones",
+    "category": "shofars",
+    "pages": ["shofars.html"],
+    "name_en": "Kudu Shofar – Hoshen Stones",
+    "name_he": "שופר קודו אבני חן",
+    "description_en": "Kudu-horn shofar decorated in 925 sterling silver with the twelve stones of the High Priest's breastplate (Hoshen). Handmade in Israel.",
+    "description_he": "שופר מקרן קודו מעוטר בכסף 925 עם שנים-עשר אבני החושן של הכהן הגדול. עבודת יד בישראל.",
+    "measurements": "",
+    "price_ils": 1214,
+    "sizes": [
+      {"label": "S",  "range_cm": "70–79",   "range_in": "28–31", "price_ils": 1214},
+      {"label": "M",  "range_cm": "80–89",   "range_in": "32–35", "price_ils": 1308},
+      {"label": "L",  "range_cm": "90–99",   "range_in": "35–39", "price_ils": 1417},
+      {"label": "XL", "range_cm": "100–109", "range_in": "39–43", "price_ils": 1706},
+      {"label": "J",  "range_cm": "110–119", "range_in": "43–47", "price_ils": 1762},
+      {"label": "XJ", "range_cm": "120–129", "range_in": "47–51", "price_ils": 2423}
+    ],
+    "photos": ["Kudu_Hoshen_stones_endmuo", "Kudu_Hoshen_stones_2_vqf5vu"],
+    "personalisable": false
+  },
+  {
+    "id": "kudu-jerusalem-lions",
+    "category": "shofars",
+    "pages": ["shofars.html"],
+    "name_en": "Kudu Shofar – Jerusalem Lions",
+    "name_he": "שופר קודו אריות ירושלים",
+    "description_en": "Kudu-horn shofar decorated in 925 sterling silver with the lions of Jerusalem. Handmade in Israel.",
+    "description_he": "שופר מקרן קודו מעוטר בכסף 925 עם אריות ירושלים. עבודת יד בישראל.",
+    "measurements": "",
+    "price_ils": 1214,
+    "sizes": [
+      {"label": "S",  "range_cm": "70–79",   "range_in": "28–31", "price_ils": 1214},
+      {"label": "M",  "range_cm": "80–89",   "range_in": "32–35", "price_ils": 1308},
+      {"label": "L",  "range_cm": "90–99",   "range_in": "35–39", "price_ils": 1417},
+      {"label": "XL", "range_cm": "100–109", "range_in": "39–43", "price_ils": 1706},
+      {"label": "J",  "range_cm": "110–119", "range_in": "43–47", "price_ils": 1762},
+      {"label": "XJ", "range_cm": "120–129", "range_in": "47–51", "price_ils": 2423}
+    ],
+    "photos": ["Kudu_Jerusalem_Lions_xelufl", "Jerusalem_Lions_yvs00x"],
+    "personalisable": false
+  },
+  {
+    "id": "kudu-jerusalem-lions-menorah",
+    "category": "shofars",
+    "pages": ["shofars.html"],
+    "name_en": "Kudu Shofar – Jerusalem Lions with Menorah",
+    "name_he": "שופר קודו ירושלים אריות עם מנורה",
+    "description_en": "Kudu-horn shofar decorated in 925 sterling silver with the lions of Jerusalem and a seven-branched menorah. Handmade in Israel.",
+    "description_he": "שופר מקרן קודו מעוטר בכסף 925 עם אריות ירושלים ומנורת שבעת הקנים. עבודת יד בישראל.",
+    "measurements": "",
+    "price_ils": 1214,
+    "sizes": [
+      {"label": "S",  "range_cm": "70–79",   "range_in": "28–31", "price_ils": 1214},
+      {"label": "M",  "range_cm": "80–89",   "range_in": "32–35", "price_ils": 1308},
+      {"label": "L",  "range_cm": "90–99",   "range_in": "35–39", "price_ils": 1417},
+      {"label": "XL", "range_cm": "100–109", "range_in": "39–43", "price_ils": 1706},
+      {"label": "J",  "range_cm": "110–119", "range_in": "43–47", "price_ils": 1762},
+      {"label": "XJ", "range_cm": "120–129", "range_in": "47–51", "price_ils": 2423}
+    ],
+    "photos": ["Kudu_Jerusalem_Lions_with_menorah_rh4cto", "Jerusalem_Lions_with_menorah_eb0mwb"],
+    "personalisable": false
+  },
+  {
+    "id": "kudu-holy-ark",
+    "category": "shofars",
+    "pages": ["shofars.html"],
+    "name_en": "Kudu Shofar – The Holy Ark",
+    "name_he": "שופר קודו ארון הקודש",
+    "description_en": "Kudu-horn shofar decorated in 925 sterling silver with the Holy Ark (Aron HaKodesh). Handmade in Israel.",
+    "description_he": "שופר מקרן קודו מעוטר בכסף 925 עם ארון הקודש. עבודת יד בישראל.",
+    "measurements": "",
+    "price_ils": 1214,
+    "sizes": [
+      {"label": "S",  "range_cm": "70–79",   "range_in": "28–31", "price_ils": 1214},
+      {"label": "M",  "range_cm": "80–89",   "range_in": "32–35", "price_ils": 1308},
+      {"label": "L",  "range_cm": "90–99",   "range_in": "35–39", "price_ils": 1417},
+      {"label": "XL", "range_cm": "100–109", "range_in": "39–43", "price_ils": 1706},
+      {"label": "J",  "range_cm": "110–119", "range_in": "43–47", "price_ils": 1762},
+      {"label": "XJ", "range_cm": "120–129", "range_in": "47–51", "price_ils": 2423}
+    ],
+    "photos": ["Kudu_The_holy_ark_fcpqui", "The_holy_ark_pnxpcv"],
+    "personalisable": false
+  },
+  {
+    "id": "kudu-spies-meraglim",
+    "category": "shofars",
+    "pages": ["shofars.html"],
+    "name_en": "Kudu Shofar – The Spies (Meraglim)",
+    "name_he": "שופר קודו המרגלים",
+    "description_en": "Kudu-horn shofar decorated in 925 sterling silver with the Spies (Meraglim) carrying the cluster of grapes. Handmade in Israel.",
+    "description_he": "שופר מקרן קודו מעוטר בכסף 925 עם המרגלים ואשכול הענבים. עבודת יד בישראל.",
+    "measurements": "",
+    "price_ils": 1214,
+    "sizes": [
+      {"label": "S",  "range_cm": "70–79",   "range_in": "28–31", "price_ils": 1214},
+      {"label": "M",  "range_cm": "80–89",   "range_in": "32–35", "price_ils": 1308},
+      {"label": "L",  "range_cm": "90–99",   "range_in": "35–39", "price_ils": 1417},
+      {"label": "XL", "range_cm": "100–109", "range_in": "39–43", "price_ils": 1706},
+      {"label": "J",  "range_cm": "110–119", "range_in": "43–47", "price_ils": 1762},
+      {"label": "XJ", "range_cm": "120–129", "range_in": "47–51", "price_ils": 2423}
+    ],
+    "photos": ["Kudu_The_spies_Meraglim_h6ts6a", "The_spies_Meraglim_iwcj1i"],
+    "personalisable": false
   }
 ]
