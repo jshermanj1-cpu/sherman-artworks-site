@@ -555,5 +555,110 @@
     ],
     "photos": ["Kudu_The_spies_Meraglim_h6ts6a", "The_spies_Meraglim_iwcj1i"],
     "personalisable": false
+  },
+  {
+    "id": "kudu-messianic-seal-jerusalem",
+    "category": "shofars",
+    "pages": ["shofars.html"],
+    "name_en": "Kudu Shofar – Messianic Seal of Jerusalem",
+    "name_he": "שופר קודו חותמת ירושלים אוונגליסטי",
+    "description_en": "Kudu-horn shofar decorated in 925 silver with the Messianic Seal of Jerusalem - the menorah, fish and Star of David. Handmade in Israel.",
+    "description_he": "שופר מקרן קודו מעוטר בכסף 925 עם חותמת ירושלים המשיחית - מנורה, דג ומגן דוד. עבודת יד בישראל.",
+    "measurements": "",
+    "price_ils": 1214,
+    "sizes": [
+      {"label": "S",  "range_cm": "70–79",   "range_in": "28–31", "price_ils": 1214},
+      {"label": "M",  "range_cm": "80–89",   "range_in": "32–35", "price_ils": 1308},
+      {"label": "L",  "range_cm": "90–99",   "range_in": "35–39", "price_ils": 1417},
+      {"label": "XL", "range_cm": "100–109", "range_in": "39–43", "price_ils": 1706},
+      {"label": "J",  "range_cm": "110–119", "range_in": "43–47", "price_ils": 1762},
+      {"label": "XJ", "range_cm": "120–129", "range_in": "47–51", "price_ils": 2423}
+    ],
+    "photos": ["Messianic_Seal_of_Jerusalem_kudu_jxptwr", "Messianic_Seal_of_Jerusalem_m9274d"],
+    "personalisable": false
+  },
+  {
+    "id": "kudu-jerusalem",
+    "category": "shofars",
+    "pages": ["shofars.html"],
+    "name_en": "Kudu Shofar – Jerusalem",
+    "name_he": "שופר קודו ירושלים",
+    "description_en": "Kudu-horn shofar decorated in 925 silver with a view of Jerusalem. Handmade in Israel.",
+    "description_he": "שופר מקרן קודו מעוטר בכסף 925 עם נוף ירושלים. עבודת יד בישראל.",
+    "measurements": "",
+    "price_ils": 1214,
+    "sizes": [
+      {"label": "S",  "range_cm": "70–79",   "range_in": "28–31", "price_ils": 1214},
+      {"label": "M",  "range_cm": "80–89",   "range_in": "32–35", "price_ils": 1308},
+      {"label": "L",  "range_cm": "90–99",   "range_in": "35–39", "price_ils": 1417},
+      {"label": "XL", "range_cm": "100–109", "range_in": "39–43", "price_ils": 1706},
+      {"label": "J",  "range_cm": "110–119", "range_in": "43–47", "price_ils": 1762},
+      {"label": "XJ", "range_cm": "120–129", "range_in": "47–51", "price_ils": 2423}
+    ],
+    "photos": ["Jerusalem_kudu_hni3gi", "Jerusalem_uyvuoa"],
+    "personalisable": false
+  },
+  {
+    "id": "kudu-star-of-david",
+    "category": "shofars",
+    "pages": ["shofars.html"],
+    "name_en": "Kudu Shofar – Star of David",
+    "name_he": "שופר קודו מגן דוד",
+    "description_en": "Kudu-horn shofar decorated in 925 silver with the Star of David. Handmade in Israel.",
+    "description_he": "שופר מקרן קודו מעוטר בכסף 925 עם מגן דוד. עבודת יד בישראל.",
+    "measurements": "",
+    "price_ils": 1214,
+    "sizes": [
+      {"label": "S",  "range_cm": "70–79",   "range_in": "28–31", "price_ils": 1214},
+      {"label": "M",  "range_cm": "80–89",   "range_in": "32–35", "price_ils": 1308},
+      {"label": "L",  "range_cm": "90–99",   "range_in": "35–39", "price_ils": 1417},
+      {"label": "XL", "range_cm": "100–109", "range_in": "39–43", "price_ils": 1706},
+      {"label": "J",  "range_cm": "110–119", "range_in": "43–47", "price_ils": 1762},
+      {"label": "XJ", "range_cm": "120–129", "range_in": "47–51", "price_ils": 2423}
+    ],
+    "photos": ["Magen_david_kudu_g7rfto", "Magen_David_t2gtml"],
+    "personalisable": false
+  },
+  {
+    "id": "kudu-menorah",
+    "category": "shofars",
+    "pages": ["shofars.html"],
+    "name_en": "Kudu Shofar – Menorah",
+    "name_he": "שופר קודו מנורה",
+    "description_en": "Kudu-horn shofar decorated in 925 silver with a seven-branched menorah. Handmade in Israel.",
+    "description_he": "שופר מקרן קודו מעוטר בכסף 925 עם מנורת שבעת הקנים. עבודת יד בישראל.",
+    "measurements": "",
+    "price_ils": 1214,
+    "sizes": [
+      {"label": "S",  "range_cm": "70–79",   "range_in": "28–31", "price_ils": 1214},
+      {"label": "M",  "range_cm": "80–89",   "range_in": "32–35", "price_ils": 1308},
+      {"label": "L",  "range_cm": "90–99",   "range_in": "35–39", "price_ils": 1417},
+      {"label": "XL", "range_cm": "100–109", "range_in": "39–43", "price_ils": 1706},
+      {"label": "J",  "range_cm": "110–119", "range_in": "43–47", "price_ils": 1762},
+      {"label": "XJ", "range_cm": "120–129", "range_in": "47–51", "price_ils": 2423}
+    ],
+    "photos": ["Kudu_menorah_joe2bm", "Menorah_miblnm"],
+    "personalisable": false
+  },
+  {
+    "id": "kudu-shofar-blowing",
+    "category": "shofars",
+    "pages": ["shofars.html"],
+    "name_en": "Kudu Shofar – Shofar Blowing",
+    "name_he": "שופר קודו תקיעה בשופר",
+    "description_en": "Kudu-horn shofar decorated in 925 silver with a depiction of the shofar blowing. Handmade in Israel.",
+    "description_he": "שופר מקרן קודו מעוטר בכסף 925 עם דמות התוקע בשופר. עבודת יד בישראל.",
+    "measurements": "",
+    "price_ils": 1214,
+    "sizes": [
+      {"label": "S",  "range_cm": "70–79",   "range_in": "28–31", "price_ils": 1214},
+      {"label": "M",  "range_cm": "80–89",   "range_in": "32–35", "price_ils": 1308},
+      {"label": "L",  "range_cm": "90–99",   "range_in": "35–39", "price_ils": 1417},
+      {"label": "XL", "range_cm": "100–109", "range_in": "39–43", "price_ils": 1706},
+      {"label": "J",  "range_cm": "110–119", "range_in": "43–47", "price_ils": 1762},
+      {"label": "XJ", "range_cm": "120–129", "range_in": "47–51", "price_ils": 2423}
+    ],
+    "photos": ["Shofar_blowing_kudu_i490tf", "Shofar_blowing_alriud"],
+    "personalisable": false
   }
 ]
