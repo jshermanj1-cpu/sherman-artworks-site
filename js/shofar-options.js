@@ -25,6 +25,18 @@ const KUDU_SIZES = [
   { label: 'XJ', range_cm: '120–129', range_in: '47–51', price_ils: 2423 },
 ];
 
+// Decorated ram's designs. The full ram's range - unlike the kudu line, no
+// sizes are held back - at Plain column pricing.
+const RAMS_SIZES = [
+  { label: 'XS', range_cm: '30–34', range_in: '12–13', price_ils: 418 },
+  { label: 'S',  range_cm: '35–39', range_in: '14–15', price_ils: 497 },
+  { label: 'M',  range_cm: '40–44', range_in: '16–17', price_ils: 712 },
+  { label: 'L',  range_cm: '45–49', range_in: '18–19', price_ils: 914 },
+  { label: 'XL', range_cm: '50–54', range_in: '20–21', price_ils: 1138 },
+  { label: 'J',  range_cm: '55–59', range_in: '22–23', price_ils: 1293 },
+  { label: 'XJ', range_cm: '60–65', range_in: '24–26', price_ils: 2368 },
+];
+
 // Ram's-horn custom: the full ram's range, Custom column pricing.
 const RAMS_CUSTOM_SIZES = [
   { label: 'XS', range_cm: '30–34', range_in: '12–13', price_ils: 742 },
