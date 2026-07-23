@@ -188,6 +188,24 @@ nav {
 .section-sub-title { font-family: var(--ff-disp); font-size: clamp(1.4rem, 2.4vw, 1.9rem); font-weight: 600; color: var(--dark); margin-bottom: 0.5rem; }
 .section-sub-sub   { font-family: var(--ff-ital); font-style: italic; font-size: 0.98rem; color: var(--brown); max-width: 540px; margin: 0 auto; }
 
+/* Sub-category switcher - shared by the four shofar pages */
+.cat-switch { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.5rem; max-width: 1280px; margin: 0 auto; padding: 2.5rem 2rem 0; }
+.cat-switch-item {
+  font-family: var(--ff-disp); font-size: 0.74rem; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--brown); background: #fff; border: 1px solid var(--border); border-radius: 999px;
+  padding: 0.6rem 1.2rem; min-height: 44px; display: inline-flex; align-items: center;
+  transition: color 0.2s, border-color 0.2s, background 0.2s;
+}
+.cat-switch-item:hover  { color: var(--gold-text); border-color: var(--gold); }
+.cat-switch-item.active { background: var(--gold); border-color: var(--gold); color: var(--dark); }
+.cat-switch + .products-section { padding-top: 2.5rem; }
+
+/* Category-level notes block (ram's-horn plating) */
+.section-notes { max-width: 760px; margin: 2.75rem auto 0; padding: 1.25rem 1.5rem; background: #fff; border: 1px solid var(--border); border-radius: 3px; }
+.section-notes-title { font-family: var(--ff-disp); font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold-text); margin-bottom: 0.5rem; }
+.section-notes-body  { font-size: 0.88rem; color: var(--brown); line-height: 1.7; }
+.modal-plating-note  { font-size: 0.8rem; color: var(--gold-text); line-height: 1.55; margin: 0 0 0.9rem; }
+
 /* ── 8. PRODUCT GRID & CARD ──────────────────────────────────── */
 .products-grid {
   display: grid;
@@ -555,7 +573,7 @@ footer .logo-sub  { color: var(--footer-text); }
 .mobile-shop-toggle[aria-expanded="true"] svg { transform: rotate(180deg); }
 .mobile-shop-toggle[aria-expanded="true"] { color: var(--gold-text); }
 .mobile-shop-menu { max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; }
-.mobile-shop-menu.open { max-height: 600px; }
+.mobile-shop-menu.open { max-height: 900px; }   /* fits the shofar sub-categories */
 .mobile-shop-menu a {
   display: flex; align-items: center; justify-content: space-between; gap: 0.6rem;
   padding: 0.7rem 1.25rem;
@@ -566,6 +584,10 @@ footer .logo-sub  { color: var(--footer-text); }
 .mobile-shop-menu a:hover { color: var(--gold); }
 .mobile-shop-menu a + a   { border-top: 1px solid var(--border); }
 .mobile-shop-all          { color: var(--gold) !important; font-weight: 500; }
+/* Shofar sub-categories, indented under their parent link. The selector carries
+   the parent class so it outranks the padding shorthand on .mobile-shop-menu a. */
+.mobile-shop-menu a.mobile-shop-sub { padding-left: 2.4rem; font-size: 0.72rem; letter-spacing: 0.06em; text-transform: none; }
+.mobile-shop-sub::before  { content: '–'; margin-right: 0.5rem; color: var(--gold); }
 
 /* ── 15. RTL OVERRIDES ───────────────────────────────────────── */
 [dir="rtl"] .top-bar          { flex-direction: row-reverse; }
@@ -575,6 +597,12 @@ footer .logo-sub  { color: var(--footer-text); }
 [dir="rtl"] .nav-links        { flex-direction: row-reverse; }
 [dir="rtl"] .page-hero        { direction: rtl; }
 [dir="rtl"] .products-section { direction: rtl; }
+/* direction:rtl alone puts the first chip on the right; the row-reverse the
+   header nav gets below would cancel it out, so opt this <nav> back out. */
+[dir="rtl"] nav.cat-switch    { direction: rtl; flex-direction: row; }
+[dir="rtl"] .section-notes    { direction: rtl; text-align: right; }
+[dir="rtl"] .mobile-shop-menu a.mobile-shop-sub { padding-left: 1.25rem; padding-right: 2.4rem; }
+[dir="rtl"] .mobile-shop-sub::before { margin-right: 0; margin-left: 0.5rem; }
 [dir="rtl"] .modal-info       { direction: rtl; }
 [dir="rtl"] .custom-band      { direction: rtl; }
 [dir="rtl"] .footer-top       { direction: rtl; }

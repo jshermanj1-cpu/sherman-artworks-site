@@ -166,13 +166,18 @@ function cartAddFromModal() {
         return;
       }
       var textEl = document.getElementById('modalText');
-      var commentEl = document.getElementById('modalComment');
       meta = meta || {};
       meta.symbol = symbol;
       meta.symbol_he = _SYMBOL_HE[symbol] || symbol;
       meta.text = textEl ? textEl.value.trim() : '';
-      meta.comment = commentEl ? commentEl.value.trim() : '';
     }
+  }
+  // The comment box is not personalisation-only - ram's-horn shofars carry one
+  // for the silver-plating preference, and that has to reach the order too.
+  var commentEl = document.getElementById('modalComment');
+  if (commentEl && commentEl.value.trim()) {
+    meta = meta || {};
+    meta.comment = commentEl.value.trim();
   }
   addToCart(p.id, p.name_en, p.name_he || '', price, p.photos[0], meta);
   if (typeof closeModal === 'function') closeModal();
