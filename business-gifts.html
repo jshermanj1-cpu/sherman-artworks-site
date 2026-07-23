@@ -39,7 +39,7 @@
 .other-cat-link:hover { border-color: var(--gold); color: var(--gold); }
 </style>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Sherman Art Works","item":"https://shermanartworks.com"},{"@type":"ListItem","position":2,"name":"Business Gifts","item":"https://shermanartworks.com/business-gifts.html"}]}</script>
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Product","name":"Custom Shofar, Symbol & Text","url":"https://shermanartworks.com/business-gifts.html#custom-shofar","description":"A handmade shofar personalised with your choice of symbol and an optional text inscription (Hebrew/English). Made to order in Israel.","image":["https://res.cloudinary.com/doesupaf9/image/upload/w_800,q_auto,f_auto/Chabad_shofar_o1sgb7.jpg"],"brand":{"@type":"Brand","name":"Sherman Art Works"},"offers":{"@type":"Offer","priceCurrency":"ILS","price":"1050","availability":"https://schema.org/InStock","seller":{"@type":"Organization","name":"Sherman Art Works"},"shippingDetails":[{"@type":"OfferShippingDetails","shippingRate":{"@type":"MonetaryAmount","value":30,"currency":"ILS"},"shippingDestination":{"@type":"DefinedRegion","addressCountry":"IL"}},{"@type":"OfferShippingDetails","shippingRate":{"@type":"MonetaryAmount","value":45,"currency":"USD"},"shippingDestination":{"@type":"DefinedRegion","addressCountry":["US","GB","CA","AU","FR","DE"]}}],"hasMerchantReturnPolicy":{"@type":"MerchantReturnPolicy","applicableCountry":["IL","US","GB","CA","AU","FR","DE"],"returnPolicyCategory":"https://schema.org/MerchantReturnFiniteReturnWindow","merchantReturnDays":14,"returnMethod":"https://schema.org/ReturnByMail","returnFees":"https://schema.org/ReturnFeesCustomerResponsibility"}},"sku":"custom-shofar","itemCondition":"https://schema.org/NewCondition"}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Product","name":"Custom Ram's Horn Shofar, Symbol & Text","url":"https://shermanartworks.com/business-gifts.html#custom-shofar","description":"A handmade shofar personalised with your choice of symbol and an optional text inscription (Hebrew/English). Made to order in Israel.","image":["https://res.cloudinary.com/doesupaf9/image/upload/w_800,q_auto,f_auto/Chabad_shofar_o1sgb7.jpg"],"brand":{"@type":"Brand","name":"Sherman Art Works"},"offers":{"@type":"Offer","priceCurrency":"ILS","price":"1050","availability":"https://schema.org/InStock","seller":{"@type":"Organization","name":"Sherman Art Works"},"shippingDetails":[{"@type":"OfferShippingDetails","shippingRate":{"@type":"MonetaryAmount","value":30,"currency":"ILS"},"shippingDestination":{"@type":"DefinedRegion","addressCountry":"IL"}},{"@type":"OfferShippingDetails","shippingRate":{"@type":"MonetaryAmount","value":45,"currency":"USD"},"shippingDestination":{"@type":"DefinedRegion","addressCountry":["US","GB","CA","AU","FR","DE"]}}],"hasMerchantReturnPolicy":{"@type":"MerchantReturnPolicy","applicableCountry":["IL","US","GB","CA","AU","FR","DE"],"returnPolicyCategory":"https://schema.org/MerchantReturnFiniteReturnWindow","merchantReturnDays":14,"returnMethod":"https://schema.org/ReturnByMail","returnFees":"https://schema.org/ReturnFeesCustomerResponsibility"}},"sku":"custom-shofar","itemCondition":"https://schema.org/NewCondition"}</script>
   <link rel="canonical" href="https://shermanartworks.com/business-gifts.html" />
   <link rel="ai-discovery" href="https://shermanartworks.com/llms.txt" type="text/plain" />
   <meta property="og:url" content="https://shermanartworks.com/business-gifts.html" />
@@ -220,6 +220,10 @@
       <p id="modalNameAlt" class="modal-name-alt"></p>
       <p id="modalDesc" class="modal-desc"></p>
       <p class="product-color-note" data-t="color_note">* Colors may appear slightly different in person, as each item is handmade.</p>
+      <div id="modalSizeRow" style="display:none; margin:1rem 0;">
+        <label for="modalSize" style="font-family:var(--ff-disp);font-size:0.68rem;letter-spacing:0.13em;text-transform:uppercase;color:var(--dark);display:block;margin-bottom:0.45rem;" data-t="spec_size">Size</label>
+        <select id="modalSize" onchange="onSizeChange()" style="width:100%;padding:0.5rem 0.7rem;font-size:0.9rem;border:1px solid var(--border);border-radius:2px;background:#fff;color:var(--dark);font-family:var(--ff-body);"></select>
+      </div>
       <div id="modalCustomFields" style="display:none; margin:1rem 0; padding:1rem 1.1rem; background:var(--bg-alt,#faf8f4); border:1px solid var(--border); border-radius:3px;"></div>
       <div class="modal-specs">
         <div id="modalMeasurementsRow" class="modal-spec-row">
@@ -442,27 +446,110 @@
   const WA_MSG = { en: 'Hi, I am interested in business gifts from Sherman Art Works. Could you tell me about quantities, branding and pricing?', he: 'שלום, אני מתעניין/ת במתנות עסקיות. אשמח לשמוע על כמויות, מיתוג ותמחור.' };</script>
 
 <script>
+// Custom shofar size ladders - kept in step with shofars.html and the shofar
+// price table. Ram's customs span 30-65 cm; kudu customs the full kudu range.
+const RAMS_CUSTOM_SIZES = [
+  { label: 'XS', range_cm: '30–34', range_in: '12–13', price_ils: 742 },
+  { label: 'S',  range_cm: '35–39', range_in: '14–15', price_ils: 853 },
+  { label: 'M',  range_cm: '40–44', range_in: '16–17', price_ils: 1064 },
+  { label: 'L',  range_cm: '45–49', range_in: '18–19', price_ils: 1263 },
+  { label: 'XL', range_cm: '50–54', range_in: '20–21', price_ils: 1492 },
+  { label: 'J',  range_cm: '55–59', range_in: '22–23', price_ils: 1647 },
+  { label: 'XJ', range_cm: '60–65', range_in: '24–26', price_ils: 2718 },
+];
+const KUDU_CUSTOM_SIZES = [
+  { label: 'Mini', range_cm: '50–59',   range_in: '20–23', price_ils: 1297 },
+  { label: 'XS',   range_cm: '60–69',   range_in: '24–27', price_ils: 1426 },
+  { label: 'S',    range_cm: '70–79',   range_in: '28–31', price_ils: 1563 },
+  { label: 'M',    range_cm: '80–89',   range_in: '32–35', price_ils: 1657 },
+  { label: 'L',    range_cm: '90–99',   range_in: '35–39', price_ils: 1768 },
+  { label: 'XL',   range_cm: '100–109', range_in: '39–43', price_ils: 2064 },
+  { label: 'J',    range_cm: '110–119', range_in: '43–47', price_ils: 2113 },
+  { label: 'XJ',   range_cm: '120–129', range_in: '47–51', price_ils: 2769 },
+];
+
 const PRODUCTS = [
   {
     "id": "custom-shofar",
-    "name_en": "Custom Shofar, Symbol & Text",
-    "name_he": "שופר מותאם אישית, סמל וטקסט",
+    "name_en": "Custom Ram's Horn Shofar, Symbol & Text",
+    "name_he": "שופר איל מותאם אישית, סמל וטקסט",
     "description_en": "A handmade shofar personalised with your choice of symbol and an optional text inscription (Hebrew/English). Made to order in our studio in Israel.",
     "description_he": "שופר עשוי בעבודת יד, מותאם אישית עם בחירת סמל וכיתוב אישי (עברית/English). מיוצר לפי הזמנה בסטודיו שלנו בישראל.",
     "measurements": "",
-    "price_ils": 1050,
+    "price_ils": 742,
     "personalisable": true,
+    "sizes": RAMS_CUSTOM_SIZES,
+    "symbol_set": "rams",
     "photos": ["Chabad_shofar_o1sgb7"]
+  },
+  {
+    "id": "custom-kudu-shofar",
+    "name_en": "Custom Kudu Shofar, Symbol & Text",
+    "name_he": "שופר קודו מותאם אישית, סמל וטקסט",
+    "description_en": "Kudu-horn shofar decorated in 925 silver and personalised with your choice of symbol and an optional text inscription (Hebrew/English). Made to order in our studio in Israel.",
+    "description_he": "שופר מקרן קודו מעוטר בכסף 925, מותאם אישית עם בחירת סמל וכיתוב אישי (עברית/English). מיוצר לפי הזמנה בסטודיו שלנו בישראל.",
+    "measurements": "",
+    "price_ils": 1297,
+    "personalisable": true,
+    "sizes": KUDU_CUSTOM_SIZES,
+    "symbol_set": "kudu",
+    "photos": ["Name_kudu_shofar_hqdju6"]
   }
 ];
 const SECTION_KEYS = ["custom"];
-const SECTION_PRODUCT_IDS = { "custom": ["custom-shofar"] };
-const SYMBOL_CLOUDINARY = {
-  'Menorah':       'Menorah_Tavnit_pq1die',
-  'Jerusalem':     'Jerusalem_Tavnit_city_ksbaxm',
-  'Star of David': 'Magen_David_tavnit_jsgmzi',
-  'Lion of Judah': 'Lion_of_Judah_Tavnit_lunjfq',
+const SECTION_PRODUCT_IDS = { "custom": ["custom-shofar", "custom-kudu-shofar"] };
+// Symbol choices depend on the horn: kudu customs carry the full engraved
+// design range, ram's-horn customs the smaller classic set. A product picks its
+// set with "symbol_set"; anything unset falls back to the ram's list.
+// Kept in step with the same table in shofars.html.
+const SYMBOL_SETS = {
+  rams: {
+    en: ['Menorah', 'Jerusalem', 'Star of David', 'Lion of Judah'],
+    he: { 'Menorah': 'מנורה', 'Jerusalem': 'ירושלים', 'Star of David': 'מגן דוד', 'Lion of Judah': 'אריה יהודה' },
+    img: {
+      'Menorah':       'Menorah_Tavnit_pq1die',
+      'Jerusalem':     'Jerusalem_Tavnit_city_ksbaxm',
+      'Star of David': 'Magen_David_tavnit_jsgmzi',
+      'Lion of Judah': 'Lion_of_Judah_Tavnit_lunjfq',
+    },
+  },
+  kudu: {
+    en: ['Lions of Jerusalem', 'Menorah', 'Jerusalem', 'Star of David', 'Hoshen Stones',
+         'Jerusalem Lions with Menorah', 'Holy Ark', 'The Spies (Meraglim)', 'Shofar Blowing'],
+    he: {
+      'Lions of Jerusalem':           'אריות ירושלים',
+      'Menorah':                      'מנורה',
+      'Jerusalem':                    'ירושלים',
+      'Star of David':                'מגן דוד',
+      'Hoshen Stones':                'אבני חושן',
+      'Jerusalem Lions with Menorah': 'ירושלים אריות עם מנורה',
+      'Holy Ark':                     'ארון הקודש',
+      'The Spies (Meraglim)':         'המרגלים',
+      'Shofar Blowing':               'תקיעה בשופר',
+    },
+    img: {
+      'Lions of Jerusalem':           'Lions_Jerusalem_Tavnit_l2gors',
+      'Menorah':                      'Menorah_Tavnit_vgllqe',
+      'Jerusalem':                    'Jerusalem_Tavnit_ao9ylq',
+      'Star of David':                'Magen_David_Tavnit_rw3npk',
+      'Hoshen Stones':                'Hoshen_stones_Tavnit_ywmhiz',
+      'Jerusalem Lions with Menorah': 'Lions_menorah_Jerusalem_Tavnit_rskagf',
+      'Holy Ark':                     'Holy_ark_Tavnit_odecdg',
+      'The Spies (Meraglim)':         'Merglim_Tavnit_emxygo',
+      'Shofar Blowing':               'Shofar_blowing_Tavnit_eyjj7d',
+    },
+  },
 };
+const SYMBOL_EXTRAS_EN = ['Other', 'No Symbol'];
+const SYMBOL_EXTRAS_HE = { 'Other': 'אחר', 'No Symbol': 'ללא סמל' };
+
+function symbolSetFor(p) { return SYMBOL_SETS[(p && p.symbol_set) || 'rams']; }
+function symbolOptionsFor(p) { return symbolSetFor(p).en.concat(SYMBOL_EXTRAS_EN); }
+function symbolLabelFor(p, sym, l) {
+  if (l !== 'he') return sym;
+  return symbolSetFor(p).he[sym] || SYMBOL_EXTRAS_HE[sym] || sym;
+}
+function symbolImageFor(p, sym) { return symbolSetFor(p).img[sym] || null; }
 
 function formatPrice(ils) {
   const main = '₪' + ils.toLocaleString('en-IL');
@@ -490,6 +577,28 @@ function emailLinkForProduct(p) {
   const body = encodeURIComponent(`Hi,\n\nI'd like to know more about "${name}".\n\nPlease send me any further info you have.\n\nThanks.`);
   return `mailto:shermanartworks@gmail.com?subject=${subject}&body=${body}`;
 }
+function waLinkForProductSized(p, sz) {
+  const l = currentLang;
+  const name = l === 'he' && p.name_he ? p.name_he : p.name_en;
+  const sizeText = l === 'he'
+    ? `${sz.label} (${sz.range_cm} ס"מ)`
+    : `${sz.label} (${sz.range_cm} cm / ${sz.range_in}″)`;
+  const msg = l === 'he'
+    ? `שלום, אני מעוניין/ת להזמין "${name}".\nמידה: ${sizeText}\nמחיר: ₪${sz.price_ils.toLocaleString('en-IL')}\nאשמח לפרטים.`
+    : `Hi, I'd like to order "${name}".\nSize: ${sizeText}\nPrice: ₪${sz.price_ils.toLocaleString('en-IL')}\nPlease send me more details.`;
+  return `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`;
+}
+function onSizeChange() {
+  const sel = document.getElementById('modalSize');
+  currentSizeIdx = sel ? (parseInt(sel.value, 10) || 0) : 0;
+  const p = PRODUCTS[currentModalIdx];
+  if (!p || !p.sizes) return;
+  const sz = p.sizes[currentSizeIdx];
+  document.getElementById('modalPrice').innerHTML = formatPriceModal(sz.price_ils);
+  const cta = document.getElementById('modalOrderCta');
+  if (cta && !p.personalisable) cta.href = waLinkForProductSized(p, sz);
+  if (p.personalisable) refreshModalCta();
+}
 function refreshModalCta() {
   if (currentModalIdx == null) return;
   const p = PRODUCTS[currentModalIdx];
@@ -504,8 +613,7 @@ function refreshModalCta() {
   const text     = textEl ? textEl.value.trim() : '';
   const l        = currentLang;
   const name     = l === 'he' && p.name_he ? p.name_he : p.name_en;
-  const SYMBOL_HE = {'Menorah':'מנורה','Jerusalem':'ירושלים','Star of David':'מגן דוד','Lion of Judah':'אריה יהודה','Other':'אחר','No Symbol':'ללא סמל'};
-  const symbolDisplay = l === 'he' ? (SYMBOL_HE[symbol] || symbol) : symbol;
+  const symbolDisplay = symbolLabelFor(p, symbol, l);
 
   const prevImg     = document.getElementById('previewImg');
   const prevHint    = document.getElementById('previewEmpty');
@@ -524,7 +632,7 @@ function refreshModalCta() {
 
   if (prevOther) prevOther.style.display = 'none';
 
-  const cloudId = SYMBOL_CLOUDINARY[symbol] || null;
+  const cloudId = symbolImageFor(p, symbol);
   if (prevImg) {
     if (cloudId) {
       prevImg.src = `${CDN}/w_420,q_auto,f_auto/${cloudId}.jpg`;
@@ -543,9 +651,21 @@ function refreshModalCta() {
   } else {
     if (hintEl) hintEl.style.display = 'none';
     if (ctaEl)  { ctaEl.style.opacity = ''; ctaEl.style.pointerEvents = ''; }
+    // Sized custom products must carry the chosen size and its price, or the
+    // enquiry arrives without the detail that determines what to quote.
+    const sz = (p.sizes && p.sizes.length) ? p.sizes[currentSizeIdx] : null;
+    const sizeLine = sz
+      ? (l === 'he'
+          ? `
+מידה: ${sz.label} (${sz.range_cm} ס"מ)
+מחיר: ₪${sz.price_ils.toLocaleString('en-IL')}`
+          : `
+Size: ${sz.label} (${sz.range_cm} cm / ${sz.range_in} in)
+Price: ₪${sz.price_ils.toLocaleString('en-IL')}`)
+      : '';
     const msg = l === 'he'
-      ? `שלום, אני מעוניין/ת להזמין "${name}".\nסמל: ${symbolDisplay}${text ? '\nכיתוב: ' + text : ''}${comment ? '\nהערות: ' + comment : ''}\nאשמח לפרטים.`
-      : `Hi, I'd like to order a "${name}".\nSymbol: ${symbol}${text ? '\nInscription: ' + text : ''}${comment ? '\nComment: ' + comment : ''}\nPlease send me more details.`;
+      ? `שלום, אני מעוניין/ת להזמין "${name}".${sizeLine}\nסמל: ${symbolDisplay}${text ? '\nכיתוב: ' + text : ''}${comment ? '\nהערות: ' + comment : ''}\nאשמח לפרטים.`
+      : `Hi, I'd like to order a "${name}".${sizeLine}\nSymbol: ${symbol}${text ? '\nInscription: ' + text : ''}${comment ? '\nComment: ' + comment : ''}\nPlease send me more details.`;
     if (ctaEl) ctaEl.href = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`;
   }
 }
@@ -623,8 +743,9 @@ function cardPrev(productIdx, e) { e.stopPropagation(); cardGoTo(productIdx, (ca
 function cardNext(productIdx, e) { e.stopPropagation(); cardGoTo(productIdx, (cardPhotoIdx[productIdx] || 0) + 1); }
 let currentModalIdx = null;
 let currentPhotoIdx = 0;
+let currentSizeIdx = 0;
 function openModal(idx) {
-  currentModalIdx = idx; currentPhotoIdx = 0;
+  currentModalIdx = idx; currentPhotoIdx = 0; currentSizeIdx = 0;
   renderModal();
   document.getElementById('productModal').classList.add('open');
   document.body.style.overflow = 'hidden';
@@ -653,6 +774,23 @@ function renderModal() {
   if (p.measurements) { measurementsEl.textContent = p.measurements; measurementsRow.style.display = ''; }
   else { measurementsRow.style.display = 'none'; }
   document.getElementById('modalPrice').innerHTML = formatPriceModal(p.price_ils);
+
+  // Size selector (sized products)
+  const sizeRow = document.getElementById('modalSizeRow');
+  if (p.sizes && p.sizes.length) {
+    if (currentSizeIdx == null || currentSizeIdx >= p.sizes.length) currentSizeIdx = 0;
+    const sel = document.getElementById('modalSize');
+    if (sel) {
+      sel.innerHTML = p.sizes.map((s, i) => `<option value="${i}">${s.label} · ${s.range_cm} cm (${s.range_in}″)</option>`).join('');
+      sel.value = String(currentSizeIdx);
+    }
+    if (sizeRow) sizeRow.style.display = '';
+    if (measurementsRow) measurementsRow.style.display = 'none';
+    document.getElementById('modalPrice').innerHTML = formatPriceModal(p.sizes[currentSizeIdx].price_ils);
+  } else {
+    if (sizeRow) sizeRow.style.display = 'none';
+  }
+
   const photo = p.photos[currentPhotoIdx];
   document.getElementById('modalMainImg').src = `${CDN}/q_auto,f_auto/${photo}.jpg`;
   document.getElementById('modalMainImg').alt = `${name} - photo ${currentPhotoIdx + 1} of ${p.photos.length}`;
@@ -673,9 +811,8 @@ function renderModal() {
   if (customFields) {
     if (p.personalisable) {
       const l2 = currentLang;
-      const symbols_en = ['Menorah','Jerusalem','Star of David','Lion of Judah','Other','No Symbol'];
-      const symbols_he = ['מנורה','ירושלים','מגן דוד','אריה יהודה','אחר','ללא סמל'];
-      const labels = l2 === 'he' ? symbols_he : symbols_en;
+      const symbols_en = symbolOptionsFor(p);
+      const labels = symbols_en.map(s => symbolLabelFor(p, s, l2));
       const l_sym = l2 === 'he' ? 'סמל' : 'Symbol';
       const l_comment = l2 === 'he' ? 'הערות' : 'Comment';
       const l_comment_placeholder = l2 === 'he' ? 'לדוגמה: הסמל בצד אחד והשם בצד השני' : 'e.g. Symbol on one side, name on the other';

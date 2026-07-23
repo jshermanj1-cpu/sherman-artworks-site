@@ -520,21 +520,143 @@
     </g:shipping>
   </item>
   <item>
-    <g:id>custom-shofar</g:id>
-    <g:title>Custom Shofar, Symbol &amp; Text</g:title>
+    <g:id>custom-shofar-xs</g:id>
+    <g:title>Custom Ram's Horn Shofar, Symbol &amp; Text - XS (30–34 cm)</g:title>
     <g:description>A handmade shofar personalised with your choice of symbol and an optional text inscription (Hebrew/English). Made to order in our studio in Israel.</g:description>
     <g:link>https://shermanartworks.com/shofars.html#custom-shofar</g:link>
     <g:image_link>https://res.cloudinary.com/doesupaf9/image/upload/w_1200,q_auto:good/Cover_silver_Magen_David_with_name_adq1oi.jpg</g:image_link>
     <g:availability>in_stock</g:availability>
-    <g:price>1050.00 ILS</g:price>
+    <g:price>742.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
     <g:identifier_exists>no</g:identifier_exists>
+    <g:item_group_id>custom-shofar</g:item_group_id>
+    <g:size>XS (30–34 cm)</g:size>
     <g:product_type>Shofars</g:product_type>
     <g:google_product_category>97</g:google_product_category>
     <g:shipping>
       <g:country>IL</g:country>
       <g:price>30.00 ILS</g:price>
+    </g:shipping>
+  </item>
+  <item>
+    <g:id>custom-shofar-s</g:id>
+    <g:title>Custom Ram's Horn Shofar, Symbol &amp; Text - S (35–39 cm)</g:title>
+    <g:description>A handmade shofar personalised with your choice of symbol and an optional text inscription (Hebrew/English). Made to order in our studio in Israel.</g:description>
+    <g:link>https://shermanartworks.com/shofars.html#custom-shofar</g:link>
+    <g:image_link>https://res.cloudinary.com/doesupaf9/image/upload/w_1200,q_auto:good/Cover_silver_Magen_David_with_name_adq1oi.jpg</g:image_link>
+    <g:availability>in_stock</g:availability>
+    <g:price>853.00 ILS</g:price>
+    <g:condition>new</g:condition>
+    <g:brand>Sherman Art Works</g:brand>
+    <g:identifier_exists>no</g:identifier_exists>
+    <g:item_group_id>custom-shofar</g:item_group_id>
+    <g:size>S (35–39 cm)</g:size>
+    <g:product_type>Shofars</g:product_type>
+    <g:google_product_category>97</g:google_product_category>
+    <g:shipping>
+      <g:country>IL</g:country>
+      <g:price>30.00 ILS</g:price>
+    </g:shipping>
+  </item>
+  <item>
+    <g:id>custom-shofar-m</g:id>
+    <g:title>Custom Ram's Horn Shofar, Symbol &amp; Text - M (40–44 cm)</g:title>
+    <g:description>A handmade shofar personalised with your choice of symbol and an optional text inscription (Hebrew/English). Made to order in our studio in Israel.</g:description>
+    <g:link>https://shermanartworks.com/shofars.html#custom-shofar</g:link>
+    <g:image_link>https://res.cloudinary.com/doesupaf9/image/upload/w_1200,q_auto:good/Cover_silver_Magen_David_with_name_adq1oi.jpg</g:image_link>
+    <g:availability>in_stock</g:availability>
+    <g:price>1064.00 ILS</g:price>
+    <g:condition>new</g:condition>
+    <g:brand>Sherman Art Works</g:brand>
+    <g:identifier_exists>no</g:identifier_exists>
+    <g:item_group_id>custom-shofar</g:item_group_id>
+    <g:size>M (40–44 cm)</g:size>
+    <g:product_type>Shofars</g:product_type>
+    <g:google_product_category>97</g:google_product_category>
+    <g:shipping>
+      <g:country>IL</g:country>
+      <g:price>30.00 ILS</g:price>
+    </g:shipping>
+  </item>
+  <item>
+    <g:id>custom-shofar-l</g:id>
+    <g:title>Custom Ram's Horn Shofar, Symbol &amp; Text - L (45–49 cm)</g:title>
+    <g:description>A handmade shofar personalised with your choice of symbol and an optional text inscription (Hebrew/English). Made to order in our studio in Israel.</g:description>
+    <g:link>https://shermanartworks.com/shofars.html#custom-shofar</g:link>
+    <g:image_link>https://res.cloudinary.com/doesupaf9/image/upload/w_1200,q_auto:good/Cover_silver_Magen_David_with_name_adq1oi.jpg</g:image_link>
+    <g:availability>in_stock</g:availability>
+    <g:price>1263.00 ILS</g:price>
+    <g:condition>new</g:condition>
+    <g:brand>Sherman Art Works</g:brand>
+    <g:identifier_exists>no</g:identifier_exists>
+    <g:item_group_id>custom-shofar</g:item_group_id>
+    <g:size>L (45–49 cm)</g:size>
+    <g:product_type>Shofars</g:product_type>
+    <g:google_product_category>97</g:google_product_category>
+    <g:shipping>
+      <g:country>IL</g:country>
+      <g:price>0.00 ILS</g:price>
+    </g:shipping>
+  </item>
+  <item>
+    <g:id>custom-shofar-xl</g:id>
+    <g:title>Custom Ram's Horn Shofar, Symbol &amp; Text - XL (50–54 cm)</g:title>
+    <g:description>A handmade shofar personalised with your choice of symbol and an optional text inscription (Hebrew/English). Made to order in our studio in Israel.</g:description>
+    <g:link>https://shermanartworks.com/shofars.html#custom-shofar</g:link>
+    <g:image_link>https://res.cloudinary.com/doesupaf9/image/upload/w_1200,q_auto:good/Cover_silver_Magen_David_with_name_adq1oi.jpg</g:image_link>
+    <g:availability>in_stock</g:availability>
+    <g:price>1492.00 ILS</g:price>
+    <g:condition>new</g:condition>
+    <g:brand>Sherman Art Works</g:brand>
+    <g:identifier_exists>no</g:identifier_exists>
+    <g:item_group_id>custom-shofar</g:item_group_id>
+    <g:size>XL (50–54 cm)</g:size>
+    <g:product_type>Shofars</g:product_type>
+    <g:google_product_category>97</g:google_product_category>
+    <g:shipping>
+      <g:country>IL</g:country>
+      <g:price>0.00 ILS</g:price>
+    </g:shipping>
+  </item>
+  <item>
+    <g:id>custom-shofar-j</g:id>
+    <g:title>Custom Ram's Horn Shofar, Symbol &amp; Text - J (55–59 cm)</g:title>
+    <g:description>A handmade shofar personalised with your choice of symbol and an optional text inscription (Hebrew/English). Made to order in our studio in Israel.</g:description>
+    <g:link>https://shermanartworks.com/shofars.html#custom-shofar</g:link>
+    <g:image_link>https://res.cloudinary.com/doesupaf9/image/upload/w_1200,q_auto:good/Cover_silver_Magen_David_with_name_adq1oi.jpg</g:image_link>
+    <g:availability>in_stock</g:availability>
+    <g:price>1647.00 ILS</g:price>
+    <g:condition>new</g:condition>
+    <g:brand>Sherman Art Works</g:brand>
+    <g:identifier_exists>no</g:identifier_exists>
+    <g:item_group_id>custom-shofar</g:item_group_id>
+    <g:size>J (55–59 cm)</g:size>
+    <g:product_type>Shofars</g:product_type>
+    <g:google_product_category>97</g:google_product_category>
+    <g:shipping>
+      <g:country>IL</g:country>
+      <g:price>0.00 ILS</g:price>
+    </g:shipping>
+  </item>
+  <item>
+    <g:id>custom-shofar-xj</g:id>
+    <g:title>Custom Ram's Horn Shofar, Symbol &amp; Text - XJ (60–65 cm)</g:title>
+    <g:description>A handmade shofar personalised with your choice of symbol and an optional text inscription (Hebrew/English). Made to order in our studio in Israel.</g:description>
+    <g:link>https://shermanartworks.com/shofars.html#custom-shofar</g:link>
+    <g:image_link>https://res.cloudinary.com/doesupaf9/image/upload/w_1200,q_auto:good/Cover_silver_Magen_David_with_name_adq1oi.jpg</g:image_link>
+    <g:availability>in_stock</g:availability>
+    <g:price>2718.00 ILS</g:price>
+    <g:condition>new</g:condition>
+    <g:brand>Sherman Art Works</g:brand>
+    <g:identifier_exists>no</g:identifier_exists>
+    <g:item_group_id>custom-shofar</g:item_group_id>
+    <g:size>XJ (60–65 cm)</g:size>
+    <g:product_type>Shofars</g:product_type>
+    <g:google_product_category>97</g:google_product_category>
+    <g:shipping>
+      <g:country>IL</g:country>
+      <g:price>0.00 ILS</g:price>
     </g:shipping>
   </item>
   <item>
@@ -1789,6 +1911,166 @@
     <g:brand>Sherman Art Works</g:brand>
     <g:identifier_exists>no</g:identifier_exists>
     <g:item_group_id>kudu-shofar-blowing</g:item_group_id>
+    <g:size>XJ (120–129 cm)</g:size>
+    <g:product_type>Shofars</g:product_type>
+    <g:google_product_category>97</g:google_product_category>
+    <g:shipping>
+      <g:country>IL</g:country>
+      <g:price>0.00 ILS</g:price>
+    </g:shipping>
+  </item>
+  <item>
+    <g:id>custom-kudu-shofar-mini</g:id>
+    <g:title>Custom Kudu Shofar, Symbol &amp; Text - Mini (50–59 cm)</g:title>
+    <g:description>Kudu-horn shofar decorated in 925 silver and personalised with your choice of symbol and an optional text inscription (Hebrew/English). Made to order in our studio in Israel.</g:description>
+    <g:link>https://shermanartworks.com/shofars.html#custom-kudu-shofar</g:link>
+    <g:image_link>https://res.cloudinary.com/doesupaf9/image/upload/w_1200,q_auto:good/Name_kudu_shofar_hqdju6.jpg</g:image_link>
+    <g:availability>in_stock</g:availability>
+    <g:price>1297.00 ILS</g:price>
+    <g:condition>new</g:condition>
+    <g:brand>Sherman Art Works</g:brand>
+    <g:identifier_exists>no</g:identifier_exists>
+    <g:item_group_id>custom-kudu-shofar</g:item_group_id>
+    <g:size>Mini (50–59 cm)</g:size>
+    <g:product_type>Shofars</g:product_type>
+    <g:google_product_category>97</g:google_product_category>
+    <g:shipping>
+      <g:country>IL</g:country>
+      <g:price>0.00 ILS</g:price>
+    </g:shipping>
+  </item>
+  <item>
+    <g:id>custom-kudu-shofar-xs</g:id>
+    <g:title>Custom Kudu Shofar, Symbol &amp; Text - XS (60–69 cm)</g:title>
+    <g:description>Kudu-horn shofar decorated in 925 silver and personalised with your choice of symbol and an optional text inscription (Hebrew/English). Made to order in our studio in Israel.</g:description>
+    <g:link>https://shermanartworks.com/shofars.html#custom-kudu-shofar</g:link>
+    <g:image_link>https://res.cloudinary.com/doesupaf9/image/upload/w_1200,q_auto:good/Name_kudu_shofar_hqdju6.jpg</g:image_link>
+    <g:availability>in_stock</g:availability>
+    <g:price>1426.00 ILS</g:price>
+    <g:condition>new</g:condition>
+    <g:brand>Sherman Art Works</g:brand>
+    <g:identifier_exists>no</g:identifier_exists>
+    <g:item_group_id>custom-kudu-shofar</g:item_group_id>
+    <g:size>XS (60–69 cm)</g:size>
+    <g:product_type>Shofars</g:product_type>
+    <g:google_product_category>97</g:google_product_category>
+    <g:shipping>
+      <g:country>IL</g:country>
+      <g:price>0.00 ILS</g:price>
+    </g:shipping>
+  </item>
+  <item>
+    <g:id>custom-kudu-shofar-s</g:id>
+    <g:title>Custom Kudu Shofar, Symbol &amp; Text - S (70–79 cm)</g:title>
+    <g:description>Kudu-horn shofar decorated in 925 silver and personalised with your choice of symbol and an optional text inscription (Hebrew/English). Made to order in our studio in Israel.</g:description>
+    <g:link>https://shermanartworks.com/shofars.html#custom-kudu-shofar</g:link>
+    <g:image_link>https://res.cloudinary.com/doesupaf9/image/upload/w_1200,q_auto:good/Name_kudu_shofar_hqdju6.jpg</g:image_link>
+    <g:availability>in_stock</g:availability>
+    <g:price>1563.00 ILS</g:price>
+    <g:condition>new</g:condition>
+    <g:brand>Sherman Art Works</g:brand>
+    <g:identifier_exists>no</g:identifier_exists>
+    <g:item_group_id>custom-kudu-shofar</g:item_group_id>
+    <g:size>S (70–79 cm)</g:size>
+    <g:product_type>Shofars</g:product_type>
+    <g:google_product_category>97</g:google_product_category>
+    <g:shipping>
+      <g:country>IL</g:country>
+      <g:price>0.00 ILS</g:price>
+    </g:shipping>
+  </item>
+  <item>
+    <g:id>custom-kudu-shofar-m</g:id>
+    <g:title>Custom Kudu Shofar, Symbol &amp; Text - M (80–89 cm)</g:title>
+    <g:description>Kudu-horn shofar decorated in 925 silver and personalised with your choice of symbol and an optional text inscription (Hebrew/English). Made to order in our studio in Israel.</g:description>
+    <g:link>https://shermanartworks.com/shofars.html#custom-kudu-shofar</g:link>
+    <g:image_link>https://res.cloudinary.com/doesupaf9/image/upload/w_1200,q_auto:good/Name_kudu_shofar_hqdju6.jpg</g:image_link>
+    <g:availability>in_stock</g:availability>
+    <g:price>1657.00 ILS</g:price>
+    <g:condition>new</g:condition>
+    <g:brand>Sherman Art Works</g:brand>
+    <g:identifier_exists>no</g:identifier_exists>
+    <g:item_group_id>custom-kudu-shofar</g:item_group_id>
+    <g:size>M (80–89 cm)</g:size>
+    <g:product_type>Shofars</g:product_type>
+    <g:google_product_category>97</g:google_product_category>
+    <g:shipping>
+      <g:country>IL</g:country>
+      <g:price>0.00 ILS</g:price>
+    </g:shipping>
+  </item>
+  <item>
+    <g:id>custom-kudu-shofar-l</g:id>
+    <g:title>Custom Kudu Shofar, Symbol &amp; Text - L (90–99 cm)</g:title>
+    <g:description>Kudu-horn shofar decorated in 925 silver and personalised with your choice of symbol and an optional text inscription (Hebrew/English). Made to order in our studio in Israel.</g:description>
+    <g:link>https://shermanartworks.com/shofars.html#custom-kudu-shofar</g:link>
+    <g:image_link>https://res.cloudinary.com/doesupaf9/image/upload/w_1200,q_auto:good/Name_kudu_shofar_hqdju6.jpg</g:image_link>
+    <g:availability>in_stock</g:availability>
+    <g:price>1768.00 ILS</g:price>
+    <g:condition>new</g:condition>
+    <g:brand>Sherman Art Works</g:brand>
+    <g:identifier_exists>no</g:identifier_exists>
+    <g:item_group_id>custom-kudu-shofar</g:item_group_id>
+    <g:size>L (90–99 cm)</g:size>
+    <g:product_type>Shofars</g:product_type>
+    <g:google_product_category>97</g:google_product_category>
+    <g:shipping>
+      <g:country>IL</g:country>
+      <g:price>0.00 ILS</g:price>
+    </g:shipping>
+  </item>
+  <item>
+    <g:id>custom-kudu-shofar-xl</g:id>
+    <g:title>Custom Kudu Shofar, Symbol &amp; Text - XL (100–109 cm)</g:title>
+    <g:description>Kudu-horn shofar decorated in 925 silver and personalised with your choice of symbol and an optional text inscription (Hebrew/English). Made to order in our studio in Israel.</g:description>
+    <g:link>https://shermanartworks.com/shofars.html#custom-kudu-shofar</g:link>
+    <g:image_link>https://res.cloudinary.com/doesupaf9/image/upload/w_1200,q_auto:good/Name_kudu_shofar_hqdju6.jpg</g:image_link>
+    <g:availability>in_stock</g:availability>
+    <g:price>2064.00 ILS</g:price>
+    <g:condition>new</g:condition>
+    <g:brand>Sherman Art Works</g:brand>
+    <g:identifier_exists>no</g:identifier_exists>
+    <g:item_group_id>custom-kudu-shofar</g:item_group_id>
+    <g:size>XL (100–109 cm)</g:size>
+    <g:product_type>Shofars</g:product_type>
+    <g:google_product_category>97</g:google_product_category>
+    <g:shipping>
+      <g:country>IL</g:country>
+      <g:price>0.00 ILS</g:price>
+    </g:shipping>
+  </item>
+  <item>
+    <g:id>custom-kudu-shofar-j</g:id>
+    <g:title>Custom Kudu Shofar, Symbol &amp; Text - J (110–119 cm)</g:title>
+    <g:description>Kudu-horn shofar decorated in 925 silver and personalised with your choice of symbol and an optional text inscription (Hebrew/English). Made to order in our studio in Israel.</g:description>
+    <g:link>https://shermanartworks.com/shofars.html#custom-kudu-shofar</g:link>
+    <g:image_link>https://res.cloudinary.com/doesupaf9/image/upload/w_1200,q_auto:good/Name_kudu_shofar_hqdju6.jpg</g:image_link>
+    <g:availability>in_stock</g:availability>
+    <g:price>2113.00 ILS</g:price>
+    <g:condition>new</g:condition>
+    <g:brand>Sherman Art Works</g:brand>
+    <g:identifier_exists>no</g:identifier_exists>
+    <g:item_group_id>custom-kudu-shofar</g:item_group_id>
+    <g:size>J (110–119 cm)</g:size>
+    <g:product_type>Shofars</g:product_type>
+    <g:google_product_category>97</g:google_product_category>
+    <g:shipping>
+      <g:country>IL</g:country>
+      <g:price>0.00 ILS</g:price>
+    </g:shipping>
+  </item>
+  <item>
+    <g:id>custom-kudu-shofar-xj</g:id>
+    <g:title>Custom Kudu Shofar, Symbol &amp; Text - XJ (120–129 cm)</g:title>
+    <g:description>Kudu-horn shofar decorated in 925 silver and personalised with your choice of symbol and an optional text inscription (Hebrew/English). Made to order in our studio in Israel.</g:description>
+    <g:link>https://shermanartworks.com/shofars.html#custom-kudu-shofar</g:link>
+    <g:image_link>https://res.cloudinary.com/doesupaf9/image/upload/w_1200,q_auto:good/Name_kudu_shofar_hqdju6.jpg</g:image_link>
+    <g:availability>in_stock</g:availability>
+    <g:price>2769.00 ILS</g:price>
+    <g:condition>new</g:condition>
+    <g:brand>Sherman Art Works</g:brand>
+    <g:identifier_exists>no</g:identifier_exists>
+    <g:item_group_id>custom-kudu-shofar</g:item_group_id>
     <g:size>XJ (120–129 cm)</g:size>
     <g:product_type>Shofars</g:product_type>
     <g:google_product_category>97</g:google_product_category>
