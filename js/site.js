@@ -25,6 +25,13 @@ const T_SITE = {
     cat6_title:          'Mezuzahs',
     cat7_title:          'Shofars',
 
+    // Shofar sub-categories - used by the nav on every page, not just the
+    // shofar pages, so they live here rather than in a page dictionary.
+    switch_all:          'All Shofars',
+    switch_custom:       'Custom',
+    switch_rams:         "Ram's Horn",
+    switch_kudu:         'Kudu Horn',
+
     cat_from:            'from',
     cat_cta_browse:      'Browse Collection',
     cat_cta_commission:  'Commission Yours',
@@ -77,6 +84,11 @@ const T_SITE = {
     cat5_title:          'מתנות לעסקים',
     cat6_title:          'מזוזות',
     cat7_title:          'שופרות',
+
+    switch_all:          'כל השופרות',
+    switch_custom:       'בהתאמה אישית',
+    switch_rams:         'שופר איל',
+    switch_kudu:         'שופר קודו',
 
     cat_from:            'מ-',
     cat_cta_browse:      'לקולקציה',
