@@ -502,7 +502,9 @@ function initA11y() {
 document.addEventListener('DOMContentLoaded', function() {
   initConsent();
   initA11y();
-  var lang = localStorage.getItem('sa_lang') || 'en';
+  // Static /he/ pages set window.__SA_LANG='he' so the URL (not a stale
+  // localStorage value) wins — otherwise JS would re-render them in English.
+  var lang = window.__SA_LANG || localStorage.getItem('sa_lang') || 'en';
   var cur  = localStorage.getItem('sa_cur')  || 'USD';
   setLang(lang);
   setCurrency(cur);
