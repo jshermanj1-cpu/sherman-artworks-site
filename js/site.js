@@ -53,6 +53,7 @@ const T_SITE = {
     skip_to_content:     'Skip to main content',
     cart_item_added:     'Item added to cart',
     cart_item_removed:   'Item removed from cart',
+    consent_sr:          'Cookie consent',
     consent_text:        'We use anonymous analytics cookies to understand how visitors use the site - no ads, no cross-site tracking.',
     consent_more:        'Privacy Policy',
     consent_accept:      'Accept',
@@ -111,6 +112,7 @@ const T_SITE = {
     skip_to_content:     'דלג לתוכן הראשי',
     cart_item_added:     'פריט נוסף לסל',
     cart_item_removed:   'פריט הוסר מהסל',
+    consent_sr:          'הסכמה לשימוש בעוגיות',
     consent_text:        'אנחנו משתמשים בעוגיות אנליטיקה אנונימיות כדי להבין איך מבקרים משתמשים באתר - ללא פרסומות וללא מעקב בין אתרים.',
     consent_more:        'מדיניות פרטיות',
     consent_accept:      'אישור',
@@ -358,7 +360,7 @@ function initConsent() {
   div.setAttribute('aria-modal', 'false');
   div.setAttribute('aria-labelledby', 'consentBannerTitle');
   div.innerHTML =
-    '<p class="sr-only" id="consentBannerTitle">Cookie consent</p>' +
+    '<p class="sr-only" id="consentBannerTitle" data-t="consent_sr">Cookie consent</p>' +
     '<p class="consent-text"><span data-t="consent_text">We use anonymous analytics cookies to understand how visitors use the site - no ads, no cross-site tracking.</span> ' +
     '<a href="privacy.html" data-t="consent_more">Privacy Policy</a></p>' +
     '<div class="consent-actions">' +
