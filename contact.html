@@ -167,48 +167,7 @@
     }
 .form-email-alt:hover { border-color: var(--dark); color: var(--dark); }
 .form-note { font-size: 0.74rem; color: var(--brown); text-align: center; margin-top: 0.75rem; }
-.faq-list {
-      max-width: 820px;
-      margin: 0 auto;
-      display: flex; flex-direction: column; gap: 0.85rem;
-    }
-.faq-item {
-      background: #fff;
-      border: 1px solid var(--border);
-      border-radius: 4px;
-      overflow: hidden;
-      transition: border-color 0.2s;
-    }
-.faq-item[open] { border-color: var(--gold); }
-.faq-item summary {
-      list-style: none;
-      cursor: pointer;
-      padding: 1.25rem 1.5rem;
-      font-family: var(--ff-disp);
-      font-size: 0.88rem;
-      letter-spacing: 0.05em;
-      color: var(--dark);
-      font-weight: 600;
-      display: flex; align-items: center; justify-content: space-between;
-      gap: 1rem;
-      transition: color 0.2s;
-    }
-.faq-item summary::-webkit-details-marker { display: none; }
-.faq-item summary:hover { color: var(--gold); }
-.faq-item summary::after {
-      content: '+';
-      font-size: 1.5rem; font-weight: 400;
-      color: var(--gold);
-      line-height: 1;
-      transition: transform 0.25s;
-      flex-shrink: 0;
-    }
-.faq-item[open] summary::after { transform: rotate(45deg); }
-.faq-answer {
-      padding: 0 1.5rem 1.5rem;
-      font-size: 0.92rem; color: var(--brown);
-      font-weight: 300; line-height: 1.85;
-    }
+/* .faq-* moved to css/site.css — shared with the homepage FAQ. */
 .trust-band {
       background: var(--dark);
       padding: 3.5rem 2rem;
@@ -271,7 +230,7 @@
     <span class="top-divider">|</span>
     <button id="btnHE" class="toggle-btn" onclick="localStorage.setItem('sa_lang','he');location.href='/he/contact.html'">עברית</button>
   </div>
-  <div class="top-bar-group" data-t="topbar_right" style="font-size:0.72rem;color:var(--footer-text);letter-spacing:0.04em;"></div>
+  <div class="top-bar-group" data-t="topbar_right" style="font-size:0.72rem;color:var(--footer-text);letter-spacing:0.04em;">Handcrafted in Israel</div>
 </div>
 
 <!-- ══════════════════════════════════════════════
@@ -347,18 +306,18 @@
 ══════════════════════════════════════════════ -->
 <section class="page-hero">
   <div class="page-hero-inner">
-    <div class="page-eyebrow" data-t="hero_eyebrow"></div>
+    <div class="page-eyebrow" data-t="hero_eyebrow">Get in Touch</div>
     <h1 class="page-headline" data-t="hero_headline">Contact</h1>
     <p class="page-subtitle"  data-t="hero_subtitle">We reply to every message within 24 hours.</p>
-    <p class="page-body"      data-t="hero_body"></p>
+    <p class="page-body"      data-t="hero_body">The fastest way to reach us is WhatsApp. Email and the form below work just as well. We reply to every message, usually within a few hours, always within 24.</p>
     <div class="hero-cta-row">
       <a id="waHeroLink" href="https://wa.me/972523482278?text=Hi%2C%20I%20have%20a%20question%20about%20Sherman%20Art%20Works." class="btn-wa" target="_blank" rel="noopener noreferrer">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-        <span data-t="hero_cta_wa"></span>
+        <span data-t="hero_cta_wa">Message on WhatsApp</span>
       </a>
       <a href="mailto:shermanartworks@gmail.com" class="btn-outline">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-        <span data-t="hero_cta_email"></span>
+        <span data-t="hero_cta_email">Send an Email</span>
       </a>
     </div>
   </div>
@@ -370,9 +329,9 @@
 <section class="section" id="methods">
   <div class="section-header">
     <div class="ornament" aria-hidden="true">✦ ✦ ✦</div>
-    <div class="section-tag"   data-t="methods_tag"></div>
-    <h2 class="section-title"  data-t="methods_title"></h2>
-    <p  class="section-sub"    data-t="methods_sub"></p>
+    <div class="section-tag"   data-t="methods_tag">Reach Us</div>
+    <h2 class="section-title"  data-t="methods_title">Three Ways to Get in Touch</h2>
+    <p  class="section-sub"    data-t="methods_sub">Pick whichever is easiest for you.</p>
   </div>
 
   <div class="methods-grid">
@@ -380,7 +339,7 @@
       <div class="method-icon" aria-hidden="true">
         <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
       </div>
-      <div class="method-title" data-t="method1_title"></div>
+      <div class="method-title" data-t="method1_title">WhatsApp</div>
       <p class="method-value">+972 52 348 2278</p>
       <a id="waMethodLink" href="https://wa.me/972523482278?text=Hi%2C%20I%20have%20a%20question%20about%20Sherman%20Art%20Works." class="method-cta" target="_blank" rel="noopener noreferrer" data-t="method1_cta">Open Chat</a>
     </div>
@@ -388,7 +347,7 @@
       <div class="method-icon" aria-hidden="true">
         <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
       </div>
-      <div class="method-title" data-t="method2_title"></div>
+      <div class="method-title" data-t="method2_title">Email</div>
       <p class="method-value">shermanartwork<br>@gmail.com</p>
       <a href="mailto:shermanartworks@gmail.com" class="method-cta" data-t="method2_cta">Compose</a>
     </div>
@@ -396,9 +355,9 @@
       <div class="method-icon" aria-hidden="true">
         <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
       </div>
-      <div class="method-title" data-t="method3_title"></div>
+      <div class="method-title" data-t="method3_title">Instagram</div>
       <p class="method-value">@shermanartworks</p>
-      <a href="https://www.instagram.com/shermanartworks" target="_blank" rel="noopener noreferrer" class="method-cta" data-t="method3_cta"></a>
+      <a href="https://www.instagram.com/shermanartworks" target="_blank" rel="noopener noreferrer" class="method-cta" data-t="method3_cta">Follow</a>
     </div>
   </div>
 </section>
@@ -410,50 +369,50 @@
   <div class="form-inner">
 
     <div class="form-lede">
-      <div class="form-lede-tag"   data-t="form_tag"></div>
-      <h2  class="form-lede-title" data-t="form_title"></h2>
-      <p   class="form-lede-body"  data-t="form_body"></p>
+      <div class="form-lede-tag"   data-t="form_tag">Send a Message</div>
+      <h2  class="form-lede-title" data-t="form_title">Tell us how we can help</h2>
+      <p   class="form-lede-body"  data-t="form_body">Fill in the form and we will get back to you, usually within a few hours.</p>
       <div class="form-trust">
-        <div class="trust-item" data-t="trust1"></div>
-        <div class="trust-item" data-t="trust2"></div>
-        <div class="trust-item" data-t="trust3"></div>
-        <div class="trust-item" data-t="trust4"></div>
+        <div class="trust-item" data-t="trust1">We reply to every enquiry within 24 hours</div>
+        <div class="trust-item" data-t="trust2">No commitment, just a friendly conversation</div>
+        <div class="trust-item" data-t="trust3">International shipping $45 · Israel ₪35</div>
+        <div class="trust-item" data-t="trust4">We speak Hebrew, English and basic Russian</div>
       </div>
     </div>
 
     <div class="enquiry-form">
       <form id="contactForm" onsubmit="submitContact(event)">
         <div class="form-field">
-          <label for="cf-name" data-t="field_name"></label>
+          <label for="cf-name" data-t="field_name">Your Name</label>
           <input id="cf-name" type="text" name="name" required autocomplete="name" />
         </div>
         <div class="form-field">
-          <label for="cf-email" data-t="field_email"></label>
+          <label for="cf-email" data-t="field_email">Your Email</label>
           <input id="cf-email" type="email" name="email" required autocomplete="email" />
         </div>
         <div class="form-field">
-          <label for="cf-subject" data-t="field_subject"></label>
+          <label for="cf-subject" data-t="field_subject">Subject</label>
           <select id="cf-subject" name="subject" required>
-            <option value="" disabled selected data-t="subject_placeholder"></option>
-            <option data-t="subject_general"></option>
-            <option data-t="subject_order"></option>
-            <option data-t="subject_custom"></option>
-            <option data-t="subject_shipping"></option>
-            <option data-t="subject_wholesale"></option>
-            <option data-t="subject_other"></option>
+            <option value="" disabled selected data-t="subject_placeholder">What can we help with?</option>
+            <option data-t="subject_general">General Enquiry</option>
+            <option data-t="subject_order">Question About an Order</option>
+            <option data-t="subject_custom">Custom Piece</option>
+            <option data-t="subject_shipping">Shipping &amp; Delivery</option>
+            <option data-t="subject_wholesale">Wholesale or Corporate Gift</option>
+            <option data-t="subject_other">Other</option>
           </select>
         </div>
         <div class="form-field">
-          <label for="cf-msg" data-t="field_msg"></label>
+          <label for="cf-msg" data-t="field_msg">Your Message</label>
           <textarea id="cf-msg" name="message" required placeholder=""></textarea>
         </div>
         <button type="submit" class="form-submit">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-          <span data-t="form_submit"></span>
+          <span data-t="form_submit">Send via WhatsApp</span>
         </button>
         <button type="button" class="form-email-alt" onclick="submitViaEmail()">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-          <span data-t="form_email_alt"></span>
+          <span data-t="form_email_alt">Or send by email instead</span>
         </button>
         <p class="form-note" data-t="form_note">We reply to every message within 24 hours.</p>
       </form>
@@ -468,35 +427,35 @@
 <section class="section" id="faq">
   <div class="section-header">
     <div class="ornament" aria-hidden="true">✦ ✦ ✦</div>
-    <div class="section-tag"   data-t="faq_tag"></div>
-    <h2 class="section-title"  data-t="faq_title"></h2>
-    <p  class="section-sub"    data-t="faq_sub"></p>
+    <div class="section-tag"   data-t="faq_tag">Common Questions</div>
+    <h2 class="section-title"  data-t="faq_title">Frequently Asked</h2>
+    <p  class="section-sub"    data-t="faq_sub">Quick answers to what people usually want to know.</p>
   </div>
 
   <div class="faq-list">
     <details class="faq-item">
-      <summary data-t="faq1_q"></summary>
-      <div class="faq-answer" data-t="faq1_a"></div>
+      <summary data-t="faq1_q">How long does shipping take?</summary>
+      <div class="faq-answer" data-t="faq1_a">Every piece is individually handcrafted. We will give you a clear dispatch estimate when you order. Delivery is within up to 30 business days - this is the maximum range, and in the vast majority of cases your piece arrives well before that. All shipments are tracked and insured.</div>
     </details>
     <details class="faq-item">
-      <summary data-t="faq2_q"></summary>
-      <div class="faq-answer" data-t="faq2_a"></div>
+      <summary data-t="faq2_q">How long does a custom order take?</summary>
+      <div class="faq-answer" data-t="faq2_a">Most custom pieces are designed, made and shipped within 2-4 weeks from the day we agree on the design. Larger or more complex commissions can take longer, we will always give you a clear timeline upfront.</div>
     </details>
     <details class="faq-item">
-      <summary data-t="faq3_q"></summary>
-      <div class="faq-answer" data-t="faq3_a"></div>
+      <summary data-t="faq3_q">What if my piece arrives damaged?</summary>
+      <div class="faq-answer" data-t="faq3_a">Everything is packed with great care, but if anything arrives damaged or defective we will make it right - a free replacement or a full refund. Just photograph the piece inside its original packaging and contact us within 24 hours of delivery.</div>
     </details>
     <details class="faq-item">
-      <summary data-t="faq4_q"></summary>
-      <div class="faq-answer" data-t="faq4_a"></div>
+      <summary data-t="faq4_q">How do I pay?</summary>
+      <div class="faq-answer" data-t="faq4_a">For now, orders are confirmed via WhatsApp or email and paid by bank transfer or PayPal. A full card checkout is coming soon. Either way, no payment is taken until you have approved the piece and the price.</div>
     </details>
     <details class="faq-item">
-      <summary data-t="faq5_q"></summary>
-      <div class="faq-answer" data-t="faq5_a"></div>
+      <summary data-t="faq5_q">Do you ship worldwide?</summary>
+      <div class="faq-answer" data-t="faq5_a">Yes, we ship anywhere in the world. Shipping within Israel is ₪35. International shipping is $45.</div>
     </details>
     <details class="faq-item">
-      <summary data-t="faq6_q"></summary>
-      <div class="faq-answer" data-t="faq6_a"></div>
+      <summary data-t="faq6_q">Can I return a piece?</summary>
+      <div class="faq-answer" data-t="faq6_a">Standard pieces can be returned within 14 days of delivery if they are in their original condition. Custom and personalised pieces are not returnable, which is why we work closely with you during the design phase to make sure everything is exactly right.</div>
     </details>
   </div>
 </section>
@@ -506,20 +465,20 @@
 ══════════════════════════════════════════════ -->
 <section class="trust-band">
   <div class="trust-band-inner">
-    <h2 class="trust-band-title"  data-t="trust_band_title"></h2>
-    <p  class="trust-band-sub"    data-t="trust_band_sub"></p>
+    <h2 class="trust-band-title"  data-t="trust_band_title">Crafted in Israel, Sent With Care</h2>
+    <p  class="trust-band-sub"    data-t="trust_band_sub">Three generations of glass artists. Every piece signed, packed and shipped by family.</p>
     <div class="trust-band-row">
       <div>
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-        <span data-t="trust_band_loc"></span>
+        <span data-t="trust_band_loc">Made in Israel</span>
       </div>
       <div>
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-        <span data-t="trust_band_ship"></span>
+        <span data-t="trust_band_ship">Worldwide Shipping</span>
       </div>
       <div>
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-        <span data-t="trust_band_reply"></span>
+        <span data-t="trust_band_reply">Reply within 24 hours</span>
       </div>
     </div>
   </div>

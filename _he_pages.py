@@ -247,9 +247,11 @@ def _unescape(s):
     return re.sub(r"\\['\"\\nt/]", lambda m: _UNESC[m.group(0)], s)
 
 
-def parse_he_dict(text, obj_marker):
-    """Extract the `he: { ... }` sub-block of the object introduced by obj_marker
-    (e.g. 'const T_SITE' or 'T_PAGE') and return {key: value} for Hebrew."""
+def parse_he_dict(text, obj_marker, lang="he"):
+    """Extract the `<lang>: { ... }` sub-block of the object introduced by
+    obj_marker (e.g. 'const T_SITE' or 'T_PAGE') and return {key: value}.
+    Defaults to Hebrew; the English branch is needed to build the EN→HE map
+    used when localizing JSON-LD."""
     start = text.find(obj_marker)
     if start < 0:
         return {}
@@ -257,7 +259,7 @@ def parse_he_dict(text, obj_marker):
     if obj_open < 0:
         return {}
     obj_body = _match_brace_block(text, obj_open)
-    m = re.search(r"\bhe\s*:\s*\{", obj_body)
+    m = re.search(r"\b%s\s*:\s*\{" % lang, obj_body)
     if not m:
         return {}
     he_open = obj_body.find("{", m.start())
@@ -373,6 +375,54 @@ def build_product_records():
 
 
 T_SITE_HE = parse_he_dict(read(os.path.join(ROOT, "js/site.js")), "const T_SITE")
+T_SITE_EN = parse_he_dict(read(os.path.join(ROOT, "js/site.js")), "const T_SITE", "en")
+
+
+def localize_jsonld(txt, en2he):
+    """Translate the FAQPage answers and HowTo steps inside a JSON-LD block.
+
+    A /he/ page renders Hebrew but inherited its parent's English JSON-LD, so
+    the markup described content the Hebrew reader never sees — the same
+    visible/schema mismatch the English pages were fixed for, just one language
+    over. Values are matched by exact English string rather than by position,
+    so a reordered or extended FAQ cannot silently mis-pair questions with
+    answers; anything without a Hebrew counterpart is left in English rather
+    than guessed at."""
+    try:
+        data = json.loads(txt)
+    except ValueError:
+        return txt, 0
+
+    hits = [0]
+
+    def tr(s):
+        if isinstance(s, str) and s in en2he and en2he[s]:
+            hits[0] += 1
+            return en2he[s]
+        return s
+
+    def walk(node):
+        if isinstance(node, dict):
+            ty = node.get("@type")
+            if ty == "Question":
+                node["name"] = tr(node.get("name"))
+            elif ty == "Answer":
+                node["text"] = tr(node.get("text"))
+            elif ty == "HowToStep":
+                node["name"] = tr(node.get("name"))
+                node["text"] = tr(node.get("text"))
+            elif ty in ("FAQPage", "HowTo"):
+                node["inLanguage"] = "he"
+            for v in node.values():
+                walk(v)
+        elif isinstance(node, list):
+            for v in node:
+                walk(v)
+
+    walk(data)
+    if not hits[0]:
+        return txt, 0
+    return json.dumps(data, ensure_ascii=False, separators=(",", ":")), hits[0]
 PRODUCTS_HE = build_product_records()
 
 
@@ -589,12 +639,21 @@ def translate_page(page):
     # 8) rewrite relative asset + cross-page URLs for the /he/ subdirectory.
     rewrite_links(soup)
 
-    # 9) point JSON-LD self-URLs at the /he/ page + tag inLanguage he.
+    # 9) point JSON-LD self-URLs at the /he/ page, and translate the FAQ/HowTo
+    #    content so the markup describes the Hebrew the reader actually sees.
+    en2he = {}
+    page_en = parse_he_dict(src, "T_PAGE", "en")
+    for en_dict, he_dict in ((T_SITE_EN, T_SITE_HE), (page_en, page_he)):
+        for k, en_val in en_dict.items():
+            if he_dict.get(k):
+                en2he[en_val] = he_dict[k]
+
     en_page_url = en_url(page)
     for s in soup.find_all("script", attrs={"type": "application/ld+json"}):
         if not s.string:
             continue
         txt = s.string.replace(en_page_url, he_url(page))
+        txt, _ = localize_jsonld(txt, en2he)
         s.string = txt
 
     return str(soup)
