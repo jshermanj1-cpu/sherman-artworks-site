@@ -23,6 +23,7 @@ separate, minimal edit (hreflang + toggle link); this script only writes /he/.
 import os
 import re
 import json
+import datetime
 from bs4 import BeautifulSoup, NavigableString
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
@@ -641,31 +642,75 @@ def patch_english_pages():
             print("patched %s" % page)
 
 
+def _en_lastmods(xml):
+    """Map English <loc> → <lastmod> from the current sitemap."""
+    out = {}
+    for block in re.findall(r"<url>.*?</url>", xml, re.S):
+        loc = re.search(r"<loc>(.*?)</loc>", block, re.S)
+        lm = re.search(r"<lastmod>(.*?)</lastmod>", block, re.S)
+        if loc and lm and "/he/" not in loc.group(1):
+            out[loc.group(1).strip()] = lm.group(1).strip()
+    return out
+
+
+def he_lastmod(page, en_map):
+    """A Hebrew page is generated from its English counterpart, so it is only as
+    fresh as that source. Mirroring the English <lastmod> keeps the value honest
+    and stable — deriving it from the generated file's mtime would instead bump
+    every Hebrew URL on every run, telling crawlers the page changed when it did
+    not. Falls back to today only when the English URL carries no lastmod."""
+    return en_map.get(en_url(page)) or datetime.date.today().isoformat()
+
+
 def update_sitemap():
-    """Ensure every /he/ URL is listed in sitemap.xml. Idempotent per URL, so it
-    also backfills pages added after the first run."""
+    """Ensure every /he/ URL is listed in sitemap.xml with a <lastmod>. Idempotent
+    per URL, so it also backfills pages added after the first run, and backfills
+    <lastmod> onto /he/ entries written before it was emitted."""
     path = os.path.join(ROOT, "sitemap.xml")
     with open(path, "r", encoding="utf-8") as f:
         xml = f.read()
+    en_map = _en_lastmods(xml)
+
+    # Backfill <lastmod> on existing /he/ entries that predate this field.
+    # Order matters: the sitemap schema wants loc, lastmod, changefreq, priority.
+    backfilled = 0
+    for page in PAGES:
+        url = he_url(page)
+        block_re = re.compile(
+            r"(<url>\s*<loc>%s</loc>\s*)(<changefreq>)" % re.escape(url), re.S
+        )
+        if block_re.search(xml):
+            xml = block_re.sub(
+                lambda m: "%s<lastmod>%s</lastmod>\n    %s"
+                % (m.group(1), he_lastmod(page, en_map), m.group(2)),
+                xml,
+            )
+            backfilled += 1
+
     missing = [p for p in PAGES if "<loc>%s</loc>" % he_url(p) not in xml]
-    if not missing:
-        print("sitemap already lists all %d /he/ URLs" % len(PAGES))
-        return
     entries = []
-    if "Hebrew (/he/) pages" not in xml:
+    if missing and "Hebrew (/he/) pages" not in xml:
         entries.append("\n  <!-- Hebrew (/he/) pages -->")
     for page in missing:
         pri = SITEMAP_PRIORITY.get(page, "0.8")
         freq = "yearly" if pri == "0.3" else "weekly"
         entries.append(
-            "  <url>\n    <loc>%s</loc>\n    <changefreq>%s</changefreq>\n"
-            "    <priority>%s</priority>\n  </url>" % (he_url(page), freq, pri)
+            "  <url>\n    <loc>%s</loc>\n    <lastmod>%s</lastmod>\n"
+            "    <changefreq>%s</changefreq>\n    <priority>%s</priority>\n  </url>"
+            % (he_url(page), he_lastmod(page, en_map), freq, pri)
         )
-    block = "\n".join(entries) + "\n\n"
-    xml = xml.replace("</urlset>", block + "</urlset>")
+    if entries:
+        xml = xml.replace("</urlset>", "\n".join(entries) + "\n\n</urlset>")
+
+    if not missing and not backfilled:
+        print("sitemap already lists all %d /he/ URLs with lastmod" % len(PAGES))
+        return
     with open(path, "w", encoding="utf-8", newline="\n") as f:
         f.write(xml)
-    print("added %d /he/ URL(s) to sitemap.xml" % len(missing))
+    if missing:
+        print("added %d /he/ URL(s) to sitemap.xml" % len(missing))
+    if backfilled:
+        print("backfilled <lastmod> on %d existing /he/ URL(s)" % backfilled)
 
 
 def main():
