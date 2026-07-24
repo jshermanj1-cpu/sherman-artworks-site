@@ -16,7 +16,7 @@ self-canonicals, and bidirectional hreflang. It reuses the EXISTING translation
 data (T_SITE in js/site.js, per-page T_PAGE, and product name_he/description_he)
 so nothing is re-translated by hand — the Hebrew stays a single source of truth.
 
-Output: /he/<page>.html for each SHOP_PAGES entry. English pages are left to a
+Output: /he/<page>.html for each PAGES entry. English pages are left to a
 separate, minimal edit (hreflang + toggle link); this script only writes /he/.
 """
 
@@ -28,8 +28,8 @@ from bs4 import BeautifulSoup, NavigableString
 ROOT = os.path.dirname(os.path.abspath(__file__))
 HE_DIR = os.path.join(ROOT, "he")
 
-# Pages that get a Hebrew twin. Order = homepage, then the 7 shop categories,
-# then the 3 shofar sub-category pages (same template, shared catalogue).
+# Shop pages: homepage, 7 shop categories, 3 shofar sub-category pages. These are
+# the pages with product cards (used by build_product_records).
 SHOP_PAGES = [
     "index.html",
     "candlesticks.html",
@@ -43,7 +43,29 @@ SHOP_PAGES = [
     "shofars-rams.html",
     "shofars-kudu.html",
 ]
-TRANSLATED = set(SHOP_PAGES)
+
+# Studio + policy pages. about/custom-orders/contact are data-t driven; the three
+# policy pages build their legal body via a JS render fn (replicated below).
+STUDIO_PAGES = [
+    "about.html",
+    "custom-orders.html",
+    "contact.html",
+    "terms.html",
+    "privacy.html",
+    "accessibility.html",
+]
+
+# Every page that gets a Hebrew twin.
+PAGES = SHOP_PAGES + STUDIO_PAGES
+TRANSLATED = set(PAGES)
+
+# Policy pages whose <main> body is assembled by a JS render fn from T_PAGE keys.
+# We replicate that render in Hebrew so the no-JS/crawler view has the legal text.
+POLICY = {
+    "terms.html": {"container": "terms-content", "kind": "terms"},
+    "privacy.html": {"container": "privacy-content", "kind": "privacy"},
+    "accessibility.html": {"container": "a11y-content", "kind": "a11y"},
+}
 
 # Extra JS files to mine for product name_he/description_he (shofar catalogue).
 PRODUCT_JS = ["js/shofar-products.js"]
@@ -78,6 +100,13 @@ ALT_SUPP = {
     "Sherman Art Works logo": "הלוגו של שרמן ארט וורקס",
     "Handmade glass decorative bowl by Sherman Art Works":
         "קערת זכוכית דקורטיבית בעבודת יד מאת שרמן ארט וורקס",
+    # about.html studio/craft photos
+    "Sherman Art Works handmade glass piece": "יצירת זכוכית בעבודת יד של שרמן ארט וורקס",
+    "Handcrafted glass art detail": "פרט מתוך יצירת אמנות בזכוכית בעבודת יד",
+    "Sherman Art Works collection": "הקולקציה של שרמן ארט וורקס",
+    "Sherman Art Works glass craft": "אומנות הזכוכית של שרמן ארט וורקס",
+    "Handmade glass detail": "פרט מזכוכית בעבודת יד",
+    "Sherman glass art": "אמנות הזכוכית של שרמן",
 }
 
 # Hebrew <title> + meta description per page (authored; concise, <60 / <155 chars).
@@ -126,6 +155,37 @@ META = {
         "שופר קודו בעבודת יד | שרמן ארט וורקס",
         "שופרות קודו גדולים בעבודת יד, עם אפשרות לעיצוב אישי. מיוצר בישראל, משלוח לכל העולם.",
     ),
+    "about.html": (
+        "אודות | שרמן ארט וורקס",
+        "הסיפור של שרמן ארט וורקס — סטודיו משפחתי ליודאיקה וזכוכית בעבודת יד בישראל, מסורת של שלושה דורות של אומנים.",
+    ),
+    "custom-orders.html": (
+        "הזמנות בהתאמה אישית | שרמן ארט וורקס",
+        "הזמנות בהתאמה אישית של יודאיקה וזכוכית בעבודת יד — פמוטים, כוסות קידוש, שופרות ומתנות. עיצוב אישי, מיוצר בישראל.",
+    ),
+    "contact.html": (
+        "צור קשר | שרמן ארט וורקס",
+        "צרו קשר עם שרמן ארט וורקס — שאלות על מוצרים, הזמנות בהתאמה אישית ומשלוחים. מענה בוואטסאפ או במייל תוך 24 שעות.",
+    ),
+    "terms.html": (
+        "תקנון ומדיניות משלוחים | שרמן ארט וורקס",
+        "תקנון האתר, תנאי השימוש ומדיניות המשלוחים וההחזרות של שרמן ארט וורקס.",
+    ),
+    "privacy.html": (
+        "מדיניות פרטיות | שרמן ארט וורקס",
+        "מדיניות הפרטיות של שרמן ארט וורקס — איזה מידע נאסף, כיצד הוא משמש וכיצד אנו שומרים עליו.",
+    ),
+    "accessibility.html": (
+        "הצהרת נגישות | שרמן ארט וורקס",
+        "הצהרת הנגישות של אתר שרמן ארט וורקס — המחויבות שלנו לנגישות לכלל המשתמשים.",
+    ),
+}
+
+# sitemap priority per Hebrew page (mirrors the English sitemap).
+SITEMAP_PRIORITY = {
+    "index.html": "0.9", "custom-orders.html": "0.8", "about.html": "0.7",
+    "contact.html": "0.7", "terms.html": "0.3", "privacy.html": "0.3",
+    "accessibility.html": "0.3",
 }
 
 BASE = "https://shermanartworks.com"
@@ -201,13 +261,18 @@ def parse_he_dict(text, obj_marker):
         return {}
     he_open = obj_body.find("{", m.start())
     he_body = _match_brace_block(obj_body, he_open)
+    # Values may be single-quoted, double-quoted, or a backtick template literal
+    # (the site uses backticks for multi-paragraph HTML copy).
     pairs = re.findall(
-        r"(\w+)\s*:\s*(?:'((?:[^'\\]|\\.)*)'|\"((?:[^\"\\]|\\.)*)\")",
+        r"(\w+)\s*:\s*(?:'((?:[^'\\]|\\.)*)'"
+        r"|\"((?:[^\"\\]|\\.)*)\""
+        r"|`((?:[^`\\]|\\.)*)`)",
         he_body,
+        re.S,
     )
     out = {}
-    for key, sq, dq in pairs:
-        out[key] = _unescape(sq if sq else dq)
+    for key, sq, dq, bt in pairs:
+        out[key] = _unescape(sq or dq or bt)
     return out
 
 
@@ -226,6 +291,56 @@ def norm(s):
     """Collapse whitespace so a static card's text matches the source string even
     if the card builder normalised spaces/newlines."""
     return re.sub(r"\s+", " ", s or "").strip()
+
+
+def esc_html(s):
+    """Mirror site.js escapeHtml() — & < > only."""
+    return (s or "").replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
+
+
+def parse_sections(src):
+    """Read the page's `var SECTIONS = [...]` list."""
+    m = re.search(r"SECTIONS\s*=\s*\[([^\]]*)\]", src)
+    if not m:
+        return []
+    return re.findall(r"'([^']+)'|\"([^\"]+)\"", m.group(1)) and [
+        a or b for a, b in re.findall(r"'([^']+)'|\"([^\"]+)\"", m.group(1))
+    ]
+
+
+def render_policy(kind, t, sections):
+    """Replicate renderTerms / renderPrivacy / renderA11y in Hebrew.
+
+    Headings/meta go through escapeHtml (text); callout/intro/section bodies are
+    raw HTML in the dictionary and are inserted verbatim — exactly as the JS does.
+    """
+    if kind == "terms":
+        html = "<h1>%s</h1>" % esc_html(t.get("terms_h1", ""))
+        if t.get("terms_subtitle"):
+            html += '<p class="legal-subtitle">%s</p>' % esc_html(t["terms_subtitle"])
+        html += '<p class="legal-meta">%s</p>' % esc_html(t.get("terms_updated", ""))
+        html += '<div class="terms-callout">%s</div>' % t.get("terms_callout", "")
+        for s in sections:
+            html += "<h2>%s</h2><div>%s</div>" % (
+                esc_html(t.get(s + "_h", "")), t.get(s + "_b", ""))
+        return html
+
+    if kind == "privacy":
+        html = "<h1>%s</h1>" % esc_html(t.get("privacy_h1", ""))
+        html += '<p class="privacy-meta">%s</p>' % esc_html(t.get("privacy_updated", ""))
+        html += "<div>%s</div>" % t.get("privacy_intro", "")
+        for s in sections:
+            html += "<h2>%s</h2><div>%s</div>" % (
+                esc_html(t.get(s + "_h", "")), t.get(s + "_b", ""))
+        return html
+
+    # a11y
+    html = "<h1>%s</h1>" % esc_html(t.get("a11y_h1", ""))
+    html += '<p class="legal-meta">%s</p>' % esc_html(t.get("a11y_updated", ""))
+    for s in sections:
+        html += "<h2>%s</h2><div>%s</div>" % (
+            esc_html(t.get("a11y_%s_h" % s, "")), t.get("a11y_%s_b" % s, ""))
+    return html
 
 
 def _first(blob, field):
@@ -328,10 +443,23 @@ def translate_page(page):
         val = dict_he[key]
         el.clear()
         if key in RICH_KEYS:
-            for node in BeautifulSoup(val, "html.parser").contents:
+            for node in list(BeautifulSoup(val, "html.parser").contents):
                 el.append(node)
         else:
             el.append(val)
+
+    # 1a) policy pages: rebuild the legal <main> body in Hebrew, replicating the
+    #     page's JS render fn so the no-JS/crawler view carries the legal text.
+    if page in POLICY:
+        cfg = POLICY[page]
+        container = soup.find(id=cfg["container"])
+        if container is not None:
+            body_html = render_policy(cfg["kind"], dict_he, parse_sections(src))
+            container.clear()
+            # list() is required: append() detaches the node from the temp soup,
+            # so iterating .contents directly would mutate it and skip elements.
+            for node in list(BeautifulSoup(body_html, "html.parser").contents):
+                container.append(node)
 
     # 2) product cards — join each card to its product by NAME (stable), then take
     #    Hebrew name + first-line description straight from PRODUCTS (source of
@@ -479,7 +607,7 @@ def patch_english_pages():
     """Surgical raw-text edits on the live English pages (no bs4 re-serialization,
     so diffs stay minimal): add bidirectional hreflang after the canonical link,
     and route the עברית toggle to the /he/ twin. Idempotent."""
-    for page in SHOP_PAGES:
+    for page in PAGES:
         path = os.path.join(ROOT, page)
         with open(path, "r", encoding="utf-8") as f:
             txt = f.read()
@@ -514,36 +642,40 @@ def patch_english_pages():
 
 
 def update_sitemap():
-    """Add the /he/ URLs to sitemap.xml (idempotent)."""
+    """Ensure every /he/ URL is listed in sitemap.xml. Idempotent per URL, so it
+    also backfills pages added after the first run."""
     path = os.path.join(ROOT, "sitemap.xml")
     with open(path, "r", encoding="utf-8") as f:
         xml = f.read()
-    if "/he/" in xml:
-        print("sitemap already has /he/ URLs — skipped")
+    missing = [p for p in PAGES if "<loc>%s</loc>" % he_url(p) not in xml]
+    if not missing:
+        print("sitemap already lists all %d /he/ URLs" % len(PAGES))
         return
-    entries = ["\n  <!-- Hebrew (/he/) pages -->"]
-    for page in SHOP_PAGES:
-        loc = he_url(page)
-        pri = "0.9" if page == "index.html" else "0.8"
+    entries = []
+    if "Hebrew (/he/) pages" not in xml:
+        entries.append("\n  <!-- Hebrew (/he/) pages -->")
+    for page in missing:
+        pri = SITEMAP_PRIORITY.get(page, "0.8")
+        freq = "yearly" if pri == "0.3" else "weekly"
         entries.append(
-            "  <url>\n    <loc>%s</loc>\n    <changefreq>weekly</changefreq>\n"
-            "    <priority>%s</priority>\n  </url>" % (loc, pri)
+            "  <url>\n    <loc>%s</loc>\n    <changefreq>%s</changefreq>\n"
+            "    <priority>%s</priority>\n  </url>" % (he_url(page), freq, pri)
         )
     block = "\n".join(entries) + "\n\n"
     xml = xml.replace("</urlset>", block + "</urlset>")
     with open(path, "w", encoding="utf-8", newline="\n") as f:
         f.write(xml)
-    print("added %d /he/ URLs to sitemap.xml" % len(SHOP_PAGES))
+    print("added %d /he/ URL(s) to sitemap.xml" % len(missing))
 
 
 def main():
     os.makedirs(HE_DIR, exist_ok=True)
-    for page in SHOP_PAGES:
+    for page in PAGES:
         out = translate_page(page)
         with open(os.path.join(HE_DIR, page), "w", encoding="utf-8", newline="\n") as f:
             f.write(out)
         print("wrote he/%s" % page)
-    print("\n%d Hebrew pages generated in %s" % (len(SHOP_PAGES), HE_DIR))
+    print("\n%d Hebrew pages generated in %s" % (len(PAGES), HE_DIR))
     print("\n-- patching English pages --")
     patch_english_pages()
     print("\n-- sitemap --")
