@@ -236,7 +236,7 @@
       "Adama_pamotim_3_qgzseu",
       "Adama_pamotim_2_nop3ln"
     ],
-    "tray_addon": {"id": "round-white-silver-plated-glass-tray", "name_en": "Matching Round White Silver-Plated Glass Tray", "name_he": "מגש זכוכית לבן עגול תואם בציפוי כסף", "measurements": "30 × 18 cm", "regular_price_ils": 510, "bundle_price_ils": 406, "photo": "White_round_tray_udmwyk", "set_photo": "Adama_pamotim_2_nop3ln"},
+    "tray_addon": {"id": "round-white-silver-plated-glass-tray", "name_en": "Matching Round White Silver-Plated Glass Tray", "name_he": "מגש זכוכית לבן עגול תואם בציפוי כסף", "measurements": "", "regular_price_ils": 510, "bundle_price_ils": 406, "photo": "White_round_tray_udmwyk", "set_photo": "Adama_pamotim_2_nop3ln"},
     "require_size_selection": true,
     "personalisable": false
   },
@@ -427,11 +427,11 @@
     "pages": ["trays-bowls.html"],
     "name_en": "Round White Silver-Plated Glass Tray",
     "name_he": "מגש זכוכית לבן עגול בציפוי כסף",
-    "description_en": "Handmade round white glass tray finished with 925 sterling-silver plating. Measures 30 × 18 cm and is made to order in our studio in Israel.",
-    "description_he": "מגש זכוכית לבן עגול בעבודת יד בציפוי כסף סטרלינג 925. מידותיו 30 × 18 ס״מ והוא מיוצר לפי הזמנה בסטודיו שלנו בישראל.",
+    "description_en": "Handmade round white glass tray finished with 925 sterling-silver plating, made to order in our studio in Israel.",
+    "description_he": "מגש זכוכית לבן עגול בעבודת יד בציפוי כסף סטרלינג 925, מיוצר לפי הזמנה בסטודיו שלנו בישראל.",
     "color_en": "Round White",
     "color_he": "לבן עגול",
-    "measurements": "30cm × 18cm",
+    "measurements": "",
     "price_ils": 510,
     "bundle_price_ils": 406,
     "bundle_with_family_id": "silver-plated-glass-candlesticks",

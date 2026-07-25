@@ -370,12 +370,37 @@ def build_product_records():
             recs[norm(name_en)] = {
                 "name_he": _first(window, "name_he"),
                 "desc_he": _first(window, "description_he"),
+                "color_he": _first(window, "color_he"),
             }
     return recs
 
 
 T_SITE_HE = parse_he_dict(read(os.path.join(ROOT, "js/site.js")), "const T_SITE")
 T_SITE_EN = parse_he_dict(read(os.path.join(ROOT, "js/site.js")), "const T_SITE", "en")
+
+# ProductGroup headings are page-level copy, not product copy, so they have no
+# name_he/description_he to borrow from PRODUCTS. Keyed by productGroupID.
+PRODUCT_GROUP_HE = {
+    "silver-plated-glass-candlesticks": {
+        "name": "פמוטי זכוכית מצופי כסף",
+        "description": "זוג פמוטי זכוכית בעבודת יד בציפוי כסף סטרלינג 925, "
+                       "זמין בשבעה צבעים ובשלושה גבהים.",
+    },
+    "silver-plated-glass-trays": {
+        "name": "מגשי זכוכית בציפוי כסף 925",
+        "description": "מגשי זכוכית בעבודת יד בציפוי כסף סטרלינג 925, "
+                       "בשבעה עיצובים מתואמים.",
+    },
+}
+
+
+def he_units(value):
+    """cm → ס״מ inside a schema size string ("30 × 18 cm", "S (14–18 cm)")."""
+    if isinstance(value, list):
+        return [he_units(v) for v in value]
+    if isinstance(value, str):
+        return re.sub(r"(\d)\s*cm\b", "\\1 ס״מ", value)
+    return value
 
 
 def localize_jsonld(txt, en2he):
@@ -401,6 +426,26 @@ def localize_jsonld(txt, en2he):
             return en2he[s]
         return s
 
+    def tr_variant(node):
+        """A ProductGroup variant describes a product the Hebrew reader sees in
+        Hebrew, so its name/description/color come from PRODUCTS rather than
+        being left in English. Joined on the English name, same key as the
+        static cards. Offers are left alone — prices and the seller/shipping/
+        return @id refs are language-neutral, so the /he/ page inherits the
+        English page's full merchant-listing shape for free."""
+        rec = PRODUCTS_HE.get(norm(node.get("name")))
+        if not rec:
+            return
+        if rec.get("name_he"):
+            node["name"] = rec["name_he"]
+            hits[0] += 1
+        if rec.get("desc_he"):
+            node["description"] = rec["desc_he"]
+        if rec.get("color_he") and node.get("color"):
+            node["color"] = rec["color_he"]
+        if node.get("size"):
+            node["size"] = he_units(node["size"])
+
     def walk(node):
         if isinstance(node, dict):
             ty = node.get("@type")
@@ -413,6 +458,15 @@ def localize_jsonld(txt, en2he):
                 node["text"] = tr(node.get("text"))
             elif ty in ("FAQPage", "HowTo"):
                 node["inLanguage"] = "he"
+            elif ty == "ProductGroup":
+                group = PRODUCT_GROUP_HE.get(node.get("productGroupID"))
+                if group:
+                    node["name"] = group["name"]
+                    node["description"] = group["description"]
+                    node["inLanguage"] = "he"
+                    hits[0] += 1
+                for variant in node.get("hasVariant", []):
+                    tr_variant(variant)
             for v in node.values():
                 walk(v)
         elif isinstance(node, list):
