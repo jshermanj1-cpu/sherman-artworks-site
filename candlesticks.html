@@ -1110,13 +1110,33 @@ const PRODUCTS = [
     `;
   }
 
+  // Display order is shuffled once per page load so no single colour keeps the
+  // top-left slot. Cached per section: renderProducts() also runs on every
+  // currency and language toggle, and reshuffling there would move the grid
+  // under whoever is reading it. The baked static markup keeps its fixed
+  // order, so crawlers (and no-JS readers) still see a stable page.
+  const sectionOrder = {};
+
+  function shuffle(items) {
+    const a = items.slice();
+    for (let i = a.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [a[i], a[j]] = [a[j], a[i]];
+    }
+    return a;
+  }
+
   function renderProducts() {
     for (const sectionKey of SECTION_KEYS) {
       const grid = document.getElementById(`grid-${sectionKey}`);
       if (!grid) continue;
       const ids = SECTION_PRODUCT_IDS[sectionKey] || [];
-      const items = PRODUCTS.map((p, idx) => ({ p, idx })).filter(({ p }) => ids.includes(p.id));
-      grid.innerHTML = items.map(({ p, idx }) => buildCard(p, idx)).join('');
+      if (!sectionOrder[sectionKey]) {
+        sectionOrder[sectionKey] = shuffle(
+          PRODUCTS.map((p, idx) => ({ p, idx })).filter(({ p }) => ids.includes(p.id))
+        );
+      }
+      grid.innerHTML = sectionOrder[sectionKey].map(({ p, idx }) => buildCard(p, idx)).join('');
     }
   }
 
