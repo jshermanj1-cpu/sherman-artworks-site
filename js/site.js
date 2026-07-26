@@ -7,6 +7,18 @@
 const WA_NUMBER = '972523482278';
 const CDN = 'https://res.cloudinary.com/doesupaf9/image/upload';
 
+// Backend that signs HYP Pay requests and verifies completed transactions.
+// With this empty, the result pages report an order as awaiting confirmation
+// rather than claiming it succeeded, because a redirect back from a payment
+// page proves nothing on its own.
+const PAYMENT_API = 'https://sherman-payments.shermanartworks.workers.dev';
+
+// Master switch for card payment in the UI. Stays false until the HYP terminal
+// credentials are live: the backend is deployed and reachable, but it cannot
+// create a payment page yet, so a visible Pay button would be a button that
+// always fails. WhatsApp ordering is unaffected either way.
+const PAYMENTS_ENABLED = false;
+
 // ── SHARED TRANSLATIONS (T_SITE) ───────────────────────────────
 const T_SITE = {
   en: {
@@ -63,6 +75,7 @@ const T_SITE = {
     add_cart:            'Add to Cart',
     color_note:          '* Colors may appear slightly different in person, as each item is handmade.',
     cart_title:          'Cart',
+    cart_subtotal:       'Subtotal',
     cart_total:          'Total',
     cart_checkout:       'Order on WhatsApp',
     cart_review:         'Review order →',
@@ -124,6 +137,7 @@ const T_SITE = {
     add_cart:            'הוסף לסל',
     color_note:          '* הצבעים עשויים להראות מעט שונים במציאות, מכיוון שכל פריט נעשה בעבודת יד.',
     cart_title:          'עגלה',
+    cart_subtotal:       'סכום ביניים',
     cart_total:          'סה"כ',
     cart_checkout:       'הזמינו ב-WhatsApp',
     cart_review:         'לסיכום הזמנה ←',
@@ -204,6 +218,10 @@ function setCurrency(cur) {
   if (btnUSD) btnUSD.classList.toggle('active', cur === 'USD');
   if (typeof renderProducts === 'function') renderProducts();
   updatePrices();
+  // Cart surfaces quote prices too, and international shipping is converted from
+  // USD - without this the drawer and checkout keep the old currency until the
+  // next render for some other reason.
+  if (typeof renderShipping === 'function') renderShipping();
   localStorage.setItem('sa_cur', cur);
 }
 
@@ -236,6 +254,7 @@ function setLang(l) {
   if (typeof renderTerms    === 'function') renderTerms();
   if (typeof renderShipping === 'function') renderShipping();
   if (typeof renderA11y     === 'function') renderA11y();
+  if (typeof renderPayment  === 'function') renderPayment();
   if (typeof renderCartDrawer === 'function') renderCartDrawer();
   if (typeof renderModal === 'function' && typeof currentModalIdx !== 'undefined' && currentModalIdx != null) renderModal();
 }

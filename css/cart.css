@@ -466,7 +466,249 @@ html[dir="rtl"] .checkout-table .col-price { text-align: left; }
   font-size: 0.92rem;
 }
 
+/* ── SHIPPING + DELIVERY DETAILS ───────────────────────────────── */
+
+/* Secondary money rows - subtotal and shipping sit quieter than the total. */
+.cart-sub-row,
+.checkout-sub-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--brown);
+}
+.cart-sub-row { font-size: 0.8rem; }
+.checkout-sub-row { font-size: 0.88rem; padding: 0.35rem 0.5rem; }
+
+/* The total row carried the divider when it followed the table directly; with
+   subtotal and shipping between them the divider belongs on the first of those. */
+.checkout-sub-row:first-of-type { border-top: 1px solid var(--border); padding-top: 0.75rem; }
+.checkout-total-row { border-top-width: 1px; }
+
+.checkout-block { margin-bottom: 1.75rem; }
+
+.checkout-block-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--dark);
+  margin-bottom: 0.5rem;
+}
+
+.checkout-block-note {
+  font-size: 0.8rem;
+  color: var(--footer-text);
+  margin-bottom: 0.9rem;
+  line-height: 1.5;
+}
+
+.ship-zone-row { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+
+.ship-zone {
+  flex: 1 1 10rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.7rem 0.85rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.88rem;
+  color: var(--dark);
+  transition: border-color 0.2s, background 0.2s;
+}
+.ship-zone:hover { border-color: var(--gold); }
+/* Explicit class, not :has(input:checked) - the :has() style is evaluated once at
+   render and is not re-invalidated when the radio changes, which leaves the gold
+   highlight stuck on whichever zone was checked when the block was built.
+   syncShipZoneUi() in checkout.html keeps this in step with the radios. */
+.ship-zone.selected { border-color: var(--gold); background: rgba(0, 0, 0, 0.02); }
+.ship-zone input { accent-color: var(--gold); }
+.ship-zone-price { margin-inline-start: auto; font-weight: 700; color: var(--brown); }
+
+.addr-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem 1rem;
+}
+.addr-field { display: flex; flex-direction: column; gap: 0.3rem; }
+.addr-field-wide { grid-column: 1 / -1; }
+
+.addr-field label {
+  font-size: 0.76rem;
+  color: var(--brown);
+  letter-spacing: 0.02em;
+}
+
+.addr-field input {
+  padding: 0.55rem 0.7rem;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font-size: 0.88rem;
+  font-family: var(--ff-body);
+  color: var(--dark);
+  background: #fff;
+}
+.addr-field input:focus {
+  outline: none;
+  border-color: var(--gold);
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.04);
+}
+
+/* ── PAY BY CARD ───────────────────────────────────────────────── */
+
+.checkout-pay-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  width: 100%;
+  padding: 0.9rem 1rem;
+  background: var(--dark);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-family: var(--ff-body);
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  transition: background 0.2s, opacity 0.2s;
+}
+.checkout-pay-btn:hover { background: var(--brown); }
+.checkout-pay-btn:disabled,
+.checkout-pay-btn.busy { opacity: 0.6; cursor: default; }
+.checkout-pay-btn.busy:hover { background: var(--dark); }
+
+.checkout-pay-secure {
+  margin-top: 0.6rem;
+  font-size: 0.76rem;
+  line-height: 1.5;
+  color: var(--footer-text);
+  text-align: center;
+}
+
+.checkout-pay-error {
+  margin-top: 0.75rem;
+  padding: 0.65rem 0.85rem;
+  border: 1px solid #d9a99a;
+  background: #fdf4f1;
+  border-radius: 6px;
+  color: #8f3f2a;
+  font-size: 0.83rem;
+  line-height: 1.5;
+}
+
+/* "or" divider between paying and messaging */
+.checkout-or {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin: 1.35rem 0 1rem;
+  color: var(--footer-text);
+  font-size: 0.78rem;
+}
+.checkout-or::before,
+.checkout-or::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+
+.addr-req { color: var(--brown); font-weight: 700; }
+
+.addr-req-note {
+  grid-column: 1 / -1;
+  margin-top: 0.15rem;
+  font-size: 0.74rem;
+  color: var(--footer-text);
+}
+
+/* Only applied after a failed attempt, never pre-emptively - a form that is red
+   before it has been touched reads as an error the shopper already made. */
+.addr-field.missing input {
+  border-color: #c2705a;
+  background: #fdf7f5;
+}
+.addr-field.missing label { color: #8f3f2a; }
+
+/* ── PAYMENT RESULT PAGES ──────────────────────────────────────── */
+
+.payment-result {
+  max-width: 34rem;
+  margin: 0 auto;
+  padding: 3rem 1rem 4rem;
+  text-align: center;
+}
+
+.payment-icon {
+  width: 3.25rem;
+  height: 3.25rem;
+  margin: 0 auto 1.25rem;
+  color: var(--gold);
+}
+.payment-icon svg { width: 100%; height: 100%; }
+.payment-failed .payment-icon { color: #b4553f; }
+
+.payment-title {
+  font-size: 1.4rem;
+  color: var(--dark);
+  margin-bottom: 0.85rem;
+  line-height: 1.35;
+}
+
+.payment-body {
+  color: var(--brown);
+  font-size: 0.95rem;
+  line-height: 1.65;
+}
+
+.payment-note {
+  color: var(--footer-text);
+  font-size: 0.85rem;
+  line-height: 1.6;
+  margin-top: 0.85rem;
+}
+
+.payment-meta {
+  margin: 1.5rem auto 0;
+  max-width: 22rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.5rem 0.9rem;
+  text-align: start;
+}
+.payment-meta div {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.4rem 0;
+  font-size: 0.85rem;
+}
+.payment-meta div + div { border-top: 1px solid var(--border); }
+.payment-meta span { color: var(--footer-text); }
+.payment-meta strong { color: var(--dark); }
+
+.payment-actions {
+  margin-top: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+.payment-link {
+  color: var(--brown);
+  font-size: 0.85rem;
+  text-decoration: underline;
+}
+.payment-link:hover { color: var(--dark); }
+
+/* The confirming state should read as work in progress, not as an outcome. */
+.payment-checking .payment-icon { color: var(--brown); opacity: 0.55; }
+
 @media (max-width: 480px) {
   .checkout-section { padding: 1.5rem 1rem 3.5rem; }
   .checkout-table th, .checkout-table td { font-size: 0.82rem; padding: 0.55rem 0.35rem; }
+  .addr-grid { grid-template-columns: 1fr; }
+  .payment-title { font-size: 1.2rem; }
 }

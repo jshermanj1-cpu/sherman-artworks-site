@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Payment Not Completed - Sherman Art Works | Handmade Glass Judaica</title>
+  <meta name="description" content="Your Sherman Art Works payment was not completed." />
+  <meta name="robots" content="noindex, nofollow" />
+
+  <link rel="icon" type="image/png" sizes="32x32" href="https://res.cloudinary.com/doesupaf9/image/upload/w_32,h_32,c_fill,g_auto,q_auto,f_png/WhatsApp_Image_2026-05-23_at_14.51.54_xv8lbd.jpg" />
+  <link rel="icon" type="image/png" sizes="16x16" href="https://res.cloudinary.com/doesupaf9/image/upload/w_16,h_16,c_fill,g_auto,q_auto,f_png/WhatsApp_Image_2026-05-23_at_14.51.54_xv8lbd.jpg" />
+  <link rel="apple-touch-icon" sizes="180x180" href="https://res.cloudinary.com/doesupaf9/image/upload/w_180,h_180,c_fill,g_auto,q_auto,f_png/WhatsApp_Image_2026-05-23_at_14.51.54_xv8lbd.jpg" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/site.css" />
+  <link rel="stylesheet" href="css/cart.css" />
+</head>
+<body>
+
+<div class="shipping-banner" data-t="shipping_banner" role="note">✦  Custom Orders Are Welcome  ✦</div>
+
+<div class="top-bar">
+  <div class="top-bar-group">
+    <button id="btnEN" class="toggle-btn" onclick="setLang('en')">EN</button>
+    <span class="top-divider">|</span>
+    <button id="btnHE" class="toggle-btn" onclick="setLang('he')">עברית</button>
+  </div>
+  <div class="top-bar-group" data-t="topbar_right" style="font-size:0.72rem;color:var(--footer-text);letter-spacing:0.04em;"></div>
+</div>
+
+<div class="nav-wrap">
+  <nav>
+    <a href="index.html" class="logo" aria-label="Sherman Art Works">
+      <img class="logo-mark" src="https://res.cloudinary.com/doesupaf9/image/upload/h_84,c_fit,q_auto,f_auto/WhatsApp_Image_2026-05-23_at_14.51.54_xv8lbd.jpg" alt="Sherman Art Works logo" width="71" height="84" />
+      <div class="logo-text">
+        <span class="logo-name">Sherman Art Works</span>
+        <span class="logo-sub">Handcrafted Glass &amp; Judaica</span>
+      </div>
+    </a>
+    <ul class="nav-links" role="list">
+      <li class="nav-dropdown">
+        <button type="button" class="nav-dropdown-toggle" aria-expanded="false" aria-haspopup="true" onclick="toggleShopDropdown(event)">
+          <span data-t="nav_shop">Shop</span>
+          <svg class="nav-dropdown-caret" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 4.5 L6 7.5 L9 4.5" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="nav-dropdown-menu" role="menu">
+          <a href="candlesticks.html" role="menuitem" data-t="cat1_title">Candlesticks</a>
+          <a href="horn-goblets.html" role="menuitem" data-t="cat2_title">Horn Goblets</a>
+          <a href="kiddush-cups.html" role="menuitem" data-t="cat3_title">Kiddush Cups</a>
+          <a href="trays-bowls.html" role="menuitem" data-t="cat4_title">Trays &amp; Bowls</a>
+          <a href="business-gifts.html" role="menuitem" data-t="cat5_title">Business Gifts</a>
+          <a href="mezuzahs.html" role="menuitem" data-t="cat6_title">Mezuzahs</a>
+          <a href="shofars.html" role="menuitem" data-t="cat7_title">Shofars</a>
+          <div class="nav-dropdown-divider" role="separator"></div>
+          <a href="index.html#shop" role="menuitem" class="nav-dropdown-all" data-t="footer_all_collections">All Collections</a>
+        </div>
+      </li>
+      <li><a href="custom-orders.html" data-t="nav_custom">Custom Orders</a></li>
+      <li><a href="about.html"         data-t="nav_about">About</a></li>
+      <li><a href="contact.html"       data-t="nav_contact">Contact</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false" onclick="toggleNav()">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+  <div class="mobile-nav" id="mobileNav" aria-hidden="true">
+    <ul role="list">
+      <li class="mobile-shop">
+        <button type="button" class="mobile-shop-toggle" aria-expanded="true" aria-haspopup="true" onclick="toggleMobileShop(event)">
+          <span data-t="nav_shop">Shop</span>
+          <svg viewBox="0 0 12 12" aria-hidden="true"><path d="M3 4.5 L6 7.5 L9 4.5" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="mobile-shop-menu open">
+          <a href="candlesticks.html" onclick="closeMobileNav()" data-t="cat1_title">Candlesticks</a>
+          <a href="horn-goblets.html" onclick="closeMobileNav()" data-t="cat2_title">Horn Goblets</a>
+          <a href="kiddush-cups.html" onclick="closeMobileNav()" data-t="cat3_title">Kiddush Cups</a>
+          <a href="trays-bowls.html" onclick="closeMobileNav()" data-t="cat4_title">Trays &amp; Bowls</a>
+          <a href="business-gifts.html" onclick="closeMobileNav()" data-t="cat5_title">Business Gifts</a>
+          <a href="mezuzahs.html" onclick="closeMobileNav()" data-t="cat6_title">Mezuzahs</a>
+          <a href="shofars.html" onclick="closeMobileNav()" data-t="cat7_title">Shofars</a>
+          <a href="index.html#shop" onclick="closeMobileNav()" class="mobile-shop-all" data-t="footer_all_collections">All Collections</a>
+        </div>
+      </li>
+      <li><a href="custom-orders.html" onclick="closeMobileNav()" data-t="nav_custom">Custom Orders</a></li>
+      <li><a href="about.html"         onclick="closeMobileNav()" data-t="nav_about">About</a></li>
+      <li><a href="contact.html"       onclick="closeMobileNav()" data-t="nav_contact">Contact</a></li>
+    </ul>
+  </div>
+</div>
+
+<section class="checkout-section">
+  <div id="payment-result" class="payment-result payment-failed" aria-live="polite"></div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <a href="index.html" class="logo" aria-label="Sherman Art Works">
+          <img class="logo-mark" src="https://res.cloudinary.com/doesupaf9/image/upload/h_84,c_fit,q_auto,f_auto/WhatsApp_Image_2026-05-23_at_14.51.54_xv8lbd.jpg" alt="Sherman Art Works logo" width="71" height="84" loading="lazy" />
+          <div class="logo-text">
+            <span class="logo-name">Sherman Art Works</span>
+            <span class="logo-sub">Handcrafted Glass &amp; Judaica</span>
+          </div>
+        </a>
+        <p class="footer-tagline" data-t="footer_tagline">Handmade glass art &amp; Judaica from Israel</p>
+        <p class="footer-email"><a href="mailto:shermanartworks@gmail.com">shermanartworks@gmail.com</a></p>
+      </div>
+      <div>
+        <div class="footer-col-title" data-t="footer_col_studio">Studio</div>
+        <ul class="footer-links" role="list">
+          <li><a href="about.html"         data-t="nav_about">About</a></li>
+          <li><a href="contact.html"       data-t="nav_contact">Contact</a></li>
+          <li><a href="privacy.html" data-t="nav_privacy">Privacy Policy</a></li>
+          <li><a href="terms.html" data-t="nav_terms">Terms of Service</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title" data-t="footer_col_help">Help</div>
+        <ul class="footer-links" role="list">
+          <li><a href="faq.html" data-t="nav_faq">FAQ</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span data-t="footer_copy">© 2026 Sherman Art Works. All rights reserved.</span>
+      <span class="footer-badge">✦ <span data-t="footer_badge">Handcrafted in Israel</span></span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/site.js"></script>
+<script src="js/cart.js"></script>
+<script>
+  const T_PAGE = {
+    en: {
+      topbar_right: 'Handcrafted in Israel',
+
+      fail_title:    'Your payment was not completed',
+      fail_body:     'Nothing has been charged and your cart is exactly as you left it. This usually means the payment was cancelled or the card was declined.',
+      fail_retry:    'Back to cart',
+      fail_help:     'If you would rather not pay by card, you can send the same order straight to us on WhatsApp and we will take it from there.',
+      fail_contact:  'Order on WhatsApp',
+      fail_reason:   'Reason given',
+    },
+    he: {
+      topbar_right: 'עבודת יד מישראל',
+
+      fail_title:    'התשלום לא הושלם',
+      fail_body:     'לא בוצע חיוב והעגלה נשארה בדיוק כפי שהייתה. בדרך כלל זה אומר שהתשלום בוטל או שהכרטיס נדחה.',
+      fail_retry:    'חזרה לעגלה',
+      fail_help:     'אם אתם מעדיפים לא לשלם בכרטיס, אפשר לשלוח לנו את אותה הזמנה ישירות ב-WhatsApp ואנחנו נמשיך מכאן.',
+      fail_contact:  'הזמינו ב-WhatsApp',
+      fail_reason:   'הסיבה שהתקבלה',
+    }
+  };
+
+  // HYP Pay puts a description of the decline in CCode / errMsg on the error
+  // redirect. Shown only when present, and never in place of the plain-language
+  // explanation above it.
+  function renderPayment() {
+    var t = T_PAGE[currentLang];
+    var el = document.getElementById('payment-result');
+    if (!el) return;
+    var q = new URLSearchParams(location.search);
+    var reason = q.get('errMsg') || q.get('CCode') || '';
+
+    el.innerHTML =
+      '<div class="payment-icon" aria-hidden="true">' +
+        '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M15 9l-6 6M9 9l6 6"/></svg>' +
+      '</div>' +
+      '<h1 class="payment-title">' + escapeHtml(t.fail_title) + '</h1>' +
+      '<p class="payment-body">' + escapeHtml(t.fail_body) + '</p>' +
+      (reason ? '<div class="payment-meta"><div><span>' + escapeHtml(t.fail_reason) + '</span><strong>' + escapeHtml(reason) + '</strong></div></div>' : '') +
+      '<p class="payment-note">' + escapeHtml(t.fail_help) + '</p>' +
+      '<div class="payment-actions">' +
+        '<a class="btn-gold" href="checkout.html">' + escapeHtml(t.fail_retry) + '</a>' +
+        '<a class="payment-link" href="' + escapeAttr(buildCheckoutWaLink()) + '" target="_blank" rel="noopener noreferrer">' + escapeHtml(t.fail_contact) + '</a>' +
+      '</div>';
+  }
+
+  document.addEventListener('DOMContentLoaded', function () { renderPayment(); });
+</script>
+
+</body>
+</html>

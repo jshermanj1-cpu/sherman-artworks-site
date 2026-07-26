@@ -181,8 +181,91 @@ function getCartCount() {
   return getCart().reduce(function (s, i) { return s + i.qty; }, 0);
 }
 
+// Line items only - shipping is added on top by getOrderTotal().
 function getCartTotal() {
   return getCart().reduce(function (s, i) { return s + i.price_ils * i.qty; }, 0);
+}
+
+// ── SHIPPING ───────────────────────────────────────────────────
+// Never waived, and each rate is authoritative in the currency it is quoted in:
+// ₪35 inside Israel, $45 everywhere else.
+var SHIP_KEY = 'sa_ship';
+var SHIPPING = { IL: { ils: 35 }, INTL: { usd: 45 } };
+
+function getShipZone() {
+  try {
+    var v = localStorage.getItem(SHIP_KEY);
+    if (v === 'IL' || v === 'INTL') return v;
+  } catch (e) {}
+  return null;
+}
+
+function setShipZone(zone) {
+  if (zone !== 'IL' && zone !== 'INTL') return;
+  try { localStorage.setItem(SHIP_KEY, zone); } catch (e) {}
+  document.dispatchEvent(new CustomEvent('sa:shipping-change', { detail: { zone: zone } }));
+}
+
+// Zone applied before the shopper picks one. Hebrew readers are overwhelmingly
+// domestic, English readers are not. Only ever a pre-selection - the picker on
+// checkout.html always shows which zone is currently charged.
+function effectiveShipZone() {
+  return getShipZone() || ((typeof currentLang !== 'undefined' && currentLang === 'he') ? 'IL' : 'INTL');
+}
+
+// Shipping in ILS, because the order total is ILS-native like every other price.
+// International is quoted in USD, so it rides the same usdRate the rest of the
+// site uses; before that rate loads we fall back to the same 3.05/0.98 base as
+// loadUsdRate() rather than to zero, so the total is never understated.
+function getShippingIls() {
+  if (effectiveShipZone() === 'IL') return SHIPPING.IL.ils;
+  var rate = (typeof usdRate === 'number' && usdRate) ? usdRate : (3.05 / 0.98);
+  return Math.round(SHIPPING.INTL.usd * rate);
+}
+
+// The figure as the owner quotes it - "₪35" or "$45".
+function getShippingLabel() {
+  return effectiveShipZone() === 'IL' ? '₪' + SHIPPING.IL.ils : '$' + SHIPPING.INTL.usd;
+}
+
+function getOrderTotal() { return getCartTotal() + getShippingIls(); }
+
+// ── SHIPPING ADDRESS ───────────────────────────────────────────
+// Optional for WhatsApp orders - the owner can still settle details in chat -
+// and required once card payment lands. Inputs are found by their data-ship
+// attribute so the payment step can enforce a required subset without a second
+// source of truth for what the fields are.
+// Field names mirror the HYP Pay customer parameters that prefill its hosted
+// page (ClientName, ClientLName, street, city, email, cell) so the shopper is
+// never asked for the same detail twice. `zip` has no HYP equivalent - it is
+// kept because a parcel cannot be posted without one.
+var ADDR_KEY = 'sa_ship_addr';
+var ADDR_FIELDS = ['fname', 'lname', 'email', 'phone', 'street', 'city', 'zip', 'country'];
+
+function getShippingAddress() {
+  var stored = {};
+  try { stored = JSON.parse(localStorage.getItem(ADDR_KEY)) || {}; } catch (e) { stored = {}; }
+  // Live inputs win: someone who types an address and clicks straight through to
+  // WhatsApp has not fired a change event yet, and that address still has to
+  // reach the order.
+  ADDR_FIELDS.forEach(function (f) {
+    var el = document.querySelector('[data-ship="' + f + '"]');
+    if (el && el.value && el.value.trim()) stored[f] = el.value.trim();
+  });
+  return stored;
+}
+
+function saveShippingAddress() {
+  var addr = getShippingAddress();
+  try { localStorage.setItem(ADDR_KEY, JSON.stringify(addr)); } catch (e) {}
+  return addr;
+}
+
+// Duck-typed hook that site.js already calls on language, currency and
+// exchange-rate changes. Shipping is the one figure that moves with all three.
+function renderShipping() {
+  if (typeof renderCartDrawer === 'function') renderCartDrawer();
+  if (typeof renderCheckout === 'function') renderCheckout();
 }
 
 // Human-readable label for a size variant, e.g. "L · 90-99 cm / 35-39″".
@@ -287,6 +370,15 @@ function buildCheckoutWaLink() {
   if (items.length === 0) return 'https://wa.me/' + WA_NUMBER;
   var lines;
   var total = getCartTotal();
+  var zone = effectiveShipZone();
+  // Address is optional here - whatever the shopper filled in rides along, and
+  // anything missing stays a question for the chat, exactly as before.
+  var addr = getShippingAddress();
+  var addrLabels = l === 'he'
+    ? { fname: 'שם פרטי', lname: 'שם משפחה', email: 'אימייל', phone: 'טלפון', street: 'רחוב', city: 'עיר', zip: 'מיקוד', country: 'מדינה' }
+    : { fname: 'First name', lname: 'Last name', email: 'Email', phone: 'Phone', street: 'Street', city: 'City', zip: 'Postcode', country: 'Country' };
+  var addrLines = ADDR_FIELDS.filter(function (f) { return addr[f]; })
+    .map(function (f) { return '   ' + addrLabels[f] + ': ' + addr[f]; });
   if (l === 'he') {
     lines = ['שלום! אני רוצה להזמין:'];
     items.forEach(function (item) {
@@ -303,7 +395,14 @@ function buildCheckoutWaLink() {
       }
     });
     lines.push('');
-    lines.push('סה"כ: ₪' + total.toLocaleString('en-IL'));
+    lines.push('סכום ביניים: ₪' + total.toLocaleString('en-IL'));
+    lines.push('משלוח (' + (zone === 'IL' ? 'ישראל' : 'בינלאומי') + '): ' + getShippingLabel());
+    lines.push('סה"כ: ₪' + getOrderTotal().toLocaleString('en-IL'));
+    if (addrLines.length) {
+      lines.push('');
+      lines.push('כתובת למשלוח:');
+      addrLines.forEach(function (a) { lines.push(a); });
+    }
     lines.push('');
     lines.push('מה השלב הבא?');
   } else {
@@ -321,7 +420,14 @@ function buildCheckoutWaLink() {
       }
     });
     lines.push('');
-    lines.push('Total: ₪' + total.toLocaleString('en-IL'));
+    lines.push('Subtotal: ₪' + total.toLocaleString('en-IL'));
+    lines.push('Shipping (' + (zone === 'IL' ? 'Israel' : 'International') + '): ' + getShippingLabel());
+    lines.push('Total: ₪' + getOrderTotal().toLocaleString('en-IL'));
+    if (addrLines.length) {
+      lines.push('');
+      lines.push('Shipping address:');
+      addrLines.forEach(function (a) { lines.push(a); });
+    }
     lines.push('');
     lines.push("What's the next step?");
   }
@@ -399,10 +505,27 @@ function renderCartDrawer() {
 </div>`;
   }).join('');
 
-  var totalStr = '₪' + total.toLocaleString('en-IL');
-  if (showUsd) totalStr += ' <span class="cart-price-alt">≈ $' + Math.round(total / rate) + '</span>';
+  var orderTotal = getOrderTotal();
+  var totalStr = '₪' + orderTotal.toLocaleString('en-IL');
+  if (showUsd) totalStr += ' <span class="cart-price-alt">≈ $' + Math.round(orderTotal / rate) + '</span>';
   var totalEl = document.getElementById('cart-total-price');
   if (totalEl) totalEl.innerHTML = totalStr;
+
+  var subEl = document.getElementById('cart-subtotal-price');
+  if (subEl) subEl.textContent = '₪' + total.toLocaleString('en-IL');
+
+  var shipEl = document.getElementById('cart-shipping-price');
+  if (shipEl) shipEl.textContent = getShippingLabel();
+
+  // Name the zone in the label so the shipping figure is never ambiguous about
+  // which destination it is quoting.
+  var shipLabelEl = document.getElementById('cart-shipping-label');
+  if (shipLabelEl) {
+    var zoneName = effectiveShipZone() === 'IL'
+      ? (isHe ? 'ישראל' : 'Israel')
+      : (isHe ? 'בינלאומי' : 'International');
+    shipLabelEl.textContent = (isHe ? 'משלוח' : 'Shipping') + ' · ' + zoneName;
+  }
 
   var waBtn = document.getElementById('cart-wa-checkout');
   if (waBtn) waBtn.href = buildCheckoutWaLink();
@@ -463,6 +586,14 @@ function _injectCartDrawer() {
     '</div>' +
     '<div id="cart-items-list" class="cart-items-list" tabindex="0"></div>' +
     '<div id="cart-drawer-footer" class="cart-drawer-footer" style="display:none">' +
+      '<div class="cart-sub-row">' +
+        '<span data-t="cart_subtotal">Subtotal</span>' +
+        '<span id="cart-subtotal-price">₪0</span>' +
+      '</div>' +
+      '<div class="cart-sub-row">' +
+        '<span id="cart-shipping-label">Shipping</span>' +
+        '<span id="cart-shipping-price">₪0</span>' +
+      '</div>' +
       '<div class="cart-total-row">' +
         '<span data-t="cart_total">Total</span>' +
         '<span id="cart-total-price" class="cart-total-price">₪0</span>' +
@@ -526,4 +657,9 @@ document.addEventListener('DOMContentLoaded', function () {
 document.addEventListener('sa:cart-change', function () {
   updateCartBadge();
   renderCartDrawer();
+});
+
+document.addEventListener('sa:shipping-change', function () {
+  renderCartDrawer();
+  if (typeof renderCheckout === 'function') renderCheckout();
 });

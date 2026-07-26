@@ -107,6 +107,8 @@
 
 <section class="checkout-section">
   <div id="checkout-content"></div>
+  <div id="checkout-details"></div>
+  <div id="checkout-actions"></div>
 </section>
 
 <section class="trust-strip" aria-label="Why order from Sherman Art Works">
@@ -199,7 +201,30 @@
       checkout_col_item:    'Item',
       checkout_col_qty:     'Qty',
       checkout_col_price:   'Price',
+      checkout_subtotal:    'Subtotal',
       checkout_total:       'Total',
+      checkout_ship_title:  'Shipping destination',
+      checkout_ship_il:     'Israel',
+      checkout_ship_intl:   'International',
+      checkout_ship_row:    'Shipping',
+      checkout_addr_title:  'Delivery details',
+      checkout_addr_note:   'Optional - you can also give these over WhatsApp. Filling them in here saves a few messages.',
+      checkout_addr_fname:  'First name',
+      checkout_addr_lname:  'Last name',
+      checkout_addr_email:  'Email',
+      checkout_addr_phone:  'Phone',
+      checkout_addr_street: 'Street address',
+      checkout_addr_city:   'City',
+      checkout_addr_zip:    'Postcode',
+      checkout_addr_country:'Country',
+      checkout_pay_btn:     'Pay by card',
+      checkout_pay_working: 'Taking you to secure payment...',
+      checkout_pay_secure:  'Card details are entered on our payment provider\'s secure page. We never see or store them.',
+      checkout_pay_missing: 'Please fill in the delivery details highlighted below so we know where to send your order.',
+      checkout_pay_failed:  'We could not start the payment just now. Please try again, or send the order on WhatsApp and we will take it from there.',
+      checkout_pay_changed: 'The total for this order is {total}. We have updated it above so you can check it. Press Pay by card again to continue with that amount.',
+      checkout_pay_or:      'or',
+      checkout_addr_required: 'Required to pay by card',
       checkout_wa_btn:      'Order on WhatsApp',
       checkout_note:        '✦  Handcrafted in Israel  ·  Made to order, ships within 14 business days  ·  International shipping $45 · Israel ₪35',
       checkout_clear:       'Clear cart',
@@ -224,7 +249,30 @@
       checkout_col_item:    'פריט',
       checkout_col_qty:     'כמות',
       checkout_col_price:   'מחיר',
+      checkout_subtotal:    'סכום ביניים',
       checkout_total:       'סה"כ',
+      checkout_ship_title:  'יעד המשלוח',
+      checkout_ship_il:     'ישראל',
+      checkout_ship_intl:   'בינלאומי',
+      checkout_ship_row:    'משלוח',
+      checkout_addr_title:  'פרטי משלוח',
+      checkout_addr_note:   'לא חובה - אפשר גם למסור ב-WhatsApp. מילוי כאן חוסך כמה הודעות.',
+      checkout_addr_fname:  'שם פרטי',
+      checkout_addr_lname:  'שם משפחה',
+      checkout_addr_email:  'אימייל',
+      checkout_addr_phone:  'טלפון',
+      checkout_addr_street: 'רחוב ומספר',
+      checkout_addr_city:   'עיר',
+      checkout_addr_zip:    'מיקוד',
+      checkout_addr_country:'מדינה',
+      checkout_pay_btn:     'תשלום בכרטיס אשראי',
+      checkout_pay_working: 'מעבירים אתכם לתשלום מאובטח...',
+      checkout_pay_secure:  'פרטי הכרטיס מוזנים בדף המאובטח של ספק התשלומים. אנחנו לא רואים ולא שומרים אותם.',
+      checkout_pay_missing: 'נא למלא את פרטי המשלוח המסומנים למטה כדי שנדע לאן לשלוח את ההזמנה.',
+      checkout_pay_failed:  'לא הצלחנו להתחיל את התשלום כרגע. אפשר לנסות שוב, או לשלוח את ההזמנה ב-WhatsApp ונמשיך מכאן.',
+      checkout_pay_changed: 'הסכום לתשלום עבור הזמנה זו הוא {total}. עדכנו אותו למעלה כדי שתוכלו לבדוק. לחצו שוב על תשלום בכרטיס אשראי כדי להמשיך עם הסכום הזה.',
+      checkout_pay_or:      'או',
+      checkout_addr_required: 'נדרש לתשלום בכרטיס',
       checkout_wa_btn:      'הזמינו ב-WhatsApp',
       checkout_note:        '✦  בעבודת יד בישראל  ·  מיוצר לפי הזמנה, נמסר למשלוח תוך 14 ימי עסקים  ·  משלוח בארץ 35 ₪ · בינלאומי $45',
       checkout_clear:       'נקה עגלה',
@@ -250,6 +298,9 @@
     var el = document.getElementById('checkout-content');
     if (!el) return;
 
+    var detailsEl = document.getElementById('checkout-details');
+    var actionsEl = document.getElementById('checkout-actions');
+
     if (items.length === 0) {
       el.innerHTML =
         '<div class="checkout-empty">' +
@@ -257,6 +308,9 @@
           '<p>' + escapeHtml(t.checkout_empty_body) + '</p>' +
           '<a href="index.html#shop" class="btn-gold">' + escapeHtml(t.checkout_browse) + '</a>' +
         '</div>';
+      // Nothing to ship, so the address form and order buttons have no meaning.
+      if (detailsEl) { detailsEl.innerHTML = ''; _detailsLang = null; }
+      if (actionsEl) actionsEl.innerHTML = '';
       return;
     }
 
@@ -288,8 +342,10 @@
       '</tr>';
     }).join('');
 
-    var totalStr = '₪' + total.toLocaleString('en-IL');
-    if (showUsd) totalStr += ' <span class="cart-price-alt">≈ $' + Math.round(total / rate) + '</span>';
+    var orderTotal = getOrderTotal();
+    var totalStr = '₪' + orderTotal.toLocaleString('en-IL');
+    if (showUsd) totalStr += ' <span class="cart-price-alt">≈ $' + Math.round(orderTotal / rate) + '</span>';
+    var zoneName = effectiveShipZone() === 'IL' ? t.checkout_ship_il : t.checkout_ship_intl;
 
     el.innerHTML =
       '<table class="checkout-table">' +
@@ -301,20 +357,267 @@
         '</tr></thead>' +
         '<tbody>' + rows + '</tbody>' +
       '</table>' +
+      '<div class="checkout-sub-row">' +
+        '<span>' + escapeHtml(t.checkout_subtotal) + '</span>' +
+        '<span>₪' + total.toLocaleString('en-IL') + '</span>' +
+      '</div>' +
+      '<div class="checkout-sub-row">' +
+        '<span>' + escapeHtml(t.checkout_ship_row) + ' · ' + escapeHtml(zoneName) + '</span>' +
+        '<span>' + escapeHtml(getShippingLabel()) + '</span>' +
+      '</div>' +
       '<div class="checkout-total-row">' +
         '<span>' + escapeHtml(t.checkout_total) + '</span>' +
         '<span class="checkout-total-price">' + totalStr + '</span>' +
-      '</div>' +
-      '<a class="checkout-wa-btn" href="' + buildCheckoutWaLink() + '" target="_blank" rel="noopener noreferrer"' +
-         ' onclick="if(typeof trackGA4===\'function\')trackGA4(\'begin_checkout\',{currency:\'ILS\',value:' + total + '})">' +
-        _WA_SVG_LG + ' ' + escapeHtml(t.checkout_wa_btn) +
-      '</a>' +
-      '<p class="checkout-note">' + escapeHtml(t.checkout_note) + '</p>' +
-      '<button class="checkout-clear-btn" onclick="clearCart();renderCheckout()">' + escapeHtml(t.checkout_clear) + '</button>';
+      '</div>';
+
+    renderCheckoutDetails();
+
+    if (actionsEl) {
+      // Card payment leads when it is switched on, with WhatsApp kept directly
+      // beneath it rather than hidden - custom pieces still start as a chat for
+      // a lot of people, and that path was the whole shop until now.
+      var payBlock = (typeof PAYMENTS_ENABLED !== 'undefined' && PAYMENTS_ENABLED && typeof PAYMENT_API !== 'undefined' && PAYMENT_API)
+        ? '<button type="button" id="payNowBtn" class="checkout-pay-btn" onclick="payNow()">' +
+            _LOCK_SVG + ' <span id="payNowLabel">' + escapeHtml(t.checkout_pay_btn) + '</span>' +
+          '</button>' +
+          '<p class="checkout-pay-secure">' + escapeHtml(t.checkout_pay_secure) + '</p>' +
+          '<div id="payError" class="checkout-pay-error" role="alert" hidden></div>' +
+          '<div class="checkout-or"><span>' + escapeHtml(t.checkout_pay_or) + '</span></div>'
+        : '';
+
+      actionsEl.innerHTML = payBlock +
+        // href is rebuilt on click: the address form sits above this button and
+        // is not re-rendered as it is typed into, so a link built at render time
+        // would carry a stale (or empty) address.
+        '<a class="checkout-wa-btn" href="' + escapeAttr(buildCheckoutWaLink()) + '" target="_blank" rel="noopener noreferrer"' +
+           ' onclick="saveShippingAddress();this.href=buildCheckoutWaLink();if(typeof trackGA4===\'function\')trackGA4(\'begin_checkout\',{currency:\'ILS\',value:' + total + '})">' +
+          _WA_SVG_LG + ' ' + escapeHtml(t.checkout_wa_btn) +
+        '</a>' +
+        '<p class="checkout-note">' + escapeHtml(t.checkout_note) + '</p>' +
+        '<button class="checkout-clear-btn" onclick="clearCart();renderCheckout()">' + escapeHtml(t.checkout_clear) + '</button>';
+    }
   }
 
+  // Destination picker and the optional address form. Rendered once per language
+  // rather than on every cart change, because blowing away the inputs mid-typing
+  // would lose whatever the shopper had entered.
+  var _detailsLang = null;
+  function renderCheckoutDetails() {
+    var el = document.getElementById('checkout-details');
+    if (!el) return;
+    if (_detailsLang === currentLang && el.children.length) return;
+    var saved = saveShippingAddress();
+    _detailsLang = currentLang;
+    var t = T_PAGE[currentLang];
+    var zone = effectiveShipZone();
+    var payOn = (typeof PAYMENTS_ENABLED !== 'undefined' && PAYMENTS_ENABLED &&
+                 typeof PAYMENT_API !== 'undefined' && PAYMENT_API);
+
+    // Kept aligned with ADDR_FIELDS in cart.js, which mirrors the HYP Pay
+    // customer parameters so these values prefill its hosted page.
+    var fields = [
+      ['fname',   t.checkout_addr_fname,   'text',  'given-name'],
+      ['lname',   t.checkout_addr_lname,   'text',  'family-name'],
+      ['email',   t.checkout_addr_email,   'email', 'email'],
+      ['phone',   t.checkout_addr_phone,   'tel',   'tel'],
+      ['street',  t.checkout_addr_street,  'text',  'street-address'],
+      ['city',    t.checkout_addr_city,    'text',  'address-level2'],
+      ['zip',     t.checkout_addr_zip,     'text',  'postal-code'],
+      ['country', t.checkout_addr_country, 'text',  'country-name']
+    ];
+
+    el.innerHTML =
+      '<div class="checkout-block">' +
+        '<h2 class="checkout-block-title">' + escapeHtml(t.checkout_ship_title) + '</h2>' +
+        '<div class="ship-zone-row" role="radiogroup" aria-label="' + escapeAttr(t.checkout_ship_title) + '">' +
+          '<label class="ship-zone">' +
+            '<input type="radio" name="shipZone" value="IL"' + (zone === 'IL' ? ' checked' : '') + ' onchange="setShipZone(this.value);syncShipZoneUi()" />' +
+            '<span>' + escapeHtml(t.checkout_ship_il) + '</span><span class="ship-zone-price">₪35</span>' +
+          '</label>' +
+          '<label class="ship-zone">' +
+            '<input type="radio" name="shipZone" value="INTL"' + (zone === 'INTL' ? ' checked' : '') + ' onchange="setShipZone(this.value);syncShipZoneUi()" />' +
+            '<span>' + escapeHtml(t.checkout_ship_intl) + '</span><span class="ship-zone-price">$45</span>' +
+          '</label>' +
+        '</div>' +
+      '</div>' +
+      '<div class="checkout-block">' +
+        '<h2 class="checkout-block-title">' + escapeHtml(t.checkout_addr_title) + '</h2>' +
+        '<p class="checkout-block-note">' + escapeHtml(t.checkout_addr_note) + '</p>' +
+        '<div class="addr-grid">' +
+          fields.map(function (f) {
+            var id = 'ship-' + f[0];
+            // Only flagged as required when card payment is actually available.
+            // With WhatsApp as the only route these are genuinely optional, and
+            // marking them otherwise would be a lie that adds friction.
+            var req = payOn && PAY_REQUIRED.indexOf(f[0]) > -1;
+            return '<div class="addr-field' + (f[0] === 'street' ? ' addr-field-wide' : '') + '">' +
+              '<label for="' + id + '">' + escapeHtml(f[1]) +
+                (req ? ' <span class="addr-req" title="' + escapeAttr(t.checkout_addr_required) + '">*</span>' : '') +
+              '</label>' +
+              '<input id="' + id + '" data-ship="' + f[0] + '" type="' + f[2] + '" autocomplete="' + f[3] + '" ' +
+                'value="' + escapeAttr(saved[f[0]] || '') + '" onchange="saveShippingAddress()" ' +
+                'oninput="this.parentElement.classList.remove(\'missing\')" />' +
+            '</div>';
+          }).join('') +
+          (payOn ? '<p class="addr-req-note"><span class="addr-req">*</span> ' + escapeHtml(t.checkout_addr_required) + '</p>' : '') +
+        '</div>' +
+      '</div>';
+
+    syncShipZoneUi();
+  }
+
+  var _LOCK_SVG = '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="10.5" width="16" height="10" rx="2"/><path d="M8 10.5V7a4 4 0 0 1 8 0v3.5"/></svg>';
+
+  // Optional for a WhatsApp order, required to charge a card: without these we
+  // do not know where the parcel goes. `zip` is deliberately not here - plenty
+  // of countries do not use postcodes, and refusing those orders would cost
+  // more than a missing postcode does.
+  var PAY_REQUIRED = ['fname', 'lname', 'email', 'phone', 'street', 'city', 'country'];
+
+  function _payFieldsMissing() {
+    var addr = getShippingAddress();
+    return PAY_REQUIRED.filter(function (f) { return !addr[f]; });
+  }
+
+  function _markMissing(missing) {
+    document.querySelectorAll('.addr-field').forEach(function (el) { el.classList.remove('missing'); });
+    missing.forEach(function (f) {
+      var input = document.querySelector('[data-ship="' + f + '"]');
+      if (input && input.parentElement) input.parentElement.classList.add('missing');
+    });
+    var first = missing.length ? document.querySelector('[data-ship="' + missing[0] + '"]') : null;
+    if (first) first.focus();
+  }
+
+  function _payError(msg) {
+    var box = document.getElementById('payError');
+    if (!box) return;
+    if (!msg) { box.hidden = true; box.textContent = ''; return; }
+    box.hidden = false;
+    box.textContent = msg;
+  }
+
+  function _payBusy(busy) {
+    var btn = document.getElementById('payNowBtn');
+    var label = document.getElementById('payNowLabel');
+    var t = T_PAGE[currentLang];
+    if (!btn || !label) return;
+    btn.disabled = busy;
+    btn.classList.toggle('busy', busy);
+    label.textContent = busy ? t.checkout_pay_working : t.checkout_pay_btn;
+  }
+
+  // Set once the backend has told us the authoritative total for this cart, so
+  // the second attempt is checked against that figure rather than the stale one
+  // this page rendered. Cleared whenever the cart or destination changes, since
+  // that makes the old figure meaningless.
+  var _payExpectedTotal = null;
+
+  // Rewrites the visible totals with the backend's, so the shopper is looking at
+  // the amount they are about to be charged rather than the one that drifted.
+  function _showServerTotals(d) {
+    var t = T_PAGE[currentLang];
+    var rows = document.querySelectorAll('.checkout-sub-row');
+    if (rows.length >= 2) {
+      rows[0].lastElementChild.textContent = '₪' + Number(d.subtotal_ils).toLocaleString('en-IL');
+      rows[1].lastElementChild.textContent = '₪' + Number(d.shipping_ils).toLocaleString('en-IL');
+    }
+    var totalEl = document.querySelector('.checkout-total-price');
+    if (totalEl) {
+      // Same shape as renderCheckout builds, so the corrected figure does not
+      // suddenly lose the USD approximation next to it.
+      var rate = (typeof usdRate === 'number') ? usdRate : null;
+      var showUsd = rate && (typeof currentCurrency === 'undefined' || currentCurrency !== 'ILS');
+      var str = '₪' + Number(d.total_ils).toLocaleString('en-IL');
+      if (showUsd) str += ' <span class="cart-price-alt">≈ $' + Math.round(d.total_ils / rate) + '</span>';
+      totalEl.innerHTML = str;
+    }
+    var label = document.getElementById('payNowLabel');
+    if (label) label.textContent = t.checkout_pay_btn;
+  }
+
+  function payNow() {
+    var t = T_PAGE[currentLang];
+    saveShippingAddress();
+    _payError('');
+
+    var missing = _payFieldsMissing();
+    if (missing.length) {
+      _markMissing(missing);
+      _payError(t.checkout_pay_missing);
+      return;
+    }
+    _markMissing([]);
+    _payBusy(true);
+
+    // Prices are deliberately not sent. The backend reprices the whole cart from
+    // the catalogue, so anything we put here would be ignored anyway - and the
+    // shorter payload is one less thing that can disagree with the truth.
+    var payload = {
+      zone: effectiveShipZone(),
+      lang: currentLang,
+      address: getShippingAddress(),
+      // Not a price we are asking to be charged - the backend ignores it for
+      // pricing and only checks it against the catalogue, so that a total which
+      // has drifted stops the order instead of quietly charging something else.
+      expected_total_ils: _payExpectedTotal == null ? getOrderTotal() : _payExpectedTotal,
+      items: getCart().map(function (i) {
+        return { slug: i.slug, qty: i.qty, meta: i.meta || null };
+      })
+    };
+
+    if (typeof trackGA4 === 'function') {
+      trackGA4('begin_checkout', { currency: 'ILS', value: getOrderTotal(), payment_type: 'card' });
+    }
+
+    fetch(PAYMENT_API + '/create-payment', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    })
+      .then(function (r) { return r.json().then(function (d) { return { ok: r.ok, data: d }; }); })
+      .then(function (res) {
+        // The catalogue disagrees with what this page displayed. Show the real
+        // figure and make the shopper press Pay again, so nobody is sent to a
+        // payment page for an amount they were never shown.
+        if (res.data && res.data.error === 'total_changed') {
+          _payExpectedTotal = res.data.total_ils;
+          _payBusy(false);
+          _payError(t.checkout_pay_changed.replace('{total}', '₪' + Number(res.data.total_ils).toLocaleString('en-IL')));
+          _showServerTotals(res.data);
+          return;
+        }
+        if (res.ok && res.data && res.data.payment_url) {
+          // Cart is left intact on purpose: it is cleared only once a payment is
+          // verified, so abandoning the HYP page brings the shopper back to a
+          // basket that still has their things in it.
+          window.location.href = res.data.payment_url;
+          return;
+        }
+        _payBusy(false);
+        _payError(t.checkout_pay_failed);
+      })
+      .catch(function () {
+        _payBusy(false);
+        _payError(t.checkout_pay_failed);
+      });
+  }
+
+  // Mirrors radio state onto the label. See the .ship-zone.selected note in
+  // cart.css for why this is not left to :has(input:checked).
+  function syncShipZoneUi() {
+    document.querySelectorAll('.ship-zone').forEach(function (label) {
+      var input = label.querySelector('input');
+      label.classList.toggle('selected', !!(input && input.checked));
+    });
+  }
+
+  // A confirmed total only describes the cart it was quoted for.
+  function _clearPayExpectation() { _payExpectedTotal = null; }
+
   document.addEventListener('DOMContentLoaded', function () { renderCheckout(); });
-  document.addEventListener('sa:cart-change', function () { renderCheckout(); });
+  document.addEventListener('sa:cart-change', function () { _clearPayExpectation(); renderCheckout(); });
+  document.addEventListener('sa:shipping-change', _clearPayExpectation);
 </script>
 
 <script type="application/ld+json">
