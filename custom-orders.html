@@ -61,6 +61,10 @@
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 1.5rem;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      counter-reset: step;
     }
 .step {
       text-align: center;
@@ -70,7 +74,11 @@
       border-radius: 4px;
       position: relative;
     }
-.step-num {
+/* Step number, from the list order rather than hardcoded markup. */
+.step::before {
+      counter-increment: step;
+      content: counter(step, decimal-leading-zero);
+      display: block;
       font-family: var(--ff-disp);
       font-size: 2rem; font-weight: 600;
       color: #a07030;
@@ -321,32 +329,31 @@
     <p  class="section-sub"    data-t="steps_sub">From first message to finished piece, simple, personal and transparent.</p>
   </div>
 
-  <div class="steps-grid">
-    <div class="step">
-      <div class="step-num" aria-hidden="true">01</div>
+  <!-- A numbered process is an ordered list. The step numbers come from a CSS
+       counter rather than hardcoded "01".."04" so they cannot fall out of step
+       with the markup, and the HowTo JSON-LD is generated from the same keys. -->
+  <ol class="steps-grid">
+    <li class="step">
       <span class="step-icon" aria-hidden="true">💬</span>
       <div class="step-title" data-t="step1_title">Tell Us Your Vision</div>
       <p   class="step-body"  data-t="step1_body">Reach out via WhatsApp or email. Share your idea, your occasion, your inspiration, however rough. There are no wrong answers.</p>
-    </div>
-    <div class="step">
-      <div class="step-num" aria-hidden="true">02</div>
+    </li>
+    <li class="step">
       <span class="step-icon" aria-hidden="true">🎨</span>
       <div class="step-title" data-t="step2_title">We Design Together</div>
       <p   class="step-body"  data-t="step2_body">We discuss size, shape, colour and finish. We may share photos of similar pieces or material samples to help you choose.</p>
-    </div>
-    <div class="step">
-      <div class="step-num" aria-hidden="true">03</div>
+    </li>
+    <li class="step">
       <span class="step-icon" aria-hidden="true">🔥</span>
       <div class="step-title" data-t="step3_title">Handcrafted for You</div>
       <p   class="step-body"  data-t="step3_body">Your piece is made entirely by hand in our studio in Israel, blown, fused and finished to your exact specifications.</p>
-    </div>
-    <div class="step">
-      <div class="step-num" aria-hidden="true">04</div>
+    </li>
+    <li class="step">
       <span class="step-icon" aria-hidden="true">📦</span>
       <div class="step-title" data-t="step4_title">Delivered Worldwide</div>
       <p   class="step-body"  data-t="step4_body">Carefully packed and shipped to you anywhere in the world. International shipping $45 · Israel ₪35. Typical lead time: 2-4 weeks.</p>
-    </div>
-  </div>
+    </li>
+  </ol>
 </section>
 
 <!-- ══════════════════════════════════════════════

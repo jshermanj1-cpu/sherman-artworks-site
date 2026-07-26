@@ -58,6 +58,10 @@
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 1.5rem;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      counter-reset: step;
     }
 .step {
       text-align: center;
@@ -67,7 +71,11 @@
       border-radius: 4px;
       position: relative;
     }
-.step-num {
+/* Step number, from the list order rather than hardcoded markup. */
+.step::before {
+      counter-increment: step;
+      content: counter(step, decimal-leading-zero);
+      display: block;
       font-family: var(--ff-disp);
       font-size: 2rem; font-weight: 600;
       color: #a07030;
@@ -310,32 +318,31 @@
 <h2 class="section-title" data-t="steps_title">איך זה עובד</h2>
 <p class="section-sub" data-t="steps_sub">מהפנייה הראשונה ועד היצירה המוגמרת, פשוט, אישי ושקוף.</p>
 </div>
-<div class="steps-grid">
-<div class="step">
-<div aria-hidden="true" class="step-num">01</div>
+<!-- A numbered process is an ordered list. The step numbers come from a CSS
+       counter rather than hardcoded "01".."04" so they cannot fall out of step
+       with the markup, and the HowTo JSON-LD is generated from the same keys. -->
+<ol class="steps-grid">
+<li class="step">
 <span aria-hidden="true" class="step-icon">💬</span>
 <div class="step-title" data-t="step1_title">ספרו לנו על הרעיון שלכם</div>
 <p class="step-body" data-t="step1_body">פנו אלינו ב-WhatsApp או במייל. שתפו את הרעיון, האירוע, ההשראה, כמה שיש לכם. אין תשובות שגויות.</p>
-</div>
-<div class="step">
-<div aria-hidden="true" class="step-num">02</div>
+</li>
+<li class="step">
 <span aria-hidden="true" class="step-icon">🎨</span>
 <div class="step-title" data-t="step2_title">מעצבים יחד</div>
 <p class="step-body" data-t="step2_body">נדון בגודל, צורה, צבע וגימור. נוכל לשלוח תמונות של יצירות דומות או דוגמאות חומרים שיעזרו לכם לבחור.</p>
-</div>
-<div class="step">
-<div aria-hidden="true" class="step-num">03</div>
+</li>
+<li class="step">
 <span aria-hidden="true" class="step-icon">🔥</span>
 <div class="step-title" data-t="step3_title">בעבודת יד עבורכם</div>
 <p class="step-body" data-t="step3_body">היצירה שלכם נעשית כולה ביד בסטודיו שלנו בישראל, נפוחה, מחוברת ומוגמרת לפי המפרט המדויק שלכם.</p>
-</div>
-<div class="step">
-<div aria-hidden="true" class="step-num">04</div>
+</li>
+<li class="step">
 <span aria-hidden="true" class="step-icon">📦</span>
 <div class="step-title" data-t="step4_title">משלוח לכל העולם</div>
 <p class="step-body" data-t="step4_body">ארוז בקפידה ונשלח אליכם לכל מקום בעולם. משלוח בארץ 35 ₪ · בינלאומי $45. זמן אספקה טיפוסי: 2-4 שבועות.</p>
-</div>
-</div>
+</li>
+</ol>
 </section>
 <!-- ══════════════════════════════════════════════
      WHAT YOU CAN CUSTOMISE
