@@ -25,6 +25,7 @@ Edits are surgical raw-text substitutions (no bs4 re-serialization) so diffs
 stay reviewable. Idempotent: only elements that are literally empty are filled.
 """
 
+import json
 import os
 import re
 
@@ -170,6 +171,60 @@ def sync_howto(page="custom-orders.html", dry_run=False):
     return len(steps)
 
 
+def sync_faq(dry_run=False):
+    """Rebuild each page's guide FAQPage JSON-LD from its own guide_q<N>/
+    guide_a<N> keys.
+
+    Those keys are what render the visible question and answer, so generating
+    the markup from them is the only way the two are guaranteed to agree -
+    hand-maintaining a second copy is exactly how contact.html ended up
+    declaring six answers that appeared nowhere on the page. A page opts in
+    simply by defining the keys; pages without them are skipped.
+
+    The block is written last so it lands after any ItemList/BreadcrumbList,
+    which _shofar_pages.py looks up by index."""
+    total = 0
+    for page in H.PAGES:
+        path = os.path.join(ROOT, page)
+        with open(path, "r", encoding="utf-8") as f:
+            src = f.read()
+        d = page_dict(src)
+        qs = []
+        i = 1
+        while d.get("guide_q%d" % i) and d.get("guide_a%d" % i):
+            qs.append({
+                "@type": "Question",
+                "name": d["guide_q%d" % i],
+                "acceptedAnswer": {"@type": "Answer", "text": d["guide_a%d" % i]},
+            })
+            i += 1
+        if not qs:
+            continue
+
+        block = '  <script type="application/ld+json">' + json.dumps(
+            {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": qs},
+            ensure_ascii=False, separators=(",", ":")) + "</script>"
+
+        out, n = re.subn(
+            r'\n  <script type="application/ld\+json">\{[^\n]*?"FAQPage".*?</script>',
+            "", src, flags=re.S)
+        blocks = list(re.finditer(
+            r'  <script type="application/ld\+json">.*?</script>', out, re.S))
+        if not blocks:
+            print("%-24s has guide keys but no JSON-LD to anchor to, skipped" % page)
+            continue
+        at = blocks[-1].end()
+        out = out[:at] + "\n" + block + out[at:]
+
+        total += len(qs)
+        if out != src and not dry_run:
+            with open(path, "w", encoding="utf-8", newline="\n") as f:
+                f.write(out)
+        print("%-24s FAQPage synced to %d visible Q&A%s"
+              % (page, len(qs), "" if out != src else " (unchanged)"))
+    return total
+
+
 def main(dry_run=False):
     total_f = total_s = 0
     for page in H.PAGES:
@@ -186,6 +241,7 @@ def main(dry_run=False):
           % ("DRY RUN" if dry_run else "DONE", total_f, total_s))
     print()
     sync_howto(dry_run=dry_run)
+    sync_faq(dry_run=dry_run)
 
 
 if __name__ == "__main__":
