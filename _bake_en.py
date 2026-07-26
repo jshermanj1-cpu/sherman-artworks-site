@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-_bake_en.py — bake the English [data-t] copy into the static English pages.
+_bake_en.py - bake the English [data-t] copy into the static English pages.
 
 Why this exists
 ---------------
@@ -11,7 +11,7 @@ custom-orders.html are in that group, which is why those pages measure 135 and
 166 visible words in the raw HTML.
 
 Anything that only exists after JS runs is invisible to crawlers that do not
-execute it — the same GPTBot/ClaudeBot/PerplexityBot blind spot that
+execute it - the same GPTBot/ClaudeBot/PerplexityBot blind spot that
 _he_pages.py was written to fix for Hebrew. It also breaks the rule that
 structured data must correspond to content on the page: contact.html declares
 six FAQPage entries whose text is nowhere in the delivered markup.
@@ -35,7 +35,7 @@ ROOT = os.path.dirname(os.path.abspath(__file__))
 # Elements whose value is HTML rather than plain text (mirrors _he_pages.RICH_KEYS).
 RICH_KEYS = H.RICH_KEYS
 
-# <tag ... data-t="key" ...></tag>  — matches ONLY already-empty elements, so a
+# <tag ... data-t="key" ...></tag>  - matches ONLY already-empty elements, so a
 # page that already carries its English copy is left untouched.
 EMPTY_EL = re.compile(r'(<(\w+)\b[^>]*\bdata-t="(\w+)"[^>]*>)(</\2>)')
 
@@ -127,7 +127,7 @@ def sync_howto(page="custom-orders.html", dry_run=False):
     ("Describe your vision", "Confirm the order", …) matched none of the four
     steps actually on the page ("Tell Us Your Vision", "We Design Together", …),
     so the structured data described a process the reader never sees. Generating
-    the steps from step<N>_title/step<N>_body makes that drift impossible —
+    the steps from step<N>_title/step<N>_body makes that drift impossible -
     the visible cards and the markup now have a single source.
 
     The HowTo name/description are left alone: they are page-level metadata, not

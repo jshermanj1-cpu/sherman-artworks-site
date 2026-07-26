@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 """
-_sync_cards.py — resync the static English product cards to the inline PRODUCTS
+_sync_cards.py - resync the static English product cards to the inline PRODUCTS
 source of truth, and fix two latent gaps QA found:
 
-  1. Description drift — 9 static .product-card-desc paragraphs (horn-goblets,
+  1. Description drift - 9 static .product-card-desc paragraphs (horn-goblets,
      kiddush-cups ×3, trays-bowls, mezuzahs ×4) carry an older/edited wording
      than the current PRODUCTS description_en ("Made to order in Israel." vs
      "…in our studio in Israel."). The static (no-JS/crawler) view therefore
@@ -139,7 +139,7 @@ def rebuild_business_gifts_grid():
         print("  business-gifts: no static article found (already rebuilt?)")
         return
     if raw.count('<article class="product-card">') != 1:
-        print("  business-gifts: expected exactly 1 static article — SKIPPED for safety")
+        print("  business-gifts: expected exactly 1 static article - SKIPPED for safety")
         return
     raw = raw[:m.start()] + new_block + raw[m.end():]
     write(page, raw)

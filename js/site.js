@@ -41,6 +41,8 @@ const T_SITE = {
     footer_tagline:      'Handmade glass art & Judaica from Israel',
     footer_col_shop:     'Shop',
     footer_col_studio:   'Studio',
+    footer_col_help:     'Help',
+    nav_faq:             'FAQ',
     footer_link_candles: 'Candlesticks',
     footer_link_shofars: 'Horn Goblets',
     footer_link_bowls:   'Trays & Bowls',
@@ -100,6 +102,8 @@ const T_SITE = {
     footer_tagline:      'אמנות זכוכית ויודאיקה בעבודת יד מישראל',
     footer_col_shop:     'חנות',
     footer_col_studio:   'הסטודיו',
+    footer_col_help:     'עזרה',
+    nav_faq:             'שאלות ותשובות',
     footer_link_candles: 'פמוטים',
     footer_link_shofars: 'גביעי קרן',
     footer_link_bowls:   'מגשים וקערות',
@@ -451,7 +455,7 @@ function initA11y() {
   live.className = 'sr-only';
   document.body.appendChild(live);
 
-  // Add accessibility link to footer Studio column if not already present
+  // Add accessibility link to the last footer column (Help) if not already present
   if (!document.querySelector('a[href="accessibility.html"]')) {
     var footerStudio = document.querySelector('.footer-links');
     if (footerStudio) {
@@ -461,7 +465,7 @@ function initA11y() {
       a.dataset.t = 'nav_accessibility';
       a.textContent = (T_SITE[lang] && T_SITE[lang].nav_accessibility) || 'Accessibility Statement';
       li.appendChild(a);
-      // append to LAST footer-links column (Studio column)
+      // append to LAST footer-links column (the Help column)
       var allFooterLists = document.querySelectorAll('.footer-links');
       var studioList = allFooterLists[allFooterLists.length - 1];
       if (studioList) studioList.appendChild(li);
@@ -505,7 +509,7 @@ document.addEventListener('DOMContentLoaded', function() {
   initConsent();
   initA11y();
   // Static /he/ pages set window.__SA_LANG='he' so the URL (not a stale
-  // localStorage value) wins — otherwise JS would re-render them in English.
+  // localStorage value) wins - otherwise JS would re-render them in English.
   var lang = window.__SA_LANG || localStorage.getItem('sa_lang') || 'en';
   var cur  = localStorage.getItem('sa_cur')  || 'USD';
   setLang(lang);

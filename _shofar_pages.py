@@ -71,7 +71,7 @@ PAGES = {
     },
 }
 
-PLATING_NOTE_EN = ("The silver plating sometimes comes as one continuous piece, and sometimes in two "
+PLATING_NOTE_EN = ("The 925 silver plating sometimes comes as one continuous piece, and sometimes in two "
                    "parts, depending on the shape and size of the horn. If you have a preference, open "
                    "the shofar you want and write it in the comment box before ordering.")
 
@@ -149,6 +149,18 @@ def build(key, cfg, src, products):
          f'<meta property="og:url" content="{url}" />', "og:url")
     sub1(r'<link rel="canonical" href=".*?" />',
          f'<link rel="canonical" href="{url}" />', "canonical")
+    # The alternates and the עברית toggle are copied from shofars.html, so they
+    # point at the landing page. Re-point them at this page's own /he/ twin -
+    # _he_pages.py cannot fix them afterwards: its patcher skips a file that
+    # already carries hreflang links, and only matches the pristine toggle.
+    he_url = f"{BASE}/he/{cfg['file']}"
+    sub1(r'<link rel="alternate" hreflang="en" href=".*?" />',
+         f'<link rel="alternate" hreflang="en" href="{url}" />', "hreflang en")
+    sub1(r'<link rel="alternate" hreflang="he" href=".*?" />',
+         f'<link rel="alternate" hreflang="he" href="{he_url}" />', "hreflang he")
+    sub1(r'<link rel="alternate" hreflang="x-default" href=".*?" />',
+         f'<link rel="alternate" hreflang="x-default" href="{url}" />', "hreflang x-default")
+    sub1(r"location\.href='/he/[^']*'\">עברית", f"location.href='/he/{cfg['file']}'\">עברית", "he toggle")
     sub1(r'<meta name="twitter:title" content=".*?" />',
          f'<meta name="twitter:title" content="{html.escape(cfg["og_title"], quote=True)}" />', "twitter:title")
     sub1(r'<meta name="twitter:description" content=".*?" />',

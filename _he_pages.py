@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-_he_pages.py — generate static Hebrew /he/ versions of the shop pages.
+_he_pages.py - generate static Hebrew /he/ versions of the shop pages.
 
 Why this exists
 ---------------
@@ -14,7 +14,7 @@ This script bakes the Hebrew the site already contains into real static pages
 under /he/, with proper lang="he" dir="rtl", Hebrew <title>/description,
 self-canonicals, and bidirectional hreflang. It reuses the EXISTING translation
 data (T_SITE in js/site.js, per-page T_PAGE, and product name_he/description_he)
-so nothing is re-translated by hand — the Hebrew stays a single source of truth.
+so nothing is re-translated by hand - the Hebrew stays a single source of truth.
 
 Output: /he/<page>.html for each PAGES entry. English pages are left to a
 separate, minimal edit (hreflang + toggle link); this script only writes /he/.
@@ -51,6 +51,7 @@ STUDIO_PAGES = [
     "about.html",
     "custom-orders.html",
     "contact.html",
+    "faq.html",
     "terms.html",
     "privacy.html",
     "accessibility.html",
@@ -83,7 +84,7 @@ FALLBACK_HE = {
 
 # Static strings the shared header/footer/hero carry WITHOUT a data-t hook, so
 # neither setLang() nor the data-t sweep touches them. The site's JS Hebrew view
-# leaves some of these English too (a latent i18n gap in the shared chrome) — but
+# leaves some of these English too (a latent i18n gap in the shared chrome) - but
 # on a dedicated /he/ page the crawler should see Hebrew, so we translate them by
 # exact match. Keyed by CSS selector → {english: hebrew}.
 SUPP = {
@@ -108,25 +109,28 @@ ALT_SUPP = {
     "Sherman Art Works glass craft": "אומנות הזכוכית של שרמן ארט וורקס",
     "Handmade glass detail": "פרט מזכוכית בעבודת יד",
     "Sherman glass art": "אמנות הזכוכית של שרמן",
+    # faq.html kashrut certificate
+    "Kosher certificate for the Sherman Art Works shofar supplier, issued by the Chief Rabbinate of Tel Aviv-Yafo for 2025/26":
+        "אישור כשרות של ספק השופרות של שרמן ארט וורקס, מטעם הרבנות הראשית תל אביב-יפו לשנת 2025/26",
 }
 
 # Hebrew <title> + meta description per page (authored; concise, <60 / <155 chars).
 META = {
     "index.html": (
         "שרמן ארט וורקס | יודאיקה וזכוכית בעבודת יד מישראל",
-        "יודאיקה וזכוכית בעבודת יד מישראל — פמוטים, כוסות קידוש, שופרות, מזוזות, גביעי קרן וקערות. משלוח לכל העולם. הזמנות בהתאמה אישית מתקבלות בברכה.",
+        "יודאיקה וזכוכית בעבודת יד מישראל - פמוטים, כוסות קידוש, שופרות, מזוזות, גביעי קרן וקערות. משלוח לכל העולם. הזמנות בהתאמה אישית מתקבלות בברכה.",
     ),
     "candlesticks.html": (
         "פמוטים מזכוכית בעבודת יד | שרמן ארט וורקס",
         "פמוטי זכוכית בעבודת יד לנרות שבת, בשיטה המשפחתית המסורתית. מגוון צבעים, מיוצר בישראל ונשלח לכל העולם.",
     ),
     "horn-goblets.html": (
-        "גביעי קרן בציפוי כסף בעבודת יד | שרמן ארט וורקס",
-        "גביעי קרן שתייה בציפוי כסף בעבודת יד — עיצובי יודאיקה קלאסיים. מיוצר בישראל, משלוח לכל העולם.",
+        "גביעי קרן בציפוי כסף 925 בעבודת יד | שרמן ארט וורקס",
+        "גביעי קרן שתייה בציפוי כסף 925 בעבודת יד - עיצובי יודאיקה קלאסיים. מיוצר בישראל, משלוח לכל העולם.",
     ),
     "kiddush-cups.html": (
         "כוסות קידוש בעבודת יד | שרמן ארט וורקס",
-        "כוסות וגביעי קידוש בעבודת יד במגוון סגנונות — כוסות זכוכית, כוס קרמיקה וסטים של כוס וצלחת. מיוצר בישראל, משלוח לכל העולם.",
+        "כוסות וגביעי קידוש בעבודת יד במגוון סגנונות - כוסות זכוכית, כוס קרמיקה וסטים של כוס וצלחת. מיוצר בישראל, משלוח לכל העולם.",
     ),
     "trays-bowls.html": (
         "מגשים וקערות זכוכית בעבודת יד | שרמן ארט וורקס",
@@ -134,23 +138,23 @@ META = {
     ),
     "business-gifts.html": (
         "מתנות לעסקים ולאירועים | שרמן ארט וורקס",
-        "מתנות לעסקים, לבתי כנסת, לבר ובת מצווה ולאירועים — שופרות מותאמים אישית וסטי מתנה בעבודת יד מישראל.",
+        "מתנות לעסקים, לבתי כנסת, לבר ובת מצווה ולאירועים - שופרות מותאמים אישית וסטי מתנה בעבודת יד מישראל.",
     ),
     "mezuzahs.html": (
         "מזוזות ובתי מזוזה בעבודת יד | שרמן ארט וורקס",
-        "בתי מזוזה בעבודת יד במגוון סגנונות — זכוכית וקרן טבעית בציפוי כסף. מיוצר בישראל, משלוח לכל העולם.",
+        "בתי מזוזה בעבודת יד במגוון סגנונות - זכוכית וקרן טבעית בציפוי כסף 925. מיוצר בישראל, משלוח לכל העולם.",
     ),
     "shofars.html": (
         "שופרות בעבודת יד עם עיצוב אישי | שרמן ארט וורקס",
-        "שופרות בעבודת יד עם אפשרות לעיצוב אישי — סמל וכיתוב לבחירתכם (עברית/English). שופר איל ושופר קודו, מיוצר בישראל.",
+        "שופרות בעבודת יד עם אפשרות לעיצוב אישי - סמל וכיתוב לבחירתכם (עברית/English). שופר איל ושופר קודו, מיוצר בישראל.",
     ),
     "shofars-custom.html": (
         "שופרות בהתאמה אישית | שרמן ארט וורקס",
-        "שופרות מותאמים אישית — בחרו סמל וכיתוב (עברית/English). שופר איל ושופר קודו בעבודת יד, מיוצר בישראל.",
+        "שופרות מותאמים אישית - בחרו סמל וכיתוב (עברית/English). שופר איל ושופר קודו בעבודת יד, מיוצר בישראל.",
     ),
     "shofars-rams.html": (
         "שופר איל בעבודת יד | שרמן ארט וורקס",
-        "שופרות איל בעבודת יד, עם אפשרות לציפוי כסף ולעיצוב אישי. מיוצר בישראל, משלוח לכל העולם.",
+        "שופרות איל בעבודת יד, עם אפשרות לציפוי כסף 925 ולעיצוב אישי. מיוצר בישראל, משלוח לכל העולם.",
     ),
     "shofars-kudu.html": (
         "שופר קודו בעבודת יד | שרמן ארט וורקס",
@@ -158,15 +162,19 @@ META = {
     ),
     "about.html": (
         "אודות | שרמן ארט וורקס",
-        "הסיפור של שרמן ארט וורקס — סטודיו משפחתי ליודאיקה וזכוכית בעבודת יד בישראל, מסורת של שלושה דורות של אומנים.",
+        "הסיפור של שרמן ארט וורקס - סטודיו משפחתי ליודאיקה וזכוכית בעבודת יד בישראל, מסורת של שלושה דורות של אומנים.",
     ),
     "custom-orders.html": (
         "הזמנות בהתאמה אישית | שרמן ארט וורקס",
-        "הזמנות בהתאמה אישית של יודאיקה וזכוכית בעבודת יד — פמוטים, כוסות קידוש, שופרות ומתנות. עיצוב אישי, מיוצר בישראל.",
+        "הזמנות בהתאמה אישית של יודאיקה וזכוכית בעבודת יד - פמוטים, כוסות קידוש, שופרות ומתנות. עיצוב אישי, מיוצר בישראל.",
     ),
     "contact.html": (
         "צור קשר | שרמן ארט וורקס",
-        "צרו קשר עם שרמן ארט וורקס — שאלות על מוצרים, הזמנות בהתאמה אישית ומשלוחים. מענה בוואטסאפ או במייל תוך 24 שעות.",
+        "צרו קשר עם שרמן ארט וורקס - שאלות על מוצרים, הזמנות בהתאמה אישית ומשלוחים. מענה בוואטסאפ או במייל תוך 24 שעות.",
+    ),
+    "faq.html": (
+        "שאלות ותשובות | שרמן ארט וורקס",
+        "תשובות לשאלות הנפוצות - זמני משלוח ועלויות, זמני ייצור להזמנה אישית, תשלום, החזרות והאם השופרות כשרים.",
     ),
     "terms.html": (
         "תקנון ומדיניות משלוחים | שרמן ארט וורקס",
@@ -174,18 +182,18 @@ META = {
     ),
     "privacy.html": (
         "מדיניות פרטיות | שרמן ארט וורקס",
-        "מדיניות הפרטיות של שרמן ארט וורקס — איזה מידע נאסף, כיצד הוא משמש וכיצד אנו שומרים עליו.",
+        "מדיניות הפרטיות של שרמן ארט וורקס - איזה מידע נאסף, כיצד הוא משמש וכיצד אנו שומרים עליו.",
     ),
     "accessibility.html": (
         "הצהרת נגישות | שרמן ארט וורקס",
-        "הצהרת הנגישות של אתר שרמן ארט וורקס — המחויבות שלנו לנגישות לכלל המשתמשים.",
+        "הצהרת הנגישות של אתר שרמן ארט וורקס - המחויבות שלנו לנגישות לכלל המשתמשים.",
     ),
 }
 
 # sitemap priority per Hebrew page (mirrors the English sitemap).
 SITEMAP_PRIORITY = {
     "index.html": "0.9", "custom-orders.html": "0.8", "about.html": "0.7",
-    "contact.html": "0.7", "terms.html": "0.3", "privacy.html": "0.3",
+    "contact.html": "0.7", "faq.html": "0.6", "terms.html": "0.3", "privacy.html": "0.3",
     "accessibility.html": "0.3",
 }
 
@@ -297,7 +305,7 @@ def norm(s):
 
 
 def esc_html(s):
-    """Mirror site.js escapeHtml() — & < > only."""
+    """Mirror site.js escapeHtml() - & < > only."""
     return (s or "").replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
 
 
@@ -315,7 +323,7 @@ def render_policy(kind, t, sections):
     """Replicate renderTerms / renderPrivacy / renderA11y in Hebrew.
 
     Headings/meta go through escapeHtml (text); callout/intro/section bodies are
-    raw HTML in the dictionary and are inserted verbatim — exactly as the JS does.
+    raw HTML in the dictionary and are inserted verbatim - exactly as the JS does.
     """
     if kind == "terms":
         html = "<h1>%s</h1>" % esc_html(t.get("terms_h1", ""))
@@ -354,7 +362,7 @@ def _first(blob, field):
 def build_product_records():
     """Map norm(name_en) → {name_he, desc_he} for every product across the inline
     PRODUCTS arrays (JSON *and* single-quoted JS literals) and the shofar
-    catalogue. Keyed on the English NAME (stable), not the description — the
+    catalogue. Keyed on the English NAME (stable), not the description - the
     pre-rendered static card descriptions have drifted from the source PRODUCTS
     (see the products-data-sync caveat), so text-matching descriptions is
     unreliable; the name is the safe join key and PRODUCTS is the source of
@@ -382,7 +390,7 @@ T_SITE_EN = parse_he_dict(read(os.path.join(ROOT, "js/site.js")), "const T_SITE"
 # name_he/description_he to borrow from PRODUCTS. Keyed by productGroupID.
 PRODUCT_GROUP_HE = {
     "silver-plated-glass-candlesticks": {
-        "name": "פמוטי זכוכית מצופי כסף",
+        "name": "פמוטי זכוכית מצופי כסף 925",
         "description": "זוג פמוטי זכוכית בעבודת יד בציפוי כסף סטרלינג 925, "
                        "זמין בשבעה צבעים ובשלושה גבהים.",
     },
@@ -395,7 +403,7 @@ PRODUCT_GROUP_HE = {
 
 
 def he_units(value):
-    """cm → ס״מ inside a schema size string ("30 × 18 cm", "S (14–18 cm)")."""
+    """cm → ס״מ inside a schema size string ("30 × 18 cm", "S (14-18 cm)")."""
     if isinstance(value, list):
         return [he_units(v) for v in value]
     if isinstance(value, str):
@@ -407,7 +415,7 @@ def localize_jsonld(txt, en2he):
     """Translate the FAQPage answers and HowTo steps inside a JSON-LD block.
 
     A /he/ page renders Hebrew but inherited its parent's English JSON-LD, so
-    the markup described content the Hebrew reader never sees — the same
+    the markup described content the Hebrew reader never sees - the same
     visible/schema mismatch the English pages were fixed for, just one language
     over. Values are matched by exact English string rather than by position,
     so a reordered or extended FAQ cannot silently mis-pair questions with
@@ -430,7 +438,7 @@ def localize_jsonld(txt, en2he):
         """A ProductGroup variant describes a product the Hebrew reader sees in
         Hebrew, so its name/description/color come from PRODUCTS rather than
         being left in English. Joined on the English name, same key as the
-        static cards. Offers are left alone — prices and the seller/shipping/
+        static cards. Offers are left alone - prices and the seller/shipping/
         return @id refs are language-neutral, so the /he/ page inherits the
         English page's full merchant-listing shape for free."""
         rec = PRODUCTS_HE.get(norm(node.get("name")))
@@ -540,7 +548,7 @@ def translate_page(page):
         if dict_he.get("bc_%s" % pk):
             dict_he["bc_current"] = dict_he["bc_%s" % pk]
 
-    # 1) [data-t] swaps — mirror setLang() exactly.
+    # 1) [data-t] swaps - mirror setLang() exactly.
     for el in soup.select("[data-t]"):
         key = el.get("data-t")
         if key not in dict_he:
@@ -566,7 +574,7 @@ def translate_page(page):
             for node in list(BeautifulSoup(body_html, "html.parser").contents):
                 container.append(node)
 
-    # 2) product cards — join each card to its product by NAME (stable), then take
+    # 2) product cards - join each card to its product by NAME (stable), then take
     #    Hebrew name + first-line description straight from PRODUCTS (source of
     #    truth). Also set img alt to the Hebrew name, matching buildCard().
     for card in soup.select(".product-card"):
@@ -769,7 +777,7 @@ def _en_lastmods(xml):
 def he_lastmod(page, en_map):
     """A Hebrew page is generated from its English counterpart, so it is only as
     fresh as that source. Mirroring the English <lastmod> keeps the value honest
-    and stable — deriving it from the generated file's mtime would instead bump
+    and stable - deriving it from the generated file's mtime would instead bump
     every Hebrew URL on every run, telling crawlers the page changed when it did
     not. Falls back to today only when the English URL carries no lastmod."""
     return en_map.get(en_url(page)) or datetime.date.today().isoformat()

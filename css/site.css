@@ -692,7 +692,7 @@ nav {
 footer { background: var(--dark); color: #d4c5aa; padding: 3.5rem 2rem 2rem; }
 .footer-inner { max-width: 1200px; margin: 0 auto; }
 .footer-top {
-  display: grid; grid-template-columns: 1.6fr 1fr 1fr;
+  display: grid; grid-template-columns: 1.6fr 1fr 1fr 1fr;
   gap: 3rem; padding-bottom: 2rem;
   border-bottom: 1px solid rgba(255,255,255,0.08);
   margin-bottom: 1.5rem;
@@ -799,7 +799,7 @@ footer .logo-sub  { color: var(--footer-text); }
 /* Shofar sub-categories, indented under their parent link. The selector carries
    the parent class so it outranks the padding shorthand on .mobile-shop-menu a. */
 .mobile-shop-menu a.mobile-shop-sub { padding-left: 2.4rem; font-size: 0.72rem; letter-spacing: 0.06em; text-transform: none; }
-.mobile-shop-sub::before  { content: '–'; margin-right: 0.5rem; color: var(--gold); }
+.mobile-shop-sub::before  { content: '-'; margin-right: 0.5rem; color: var(--gold); }
 
 /* ── 15. RTL OVERRIDES ───────────────────────────────────────── */
 [dir="rtl"] .top-bar          { flex-direction: row-reverse; }
@@ -1015,7 +1015,7 @@ button.modal-thumb:focus-visible { outline: 3px solid var(--gold-text); outline-
 .contact-tag, .form-lede-tag, .story-sig {
   color: var(--gold-text) !important;
 }
-/* Tags on dark backgrounds — keep light gold */
+/* Tags on dark backgrounds - keep light gold */
 .corporate-tag, .gen-tag { color: var(--gold) !important; }
 .btn-link:hover { color: var(--gold-text) !important; }
 .other-cat-link:hover { color: var(--gold-text) !important; }
@@ -1110,3 +1110,22 @@ button.modal-thumb:focus-visible { outline: 3px solid var(--gold-text); outline-
   font-size: 0.92rem; color: var(--brown);
   font-weight: 300; line-height: 1.85;
 }
+/* Kashrut certificate inside an FAQ answer. */
+.faq-cert { margin: 0 1.5rem 1.5rem; }
+.faq-cert img {
+  display: block; width: 320px; max-width: 100%; height: auto;
+  border: 1px solid var(--border); border-radius: 2px; background: #fff;
+}
+.faq-cert a:hover img { border-color: var(--gold); }
+.faq-cert figcaption {
+  margin-top: 0.55rem; font-size: 0.76rem; color: var(--brown);
+  font-weight: 300; line-height: 1.6;
+}
+
+/* Homepage teaser -> the full FAQ page. */
+.faq-all-link {
+  font-family: var(--ff-disp); font-size: 0.7rem; letter-spacing: 0.15em;
+  text-transform: uppercase; color: var(--gold);
+  border-bottom: 1px solid transparent; transition: border-color 0.25s;
+}
+.faq-all-link:hover { border-bottom-color: var(--gold); }

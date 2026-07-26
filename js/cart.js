@@ -49,15 +49,60 @@ var _PAGE_BY_SLUG = {
   'ceramic-kiddush-cup': 'kiddush-cups.html',
   'colorful-glass-cup-and-plate': 'kiddush-cups.html',
   'kiddush-cup-plate': 'kiddush-cups.html',
-  'custom-shofar': 'shofars.html'
+  'custom-shofar': 'shofars.html',
+  'custom-kudu-shofar': 'shofars.html'
 };
 
+// Fallback page for any other shofar (kudu-*, rams-*): shofars.html carries the
+// whole catalogue, so the anchor always resolves there - and that is the URL the
+// product JSON-LD and the merchant feed use as the product's canonical identity.
+// Without this a shofar line added before entries carried a `page` was not a link
+// at all, which is what "clicking the kudu does nothing" looked like.
+function _shofarFallbackPage(slug) {
+  return (slug.indexOf('kudu-') === 0 || slug.indexOf('rams-') === 0) ? 'shofars.html' : null;
+}
+
 // Hebrew symbol names for personalised items (page SYMBOL_HE maps are function-scoped).
-var _SYMBOL_HE = { 'Menorah': 'מנורה', 'Jerusalem': 'ירושלים', 'Star of David': 'מגן דוד', 'Lion of Judah': 'אריה יהודה', 'Other': 'אחר', 'No Symbol': 'ללא סמל' };
+// Includes the kudu-only engraved designs, so a kudu custom shofar in the cart
+// shows its symbol in Hebrew instead of falling back to the English name.
+var _SYMBOL_HE = {
+  'Menorah': 'מנורה', 'Jerusalem': 'ירושלים', 'Star of David': 'מגן דוד',
+  'Lion of Judah': 'אריה יהודה', 'Lions of Jerusalem': 'אריות ירושלים',
+  'Hoshen Stones': 'אבני החושן', 'Jerusalem Lions with Menorah': 'ירושלים אריות עם מנורה',
+  'Holy Ark': 'ארון הקודש', 'The Spies (Meraglim)': 'המרגלים',
+  'Shofar Blowing': 'תקיעה בשופר', 'Other': 'אחר', 'No Symbol': 'ללא סמל'
+};
 
 function _cartItemUrl(item) {
-  var page = item.page || _PAGE_BY_SLUG[item.slug];
+  var page = item.page || _PAGE_BY_SLUG[item.slug] || _shofarFallbackPage(item.slug);
   return page ? page + '#' + item.slug : null;
+}
+
+// Current page filename, matching what addToCart() stores on an entry.
+function _currentPageFile() {
+  return location.pathname.split('/').pop() || 'index.html';
+}
+
+// Cart line click. A plain href only changes the hash when the item lives on the
+// page you are already looking at, which reads as "nothing happened" - so on the
+// same page we close the drawer and open the product modal instead.
+function cartGoToItem(idx, e) {
+  var item = getCart()[idx];
+  if (!item) return;
+  var url = _cartItemUrl(item);
+  if (!url) return;
+  var page = url.split('#')[0];
+  if (page !== _currentPageFile() || typeof PRODUCTS === 'undefined' || typeof openModal !== 'function') {
+    return; // let the link navigate; site.js opens the modal from the hash on load
+  }
+  var pIdx = -1;
+  for (var i = 0; i < PRODUCTS.length; i++) { if (PRODUCTS[i].id === item.slug) { pIdx = i; break; } }
+  if (pIdx < 0) return;
+  if (e) e.preventDefault();
+  closeCartDrawer();
+  var card = document.getElementById(item.slug);
+  if (card) card.scrollIntoView({ block: 'center' });
+  openModal(pIdx);
 }
 
 // Line-item identity: personalised items carry their meta in the key so two
@@ -140,7 +185,7 @@ function getCartTotal() {
   return getCart().reduce(function (s, i) { return s + i.price_ils * i.qty; }, 0);
 }
 
-// Human-readable label for a size variant, e.g. "L · 90–99 cm / 35–39″".
+// Human-readable label for a size variant, e.g. "L · 90-99 cm / 35-39″".
 function _sizeText(sz) {
   return sz.label + ' · ' + sz.range_cm + ' cm / ' + sz.range_in + '″';
 }
@@ -335,10 +380,11 @@ function renderCartDrawer() {
     var url = _cartItemUrl(item);
     var thumbImg = `<img class="cart-item-thumb" src="${escapeAttr(thumb)}" alt="${escapeAttr(name)}" loading="lazy" />`;
     var nameHtml = escapeHtml(name);
+    var open = `onclick="cartGoToItem(${idx},event)"`;
     return `<div class="cart-item" data-slug="${slug}">
-  ${url ? `<a class="cart-item-link" href="${escapeAttr(url)}" aria-label="${escapeAttr(name)}">${thumbImg}</a>` : thumbImg}
+  ${url ? `<a class="cart-item-link" href="${escapeAttr(url)}" ${open} aria-label="${escapeAttr(name)}">${thumbImg}</a>` : thumbImg}
   <div class="cart-item-info">
-    <div class="cart-item-name">${url ? `<a class="cart-item-link" href="${escapeAttr(url)}">${nameHtml}</a>` : nameHtml}</div>
+    <div class="cart-item-name">${url ? `<a class="cart-item-link" href="${escapeAttr(url)}" ${open}>${nameHtml}</a>` : nameHtml}</div>
     ${_cartMetaHtml(item, isHe)}
     <div class="cart-item-price">${priceStr}</div>
     <div class="cart-item-controls">

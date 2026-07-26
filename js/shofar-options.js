@@ -17,48 +17,48 @@
 // Decorated kudu designs. Sold in S and up only - Mini and XS exist in the
 // price table but are not offered for the decorated range, so do not add them.
 const KUDU_SIZES = [
-  { label: 'S',  range_cm: '70–79',   range_in: '28–31', price_ils: 1214 },
-  { label: 'M',  range_cm: '80–89',   range_in: '32–35', price_ils: 1308 },
-  { label: 'L',  range_cm: '90–99',   range_in: '35–39', price_ils: 1417 },
-  { label: 'XL', range_cm: '100–109', range_in: '39–43', price_ils: 1706 },
-  { label: 'J',  range_cm: '110–119', range_in: '43–47', price_ils: 1762 },
-  { label: 'XJ', range_cm: '120–129', range_in: '47–51', price_ils: 2423 },
+  { label: 'S',  range_cm: '70-79',   range_in: '28-31', price_ils: 1214 },
+  { label: 'M',  range_cm: '80-89',   range_in: '32-35', price_ils: 1308 },
+  { label: 'L',  range_cm: '90-99',   range_in: '35-39', price_ils: 1417 },
+  { label: 'XL', range_cm: '100-109', range_in: '39-43', price_ils: 1706 },
+  { label: 'J',  range_cm: '110-119', range_in: '43-47', price_ils: 1762 },
+  { label: 'XJ', range_cm: '120-129', range_in: '47-51', price_ils: 2423 },
 ];
 
 // Decorated ram's designs. The full ram's range - unlike the kudu line, no
 // sizes are held back - at Plain column pricing.
 const RAMS_SIZES = [
-  { label: 'XS', range_cm: '30–34', range_in: '12–13', price_ils: 418 },
-  { label: 'S',  range_cm: '35–39', range_in: '14–15', price_ils: 497 },
-  { label: 'M',  range_cm: '40–44', range_in: '16–17', price_ils: 712 },
-  { label: 'L',  range_cm: '45–49', range_in: '18–19', price_ils: 914 },
-  { label: 'XL', range_cm: '50–54', range_in: '20–21', price_ils: 1138 },
-  { label: 'J',  range_cm: '55–59', range_in: '22–23', price_ils: 1293 },
-  { label: 'XJ', range_cm: '60–65', range_in: '24–26', price_ils: 2368 },
+  { label: 'XS', range_cm: '30-34', range_in: '12-13', price_ils: 418 },
+  { label: 'S',  range_cm: '35-39', range_in: '14-15', price_ils: 497 },
+  { label: 'M',  range_cm: '40-44', range_in: '16-17', price_ils: 712 },
+  { label: 'L',  range_cm: '45-49', range_in: '18-19', price_ils: 914 },
+  { label: 'XL', range_cm: '50-54', range_in: '20-21', price_ils: 1138 },
+  { label: 'J',  range_cm: '55-59', range_in: '22-23', price_ils: 1293 },
+  { label: 'XJ', range_cm: '60-65', range_in: '24-26', price_ils: 2368 },
 ];
 
 // Ram's-horn custom: the full ram's range, Custom column pricing.
 const RAMS_CUSTOM_SIZES = [
-  { label: 'XS', range_cm: '30–34', range_in: '12–13', price_ils: 742 },
-  { label: 'S',  range_cm: '35–39', range_in: '14–15', price_ils: 853 },
-  { label: 'M',  range_cm: '40–44', range_in: '16–17', price_ils: 1064 },
-  { label: 'L',  range_cm: '45–49', range_in: '18–19', price_ils: 1263 },
-  { label: 'XL', range_cm: '50–54', range_in: '20–21', price_ils: 1492 },
-  { label: 'J',  range_cm: '55–59', range_in: '22–23', price_ils: 1647 },
-  { label: 'XJ', range_cm: '60–65', range_in: '24–26', price_ils: 2718 },
+  { label: 'XS', range_cm: '30-34', range_in: '12-13', price_ils: 742 },
+  { label: 'S',  range_cm: '35-39', range_in: '14-15', price_ils: 853 },
+  { label: 'M',  range_cm: '40-44', range_in: '16-17', price_ils: 1064 },
+  { label: 'L',  range_cm: '45-49', range_in: '18-19', price_ils: 1263 },
+  { label: 'XL', range_cm: '50-54', range_in: '20-21', price_ils: 1492 },
+  { label: 'J',  range_cm: '55-59', range_in: '22-23', price_ils: 1647 },
+  { label: 'XJ', range_cm: '60-65', range_in: '24-26', price_ils: 2718 },
 ];
 
 // Kudu custom: unlike the decorated kudu designs, this one IS made in Mini and
 // XS, so it spans the full kudu range. Custom column pricing.
 const KUDU_CUSTOM_SIZES = [
-  { label: 'Mini', range_cm: '50–59',   range_in: '20–23', price_ils: 1297 },
-  { label: 'XS',   range_cm: '60–69',   range_in: '24–27', price_ils: 1426 },
-  { label: 'S',    range_cm: '70–79',   range_in: '28–31', price_ils: 1563 },
-  { label: 'M',    range_cm: '80–89',   range_in: '32–35', price_ils: 1657 },
-  { label: 'L',    range_cm: '90–99',   range_in: '35–39', price_ils: 1768 },
-  { label: 'XL',   range_cm: '100–109', range_in: '39–43', price_ils: 2064 },
-  { label: 'J',    range_cm: '110–119', range_in: '43–47', price_ils: 2113 },
-  { label: 'XJ',   range_cm: '120–129', range_in: '47–51', price_ils: 2769 },
+  { label: 'Mini', range_cm: '50-59',   range_in: '20-23', price_ils: 1297 },
+  { label: 'XS',   range_cm: '60-69',   range_in: '24-27', price_ils: 1426 },
+  { label: 'S',    range_cm: '70-79',   range_in: '28-31', price_ils: 1563 },
+  { label: 'M',    range_cm: '80-89',   range_in: '32-35', price_ils: 1657 },
+  { label: 'L',    range_cm: '90-99',   range_in: '35-39', price_ils: 1768 },
+  { label: 'XL',   range_cm: '100-109', range_in: '39-43', price_ils: 2064 },
+  { label: 'J',    range_cm: '110-119', range_in: '43-47', price_ils: 2113 },
+  { label: 'XJ',   range_cm: '120-129', range_in: '47-51', price_ils: 2769 },
 ];
 
 /* ── SYMBOL SETS ────────────────────────────────────────────────────────── */
@@ -86,7 +86,7 @@ const SYMBOL_SETS = {
       'Menorah':                      'מנורה',
       'Jerusalem':                    'ירושלים',
       'Star of David':                'מגן דוד',
-      'Hoshen Stones':                'אבני חושן',
+      'Hoshen Stones':                'אבני החושן',
       'Jerusalem Lions with Menorah': 'ירושלים אריות עם מנורה',
       'Holy Ark':                     'ארון הקודש',
       'The Spies (Meraglim)':         'המרגלים',
@@ -110,6 +110,13 @@ const SYMBOL_SETS = {
 // ships the horn plain. Neither has a preview image, by design.
 const SYMBOL_EXTRAS_EN = ['Other', 'No Symbol'];
 const SYMBOL_EXTRAS_HE = { 'Other': 'אחר', 'No Symbol': 'ללא סמל' };
+
+// The Jerusalem symbol fills a ram's horn, so an inscription has to move to the
+// far side and the buyer is warned. A kudu horn is long enough to carry the
+// symbol and the name side by side, so the warning is ram's-horn only.
+function jerusalemNoteApplies(p, sym) {
+  return sym === 'Jerusalem' && ((p && p.symbol_set) || 'rams') !== 'kudu';
+}
 
 function symbolSetFor(p) { return SYMBOL_SETS[(p && p.symbol_set) || 'rams']; }
 function symbolOptionsFor(p) { return symbolSetFor(p).en.concat(SYMBOL_EXTRAS_EN); }
