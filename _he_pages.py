@@ -390,7 +390,7 @@ T_SITE_EN = parse_he_dict(read(os.path.join(ROOT, "js/site.js")), "const T_SITE"
 # name_he/description_he to borrow from PRODUCTS. Keyed by productGroupID.
 PRODUCT_GROUP_HE = {
     "silver-plated-glass-candlesticks": {
-        "name": "פמוטי זכוכית מצופי כסף 925",
+        "name": "פמוטי זכוכית בציפוי כסף 925",
         "description": "זוג פמוטי זכוכית בעבודת יד בציפוי כסף סטרלינג 925, "
                        "זמין בשבעה צבעים ובשלושה גבהים.",
     },
