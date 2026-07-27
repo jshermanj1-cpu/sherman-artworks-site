@@ -145,6 +145,9 @@
       fail_help:     'If you would rather not pay by card, you can send the same order straight to us on WhatsApp and we will take it from there.',
       fail_contact:  'Order on WhatsApp',
       fail_reason:   'Reason given',
+      fail_declined: 'The card was declined by the issuer.',
+      fail_generic:  'The payment did not go through.',
+      fail_code:     'code',
     },
     he: {
       topbar_right: 'עבודת יד מישראל',
@@ -155,6 +158,9 @@
       fail_help:     'אם אתם מעדיפים לא לשלם בכרטיס, אפשר לשלוח לנו את אותה הזמנה ישירות ב-WhatsApp ואנחנו נמשיך מכאן.',
       fail_contact:  'הזמינו ב-WhatsApp',
       fail_reason:   'הסיבה שהתקבלה',
+      fail_declined: 'הכרטיס נדחה על ידי חברת האשראי.',
+      fail_generic:  'התשלום לא עבר.',
+      fail_code:     'קוד',
     }
   };
 
@@ -166,7 +172,14 @@
     var el = document.getElementById('payment-result');
     if (!el) return;
     var q = new URLSearchParams(location.search);
-    var reason = q.get('errMsg') || q.get('CCode') || '';
+    // HYP's own errMsg is Hebrew regardless of the page language, so an English
+    // shopper was being shown "העסקה לא אושרה". We say it ourselves instead and
+    // keep HYP's numeric code alongside, which is what support would ask for.
+    var ccode = q.get('CCode') || '';
+    var reason = '';
+    if (ccode) {
+      reason = (ccode === '4' ? t.fail_declined : t.fail_generic) + ' (' + t.fail_code + ' ' + ccode + ')';
+    }
 
     el.innerHTML =
       '<div class="payment-icon" aria-hidden="true">' +

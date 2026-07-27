@@ -288,6 +288,10 @@
       .then(function (r) { return r.ok ? r.json() : Promise.reject(new Error('verify failed')); })
       .then(function (data) {
         if (data && data.ok) { _payState = 'ok'; _payFinaliseSuccess(); }
+        // The backend could not confirm a payment HYP said was approved. The
+        // charge has probably gone through, so this stays "we are confirming"
+        // rather than becoming "it failed" - and the cart is left alone.
+        else if (data && data.unconfirmed) { _payState = 'pending'; }
         else { _payState = 'failed'; }
         renderPayment();
       })
