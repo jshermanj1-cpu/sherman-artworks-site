@@ -47,7 +47,7 @@ const PRODUCTS = [
     "color_en": "Orange",
     "color_he": "כתום",
     "measurements": "",
-    "price_ils": 1369,
+    "price_ils": 1212,
     "photos": ["Orange_havdala_set_bh5ut5"]
   }
 ];
