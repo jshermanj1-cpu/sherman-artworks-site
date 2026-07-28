@@ -3,7 +3,7 @@
 <channel>
   <title>Sherman Art Works</title>
   <link>https://shermanartworks.com/</link>
-  <description>Handmade glass art and Judaica from Israel - candlesticks, Kiddush cups, horn goblets, shofars, mezuzahs, trays and bowls.</description>
+  <description>Handmade glass art and Judaica from Israel - candlesticks, Kiddush cups, horn goblets, shofars, mezuzahs, trays and bowls, and Havdalah sets.</description>
   <item>
     <g:id>glass-circle-candlesticks</g:id>
     <g:title>Glass Circle Candlesticks</g:title>
@@ -4160,6 +4160,85 @@
     <g:item_group_id>custom-kudu-shofar</g:item_group_id>
     <g:size>XJ (120-129 cm)</g:size>
     <g:product_type>Shofars</g:product_type>
+    <g:google_product_category>97</g:google_product_category>
+    <g:shipping>
+      <g:country>IL</g:country>
+      <g:price>35.00 ILS</g:price>
+    </g:shipping>
+  </item>
+  <item>
+    <g:id>black-havdalah-set</g:id>
+    <g:title>Black Havdalah Set</g:title>
+    <g:description>Handmade black Havdalah set, crafted in our studio in Israel.</g:description>
+    <g:link>https://shermanartworks.com/havdalah-sets.html#black-havdalah-set</g:link>
+    <g:image_link>https://res.cloudinary.com/doesupaf9/image/upload/w_1200,q_auto:good/Havdala_black_set_wdnnhk.jpg</g:image_link>
+    <g:availability>in_stock</g:availability>
+    <g:price>1369.00 ILS</g:price>
+    <g:condition>new</g:condition>
+    <g:brand>Sherman Art Works</g:brand>
+    <g:identifier_exists>no</g:identifier_exists>
+    <g:item_group_id>classic-havdalah-sets</g:item_group_id>
+    <g:color>Black</g:color>
+    <g:product_type>Havdalah Sets</g:product_type>
+    <g:google_product_category>97</g:google_product_category>
+    <g:shipping>
+      <g:country>IL</g:country>
+      <g:price>35.00 ILS</g:price>
+    </g:shipping>
+  </item>
+  <item>
+    <g:id>blue-havdalah-set</g:id>
+    <g:title>Blue Havdalah Set</g:title>
+    <g:description>Handmade blue Havdalah set, crafted in our studio in Israel.</g:description>
+    <g:link>https://shermanartworks.com/havdalah-sets.html#blue-havdalah-set</g:link>
+    <g:image_link>https://res.cloudinary.com/doesupaf9/image/upload/w_1200,q_auto:good/Blue_havdala_set_guzrpu.jpg</g:image_link>
+    <g:availability>in_stock</g:availability>
+    <g:price>1369.00 ILS</g:price>
+    <g:condition>new</g:condition>
+    <g:brand>Sherman Art Works</g:brand>
+    <g:identifier_exists>no</g:identifier_exists>
+    <g:item_group_id>classic-havdalah-sets</g:item_group_id>
+    <g:color>Blue</g:color>
+    <g:product_type>Havdalah Sets</g:product_type>
+    <g:google_product_category>97</g:google_product_category>
+    <g:shipping>
+      <g:country>IL</g:country>
+      <g:price>35.00 ILS</g:price>
+    </g:shipping>
+  </item>
+  <item>
+    <g:id>white-havdalah-set</g:id>
+    <g:title>White Havdalah Set</g:title>
+    <g:description>Handmade white Havdalah set, crafted in our studio in Israel.</g:description>
+    <g:link>https://shermanartworks.com/havdalah-sets.html#white-havdalah-set</g:link>
+    <g:image_link>https://res.cloudinary.com/doesupaf9/image/upload/w_1200,q_auto:good/Havdala_white_set_wnymec.jpg</g:image_link>
+    <g:availability>in_stock</g:availability>
+    <g:price>1369.00 ILS</g:price>
+    <g:condition>new</g:condition>
+    <g:brand>Sherman Art Works</g:brand>
+    <g:identifier_exists>no</g:identifier_exists>
+    <g:item_group_id>classic-havdalah-sets</g:item_group_id>
+    <g:color>White</g:color>
+    <g:product_type>Havdalah Sets</g:product_type>
+    <g:google_product_category>97</g:google_product_category>
+    <g:shipping>
+      <g:country>IL</g:country>
+      <g:price>35.00 ILS</g:price>
+    </g:shipping>
+  </item>
+  <item>
+    <g:id>orange-havdalah-set</g:id>
+    <g:title>Orange Havdalah Set</g:title>
+    <g:description>Handmade orange Havdalah set, crafted in our studio in Israel.</g:description>
+    <g:link>https://shermanartworks.com/havdalah-sets.html#orange-havdalah-set</g:link>
+    <g:image_link>https://res.cloudinary.com/doesupaf9/image/upload/w_1200,q_auto:good/Orange_havdala_set_bh5ut5.jpg</g:image_link>
+    <g:availability>in_stock</g:availability>
+    <g:price>1369.00 ILS</g:price>
+    <g:condition>new</g:condition>
+    <g:brand>Sherman Art Works</g:brand>
+    <g:identifier_exists>no</g:identifier_exists>
+    <g:color>Orange</g:color>
+    <g:product_type>Havdalah Sets</g:product_type>
     <g:google_product_category>97</g:google_product_category>
     <g:shipping>
       <g:country>IL</g:country>

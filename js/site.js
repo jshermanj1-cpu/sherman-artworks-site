@@ -24,6 +24,7 @@ const T_SITE = {
     cat5_title:          'Business Gifts',
     cat6_title:          'Mezuzahs',
     cat7_title:          'Shofars',
+    cat8_title:          'Havdalah Sets',
 
     // Shofar sub-categories - used by the nav on every page, not just the
     // shofar pages, so they live here rather than in a page dictionary.
@@ -87,6 +88,7 @@ const T_SITE = {
     cat5_title:          'מתנות לעסקים',
     cat6_title:          'מזוזות',
     cat7_title:          'שופרות',
+    cat8_title:          'סטי הבדלה',
 
     switch_all:          'כל השופרות',
     switch_custom:       'בהתאמה אישית',

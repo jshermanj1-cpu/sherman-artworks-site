@@ -29,16 +29,17 @@ from bs4 import BeautifulSoup, NavigableString
 ROOT = os.path.dirname(os.path.abspath(__file__))
 HE_DIR = os.path.join(ROOT, "he")
 
-# Shop pages: homepage, 7 shop categories, 3 shofar sub-category pages. These are
+# Shop pages: homepage, 8 shop categories, 3 shofar sub-category pages. These are
 # the pages with product cards (used by build_product_records).
 SHOP_PAGES = [
     "index.html",
     "candlesticks.html",
     "horn-goblets.html",
     "kiddush-cups.html",
+    "havdalah-sets.html",
+    "mezuzahs.html",
     "trays-bowls.html",
     "business-gifts.html",
-    "mezuzahs.html",
     "shofars.html",
     "shofars-custom.html",
     "shofars-rams.html",
@@ -70,7 +71,7 @@ POLICY = {
 }
 
 # Extra JS files to mine for product name_he/description_he (shofar catalogue).
-PRODUCT_JS = ["js/shofar-products.js"]
+PRODUCT_JS = ["js/shofar-products.js", "js/havdalah-sets.js"]
 
 # setLang() uses innerHTML (not textContent) only for these rich-text keys.
 RICH_KEYS = {"story_body", "craft_body"}
@@ -135,6 +136,10 @@ META = {
     "trays-bowls.html": (
         "מגשים וקערות זכוכית בעבודת יד | שרמן ארט וורקס",
         "קערות ומגשים דקורטיביים מזכוכית בעבודת יד למרכז השולחן ולבית. מיוצר בישראל, משלוח לכל העולם.",
+    ),
+    "havdalah-sets.html": (
+        "סטי הבדלה בעבודת יד | שרמן ארט וורקס",
+        "סטי הבדלה בעבודת יד בצבעים שחור, כחול, לבן וכתום. מיוצר בישראל, משלוח לכל העולם.",
     ),
     "business-gifts.html": (
         "מתנות לעסקים ולאירועים | שרמן ארט וורקס",
@@ -398,6 +403,11 @@ PRODUCT_GROUP_HE = {
         "name": "מגשי זכוכית בציפוי כסף 925",
         "description": "מגשי זכוכית בעבודת יד בציפוי כסף סטרלינג 925, "
                        "בשישה עיצובים מתואמים.",
+    },
+    "classic-havdalah-sets": {
+        "name": "סטי הבדלה קלאסיים",
+        "description": "סטי הבדלה בעבודת יד בצבעים שחור, כחול ולבן, "
+                       "מיוצרים בסטודיו שלנו בישראל.",
     },
 }
 
@@ -725,6 +735,65 @@ def he_href(page):
     return "/he/" if page == "index.html" else "/he/" + page
 
 
+def patch_category_navigation():
+    """Place Havdalah Sets between Kiddush Cups and Mezuzahs in shop menus.
+
+    Shared navigation is duplicated in the static pages. Keeping this raw-text
+    and line-based preserves the hand-authored markup. Footer lists are left
+    unchanged because they do not contain the full ordered category list.
+    """
+    for name in sorted(os.listdir(ROOT)):
+        if not name.endswith(".html"):
+            continue
+        path = os.path.join(ROOT, name)
+        with open(path, "r", encoding="utf-8") as f:
+            lines = f.readlines()
+        out = []
+        for line in lines:
+            is_menu_line = 'role="menuitem"' in line or 'onclick="closeMobileNav()"' in line
+            if not is_menu_line:
+                out.append(line)
+                continue
+
+            # The Havdalah page keeps menu anchors on one compact line.
+            if line.count("<a") > 1:
+                line = re.sub(
+                    r'<a href="havdalah-sets\.html"[^>]*(?:role="menuitem"|onclick="closeMobileNav\(\)")[^>]*>.*?</a>',
+                    "",
+                    line,
+                )
+
+                def add_havdalah_after_kiddush(match):
+                    anchor = match.group(0)
+                    new = anchor.replace('href="kiddush-cups.html"', 'href="havdalah-sets.html"', 1)
+                    new = re.sub(r'data-t="[^"]+"', 'data-t="cat8_title"', new, count=1)
+                    new = re.sub(r'(<a\b[^>]*>).*?(</a>)', r'\1Havdalah Sets\2', new, count=1)
+                    return anchor + new
+
+                line = re.sub(
+                    r'<a href="kiddush-cups\.html"[^>]*(?:role="menuitem"|onclick="closeMobileNav\(\)")[^>]*>.*?</a>',
+                    add_havdalah_after_kiddush,
+                    line,
+                )
+                out.append(line)
+                continue
+
+            if 'href="havdalah-sets.html"' in line:
+                continue
+
+            out.append(line)
+            if 'href="kiddush-cups.html"' in line:
+                new = line.replace('href="kiddush-cups.html"', 'href="havdalah-sets.html"', 1)
+                new = re.sub(r'data-t="[^"]+"', 'data-t="cat8_title"', new, count=1)
+                new = re.sub(r'(<a\b[^>]*>).*?(</a>)', r'\1Havdalah Sets\2', new, count=1)
+                out.append(new)
+
+        if out != lines:
+            with open(path, "w", encoding="utf-8", newline="\n") as f:
+                f.writelines(out)
+            print("ordered Havdalah Sets navigation in %s" % name)
+
+
 def patch_english_pages():
     """Surgical raw-text edits on the live English pages (no bs4 re-serialization,
     so diffs stay minimal): add bidirectional hreflang after the canonical link,
@@ -835,6 +904,8 @@ def update_sitemap():
 
 
 def main():
+    print("-- category navigation --")
+    patch_category_navigation()
     os.makedirs(HE_DIR, exist_ok=True)
     for page in PAGES:
         out = translate_page(page)
