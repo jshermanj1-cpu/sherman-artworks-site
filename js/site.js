@@ -32,6 +32,9 @@ const T_SITE = {
     switch_custom:       'Custom',
     switch_rams:         "Ram's Horn",
     switch_kudu:         'Kudu Horn',
+    switch_candles_all:       'All Candlesticks',
+    switch_candles_silver:    'Silver-Plated Candlesticks',
+    switch_candles_artisanal: 'Artisanal Candlesticks',
 
     cat_from:            'from',
     cat_cta_browse:      'Browse Collection',
@@ -94,6 +97,9 @@ const T_SITE = {
     switch_custom:       'בהתאמה אישית',
     switch_rams:         'שופר איל',
     switch_kudu:         'שופר קודו',
+    switch_candles_all:       'כל הפמוטים',
+    switch_candles_silver:    'פמוטים בציפוי כסף',
+    switch_candles_artisanal: 'פמוטים אומנותיים',
 
     cat_from:            'מ-',
     cat_cta_browse:      'לקולקציה',

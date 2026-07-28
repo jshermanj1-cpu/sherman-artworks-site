@@ -34,6 +34,8 @@ HE_DIR = os.path.join(ROOT, "he")
 SHOP_PAGES = [
     "index.html",
     "candlesticks.html",
+    "candlesticks-silver-plated.html",
+    "candlesticks-artisanal.html",
     "horn-goblets.html",
     "kiddush-cups.html",
     "havdalah-sets.html",
@@ -124,6 +126,14 @@ META = {
     "candlesticks.html": (
         "פמוטים מזכוכית בעבודת יד | שרמן ארט וורקס",
         "פמוטי זכוכית בעבודת יד לנרות שבת, בשיטה המשפחתית המסורתית. מגוון צבעים, מיוצר בישראל ונשלח לכל העולם.",
+    ),
+    "candlesticks-silver-plated.html": (
+        "פמוטי זכוכית בציפוי כסף 925 | שרמן ארט וורקס",
+        "פמוטי זכוכית בעבודת יד בגימור כסף סטרלינג 925. שבעה צבעים, שלושה גבהים ואפשרות למגש תואם, מיוצרים בישראל.",
+    ),
+    "candlesticks-artisanal.html": (
+        "פמוטי זכוכית אומנותיים בעבודת יד | שרמן ארט וורקס",
+        "פמוטי זכוכית אומנותיים בעבודת יד מישראל במבחר עיצובים צבעוניים, מפוספסים, מנוקדים, שקופים ובסגנון מוראנו.",
     ),
     "horn-goblets.html": (
         "גביעי קרן בציפוי כסף 925 בעבודת יד | שרמן ארט וורקס",

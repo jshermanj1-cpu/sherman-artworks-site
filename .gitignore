@@ -4,4 +4,5 @@ Thumbs.db
 pics/
 .claude/
 _*.py
+!_candlestick_pages.py
 _pricing/
