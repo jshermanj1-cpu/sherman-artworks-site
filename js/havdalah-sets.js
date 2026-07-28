@@ -1,6 +1,7 @@
 const PRODUCTS = [
   {
     "id": "black-havdalah-set",
+    "sku": "SAW-HS-001",
     "family_id": "classic-havdalah-sets",
     "name_en": "Black Havdalah Set",
     "name_he": "סט הבדלה שחור",
@@ -14,6 +15,7 @@ const PRODUCTS = [
   },
   {
     "id": "blue-havdalah-set",
+    "sku": "SAW-HS-002",
     "family_id": "classic-havdalah-sets",
     "name_en": "Blue Havdalah Set",
     "name_he": "סט הבדלה כחול",
@@ -27,6 +29,7 @@ const PRODUCTS = [
   },
   {
     "id": "white-havdalah-set",
+    "sku": "SAW-HS-003",
     "family_id": "classic-havdalah-sets",
     "name_en": "White Havdalah Set",
     "name_he": "סט הבדלה לבן",
@@ -40,6 +43,7 @@ const PRODUCTS = [
   },
   {
     "id": "orange-havdalah-set",
+    "sku": "SAW-HS-004",
     "name_en": "Orange Havdalah Set",
     "name_he": "סט הבדלה כתום",
     "description_en": "Handmade orange Havdalah set, crafted in our studio in Israel.",
@@ -71,7 +75,7 @@ function productWhatsApp(product) {
   const message = currentLang === "he"
     ? 'שלום, אני מתעניין/ת ב"' + name + '". אשמח לפרטים נוספים.'
     : 'Hi, I would like to know more about "' + name + '".';
-  return "https://wa.me/" + WA_NUMBER + "?text=" + encodeURIComponent(message);
+  return "https://wa.me/" + WA_NUMBER + "?text=" + encodeURIComponent(message + "\nSKU: " + productSku(product));
 }
 
 function buildProductCard(product, index) {

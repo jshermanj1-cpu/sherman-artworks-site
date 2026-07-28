@@ -1,8 +1,11 @@
 [
   {
     "id": "glass-circle-candlesticks",
+    "sku": "SAW-CS-001",
     "category": "candlesticks",
-    "pages": ["candlesticks.html"],
+    "pages": [
+      "candlesticks.html"
+    ],
     "name_en": "Glass Circle Candlesticks",
     "name_he": "פמוטי זכוכית עגולות",
     "description_en": "Handmade Murano-style glass candlesticks - traditional family method candle holders.",
@@ -19,8 +22,11 @@
   },
   {
     "id": "gold-colorful-glass-candlesticks",
+    "sku": "SAW-CS-002",
     "category": "candlesticks",
-    "pages": ["candlesticks.html"],
+    "pages": [
+      "candlesticks.html"
+    ],
     "name_en": "Gold Colorful Glass Candlesticks",
     "name_he": "פמוטי זכוכית צבעוניים בשילוב זהב",
     "description_en": "Handmade glass candlesticks with a vibrant colorful pattern and gold accents - traditional family method candle holders.",
@@ -36,8 +42,11 @@
   },
   {
     "id": "burgundy-glass-candlesticks",
+    "sku": "SAW-CS-003",
     "category": "candlesticks",
-    "pages": ["candlesticks.html"],
+    "pages": [
+      "candlesticks.html"
+    ],
     "name_en": "Burgundy Glass Candlesticks",
     "name_he": "פמוטי זכוכית בורדו",
     "description_en": "Handmade glass candlesticks in deep burgundy - traditional family method candle holders.",
@@ -53,9 +62,12 @@
   },
   {
     "id": "white-silver-plated-glass-candlesticks",
+    "sku": "SAW-CS-004",
     "family_id": "silver-plated-glass-candlesticks",
     "category": "candlesticks",
-    "pages": ["candlesticks.html"],
+    "pages": [
+      "candlesticks.html"
+    ],
     "name_en": "White 925 Silver-Plated Glass Candlesticks",
     "name_he": "פמוטי זכוכית לבנים מצופי כסף 925",
     "description_en": "Handmade white glass candlesticks finished with 925 sterling-silver plating, sold as a pair and made to order in our studio in Israel. Available in three heights.",
@@ -65,24 +77,54 @@
     "measurements": "",
     "price_ils": 561,
     "sizes": [
-      {"label": "S", "range_cm": "14-18", "range_in": "5.5-7.1", "price_ils": 561},
-      {"label": "M", "range_cm": "19-22", "range_in": "7.5-8.7", "price_ils": 623},
-      {"label": "L", "range_cm": "23-25", "range_in": "9.1-9.8", "price_ils": 712}
+      {
+        "label": "S",
+        "sku": "SAW-CS-004-S",
+        "range_cm": "14-18",
+        "range_in": "5.5-7.1",
+        "price_ils": 561
+      },
+      {
+        "label": "M",
+        "sku": "SAW-CS-004-M",
+        "range_cm": "19-22",
+        "range_in": "7.5-8.7",
+        "price_ils": 623
+      },
+      {
+        "label": "L",
+        "sku": "SAW-CS-004-L",
+        "range_cm": "23-25",
+        "range_in": "9.1-9.8",
+        "price_ils": 712
+      }
     ],
     "photos": [
       "White_pamotim_lrdkha",
       "White_pamotim_window_background_zvwnnq",
       "White_pamotim2_s4579d"
     ],
-    "tray_addon": {"id": "white-silver-plated-glass-tray", "name_en": "Matching White 925 Silver-Plated Glass Tray", "name_he": "מגש זכוכית לבן תואם בציפוי כסף 925", "measurements": "30 × 18 cm", "regular_price_ils": 510, "bundle_price_ils": 406, "photo": "White_tray_o1npai", "set_photo": "White_pamotim2_s4579d"},
+    "tray_addon": {
+      "id": "white-silver-plated-glass-tray",
+      "name_en": "Matching White 925 Silver-Plated Glass Tray",
+      "name_he": "מגש זכוכית לבן תואם בציפוי כסף 925",
+      "measurements": "30 × 18 cm",
+      "regular_price_ils": 510,
+      "bundle_price_ils": 406,
+      "photo": "White_tray_o1npai",
+      "set_photo": "White_pamotim2_s4579d"
+    },
     "require_size_selection": true,
     "personalisable": false
   },
   {
     "id": "red-silver-plated-glass-candlesticks",
+    "sku": "SAW-CS-005",
     "family_id": "silver-plated-glass-candlesticks",
     "category": "candlesticks",
-    "pages": ["candlesticks.html"],
+    "pages": [
+      "candlesticks.html"
+    ],
     "name_en": "Red 925 Silver-Plated Glass Candlesticks",
     "name_he": "פמוטי זכוכית אדומים מצופי כסף 925",
     "description_en": "Handmade red glass candlesticks finished with 925 sterling-silver plating, sold as a pair and made to order in our studio in Israel. Available in three heights.",
@@ -92,24 +134,54 @@
     "measurements": "",
     "price_ils": 561,
     "sizes": [
-      {"label": "S", "range_cm": "14-18", "range_in": "5.5-7.1", "price_ils": 561},
-      {"label": "M", "range_cm": "19-22", "range_in": "7.5-8.7", "price_ils": 623},
-      {"label": "L", "range_cm": "23-25", "range_in": "9.1-9.8", "price_ils": 712}
+      {
+        "label": "S",
+        "sku": "SAW-CS-005-S",
+        "range_cm": "14-18",
+        "range_in": "5.5-7.1",
+        "price_ils": 561
+      },
+      {
+        "label": "M",
+        "sku": "SAW-CS-005-M",
+        "range_cm": "19-22",
+        "range_in": "7.5-8.7",
+        "price_ils": 623
+      },
+      {
+        "label": "L",
+        "sku": "SAW-CS-005-L",
+        "range_cm": "23-25",
+        "range_in": "9.1-9.8",
+        "price_ils": 712
+      }
     ],
     "photos": [
       "Red_pamotim_ml9qt9",
       "Red_pamotim_window_background_ktrnbq",
       "Red_pamotim2_q6o2z4"
     ],
-    "tray_addon": {"id": "red-silver-plated-glass-tray", "name_en": "Matching Red 925 Silver-Plated Glass Tray", "name_he": "מגש זכוכית אדום תואם בציפוי כסף 925", "measurements": "30 × 18 cm", "regular_price_ils": 510, "bundle_price_ils": 406, "photo": "Red_tray_zhqmoo", "set_photo": "Red_pamotim2_q6o2z4"},
+    "tray_addon": {
+      "id": "red-silver-plated-glass-tray",
+      "name_en": "Matching Red 925 Silver-Plated Glass Tray",
+      "name_he": "מגש זכוכית אדום תואם בציפוי כסף 925",
+      "measurements": "30 × 18 cm",
+      "regular_price_ils": 510,
+      "bundle_price_ils": 406,
+      "photo": "Red_tray_zhqmoo",
+      "set_photo": "Red_pamotim2_q6o2z4"
+    },
     "require_size_selection": true,
     "personalisable": false
   },
   {
     "id": "blue-silver-plated-glass-candlesticks",
+    "sku": "SAW-CS-006",
     "family_id": "silver-plated-glass-candlesticks",
     "category": "candlesticks",
-    "pages": ["candlesticks.html"],
+    "pages": [
+      "candlesticks.html"
+    ],
     "name_en": "Blue 925 Silver-Plated Glass Candlesticks",
     "name_he": "פמוטי זכוכית כחולים מצופי כסף 925",
     "description_en": "Handmade blue glass candlesticks finished with 925 sterling-silver plating, sold as a pair and made to order in our studio in Israel. Available in three heights.",
@@ -119,24 +191,54 @@
     "measurements": "",
     "price_ils": 561,
     "sizes": [
-      {"label": "S", "range_cm": "14-18", "range_in": "5.5-7.1", "price_ils": 561},
-      {"label": "M", "range_cm": "19-22", "range_in": "7.5-8.7", "price_ils": 623},
-      {"label": "L", "range_cm": "23-25", "range_in": "9.1-9.8", "price_ils": 712}
+      {
+        "label": "S",
+        "sku": "SAW-CS-006-S",
+        "range_cm": "14-18",
+        "range_in": "5.5-7.1",
+        "price_ils": 561
+      },
+      {
+        "label": "M",
+        "sku": "SAW-CS-006-M",
+        "range_cm": "19-22",
+        "range_in": "7.5-8.7",
+        "price_ils": 623
+      },
+      {
+        "label": "L",
+        "sku": "SAW-CS-006-L",
+        "range_cm": "23-25",
+        "range_in": "9.1-9.8",
+        "price_ils": 712
+      }
     ],
     "photos": [
       "Blue_pamotim_rjokud",
       "Blue_pamotim_window_background_dvidim",
       "Blue_pamotim2_g7hkzr"
     ],
-    "tray_addon": {"id": "blue-silver-plated-glass-tray", "name_en": "Matching Blue 925 Silver-Plated Glass Tray", "name_he": "מגש זכוכית כחול תואם בציפוי כסף 925", "measurements": "30 × 18 cm", "regular_price_ils": 510, "bundle_price_ils": 406, "photo": "Blue_tray_jvaf8d", "set_photo": "Blue_pamotim2_g7hkzr"},
+    "tray_addon": {
+      "id": "blue-silver-plated-glass-tray",
+      "name_en": "Matching Blue 925 Silver-Plated Glass Tray",
+      "name_he": "מגש זכוכית כחול תואם בציפוי כסף 925",
+      "measurements": "30 × 18 cm",
+      "regular_price_ils": 510,
+      "bundle_price_ils": 406,
+      "photo": "Blue_tray_jvaf8d",
+      "set_photo": "Blue_pamotim2_g7hkzr"
+    },
     "require_size_selection": true,
     "personalisable": false
   },
   {
     "id": "green-silver-plated-glass-candlesticks",
+    "sku": "SAW-CS-007",
     "family_id": "silver-plated-glass-candlesticks",
     "category": "candlesticks",
-    "pages": ["candlesticks.html"],
+    "pages": [
+      "candlesticks.html"
+    ],
     "name_en": "Green 925 Silver-Plated Glass Candlesticks",
     "name_he": "פמוטי זכוכית ירוקים מצופי כסף 925",
     "description_en": "Handmade green glass candlesticks finished with 925 sterling-silver plating, sold as a pair and made to order in our studio in Israel. Available in three heights.",
@@ -146,24 +248,54 @@
     "measurements": "",
     "price_ils": 561,
     "sizes": [
-      {"label": "S", "range_cm": "14-18", "range_in": "5.5-7.1", "price_ils": 561},
-      {"label": "M", "range_cm": "19-22", "range_in": "7.5-8.7", "price_ils": 623},
-      {"label": "L", "range_cm": "23-25", "range_in": "9.1-9.8", "price_ils": 712}
+      {
+        "label": "S",
+        "sku": "SAW-CS-007-S",
+        "range_cm": "14-18",
+        "range_in": "5.5-7.1",
+        "price_ils": 561
+      },
+      {
+        "label": "M",
+        "sku": "SAW-CS-007-M",
+        "range_cm": "19-22",
+        "range_in": "7.5-8.7",
+        "price_ils": 623
+      },
+      {
+        "label": "L",
+        "sku": "SAW-CS-007-L",
+        "range_cm": "23-25",
+        "range_in": "9.1-9.8",
+        "price_ils": 712
+      }
     ],
     "photos": [
       "Green_pamotim1_pfyo3o",
       "Green_pamotim_window_background_qukui8",
       "Green_pamotim2_dik7y4"
     ],
-    "tray_addon": {"id": "green-silver-plated-glass-tray", "name_en": "Matching Green 925 Silver-Plated Glass Tray", "name_he": "מגש זכוכית ירוק תואם בציפוי כסף 925", "measurements": "30 × 18 cm", "regular_price_ils": 510, "bundle_price_ils": 406, "photo": "Green_tray_ylui7h", "set_photo": "Green_pamotim2_dik7y4"},
+    "tray_addon": {
+      "id": "green-silver-plated-glass-tray",
+      "name_en": "Matching Green 925 Silver-Plated Glass Tray",
+      "name_he": "מגש זכוכית ירוק תואם בציפוי כסף 925",
+      "measurements": "30 × 18 cm",
+      "regular_price_ils": 510,
+      "bundle_price_ils": 406,
+      "photo": "Green_tray_ylui7h",
+      "set_photo": "Green_pamotim2_dik7y4"
+    },
     "require_size_selection": true,
     "personalisable": false
   },
   {
     "id": "black-silver-plated-glass-candlesticks",
+    "sku": "SAW-CS-008",
     "family_id": "silver-plated-glass-candlesticks",
     "category": "candlesticks",
-    "pages": ["candlesticks.html"],
+    "pages": [
+      "candlesticks.html"
+    ],
     "name_en": "Black 925 Silver-Plated Glass Candlesticks",
     "name_he": "פמוטי זכוכית שחורים מצופי כסף 925",
     "description_en": "Handmade black glass candlesticks finished with 925 sterling-silver plating, sold as a pair and made to order in our studio in Israel. Available in three heights.",
@@ -173,24 +305,54 @@
     "measurements": "",
     "price_ils": 561,
     "sizes": [
-      {"label": "S", "range_cm": "14-18", "range_in": "5.5-7.1", "price_ils": 561},
-      {"label": "M", "range_cm": "19-22", "range_in": "7.5-8.7", "price_ils": 623},
-      {"label": "L", "range_cm": "23-25", "range_in": "9.1-9.8", "price_ils": 712}
+      {
+        "label": "S",
+        "sku": "SAW-CS-008-S",
+        "range_cm": "14-18",
+        "range_in": "5.5-7.1",
+        "price_ils": 561
+      },
+      {
+        "label": "M",
+        "sku": "SAW-CS-008-M",
+        "range_cm": "19-22",
+        "range_in": "7.5-8.7",
+        "price_ils": 623
+      },
+      {
+        "label": "L",
+        "sku": "SAW-CS-008-L",
+        "range_cm": "23-25",
+        "range_in": "9.1-9.8",
+        "price_ils": 712
+      }
     ],
     "photos": [
       "Black_pamotim_uex9hi",
       "Black_pamotim_window_background_svp9x6",
       "Black_pamotim2_druayt"
     ],
-    "tray_addon": {"id": "black-silver-plated-glass-tray", "name_en": "Matching Black 925 Silver-Plated Glass Tray", "name_he": "מגש זכוכית שחור תואם בציפוי כסף 925", "measurements": "30 × 18 cm", "regular_price_ils": 510, "bundle_price_ils": 406, "photo": "Black_tray_cqaohw", "set_photo": "Black_pamotim2_druayt"},
+    "tray_addon": {
+      "id": "black-silver-plated-glass-tray",
+      "name_en": "Matching Black 925 Silver-Plated Glass Tray",
+      "name_he": "מגש זכוכית שחור תואם בציפוי כסף 925",
+      "measurements": "30 × 18 cm",
+      "regular_price_ils": 510,
+      "bundle_price_ils": 406,
+      "photo": "Black_tray_cqaohw",
+      "set_photo": "Black_pamotim2_druayt"
+    },
     "require_size_selection": true,
     "personalisable": false
   },
   {
     "id": "blue-green-silver-plated-glass-candlesticks",
+    "sku": "SAW-CS-009",
     "family_id": "silver-plated-glass-candlesticks",
     "category": "candlesticks",
-    "pages": ["candlesticks.html"],
+    "pages": [
+      "candlesticks.html"
+    ],
     "name_en": "Blue-Green 925 Silver-Plated Glass Candlesticks",
     "name_he": "פמוטי זכוכית בגוון כחול־ירוק מצופי כסף 925",
     "description_en": "Handmade blue-green glass candlesticks finished with 925 sterling-silver plating, sold as a pair and made to order in our studio in Israel. Available in three heights.",
@@ -200,24 +362,54 @@
     "measurements": "",
     "price_ils": 561,
     "sizes": [
-      {"label": "S", "range_cm": "14-18", "range_in": "5.5-7.1", "price_ils": 561},
-      {"label": "M", "range_cm": "19-22", "range_in": "7.5-8.7", "price_ils": 623},
-      {"label": "L", "range_cm": "23-25", "range_in": "9.1-9.8", "price_ils": 712}
+      {
+        "label": "S",
+        "sku": "SAW-CS-009-S",
+        "range_cm": "14-18",
+        "range_in": "5.5-7.1",
+        "price_ils": 561
+      },
+      {
+        "label": "M",
+        "sku": "SAW-CS-009-M",
+        "range_cm": "19-22",
+        "range_in": "7.5-8.7",
+        "price_ils": 623
+      },
+      {
+        "label": "L",
+        "sku": "SAW-CS-009-L",
+        "range_cm": "23-25",
+        "range_in": "9.1-9.8",
+        "price_ils": 712
+      }
     ],
     "photos": [
       "Blue_green_pamotim_oix8h3",
       "Blue_green_window_background_kqjgp1",
       "Blue_green_pamotim2_kpo6io"
     ],
-    "tray_addon": {"id": "blue-green-silver-plated-glass-tray", "name_en": "Matching Blue-Green 925 Silver-Plated Glass Tray", "name_he": "מגש זכוכית כחול־ירוק תואם בציפוי כסף 925", "measurements": "30 × 18 cm", "regular_price_ils": 510, "bundle_price_ils": 406, "photo": "Vibrant_blue_tray_pyqqto", "set_photo": "Blue_green_pamotim2_kpo6io"},
+    "tray_addon": {
+      "id": "blue-green-silver-plated-glass-tray",
+      "name_en": "Matching Blue-Green 925 Silver-Plated Glass Tray",
+      "name_he": "מגש זכוכית כחול־ירוק תואם בציפוי כסף 925",
+      "measurements": "30 × 18 cm",
+      "regular_price_ils": 510,
+      "bundle_price_ils": 406,
+      "photo": "Vibrant_blue_tray_pyqqto",
+      "set_photo": "Blue_green_pamotim2_kpo6io"
+    },
     "require_size_selection": true,
     "personalisable": false
   },
   {
     "id": "earth-silver-plated-glass-candlesticks",
+    "sku": "SAW-CS-010",
     "family_id": "silver-plated-glass-candlesticks",
     "category": "candlesticks",
-    "pages": ["candlesticks.html"],
+    "pages": [
+      "candlesticks.html"
+    ],
     "name_en": "Earth 925 Silver-Plated Glass Candlesticks",
     "name_he": "פמוטי זכוכית בגוון אדמה מצופי כסף 925",
     "description_en": "Handmade earth-tone glass candlesticks finished with 925 sterling-silver plating, sold as a pair and made to order in our studio in Israel. Available in three heights.",
@@ -227,23 +419,53 @@
     "measurements": "",
     "price_ils": 561,
     "sizes": [
-      {"label": "S", "range_cm": "14-18", "range_in": "5.5-7.1", "price_ils": 561},
-      {"label": "M", "range_cm": "19-22", "range_in": "7.5-8.7", "price_ils": 623},
-      {"label": "L", "range_cm": "23-25", "range_in": "9.1-9.8", "price_ils": 712}
+      {
+        "label": "S",
+        "sku": "SAW-CS-010-S",
+        "range_cm": "14-18",
+        "range_in": "5.5-7.1",
+        "price_ils": 561
+      },
+      {
+        "label": "M",
+        "sku": "SAW-CS-010-M",
+        "range_cm": "19-22",
+        "range_in": "7.5-8.7",
+        "price_ils": 623
+      },
+      {
+        "label": "L",
+        "sku": "SAW-CS-010-L",
+        "range_cm": "23-25",
+        "range_in": "9.1-9.8",
+        "price_ils": 712
+      }
     ],
     "photos": [
       "Adama_pamotim_pikski",
       "Adama_pamotim_3_qgzseu",
       "Adama_pamotim2_jebzbp"
     ],
-    "tray_addon": {"id": "white-silver-plated-glass-tray", "name_en": "Matching White 925 Silver-Plated Glass Tray", "name_he": "מגש זכוכית לבן תואם בציפוי כסף 925", "measurements": "30 × 18 cm", "regular_price_ils": 510, "bundle_price_ils": 406, "photo": "White_tray_o1npai", "set_photo": "Adama_pamotim2_jebzbp"},
+    "tray_addon": {
+      "id": "white-silver-plated-glass-tray",
+      "name_en": "Matching White 925 Silver-Plated Glass Tray",
+      "name_he": "מגש זכוכית לבן תואם בציפוי כסף 925",
+      "measurements": "30 × 18 cm",
+      "regular_price_ils": 510,
+      "bundle_price_ils": 406,
+      "photo": "White_tray_o1npai",
+      "set_photo": "Adama_pamotim2_jebzbp"
+    },
     "require_size_selection": true,
     "personalisable": false
   },
   {
     "id": "jerusalem-wine-horn",
+    "sku": "SAW-HG-001",
     "category": "horn-goblets",
-    "pages": ["horn-goblets.html"],
+    "pages": [
+      "horn-goblets.html"
+    ],
     "name_en": "Jerusalem Wine Horn",
     "name_he": "שופר ירושלים",
     "description_en": "Traditional wine horn covered in 925 silver and symbols. Coated with FDA-approved crystal epoxy.",
@@ -261,8 +483,12 @@
   },
   {
     "id": "lion-of-judah-goblet",
+    "sku": "SAW-HG-002",
     "category": "horn-goblets",
-    "pages": ["horn-goblets.html", "kiddush-cups.html"],
+    "pages": [
+      "horn-goblets.html",
+      "kiddush-cups.html"
+    ],
     "name_en": "Lion of Judah Goblet",
     "name_he": "גביע אריה יהודה",
     "description_en": "Traditional wine goblet made from a rams horn. Lion in repoussé silver on an ornate base. Coated with FDA-approved crystal epoxy.",
@@ -279,8 +505,12 @@
   },
   {
     "id": "menorah-goblet",
+    "sku": "SAW-HG-003",
     "category": "horn-goblets",
-    "pages": ["horn-goblets.html", "kiddush-cups.html"],
+    "pages": [
+      "horn-goblets.html",
+      "kiddush-cups.html"
+    ],
     "name_en": "Menorah Goblet",
     "name_he": "גביע מנורה",
     "description_en": "Traditional wine goblet made from a rams horn, with a seven-branched menorah encircling the cup. Coated with FDA-approved crystal epoxy.",
@@ -296,8 +526,11 @@
   },
   {
     "id": "glass-decorative-bowl",
+    "sku": "SAW-TB-001",
     "category": "trays-bowls",
-    "pages": ["trays-bowls.html"],
+    "pages": [
+      "trays-bowls.html"
+    ],
     "name_en": "Glass Decorative Bowl",
     "name_he": "קערת נוי גדולה",
     "description_en": "A handcrafted decorative bowl with a unique custom design, featuring an organic, asymmetrical silhouette and a glossy marbled finish in soft seafoam white tones. The bowl's fluid, irregular edges resemble flowing fabric or flower petals, giving it a modern sculptural aesthetic. Its semi-translucent surface reflects light beautifully, with subtle earthy veining throughout, emphasising its artisanal, one-of-a-kind character.",
@@ -314,9 +547,12 @@
   },
   {
     "id": "white-silver-plated-glass-tray",
+    "sku": "SAW-TB-002",
     "family_id": "silver-plated-glass-trays",
     "category": "trays-bowls",
-    "pages": ["trays-bowls.html"],
+    "pages": [
+      "trays-bowls.html"
+    ],
     "name_en": "White 925 Silver-Plated Glass Tray",
     "name_he": "מגש זכוכית לבן בציפוי כסף 925",
     "description_en": "Handmade white glass tray finished with 925 sterling-silver plating. Measures 30 × 18 cm and is made to order in our studio in Israel.",
@@ -327,14 +563,19 @@
     "price_ils": 510,
     "bundle_price_ils": 406,
     "bundle_with_family_id": "silver-plated-glass-candlesticks",
-    "photos": ["White_tray_o1npai"],
+    "photos": [
+      "White_tray_o1npai"
+    ],
     "personalisable": false
   },
   {
     "id": "red-silver-plated-glass-tray",
+    "sku": "SAW-TB-003",
     "family_id": "silver-plated-glass-trays",
     "category": "trays-bowls",
-    "pages": ["trays-bowls.html"],
+    "pages": [
+      "trays-bowls.html"
+    ],
     "name_en": "Red 925 Silver-Plated Glass Tray",
     "name_he": "מגש זכוכית אדום בציפוי כסף 925",
     "description_en": "Handmade red glass tray finished with 925 sterling-silver plating. Measures 30 × 18 cm and is made to order in our studio in Israel.",
@@ -345,14 +586,19 @@
     "price_ils": 510,
     "bundle_price_ils": 406,
     "bundle_with_family_id": "silver-plated-glass-candlesticks",
-    "photos": ["Red_tray_zhqmoo"],
+    "photos": [
+      "Red_tray_zhqmoo"
+    ],
     "personalisable": false
   },
   {
     "id": "blue-silver-plated-glass-tray",
+    "sku": "SAW-TB-004",
     "family_id": "silver-plated-glass-trays",
     "category": "trays-bowls",
-    "pages": ["trays-bowls.html"],
+    "pages": [
+      "trays-bowls.html"
+    ],
     "name_en": "Blue 925 Silver-Plated Glass Tray",
     "name_he": "מגש זכוכית כחול בציפוי כסף 925",
     "description_en": "Handmade blue glass tray finished with 925 sterling-silver plating. Measures 30 × 18 cm and is made to order in our studio in Israel.",
@@ -363,14 +609,19 @@
     "price_ils": 510,
     "bundle_price_ils": 406,
     "bundle_with_family_id": "silver-plated-glass-candlesticks",
-    "photos": ["Blue_tray_jvaf8d"],
+    "photos": [
+      "Blue_tray_jvaf8d"
+    ],
     "personalisable": false
   },
   {
     "id": "green-silver-plated-glass-tray",
+    "sku": "SAW-TB-005",
     "family_id": "silver-plated-glass-trays",
     "category": "trays-bowls",
-    "pages": ["trays-bowls.html"],
+    "pages": [
+      "trays-bowls.html"
+    ],
     "name_en": "Green 925 Silver-Plated Glass Tray",
     "name_he": "מגש זכוכית ירוק בציפוי כסף 925",
     "description_en": "Handmade green glass tray finished with 925 sterling-silver plating. Measures 30 × 18 cm and is made to order in our studio in Israel.",
@@ -381,14 +632,19 @@
     "price_ils": 510,
     "bundle_price_ils": 406,
     "bundle_with_family_id": "silver-plated-glass-candlesticks",
-    "photos": ["Green_tray_ylui7h"],
+    "photos": [
+      "Green_tray_ylui7h"
+    ],
     "personalisable": false
   },
   {
     "id": "black-silver-plated-glass-tray",
+    "sku": "SAW-TB-006",
     "family_id": "silver-plated-glass-trays",
     "category": "trays-bowls",
-    "pages": ["trays-bowls.html"],
+    "pages": [
+      "trays-bowls.html"
+    ],
     "name_en": "Black 925 Silver-Plated Glass Tray",
     "name_he": "מגש זכוכית שחור בציפוי כסף 925",
     "description_en": "Handmade black glass tray finished with 925 sterling-silver plating. Measures 30 × 18 cm and is made to order in our studio in Israel.",
@@ -399,14 +655,19 @@
     "price_ils": 510,
     "bundle_price_ils": 406,
     "bundle_with_family_id": "silver-plated-glass-candlesticks",
-    "photos": ["Black_tray_cqaohw"],
+    "photos": [
+      "Black_tray_cqaohw"
+    ],
     "personalisable": false
   },
   {
     "id": "blue-green-silver-plated-glass-tray",
+    "sku": "SAW-TB-007",
     "family_id": "silver-plated-glass-trays",
     "category": "trays-bowls",
-    "pages": ["trays-bowls.html"],
+    "pages": [
+      "trays-bowls.html"
+    ],
     "name_en": "Blue-Green 925 Silver-Plated Glass Tray",
     "name_he": "מגש זכוכית כחול־ירוק בציפוי כסף 925",
     "description_en": "Handmade blue-green glass tray finished with 925 sterling-silver plating. Measures 30 × 18 cm and is made to order in our studio in Israel.",
@@ -417,13 +678,18 @@
     "price_ils": 510,
     "bundle_price_ils": 406,
     "bundle_with_family_id": "silver-plated-glass-candlesticks",
-    "photos": ["Vibrant_blue_tray_pyqqto"],
+    "photos": [
+      "Vibrant_blue_tray_pyqqto"
+    ],
     "personalisable": false
   },
   {
     "id": "oryx-mezuzah",
+    "sku": "SAW-MZ-001",
     "category": "mezuzahs",
-    "pages": ["mezuzahs.html"],
+    "pages": [
+      "mezuzahs.html"
+    ],
     "name_en": "Oryx Mezuzah",
     "name_he": "מזוזת ראם",
     "description_en": "Handmade Oryx horn Mezuzah case covered in 925 silver, shaped and finished by hand in our studio in Israel. A unique and meaningful piece for your home or as a gift.\n* mezuzah case doesn't include the parchment",
@@ -440,8 +706,11 @@
   },
   {
     "id": "black-white-stripes-candlesticks",
+    "sku": "SAW-CS-011",
     "category": "candlesticks",
-    "pages": ["candlesticks.html"],
+    "pages": [
+      "candlesticks.html"
+    ],
     "name_en": "Black and White Stripes Candlesticks",
     "name_he": "פמוטי זכוכית פסים שחור-לבן",
     "description_en": "Handmade glass candlesticks with bold black and white stripe pattern - traditional family method candle holders.",
@@ -456,8 +725,11 @@
   },
   {
     "id": "gold-red-stripes-candlesticks",
+    "sku": "SAW-CS-012",
     "category": "candlesticks",
-    "pages": ["candlesticks.html"],
+    "pages": [
+      "candlesticks.html"
+    ],
     "name_en": "Gold and Red Stripes Candlesticks",
     "name_he": "פמוטי זכוכית פסים זהב-אדום",
     "description_en": "Handmade glass candlesticks with rich gold and red stripe pattern - traditional family method candle holders.",
@@ -472,8 +744,11 @@
   },
   {
     "id": "green-dots-candlesticks",
+    "sku": "SAW-CS-013",
     "category": "candlesticks",
-    "pages": ["candlesticks.html"],
+    "pages": [
+      "candlesticks.html"
+    ],
     "name_en": "Green Dots Candlesticks",
     "name_he": "פמוטי זכוכית נקודות ירוקות",
     "description_en": "Handmade glass candlesticks with playful green dot pattern - traditional family method candle holders.",
@@ -488,8 +763,11 @@
   },
   {
     "id": "black-white-dots-candlesticks",
+    "sku": "SAW-CS-014",
     "category": "candlesticks",
-    "pages": ["candlesticks.html"],
+    "pages": [
+      "candlesticks.html"
+    ],
     "name_en": "Black and White Dots Candlesticks",
     "name_he": "פמוטי זכוכית נקודות שחור-לבן",
     "description_en": "Handmade glass candlesticks with classic black and white dot pattern - traditional family method candle holders.",
@@ -504,8 +782,11 @@
   },
   {
     "id": "white-glass-candlesticks",
+    "sku": "SAW-CS-015",
     "category": "candlesticks",
-    "pages": ["candlesticks.html"],
+    "pages": [
+      "candlesticks.html"
+    ],
     "name_en": "White Glass Candlesticks",
     "name_he": "פמוטי זכוכית לבנה",
     "description_en": "Handmade white glass candlesticks - traditional family method candle holders.",
@@ -521,8 +802,11 @@
   },
   {
     "id": "clear-round-glass-candlesticks",
+    "sku": "SAW-CS-016",
     "category": "candlesticks",
-    "pages": ["candlesticks.html"],
+    "pages": [
+      "candlesticks.html"
+    ],
     "name_en": "Clear Round Glass Candlesticks",
     "name_he": "פמוטי זכוכית שקופים עגולים",
     "description_en": "Handmade clear round glass candlesticks - traditional family method candle holders.",
@@ -537,8 +821,11 @@
   },
   {
     "id": "clear-rectangular-glass-candlesticks",
+    "sku": "SAW-CS-017",
     "category": "candlesticks",
-    "pages": ["candlesticks.html"],
+    "pages": [
+      "candlesticks.html"
+    ],
     "name_en": "Clear Rectangular Glass Candlesticks",
     "name_he": "פמוטי זכוכית שקופים מלבניים",
     "description_en": "Handmade clear rectangular glass candlesticks - traditional family method candle holders.",
@@ -554,8 +841,11 @@
   },
   {
     "id": "ram-mezuzah",
+    "sku": "SAW-MZ-002",
     "category": "mezuzahs",
-    "pages": ["mezuzahs.html"],
+    "pages": [
+      "mezuzahs.html"
+    ],
     "name_en": "Ram Mezuzah",
     "name_he": "מזוזת איל",
     "description_en": "Handmade Ram horn Mezuzah case covered in 925 silver, shaped and finished by hand in our studio in Israel. A unique and meaningful piece for your home or as a gift.\n* mezuzah case doesn't include the parchment",
@@ -571,8 +861,11 @@
   },
   {
     "id": "kudu-mezuzah",
+    "sku": "SAW-MZ-003",
     "category": "mezuzahs",
-    "pages": ["mezuzahs.html"],
+    "pages": [
+      "mezuzahs.html"
+    ],
     "name_en": "Kudu Mezuzah",
     "name_he": "מזוזת קודו",
     "description_en": "Handmade Kudu horn Mezuzah case covered in 925 silver, shaped and finished by hand in our studio in Israel. A unique and meaningful piece for your home or as a gift.\n* mezuzah case doesn't include the parchment",
@@ -588,8 +881,11 @@
   },
   {
     "id": "clear-glass-mezuzah",
+    "sku": "SAW-MZ-004",
     "category": "mezuzahs",
-    "pages": ["mezuzahs.html"],
+    "pages": [
+      "mezuzahs.html"
+    ],
     "name_en": "Clear Glass Mezuzah",
     "name_he": "מזוזת זכוכית שקופה",
     "description_en": "Handmade clear glass Mezuzah case, shaped and finished by hand in our studio in Israel. A unique and meaningful piece for your home or as a gift.\n* mezuzah case doesn't include the parchment",
@@ -605,8 +901,11 @@
   },
   {
     "id": "tall-blue-glass-cup",
+    "sku": "SAW-KC-001",
     "category": "kiddush-cups",
-    "pages": ["kiddush-cups.html"],
+    "pages": [
+      "kiddush-cups.html"
+    ],
     "name_en": "Tall Blue Glass Cup",
     "name_he": "כוס קידוש גבוהה כחולה",
     "description_en": "Handmade tall glass Kiddush cup with a rich blue tone and a 925 silver-plated rim. Made to order in our studio in Israel.",
@@ -621,8 +920,11 @@
   },
   {
     "id": "tall-colorful-glass-cup",
+    "sku": "SAW-KC-002",
     "category": "kiddush-cups",
-    "pages": ["kiddush-cups.html"],
+    "pages": [
+      "kiddush-cups.html"
+    ],
     "name_en": "Tall Colorful Glass Cup",
     "name_he": "כוס קידוש גבוהה צבעונית",
     "description_en": "Handmade tall glass Kiddush cup with vibrant swirling colours and a 925 silver-plated rim. Made to order in our studio in Israel.",
@@ -637,8 +939,11 @@
   },
   {
     "id": "tall-red-glass-cup",
+    "sku": "SAW-KC-003",
     "category": "kiddush-cups",
-    "pages": ["kiddush-cups.html"],
+    "pages": [
+      "kiddush-cups.html"
+    ],
     "name_en": "Tall Red Glass Cup",
     "name_he": "כוס קידוש גבוהה אדומה",
     "description_en": "Handmade tall glass Kiddush cup in deep red with a 925 silver-plated rim. Made to order in our studio in Israel.",
@@ -653,8 +958,11 @@
   },
   {
     "id": "low-white-glass-cup",
+    "sku": "SAW-KC-004",
     "category": "kiddush-cups",
-    "pages": ["kiddush-cups.html"],
+    "pages": [
+      "kiddush-cups.html"
+    ],
     "name_en": "Low White Glass Cup",
     "name_he": "כוס קידוש נמוכה לבנה",
     "description_en": "Handmade low glass Kiddush cup in clean white with a 925 silver-plated rim. Made to order in our studio in Israel.",
@@ -669,8 +977,11 @@
   },
   {
     "id": "low-colorful-glass-cup",
+    "sku": "SAW-KC-005",
     "category": "kiddush-cups",
-    "pages": ["kiddush-cups.html"],
+    "pages": [
+      "kiddush-cups.html"
+    ],
     "name_en": "Low Colorful Glass Cup",
     "name_he": "כוס קידוש נמוכה צבעונית",
     "description_en": "Handmade low glass Kiddush cup with vibrant orange tones and a 925 silver-plated rim. Made to order in our studio in Israel.",
@@ -685,8 +996,11 @@
   },
   {
     "id": "ceramic-kiddush-cup",
+    "sku": "SAW-KC-006",
     "category": "kiddush-cups",
-    "pages": ["kiddush-cups.html"],
+    "pages": [
+      "kiddush-cups.html"
+    ],
     "name_en": "Ceramic Kiddush Cup",
     "name_he": "כוס קידוש קרמיקה",
     "description_en": "Handmade ceramic Kiddush cup with a 925 silver-plated rim, decorated with a Menorah symbol and Aramaic lettering. Coated with FDA-approved crystal epoxy. Made to order in our studio in Israel.",
@@ -703,8 +1017,11 @@
   },
   {
     "id": "colorful-glass-cup-and-plate",
+    "sku": "SAW-KC-007",
     "category": "kiddush-cups",
-    "pages": ["kiddush-cups.html"],
+    "pages": [
+      "kiddush-cups.html"
+    ],
     "name_en": "Colorful Glass Cup and Plate",
     "name_he": "כוס קידוש ותחתית זכוכית צבעונית",
     "description_en": "Handmade glass Kiddush cup and matching plate with a vibrant orange palette and 925 silver-plated details. Made to order in our studio in Israel.",
@@ -719,8 +1036,12 @@
   },
   {
     "id": "kiddush-cup-plate",
+    "sku": "SAW-KC-008",
     "category": "kiddush-cups",
-    "pages": ["kiddush-cups.html", "trays-bowls.html"],
+    "pages": [
+      "kiddush-cups.html",
+      "trays-bowls.html"
+    ],
     "name_en": "Kiddush Cup Plate",
     "name_he": "תחתית לכוס קידוש",
     "description_en": "Handmade glass Kiddush cup plate with a vibrant orange palette and a 925 silver-plated rim. A beautiful complement to any Kiddush cup. Made to order in our studio in Israel.",
@@ -735,8 +1056,14 @@
   },
   {
     "id": "custom-shofar",
+    "sku": "SAW-SH-001",
     "category": "shofars",
-    "pages": ["shofars.html", "business-gifts.html", "shofars-custom.html", "shofars-rams.html"],
+    "pages": [
+      "shofars.html",
+      "business-gifts.html",
+      "shofars-custom.html",
+      "shofars-rams.html"
+    ],
     "name_en": "Custom Ram's Horn Shofar, Symbol & Text",
     "name_he": "שופר איל מותאם אישית, סמל וטקסט",
     "description_en": "Ram's-horn shofar decorated in 925 silver and personalised with your choice of symbol and an optional text inscription (Hebrew/English). Made to order in our studio in Israel.",
@@ -744,13 +1071,55 @@
     "measurements": "",
     "price_ils": 742,
     "sizes": [
-      {"label": "XS", "range_cm": "30-34", "range_in": "12-13", "price_ils": 742},
-      {"label": "S",  "range_cm": "35-39", "range_in": "14-15", "price_ils": 853},
-      {"label": "M",  "range_cm": "40-44", "range_in": "16-17", "price_ils": 1064},
-      {"label": "L",  "range_cm": "45-49", "range_in": "18-19", "price_ils": 1263},
-      {"label": "XL", "range_cm": "50-54", "range_in": "20-21", "price_ils": 1492},
-      {"label": "J",  "range_cm": "55-59", "range_in": "22-23", "price_ils": 1647},
-      {"label": "XJ", "range_cm": "60-65", "range_in": "24-26", "price_ils": 2718}
+      {
+        "label": "XS",
+        "sku": "SAW-SH-001-XS",
+        "range_cm": "30-34",
+        "range_in": "12-13",
+        "price_ils": 742
+      },
+      {
+        "label": "S",
+        "sku": "SAW-SH-001-S",
+        "range_cm": "35-39",
+        "range_in": "14-15",
+        "price_ils": 853
+      },
+      {
+        "label": "M",
+        "sku": "SAW-SH-001-M",
+        "range_cm": "40-44",
+        "range_in": "16-17",
+        "price_ils": 1064
+      },
+      {
+        "label": "L",
+        "sku": "SAW-SH-001-L",
+        "range_cm": "45-49",
+        "range_in": "18-19",
+        "price_ils": 1263
+      },
+      {
+        "label": "XL",
+        "sku": "SAW-SH-001-XL",
+        "range_cm": "50-54",
+        "range_in": "20-21",
+        "price_ils": 1492
+      },
+      {
+        "label": "J",
+        "sku": "SAW-SH-001-J",
+        "range_cm": "55-59",
+        "range_in": "22-23",
+        "price_ils": 1647
+      },
+      {
+        "label": "XJ",
+        "sku": "SAW-SH-001-XJ",
+        "range_cm": "60-65",
+        "range_in": "24-26",
+        "price_ils": 2718
+      }
     ],
     "photos": [
       "Cover_silver_Magen_David_with_name_adq1oi"
@@ -759,8 +1128,12 @@
   },
   {
     "id": "kudu-hoshen-stones",
+    "sku": "SAW-SH-002",
     "category": "shofars",
-    "pages": ["shofars.html", "shofars-kudu.html"],
+    "pages": [
+      "shofars.html",
+      "shofars-kudu.html"
+    ],
     "name_en": "Kudu Shofar - Hoshen Stones",
     "name_he": "שופר קודו אבני החושן",
     "description_en": "Kudu-horn shofar decorated in 925 silver with the twelve stones of the High Priest's breastplate (Hoshen). Handmade in Israel.",
@@ -768,20 +1141,63 @@
     "measurements": "",
     "price_ils": 1214,
     "sizes": [
-      {"label": "S",  "range_cm": "70-79",   "range_in": "28-31", "price_ils": 1214},
-      {"label": "M",  "range_cm": "80-89",   "range_in": "32-35", "price_ils": 1308},
-      {"label": "L",  "range_cm": "90-99",   "range_in": "35-39", "price_ils": 1417},
-      {"label": "XL", "range_cm": "100-109", "range_in": "39-43", "price_ils": 1706},
-      {"label": "J",  "range_cm": "110-119", "range_in": "43-47", "price_ils": 1762},
-      {"label": "XJ", "range_cm": "120-129", "range_in": "47-51", "price_ils": 2423}
+      {
+        "label": "S",
+        "sku": "SAW-SH-002-S",
+        "range_cm": "70-79",
+        "range_in": "28-31",
+        "price_ils": 1214
+      },
+      {
+        "label": "M",
+        "sku": "SAW-SH-002-M",
+        "range_cm": "80-89",
+        "range_in": "32-35",
+        "price_ils": 1308
+      },
+      {
+        "label": "L",
+        "sku": "SAW-SH-002-L",
+        "range_cm": "90-99",
+        "range_in": "35-39",
+        "price_ils": 1417
+      },
+      {
+        "label": "XL",
+        "sku": "SAW-SH-002-XL",
+        "range_cm": "100-109",
+        "range_in": "39-43",
+        "price_ils": 1706
+      },
+      {
+        "label": "J",
+        "sku": "SAW-SH-002-J",
+        "range_cm": "110-119",
+        "range_in": "43-47",
+        "price_ils": 1762
+      },
+      {
+        "label": "XJ",
+        "sku": "SAW-SH-002-XJ",
+        "range_cm": "120-129",
+        "range_in": "47-51",
+        "price_ils": 2423
+      }
     ],
-    "photos": ["Kudu_Hoshen_stones_endmuo", "Kudu_Hoshen_stones_2_vqf5vu"],
+    "photos": [
+      "Kudu_Hoshen_stones_endmuo",
+      "Kudu_Hoshen_stones_2_vqf5vu"
+    ],
     "personalisable": false
   },
   {
     "id": "kudu-jerusalem-lions",
+    "sku": "SAW-SH-003",
     "category": "shofars",
-    "pages": ["shofars.html", "shofars-kudu.html"],
+    "pages": [
+      "shofars.html",
+      "shofars-kudu.html"
+    ],
     "name_en": "Kudu Shofar - Jerusalem Lions",
     "name_he": "שופר קודו אריות ירושלים",
     "description_en": "Kudu-horn shofar decorated in 925 silver with the lions of Jerusalem. Handmade in Israel.",
@@ -789,20 +1205,63 @@
     "measurements": "",
     "price_ils": 1214,
     "sizes": [
-      {"label": "S",  "range_cm": "70-79",   "range_in": "28-31", "price_ils": 1214},
-      {"label": "M",  "range_cm": "80-89",   "range_in": "32-35", "price_ils": 1308},
-      {"label": "L",  "range_cm": "90-99",   "range_in": "35-39", "price_ils": 1417},
-      {"label": "XL", "range_cm": "100-109", "range_in": "39-43", "price_ils": 1706},
-      {"label": "J",  "range_cm": "110-119", "range_in": "43-47", "price_ils": 1762},
-      {"label": "XJ", "range_cm": "120-129", "range_in": "47-51", "price_ils": 2423}
+      {
+        "label": "S",
+        "sku": "SAW-SH-003-S",
+        "range_cm": "70-79",
+        "range_in": "28-31",
+        "price_ils": 1214
+      },
+      {
+        "label": "M",
+        "sku": "SAW-SH-003-M",
+        "range_cm": "80-89",
+        "range_in": "32-35",
+        "price_ils": 1308
+      },
+      {
+        "label": "L",
+        "sku": "SAW-SH-003-L",
+        "range_cm": "90-99",
+        "range_in": "35-39",
+        "price_ils": 1417
+      },
+      {
+        "label": "XL",
+        "sku": "SAW-SH-003-XL",
+        "range_cm": "100-109",
+        "range_in": "39-43",
+        "price_ils": 1706
+      },
+      {
+        "label": "J",
+        "sku": "SAW-SH-003-J",
+        "range_cm": "110-119",
+        "range_in": "43-47",
+        "price_ils": 1762
+      },
+      {
+        "label": "XJ",
+        "sku": "SAW-SH-003-XJ",
+        "range_cm": "120-129",
+        "range_in": "47-51",
+        "price_ils": 2423
+      }
     ],
-    "photos": ["Kudu_Jerusalem_Lions_xelufl", "Jerusalem_Lions_yvs00x"],
+    "photos": [
+      "Kudu_Jerusalem_Lions_xelufl",
+      "Jerusalem_Lions_yvs00x"
+    ],
     "personalisable": false
   },
   {
     "id": "kudu-jerusalem-lions-menorah",
+    "sku": "SAW-SH-004",
     "category": "shofars",
-    "pages": ["shofars.html", "shofars-kudu.html"],
+    "pages": [
+      "shofars.html",
+      "shofars-kudu.html"
+    ],
     "name_en": "Kudu Shofar - Jerusalem Lions with Menorah",
     "name_he": "שופר קודו ירושלים אריות עם מנורה",
     "description_en": "Kudu-horn shofar decorated in 925 silver with the lions of Jerusalem and a seven-branched menorah. Handmade in Israel.",
@@ -810,20 +1269,63 @@
     "measurements": "",
     "price_ils": 1214,
     "sizes": [
-      {"label": "S",  "range_cm": "70-79",   "range_in": "28-31", "price_ils": 1214},
-      {"label": "M",  "range_cm": "80-89",   "range_in": "32-35", "price_ils": 1308},
-      {"label": "L",  "range_cm": "90-99",   "range_in": "35-39", "price_ils": 1417},
-      {"label": "XL", "range_cm": "100-109", "range_in": "39-43", "price_ils": 1706},
-      {"label": "J",  "range_cm": "110-119", "range_in": "43-47", "price_ils": 1762},
-      {"label": "XJ", "range_cm": "120-129", "range_in": "47-51", "price_ils": 2423}
+      {
+        "label": "S",
+        "sku": "SAW-SH-004-S",
+        "range_cm": "70-79",
+        "range_in": "28-31",
+        "price_ils": 1214
+      },
+      {
+        "label": "M",
+        "sku": "SAW-SH-004-M",
+        "range_cm": "80-89",
+        "range_in": "32-35",
+        "price_ils": 1308
+      },
+      {
+        "label": "L",
+        "sku": "SAW-SH-004-L",
+        "range_cm": "90-99",
+        "range_in": "35-39",
+        "price_ils": 1417
+      },
+      {
+        "label": "XL",
+        "sku": "SAW-SH-004-XL",
+        "range_cm": "100-109",
+        "range_in": "39-43",
+        "price_ils": 1706
+      },
+      {
+        "label": "J",
+        "sku": "SAW-SH-004-J",
+        "range_cm": "110-119",
+        "range_in": "43-47",
+        "price_ils": 1762
+      },
+      {
+        "label": "XJ",
+        "sku": "SAW-SH-004-XJ",
+        "range_cm": "120-129",
+        "range_in": "47-51",
+        "price_ils": 2423
+      }
     ],
-    "photos": ["Kudu_Jerusalem_Lions_with_menorah_rh4cto", "Jerusalem_Lions_with_menorah_eb0mwb"],
+    "photos": [
+      "Kudu_Jerusalem_Lions_with_menorah_rh4cto",
+      "Jerusalem_Lions_with_menorah_eb0mwb"
+    ],
     "personalisable": false
   },
   {
     "id": "kudu-holy-ark",
+    "sku": "SAW-SH-005",
     "category": "shofars",
-    "pages": ["shofars.html", "shofars-kudu.html"],
+    "pages": [
+      "shofars.html",
+      "shofars-kudu.html"
+    ],
     "name_en": "Kudu Shofar - The Holy Ark",
     "name_he": "שופר קודו ארון הקודש",
     "description_en": "Kudu-horn shofar decorated in 925 silver with the Holy Ark (Aron HaKodesh). Handmade in Israel.",
@@ -831,20 +1333,63 @@
     "measurements": "",
     "price_ils": 1214,
     "sizes": [
-      {"label": "S",  "range_cm": "70-79",   "range_in": "28-31", "price_ils": 1214},
-      {"label": "M",  "range_cm": "80-89",   "range_in": "32-35", "price_ils": 1308},
-      {"label": "L",  "range_cm": "90-99",   "range_in": "35-39", "price_ils": 1417},
-      {"label": "XL", "range_cm": "100-109", "range_in": "39-43", "price_ils": 1706},
-      {"label": "J",  "range_cm": "110-119", "range_in": "43-47", "price_ils": 1762},
-      {"label": "XJ", "range_cm": "120-129", "range_in": "47-51", "price_ils": 2423}
+      {
+        "label": "S",
+        "sku": "SAW-SH-005-S",
+        "range_cm": "70-79",
+        "range_in": "28-31",
+        "price_ils": 1214
+      },
+      {
+        "label": "M",
+        "sku": "SAW-SH-005-M",
+        "range_cm": "80-89",
+        "range_in": "32-35",
+        "price_ils": 1308
+      },
+      {
+        "label": "L",
+        "sku": "SAW-SH-005-L",
+        "range_cm": "90-99",
+        "range_in": "35-39",
+        "price_ils": 1417
+      },
+      {
+        "label": "XL",
+        "sku": "SAW-SH-005-XL",
+        "range_cm": "100-109",
+        "range_in": "39-43",
+        "price_ils": 1706
+      },
+      {
+        "label": "J",
+        "sku": "SAW-SH-005-J",
+        "range_cm": "110-119",
+        "range_in": "43-47",
+        "price_ils": 1762
+      },
+      {
+        "label": "XJ",
+        "sku": "SAW-SH-005-XJ",
+        "range_cm": "120-129",
+        "range_in": "47-51",
+        "price_ils": 2423
+      }
     ],
-    "photos": ["Kudu_The_holy_ark_fcpqui", "The_holy_ark_pnxpcv"],
+    "photos": [
+      "Kudu_The_holy_ark_fcpqui",
+      "The_holy_ark_pnxpcv"
+    ],
     "personalisable": false
   },
   {
     "id": "kudu-spies-meraglim",
+    "sku": "SAW-SH-006",
     "category": "shofars",
-    "pages": ["shofars.html", "shofars-kudu.html"],
+    "pages": [
+      "shofars.html",
+      "shofars-kudu.html"
+    ],
     "name_en": "Kudu Shofar - The Spies (Meraglim)",
     "name_he": "שופר קודו המרגלים",
     "description_en": "Kudu-horn shofar decorated in 925 silver with the Spies (Meraglim) carrying the cluster of grapes. Handmade in Israel.",
@@ -852,20 +1397,63 @@
     "measurements": "",
     "price_ils": 1214,
     "sizes": [
-      {"label": "S",  "range_cm": "70-79",   "range_in": "28-31", "price_ils": 1214},
-      {"label": "M",  "range_cm": "80-89",   "range_in": "32-35", "price_ils": 1308},
-      {"label": "L",  "range_cm": "90-99",   "range_in": "35-39", "price_ils": 1417},
-      {"label": "XL", "range_cm": "100-109", "range_in": "39-43", "price_ils": 1706},
-      {"label": "J",  "range_cm": "110-119", "range_in": "43-47", "price_ils": 1762},
-      {"label": "XJ", "range_cm": "120-129", "range_in": "47-51", "price_ils": 2423}
+      {
+        "label": "S",
+        "sku": "SAW-SH-006-S",
+        "range_cm": "70-79",
+        "range_in": "28-31",
+        "price_ils": 1214
+      },
+      {
+        "label": "M",
+        "sku": "SAW-SH-006-M",
+        "range_cm": "80-89",
+        "range_in": "32-35",
+        "price_ils": 1308
+      },
+      {
+        "label": "L",
+        "sku": "SAW-SH-006-L",
+        "range_cm": "90-99",
+        "range_in": "35-39",
+        "price_ils": 1417
+      },
+      {
+        "label": "XL",
+        "sku": "SAW-SH-006-XL",
+        "range_cm": "100-109",
+        "range_in": "39-43",
+        "price_ils": 1706
+      },
+      {
+        "label": "J",
+        "sku": "SAW-SH-006-J",
+        "range_cm": "110-119",
+        "range_in": "43-47",
+        "price_ils": 1762
+      },
+      {
+        "label": "XJ",
+        "sku": "SAW-SH-006-XJ",
+        "range_cm": "120-129",
+        "range_in": "47-51",
+        "price_ils": 2423
+      }
     ],
-    "photos": ["Kudu_The_spies_Meraglim_h6ts6a", "The_spies_Meraglim_iwcj1i"],
+    "photos": [
+      "Kudu_The_spies_Meraglim_h6ts6a",
+      "The_spies_Meraglim_iwcj1i"
+    ],
     "personalisable": false
   },
   {
     "id": "kudu-messianic-seal-jerusalem",
+    "sku": "SAW-SH-007",
     "category": "shofars",
-    "pages": ["shofars.html", "shofars-kudu.html"],
+    "pages": [
+      "shofars.html",
+      "shofars-kudu.html"
+    ],
     "name_en": "Kudu Shofar - Messianic Seal of Jerusalem",
     "name_he": "שופר קודו חותמת ירושלים אוונגליסטי",
     "description_en": "Kudu-horn shofar decorated in 925 silver with the Messianic Seal of Jerusalem - the menorah, fish and Star of David. Handmade in Israel.",
@@ -873,20 +1461,63 @@
     "measurements": "",
     "price_ils": 1214,
     "sizes": [
-      {"label": "S",  "range_cm": "70-79",   "range_in": "28-31", "price_ils": 1214},
-      {"label": "M",  "range_cm": "80-89",   "range_in": "32-35", "price_ils": 1308},
-      {"label": "L",  "range_cm": "90-99",   "range_in": "35-39", "price_ils": 1417},
-      {"label": "XL", "range_cm": "100-109", "range_in": "39-43", "price_ils": 1706},
-      {"label": "J",  "range_cm": "110-119", "range_in": "43-47", "price_ils": 1762},
-      {"label": "XJ", "range_cm": "120-129", "range_in": "47-51", "price_ils": 2423}
+      {
+        "label": "S",
+        "sku": "SAW-SH-007-S",
+        "range_cm": "70-79",
+        "range_in": "28-31",
+        "price_ils": 1214
+      },
+      {
+        "label": "M",
+        "sku": "SAW-SH-007-M",
+        "range_cm": "80-89",
+        "range_in": "32-35",
+        "price_ils": 1308
+      },
+      {
+        "label": "L",
+        "sku": "SAW-SH-007-L",
+        "range_cm": "90-99",
+        "range_in": "35-39",
+        "price_ils": 1417
+      },
+      {
+        "label": "XL",
+        "sku": "SAW-SH-007-XL",
+        "range_cm": "100-109",
+        "range_in": "39-43",
+        "price_ils": 1706
+      },
+      {
+        "label": "J",
+        "sku": "SAW-SH-007-J",
+        "range_cm": "110-119",
+        "range_in": "43-47",
+        "price_ils": 1762
+      },
+      {
+        "label": "XJ",
+        "sku": "SAW-SH-007-XJ",
+        "range_cm": "120-129",
+        "range_in": "47-51",
+        "price_ils": 2423
+      }
     ],
-    "photos": ["Messianic_Seal_of_Jerusalem_kudu_jxptwr", "Messianic_Seal_of_Jerusalem_m9274d"],
+    "photos": [
+      "Messianic_Seal_of_Jerusalem_kudu_jxptwr",
+      "Messianic_Seal_of_Jerusalem_m9274d"
+    ],
     "personalisable": false
   },
   {
     "id": "kudu-jerusalem",
+    "sku": "SAW-SH-008",
     "category": "shofars",
-    "pages": ["shofars.html", "shofars-kudu.html"],
+    "pages": [
+      "shofars.html",
+      "shofars-kudu.html"
+    ],
     "name_en": "Kudu Shofar - Jerusalem",
     "name_he": "שופר קודו ירושלים",
     "description_en": "Kudu-horn shofar decorated in 925 silver with a view of Jerusalem. Handmade in Israel.",
@@ -894,20 +1525,63 @@
     "measurements": "",
     "price_ils": 1214,
     "sizes": [
-      {"label": "S",  "range_cm": "70-79",   "range_in": "28-31", "price_ils": 1214},
-      {"label": "M",  "range_cm": "80-89",   "range_in": "32-35", "price_ils": 1308},
-      {"label": "L",  "range_cm": "90-99",   "range_in": "35-39", "price_ils": 1417},
-      {"label": "XL", "range_cm": "100-109", "range_in": "39-43", "price_ils": 1706},
-      {"label": "J",  "range_cm": "110-119", "range_in": "43-47", "price_ils": 1762},
-      {"label": "XJ", "range_cm": "120-129", "range_in": "47-51", "price_ils": 2423}
+      {
+        "label": "S",
+        "sku": "SAW-SH-008-S",
+        "range_cm": "70-79",
+        "range_in": "28-31",
+        "price_ils": 1214
+      },
+      {
+        "label": "M",
+        "sku": "SAW-SH-008-M",
+        "range_cm": "80-89",
+        "range_in": "32-35",
+        "price_ils": 1308
+      },
+      {
+        "label": "L",
+        "sku": "SAW-SH-008-L",
+        "range_cm": "90-99",
+        "range_in": "35-39",
+        "price_ils": 1417
+      },
+      {
+        "label": "XL",
+        "sku": "SAW-SH-008-XL",
+        "range_cm": "100-109",
+        "range_in": "39-43",
+        "price_ils": 1706
+      },
+      {
+        "label": "J",
+        "sku": "SAW-SH-008-J",
+        "range_cm": "110-119",
+        "range_in": "43-47",
+        "price_ils": 1762
+      },
+      {
+        "label": "XJ",
+        "sku": "SAW-SH-008-XJ",
+        "range_cm": "120-129",
+        "range_in": "47-51",
+        "price_ils": 2423
+      }
     ],
-    "photos": ["Jerusalem_kudu_hni3gi", "Jerusalem_uyvuoa"],
+    "photos": [
+      "Jerusalem_kudu_hni3gi",
+      "Jerusalem_uyvuoa"
+    ],
     "personalisable": false
   },
   {
     "id": "kudu-star-of-david",
+    "sku": "SAW-SH-009",
     "category": "shofars",
-    "pages": ["shofars.html", "shofars-kudu.html"],
+    "pages": [
+      "shofars.html",
+      "shofars-kudu.html"
+    ],
     "name_en": "Kudu Shofar - Star of David",
     "name_he": "שופר קודו מגן דוד",
     "description_en": "Kudu-horn shofar decorated in 925 silver with the Star of David. Handmade in Israel.",
@@ -915,20 +1589,63 @@
     "measurements": "",
     "price_ils": 1214,
     "sizes": [
-      {"label": "S",  "range_cm": "70-79",   "range_in": "28-31", "price_ils": 1214},
-      {"label": "M",  "range_cm": "80-89",   "range_in": "32-35", "price_ils": 1308},
-      {"label": "L",  "range_cm": "90-99",   "range_in": "35-39", "price_ils": 1417},
-      {"label": "XL", "range_cm": "100-109", "range_in": "39-43", "price_ils": 1706},
-      {"label": "J",  "range_cm": "110-119", "range_in": "43-47", "price_ils": 1762},
-      {"label": "XJ", "range_cm": "120-129", "range_in": "47-51", "price_ils": 2423}
+      {
+        "label": "S",
+        "sku": "SAW-SH-009-S",
+        "range_cm": "70-79",
+        "range_in": "28-31",
+        "price_ils": 1214
+      },
+      {
+        "label": "M",
+        "sku": "SAW-SH-009-M",
+        "range_cm": "80-89",
+        "range_in": "32-35",
+        "price_ils": 1308
+      },
+      {
+        "label": "L",
+        "sku": "SAW-SH-009-L",
+        "range_cm": "90-99",
+        "range_in": "35-39",
+        "price_ils": 1417
+      },
+      {
+        "label": "XL",
+        "sku": "SAW-SH-009-XL",
+        "range_cm": "100-109",
+        "range_in": "39-43",
+        "price_ils": 1706
+      },
+      {
+        "label": "J",
+        "sku": "SAW-SH-009-J",
+        "range_cm": "110-119",
+        "range_in": "43-47",
+        "price_ils": 1762
+      },
+      {
+        "label": "XJ",
+        "sku": "SAW-SH-009-XJ",
+        "range_cm": "120-129",
+        "range_in": "47-51",
+        "price_ils": 2423
+      }
     ],
-    "photos": ["Magen_david_kudu_g7rfto", "Magen_David_t2gtml"],
+    "photos": [
+      "Magen_david_kudu_g7rfto",
+      "Magen_David_t2gtml"
+    ],
     "personalisable": false
   },
   {
     "id": "kudu-menorah",
+    "sku": "SAW-SH-010",
     "category": "shofars",
-    "pages": ["shofars.html", "shofars-kudu.html"],
+    "pages": [
+      "shofars.html",
+      "shofars-kudu.html"
+    ],
     "name_en": "Kudu Shofar - Menorah",
     "name_he": "שופר קודו מנורה",
     "description_en": "Kudu-horn shofar decorated in 925 silver with a seven-branched menorah. Handmade in Israel.",
@@ -936,20 +1653,63 @@
     "measurements": "",
     "price_ils": 1214,
     "sizes": [
-      {"label": "S",  "range_cm": "70-79",   "range_in": "28-31", "price_ils": 1214},
-      {"label": "M",  "range_cm": "80-89",   "range_in": "32-35", "price_ils": 1308},
-      {"label": "L",  "range_cm": "90-99",   "range_in": "35-39", "price_ils": 1417},
-      {"label": "XL", "range_cm": "100-109", "range_in": "39-43", "price_ils": 1706},
-      {"label": "J",  "range_cm": "110-119", "range_in": "43-47", "price_ils": 1762},
-      {"label": "XJ", "range_cm": "120-129", "range_in": "47-51", "price_ils": 2423}
+      {
+        "label": "S",
+        "sku": "SAW-SH-010-S",
+        "range_cm": "70-79",
+        "range_in": "28-31",
+        "price_ils": 1214
+      },
+      {
+        "label": "M",
+        "sku": "SAW-SH-010-M",
+        "range_cm": "80-89",
+        "range_in": "32-35",
+        "price_ils": 1308
+      },
+      {
+        "label": "L",
+        "sku": "SAW-SH-010-L",
+        "range_cm": "90-99",
+        "range_in": "35-39",
+        "price_ils": 1417
+      },
+      {
+        "label": "XL",
+        "sku": "SAW-SH-010-XL",
+        "range_cm": "100-109",
+        "range_in": "39-43",
+        "price_ils": 1706
+      },
+      {
+        "label": "J",
+        "sku": "SAW-SH-010-J",
+        "range_cm": "110-119",
+        "range_in": "43-47",
+        "price_ils": 1762
+      },
+      {
+        "label": "XJ",
+        "sku": "SAW-SH-010-XJ",
+        "range_cm": "120-129",
+        "range_in": "47-51",
+        "price_ils": 2423
+      }
     ],
-    "photos": ["Kudu_menorah_joe2bm", "Menorah_miblnm"],
+    "photos": [
+      "Kudu_menorah_joe2bm",
+      "Menorah_miblnm"
+    ],
     "personalisable": false
   },
   {
     "id": "kudu-shofar-blowing",
+    "sku": "SAW-SH-011",
     "category": "shofars",
-    "pages": ["shofars.html", "shofars-kudu.html"],
+    "pages": [
+      "shofars.html",
+      "shofars-kudu.html"
+    ],
     "name_en": "Kudu Shofar - Shofar Blowing",
     "name_he": "שופר קודו תקיעה בשופר",
     "description_en": "Kudu-horn shofar decorated in 925 silver with a depiction of the shofar blowing. Handmade in Israel.",
@@ -957,20 +1717,63 @@
     "measurements": "",
     "price_ils": 1214,
     "sizes": [
-      {"label": "S",  "range_cm": "70-79",   "range_in": "28-31", "price_ils": 1214},
-      {"label": "M",  "range_cm": "80-89",   "range_in": "32-35", "price_ils": 1308},
-      {"label": "L",  "range_cm": "90-99",   "range_in": "35-39", "price_ils": 1417},
-      {"label": "XL", "range_cm": "100-109", "range_in": "39-43", "price_ils": 1706},
-      {"label": "J",  "range_cm": "110-119", "range_in": "43-47", "price_ils": 1762},
-      {"label": "XJ", "range_cm": "120-129", "range_in": "47-51", "price_ils": 2423}
+      {
+        "label": "S",
+        "sku": "SAW-SH-011-S",
+        "range_cm": "70-79",
+        "range_in": "28-31",
+        "price_ils": 1214
+      },
+      {
+        "label": "M",
+        "sku": "SAW-SH-011-M",
+        "range_cm": "80-89",
+        "range_in": "32-35",
+        "price_ils": 1308
+      },
+      {
+        "label": "L",
+        "sku": "SAW-SH-011-L",
+        "range_cm": "90-99",
+        "range_in": "35-39",
+        "price_ils": 1417
+      },
+      {
+        "label": "XL",
+        "sku": "SAW-SH-011-XL",
+        "range_cm": "100-109",
+        "range_in": "39-43",
+        "price_ils": 1706
+      },
+      {
+        "label": "J",
+        "sku": "SAW-SH-011-J",
+        "range_cm": "110-119",
+        "range_in": "43-47",
+        "price_ils": 1762
+      },
+      {
+        "label": "XJ",
+        "sku": "SAW-SH-011-XJ",
+        "range_cm": "120-129",
+        "range_in": "47-51",
+        "price_ils": 2423
+      }
     ],
-    "photos": ["Shofar_blowing_kudu_i490tf", "Shofar_blowing_alriud"],
+    "photos": [
+      "Shofar_blowing_kudu_i490tf",
+      "Shofar_blowing_alriud"
+    ],
     "personalisable": false
   },
   {
     "id": "rams-hoshen-stones",
+    "sku": "SAW-SH-012",
     "category": "shofars",
-    "pages": ["shofars.html", "shofars-rams.html"],
+    "pages": [
+      "shofars.html",
+      "shofars-rams.html"
+    ],
     "name_en": "Ram's Horn Shofar - Hoshen Stones",
     "name_he": "שופר איל אבני החושן",
     "description_en": "Ram's-horn shofar decorated in 925 silver with the twelve stones of the High Priest's breastplate (Hoshen). Handmade in Israel.",
@@ -978,21 +1781,70 @@
     "measurements": "",
     "price_ils": 418,
     "sizes": [
-      {"label": "XS",  "range_cm": "30-34", "range_in": "12-13", "price_ils": 418},
-      {"label": "S",   "range_cm": "35-39", "range_in": "14-15", "price_ils": 497},
-      {"label": "M",   "range_cm": "40-44", "range_in": "16-17", "price_ils": 712},
-      {"label": "L",   "range_cm": "45-49", "range_in": "18-19", "price_ils": 914},
-      {"label": "XL",  "range_cm": "50-54", "range_in": "20-21", "price_ils": 1138},
-      {"label": "J",   "range_cm": "55-59", "range_in": "22-23", "price_ils": 1293},
-      {"label": "XJ",  "range_cm": "60-65", "range_in": "24-26", "price_ils": 2368}
+      {
+        "label": "XS",
+        "sku": "SAW-SH-012-XS",
+        "range_cm": "30-34",
+        "range_in": "12-13",
+        "price_ils": 418
+      },
+      {
+        "label": "S",
+        "sku": "SAW-SH-012-S",
+        "range_cm": "35-39",
+        "range_in": "14-15",
+        "price_ils": 497
+      },
+      {
+        "label": "M",
+        "sku": "SAW-SH-012-M",
+        "range_cm": "40-44",
+        "range_in": "16-17",
+        "price_ils": 712
+      },
+      {
+        "label": "L",
+        "sku": "SAW-SH-012-L",
+        "range_cm": "45-49",
+        "range_in": "18-19",
+        "price_ils": 914
+      },
+      {
+        "label": "XL",
+        "sku": "SAW-SH-012-XL",
+        "range_cm": "50-54",
+        "range_in": "20-21",
+        "price_ils": 1138
+      },
+      {
+        "label": "J",
+        "sku": "SAW-SH-012-J",
+        "range_cm": "55-59",
+        "range_in": "22-23",
+        "price_ils": 1293
+      },
+      {
+        "label": "XJ",
+        "sku": "SAW-SH-012-XJ",
+        "range_cm": "60-65",
+        "range_in": "24-26",
+        "price_ils": 2368
+      }
     ],
-    "photos": ["Hoshen_ram_1_piece_c1mxfo", "Hoshen_stones_ram_shofar_two_pieces_lghmo8"],
+    "photos": [
+      "Hoshen_ram_1_piece_c1mxfo",
+      "Hoshen_stones_ram_shofar_two_pieces_lghmo8"
+    ],
     "personalisable": false
   },
   {
     "id": "rams-jerusalem",
+    "sku": "SAW-SH-013",
     "category": "shofars",
-    "pages": ["shofars.html", "shofars-rams.html"],
+    "pages": [
+      "shofars.html",
+      "shofars-rams.html"
+    ],
     "name_en": "Ram's Horn Shofar - Jerusalem",
     "name_he": "שופר איל ירושלים",
     "description_en": "Ram's-horn shofar decorated in 925 silver with a view of Jerusalem. Handmade in Israel.",
@@ -1000,21 +1852,71 @@
     "measurements": "",
     "price_ils": 418,
     "sizes": [
-      {"label": "XS",  "range_cm": "30-34", "range_in": "12-13", "price_ils": 418},
-      {"label": "S",   "range_cm": "35-39", "range_in": "14-15", "price_ils": 497},
-      {"label": "M",   "range_cm": "40-44", "range_in": "16-17", "price_ils": 712},
-      {"label": "L",   "range_cm": "45-49", "range_in": "18-19", "price_ils": 914},
-      {"label": "XL",  "range_cm": "50-54", "range_in": "20-21", "price_ils": 1138},
-      {"label": "J",   "range_cm": "55-59", "range_in": "22-23", "price_ils": 1293},
-      {"label": "XJ",  "range_cm": "60-65", "range_in": "24-26", "price_ils": 2368}
+      {
+        "label": "XS",
+        "sku": "SAW-SH-013-XS",
+        "range_cm": "30-34",
+        "range_in": "12-13",
+        "price_ils": 418
+      },
+      {
+        "label": "S",
+        "sku": "SAW-SH-013-S",
+        "range_cm": "35-39",
+        "range_in": "14-15",
+        "price_ils": 497
+      },
+      {
+        "label": "M",
+        "sku": "SAW-SH-013-M",
+        "range_cm": "40-44",
+        "range_in": "16-17",
+        "price_ils": 712
+      },
+      {
+        "label": "L",
+        "sku": "SAW-SH-013-L",
+        "range_cm": "45-49",
+        "range_in": "18-19",
+        "price_ils": 914
+      },
+      {
+        "label": "XL",
+        "sku": "SAW-SH-013-XL",
+        "range_cm": "50-54",
+        "range_in": "20-21",
+        "price_ils": 1138
+      },
+      {
+        "label": "J",
+        "sku": "SAW-SH-013-J",
+        "range_cm": "55-59",
+        "range_in": "22-23",
+        "price_ils": 1293
+      },
+      {
+        "label": "XJ",
+        "sku": "SAW-SH-013-XJ",
+        "range_cm": "60-65",
+        "range_in": "24-26",
+        "price_ils": 2368
+      }
     ],
-    "photos": ["Jerusalem_ram_2_svqanp", "Jerusalem_ram_shofar_btpd89", "Jerusalem2_pieces_ram_myotlb"],
+    "photos": [
+      "Jerusalem_ram_2_svqanp",
+      "Jerusalem_ram_shofar_btpd89",
+      "Jerusalem2_pieces_ram_myotlb"
+    ],
     "personalisable": false
   },
   {
     "id": "rams-star-of-david",
+    "sku": "SAW-SH-014",
     "category": "shofars",
-    "pages": ["shofars.html", "shofars-rams.html"],
+    "pages": [
+      "shofars.html",
+      "shofars-rams.html"
+    ],
     "name_en": "Ram's Horn Shofar - Star of David",
     "name_he": "שופר איל מגן דוד",
     "description_en": "Ram's-horn shofar decorated in 925 silver with the Star of David. Handmade in Israel.",
@@ -1022,21 +1924,70 @@
     "measurements": "",
     "price_ils": 418,
     "sizes": [
-      {"label": "XS",  "range_cm": "30-34", "range_in": "12-13", "price_ils": 418},
-      {"label": "S",   "range_cm": "35-39", "range_in": "14-15", "price_ils": 497},
-      {"label": "M",   "range_cm": "40-44", "range_in": "16-17", "price_ils": 712},
-      {"label": "L",   "range_cm": "45-49", "range_in": "18-19", "price_ils": 914},
-      {"label": "XL",  "range_cm": "50-54", "range_in": "20-21", "price_ils": 1138},
-      {"label": "J",   "range_cm": "55-59", "range_in": "22-23", "price_ils": 1293},
-      {"label": "XJ",  "range_cm": "60-65", "range_in": "24-26", "price_ils": 2368}
+      {
+        "label": "XS",
+        "sku": "SAW-SH-014-XS",
+        "range_cm": "30-34",
+        "range_in": "12-13",
+        "price_ils": 418
+      },
+      {
+        "label": "S",
+        "sku": "SAW-SH-014-S",
+        "range_cm": "35-39",
+        "range_in": "14-15",
+        "price_ils": 497
+      },
+      {
+        "label": "M",
+        "sku": "SAW-SH-014-M",
+        "range_cm": "40-44",
+        "range_in": "16-17",
+        "price_ils": 712
+      },
+      {
+        "label": "L",
+        "sku": "SAW-SH-014-L",
+        "range_cm": "45-49",
+        "range_in": "18-19",
+        "price_ils": 914
+      },
+      {
+        "label": "XL",
+        "sku": "SAW-SH-014-XL",
+        "range_cm": "50-54",
+        "range_in": "20-21",
+        "price_ils": 1138
+      },
+      {
+        "label": "J",
+        "sku": "SAW-SH-014-J",
+        "range_cm": "55-59",
+        "range_in": "22-23",
+        "price_ils": 1293
+      },
+      {
+        "label": "XJ",
+        "sku": "SAW-SH-014-XJ",
+        "range_cm": "60-65",
+        "range_in": "24-26",
+        "price_ils": 2368
+      }
     ],
-    "photos": ["Magen_David_1_ram_pgvhoa", "Magen_David_2_ram_jkcyn3"],
+    "photos": [
+      "Magen_David_1_ram_pgvhoa",
+      "Magen_David_2_ram_jkcyn3"
+    ],
     "personalisable": false
   },
   {
     "id": "rams-star-of-david-blue-crystals",
+    "sku": "SAW-SH-015",
     "category": "shofars",
-    "pages": ["shofars.html", "shofars-rams.html"],
+    "pages": [
+      "shofars.html",
+      "shofars-rams.html"
+    ],
     "name_en": "Ram's Horn Shofar - Star of David with Blue Crystals",
     "name_he": "שופר איל מגן דוד וקריסטלים כחולים",
     "description_en": "Ram's-horn shofar decorated in 925 silver with the Star of David set with blue crystals. Handmade in Israel.",
@@ -1044,21 +1995,70 @@
     "measurements": "",
     "price_ils": 418,
     "sizes": [
-      {"label": "XS",  "range_cm": "30-34", "range_in": "12-13", "price_ils": 418},
-      {"label": "S",   "range_cm": "35-39", "range_in": "14-15", "price_ils": 497},
-      {"label": "M",   "range_cm": "40-44", "range_in": "16-17", "price_ils": 712},
-      {"label": "L",   "range_cm": "45-49", "range_in": "18-19", "price_ils": 914},
-      {"label": "XL",  "range_cm": "50-54", "range_in": "20-21", "price_ils": 1138},
-      {"label": "J",   "range_cm": "55-59", "range_in": "22-23", "price_ils": 1293},
-      {"label": "XJ",  "range_cm": "60-65", "range_in": "24-26", "price_ils": 2368}
+      {
+        "label": "XS",
+        "sku": "SAW-SH-015-XS",
+        "range_cm": "30-34",
+        "range_in": "12-13",
+        "price_ils": 418
+      },
+      {
+        "label": "S",
+        "sku": "SAW-SH-015-S",
+        "range_cm": "35-39",
+        "range_in": "14-15",
+        "price_ils": 497
+      },
+      {
+        "label": "M",
+        "sku": "SAW-SH-015-M",
+        "range_cm": "40-44",
+        "range_in": "16-17",
+        "price_ils": 712
+      },
+      {
+        "label": "L",
+        "sku": "SAW-SH-015-L",
+        "range_cm": "45-49",
+        "range_in": "18-19",
+        "price_ils": 914
+      },
+      {
+        "label": "XL",
+        "sku": "SAW-SH-015-XL",
+        "range_cm": "50-54",
+        "range_in": "20-21",
+        "price_ils": 1138
+      },
+      {
+        "label": "J",
+        "sku": "SAW-SH-015-J",
+        "range_cm": "55-59",
+        "range_in": "22-23",
+        "price_ils": 1293
+      },
+      {
+        "label": "XJ",
+        "sku": "SAW-SH-015-XJ",
+        "range_cm": "60-65",
+        "range_in": "24-26",
+        "price_ils": 2368
+      }
     ],
-    "photos": ["Magen_Daviittke_blue_stones_1_ram_s2dopc", "Magen_David_little_blue_stones_2_ram_vtgefr"],
+    "photos": [
+      "Magen_Daviittke_blue_stones_1_ram_s2dopc",
+      "Magen_David_little_blue_stones_2_ram_vtgefr"
+    ],
     "personalisable": false
   },
   {
     "id": "rams-tka-beshofar-gadol",
+    "sku": "SAW-SH-016",
     "category": "shofars",
-    "pages": ["shofars.html", "shofars-rams.html"],
+    "pages": [
+      "shofars.html",
+      "shofars-rams.html"
+    ],
     "name_en": "Ram's Horn Shofar - Tka BeShofar Gadol",
     "name_he": "שופר איל בכיתוב תקע בשופר גדול",
     "description_en": "Ram's-horn shofar decorated in 925 silver with the inscription 'Tka BeShofar Gadol' - Sound the great shofar. Handmade in Israel.",
@@ -1066,21 +2066,71 @@
     "measurements": "",
     "price_ils": 418,
     "sizes": [
-      {"label": "XS",  "range_cm": "30-34", "range_in": "12-13", "price_ils": 418},
-      {"label": "S",   "range_cm": "35-39", "range_in": "14-15", "price_ils": 497},
-      {"label": "M",   "range_cm": "40-44", "range_in": "16-17", "price_ils": 712},
-      {"label": "L",   "range_cm": "45-49", "range_in": "18-19", "price_ils": 914},
-      {"label": "XL",  "range_cm": "50-54", "range_in": "20-21", "price_ils": 1138},
-      {"label": "J",   "range_cm": "55-59", "range_in": "22-23", "price_ils": 1293},
-      {"label": "XJ",  "range_cm": "60-65", "range_in": "24-26", "price_ils": 2368}
+      {
+        "label": "XS",
+        "sku": "SAW-SH-016-XS",
+        "range_cm": "30-34",
+        "range_in": "12-13",
+        "price_ils": 418
+      },
+      {
+        "label": "S",
+        "sku": "SAW-SH-016-S",
+        "range_cm": "35-39",
+        "range_in": "14-15",
+        "price_ils": 497
+      },
+      {
+        "label": "M",
+        "sku": "SAW-SH-016-M",
+        "range_cm": "40-44",
+        "range_in": "16-17",
+        "price_ils": 712
+      },
+      {
+        "label": "L",
+        "sku": "SAW-SH-016-L",
+        "range_cm": "45-49",
+        "range_in": "18-19",
+        "price_ils": 914
+      },
+      {
+        "label": "XL",
+        "sku": "SAW-SH-016-XL",
+        "range_cm": "50-54",
+        "range_in": "20-21",
+        "price_ils": 1138
+      },
+      {
+        "label": "J",
+        "sku": "SAW-SH-016-J",
+        "range_cm": "55-59",
+        "range_in": "22-23",
+        "price_ils": 1293
+      },
+      {
+        "label": "XJ",
+        "sku": "SAW-SH-016-XJ",
+        "range_cm": "60-65",
+        "range_in": "24-26",
+        "price_ils": 2368
+      }
     ],
-    "photos": ["Tka_be_shofar_1_zztbld", "Tka_be_shofar_2_thx7dp", "Tka_be_shofar_3_ce497k"],
+    "photos": [
+      "Tka_be_shofar_1_zztbld",
+      "Tka_be_shofar_2_thx7dp",
+      "Tka_be_shofar_3_ce497k"
+    ],
     "personalisable": false
   },
   {
     "id": "rams-jerusalem-lions",
+    "sku": "SAW-SH-017",
     "category": "shofars",
-    "pages": ["shofars.html", "shofars-rams.html"],
+    "pages": [
+      "shofars.html",
+      "shofars-rams.html"
+    ],
     "name_en": "Ram's Horn Shofar - Jerusalem Lions",
     "name_he": "שופר איל אריות ירושלים",
     "description_en": "Ram's-horn shofar decorated in 925 silver with the lions of Jerusalem. Handmade in Israel.",
@@ -1088,21 +2138,70 @@
     "measurements": "",
     "price_ils": 418,
     "sizes": [
-      {"label": "XS",  "range_cm": "30-34", "range_in": "12-13", "price_ils": 418},
-      {"label": "S",   "range_cm": "35-39", "range_in": "14-15", "price_ils": 497},
-      {"label": "M",   "range_cm": "40-44", "range_in": "16-17", "price_ils": 712},
-      {"label": "L",   "range_cm": "45-49", "range_in": "18-19", "price_ils": 914},
-      {"label": "XL",  "range_cm": "50-54", "range_in": "20-21", "price_ils": 1138},
-      {"label": "J",   "range_cm": "55-59", "range_in": "22-23", "price_ils": 1293},
-      {"label": "XJ",  "range_cm": "60-65", "range_in": "24-26", "price_ils": 2368}
+      {
+        "label": "XS",
+        "sku": "SAW-SH-017-XS",
+        "range_cm": "30-34",
+        "range_in": "12-13",
+        "price_ils": 418
+      },
+      {
+        "label": "S",
+        "sku": "SAW-SH-017-S",
+        "range_cm": "35-39",
+        "range_in": "14-15",
+        "price_ils": 497
+      },
+      {
+        "label": "M",
+        "sku": "SAW-SH-017-M",
+        "range_cm": "40-44",
+        "range_in": "16-17",
+        "price_ils": 712
+      },
+      {
+        "label": "L",
+        "sku": "SAW-SH-017-L",
+        "range_cm": "45-49",
+        "range_in": "18-19",
+        "price_ils": 914
+      },
+      {
+        "label": "XL",
+        "sku": "SAW-SH-017-XL",
+        "range_cm": "50-54",
+        "range_in": "20-21",
+        "price_ils": 1138
+      },
+      {
+        "label": "J",
+        "sku": "SAW-SH-017-J",
+        "range_cm": "55-59",
+        "range_in": "22-23",
+        "price_ils": 1293
+      },
+      {
+        "label": "XJ",
+        "sku": "SAW-SH-017-XJ",
+        "range_cm": "60-65",
+        "range_in": "24-26",
+        "price_ils": 2368
+      }
     ],
-    "photos": ["Jerusalem_lions_1_goiw6c", "Jerusalem_lions_2_hbl0jk"],
+    "photos": [
+      "Jerusalem_lions_1_goiw6c",
+      "Jerusalem_lions_2_hbl0jk"
+    ],
     "personalisable": false
   },
   {
     "id": "rams-jerusalem-white-crystals",
+    "sku": "SAW-SH-018",
     "category": "shofars",
-    "pages": ["shofars.html", "shofars-rams.html"],
+    "pages": [
+      "shofars.html",
+      "shofars-rams.html"
+    ],
     "name_en": "Ram's Horn Shofar - Jerusalem with White Crystals",
     "name_he": "שופר איל עם קריסטלים לבנים",
     "description_en": "Ram's-horn shofar decorated in 925 silver with a view of Jerusalem set with white crystals. Handmade in Israel.",
@@ -1110,21 +2209,70 @@
     "measurements": "",
     "price_ils": 418,
     "sizes": [
-      {"label": "XS",  "range_cm": "30-34", "range_in": "12-13", "price_ils": 418},
-      {"label": "S",   "range_cm": "35-39", "range_in": "14-15", "price_ils": 497},
-      {"label": "M",   "range_cm": "40-44", "range_in": "16-17", "price_ils": 712},
-      {"label": "L",   "range_cm": "45-49", "range_in": "18-19", "price_ils": 914},
-      {"label": "XL",  "range_cm": "50-54", "range_in": "20-21", "price_ils": 1138},
-      {"label": "J",   "range_cm": "55-59", "range_in": "22-23", "price_ils": 1293},
-      {"label": "XJ",  "range_cm": "60-65", "range_in": "24-26", "price_ils": 2368}
+      {
+        "label": "XS",
+        "sku": "SAW-SH-018-XS",
+        "range_cm": "30-34",
+        "range_in": "12-13",
+        "price_ils": 418
+      },
+      {
+        "label": "S",
+        "sku": "SAW-SH-018-S",
+        "range_cm": "35-39",
+        "range_in": "14-15",
+        "price_ils": 497
+      },
+      {
+        "label": "M",
+        "sku": "SAW-SH-018-M",
+        "range_cm": "40-44",
+        "range_in": "16-17",
+        "price_ils": 712
+      },
+      {
+        "label": "L",
+        "sku": "SAW-SH-018-L",
+        "range_cm": "45-49",
+        "range_in": "18-19",
+        "price_ils": 914
+      },
+      {
+        "label": "XL",
+        "sku": "SAW-SH-018-XL",
+        "range_cm": "50-54",
+        "range_in": "20-21",
+        "price_ils": 1138
+      },
+      {
+        "label": "J",
+        "sku": "SAW-SH-018-J",
+        "range_cm": "55-59",
+        "range_in": "22-23",
+        "price_ils": 1293
+      },
+      {
+        "label": "XJ",
+        "sku": "SAW-SH-018-XJ",
+        "range_cm": "60-65",
+        "range_in": "24-26",
+        "price_ils": 2368
+      }
     ],
-    "photos": ["Jerusalem_white_stones_1_ram_x44ixt", "Jerusalem_white_stones_2_ram_ltfp1v"],
+    "photos": [
+      "Jerusalem_white_stones_1_ram_x44ixt",
+      "Jerusalem_white_stones_2_ram_ltfp1v"
+    ],
     "personalisable": false
   },
   {
     "id": "rams-star-of-david-blue-stone",
+    "sku": "SAW-SH-019",
     "category": "shofars",
-    "pages": ["shofars.html", "shofars-rams.html"],
+    "pages": [
+      "shofars.html",
+      "shofars-rams.html"
+    ],
     "name_en": "Ram's Horn Shofar - Star of David with Blue Stone",
     "name_he": "שופר איל עם אבן כחולה מרכזית",
     "description_en": "Ram's-horn shofar decorated in 925 silver with the Star of David and a central blue stone. Handmade in Israel.",
@@ -1132,21 +2280,70 @@
     "measurements": "",
     "price_ils": 418,
     "sizes": [
-      {"label": "XS",  "range_cm": "30-34", "range_in": "12-13", "price_ils": 418},
-      {"label": "S",   "range_cm": "35-39", "range_in": "14-15", "price_ils": 497},
-      {"label": "M",   "range_cm": "40-44", "range_in": "16-17", "price_ils": 712},
-      {"label": "L",   "range_cm": "45-49", "range_in": "18-19", "price_ils": 914},
-      {"label": "XL",  "range_cm": "50-54", "range_in": "20-21", "price_ils": 1138},
-      {"label": "J",   "range_cm": "55-59", "range_in": "22-23", "price_ils": 1293},
-      {"label": "XJ",  "range_cm": "60-65", "range_in": "24-26", "price_ils": 2368}
+      {
+        "label": "XS",
+        "sku": "SAW-SH-019-XS",
+        "range_cm": "30-34",
+        "range_in": "12-13",
+        "price_ils": 418
+      },
+      {
+        "label": "S",
+        "sku": "SAW-SH-019-S",
+        "range_cm": "35-39",
+        "range_in": "14-15",
+        "price_ils": 497
+      },
+      {
+        "label": "M",
+        "sku": "SAW-SH-019-M",
+        "range_cm": "40-44",
+        "range_in": "16-17",
+        "price_ils": 712
+      },
+      {
+        "label": "L",
+        "sku": "SAW-SH-019-L",
+        "range_cm": "45-49",
+        "range_in": "18-19",
+        "price_ils": 914
+      },
+      {
+        "label": "XL",
+        "sku": "SAW-SH-019-XL",
+        "range_cm": "50-54",
+        "range_in": "20-21",
+        "price_ils": 1138
+      },
+      {
+        "label": "J",
+        "sku": "SAW-SH-019-J",
+        "range_cm": "55-59",
+        "range_in": "22-23",
+        "price_ils": 1293
+      },
+      {
+        "label": "XJ",
+        "sku": "SAW-SH-019-XJ",
+        "range_cm": "60-65",
+        "range_in": "24-26",
+        "price_ils": 2368
+      }
     ],
-    "photos": ["Magen_Davidblue_stone_1_ram_mz7hi4", "Magen_David_blue_stone_2_ram_zr7oqo"],
+    "photos": [
+      "Magen_Davidblue_stone_1_ram_mz7hi4",
+      "Magen_David_blue_stone_2_ram_zr7oqo"
+    ],
     "personalisable": false
   },
   {
     "id": "rams-messianic-seal-jerusalem",
+    "sku": "SAW-SH-020",
     "category": "shofars",
-    "pages": ["shofars.html", "shofars-rams.html"],
+    "pages": [
+      "shofars.html",
+      "shofars-rams.html"
+    ],
     "name_en": "Ram's Horn Shofar - Messianic Seal of Jerusalem",
     "name_he": "שופר איל עם חתם אוונגליסטי של ירושלים",
     "description_en": "Ram's-horn shofar decorated in 925 silver with the Messianic Seal of Jerusalem - the menorah, fish and Star of David. Handmade in Israel.",
@@ -1154,21 +2351,70 @@
     "measurements": "",
     "price_ils": 418,
     "sizes": [
-      {"label": "XS",  "range_cm": "30-34", "range_in": "12-13", "price_ils": 418},
-      {"label": "S",   "range_cm": "35-39", "range_in": "14-15", "price_ils": 497},
-      {"label": "M",   "range_cm": "40-44", "range_in": "16-17", "price_ils": 712},
-      {"label": "L",   "range_cm": "45-49", "range_in": "18-19", "price_ils": 914},
-      {"label": "XL",  "range_cm": "50-54", "range_in": "20-21", "price_ils": 1138},
-      {"label": "J",   "range_cm": "55-59", "range_in": "22-23", "price_ils": 1293},
-      {"label": "XJ",  "range_cm": "60-65", "range_in": "24-26", "price_ils": 2368}
+      {
+        "label": "XS",
+        "sku": "SAW-SH-020-XS",
+        "range_cm": "30-34",
+        "range_in": "12-13",
+        "price_ils": 418
+      },
+      {
+        "label": "S",
+        "sku": "SAW-SH-020-S",
+        "range_cm": "35-39",
+        "range_in": "14-15",
+        "price_ils": 497
+      },
+      {
+        "label": "M",
+        "sku": "SAW-SH-020-M",
+        "range_cm": "40-44",
+        "range_in": "16-17",
+        "price_ils": 712
+      },
+      {
+        "label": "L",
+        "sku": "SAW-SH-020-L",
+        "range_cm": "45-49",
+        "range_in": "18-19",
+        "price_ils": 914
+      },
+      {
+        "label": "XL",
+        "sku": "SAW-SH-020-XL",
+        "range_cm": "50-54",
+        "range_in": "20-21",
+        "price_ils": 1138
+      },
+      {
+        "label": "J",
+        "sku": "SAW-SH-020-J",
+        "range_cm": "55-59",
+        "range_in": "22-23",
+        "price_ils": 1293
+      },
+      {
+        "label": "XJ",
+        "sku": "SAW-SH-020-XJ",
+        "range_cm": "60-65",
+        "range_in": "24-26",
+        "price_ils": 2368
+      }
     ],
-    "photos": ["Messianic_Seal_ram_1_ct3nlp", "Messianic_Seal_2_ram_qxybqu"],
+    "photos": [
+      "Messianic_Seal_ram_1_ct3nlp",
+      "Messianic_Seal_2_ram_qxybqu"
+    ],
     "personalisable": false
   },
   {
     "id": "rams-menorah",
+    "sku": "SAW-SH-021",
     "category": "shofars",
-    "pages": ["shofars.html", "shofars-rams.html"],
+    "pages": [
+      "shofars.html",
+      "shofars-rams.html"
+    ],
     "name_en": "Ram's Horn Shofar - Menorah",
     "name_he": "שופר איל מנורה",
     "description_en": "Ram's-horn shofar decorated in 925 silver with a seven-branched menorah. Handmade in Israel.",
@@ -1176,21 +2422,72 @@
     "measurements": "",
     "price_ils": 418,
     "sizes": [
-      {"label": "XS",  "range_cm": "30-34", "range_in": "12-13", "price_ils": 418},
-      {"label": "S",   "range_cm": "35-39", "range_in": "14-15", "price_ils": 497},
-      {"label": "M",   "range_cm": "40-44", "range_in": "16-17", "price_ils": 712},
-      {"label": "L",   "range_cm": "45-49", "range_in": "18-19", "price_ils": 914},
-      {"label": "XL",  "range_cm": "50-54", "range_in": "20-21", "price_ils": 1138},
-      {"label": "J",   "range_cm": "55-59", "range_in": "22-23", "price_ils": 1293},
-      {"label": "XJ",  "range_cm": "60-65", "range_in": "24-26", "price_ils": 2368}
+      {
+        "label": "XS",
+        "sku": "SAW-SH-021-XS",
+        "range_cm": "30-34",
+        "range_in": "12-13",
+        "price_ils": 418
+      },
+      {
+        "label": "S",
+        "sku": "SAW-SH-021-S",
+        "range_cm": "35-39",
+        "range_in": "14-15",
+        "price_ils": 497
+      },
+      {
+        "label": "M",
+        "sku": "SAW-SH-021-M",
+        "range_cm": "40-44",
+        "range_in": "16-17",
+        "price_ils": 712
+      },
+      {
+        "label": "L",
+        "sku": "SAW-SH-021-L",
+        "range_cm": "45-49",
+        "range_in": "18-19",
+        "price_ils": 914
+      },
+      {
+        "label": "XL",
+        "sku": "SAW-SH-021-XL",
+        "range_cm": "50-54",
+        "range_in": "20-21",
+        "price_ils": 1138
+      },
+      {
+        "label": "J",
+        "sku": "SAW-SH-021-J",
+        "range_cm": "55-59",
+        "range_in": "22-23",
+        "price_ils": 1293
+      },
+      {
+        "label": "XJ",
+        "sku": "SAW-SH-021-XJ",
+        "range_cm": "60-65",
+        "range_in": "24-26",
+        "price_ils": 2368
+      }
     ],
-    "photos": ["2510F8BA-2BF5-4BB0-B67F-C9AFB537F6C8_jpx0wa", "Menorah_2_uldtxg"],
+    "photos": [
+      "2510F8BA-2BF5-4BB0-B67F-C9AFB537F6C8_jpx0wa",
+      "Menorah_2_uldtxg"
+    ],
     "personalisable": false
   },
   {
     "id": "custom-kudu-shofar",
+    "sku": "SAW-SH-022",
     "category": "shofars",
-    "pages": ["shofars.html", "business-gifts.html", "shofars-custom.html", "shofars-kudu.html"],
+    "pages": [
+      "shofars.html",
+      "business-gifts.html",
+      "shofars-custom.html",
+      "shofars-kudu.html"
+    ],
     "name_en": "Custom Kudu Shofar, Symbol & Text",
     "name_he": "שופר קודו מותאם אישית, סמל וטקסט",
     "description_en": "Kudu-horn shofar decorated in 925 silver and personalised with your choice of symbol and an optional text inscription (Hebrew/English). Made to order in our studio in Israel.",
@@ -1198,23 +2495,76 @@
     "measurements": "",
     "price_ils": 1297,
     "sizes": [
-      {"label": "Mini", "range_cm": "50-59",   "range_in": "20-23", "price_ils": 1297},
-      {"label": "XS",   "range_cm": "60-69",   "range_in": "24-27", "price_ils": 1426},
-      {"label": "S",    "range_cm": "70-79",   "range_in": "28-31", "price_ils": 1563},
-      {"label": "M",    "range_cm": "80-89",   "range_in": "32-35", "price_ils": 1657},
-      {"label": "L",    "range_cm": "90-99",   "range_in": "35-39", "price_ils": 1768},
-      {"label": "XL",   "range_cm": "100-109", "range_in": "39-43", "price_ils": 2064},
-      {"label": "J",    "range_cm": "110-119", "range_in": "43-47", "price_ils": 2113},
-      {"label": "XJ",   "range_cm": "120-129", "range_in": "47-51", "price_ils": 2769}
+      {
+        "label": "Mini",
+        "sku": "SAW-SH-022-MINI",
+        "range_cm": "50-59",
+        "range_in": "20-23",
+        "price_ils": 1297
+      },
+      {
+        "label": "XS",
+        "sku": "SAW-SH-022-XS",
+        "range_cm": "60-69",
+        "range_in": "24-27",
+        "price_ils": 1426
+      },
+      {
+        "label": "S",
+        "sku": "SAW-SH-022-S",
+        "range_cm": "70-79",
+        "range_in": "28-31",
+        "price_ils": 1563
+      },
+      {
+        "label": "M",
+        "sku": "SAW-SH-022-M",
+        "range_cm": "80-89",
+        "range_in": "32-35",
+        "price_ils": 1657
+      },
+      {
+        "label": "L",
+        "sku": "SAW-SH-022-L",
+        "range_cm": "90-99",
+        "range_in": "35-39",
+        "price_ils": 1768
+      },
+      {
+        "label": "XL",
+        "sku": "SAW-SH-022-XL",
+        "range_cm": "100-109",
+        "range_in": "39-43",
+        "price_ils": 2064
+      },
+      {
+        "label": "J",
+        "sku": "SAW-SH-022-J",
+        "range_cm": "110-119",
+        "range_in": "43-47",
+        "price_ils": 2113
+      },
+      {
+        "label": "XJ",
+        "sku": "SAW-SH-022-XJ",
+        "range_cm": "120-129",
+        "range_in": "47-51",
+        "price_ils": 2769
+      }
     ],
-    "photos": ["Name_kudu_shofar_hqdju6"],
+    "photos": [
+      "Name_kudu_shofar_hqdju6"
+    ],
     "personalisable": true
   },
   {
     "id": "black-havdalah-set",
+    "sku": "SAW-HS-001",
     "family_id": "classic-havdalah-sets",
     "category": "havdalah-sets",
-    "pages": ["havdalah-sets.html"],
+    "pages": [
+      "havdalah-sets.html"
+    ],
     "name_en": "Black Havdalah Set",
     "name_he": "סט הבדלה שחור",
     "description_en": "Handmade black Havdalah set, crafted in our studio in Israel.",
@@ -1223,14 +2573,19 @@
     "color_he": "שחור",
     "measurements": "",
     "price_ils": 1369,
-    "photos": ["Havdala_black_set_wdnnhk"],
+    "photos": [
+      "Havdala_black_set_wdnnhk"
+    ],
     "personalisable": false
   },
   {
     "id": "blue-havdalah-set",
+    "sku": "SAW-HS-002",
     "family_id": "classic-havdalah-sets",
     "category": "havdalah-sets",
-    "pages": ["havdalah-sets.html"],
+    "pages": [
+      "havdalah-sets.html"
+    ],
     "name_en": "Blue Havdalah Set",
     "name_he": "סט הבדלה כחול",
     "description_en": "Handmade blue Havdalah set, crafted in our studio in Israel.",
@@ -1239,14 +2594,19 @@
     "color_he": "כחול",
     "measurements": "",
     "price_ils": 1369,
-    "photos": ["Blue_havdala_set_guzrpu"],
+    "photos": [
+      "Blue_havdala_set_guzrpu"
+    ],
     "personalisable": false
   },
   {
     "id": "white-havdalah-set",
+    "sku": "SAW-HS-003",
     "family_id": "classic-havdalah-sets",
     "category": "havdalah-sets",
-    "pages": ["havdalah-sets.html"],
+    "pages": [
+      "havdalah-sets.html"
+    ],
     "name_en": "White Havdalah Set",
     "name_he": "סט הבדלה לבן",
     "description_en": "Handmade white Havdalah set, crafted in our studio in Israel.",
@@ -1255,13 +2615,18 @@
     "color_he": "לבן",
     "measurements": "",
     "price_ils": 1369,
-    "photos": ["Havdala_white_set_wnymec"],
+    "photos": [
+      "Havdala_white_set_wnymec"
+    ],
     "personalisable": false
   },
   {
     "id": "orange-havdalah-set",
+    "sku": "SAW-HS-004",
     "category": "havdalah-sets",
-    "pages": ["havdalah-sets.html"],
+    "pages": [
+      "havdalah-sets.html"
+    ],
     "name_en": "Orange Havdalah Set",
     "name_he": "סט הבדלה כתום",
     "description_en": "Handmade orange Havdalah set, crafted in our studio in Israel.",
@@ -1270,7 +2635,9 @@
     "color_he": "כתום",
     "measurements": "",
     "price_ils": 1212,
-    "photos": ["Orange_havdala_set_bh5ut5"],
+    "photos": [
+      "Orange_havdala_set_bh5ut5"
+    ],
     "personalisable": false
   }
 ]

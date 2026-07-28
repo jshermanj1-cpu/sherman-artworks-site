@@ -39,7 +39,7 @@
 .other-cat-link:hover { border-color: var(--gold); color: var(--gold); }
 </style>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Sherman Art Works","item":"https://shermanartworks.com"},{"@type":"ListItem","position":2,"name":"Business Gifts","item":"https://shermanartworks.com/business-gifts.html"}]}</script>
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Product","name":"Custom Ram's Horn Shofar, Symbol & Text","url":"https://shermanartworks.com/business-gifts.html#custom-shofar","description":"Ram's-horn shofar decorated in 925 silver and personalised with your choice of symbol and an optional text inscription (Hebrew/English). Made to order in Israel.","image":["https://res.cloudinary.com/doesupaf9/image/upload/w_800,q_auto,f_auto/Chabad_shofar_o1sgb7.jpg"],"brand":{"@type":"Brand","name":"Sherman Art Works"},"offers":{"@type":"Offer","priceCurrency":"ILS","price":"1050","availability":"https://schema.org/InStock","seller":{"@type":"Organization","name":"Sherman Art Works"},"shippingDetails":[{"@type":"OfferShippingDetails","shippingRate":{"@type":"MonetaryAmount","value":35,"currency":"ILS"},"shippingDestination":{"@type":"DefinedRegion","addressCountry":"IL"}},{"@type":"OfferShippingDetails","shippingRate":{"@type":"MonetaryAmount","value":45,"currency":"USD"},"shippingDestination":{"@type":"DefinedRegion","addressCountry":["US","GB","CA","AU","FR","DE"]}}],"hasMerchantReturnPolicy":{"@type":"MerchantReturnPolicy","applicableCountry":["IL","US","GB","CA","AU","FR","DE"],"returnPolicyCategory":"https://schema.org/MerchantReturnFiniteReturnWindow","merchantReturnDays":14,"returnMethod":"https://schema.org/ReturnByMail","returnFees":"https://schema.org/ReturnFeesCustomerResponsibility"}},"sku":"custom-shofar","itemCondition":"https://schema.org/NewCondition"}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Product","name":"Custom Ram's Horn Shofar, Symbol & Text","url":"https://shermanartworks.com/business-gifts.html#custom-shofar","description":"Ram's-horn shofar decorated in 925 silver and personalised with your choice of symbol and an optional text inscription (Hebrew/English). Made to order in Israel.","image":["https://res.cloudinary.com/doesupaf9/image/upload/w_800,q_auto,f_auto/Chabad_shofar_o1sgb7.jpg"],"brand":{"@type":"Brand","name":"Sherman Art Works"},"offers":{"@type":"Offer","priceCurrency":"ILS","price":"1050","availability":"https://schema.org/InStock","seller":{"@type":"Organization","name":"Sherman Art Works"},"shippingDetails":[{"@type":"OfferShippingDetails","shippingRate":{"@type":"MonetaryAmount","value":35,"currency":"ILS"},"shippingDestination":{"@type":"DefinedRegion","addressCountry":"IL"}},{"@type":"OfferShippingDetails","shippingRate":{"@type":"MonetaryAmount","value":45,"currency":"USD"},"shippingDestination":{"@type":"DefinedRegion","addressCountry":["US","GB","CA","AU","FR","DE"]}}],"hasMerchantReturnPolicy":{"@type":"MerchantReturnPolicy","applicableCountry":["IL","US","GB","CA","AU","FR","DE"],"returnPolicyCategory":"https://schema.org/MerchantReturnFiniteReturnWindow","merchantReturnDays":14,"returnMethod":"https://schema.org/ReturnByMail","returnFees":"https://schema.org/ReturnFeesCustomerResponsibility"}},"sku":"SAW-SH-001","itemCondition":"https://schema.org/NewCondition"}</script>
   <link rel="canonical" href="https://shermanartworks.com/business-gifts.html" />
   <link rel="alternate" hreflang="en" href="https://shermanartworks.com/business-gifts.html" />
   <link rel="alternate" hreflang="he" href="https://shermanartworks.com/he/business-gifts.html" />
@@ -484,6 +484,7 @@
 const PRODUCTS = [
   {
     "id": "custom-shofar",
+    "sku": "SAW-SH-001",
     "name_en": "Custom Ram's Horn Shofar, Symbol & Text",
     "name_he": "שופר איל מותאם אישית, סמל וטקסט",
     "description_en": "Ram's-horn shofar decorated in 925 silver and personalised with your choice of symbol and an optional text inscription (Hebrew/English). Made to order in our studio in Israel.",
@@ -497,6 +498,7 @@ const PRODUCTS = [
   },
   {
     "id": "custom-kudu-shofar",
+    "sku": "SAW-SH-022",
     "name_en": "Custom Kudu Shofar, Symbol & Text",
     "name_he": "שופר קודו מותאם אישית, סמל וטקסט",
     "description_en": "Kudu-horn shofar decorated in 925 silver and personalised with your choice of symbol and an optional text inscription (Hebrew/English). Made to order in our studio in Israel.",
@@ -530,7 +532,7 @@ function waLinkForProduct(p) {
   const msg = l === 'he'
     ? `שלום, אני מתעניין/ת ב"${name}". אשמח לפרטים נוספים.`
     : `Hi, I'd like to know more about "${name}".`;
-  return `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`;
+  return `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg + `\nSKU: ${productSku(p)}`)}`;
 }
 function emailLinkForProduct(p) {
   const name = p.name_en;
@@ -547,7 +549,7 @@ function waLinkForProductSized(p, sz) {
   const msg = l === 'he'
     ? `שלום, אני מעוניין/ת להזמין "${name}".\nמידה: ${sizeText}\nמחיר: ₪${sz.price_ils.toLocaleString('en-IL')}\nאשמח לפרטים.`
     : `Hi, I'd like to order "${name}".\nSize: ${sizeText}\nPrice: ₪${sz.price_ils.toLocaleString('en-IL')}\nPlease send me more details.`;
-  return `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`;
+  return `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg + `\nSKU: ${productSku(p, sz)}`)}`;
 }
 function onSizeChange() {
   const sel = document.getElementById('modalSize');
@@ -627,7 +629,7 @@ Price: ₪${sz.price_ils.toLocaleString('en-IL')}`)
     const msg = l === 'he'
       ? `שלום, אני מעוניין/ת להזמין "${name}".${sizeLine}\nסמל: ${symbolDisplay}${text ? '\nכיתוב: ' + text : ''}${comment ? '\nהערות: ' + comment : ''}\nאשמח לפרטים.`
       : `Hi, I'd like to order a "${name}".${sizeLine}\nSymbol: ${symbol}${text ? '\nInscription: ' + text : ''}${comment ? '\nComment: ' + comment : ''}\nPlease send me more details.`;
-    if (ctaEl) ctaEl.href = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`;
+    if (ctaEl) ctaEl.href = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg + `\nSKU: ${productSku(p, sz)}`)}`;
   }
 }
 function buildCard(product, idx) {

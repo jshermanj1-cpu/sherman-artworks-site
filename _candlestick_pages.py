@@ -127,7 +127,7 @@ def item_list(items):
                     "availability": "https://schema.org/InStock",
                     "seller": {"@type": "Organization", "name": "Sherman Art Works"},
                 },
-                "sku": p["id"],
+                "sku": p["sku"],
                 "itemCondition": "https://schema.org/NewCondition",
             },
         })
@@ -226,7 +226,7 @@ def build(kind, cfg, source, all_items):
                       switcher, "switcher", re.S)
 
     grid = static_cards(items)
-    out = replace_one(out, r'(<div class="products-grid" id="grid-products">\n).*?(\n  </div>\n</section>)',
+    out = replace_one(out, r'(<div class="products-grid" id="grid-products">\n).*?(\n</div>\n</section>)',
                       r'\1  <!-- Static EN product cards for SEO -->\n' + grid + r'\2', "static grid", re.S)
     out = replace_one(out, r'"products": \[[^\]]*\],',
                       '"products": ' + json.dumps(ids) + ',', "product ids")
@@ -245,6 +245,7 @@ def build(kind, cfg, source, all_items):
         for match, value in reversed(list(zip(matches, (en_value, he_value)))):
             out = out[:match.start()] + match.group(1) + repr(value) + out[match.end():]
 
+    out = re.sub(r"[ \t]+$", "", out, flags=re.M)
     (SITE / cfg["file"]).write_text(out, encoding="utf-8")
     print(f"{cfg['file']}: {len(items)} products")
 
