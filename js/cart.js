@@ -37,7 +37,6 @@ var _PAGE_BY_SLUG = {
   'green-silver-plated-glass-tray': 'trays-bowls.html',
   'black-silver-plated-glass-tray': 'trays-bowls.html',
   'blue-green-silver-plated-glass-tray': 'trays-bowls.html',
-  'round-white-silver-plated-glass-tray': 'trays-bowls.html',
   'ram-mezuzah': 'mezuzahs.html',
   'kudu-mezuzah': 'mezuzahs.html',
   'clear-glass-mezuzah': 'mezuzahs.html',
