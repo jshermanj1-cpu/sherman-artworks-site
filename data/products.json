@@ -486,8 +486,7 @@
     "sku": "SAW-HG-002",
     "category": "horn-goblets",
     "pages": [
-      "horn-goblets.html",
-      "kiddush-cups.html"
+      "horn-goblets.html"
     ],
     "name_en": "Lion of Judah Goblet",
     "name_he": "גביע אריה יהודה",
@@ -508,8 +507,7 @@
     "sku": "SAW-HG-003",
     "category": "horn-goblets",
     "pages": [
-      "horn-goblets.html",
-      "kiddush-cups.html"
+      "horn-goblets.html"
     ],
     "name_en": "Menorah Goblet",
     "name_he": "גביע מנורה",
@@ -916,7 +914,8 @@
       "Blue_cup_white_background_wsc8xt",
       "Blue_cup_window_background_ezxbdg"
     ],
-    "personalisable": false
+    "personalisable": false,
+    "active": false
   },
   {
     "id": "tall-colorful-glass-cup",
@@ -935,7 +934,8 @@
       "Colorful_cup_white_background_u9sijr",
       "Colorful_cup_window_background_jinabf"
     ],
-    "personalisable": false
+    "personalisable": false,
+    "active": false
   },
   {
     "id": "tall-red-glass-cup",
@@ -954,7 +954,8 @@
       "Red_cup_white_background_qfy7xn",
       "Red_cup_window_background_z0nsg5"
     ],
-    "personalisable": false
+    "personalisable": false,
+    "active": false
   },
   {
     "id": "low-white-glass-cup",
@@ -973,7 +974,8 @@
       "White_low_cup_white_background_qkjsnp",
       "White_low_cup_window_background_zr7zfl"
     ],
-    "personalisable": false
+    "personalisable": false,
+    "active": false
   },
   {
     "id": "low-colorful-glass-cup",
@@ -992,7 +994,8 @@
       "Orange_low_cup_white_background_zj5qr5",
       "Orange_low_cup_window_background_hurvb0"
     ],
-    "personalisable": false
+    "personalisable": false,
+    "active": false
   },
   {
     "id": "ceramic-kiddush-cup",
@@ -1032,20 +1035,20 @@
       "Orange_plate_cup_white_background_hmvdcr",
       "Orange_plate_cup_window_tlsiv6"
     ],
-    "personalisable": false
+    "personalisable": false,
+    "active": false
   },
   {
     "id": "kiddush-cup-plate",
     "sku": "SAW-KC-008",
     "category": "kiddush-cups",
     "pages": [
-      "kiddush-cups.html",
       "trays-bowls.html"
     ],
-    "name_en": "Kiddush Cup Plate",
-    "name_he": "תחתית לכוס קידוש",
-    "description_en": "Handmade glass Kiddush cup plate with a vibrant orange palette and a 925 silver-plated rim. A beautiful complement to any Kiddush cup. Made to order in our studio in Israel.",
-    "description_he": "תחתית לכוס קידוש עשויה בעבודת יד מזכוכית עם גוונים כתומים ומסגרת מצופה כסף 925. תוספת יפה לכל כוס קידוש. מיוצרת לפי הזמנה בסטודיו שלנו בישראל.",
+    "name_en": "Orange Kiddush Cup Plate",
+    "name_he": "תחתית כתומה לכוס קידוש",
+    "description_en": "Handmade orange glass Kiddush cup plate with a 925 silver-plated rim. A beautiful complement to a matching Kiddush cup. Made to order in our studio in Israel.",
+    "description_he": "????? ????? ???? ?????, ????? ??????? ?????? ?? ??? ????? ????? ??? 925. ????? ??? ???? ????? ?????. ?????? ??? ????? ??????? ???? ??????.",
     "measurements": "",
     "price_ils": 364,
     "photos": [
@@ -2637,6 +2640,341 @@
     "price_ils": 1212,
     "photos": [
       "Orange_havdala_set_bh5ut5"
+    ],
+    "personalisable": false
+  },
+  {
+    "id": "blue-green-tall-glass-cup",
+    "sku": "SAW-KC-009",
+    "category": "kiddush-cups",
+    "pages": [
+      "kiddush-cups.html"
+    ],
+    "name_en": "Blue-Green Tall Glass Cup",
+    "name_he": "כוס זכוכית גבוהה כחול ירוק",
+    "description_en": "Handmade tall blue-green glass Kiddush cup with a 925 silver-plated rim. Made to order in our studio in Israel.",
+    "description_he": "כוס קידוש גבוהה מזכוכית בגווני כחול וירוק, בעבודת יד ועם מסגרת מצופה כסף 925. מיוצרת לפי הזמנה בסטודיו שלנו בישראל.",
+    "measurements": "",
+    "price_ils": 472,
+    "photos": [
+      "Blue-green_cup_white_background_sw5xyz",
+      "Blue_green_cup_window_background_skywns",
+      "Green-blue_high_cup2_ahy54a"
+    ],
+    "personalisable": false,
+    "tray_addon": {
+      "id": "blue-green-kiddush-cup-plate",
+      "sku": "SAW-KC-019",
+      "kind": "plate",
+      "name_en": "Blue-Green Kiddush Cup Plate",
+      "name_he": "תחתית כחול־ירוק לכוס קידוש",
+      "measurements": "",
+      "regular_price_ils": 364,
+      "bundle_price_ils": 273,
+      "discount_percent": 25,
+      "photo": "Green-purple_plate_tbwcn3",
+      "set_photo": "Green-blue_high_cup2_ahy54a"
+    }
+  },
+  {
+    "id": "blue-tall-glass-cup",
+    "sku": "SAW-KC-010",
+    "category": "kiddush-cups",
+    "pages": [
+      "kiddush-cups.html"
+    ],
+    "name_en": "Blue Tall Glass Cup",
+    "name_he": "כוס זכוכית גבוהה כחולה",
+    "description_en": "Handmade tall blue glass Kiddush cup with a 925 silver-plated rim. Made to order in our studio in Israel.",
+    "description_he": "כוס קידוש גבוהה מזכוכית כחולה, בעבודת יד ועם מסגרת מצופה כסף 925. מיוצרת לפי הזמנה בסטודיו שלנו בישראל.",
+    "measurements": "",
+    "price_ils": 472,
+    "photos": [
+      "Blue_high_cup_fxhkep",
+      "Blue_high_cup_window_background_icbl6j",
+      "Blue_high_cup2_zfcq9m"
+    ],
+    "personalisable": false,
+    "tray_addon": {
+      "id": "blue-kiddush-cup-plate",
+      "sku": "SAW-KC-017",
+      "kind": "plate",
+      "name_en": "Blue Kiddush Cup Plate",
+      "name_he": "תחתית כחולה לכוס קידוש",
+      "measurements": "",
+      "regular_price_ils": 364,
+      "bundle_price_ils": 273,
+      "discount_percent": 25,
+      "photo": "Blue_plate_ixqvon",
+      "set_photo": "Blue_high_cup2_zfcq9m"
+    }
+  },
+  {
+    "id": "colorful-tall-glass-cup",
+    "sku": "SAW-KC-011",
+    "category": "kiddush-cups",
+    "pages": [
+      "kiddush-cups.html"
+    ],
+    "name_en": "Colorful Tall Glass Cup",
+    "name_he": "כוס זכוכית גבוהה צבעונית",
+    "description_en": "Handmade tall colorful glass Kiddush cup with a 925 silver-plated rim. Made to order in our studio in Israel.",
+    "description_he": "כוס קידוש גבוהה מזכוכית צבעונית, בעבודת יד ועם מסגרת מצופה כסף 925. מיוצרת לפי הזמנה בסטודיו שלנו בישראל.",
+    "measurements": "",
+    "price_ils": 472,
+    "photos": [
+      "Colorful_cup_white_background_antl7a",
+      "Colorful_cup_window_background_yuaixi",
+      "Colorful_cup_2_qsmx5h"
+    ],
+    "personalisable": false,
+    "tray_addon": {
+      "id": "kiddush-cup-plate",
+      "sku": "SAW-KC-008",
+      "kind": "plate",
+      "name_en": "Orange Kiddush Cup Plate",
+      "name_he": "תחתית כתומה לכוס קידוש",
+      "measurements": "",
+      "regular_price_ils": 364,
+      "bundle_price_ils": 273,
+      "discount_percent": 25,
+      "photo": "Orange_plate_white_background_npkcwp",
+      "set_photo": "Colorful_cup_2_qsmx5h"
+    }
+  },
+  {
+    "id": "red-tall-glass-cup",
+    "sku": "SAW-KC-012",
+    "category": "kiddush-cups",
+    "pages": [
+      "kiddush-cups.html"
+    ],
+    "name_en": "Red Tall Glass Cup",
+    "name_he": "כוס זכוכית גבוהה אדומה",
+    "description_en": "Handmade tall red glass Kiddush cup with a 925 silver-plated rim. Made to order in our studio in Israel.",
+    "description_he": "כוס קידוש גבוהה מזכוכית אדומה, בעבודת יד ועם מסגרת מצופה כסף 925. מיוצרת לפי הזמנה בסטודיו שלנו בישראל.",
+    "measurements": "",
+    "price_ils": 472,
+    "photos": [
+      "Reddish_color_cup1_modkh4",
+      "Reddish_color_cup_window_background_cznzgb",
+      "Reddish_color_cup2_rjtnvp"
+    ],
+    "personalisable": false,
+    "tray_addon": {
+      "id": "red-kiddush-cup-plate",
+      "sku": "SAW-KC-020",
+      "kind": "plate",
+      "name_en": "Red Kiddush Cup Plate",
+      "name_he": "תחתית אדומה לכוס קידוש",
+      "measurements": "",
+      "regular_price_ils": 364,
+      "bundle_price_ils": 273,
+      "discount_percent": 25,
+      "photo": "Red_plate_qm5f5n",
+      "set_photo": "Reddish_color_cup2_rjtnvp"
+    }
+  },
+  {
+    "id": "vibrant-red-glass-tall-cup",
+    "sku": "SAW-KC-013",
+    "category": "kiddush-cups",
+    "pages": [
+      "kiddush-cups.html"
+    ],
+    "name_en": "Vibrant Red Glass Tall Cup",
+    "name_he": "כוס זכוכית גבוהה אדום נועז",
+    "description_en": "Handmade tall vibrant-red glass Kiddush cup with a 925 silver-plated rim. Made to order in our studio in Israel.",
+    "description_he": "כוס קידוש גבוהה מזכוכית בגוון אדום נועז, בעבודת יד ועם מסגרת מצופה כסף 925. מיוצרת לפי הזמנה בסטודיו שלנו בישראל.",
+    "measurements": "",
+    "price_ils": 472,
+    "photos": [
+      "Red_cup_white_background_ej874y",
+      "Vibrant_red_cup_window_background_ndbyse",
+      "Vibrant_red_cup2_seu2g9"
+    ],
+    "personalisable": false,
+    "tray_addon": {
+      "id": "red-kiddush-cup-plate",
+      "sku": "SAW-KC-020",
+      "kind": "plate",
+      "name_en": "Red Kiddush Cup Plate",
+      "name_he": "תחתית אדומה לכוס קידוש",
+      "measurements": "",
+      "regular_price_ils": 364,
+      "bundle_price_ils": 273,
+      "discount_percent": 25,
+      "photo": "Red_plate_qm5f5n",
+      "set_photo": "Vibrant_red_cup2_seu2g9"
+    }
+  },
+  {
+    "id": "orange-glass-cup",
+    "sku": "SAW-KC-014",
+    "category": "kiddush-cups",
+    "pages": [
+      "kiddush-cups.html"
+    ],
+    "name_en": "Orange Glass Cup",
+    "name_he": "כוס זכוכית כתומה",
+    "description_en": "Handmade orange glass Kiddush cup with a 925 silver-plated rim. Made to order in our studio in Israel.",
+    "description_he": "כוס קידוש מזכוכית כתומה, בעבודת יד ועם מסגרת מצופה כסף 925. מיוצרת לפי הזמנה בסטודיו שלנו בישראל.",
+    "measurements": "",
+    "price_ils": 456,
+    "photos": [
+      "Orange_low_cup_white_background_o0le03",
+      "Orange_low_cup2_i1iuxy"
+    ],
+    "personalisable": false,
+    "tray_addon": {
+      "id": "kiddush-cup-plate",
+      "sku": "SAW-KC-008",
+      "kind": "plate",
+      "name_en": "Orange Kiddush Cup Plate",
+      "name_he": "תחתית כתומה לכוס קידוש",
+      "measurements": "",
+      "regular_price_ils": 364,
+      "bundle_price_ils": 273,
+      "discount_percent": 25,
+      "photo": "Orange_plate_white_background_npkcwp",
+      "set_photo": "Orange_low_cup2_i1iuxy"
+    }
+  },
+  {
+    "id": "white-glass-cup",
+    "sku": "SAW-KC-015",
+    "category": "kiddush-cups",
+    "pages": [
+      "kiddush-cups.html"
+    ],
+    "name_en": "White Glass Cup",
+    "name_he": "כוס זכוכית לבנה",
+    "description_en": "Handmade white glass Kiddush cup with a 925 silver-plated rim. Made to order in our studio in Israel.",
+    "description_he": "כוס קידוש מזכוכית לבנה, בעבודת יד ועם מסגרת מצופה כסף 925. מיוצרת לפי הזמנה בסטודיו שלנו בישראל.",
+    "measurements": "",
+    "price_ils": 456,
+    "photos": [
+      "White_low_cup_white_background_rtmtbo",
+      "White_low_cup_window_background_rklfye",
+      "White_low_cup2_jjbuba"
+    ],
+    "personalisable": false,
+    "tray_addon": {
+      "id": "white-kiddush-cup-plate",
+      "sku": "SAW-KC-018",
+      "kind": "plate",
+      "name_en": "White Kiddush Cup Plate",
+      "name_he": "תחתית לבנה לכוס קידוש",
+      "measurements": "",
+      "regular_price_ils": 364,
+      "bundle_price_ils": 273,
+      "discount_percent": 25,
+      "photo": "White_plate_v56oez",
+      "set_photo": "White_low_cup2_jjbuba"
+    }
+  },
+  {
+    "id": "blue-bore-pri-hagefen-tall-glass-cup",
+    "sku": "SAW-KC-016",
+    "name_en": "Blue Bore Pri Hagefen Tall Glass Cup",
+    "name_he": "כוס בורא פרי הגפן כחולה גבוהה",
+    "description_en": "Handmade tall blue glass Kiddush cup featuring the Bore Pri Hagefen blessing and a 925 silver-plated rim. Made to order in our studio in Israel.",
+    "description_he": "כוס קידוש גבוהה מזכוכית כחולה עם הכיתוב בורא פרי הגפן, בעבודת יד ועם מסגרת מצופה כסף 925. מיוצרת לפי הזמנה בסטודיו שלנו בישראל.",
+    "measurements": "",
+    "price_ils": 499,
+    "photos": [
+      "Blue_bore_cup_zsahzh",
+      "Blue_bore_cup_window_background_mg6oeb",
+      "Blue_bore_cup2_kis1yn"
+    ],
+    "category": "kiddush-cups",
+    "pages": [
+      "kiddush-cups.html"
+    ],
+    "personalisable": false,
+    "tray_addon": {
+      "id": "blue-kiddush-cup-plate",
+      "sku": "SAW-KC-017",
+      "kind": "plate",
+      "name_en": "Blue Kiddush Cup Plate",
+      "name_he": "תחתית כחולה לכוס קידוש",
+      "measurements": "",
+      "regular_price_ils": 364,
+      "bundle_price_ils": 273,
+      "discount_percent": 25,
+      "photo": "Blue_plate_ixqvon",
+      "set_photo": "Blue_bore_cup2_kis1yn"
+    }
+  },
+  {
+    "id": "blue-kiddush-cup-plate",
+    "sku": "SAW-KC-017",
+    "name_en": "Blue Kiddush Cup Plate",
+    "name_he": "תחתית כחולה לכוס קידוש",
+    "description_en": "Handmade blue glass Kiddush cup plate with a 925 silver-plated rim. Made to order in our studio in Israel.",
+    "description_he": "תחתית כחולה לכוס קידוש, עשויה מזכוכית בעבודת יד ועם מסגרת מצופה כסף 925. מיוצרת לפי הזמנה בסטודיו שלנו בישראל.",
+    "measurements": "",
+    "price_ils": 364,
+    "photos": [
+      "Blue_plate_ixqvon"
+    ],
+    "category": "kiddush-cups",
+    "pages": [
+      "trays-bowls.html"
+    ],
+    "personalisable": false
+  },
+  {
+    "id": "white-kiddush-cup-plate",
+    "sku": "SAW-KC-018",
+    "name_en": "White Kiddush Cup Plate",
+    "name_he": "תחתית לבנה לכוס קידוש",
+    "description_en": "Handmade white glass Kiddush cup plate with a 925 silver-plated rim. Made to order in our studio in Israel.",
+    "description_he": "תחתית לבנה לכוס קידוש, עשויה מזכוכית בעבודת יד ועם מסגרת מצופה כסף 925. מיוצרת לפי הזמנה בסטודיו שלנו בישראל.",
+    "measurements": "",
+    "price_ils": 364,
+    "photos": [
+      "White_plate_v56oez"
+    ],
+    "category": "kiddush-cups",
+    "pages": [
+      "trays-bowls.html"
+    ],
+    "personalisable": false
+  },
+  {
+    "id": "blue-green-kiddush-cup-plate",
+    "sku": "SAW-KC-019",
+    "name_en": "Blue-Green Kiddush Cup Plate",
+    "name_he": "תחתית כחול־ירוק לכוס קידוש",
+    "description_en": "Handmade blue-green glass Kiddush cup plate with a 925 silver-plated rim. Made to order in our studio in Israel.",
+    "description_he": "תחתית כחול־ירוק לכוס קידוש, עשויה מזכוכית בעבודת יד ועם מסגרת מצופה כסף 925. מיוצרת לפי הזמנה בסטודיו שלנו בישראל.",
+    "measurements": "",
+    "price_ils": 364,
+    "photos": [
+      "Green-purple_plate_tbwcn3"
+    ],
+    "category": "kiddush-cups",
+    "pages": [
+      "trays-bowls.html"
+    ],
+    "personalisable": false
+  },
+  {
+    "id": "red-kiddush-cup-plate",
+    "sku": "SAW-KC-020",
+    "name_en": "Red Kiddush Cup Plate",
+    "name_he": "תחתית אדומה לכוס קידוש",
+    "description_en": "Handmade red glass Kiddush cup plate with a 925 silver-plated rim. Made to order in our studio in Israel.",
+    "description_he": "תחתית אדומה לכוס קידוש, עשויה מזכוכית בעבודת יד ועם מסגרת מצופה כסף 925. מיוצרת לפי הזמנה בסטודיו שלנו בישראל.",
+    "measurements": "",
+    "price_ils": 364,
+    "photos": [
+      "Red_plate_qm5f5n"
+    ],
+    "category": "kiddush-cups",
+    "pages": [
+      "trays-bowls.html"
     ],
     "personalisable": false
   }

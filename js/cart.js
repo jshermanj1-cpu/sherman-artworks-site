@@ -250,6 +250,7 @@ function cartAddFromModal() {
     meta = meta || {};
     meta.tray_id = tray.id;
     meta.tray_sku = tray.sku || '';
+    meta.tray_kind = tray.kind || 'tray';
     meta.tray = tray.name_en;
     meta.tray_he = tray.name_he || tray.name_en;
     meta.tray_measurements = tray.measurements;
@@ -310,7 +311,7 @@ function buildCheckoutWaLink() {
       if (item.meta) {
         if (item.meta.color)   lines.push('   צבע: ' + (item.meta.color_he || item.meta.color));
         if (item.meta.size)    lines.push('   מידה: ' + item.meta.size);
-        if (item.meta.tray)    lines.push('   מגש תואם: ' + (item.meta.tray_he || item.meta.tray) + ' (₪' + item.meta.tray_price_ils + ')' + (item.meta.tray_sku ? ' · SKU: ' + item.meta.tray_sku : ''));
+        if (item.meta.tray)    lines.push('   ' + (item.meta.tray_kind === 'plate' ? 'תחתית תואמת: ' : 'מגש תואם: ') + (item.meta.tray_he || item.meta.tray) + ' (₪' + item.meta.tray_price_ils + ')' + (item.meta.tray_sku ? ' · SKU: ' + item.meta.tray_sku : ''));
         if (item.meta.bundle_savings_ils) lines.push('   חיסכון בסט: ₪' + item.meta.bundle_savings_ils);
         if (item.meta.symbol)  lines.push('   סמל: ' + (item.meta.symbol_he || item.meta.symbol));
         if (item.meta.text)    lines.push('   כיתוב: ' + item.meta.text);
@@ -329,7 +330,7 @@ function buildCheckoutWaLink() {
       if (item.meta) {
         if (item.meta.color)   lines.push('   Color: ' + item.meta.color);
         if (item.meta.size)    lines.push('   Size: ' + item.meta.size);
-        if (item.meta.tray)    lines.push('   Matching tray: ' + item.meta.tray + ' (₪' + item.meta.tray_price_ils + ')' + (item.meta.tray_sku ? ' · SKU: ' + item.meta.tray_sku : ''));
+        if (item.meta.tray)    lines.push('   ' + (item.meta.tray_kind === 'plate' ? 'Matching plate: ' : 'Matching tray: ') + item.meta.tray + ' (₪' + item.meta.tray_price_ils + ')' + (item.meta.tray_sku ? ' · SKU: ' + item.meta.tray_sku : ''));
         if (item.meta.bundle_savings_ils) lines.push('   Set savings: ₪' + item.meta.bundle_savings_ils);
         if (item.meta.symbol)  lines.push('   Symbol: ' + item.meta.symbol);
         if (item.meta.text)    lines.push('   Inscription: ' + item.meta.text);
@@ -354,7 +355,10 @@ function _cartMetaHtml(item, isHe) {
   if (m.size)    rows.push((isHe ? 'מידה: ' : 'Size: ') + escapeHtml(m.size));
   if (m.tray) {
     var trayName = isHe ? (m.tray_he || m.tray) : m.tray;
-    rows.push((isHe ? 'מגש תואם: ' : 'Matching tray: ') + escapeHtml(trayName) + ' · ₪' + Number(m.tray_price_ils).toLocaleString('en-IL') + (m.tray_sku ? ' · SKU: ' + escapeHtml(m.tray_sku) : ''));
+    var addonLabel = m.tray_kind === 'plate'
+      ? (isHe ? 'תחתית תואמת: ' : 'Matching plate: ')
+      : (isHe ? 'מגש תואם: ' : 'Matching tray: ');
+    rows.push(addonLabel + escapeHtml(trayName) + ' · ₪' + Number(m.tray_price_ils).toLocaleString('en-IL') + (m.tray_sku ? ' · SKU: ' + escapeHtml(m.tray_sku) : ''));
   }
   if (m.bundle_savings_ils) rows.push((isHe ? 'חיסכון בסט: ₪' : 'Set savings: ₪') + Number(m.bundle_savings_ils).toLocaleString('en-IL'));
   if (m.symbol)  rows.push((isHe ? 'סמל: ' : 'Symbol: ') + escapeHtml(isHe ? (m.symbol_he || m.symbol) : m.symbol));

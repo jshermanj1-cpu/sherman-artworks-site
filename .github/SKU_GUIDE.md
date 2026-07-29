@@ -28,7 +28,7 @@ similar suffix to a product with one sellable configuration.
 |---|---:|---:|
 | Candlesticks | `CS` | `018` |
 | Horn Goblets | `HG` | `004` |
-| Kiddush Cups | `KC` | `009` |
+| Kiddush Cups | `KC` | `021` |
 | Trays & Bowls | `TB` | `008` |
 | Mezuzahs | `MZ` | `005` |
 | Shofars | `SH` | `023` |
@@ -164,6 +164,18 @@ configurations. They are permanent once migrated into the product data.
 | `SAW-KC-006` | `ceramic-kiddush-cup` | Ceramic Kiddush Cup | None |
 | `SAW-KC-007` | `colorful-glass-cup-and-plate` | Colorful Glass Cup and Plate | None |
 | `SAW-KC-008` | `kiddush-cup-plate` | Kiddush Cup Plate | None |
+| `SAW-KC-009` | `blue-green-tall-glass-cup` | Blue-Green Tall Glass Cup | None |
+| `SAW-KC-010` | `blue-tall-glass-cup` | Blue Tall Glass Cup | None |
+| `SAW-KC-011` | `colorful-tall-glass-cup` | Colorful Tall Glass Cup | None |
+| `SAW-KC-012` | `red-tall-glass-cup` | Red Tall Glass Cup | None |
+| `SAW-KC-013` | `vibrant-red-glass-tall-cup` | Vibrant Red Glass Tall Cup | None |
+| `SAW-KC-014` | `orange-glass-cup` | Orange Glass Cup | None |
+| `SAW-KC-015` | `white-glass-cup` | White Glass Cup | None |
+| `SAW-KC-016` | `blue-bore-pri-hagefen-tall-glass-cup` | Blue Bore Pri Hagefen Tall Glass Cup | None |
+| `SAW-KC-017` | `blue-kiddush-cup-plate` | Blue Kiddush Cup Plate | None |
+| `SAW-KC-018` | `white-kiddush-cup-plate` | White Kiddush Cup Plate | None |
+| `SAW-KC-019` | `blue-green-kiddush-cup-plate` | Blue-Green Kiddush Cup Plate | None |
+| `SAW-KC-020` | `red-kiddush-cup-plate` | Red Kiddush Cup Plate | None |
 
 ### Trays & Bowls (`TB`)
 

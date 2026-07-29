@@ -139,6 +139,8 @@ def main():
 
     count = 0
     for product in products:
+        if product.get("active") is False:
+            continue
         sizes = product.get("sizes") or []
         for size in sizes or [None]:
             lines.extend(item_lines(product, size))

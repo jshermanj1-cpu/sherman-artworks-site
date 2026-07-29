@@ -126,6 +126,7 @@ def catalog(validation, assignments, next_numbers):
             base_skus.append(sku)
             highest_by_code[code] = max(highest_by_code[code], int(sku.rsplit("-", 1)[-1]))
 
+        active = product.get("active") is not False
         sizes = product.get("sizes") or []
         if sizes:
             labels = [str(size.get("label", "")).upper() for size in sizes]
@@ -142,12 +143,14 @@ def catalog(validation, assignments, next_numbers):
                 )
                 if actual_sku:
                     sellable.append(actual_sku)
-                feed_id = f"{product_id}-{size_slug(size['label'])}"
-                expected_feed[feed_id] = actual_sku
+                if active:
+                    feed_id = f"{product_id}-{size_slug(size['label'])}"
+                    expected_feed[feed_id] = actual_sku
         else:
             if sku:
                 sellable.append(sku)
-            expected_feed[product_id] = sku
+            if active:
+                expected_feed[product_id] = sku
 
     validation.check(len(base_skus) == len(set(base_skus)), "duplicate catalog base SKU")
     validation.check(len(sellable) == len(set(sellable)), "duplicate sellable SKU")
@@ -312,8 +315,13 @@ def main():
     validation = Validation()
     assignments, next_numbers = guide_assignments(validation)
     products, sellable, expected_feed = catalog(validation, assignments, next_numbers)
-    runtime_objects(validation, assignments)
-    jsonld(validation, assignments)
+    active_assignments = {
+        product["id"]: assignments[product["id"]]
+        for product in products
+        if product.get("active") is not False
+    }
+    runtime_objects(validation, active_assignments)
+    jsonld(validation, active_assignments)
     add_on_skus(validation, products)
     feed(validation, expected_feed)
     cart_ordering(validation)
