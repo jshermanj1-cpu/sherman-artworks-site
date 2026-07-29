@@ -676,12 +676,15 @@ function buildCard(product, idx) {
     </article>
   `;
 }
+let productDisplayOrder = null;
+
 function renderProducts() {
+  if (!productDisplayOrder) productDisplayOrder = shuffledProductEntries(PRODUCTS);
   for (const sectionKey of SECTION_KEYS) {
     const grid = document.getElementById(`grid-${sectionKey}`);
     if (!grid) continue;
     const ids = SECTION_PRODUCT_IDS[sectionKey] || [];
-    const items = PRODUCTS.map((p, idx) => ({ p, idx })).filter(({ p }) => ids.includes(p.id));
+    const items = productDisplayOrder.filter(({ p }) => ids.includes(p.id));
     grid.innerHTML = items.map(({ p, idx }) => buildCard(p, idx)).join('');
   }
 }

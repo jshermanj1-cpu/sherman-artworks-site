@@ -96,9 +96,16 @@ function buildProductCard(product, index) {
     "</a></div></div></div></article>";
 }
 
+let productDisplayOrder = null;
+
 function renderProducts() {
   const grid = document.getElementById("grid-products");
-  if (grid) grid.innerHTML = PRODUCTS.map(buildProductCard).join("");
+  if (!productDisplayOrder) productDisplayOrder = shuffledProductEntries(PRODUCTS);
+  if (grid) {
+    grid.innerHTML = productDisplayOrder
+      .map(function(entry) { return buildProductCard(entry.p, entry.idx); })
+      .join("");
+  }
 }
 
 let currentModalIdx = null;

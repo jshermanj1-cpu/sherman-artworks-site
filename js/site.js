@@ -544,3 +544,19 @@ document.addEventListener('DOMContentLoaded', function() {
   var waCorp = document.getElementById('waCorporateLink');
   if (waCorp) waCorp.href = 'https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent("Hi, I'm interested in a corporate or bulk order.");
 });
+
+// Return product/index pairs in a new random order. Category pages cache the
+// result for the lifetime of the page so language and currency changes do not
+// make products jump around while someone is browsing.
+function shuffledProductEntries(products) {
+  var entries = products.map(function(product, index) {
+    return { p: product, idx: index };
+  });
+  for (var i = entries.length - 1; i > 0; i--) {
+    var j = Math.floor(Math.random() * (i + 1));
+    var current = entries[i];
+    entries[i] = entries[j];
+    entries[j] = current;
+  }
+  return entries;
+}
