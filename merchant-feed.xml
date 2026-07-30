@@ -3,7 +3,7 @@
 <channel>
   <title>Sherman Art Works</title>
   <link>https://shermanartworks.com/</link>
-  <description>Handmade glass art and Judaica from Israel - candlesticks, Kiddush cups, horn goblets, shofars, mezuzahs, trays and bowls.</description>
+  <description>Handmade glass art and Judaica from Israel - candlesticks, Kiddush cups, horn goblets, shofars, mezuzahs, trays and bowls, and Havdalah sets.</description>
   <item>
     <g:id>glass-circle-candlesticks</g:id>
     <g:title>Glass Circle Candlesticks</g:title>
@@ -17,7 +17,7 @@
     <g:price>540.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-CS-001</g:mpn>
     <g:product_type>Candlesticks</g:product_type>
     <g:google_product_category>2784</g:google_product_category>
     <g:shipping>
@@ -37,7 +37,7 @@
     <g:price>540.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-CS-002</g:mpn>
     <g:product_type>Candlesticks</g:product_type>
     <g:google_product_category>2784</g:google_product_category>
     <g:shipping>
@@ -57,7 +57,7 @@
     <g:price>540.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-CS-003</g:mpn>
     <g:product_type>Candlesticks</g:product_type>
     <g:google_product_category>2784</g:google_product_category>
     <g:shipping>
@@ -77,10 +77,10 @@
     <g:price>561.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-CS-004-S</g:mpn>
     <g:item_group_id>silver-plated-glass-candlesticks</g:item_group_id>
-    <g:color>White</g:color>
     <g:size>S (14-18 cm)</g:size>
+    <g:color>White</g:color>
     <g:product_type>Candlesticks</g:product_type>
     <g:google_product_category>2784</g:google_product_category>
     <g:shipping>
@@ -100,10 +100,10 @@
     <g:price>623.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-CS-004-M</g:mpn>
     <g:item_group_id>silver-plated-glass-candlesticks</g:item_group_id>
-    <g:color>White</g:color>
     <g:size>M (19-22 cm)</g:size>
+    <g:color>White</g:color>
     <g:product_type>Candlesticks</g:product_type>
     <g:google_product_category>2784</g:google_product_category>
     <g:shipping>
@@ -123,10 +123,10 @@
     <g:price>712.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-CS-004-L</g:mpn>
     <g:item_group_id>silver-plated-glass-candlesticks</g:item_group_id>
-    <g:color>White</g:color>
     <g:size>L (23-25 cm)</g:size>
+    <g:color>White</g:color>
     <g:product_type>Candlesticks</g:product_type>
     <g:google_product_category>2784</g:google_product_category>
     <g:shipping>
@@ -146,10 +146,10 @@
     <g:price>561.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-CS-005-S</g:mpn>
     <g:item_group_id>silver-plated-glass-candlesticks</g:item_group_id>
-    <g:color>Red</g:color>
     <g:size>S (14-18 cm)</g:size>
+    <g:color>Red</g:color>
     <g:product_type>Candlesticks</g:product_type>
     <g:google_product_category>2784</g:google_product_category>
     <g:shipping>
@@ -169,10 +169,10 @@
     <g:price>623.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-CS-005-M</g:mpn>
     <g:item_group_id>silver-plated-glass-candlesticks</g:item_group_id>
-    <g:color>Red</g:color>
     <g:size>M (19-22 cm)</g:size>
+    <g:color>Red</g:color>
     <g:product_type>Candlesticks</g:product_type>
     <g:google_product_category>2784</g:google_product_category>
     <g:shipping>
@@ -192,10 +192,10 @@
     <g:price>712.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-CS-005-L</g:mpn>
     <g:item_group_id>silver-plated-glass-candlesticks</g:item_group_id>
-    <g:color>Red</g:color>
     <g:size>L (23-25 cm)</g:size>
+    <g:color>Red</g:color>
     <g:product_type>Candlesticks</g:product_type>
     <g:google_product_category>2784</g:google_product_category>
     <g:shipping>
@@ -215,10 +215,10 @@
     <g:price>561.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-CS-006-S</g:mpn>
     <g:item_group_id>silver-plated-glass-candlesticks</g:item_group_id>
-    <g:color>Blue</g:color>
     <g:size>S (14-18 cm)</g:size>
+    <g:color>Blue</g:color>
     <g:product_type>Candlesticks</g:product_type>
     <g:google_product_category>2784</g:google_product_category>
     <g:shipping>
@@ -238,10 +238,10 @@
     <g:price>623.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-CS-006-M</g:mpn>
     <g:item_group_id>silver-plated-glass-candlesticks</g:item_group_id>
-    <g:color>Blue</g:color>
     <g:size>M (19-22 cm)</g:size>
+    <g:color>Blue</g:color>
     <g:product_type>Candlesticks</g:product_type>
     <g:google_product_category>2784</g:google_product_category>
     <g:shipping>
@@ -261,10 +261,10 @@
     <g:price>712.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-CS-006-L</g:mpn>
     <g:item_group_id>silver-plated-glass-candlesticks</g:item_group_id>
-    <g:color>Blue</g:color>
     <g:size>L (23-25 cm)</g:size>
+    <g:color>Blue</g:color>
     <g:product_type>Candlesticks</g:product_type>
     <g:google_product_category>2784</g:google_product_category>
     <g:shipping>
@@ -284,10 +284,10 @@
     <g:price>561.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-CS-007-S</g:mpn>
     <g:item_group_id>silver-plated-glass-candlesticks</g:item_group_id>
-    <g:color>Green</g:color>
     <g:size>S (14-18 cm)</g:size>
+    <g:color>Green</g:color>
     <g:product_type>Candlesticks</g:product_type>
     <g:google_product_category>2784</g:google_product_category>
     <g:shipping>
@@ -307,10 +307,10 @@
     <g:price>623.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-CS-007-M</g:mpn>
     <g:item_group_id>silver-plated-glass-candlesticks</g:item_group_id>
-    <g:color>Green</g:color>
     <g:size>M (19-22 cm)</g:size>
+    <g:color>Green</g:color>
     <g:product_type>Candlesticks</g:product_type>
     <g:google_product_category>2784</g:google_product_category>
     <g:shipping>
@@ -330,10 +330,10 @@
     <g:price>712.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-CS-007-L</g:mpn>
     <g:item_group_id>silver-plated-glass-candlesticks</g:item_group_id>
-    <g:color>Green</g:color>
     <g:size>L (23-25 cm)</g:size>
+    <g:color>Green</g:color>
     <g:product_type>Candlesticks</g:product_type>
     <g:google_product_category>2784</g:google_product_category>
     <g:shipping>
@@ -353,10 +353,10 @@
     <g:price>561.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-CS-008-S</g:mpn>
     <g:item_group_id>silver-plated-glass-candlesticks</g:item_group_id>
-    <g:color>Black</g:color>
     <g:size>S (14-18 cm)</g:size>
+    <g:color>Black</g:color>
     <g:product_type>Candlesticks</g:product_type>
     <g:google_product_category>2784</g:google_product_category>
     <g:shipping>
@@ -376,10 +376,10 @@
     <g:price>623.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-CS-008-M</g:mpn>
     <g:item_group_id>silver-plated-glass-candlesticks</g:item_group_id>
-    <g:color>Black</g:color>
     <g:size>M (19-22 cm)</g:size>
+    <g:color>Black</g:color>
     <g:product_type>Candlesticks</g:product_type>
     <g:google_product_category>2784</g:google_product_category>
     <g:shipping>
@@ -399,10 +399,10 @@
     <g:price>712.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-CS-008-L</g:mpn>
     <g:item_group_id>silver-plated-glass-candlesticks</g:item_group_id>
-    <g:color>Black</g:color>
     <g:size>L (23-25 cm)</g:size>
+    <g:color>Black</g:color>
     <g:product_type>Candlesticks</g:product_type>
     <g:google_product_category>2784</g:google_product_category>
     <g:shipping>
@@ -422,10 +422,10 @@
     <g:price>561.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-CS-009-S</g:mpn>
     <g:item_group_id>silver-plated-glass-candlesticks</g:item_group_id>
-    <g:color>Blue-Green</g:color>
     <g:size>S (14-18 cm)</g:size>
+    <g:color>Blue-Green</g:color>
     <g:product_type>Candlesticks</g:product_type>
     <g:google_product_category>2784</g:google_product_category>
     <g:shipping>
@@ -445,10 +445,10 @@
     <g:price>623.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-CS-009-M</g:mpn>
     <g:item_group_id>silver-plated-glass-candlesticks</g:item_group_id>
-    <g:color>Blue-Green</g:color>
     <g:size>M (19-22 cm)</g:size>
+    <g:color>Blue-Green</g:color>
     <g:product_type>Candlesticks</g:product_type>
     <g:google_product_category>2784</g:google_product_category>
     <g:shipping>
@@ -468,10 +468,10 @@
     <g:price>712.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-CS-009-L</g:mpn>
     <g:item_group_id>silver-plated-glass-candlesticks</g:item_group_id>
-    <g:color>Blue-Green</g:color>
     <g:size>L (23-25 cm)</g:size>
+    <g:color>Blue-Green</g:color>
     <g:product_type>Candlesticks</g:product_type>
     <g:google_product_category>2784</g:google_product_category>
     <g:shipping>
@@ -486,15 +486,15 @@
     <g:link>https://shermanartworks.com/candlesticks.html#earth-silver-plated-glass-candlesticks</g:link>
     <g:image_link>https://res.cloudinary.com/doesupaf9/image/upload/w_1200,q_auto:good/Adama_pamotim_pikski.jpg</g:image_link>
     <g:additional_image_link>https://res.cloudinary.com/doesupaf9/image/upload/w_1200,q_auto:good/Adama_pamotim_3_qgzseu.jpg</g:additional_image_link>
-    <g:additional_image_link>https://res.cloudinary.com/doesupaf9/image/upload/w_1200,q_auto:good/Adama_pamotim_2_nop3ln.jpg</g:additional_image_link>
+    <g:additional_image_link>https://res.cloudinary.com/doesupaf9/image/upload/w_1200,q_auto:good/Adama_pamotim2_jebzbp.jpg</g:additional_image_link>
     <g:availability>in_stock</g:availability>
     <g:price>561.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-CS-010-S</g:mpn>
     <g:item_group_id>silver-plated-glass-candlesticks</g:item_group_id>
-    <g:color>Earth</g:color>
     <g:size>S (14-18 cm)</g:size>
+    <g:color>Earth</g:color>
     <g:product_type>Candlesticks</g:product_type>
     <g:google_product_category>2784</g:google_product_category>
     <g:shipping>
@@ -509,15 +509,15 @@
     <g:link>https://shermanartworks.com/candlesticks.html#earth-silver-plated-glass-candlesticks</g:link>
     <g:image_link>https://res.cloudinary.com/doesupaf9/image/upload/w_1200,q_auto:good/Adama_pamotim_pikski.jpg</g:image_link>
     <g:additional_image_link>https://res.cloudinary.com/doesupaf9/image/upload/w_1200,q_auto:good/Adama_pamotim_3_qgzseu.jpg</g:additional_image_link>
-    <g:additional_image_link>https://res.cloudinary.com/doesupaf9/image/upload/w_1200,q_auto:good/Adama_pamotim_2_nop3ln.jpg</g:additional_image_link>
+    <g:additional_image_link>https://res.cloudinary.com/doesupaf9/image/upload/w_1200,q_auto:good/Adama_pamotim2_jebzbp.jpg</g:additional_image_link>
     <g:availability>in_stock</g:availability>
     <g:price>623.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-CS-010-M</g:mpn>
     <g:item_group_id>silver-plated-glass-candlesticks</g:item_group_id>
-    <g:color>Earth</g:color>
     <g:size>M (19-22 cm)</g:size>
+    <g:color>Earth</g:color>
     <g:product_type>Candlesticks</g:product_type>
     <g:google_product_category>2784</g:google_product_category>
     <g:shipping>
@@ -532,15 +532,15 @@
     <g:link>https://shermanartworks.com/candlesticks.html#earth-silver-plated-glass-candlesticks</g:link>
     <g:image_link>https://res.cloudinary.com/doesupaf9/image/upload/w_1200,q_auto:good/Adama_pamotim_pikski.jpg</g:image_link>
     <g:additional_image_link>https://res.cloudinary.com/doesupaf9/image/upload/w_1200,q_auto:good/Adama_pamotim_3_qgzseu.jpg</g:additional_image_link>
-    <g:additional_image_link>https://res.cloudinary.com/doesupaf9/image/upload/w_1200,q_auto:good/Adama_pamotim_2_nop3ln.jpg</g:additional_image_link>
+    <g:additional_image_link>https://res.cloudinary.com/doesupaf9/image/upload/w_1200,q_auto:good/Adama_pamotim2_jebzbp.jpg</g:additional_image_link>
     <g:availability>in_stock</g:availability>
     <g:price>712.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-CS-010-L</g:mpn>
     <g:item_group_id>silver-plated-glass-candlesticks</g:item_group_id>
-    <g:color>Earth</g:color>
     <g:size>L (23-25 cm)</g:size>
+    <g:color>Earth</g:color>
     <g:product_type>Candlesticks</g:product_type>
     <g:google_product_category>2784</g:google_product_category>
     <g:shipping>
@@ -562,7 +562,7 @@
     <g:price>850.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-HG-001</g:mpn>
     <g:product_type>Horn Goblets</g:product_type>
     <g:google_product_category>97</g:google_product_category>
     <g:shipping>
@@ -583,7 +583,7 @@
     <g:price>473.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-HG-002</g:mpn>
     <g:product_type>Horn Goblets</g:product_type>
     <g:google_product_category>97</g:google_product_category>
     <g:shipping>
@@ -603,7 +603,7 @@
     <g:price>473.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-HG-003</g:mpn>
     <g:product_type>Horn Goblets</g:product_type>
     <g:google_product_category>97</g:google_product_category>
     <g:shipping>
@@ -624,7 +624,7 @@
     <g:price>950.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-TB-001</g:mpn>
     <g:product_type>Trays &amp; Bowls</g:product_type>
     <g:google_product_category>6457</g:google_product_category>
     <g:shipping>
@@ -642,7 +642,7 @@
     <g:price>510.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-TB-002</g:mpn>
     <g:item_group_id>silver-plated-glass-trays</g:item_group_id>
     <g:color>White</g:color>
     <g:product_type>Trays &amp; Bowls</g:product_type>
@@ -662,7 +662,7 @@
     <g:price>510.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-TB-003</g:mpn>
     <g:item_group_id>silver-plated-glass-trays</g:item_group_id>
     <g:color>Red</g:color>
     <g:product_type>Trays &amp; Bowls</g:product_type>
@@ -682,7 +682,7 @@
     <g:price>510.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-TB-004</g:mpn>
     <g:item_group_id>silver-plated-glass-trays</g:item_group_id>
     <g:color>Blue</g:color>
     <g:product_type>Trays &amp; Bowls</g:product_type>
@@ -702,7 +702,7 @@
     <g:price>510.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-TB-005</g:mpn>
     <g:item_group_id>silver-plated-glass-trays</g:item_group_id>
     <g:color>Green</g:color>
     <g:product_type>Trays &amp; Bowls</g:product_type>
@@ -722,7 +722,7 @@
     <g:price>510.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-TB-006</g:mpn>
     <g:item_group_id>silver-plated-glass-trays</g:item_group_id>
     <g:color>Black</g:color>
     <g:product_type>Trays &amp; Bowls</g:product_type>
@@ -742,7 +742,7 @@
     <g:price>510.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-TB-007</g:mpn>
     <g:item_group_id>silver-plated-glass-trays</g:item_group_id>
     <g:color>Blue-Green</g:color>
     <g:product_type>Trays &amp; Bowls</g:product_type>
@@ -753,29 +753,10 @@
     </g:shipping>
   </item>
   <item>
-    <g:id>round-white-silver-plated-glass-tray</g:id>
-    <g:title>Round White 925 Silver-Plated Glass Tray</g:title>
-    <g:description>Handmade round white glass tray finished with 925 sterling-silver plating, made to order in our studio in Israel.</g:description>
-    <g:link>https://shermanartworks.com/trays-bowls.html#round-white-silver-plated-glass-tray</g:link>
-    <g:image_link>https://res.cloudinary.com/doesupaf9/image/upload/w_1200,q_auto:good/White_round_tray_udmwyk.jpg</g:image_link>
-    <g:availability>in_stock</g:availability>
-    <g:price>510.00 ILS</g:price>
-    <g:condition>new</g:condition>
-    <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
-    <g:item_group_id>silver-plated-glass-trays</g:item_group_id>
-    <g:color>Round White</g:color>
-    <g:product_type>Trays &amp; Bowls</g:product_type>
-    <g:google_product_category>6457</g:google_product_category>
-    <g:shipping>
-      <g:country>IL</g:country>
-      <g:price>35.00 ILS</g:price>
-    </g:shipping>
-  </item>
-  <item>
     <g:id>oryx-mezuzah</g:id>
     <g:title>Oryx Mezuzah</g:title>
-    <g:description>Handmade Oryx horn Mezuzah case covered in 925 silver, shaped and finished by hand in our studio in Israel. A unique and meaningful piece for your home or as a gift. * mezuzah case doesn't include the parchment</g:description>
+    <g:description>Handmade Oryx horn Mezuzah case covered in 925 silver, shaped and finished by hand in our studio in Israel. A unique and meaningful piece for your home or as a gift.
+* mezuzah case doesn't include the parchment</g:description>
     <g:link>https://shermanartworks.com/mezuzahs.html#oryx-mezuzah</g:link>
     <g:image_link>https://res.cloudinary.com/doesupaf9/image/upload/w_1200,q_auto:good/mezuzah_reem_03_eb6ink.jpg</g:image_link>
     <g:additional_image_link>https://res.cloudinary.com/doesupaf9/image/upload/w_1200,q_auto:good/mezuzah_reem_01_fwfvrc.jpg</g:additional_image_link>
@@ -785,7 +766,7 @@
     <g:price>700.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-MZ-001</g:mpn>
     <g:product_type>Mezuzahs</g:product_type>
     <g:google_product_category>97</g:google_product_category>
     <g:shipping>
@@ -804,7 +785,7 @@
     <g:price>540.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-CS-011</g:mpn>
     <g:product_type>Candlesticks</g:product_type>
     <g:google_product_category>2784</g:google_product_category>
     <g:shipping>
@@ -823,7 +804,7 @@
     <g:price>540.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-CS-012</g:mpn>
     <g:product_type>Candlesticks</g:product_type>
     <g:google_product_category>2784</g:google_product_category>
     <g:shipping>
@@ -842,7 +823,7 @@
     <g:price>540.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-CS-013</g:mpn>
     <g:product_type>Candlesticks</g:product_type>
     <g:google_product_category>2784</g:google_product_category>
     <g:shipping>
@@ -861,7 +842,7 @@
     <g:price>540.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-CS-014</g:mpn>
     <g:product_type>Candlesticks</g:product_type>
     <g:google_product_category>2784</g:google_product_category>
     <g:shipping>
@@ -881,7 +862,7 @@
     <g:price>540.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-CS-015</g:mpn>
     <g:product_type>Candlesticks</g:product_type>
     <g:google_product_category>2784</g:google_product_category>
     <g:shipping>
@@ -900,7 +881,7 @@
     <g:price>540.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-CS-016</g:mpn>
     <g:product_type>Candlesticks</g:product_type>
     <g:google_product_category>2784</g:google_product_category>
     <g:shipping>
@@ -920,7 +901,7 @@
     <g:price>540.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-CS-017</g:mpn>
     <g:product_type>Candlesticks</g:product_type>
     <g:google_product_category>2784</g:google_product_category>
     <g:shipping>
@@ -931,7 +912,8 @@
   <item>
     <g:id>ram-mezuzah</g:id>
     <g:title>Ram Mezuzah</g:title>
-    <g:description>Handmade Ram horn Mezuzah case covered in 925 silver, shaped and finished by hand in our studio in Israel. A unique and meaningful piece for your home or as a gift. * mezuzah case doesn't include the parchment</g:description>
+    <g:description>Handmade Ram horn Mezuzah case covered in 925 silver, shaped and finished by hand in our studio in Israel. A unique and meaningful piece for your home or as a gift.
+* mezuzah case doesn't include the parchment</g:description>
     <g:link>https://shermanartworks.com/mezuzahs.html#ram-mezuzah</g:link>
     <g:image_link>https://res.cloudinary.com/doesupaf9/image/upload/w_1200,q_auto:good/Ram_mezuzah_ixe7f8.jpg</g:image_link>
     <g:additional_image_link>https://res.cloudinary.com/doesupaf9/image/upload/w_1200,q_auto:good/Ram_mezuzah_2_abtfb4.jpg</g:additional_image_link>
@@ -940,7 +922,7 @@
     <g:price>700.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-MZ-002</g:mpn>
     <g:product_type>Mezuzahs</g:product_type>
     <g:google_product_category>97</g:google_product_category>
     <g:shipping>
@@ -951,7 +933,8 @@
   <item>
     <g:id>kudu-mezuzah</g:id>
     <g:title>Kudu Mezuzah</g:title>
-    <g:description>Handmade Kudu horn Mezuzah case covered in 925 silver, shaped and finished by hand in our studio in Israel. A unique and meaningful piece for your home or as a gift. * mezuzah case doesn't include the parchment</g:description>
+    <g:description>Handmade Kudu horn Mezuzah case covered in 925 silver, shaped and finished by hand in our studio in Israel. A unique and meaningful piece for your home or as a gift.
+* mezuzah case doesn't include the parchment</g:description>
     <g:link>https://shermanartworks.com/mezuzahs.html#kudu-mezuzah</g:link>
     <g:image_link>https://res.cloudinary.com/doesupaf9/image/upload/w_1200,q_auto:good/Kudu_mezuzah_z5jg3w.jpg</g:image_link>
     <g:additional_image_link>https://res.cloudinary.com/doesupaf9/image/upload/w_1200,q_auto:good/Kudu_mezuzah_2_tyo1bt.jpg</g:additional_image_link>
@@ -960,7 +943,7 @@
     <g:price>700.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-MZ-003</g:mpn>
     <g:product_type>Mezuzahs</g:product_type>
     <g:google_product_category>97</g:google_product_category>
     <g:shipping>
@@ -971,7 +954,8 @@
   <item>
     <g:id>clear-glass-mezuzah</g:id>
     <g:title>Clear Glass Mezuzah</g:title>
-    <g:description>Handmade clear glass Mezuzah case, shaped and finished by hand in our studio in Israel. A unique and meaningful piece for your home or as a gift. * mezuzah case doesn't include the parchment</g:description>
+    <g:description>Handmade clear glass Mezuzah case, shaped and finished by hand in our studio in Israel. A unique and meaningful piece for your home or as a gift.
+* mezuzah case doesn't include the parchment</g:description>
     <g:link>https://shermanartworks.com/mezuzahs.html#clear-glass-mezuzah</g:link>
     <g:image_link>https://res.cloudinary.com/doesupaf9/image/upload/w_1200,q_auto:good/Clear_glass_mezuzah_white_background_q5fbks.jpg</g:image_link>
     <g:additional_image_link>https://res.cloudinary.com/doesupaf9/image/upload/w_1200,q_auto:good/Clear_glass_mezuzah_side_white_background_av1qak.jpg</g:additional_image_link>
@@ -980,103 +964,8 @@
     <g:price>320.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-MZ-004</g:mpn>
     <g:product_type>Mezuzahs</g:product_type>
-    <g:google_product_category>97</g:google_product_category>
-    <g:shipping>
-      <g:country>IL</g:country>
-      <g:price>35.00 ILS</g:price>
-    </g:shipping>
-  </item>
-  <item>
-    <g:id>tall-blue-glass-cup</g:id>
-    <g:title>Tall Blue Glass Cup</g:title>
-    <g:description>Handmade tall glass Kiddush cup with a rich blue tone and a 925 silver-plated rim. Made to order in our studio in Israel.</g:description>
-    <g:link>https://shermanartworks.com/kiddush-cups.html#tall-blue-glass-cup</g:link>
-    <g:image_link>https://res.cloudinary.com/doesupaf9/image/upload/w_1200,q_auto:good/Blue_cup_white_background_wsc8xt.jpg</g:image_link>
-    <g:additional_image_link>https://res.cloudinary.com/doesupaf9/image/upload/w_1200,q_auto:good/Blue_cup_window_background_ezxbdg.jpg</g:additional_image_link>
-    <g:availability>in_stock</g:availability>
-    <g:price>470.00 ILS</g:price>
-    <g:condition>new</g:condition>
-    <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
-    <g:product_type>Kiddush Cups</g:product_type>
-    <g:google_product_category>97</g:google_product_category>
-    <g:shipping>
-      <g:country>IL</g:country>
-      <g:price>35.00 ILS</g:price>
-    </g:shipping>
-  </item>
-  <item>
-    <g:id>tall-colorful-glass-cup</g:id>
-    <g:title>Tall Colorful Glass Cup</g:title>
-    <g:description>Handmade tall glass Kiddush cup with vibrant swirling colours and a 925 silver-plated rim. Made to order in our studio in Israel.</g:description>
-    <g:link>https://shermanartworks.com/kiddush-cups.html#tall-colorful-glass-cup</g:link>
-    <g:image_link>https://res.cloudinary.com/doesupaf9/image/upload/w_1200,q_auto:good/Colorful_cup_white_background_u9sijr.jpg</g:image_link>
-    <g:additional_image_link>https://res.cloudinary.com/doesupaf9/image/upload/w_1200,q_auto:good/Colorful_cup_window_background_jinabf.jpg</g:additional_image_link>
-    <g:availability>in_stock</g:availability>
-    <g:price>470.00 ILS</g:price>
-    <g:condition>new</g:condition>
-    <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
-    <g:product_type>Kiddush Cups</g:product_type>
-    <g:google_product_category>97</g:google_product_category>
-    <g:shipping>
-      <g:country>IL</g:country>
-      <g:price>35.00 ILS</g:price>
-    </g:shipping>
-  </item>
-  <item>
-    <g:id>tall-red-glass-cup</g:id>
-    <g:title>Tall Red Glass Cup</g:title>
-    <g:description>Handmade tall glass Kiddush cup in deep red with a 925 silver-plated rim. Made to order in our studio in Israel.</g:description>
-    <g:link>https://shermanartworks.com/kiddush-cups.html#tall-red-glass-cup</g:link>
-    <g:image_link>https://res.cloudinary.com/doesupaf9/image/upload/w_1200,q_auto:good/Red_cup_white_background_qfy7xn.jpg</g:image_link>
-    <g:additional_image_link>https://res.cloudinary.com/doesupaf9/image/upload/w_1200,q_auto:good/Red_cup_window_background_z0nsg5.jpg</g:additional_image_link>
-    <g:availability>in_stock</g:availability>
-    <g:price>470.00 ILS</g:price>
-    <g:condition>new</g:condition>
-    <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
-    <g:product_type>Kiddush Cups</g:product_type>
-    <g:google_product_category>97</g:google_product_category>
-    <g:shipping>
-      <g:country>IL</g:country>
-      <g:price>35.00 ILS</g:price>
-    </g:shipping>
-  </item>
-  <item>
-    <g:id>low-white-glass-cup</g:id>
-    <g:title>Low White Glass Cup</g:title>
-    <g:description>Handmade low glass Kiddush cup in clean white with a 925 silver-plated rim. Made to order in our studio in Israel.</g:description>
-    <g:link>https://shermanartworks.com/kiddush-cups.html#low-white-glass-cup</g:link>
-    <g:image_link>https://res.cloudinary.com/doesupaf9/image/upload/w_1200,q_auto:good/White_low_cup_white_background_qkjsnp.jpg</g:image_link>
-    <g:additional_image_link>https://res.cloudinary.com/doesupaf9/image/upload/w_1200,q_auto:good/White_low_cup_window_background_zr7zfl.jpg</g:additional_image_link>
-    <g:availability>in_stock</g:availability>
-    <g:price>470.00 ILS</g:price>
-    <g:condition>new</g:condition>
-    <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
-    <g:product_type>Kiddush Cups</g:product_type>
-    <g:google_product_category>97</g:google_product_category>
-    <g:shipping>
-      <g:country>IL</g:country>
-      <g:price>35.00 ILS</g:price>
-    </g:shipping>
-  </item>
-  <item>
-    <g:id>low-colorful-glass-cup</g:id>
-    <g:title>Low Colorful Glass Cup</g:title>
-    <g:description>Handmade low glass Kiddush cup with vibrant orange tones and a 925 silver-plated rim. Made to order in our studio in Israel.</g:description>
-    <g:link>https://shermanartworks.com/kiddush-cups.html#low-colorful-glass-cup</g:link>
-    <g:image_link>https://res.cloudinary.com/doesupaf9/image/upload/w_1200,q_auto:good/Orange_low_cup_white_background_zj5qr5.jpg</g:image_link>
-    <g:additional_image_link>https://res.cloudinary.com/doesupaf9/image/upload/w_1200,q_auto:good/Orange_low_cup_window_background_hurvb0.jpg</g:additional_image_link>
-    <g:availability>in_stock</g:availability>
-    <g:price>470.00 ILS</g:price>
-    <g:condition>new</g:condition>
-    <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
-    <g:product_type>Kiddush Cups</g:product_type>
     <g:google_product_category>97</g:google_product_category>
     <g:shipping>
       <g:country>IL</g:country>
@@ -1096,26 +985,7 @@
     <g:price>480.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
-    <g:product_type>Kiddush Cups</g:product_type>
-    <g:google_product_category>97</g:google_product_category>
-    <g:shipping>
-      <g:country>IL</g:country>
-      <g:price>35.00 ILS</g:price>
-    </g:shipping>
-  </item>
-  <item>
-    <g:id>colorful-glass-cup-and-plate</g:id>
-    <g:title>Colorful Glass Cup and Plate</g:title>
-    <g:description>Handmade glass Kiddush cup and matching plate with a vibrant orange palette and 925 silver-plated details. Made to order in our studio in Israel.</g:description>
-    <g:link>https://shermanartworks.com/kiddush-cups.html#colorful-glass-cup-and-plate</g:link>
-    <g:image_link>https://res.cloudinary.com/doesupaf9/image/upload/w_1200,q_auto:good/Orange_plate_cup_white_background_hmvdcr.jpg</g:image_link>
-    <g:additional_image_link>https://res.cloudinary.com/doesupaf9/image/upload/w_1200,q_auto:good/Orange_plate_cup_window_tlsiv6.jpg</g:additional_image_link>
-    <g:availability>in_stock</g:availability>
-    <g:price>680.00 ILS</g:price>
-    <g:condition>new</g:condition>
-    <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-KC-006</g:mpn>
     <g:product_type>Kiddush Cups</g:product_type>
     <g:google_product_category>97</g:google_product_category>
     <g:shipping>
@@ -1125,16 +995,16 @@
   </item>
   <item>
     <g:id>kiddush-cup-plate</g:id>
-    <g:title>Kiddush Cup Plate</g:title>
-    <g:description>Handmade glass Kiddush cup plate with a vibrant orange palette and a 925 silver-plated rim. A beautiful complement to any Kiddush cup. Made to order in our studio in Israel.</g:description>
-    <g:link>https://shermanartworks.com/kiddush-cups.html#kiddush-cup-plate</g:link>
+    <g:title>Orange Kiddush Cup Plate</g:title>
+    <g:description>Handmade orange glass Kiddush cup plate with a 925 silver-plated rim. A beautiful complement to a matching Kiddush cup. Made to order in our studio in Israel.</g:description>
+    <g:link>https://shermanartworks.com/trays-bowls.html#kiddush-cup-plate</g:link>
     <g:image_link>https://res.cloudinary.com/doesupaf9/image/upload/w_1200,q_auto:good/Orange_plate_white_background_npkcwp.jpg</g:image_link>
     <g:additional_image_link>https://res.cloudinary.com/doesupaf9/image/upload/w_1200,q_auto:good/Orange_plate_window_background_sjfp6h.jpg</g:additional_image_link>
     <g:availability>in_stock</g:availability>
     <g:price>364.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-KC-008</g:mpn>
     <g:product_type>Kiddush Cups</g:product_type>
     <g:google_product_category>97</g:google_product_category>
     <g:shipping>
@@ -1152,7 +1022,7 @@
     <g:price>742.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-SH-001-XS</g:mpn>
     <g:item_group_id>custom-shofar</g:item_group_id>
     <g:size>XS (30-34 cm)</g:size>
     <g:product_type>Shofars</g:product_type>
@@ -1172,7 +1042,7 @@
     <g:price>853.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-SH-001-S</g:mpn>
     <g:item_group_id>custom-shofar</g:item_group_id>
     <g:size>S (35-39 cm)</g:size>
     <g:product_type>Shofars</g:product_type>
@@ -1192,7 +1062,7 @@
     <g:price>1064.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-SH-001-M</g:mpn>
     <g:item_group_id>custom-shofar</g:item_group_id>
     <g:size>M (40-44 cm)</g:size>
     <g:product_type>Shofars</g:product_type>
@@ -1212,7 +1082,7 @@
     <g:price>1263.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-SH-001-L</g:mpn>
     <g:item_group_id>custom-shofar</g:item_group_id>
     <g:size>L (45-49 cm)</g:size>
     <g:product_type>Shofars</g:product_type>
@@ -1232,7 +1102,7 @@
     <g:price>1492.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-SH-001-XL</g:mpn>
     <g:item_group_id>custom-shofar</g:item_group_id>
     <g:size>XL (50-54 cm)</g:size>
     <g:product_type>Shofars</g:product_type>
@@ -1252,7 +1122,7 @@
     <g:price>1647.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-SH-001-J</g:mpn>
     <g:item_group_id>custom-shofar</g:item_group_id>
     <g:size>J (55-59 cm)</g:size>
     <g:product_type>Shofars</g:product_type>
@@ -1272,7 +1142,7 @@
     <g:price>2718.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-SH-001-XJ</g:mpn>
     <g:item_group_id>custom-shofar</g:item_group_id>
     <g:size>XJ (60-65 cm)</g:size>
     <g:product_type>Shofars</g:product_type>
@@ -1293,7 +1163,7 @@
     <g:price>1214.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-SH-002-S</g:mpn>
     <g:item_group_id>kudu-hoshen-stones</g:item_group_id>
     <g:size>S (70-79 cm)</g:size>
     <g:product_type>Shofars</g:product_type>
@@ -1314,7 +1184,7 @@
     <g:price>1308.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-SH-002-M</g:mpn>
     <g:item_group_id>kudu-hoshen-stones</g:item_group_id>
     <g:size>M (80-89 cm)</g:size>
     <g:product_type>Shofars</g:product_type>
@@ -1335,7 +1205,7 @@
     <g:price>1417.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-SH-002-L</g:mpn>
     <g:item_group_id>kudu-hoshen-stones</g:item_group_id>
     <g:size>L (90-99 cm)</g:size>
     <g:product_type>Shofars</g:product_type>
@@ -1356,7 +1226,7 @@
     <g:price>1706.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-SH-002-XL</g:mpn>
     <g:item_group_id>kudu-hoshen-stones</g:item_group_id>
     <g:size>XL (100-109 cm)</g:size>
     <g:product_type>Shofars</g:product_type>
@@ -1377,7 +1247,7 @@
     <g:price>1762.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-SH-002-J</g:mpn>
     <g:item_group_id>kudu-hoshen-stones</g:item_group_id>
     <g:size>J (110-119 cm)</g:size>
     <g:product_type>Shofars</g:product_type>
@@ -1398,7 +1268,7 @@
     <g:price>2423.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-SH-002-XJ</g:mpn>
     <g:item_group_id>kudu-hoshen-stones</g:item_group_id>
     <g:size>XJ (120-129 cm)</g:size>
     <g:product_type>Shofars</g:product_type>
@@ -1419,7 +1289,7 @@
     <g:price>1214.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-SH-003-S</g:mpn>
     <g:item_group_id>kudu-jerusalem-lions</g:item_group_id>
     <g:size>S (70-79 cm)</g:size>
     <g:product_type>Shofars</g:product_type>
@@ -1440,7 +1310,7 @@
     <g:price>1308.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-SH-003-M</g:mpn>
     <g:item_group_id>kudu-jerusalem-lions</g:item_group_id>
     <g:size>M (80-89 cm)</g:size>
     <g:product_type>Shofars</g:product_type>
@@ -1461,7 +1331,7 @@
     <g:price>1417.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-SH-003-L</g:mpn>
     <g:item_group_id>kudu-jerusalem-lions</g:item_group_id>
     <g:size>L (90-99 cm)</g:size>
     <g:product_type>Shofars</g:product_type>
@@ -1482,7 +1352,7 @@
     <g:price>1706.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-SH-003-XL</g:mpn>
     <g:item_group_id>kudu-jerusalem-lions</g:item_group_id>
     <g:size>XL (100-109 cm)</g:size>
     <g:product_type>Shofars</g:product_type>
@@ -1503,7 +1373,7 @@
     <g:price>1762.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-SH-003-J</g:mpn>
     <g:item_group_id>kudu-jerusalem-lions</g:item_group_id>
     <g:size>J (110-119 cm)</g:size>
     <g:product_type>Shofars</g:product_type>
@@ -1524,7 +1394,7 @@
     <g:price>2423.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-SH-003-XJ</g:mpn>
     <g:item_group_id>kudu-jerusalem-lions</g:item_group_id>
     <g:size>XJ (120-129 cm)</g:size>
     <g:product_type>Shofars</g:product_type>
@@ -1545,7 +1415,7 @@
     <g:price>1214.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-SH-004-S</g:mpn>
     <g:item_group_id>kudu-jerusalem-lions-menorah</g:item_group_id>
     <g:size>S (70-79 cm)</g:size>
     <g:product_type>Shofars</g:product_type>
@@ -1566,7 +1436,7 @@
     <g:price>1308.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-SH-004-M</g:mpn>
     <g:item_group_id>kudu-jerusalem-lions-menorah</g:item_group_id>
     <g:size>M (80-89 cm)</g:size>
     <g:product_type>Shofars</g:product_type>
@@ -1587,7 +1457,7 @@
     <g:price>1417.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-SH-004-L</g:mpn>
     <g:item_group_id>kudu-jerusalem-lions-menorah</g:item_group_id>
     <g:size>L (90-99 cm)</g:size>
     <g:product_type>Shofars</g:product_type>
@@ -1608,7 +1478,7 @@
     <g:price>1706.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-SH-004-XL</g:mpn>
     <g:item_group_id>kudu-jerusalem-lions-menorah</g:item_group_id>
     <g:size>XL (100-109 cm)</g:size>
     <g:product_type>Shofars</g:product_type>
@@ -1629,7 +1499,7 @@
     <g:price>1762.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-SH-004-J</g:mpn>
     <g:item_group_id>kudu-jerusalem-lions-menorah</g:item_group_id>
     <g:size>J (110-119 cm)</g:size>
     <g:product_type>Shofars</g:product_type>
@@ -1650,7 +1520,7 @@
     <g:price>2423.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-SH-004-XJ</g:mpn>
     <g:item_group_id>kudu-jerusalem-lions-menorah</g:item_group_id>
     <g:size>XJ (120-129 cm)</g:size>
     <g:product_type>Shofars</g:product_type>
@@ -1671,7 +1541,7 @@
     <g:price>1214.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-SH-005-S</g:mpn>
     <g:item_group_id>kudu-holy-ark</g:item_group_id>
     <g:size>S (70-79 cm)</g:size>
     <g:product_type>Shofars</g:product_type>
@@ -1692,7 +1562,7 @@
     <g:price>1308.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-SH-005-M</g:mpn>
     <g:item_group_id>kudu-holy-ark</g:item_group_id>
     <g:size>M (80-89 cm)</g:size>
     <g:product_type>Shofars</g:product_type>
@@ -1713,7 +1583,7 @@
     <g:price>1417.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-SH-005-L</g:mpn>
     <g:item_group_id>kudu-holy-ark</g:item_group_id>
     <g:size>L (90-99 cm)</g:size>
     <g:product_type>Shofars</g:product_type>
@@ -1734,7 +1604,7 @@
     <g:price>1706.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-SH-005-XL</g:mpn>
     <g:item_group_id>kudu-holy-ark</g:item_group_id>
     <g:size>XL (100-109 cm)</g:size>
     <g:product_type>Shofars</g:product_type>
@@ -1755,7 +1625,7 @@
     <g:price>1762.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-SH-005-J</g:mpn>
     <g:item_group_id>kudu-holy-ark</g:item_group_id>
     <g:size>J (110-119 cm)</g:size>
     <g:product_type>Shofars</g:product_type>
@@ -1776,7 +1646,7 @@
     <g:price>2423.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-SH-005-XJ</g:mpn>
     <g:item_group_id>kudu-holy-ark</g:item_group_id>
     <g:size>XJ (120-129 cm)</g:size>
     <g:product_type>Shofars</g:product_type>
@@ -1797,7 +1667,7 @@
     <g:price>1214.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-SH-006-S</g:mpn>
     <g:item_group_id>kudu-spies-meraglim</g:item_group_id>
     <g:size>S (70-79 cm)</g:size>
     <g:product_type>Shofars</g:product_type>
@@ -1818,7 +1688,7 @@
     <g:price>1308.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-SH-006-M</g:mpn>
     <g:item_group_id>kudu-spies-meraglim</g:item_group_id>
     <g:size>M (80-89 cm)</g:size>
     <g:product_type>Shofars</g:product_type>
@@ -1839,7 +1709,7 @@
     <g:price>1417.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-SH-006-L</g:mpn>
     <g:item_group_id>kudu-spies-meraglim</g:item_group_id>
     <g:size>L (90-99 cm)</g:size>
     <g:product_type>Shofars</g:product_type>
@@ -1860,7 +1730,7 @@
     <g:price>1706.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-SH-006-XL</g:mpn>
     <g:item_group_id>kudu-spies-meraglim</g:item_group_id>
     <g:size>XL (100-109 cm)</g:size>
     <g:product_type>Shofars</g:product_type>
@@ -1881,7 +1751,7 @@
     <g:price>1762.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-SH-006-J</g:mpn>
     <g:item_group_id>kudu-spies-meraglim</g:item_group_id>
     <g:size>J (110-119 cm)</g:size>
     <g:product_type>Shofars</g:product_type>
@@ -1902,7 +1772,7 @@
     <g:price>2423.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-SH-006-XJ</g:mpn>
     <g:item_group_id>kudu-spies-meraglim</g:item_group_id>
     <g:size>XJ (120-129 cm)</g:size>
     <g:product_type>Shofars</g:product_type>
@@ -1923,7 +1793,7 @@
     <g:price>1214.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-SH-007-S</g:mpn>
     <g:item_group_id>kudu-messianic-seal-jerusalem</g:item_group_id>
     <g:size>S (70-79 cm)</g:size>
     <g:product_type>Shofars</g:product_type>
@@ -1944,7 +1814,7 @@
     <g:price>1308.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-SH-007-M</g:mpn>
     <g:item_group_id>kudu-messianic-seal-jerusalem</g:item_group_id>
     <g:size>M (80-89 cm)</g:size>
     <g:product_type>Shofars</g:product_type>
@@ -1965,7 +1835,7 @@
     <g:price>1417.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-SH-007-L</g:mpn>
     <g:item_group_id>kudu-messianic-seal-jerusalem</g:item_group_id>
     <g:size>L (90-99 cm)</g:size>
     <g:product_type>Shofars</g:product_type>
@@ -1986,7 +1856,7 @@
     <g:price>1706.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-SH-007-XL</g:mpn>
     <g:item_group_id>kudu-messianic-seal-jerusalem</g:item_group_id>
     <g:size>XL (100-109 cm)</g:size>
     <g:product_type>Shofars</g:product_type>
@@ -2007,7 +1877,7 @@
     <g:price>1762.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-SH-007-J</g:mpn>
     <g:item_group_id>kudu-messianic-seal-jerusalem</g:item_group_id>
     <g:size>J (110-119 cm)</g:size>
     <g:product_type>Shofars</g:product_type>
@@ -2028,7 +1898,7 @@
     <g:price>2423.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-SH-007-XJ</g:mpn>
     <g:item_group_id>kudu-messianic-seal-jerusalem</g:item_group_id>
     <g:size>XJ (120-129 cm)</g:size>
     <g:product_type>Shofars</g:product_type>
@@ -2049,7 +1919,7 @@
     <g:price>1214.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-SH-008-S</g:mpn>
     <g:item_group_id>kudu-jerusalem</g:item_group_id>
     <g:size>S (70-79 cm)</g:size>
     <g:product_type>Shofars</g:product_type>
@@ -2070,7 +1940,7 @@
     <g:price>1308.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-SH-008-M</g:mpn>
     <g:item_group_id>kudu-jerusalem</g:item_group_id>
     <g:size>M (80-89 cm)</g:size>
     <g:product_type>Shofars</g:product_type>
@@ -2091,7 +1961,7 @@
     <g:price>1417.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-SH-008-L</g:mpn>
     <g:item_group_id>kudu-jerusalem</g:item_group_id>
     <g:size>L (90-99 cm)</g:size>
     <g:product_type>Shofars</g:product_type>
@@ -2112,7 +1982,7 @@
     <g:price>1706.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-SH-008-XL</g:mpn>
     <g:item_group_id>kudu-jerusalem</g:item_group_id>
     <g:size>XL (100-109 cm)</g:size>
     <g:product_type>Shofars</g:product_type>
@@ -2133,7 +2003,7 @@
     <g:price>1762.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-SH-008-J</g:mpn>
     <g:item_group_id>kudu-jerusalem</g:item_group_id>
     <g:size>J (110-119 cm)</g:size>
     <g:product_type>Shofars</g:product_type>
@@ -2154,7 +2024,7 @@
     <g:price>2423.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-SH-008-XJ</g:mpn>
     <g:item_group_id>kudu-jerusalem</g:item_group_id>
     <g:size>XJ (120-129 cm)</g:size>
     <g:product_type>Shofars</g:product_type>
@@ -2175,7 +2045,7 @@
     <g:price>1214.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-SH-009-S</g:mpn>
     <g:item_group_id>kudu-star-of-david</g:item_group_id>
     <g:size>S (70-79 cm)</g:size>
     <g:product_type>Shofars</g:product_type>
@@ -2196,7 +2066,7 @@
     <g:price>1308.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-SH-009-M</g:mpn>
     <g:item_group_id>kudu-star-of-david</g:item_group_id>
     <g:size>M (80-89 cm)</g:size>
     <g:product_type>Shofars</g:product_type>
@@ -2217,7 +2087,7 @@
     <g:price>1417.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-SH-009-L</g:mpn>
     <g:item_group_id>kudu-star-of-david</g:item_group_id>
     <g:size>L (90-99 cm)</g:size>
     <g:product_type>Shofars</g:product_type>
@@ -2238,7 +2108,7 @@
     <g:price>1706.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-SH-009-XL</g:mpn>
     <g:item_group_id>kudu-star-of-david</g:item_group_id>
     <g:size>XL (100-109 cm)</g:size>
     <g:product_type>Shofars</g:product_type>
@@ -2259,7 +2129,7 @@
     <g:price>1762.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-SH-009-J</g:mpn>
     <g:item_group_id>kudu-star-of-david</g:item_group_id>
     <g:size>J (110-119 cm)</g:size>
     <g:product_type>Shofars</g:product_type>
@@ -2280,7 +2150,7 @@
     <g:price>2423.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-SH-009-XJ</g:mpn>
     <g:item_group_id>kudu-star-of-david</g:item_group_id>
     <g:size>XJ (120-129 cm)</g:size>
     <g:product_type>Shofars</g:product_type>
@@ -2301,7 +2171,7 @@
     <g:price>1214.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-SH-010-S</g:mpn>
     <g:item_group_id>kudu-menorah</g:item_group_id>
     <g:size>S (70-79 cm)</g:size>
     <g:product_type>Shofars</g:product_type>
@@ -2322,7 +2192,7 @@
     <g:price>1308.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-SH-010-M</g:mpn>
     <g:item_group_id>kudu-menorah</g:item_group_id>
     <g:size>M (80-89 cm)</g:size>
     <g:product_type>Shofars</g:product_type>
@@ -2343,7 +2213,7 @@
     <g:price>1417.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-SH-010-L</g:mpn>
     <g:item_group_id>kudu-menorah</g:item_group_id>
     <g:size>L (90-99 cm)</g:size>
     <g:product_type>Shofars</g:product_type>
@@ -2364,7 +2234,7 @@
     <g:price>1706.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-SH-010-XL</g:mpn>
     <g:item_group_id>kudu-menorah</g:item_group_id>
     <g:size>XL (100-109 cm)</g:size>
     <g:product_type>Shofars</g:product_type>
@@ -2385,7 +2255,7 @@
     <g:price>1762.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-SH-010-J</g:mpn>
     <g:item_group_id>kudu-menorah</g:item_group_id>
     <g:size>J (110-119 cm)</g:size>
     <g:product_type>Shofars</g:product_type>
@@ -2406,7 +2276,7 @@
     <g:price>2423.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-SH-010-XJ</g:mpn>
     <g:item_group_id>kudu-menorah</g:item_group_id>
     <g:size>XJ (120-129 cm)</g:size>
     <g:product_type>Shofars</g:product_type>
@@ -2427,7 +2297,7 @@
     <g:price>1214.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-SH-011-S</g:mpn>
     <g:item_group_id>kudu-shofar-blowing</g:item_group_id>
     <g:size>S (70-79 cm)</g:size>
     <g:product_type>Shofars</g:product_type>
@@ -2448,7 +2318,7 @@
     <g:price>1308.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-SH-011-M</g:mpn>
     <g:item_group_id>kudu-shofar-blowing</g:item_group_id>
     <g:size>M (80-89 cm)</g:size>
     <g:product_type>Shofars</g:product_type>
@@ -2469,7 +2339,7 @@
     <g:price>1417.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-SH-011-L</g:mpn>
     <g:item_group_id>kudu-shofar-blowing</g:item_group_id>
     <g:size>L (90-99 cm)</g:size>
     <g:product_type>Shofars</g:product_type>
@@ -2490,7 +2360,7 @@
     <g:price>1706.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-SH-011-XL</g:mpn>
     <g:item_group_id>kudu-shofar-blowing</g:item_group_id>
     <g:size>XL (100-109 cm)</g:size>
     <g:product_type>Shofars</g:product_type>
@@ -2511,7 +2381,7 @@
     <g:price>1762.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-SH-011-J</g:mpn>
     <g:item_group_id>kudu-shofar-blowing</g:item_group_id>
     <g:size>J (110-119 cm)</g:size>
     <g:product_type>Shofars</g:product_type>
@@ -2532,7 +2402,7 @@
     <g:price>2423.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-SH-011-XJ</g:mpn>
     <g:item_group_id>kudu-shofar-blowing</g:item_group_id>
     <g:size>XJ (120-129 cm)</g:size>
     <g:product_type>Shofars</g:product_type>
@@ -2553,7 +2423,7 @@
     <g:price>418.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-SH-012-XS</g:mpn>
     <g:item_group_id>rams-hoshen-stones</g:item_group_id>
     <g:size>XS (30-34 cm)</g:size>
     <g:product_type>Shofars</g:product_type>
@@ -2574,7 +2444,7 @@
     <g:price>497.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-SH-012-S</g:mpn>
     <g:item_group_id>rams-hoshen-stones</g:item_group_id>
     <g:size>S (35-39 cm)</g:size>
     <g:product_type>Shofars</g:product_type>
@@ -2595,7 +2465,7 @@
     <g:price>712.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-SH-012-M</g:mpn>
     <g:item_group_id>rams-hoshen-stones</g:item_group_id>
     <g:size>M (40-44 cm)</g:size>
     <g:product_type>Shofars</g:product_type>
@@ -2616,7 +2486,7 @@
     <g:price>914.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-SH-012-L</g:mpn>
     <g:item_group_id>rams-hoshen-stones</g:item_group_id>
     <g:size>L (45-49 cm)</g:size>
     <g:product_type>Shofars</g:product_type>
@@ -2637,7 +2507,7 @@
     <g:price>1138.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-SH-012-XL</g:mpn>
     <g:item_group_id>rams-hoshen-stones</g:item_group_id>
     <g:size>XL (50-54 cm)</g:size>
     <g:product_type>Shofars</g:product_type>
@@ -2658,7 +2528,7 @@
     <g:price>1293.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-SH-012-J</g:mpn>
     <g:item_group_id>rams-hoshen-stones</g:item_group_id>
     <g:size>J (55-59 cm)</g:size>
     <g:product_type>Shofars</g:product_type>
@@ -2679,7 +2549,7 @@
     <g:price>2368.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-SH-012-XJ</g:mpn>
     <g:item_group_id>rams-hoshen-stones</g:item_group_id>
     <g:size>XJ (60-65 cm)</g:size>
     <g:product_type>Shofars</g:product_type>
@@ -2701,7 +2571,7 @@
     <g:price>418.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-SH-013-XS</g:mpn>
     <g:item_group_id>rams-jerusalem</g:item_group_id>
     <g:size>XS (30-34 cm)</g:size>
     <g:product_type>Shofars</g:product_type>
@@ -2723,7 +2593,7 @@
     <g:price>497.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-SH-013-S</g:mpn>
     <g:item_group_id>rams-jerusalem</g:item_group_id>
     <g:size>S (35-39 cm)</g:size>
     <g:product_type>Shofars</g:product_type>
@@ -2745,7 +2615,7 @@
     <g:price>712.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-SH-013-M</g:mpn>
     <g:item_group_id>rams-jerusalem</g:item_group_id>
     <g:size>M (40-44 cm)</g:size>
     <g:product_type>Shofars</g:product_type>
@@ -2767,7 +2637,7 @@
     <g:price>914.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-SH-013-L</g:mpn>
     <g:item_group_id>rams-jerusalem</g:item_group_id>
     <g:size>L (45-49 cm)</g:size>
     <g:product_type>Shofars</g:product_type>
@@ -2789,7 +2659,7 @@
     <g:price>1138.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-SH-013-XL</g:mpn>
     <g:item_group_id>rams-jerusalem</g:item_group_id>
     <g:size>XL (50-54 cm)</g:size>
     <g:product_type>Shofars</g:product_type>
@@ -2811,7 +2681,7 @@
     <g:price>1293.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-SH-013-J</g:mpn>
     <g:item_group_id>rams-jerusalem</g:item_group_id>
     <g:size>J (55-59 cm)</g:size>
     <g:product_type>Shofars</g:product_type>
@@ -2833,7 +2703,7 @@
     <g:price>2368.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-SH-013-XJ</g:mpn>
     <g:item_group_id>rams-jerusalem</g:item_group_id>
     <g:size>XJ (60-65 cm)</g:size>
     <g:product_type>Shofars</g:product_type>
@@ -2854,7 +2724,7 @@
     <g:price>418.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-SH-014-XS</g:mpn>
     <g:item_group_id>rams-star-of-david</g:item_group_id>
     <g:size>XS (30-34 cm)</g:size>
     <g:product_type>Shofars</g:product_type>
@@ -2875,7 +2745,7 @@
     <g:price>497.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-SH-014-S</g:mpn>
     <g:item_group_id>rams-star-of-david</g:item_group_id>
     <g:size>S (35-39 cm)</g:size>
     <g:product_type>Shofars</g:product_type>
@@ -2896,7 +2766,7 @@
     <g:price>712.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-SH-014-M</g:mpn>
     <g:item_group_id>rams-star-of-david</g:item_group_id>
     <g:size>M (40-44 cm)</g:size>
     <g:product_type>Shofars</g:product_type>
@@ -2917,7 +2787,7 @@
     <g:price>914.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-SH-014-L</g:mpn>
     <g:item_group_id>rams-star-of-david</g:item_group_id>
     <g:size>L (45-49 cm)</g:size>
     <g:product_type>Shofars</g:product_type>
@@ -2938,7 +2808,7 @@
     <g:price>1138.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-SH-014-XL</g:mpn>
     <g:item_group_id>rams-star-of-david</g:item_group_id>
     <g:size>XL (50-54 cm)</g:size>
     <g:product_type>Shofars</g:product_type>
@@ -2959,7 +2829,7 @@
     <g:price>1293.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-SH-014-J</g:mpn>
     <g:item_group_id>rams-star-of-david</g:item_group_id>
     <g:size>J (55-59 cm)</g:size>
     <g:product_type>Shofars</g:product_type>
@@ -2980,7 +2850,7 @@
     <g:price>2368.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-SH-014-XJ</g:mpn>
     <g:item_group_id>rams-star-of-david</g:item_group_id>
     <g:size>XJ (60-65 cm)</g:size>
     <g:product_type>Shofars</g:product_type>
@@ -3001,7 +2871,7 @@
     <g:price>418.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-SH-015-XS</g:mpn>
     <g:item_group_id>rams-star-of-david-blue-crystals</g:item_group_id>
     <g:size>XS (30-34 cm)</g:size>
     <g:product_type>Shofars</g:product_type>
@@ -3022,7 +2892,7 @@
     <g:price>497.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-SH-015-S</g:mpn>
     <g:item_group_id>rams-star-of-david-blue-crystals</g:item_group_id>
     <g:size>S (35-39 cm)</g:size>
     <g:product_type>Shofars</g:product_type>
@@ -3043,7 +2913,7 @@
     <g:price>712.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-SH-015-M</g:mpn>
     <g:item_group_id>rams-star-of-david-blue-crystals</g:item_group_id>
     <g:size>M (40-44 cm)</g:size>
     <g:product_type>Shofars</g:product_type>
@@ -3064,7 +2934,7 @@
     <g:price>914.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-SH-015-L</g:mpn>
     <g:item_group_id>rams-star-of-david-blue-crystals</g:item_group_id>
     <g:size>L (45-49 cm)</g:size>
     <g:product_type>Shofars</g:product_type>
@@ -3085,7 +2955,7 @@
     <g:price>1138.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-SH-015-XL</g:mpn>
     <g:item_group_id>rams-star-of-david-blue-crystals</g:item_group_id>
     <g:size>XL (50-54 cm)</g:size>
     <g:product_type>Shofars</g:product_type>
@@ -3106,7 +2976,7 @@
     <g:price>1293.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-SH-015-J</g:mpn>
     <g:item_group_id>rams-star-of-david-blue-crystals</g:item_group_id>
     <g:size>J (55-59 cm)</g:size>
     <g:product_type>Shofars</g:product_type>
@@ -3127,7 +2997,7 @@
     <g:price>2368.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-SH-015-XJ</g:mpn>
     <g:item_group_id>rams-star-of-david-blue-crystals</g:item_group_id>
     <g:size>XJ (60-65 cm)</g:size>
     <g:product_type>Shofars</g:product_type>
@@ -3149,7 +3019,7 @@
     <g:price>418.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-SH-016-XS</g:mpn>
     <g:item_group_id>rams-tka-beshofar-gadol</g:item_group_id>
     <g:size>XS (30-34 cm)</g:size>
     <g:product_type>Shofars</g:product_type>
@@ -3171,7 +3041,7 @@
     <g:price>497.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-SH-016-S</g:mpn>
     <g:item_group_id>rams-tka-beshofar-gadol</g:item_group_id>
     <g:size>S (35-39 cm)</g:size>
     <g:product_type>Shofars</g:product_type>
@@ -3193,7 +3063,7 @@
     <g:price>712.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-SH-016-M</g:mpn>
     <g:item_group_id>rams-tka-beshofar-gadol</g:item_group_id>
     <g:size>M (40-44 cm)</g:size>
     <g:product_type>Shofars</g:product_type>
@@ -3215,7 +3085,7 @@
     <g:price>914.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-SH-016-L</g:mpn>
     <g:item_group_id>rams-tka-beshofar-gadol</g:item_group_id>
     <g:size>L (45-49 cm)</g:size>
     <g:product_type>Shofars</g:product_type>
@@ -3237,7 +3107,7 @@
     <g:price>1138.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-SH-016-XL</g:mpn>
     <g:item_group_id>rams-tka-beshofar-gadol</g:item_group_id>
     <g:size>XL (50-54 cm)</g:size>
     <g:product_type>Shofars</g:product_type>
@@ -3259,7 +3129,7 @@
     <g:price>1293.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-SH-016-J</g:mpn>
     <g:item_group_id>rams-tka-beshofar-gadol</g:item_group_id>
     <g:size>J (55-59 cm)</g:size>
     <g:product_type>Shofars</g:product_type>
@@ -3281,7 +3151,7 @@
     <g:price>2368.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-SH-016-XJ</g:mpn>
     <g:item_group_id>rams-tka-beshofar-gadol</g:item_group_id>
     <g:size>XJ (60-65 cm)</g:size>
     <g:product_type>Shofars</g:product_type>
@@ -3302,7 +3172,7 @@
     <g:price>418.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-SH-017-XS</g:mpn>
     <g:item_group_id>rams-jerusalem-lions</g:item_group_id>
     <g:size>XS (30-34 cm)</g:size>
     <g:product_type>Shofars</g:product_type>
@@ -3323,7 +3193,7 @@
     <g:price>497.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-SH-017-S</g:mpn>
     <g:item_group_id>rams-jerusalem-lions</g:item_group_id>
     <g:size>S (35-39 cm)</g:size>
     <g:product_type>Shofars</g:product_type>
@@ -3344,7 +3214,7 @@
     <g:price>712.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-SH-017-M</g:mpn>
     <g:item_group_id>rams-jerusalem-lions</g:item_group_id>
     <g:size>M (40-44 cm)</g:size>
     <g:product_type>Shofars</g:product_type>
@@ -3365,7 +3235,7 @@
     <g:price>914.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-SH-017-L</g:mpn>
     <g:item_group_id>rams-jerusalem-lions</g:item_group_id>
     <g:size>L (45-49 cm)</g:size>
     <g:product_type>Shofars</g:product_type>
@@ -3386,7 +3256,7 @@
     <g:price>1138.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-SH-017-XL</g:mpn>
     <g:item_group_id>rams-jerusalem-lions</g:item_group_id>
     <g:size>XL (50-54 cm)</g:size>
     <g:product_type>Shofars</g:product_type>
@@ -3407,7 +3277,7 @@
     <g:price>1293.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-SH-017-J</g:mpn>
     <g:item_group_id>rams-jerusalem-lions</g:item_group_id>
     <g:size>J (55-59 cm)</g:size>
     <g:product_type>Shofars</g:product_type>
@@ -3428,7 +3298,7 @@
     <g:price>2368.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-SH-017-XJ</g:mpn>
     <g:item_group_id>rams-jerusalem-lions</g:item_group_id>
     <g:size>XJ (60-65 cm)</g:size>
     <g:product_type>Shofars</g:product_type>
@@ -3449,7 +3319,7 @@
     <g:price>418.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-SH-018-XS</g:mpn>
     <g:item_group_id>rams-jerusalem-white-crystals</g:item_group_id>
     <g:size>XS (30-34 cm)</g:size>
     <g:product_type>Shofars</g:product_type>
@@ -3470,7 +3340,7 @@
     <g:price>497.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-SH-018-S</g:mpn>
     <g:item_group_id>rams-jerusalem-white-crystals</g:item_group_id>
     <g:size>S (35-39 cm)</g:size>
     <g:product_type>Shofars</g:product_type>
@@ -3491,7 +3361,7 @@
     <g:price>712.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-SH-018-M</g:mpn>
     <g:item_group_id>rams-jerusalem-white-crystals</g:item_group_id>
     <g:size>M (40-44 cm)</g:size>
     <g:product_type>Shofars</g:product_type>
@@ -3512,7 +3382,7 @@
     <g:price>914.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-SH-018-L</g:mpn>
     <g:item_group_id>rams-jerusalem-white-crystals</g:item_group_id>
     <g:size>L (45-49 cm)</g:size>
     <g:product_type>Shofars</g:product_type>
@@ -3533,7 +3403,7 @@
     <g:price>1138.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-SH-018-XL</g:mpn>
     <g:item_group_id>rams-jerusalem-white-crystals</g:item_group_id>
     <g:size>XL (50-54 cm)</g:size>
     <g:product_type>Shofars</g:product_type>
@@ -3554,7 +3424,7 @@
     <g:price>1293.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-SH-018-J</g:mpn>
     <g:item_group_id>rams-jerusalem-white-crystals</g:item_group_id>
     <g:size>J (55-59 cm)</g:size>
     <g:product_type>Shofars</g:product_type>
@@ -3575,7 +3445,7 @@
     <g:price>2368.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-SH-018-XJ</g:mpn>
     <g:item_group_id>rams-jerusalem-white-crystals</g:item_group_id>
     <g:size>XJ (60-65 cm)</g:size>
     <g:product_type>Shofars</g:product_type>
@@ -3596,7 +3466,7 @@
     <g:price>418.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-SH-019-XS</g:mpn>
     <g:item_group_id>rams-star-of-david-blue-stone</g:item_group_id>
     <g:size>XS (30-34 cm)</g:size>
     <g:product_type>Shofars</g:product_type>
@@ -3617,7 +3487,7 @@
     <g:price>497.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-SH-019-S</g:mpn>
     <g:item_group_id>rams-star-of-david-blue-stone</g:item_group_id>
     <g:size>S (35-39 cm)</g:size>
     <g:product_type>Shofars</g:product_type>
@@ -3638,7 +3508,7 @@
     <g:price>712.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-SH-019-M</g:mpn>
     <g:item_group_id>rams-star-of-david-blue-stone</g:item_group_id>
     <g:size>M (40-44 cm)</g:size>
     <g:product_type>Shofars</g:product_type>
@@ -3659,7 +3529,7 @@
     <g:price>914.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-SH-019-L</g:mpn>
     <g:item_group_id>rams-star-of-david-blue-stone</g:item_group_id>
     <g:size>L (45-49 cm)</g:size>
     <g:product_type>Shofars</g:product_type>
@@ -3680,7 +3550,7 @@
     <g:price>1138.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-SH-019-XL</g:mpn>
     <g:item_group_id>rams-star-of-david-blue-stone</g:item_group_id>
     <g:size>XL (50-54 cm)</g:size>
     <g:product_type>Shofars</g:product_type>
@@ -3701,7 +3571,7 @@
     <g:price>1293.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-SH-019-J</g:mpn>
     <g:item_group_id>rams-star-of-david-blue-stone</g:item_group_id>
     <g:size>J (55-59 cm)</g:size>
     <g:product_type>Shofars</g:product_type>
@@ -3722,7 +3592,7 @@
     <g:price>2368.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-SH-019-XJ</g:mpn>
     <g:item_group_id>rams-star-of-david-blue-stone</g:item_group_id>
     <g:size>XJ (60-65 cm)</g:size>
     <g:product_type>Shofars</g:product_type>
@@ -3743,7 +3613,7 @@
     <g:price>418.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-SH-020-XS</g:mpn>
     <g:item_group_id>rams-messianic-seal-jerusalem</g:item_group_id>
     <g:size>XS (30-34 cm)</g:size>
     <g:product_type>Shofars</g:product_type>
@@ -3764,7 +3634,7 @@
     <g:price>497.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-SH-020-S</g:mpn>
     <g:item_group_id>rams-messianic-seal-jerusalem</g:item_group_id>
     <g:size>S (35-39 cm)</g:size>
     <g:product_type>Shofars</g:product_type>
@@ -3785,7 +3655,7 @@
     <g:price>712.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-SH-020-M</g:mpn>
     <g:item_group_id>rams-messianic-seal-jerusalem</g:item_group_id>
     <g:size>M (40-44 cm)</g:size>
     <g:product_type>Shofars</g:product_type>
@@ -3806,7 +3676,7 @@
     <g:price>914.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-SH-020-L</g:mpn>
     <g:item_group_id>rams-messianic-seal-jerusalem</g:item_group_id>
     <g:size>L (45-49 cm)</g:size>
     <g:product_type>Shofars</g:product_type>
@@ -3827,7 +3697,7 @@
     <g:price>1138.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-SH-020-XL</g:mpn>
     <g:item_group_id>rams-messianic-seal-jerusalem</g:item_group_id>
     <g:size>XL (50-54 cm)</g:size>
     <g:product_type>Shofars</g:product_type>
@@ -3848,7 +3718,7 @@
     <g:price>1293.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-SH-020-J</g:mpn>
     <g:item_group_id>rams-messianic-seal-jerusalem</g:item_group_id>
     <g:size>J (55-59 cm)</g:size>
     <g:product_type>Shofars</g:product_type>
@@ -3869,7 +3739,7 @@
     <g:price>2368.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-SH-020-XJ</g:mpn>
     <g:item_group_id>rams-messianic-seal-jerusalem</g:item_group_id>
     <g:size>XJ (60-65 cm)</g:size>
     <g:product_type>Shofars</g:product_type>
@@ -3890,7 +3760,7 @@
     <g:price>418.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-SH-021-XS</g:mpn>
     <g:item_group_id>rams-menorah</g:item_group_id>
     <g:size>XS (30-34 cm)</g:size>
     <g:product_type>Shofars</g:product_type>
@@ -3911,7 +3781,7 @@
     <g:price>497.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-SH-021-S</g:mpn>
     <g:item_group_id>rams-menorah</g:item_group_id>
     <g:size>S (35-39 cm)</g:size>
     <g:product_type>Shofars</g:product_type>
@@ -3932,7 +3802,7 @@
     <g:price>712.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-SH-021-M</g:mpn>
     <g:item_group_id>rams-menorah</g:item_group_id>
     <g:size>M (40-44 cm)</g:size>
     <g:product_type>Shofars</g:product_type>
@@ -3953,7 +3823,7 @@
     <g:price>914.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-SH-021-L</g:mpn>
     <g:item_group_id>rams-menorah</g:item_group_id>
     <g:size>L (45-49 cm)</g:size>
     <g:product_type>Shofars</g:product_type>
@@ -3974,7 +3844,7 @@
     <g:price>1138.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-SH-021-XL</g:mpn>
     <g:item_group_id>rams-menorah</g:item_group_id>
     <g:size>XL (50-54 cm)</g:size>
     <g:product_type>Shofars</g:product_type>
@@ -3995,7 +3865,7 @@
     <g:price>1293.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-SH-021-J</g:mpn>
     <g:item_group_id>rams-menorah</g:item_group_id>
     <g:size>J (55-59 cm)</g:size>
     <g:product_type>Shofars</g:product_type>
@@ -4016,7 +3886,7 @@
     <g:price>2368.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-SH-021-XJ</g:mpn>
     <g:item_group_id>rams-menorah</g:item_group_id>
     <g:size>XJ (60-65 cm)</g:size>
     <g:product_type>Shofars</g:product_type>
@@ -4036,7 +3906,7 @@
     <g:price>1297.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-SH-022-MINI</g:mpn>
     <g:item_group_id>custom-kudu-shofar</g:item_group_id>
     <g:size>Mini (50-59 cm)</g:size>
     <g:product_type>Shofars</g:product_type>
@@ -4056,7 +3926,7 @@
     <g:price>1426.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-SH-022-XS</g:mpn>
     <g:item_group_id>custom-kudu-shofar</g:item_group_id>
     <g:size>XS (60-69 cm)</g:size>
     <g:product_type>Shofars</g:product_type>
@@ -4076,7 +3946,7 @@
     <g:price>1563.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-SH-022-S</g:mpn>
     <g:item_group_id>custom-kudu-shofar</g:item_group_id>
     <g:size>S (70-79 cm)</g:size>
     <g:product_type>Shofars</g:product_type>
@@ -4096,7 +3966,7 @@
     <g:price>1657.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-SH-022-M</g:mpn>
     <g:item_group_id>custom-kudu-shofar</g:item_group_id>
     <g:size>M (80-89 cm)</g:size>
     <g:product_type>Shofars</g:product_type>
@@ -4116,7 +3986,7 @@
     <g:price>1768.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-SH-022-L</g:mpn>
     <g:item_group_id>custom-kudu-shofar</g:item_group_id>
     <g:size>L (90-99 cm)</g:size>
     <g:product_type>Shofars</g:product_type>
@@ -4136,7 +4006,7 @@
     <g:price>2064.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-SH-022-XL</g:mpn>
     <g:item_group_id>custom-kudu-shofar</g:item_group_id>
     <g:size>XL (100-109 cm)</g:size>
     <g:product_type>Shofars</g:product_type>
@@ -4156,7 +4026,7 @@
     <g:price>2113.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-SH-022-J</g:mpn>
     <g:item_group_id>custom-kudu-shofar</g:item_group_id>
     <g:size>J (110-119 cm)</g:size>
     <g:product_type>Shofars</g:product_type>
@@ -4176,10 +4046,320 @@
     <g:price>2769.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:mpn>SAW-SH-022-XJ</g:mpn>
     <g:item_group_id>custom-kudu-shofar</g:item_group_id>
     <g:size>XJ (120-129 cm)</g:size>
     <g:product_type>Shofars</g:product_type>
+    <g:google_product_category>97</g:google_product_category>
+    <g:shipping>
+      <g:country>IL</g:country>
+      <g:price>35.00 ILS</g:price>
+    </g:shipping>
+  </item>
+  <item>
+    <g:id>black-havdalah-set</g:id>
+    <g:title>Black Havdalah Set</g:title>
+    <g:description>Handmade black Havdalah set, crafted in our studio in Israel.</g:description>
+    <g:link>https://shermanartworks.com/havdalah-sets.html#black-havdalah-set</g:link>
+    <g:image_link>https://res.cloudinary.com/doesupaf9/image/upload/w_1200,q_auto:good/Havdala_black_set_wdnnhk.jpg</g:image_link>
+    <g:availability>in_stock</g:availability>
+    <g:price>1369.00 ILS</g:price>
+    <g:condition>new</g:condition>
+    <g:brand>Sherman Art Works</g:brand>
+    <g:mpn>SAW-HS-001</g:mpn>
+    <g:item_group_id>classic-havdalah-sets</g:item_group_id>
+    <g:color>Black</g:color>
+    <g:product_type>Havdalah Sets</g:product_type>
+    <g:google_product_category>97</g:google_product_category>
+    <g:shipping>
+      <g:country>IL</g:country>
+      <g:price>35.00 ILS</g:price>
+    </g:shipping>
+  </item>
+  <item>
+    <g:id>blue-havdalah-set</g:id>
+    <g:title>Blue Havdalah Set</g:title>
+    <g:description>Handmade blue Havdalah set, crafted in our studio in Israel.</g:description>
+    <g:link>https://shermanartworks.com/havdalah-sets.html#blue-havdalah-set</g:link>
+    <g:image_link>https://res.cloudinary.com/doesupaf9/image/upload/w_1200,q_auto:good/Blue_havdala_set_guzrpu.jpg</g:image_link>
+    <g:availability>in_stock</g:availability>
+    <g:price>1369.00 ILS</g:price>
+    <g:condition>new</g:condition>
+    <g:brand>Sherman Art Works</g:brand>
+    <g:mpn>SAW-HS-002</g:mpn>
+    <g:item_group_id>classic-havdalah-sets</g:item_group_id>
+    <g:color>Blue</g:color>
+    <g:product_type>Havdalah Sets</g:product_type>
+    <g:google_product_category>97</g:google_product_category>
+    <g:shipping>
+      <g:country>IL</g:country>
+      <g:price>35.00 ILS</g:price>
+    </g:shipping>
+  </item>
+  <item>
+    <g:id>white-havdalah-set</g:id>
+    <g:title>White Havdalah Set</g:title>
+    <g:description>Handmade white Havdalah set, crafted in our studio in Israel.</g:description>
+    <g:link>https://shermanartworks.com/havdalah-sets.html#white-havdalah-set</g:link>
+    <g:image_link>https://res.cloudinary.com/doesupaf9/image/upload/w_1200,q_auto:good/Havdala_white_set_wnymec.jpg</g:image_link>
+    <g:availability>in_stock</g:availability>
+    <g:price>1369.00 ILS</g:price>
+    <g:condition>new</g:condition>
+    <g:brand>Sherman Art Works</g:brand>
+    <g:mpn>SAW-HS-003</g:mpn>
+    <g:item_group_id>classic-havdalah-sets</g:item_group_id>
+    <g:color>White</g:color>
+    <g:product_type>Havdalah Sets</g:product_type>
+    <g:google_product_category>97</g:google_product_category>
+    <g:shipping>
+      <g:country>IL</g:country>
+      <g:price>35.00 ILS</g:price>
+    </g:shipping>
+  </item>
+  <item>
+    <g:id>orange-havdalah-set</g:id>
+    <g:title>Orange Havdalah Set</g:title>
+    <g:description>Handmade orange Havdalah set, crafted in our studio in Israel.</g:description>
+    <g:link>https://shermanartworks.com/havdalah-sets.html#orange-havdalah-set</g:link>
+    <g:image_link>https://res.cloudinary.com/doesupaf9/image/upload/w_1200,q_auto:good/Orange_havdala_set_bh5ut5.jpg</g:image_link>
+    <g:availability>in_stock</g:availability>
+    <g:price>1212.00 ILS</g:price>
+    <g:condition>new</g:condition>
+    <g:brand>Sherman Art Works</g:brand>
+    <g:mpn>SAW-HS-004</g:mpn>
+    <g:color>Orange</g:color>
+    <g:product_type>Havdalah Sets</g:product_type>
+    <g:google_product_category>97</g:google_product_category>
+    <g:shipping>
+      <g:country>IL</g:country>
+      <g:price>35.00 ILS</g:price>
+    </g:shipping>
+  </item>
+  <item>
+    <g:id>blue-green-tall-glass-cup</g:id>
+    <g:title>Blue-Green Tall Glass Cup</g:title>
+    <g:description>Handmade tall blue-green glass Kiddush cup with a 925 silver-plated rim. Made to order in our studio in Israel.</g:description>
+    <g:link>https://shermanartworks.com/kiddush-cups.html#blue-green-tall-glass-cup</g:link>
+    <g:image_link>https://res.cloudinary.com/doesupaf9/image/upload/w_1200,q_auto:good/Blue-green_cup_white_background_sw5xyz.jpg</g:image_link>
+    <g:additional_image_link>https://res.cloudinary.com/doesupaf9/image/upload/w_1200,q_auto:good/Blue_green_cup_window_background_skywns.jpg</g:additional_image_link>
+    <g:additional_image_link>https://res.cloudinary.com/doesupaf9/image/upload/w_1200,q_auto:good/Green-blue_high_cup2_ahy54a.jpg</g:additional_image_link>
+    <g:availability>in_stock</g:availability>
+    <g:price>472.00 ILS</g:price>
+    <g:condition>new</g:condition>
+    <g:brand>Sherman Art Works</g:brand>
+    <g:mpn>SAW-KC-009</g:mpn>
+    <g:product_type>Kiddush Cups</g:product_type>
+    <g:google_product_category>97</g:google_product_category>
+    <g:shipping>
+      <g:country>IL</g:country>
+      <g:price>35.00 ILS</g:price>
+    </g:shipping>
+  </item>
+  <item>
+    <g:id>blue-tall-glass-cup</g:id>
+    <g:title>Blue Tall Glass Cup</g:title>
+    <g:description>Handmade tall blue glass Kiddush cup with a 925 silver-plated rim. Made to order in our studio in Israel.</g:description>
+    <g:link>https://shermanartworks.com/kiddush-cups.html#blue-tall-glass-cup</g:link>
+    <g:image_link>https://res.cloudinary.com/doesupaf9/image/upload/w_1200,q_auto:good/Blue_high_cup_fxhkep.jpg</g:image_link>
+    <g:additional_image_link>https://res.cloudinary.com/doesupaf9/image/upload/w_1200,q_auto:good/Blue_high_cup_window_background_icbl6j.jpg</g:additional_image_link>
+    <g:additional_image_link>https://res.cloudinary.com/doesupaf9/image/upload/w_1200,q_auto:good/Blue_high_cup2_zfcq9m.jpg</g:additional_image_link>
+    <g:availability>in_stock</g:availability>
+    <g:price>472.00 ILS</g:price>
+    <g:condition>new</g:condition>
+    <g:brand>Sherman Art Works</g:brand>
+    <g:mpn>SAW-KC-010</g:mpn>
+    <g:product_type>Kiddush Cups</g:product_type>
+    <g:google_product_category>97</g:google_product_category>
+    <g:shipping>
+      <g:country>IL</g:country>
+      <g:price>35.00 ILS</g:price>
+    </g:shipping>
+  </item>
+  <item>
+    <g:id>colorful-tall-glass-cup</g:id>
+    <g:title>Colorful Tall Glass Cup</g:title>
+    <g:description>Handmade tall colorful glass Kiddush cup with a 925 silver-plated rim. Made to order in our studio in Israel.</g:description>
+    <g:link>https://shermanartworks.com/kiddush-cups.html#colorful-tall-glass-cup</g:link>
+    <g:image_link>https://res.cloudinary.com/doesupaf9/image/upload/w_1200,q_auto:good/Colorful_cup_white_background_antl7a.jpg</g:image_link>
+    <g:additional_image_link>https://res.cloudinary.com/doesupaf9/image/upload/w_1200,q_auto:good/Colorful_cup_window_background_yuaixi.jpg</g:additional_image_link>
+    <g:additional_image_link>https://res.cloudinary.com/doesupaf9/image/upload/w_1200,q_auto:good/Colorful_cup_2_qsmx5h.jpg</g:additional_image_link>
+    <g:availability>in_stock</g:availability>
+    <g:price>472.00 ILS</g:price>
+    <g:condition>new</g:condition>
+    <g:brand>Sherman Art Works</g:brand>
+    <g:mpn>SAW-KC-011</g:mpn>
+    <g:product_type>Kiddush Cups</g:product_type>
+    <g:google_product_category>97</g:google_product_category>
+    <g:shipping>
+      <g:country>IL</g:country>
+      <g:price>35.00 ILS</g:price>
+    </g:shipping>
+  </item>
+  <item>
+    <g:id>red-tall-glass-cup</g:id>
+    <g:title>Red Tall Glass Cup</g:title>
+    <g:description>Handmade tall red glass Kiddush cup with a 925 silver-plated rim. Made to order in our studio in Israel.</g:description>
+    <g:link>https://shermanartworks.com/kiddush-cups.html#red-tall-glass-cup</g:link>
+    <g:image_link>https://res.cloudinary.com/doesupaf9/image/upload/w_1200,q_auto:good/Reddish_color_cup1_modkh4.jpg</g:image_link>
+    <g:additional_image_link>https://res.cloudinary.com/doesupaf9/image/upload/w_1200,q_auto:good/Reddish_color_cup_window_background_cznzgb.jpg</g:additional_image_link>
+    <g:additional_image_link>https://res.cloudinary.com/doesupaf9/image/upload/w_1200,q_auto:good/Reddish_color_cup2_rjtnvp.jpg</g:additional_image_link>
+    <g:availability>in_stock</g:availability>
+    <g:price>472.00 ILS</g:price>
+    <g:condition>new</g:condition>
+    <g:brand>Sherman Art Works</g:brand>
+    <g:mpn>SAW-KC-012</g:mpn>
+    <g:product_type>Kiddush Cups</g:product_type>
+    <g:google_product_category>97</g:google_product_category>
+    <g:shipping>
+      <g:country>IL</g:country>
+      <g:price>35.00 ILS</g:price>
+    </g:shipping>
+  </item>
+  <item>
+    <g:id>vibrant-red-glass-tall-cup</g:id>
+    <g:title>Vibrant Red Glass Tall Cup</g:title>
+    <g:description>Handmade tall vibrant-red glass Kiddush cup with a 925 silver-plated rim. Made to order in our studio in Israel.</g:description>
+    <g:link>https://shermanartworks.com/kiddush-cups.html#vibrant-red-glass-tall-cup</g:link>
+    <g:image_link>https://res.cloudinary.com/doesupaf9/image/upload/w_1200,q_auto:good/Red_cup_white_background_ej874y.jpg</g:image_link>
+    <g:additional_image_link>https://res.cloudinary.com/doesupaf9/image/upload/w_1200,q_auto:good/Vibrant_red_cup_window_background_ndbyse.jpg</g:additional_image_link>
+    <g:additional_image_link>https://res.cloudinary.com/doesupaf9/image/upload/w_1200,q_auto:good/Vibrant_red_cup2_seu2g9.jpg</g:additional_image_link>
+    <g:availability>in_stock</g:availability>
+    <g:price>472.00 ILS</g:price>
+    <g:condition>new</g:condition>
+    <g:brand>Sherman Art Works</g:brand>
+    <g:mpn>SAW-KC-013</g:mpn>
+    <g:product_type>Kiddush Cups</g:product_type>
+    <g:google_product_category>97</g:google_product_category>
+    <g:shipping>
+      <g:country>IL</g:country>
+      <g:price>35.00 ILS</g:price>
+    </g:shipping>
+  </item>
+  <item>
+    <g:id>orange-glass-cup</g:id>
+    <g:title>Orange Glass Cup</g:title>
+    <g:description>Handmade orange glass Kiddush cup with a 925 silver-plated rim. Made to order in our studio in Israel.</g:description>
+    <g:link>https://shermanartworks.com/kiddush-cups.html#orange-glass-cup</g:link>
+    <g:image_link>https://res.cloudinary.com/doesupaf9/image/upload/w_1200,q_auto:good/Orange_low_cup_white_background_o0le03.jpg</g:image_link>
+    <g:additional_image_link>https://res.cloudinary.com/doesupaf9/image/upload/w_1200,q_auto:good/Orange_low_cup2_i1iuxy.jpg</g:additional_image_link>
+    <g:availability>in_stock</g:availability>
+    <g:price>456.00 ILS</g:price>
+    <g:condition>new</g:condition>
+    <g:brand>Sherman Art Works</g:brand>
+    <g:mpn>SAW-KC-014</g:mpn>
+    <g:product_type>Kiddush Cups</g:product_type>
+    <g:google_product_category>97</g:google_product_category>
+    <g:shipping>
+      <g:country>IL</g:country>
+      <g:price>35.00 ILS</g:price>
+    </g:shipping>
+  </item>
+  <item>
+    <g:id>white-glass-cup</g:id>
+    <g:title>White Glass Cup</g:title>
+    <g:description>Handmade white glass Kiddush cup with a 925 silver-plated rim. Made to order in our studio in Israel.</g:description>
+    <g:link>https://shermanartworks.com/kiddush-cups.html#white-glass-cup</g:link>
+    <g:image_link>https://res.cloudinary.com/doesupaf9/image/upload/w_1200,q_auto:good/White_low_cup_white_background_rtmtbo.jpg</g:image_link>
+    <g:additional_image_link>https://res.cloudinary.com/doesupaf9/image/upload/w_1200,q_auto:good/White_low_cup_window_background_rklfye.jpg</g:additional_image_link>
+    <g:additional_image_link>https://res.cloudinary.com/doesupaf9/image/upload/w_1200,q_auto:good/White_low_cup2_jjbuba.jpg</g:additional_image_link>
+    <g:availability>in_stock</g:availability>
+    <g:price>456.00 ILS</g:price>
+    <g:condition>new</g:condition>
+    <g:brand>Sherman Art Works</g:brand>
+    <g:mpn>SAW-KC-015</g:mpn>
+    <g:product_type>Kiddush Cups</g:product_type>
+    <g:google_product_category>97</g:google_product_category>
+    <g:shipping>
+      <g:country>IL</g:country>
+      <g:price>35.00 ILS</g:price>
+    </g:shipping>
+  </item>
+  <item>
+    <g:id>blue-bore-pri-hagefen-tall-glass-cup</g:id>
+    <g:title>Blue Bore Pri Hagefen Tall Glass Cup</g:title>
+    <g:description>Handmade tall blue glass Kiddush cup featuring the Bore Pri Hagefen blessing and a 925 silver-plated rim. Made to order in our studio in Israel.</g:description>
+    <g:link>https://shermanartworks.com/kiddush-cups.html#blue-bore-pri-hagefen-tall-glass-cup</g:link>
+    <g:image_link>https://res.cloudinary.com/doesupaf9/image/upload/w_1200,q_auto:good/Blue_bore_cup_zsahzh.jpg</g:image_link>
+    <g:additional_image_link>https://res.cloudinary.com/doesupaf9/image/upload/w_1200,q_auto:good/Blue_bore_cup_window_background_mg6oeb.jpg</g:additional_image_link>
+    <g:additional_image_link>https://res.cloudinary.com/doesupaf9/image/upload/w_1200,q_auto:good/Blue_bore_cup2_kis1yn.jpg</g:additional_image_link>
+    <g:availability>in_stock</g:availability>
+    <g:price>499.00 ILS</g:price>
+    <g:condition>new</g:condition>
+    <g:brand>Sherman Art Works</g:brand>
+    <g:mpn>SAW-KC-016</g:mpn>
+    <g:product_type>Kiddush Cups</g:product_type>
+    <g:google_product_category>97</g:google_product_category>
+    <g:shipping>
+      <g:country>IL</g:country>
+      <g:price>35.00 ILS</g:price>
+    </g:shipping>
+  </item>
+  <item>
+    <g:id>blue-kiddush-cup-plate</g:id>
+    <g:title>Blue Kiddush Cup Plate</g:title>
+    <g:description>Handmade blue glass Kiddush cup plate with a 925 silver-plated rim. Made to order in our studio in Israel.</g:description>
+    <g:link>https://shermanartworks.com/trays-bowls.html#blue-kiddush-cup-plate</g:link>
+    <g:image_link>https://res.cloudinary.com/doesupaf9/image/upload/w_1200,q_auto:good/Blue_plate_ixqvon.jpg</g:image_link>
+    <g:availability>in_stock</g:availability>
+    <g:price>364.00 ILS</g:price>
+    <g:condition>new</g:condition>
+    <g:brand>Sherman Art Works</g:brand>
+    <g:mpn>SAW-KC-017</g:mpn>
+    <g:product_type>Kiddush Cups</g:product_type>
+    <g:google_product_category>97</g:google_product_category>
+    <g:shipping>
+      <g:country>IL</g:country>
+      <g:price>35.00 ILS</g:price>
+    </g:shipping>
+  </item>
+  <item>
+    <g:id>white-kiddush-cup-plate</g:id>
+    <g:title>White Kiddush Cup Plate</g:title>
+    <g:description>Handmade white glass Kiddush cup plate with a 925 silver-plated rim. Made to order in our studio in Israel.</g:description>
+    <g:link>https://shermanartworks.com/trays-bowls.html#white-kiddush-cup-plate</g:link>
+    <g:image_link>https://res.cloudinary.com/doesupaf9/image/upload/w_1200,q_auto:good/White_plate_v56oez.jpg</g:image_link>
+    <g:availability>in_stock</g:availability>
+    <g:price>364.00 ILS</g:price>
+    <g:condition>new</g:condition>
+    <g:brand>Sherman Art Works</g:brand>
+    <g:mpn>SAW-KC-018</g:mpn>
+    <g:product_type>Kiddush Cups</g:product_type>
+    <g:google_product_category>97</g:google_product_category>
+    <g:shipping>
+      <g:country>IL</g:country>
+      <g:price>35.00 ILS</g:price>
+    </g:shipping>
+  </item>
+  <item>
+    <g:id>blue-green-kiddush-cup-plate</g:id>
+    <g:title>Blue-Green Kiddush Cup Plate</g:title>
+    <g:description>Handmade blue-green glass Kiddush cup plate with a 925 silver-plated rim. Made to order in our studio in Israel.</g:description>
+    <g:link>https://shermanartworks.com/trays-bowls.html#blue-green-kiddush-cup-plate</g:link>
+    <g:image_link>https://res.cloudinary.com/doesupaf9/image/upload/w_1200,q_auto:good/Green-purple_plate_tbwcn3.jpg</g:image_link>
+    <g:availability>in_stock</g:availability>
+    <g:price>364.00 ILS</g:price>
+    <g:condition>new</g:condition>
+    <g:brand>Sherman Art Works</g:brand>
+    <g:mpn>SAW-KC-019</g:mpn>
+    <g:product_type>Kiddush Cups</g:product_type>
+    <g:google_product_category>97</g:google_product_category>
+    <g:shipping>
+      <g:country>IL</g:country>
+      <g:price>35.00 ILS</g:price>
+    </g:shipping>
+  </item>
+  <item>
+    <g:id>red-kiddush-cup-plate</g:id>
+    <g:title>Red Kiddush Cup Plate</g:title>
+    <g:description>Handmade red glass Kiddush cup plate with a 925 silver-plated rim. Made to order in our studio in Israel.</g:description>
+    <g:link>https://shermanartworks.com/trays-bowls.html#red-kiddush-cup-plate</g:link>
+    <g:image_link>https://res.cloudinary.com/doesupaf9/image/upload/w_1200,q_auto:good/Red_plate_qm5f5n.jpg</g:image_link>
+    <g:availability>in_stock</g:availability>
+    <g:price>364.00 ILS</g:price>
+    <g:condition>new</g:condition>
+    <g:brand>Sherman Art Works</g:brand>
+    <g:mpn>SAW-KC-020</g:mpn>
+    <g:product_type>Kiddush Cups</g:product_type>
     <g:google_product_category>97</g:google_product_category>
     <g:shipping>
       <g:country>IL</g:country>

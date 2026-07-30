@@ -171,7 +171,10 @@ def build(key, cfg, src, products):
     # ── JSON-LD: this page's products, and a three-level breadcrumb ──
     ld_blocks = re.findall(r'<script type="application/ld\+json">(.*?)</script>', src, re.S)
     item_list = json.loads(ld_blocks[0])
-    keep = {i: e for e in item_list["itemListElement"] for i in [e["item"]["sku"]]}
+    keep = {
+        e["item"]["url"].rsplit("#", 1)[-1]: e
+        for e in item_list["itemListElement"]
+    }
     item_list["itemListElement"] = [
         {**keep[i], "position": n} for n, i in enumerate(ids, start=1) if i in keep
     ]

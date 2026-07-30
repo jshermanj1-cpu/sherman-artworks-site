@@ -194,6 +194,18 @@
     }
 .form-email-alt:hover { border-color: var(--dark); color: var(--dark); }
 .form-note { font-size: 0.74rem; color: var(--brown); text-align: center; margin-top: 0.75rem; }
+/* Protection of Privacy Law s.11 notice - sits above the send buttons so it is
+   read before the details are handed over, which is what the section requires. */
+.form-privacy-note {
+  margin: 1.1rem 0 0.25rem;
+  padding-top: 0.9rem;
+  border-top: 1px solid var(--border);
+  font-size: 0.72rem;
+  line-height: 1.7;
+  color: var(--footer-text);
+}
+.form-privacy-note a { color: var(--brown); text-underline-offset: 2px; }
+.form-privacy-note a:hover { color: var(--gold); }
 @media (max-width: 768px) {
   .steps-grid { grid-template-columns: repeat(2, 1fr); }
   .form-inner   { grid-template-columns: 1fr; padding: 3rem 1.25rem; gap: 2.5rem; }
@@ -259,6 +271,7 @@
           <a href="horn-goblets.html" role="menuitem" data-t="cat2_title">Horn Goblets</a>
           <a href="candlesticks.html" role="menuitem" data-t="cat1_title">Candlesticks</a>
           <a href="kiddush-cups.html" role="menuitem" data-t="cat3_title">Kiddush Cups</a>
+          <a href="havdalah-sets.html" role="menuitem" data-t="cat8_title">Havdalah Sets</a>
           <a href="mezuzahs.html" role="menuitem" data-t="cat6_title">Mezuzahs</a>
           <a href="trays-bowls.html" role="menuitem" data-t="cat4_title">Trays & Bowls</a>
           <a href="business-gifts.html" role="menuitem" data-t="cat5_title">Business Gifts</a>
@@ -288,7 +301,10 @@
           <a href="shofars-kudu.html" class="mobile-shop-sub" onclick="closeMobileNav()" data-t="switch_kudu">Kudu Horn</a>
           <a href="horn-goblets.html" onclick="closeMobileNav()" data-t="cat2_title">Horn Goblets</a>
           <a href="candlesticks.html" onclick="closeMobileNav()" data-t="cat1_title">Candlesticks</a>
+          <a href="candlesticks-silver-plated.html" class="mobile-shop-sub" onclick="closeMobileNav()" data-t="switch_candles_silver">Silver-Plated Candlesticks</a>
+          <a href="candlesticks-artisanal.html" class="mobile-shop-sub" onclick="closeMobileNav()" data-t="switch_candles_artisanal">Artisanal Candlesticks</a>
           <a href="kiddush-cups.html" onclick="closeMobileNav()" data-t="cat3_title">Kiddush Cups</a>
+          <a href="havdalah-sets.html" onclick="closeMobileNav()" data-t="cat8_title">Havdalah Sets</a>
           <a href="mezuzahs.html" onclick="closeMobileNav()" data-t="cat6_title">Mezuzahs</a>
           <a href="trays-bowls.html" onclick="closeMobileNav()" data-t="cat4_title">Trays & Bowls</a>
           <a href="business-gifts.html" onclick="closeMobileNav()" data-t="cat5_title">Business Gifts</a>
@@ -437,6 +453,10 @@
           <label for="cf-msg" data-t="field_msg">Describe Your Vision</label>
           <textarea id="cf-msg" name="message" required placeholder=""></textarea>
         </div>
+        <p class="form-privacy-note">
+          <span data-t="form_privacy">Giving these details is voluntary and no law requires it, but without your name, email and message we cannot reply. We use them only to answer your enquiry. Sending by WhatsApp passes your message and number to WhatsApp (Meta); sending by email passes them to Gmail (Google). You may ask to see what we hold about you, and to have it corrected, at any time. More in our</span>
+          <a href="privacy.html" data-t="form_privacy_link">Privacy Policy</a>
+        </p>
         <button type="submit" class="form-submit">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
           <span data-t="form_submit">Send via WhatsApp</span>
@@ -507,6 +527,7 @@
           <li><a href="candlesticks.html"     data-t="footer_link_candles">Candlesticks</a></li>
           <li><a href="horn-goblets.html"  data-t="footer_link_shofars">Horn Goblets</a></li>
           <li><a href="trays-bowls.html"      data-t="footer_link_bowls">Trays &amp; Bowls</a></li>
+          <li><a href="havdalah-sets.html"      data-t="cat8_title">Havdalah Sets</a></li>
           <li><a href="index.html#shop"             data-t="footer_all_collections">All Collections</a></li>
           <li><a href="custom-orders.html" data-t="nav_custom">Custom Orders</a></li>
         </ul>
@@ -618,6 +639,8 @@
       form_submit:            'Send via WhatsApp',
       form_email_alt:         'Or send by email instead',
       form_note:              'We reply to every message within 24 hours.',
+      form_privacy:         'Giving these details is voluntary and no law requires it, but without your name, email and message we cannot reply. We use them only to answer your enquiry. Sending by WhatsApp passes your message and number to WhatsApp (Meta); sending by email passes them to Gmail (Google). You may ask to see what we hold about you, and to have it corrected, at any time. More in our',
+      form_privacy_link:    'Privacy Policy',
 
       footer_tagline:    'Handmade glass art & Judaica from Israel',
       footer_col_shop:   'Shop',
@@ -701,6 +724,8 @@
       form_submit:            'שלחו דרך WhatsApp',
       form_email_alt:         'או שלחו במייל',
       form_note:              'אנחנו מגיבים לכל הודעה תוך 24 שעות.',
+      form_privacy:         'מסירת הפרטים היא בהתנדבות ואין חובה חוקית למסור אותם, אך בלי שם, כתובת דוא"ל ותוכן ההודעה לא נוכל להשיב לכם. אנחנו משתמשים בהם רק כדי לענות לפנייתכם. שליחה ב-WhatsApp מעבירה את ההודעה ואת מספר הטלפון ל-WhatsApp (Meta); שליחה בדוא"ל מעבירה אותם ל-Gmail (Google). תוכלו לבקש לעיין במידע שאנחנו מחזיקים עליכם ולתקן אותו בכל עת. פרטים נוספים',
+      form_privacy_link:    'במדיניות הפרטיות',
 
       footer_tagline:    'אמנות זכוכית ויודאיקה בעבודת יד מישראל',
       footer_col_shop:   'חנות',

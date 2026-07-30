@@ -37,7 +37,10 @@ var _PAGE_BY_SLUG = {
   'green-silver-plated-glass-tray': 'trays-bowls.html',
   'black-silver-plated-glass-tray': 'trays-bowls.html',
   'blue-green-silver-plated-glass-tray': 'trays-bowls.html',
-  'round-white-silver-plated-glass-tray': 'trays-bowls.html',
+  'black-havdalah-set': 'havdalah-sets.html',
+  'blue-havdalah-set': 'havdalah-sets.html',
+  'white-havdalah-set': 'havdalah-sets.html',
+  'orange-havdalah-set': 'havdalah-sets.html',
   'ram-mezuzah': 'mezuzahs.html',
   'kudu-mezuzah': 'mezuzahs.html',
   'clear-glass-mezuzah': 'mezuzahs.html',
@@ -121,15 +124,23 @@ function _saveCart(items) {
   document.dispatchEvent(new CustomEvent('sa:cart-change', { detail: { cart: items } }));
 }
 
-function addToCart(slug, name_en, name_he, price_ils, photo, meta) {
+function productSku(product, size) {
+  if (!product) return '';
+  if (size && size.sku) return size.sku;
+  if (size && product.sku && size.label) return product.sku + '-' + String(size.label).toUpperCase();
+  return product.sku || product.id || '';
+}
+
+function addToCart(slug, name_en, name_he, price_ils, photo, sku, meta) {
   var items = getCart();
   var key = meta ? slug + '::' + [meta.color || '', meta.size || '', meta.tray_id || '', meta.symbol || '', meta.text || '', meta.comment || ''].join('|') : slug;
   var page = (location.pathname.split('/').pop() || 'index.html');
   var existing = items.find(function (i) { return _cartKey(i) === key; });
   if (existing) {
     existing.qty += 1;
+    if (!existing.sku && sku) existing.sku = sku;
   } else {
-    var entry = { slug: slug, key: key, page: page, name_en: name_en, name_he: name_he || '', price_ils: price_ils, photo: photo, qty: 1 };
+    var entry = { slug: slug, sku: sku || '', key: key, page: page, name_en: name_en, name_he: name_he || '', price_ils: price_ils, photo: photo, qty: 1 };
     if (meta) entry.meta = meta;
     items.push(entry);
   }
@@ -137,7 +148,7 @@ function addToCart(slug, name_en, name_he, price_ils, photo, meta) {
   if (typeof trackGA4 === 'function') {
     trackGA4('add_to_cart', {
       currency: 'ILS', value: price_ils,
-      items: [{ item_id: slug, item_name: name_en, price: price_ils, quantity: 1 }]
+      items: [{ item_id: sku || slug, item_name: name_en, price: price_ils, quantity: 1 }]
     });
   }
   if (typeof a11yAnnounce === 'function') {
@@ -280,7 +291,7 @@ function cartAddFromProduct(idx) {
   if (!p) return;
   // Personalised or sized products need their options picked first - open the modal instead.
   if ((p.personalisable || (p.sizes && p.sizes.length)) && typeof openModal === 'function') { openModal(idx); return; }
-  addToCart(p.id, p.name_en, p.name_he || '', p.price_ils, p.photos[0]);
+  addToCart(p.id, p.name_en, p.name_he || '', p.price_ils, p.photos[0], productSku(p));
 }
 
 function cartAddFromModal() {
@@ -289,6 +300,7 @@ function cartAddFromModal() {
   if (!p) return;
   var meta = null;
   var price = p.price_ils;
+  var sku = productSku(p);
   if (p.sizes && p.sizes.length) {
     var sizeEl = document.getElementById('modalSize');
     var sizeChoice = document.querySelector('input[name="modalSizeOption"]:checked');
@@ -305,6 +317,7 @@ function cartAddFromModal() {
     }
     var sz = p.sizes[si];
     price = sz.price_ils;
+    sku = productSku(p, sz);
     meta = { size: _sizeText(sz) };
   }
   if (p.color_en) {
@@ -319,6 +332,8 @@ function cartAddFromModal() {
     photo = tray.set_photo || photo;
     meta = meta || {};
     meta.tray_id = tray.id;
+    meta.tray_sku = tray.sku || '';
+    meta.tray_kind = tray.kind || 'tray';
     meta.tray = tray.name_en;
     meta.tray_he = tray.name_he || tray.name_en;
     meta.tray_measurements = tray.measurements;
@@ -350,7 +365,7 @@ function cartAddFromModal() {
     meta = meta || {};
     meta.comment = commentEl.value.trim();
   }
-  addToCart(p.id, p.name_en, p.name_he || '', price, photo, meta);
+  addToCart(p.id, p.name_en, p.name_he || '', price, photo, sku, meta);
   if (typeof closeModal === 'function') closeModal();
 }
 
@@ -384,10 +399,11 @@ function buildCheckoutWaLink() {
     items.forEach(function (item) {
       var name = item.name_he || item.name_en;
       lines.push('• ' + name + ' × ' + item.qty + ' (₪' + (item.price_ils * item.qty).toLocaleString('en-IL') + ')');
+      if (item.sku) lines.push('   SKU: ' + item.sku);
       if (item.meta) {
         if (item.meta.color)   lines.push('   צבע: ' + (item.meta.color_he || item.meta.color));
         if (item.meta.size)    lines.push('   מידה: ' + item.meta.size);
-        if (item.meta.tray)    lines.push('   מגש תואם: ' + (item.meta.tray_he || item.meta.tray) + ' (₪' + item.meta.tray_price_ils + ')');
+        if (item.meta.tray)    lines.push('   ' + (item.meta.tray_kind === 'plate' ? 'תחתית תואמת: ' : 'מגש תואם: ') + (item.meta.tray_he || item.meta.tray) + ' (₪' + item.meta.tray_price_ils + ')' + (item.meta.tray_sku ? ' · SKU: ' + item.meta.tray_sku : ''));
         if (item.meta.bundle_savings_ils) lines.push('   חיסכון בסט: ₪' + item.meta.bundle_savings_ils);
         if (item.meta.symbol)  lines.push('   סמל: ' + (item.meta.symbol_he || item.meta.symbol));
         if (item.meta.text)    lines.push('   כיתוב: ' + item.meta.text);
@@ -409,10 +425,11 @@ function buildCheckoutWaLink() {
     lines = ["Hi! I'd like to order:"];
     items.forEach(function (item) {
       lines.push('• ' + item.name_en + ' × ' + item.qty + ' (₪' + (item.price_ils * item.qty).toLocaleString('en-IL') + ')');
+      if (item.sku) lines.push('   SKU: ' + item.sku);
       if (item.meta) {
         if (item.meta.color)   lines.push('   Color: ' + item.meta.color);
         if (item.meta.size)    lines.push('   Size: ' + item.meta.size);
-        if (item.meta.tray)    lines.push('   Matching tray: ' + item.meta.tray + ' (₪' + item.meta.tray_price_ils + ')');
+        if (item.meta.tray)    lines.push('   ' + (item.meta.tray_kind === 'plate' ? 'Matching plate: ' : 'Matching tray: ') + item.meta.tray + ' (₪' + item.meta.tray_price_ils + ')' + (item.meta.tray_sku ? ' · SKU: ' + item.meta.tray_sku : ''));
         if (item.meta.bundle_savings_ils) lines.push('   Set savings: ₪' + item.meta.bundle_savings_ils);
         if (item.meta.symbol)  lines.push('   Symbol: ' + item.meta.symbol);
         if (item.meta.text)    lines.push('   Inscription: ' + item.meta.text);
@@ -437,14 +454,17 @@ function buildCheckoutWaLink() {
 // ── CART DRAWER RENDER ─────────────────────────────────────────
 // Personalisation lines (symbol / inscription / comment) shown under the item name.
 function _cartMetaHtml(item, isHe) {
-  if (!item.meta) return '';
-  var m = item.meta;
   var rows = [];
+  if (item.sku) rows.push('SKU: ' + escapeHtml(item.sku));
+  var m = item.meta || {};
   if (m.color)   rows.push((isHe ? 'צבע: ' : 'Color: ') + escapeHtml(isHe ? (m.color_he || m.color) : m.color));
   if (m.size)    rows.push((isHe ? 'מידה: ' : 'Size: ') + escapeHtml(m.size));
   if (m.tray) {
     var trayName = isHe ? (m.tray_he || m.tray) : m.tray;
-    rows.push((isHe ? 'מגש תואם: ' : 'Matching tray: ') + escapeHtml(trayName) + ' · ₪' + Number(m.tray_price_ils).toLocaleString('en-IL'));
+    var addonLabel = m.tray_kind === 'plate'
+      ? (isHe ? 'תחתית תואמת: ' : 'Matching plate: ')
+      : (isHe ? 'מגש תואם: ' : 'Matching tray: ');
+    rows.push(addonLabel + escapeHtml(trayName) + ' · ₪' + Number(m.tray_price_ils).toLocaleString('en-IL') + (m.tray_sku ? ' · SKU: ' + escapeHtml(m.tray_sku) : ''));
   }
   if (m.bundle_savings_ils) rows.push((isHe ? 'חיסכון בסט: ₪' : 'Set savings: ₪') + Number(m.bundle_savings_ils).toLocaleString('en-IL'));
   if (m.symbol)  rows.push((isHe ? 'סמל: ' : 'Symbol: ') + escapeHtml(isHe ? (m.symbol_he || m.symbol) : m.symbol));
@@ -543,7 +563,7 @@ function openCartDrawer() {
     trackGA4('view_cart', {
       currency: 'ILS', value: getCartTotal(),
       items: getCart().map(function (i) {
-        return { item_id: i.slug, item_name: i.name_en, price: i.price_ils, quantity: i.qty };
+        return { item_id: i.sku || i.slug, item_name: i.name_en, price: i.price_ils, quantity: i.qty };
       })
     });
   }

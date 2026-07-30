@@ -13,11 +13,10 @@ const CDN = 'https://res.cloudinary.com/doesupaf9/image/upload';
 // page proves nothing on its own.
 const PAYMENT_API = 'https://sherman-payments.shermanartworks.workers.dev';
 
-// Master switch for card payment in the UI. Stays false until the HYP terminal
-// credentials are live: the backend is deployed and reachable, but it cannot
-// create a payment page yet, so a visible Pay button would be a button that
-// always fails. WhatsApp ordering is unaffected either way.
-const PAYMENTS_ENABLED = false;
+// Master switch for card payment in the UI. Set false to take the Pay button
+// off the checkout without touching anything else; WhatsApp ordering is
+// unaffected either way, so this is the safe lever if payments ever misbehave.
+const PAYMENTS_ENABLED = true;
 
 // ── SHARED TRANSLATIONS (T_SITE) ───────────────────────────────
 const T_SITE = {
@@ -36,6 +35,7 @@ const T_SITE = {
     cat5_title:          'Business Gifts',
     cat6_title:          'Mezuzahs',
     cat7_title:          'Shofars',
+    cat8_title:          'Havdalah Sets',
 
     // Shofar sub-categories - used by the nav on every page, not just the
     // shofar pages, so they live here rather than in a page dictionary.
@@ -43,6 +43,9 @@ const T_SITE = {
     switch_custom:       'Custom',
     switch_rams:         "Ram's Horn",
     switch_kudu:         'Kudu Horn',
+    switch_candles_all:       'All Candlesticks',
+    switch_candles_silver:    'Silver-Plated Candlesticks',
+    switch_candles_artisanal: 'Artisanal Candlesticks',
 
     cat_from:            'from',
     cat_cta_browse:      'Browse Collection',
@@ -100,11 +103,15 @@ const T_SITE = {
     cat5_title:          'מתנות לעסקים',
     cat6_title:          'מזוזות',
     cat7_title:          'שופרות',
+    cat8_title:          'סטי הבדלה',
 
     switch_all:          'כל השופרות',
     switch_custom:       'בהתאמה אישית',
     switch_rams:         'שופר איל',
     switch_kudu:         'שופר קודו',
+    switch_candles_all:       'כל הפמוטים',
+    switch_candles_silver:    'פמוטים בציפוי כסף',
+    switch_candles_artisanal: 'פמוטים אומנותיים',
 
     cat_from:            'מ-',
     cat_cta_browse:      'לקולקציה',
@@ -565,3 +572,19 @@ document.addEventListener('DOMContentLoaded', function() {
   var waCorp = document.getElementById('waCorporateLink');
   if (waCorp) waCorp.href = 'https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent("Hi, I'm interested in a corporate or bulk order.");
 });
+
+// Return product/index pairs in a new random order. Category pages cache the
+// result for the lifetime of the page so language and currency changes do not
+// make products jump around while someone is browsing.
+function shuffledProductEntries(products) {
+  var entries = products.map(function(product, index) {
+    return { p: product, idx: index };
+  });
+  for (var i = entries.length - 1; i > 0; i--) {
+    var j = Math.floor(Math.random() * (i + 1));
+    var current = entries[i];
+    entries[i] = entries[j];
+    entries[j] = current;
+  }
+  return entries;
+}

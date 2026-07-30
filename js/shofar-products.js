@@ -20,6 +20,7 @@
 const PRODUCTS = [
   {
     "id": "custom-shofar",
+    "sku": "SAW-SH-001",
     "name_en": "Custom Ram's Horn Shofar, Symbol & Text",
     "name_he": "שופר איל מותאם אישית, סמל וטקסט",
     "description_en": "Ram's-horn shofar decorated in 925 silver and personalised with your choice of symbol and an optional text inscription (Hebrew/English). Made to order in our studio in Israel.",
@@ -34,6 +35,7 @@ const PRODUCTS = [
   },
   {
     "id": "custom-kudu-shofar",
+    "sku": "SAW-SH-022",
     "name_en": "Custom Kudu Shofar, Symbol & Text",
     "name_he": "שופר קודו מותאם אישית, סמל וטקסט",
     "description_en": "Kudu-horn shofar decorated in 925 silver and personalised with your choice of symbol and an optional text inscription (Hebrew/English). Made to order in our studio in Israel.",
@@ -47,6 +49,7 @@ const PRODUCTS = [
   },
   {
     "id": "kudu-hoshen-stones",
+    "sku": "SAW-SH-002",
     "name_en": "Kudu Shofar - Hoshen Stones",
     "name_he": "שופר קודו אבני החושן",
     "description_en": "Kudu-horn shofar decorated in 925 silver with the twelve stones of the High Priest's breastplate (Hoshen). Handmade in Israel.",
@@ -58,6 +61,7 @@ const PRODUCTS = [
   },
   {
     "id": "kudu-jerusalem-lions",
+    "sku": "SAW-SH-003",
     "name_en": "Kudu Shofar - Jerusalem Lions",
     "name_he": "שופר קודו אריות ירושלים",
     "description_en": "Kudu-horn shofar decorated in 925 silver with the lions of Jerusalem. Handmade in Israel.",
@@ -69,6 +73,7 @@ const PRODUCTS = [
   },
   {
     "id": "kudu-jerusalem-lions-menorah",
+    "sku": "SAW-SH-004",
     "name_en": "Kudu Shofar - Jerusalem Lions with Menorah",
     "name_he": "שופר קודו ירושלים אריות עם מנורה",
     "description_en": "Kudu-horn shofar decorated in 925 silver with the lions of Jerusalem and a seven-branched menorah. Handmade in Israel.",
@@ -80,6 +85,7 @@ const PRODUCTS = [
   },
   {
     "id": "kudu-holy-ark",
+    "sku": "SAW-SH-005",
     "name_en": "Kudu Shofar - The Holy Ark",
     "name_he": "שופר קודו ארון הקודש",
     "description_en": "Kudu-horn shofar decorated in 925 silver with the Holy Ark (Aron HaKodesh). Handmade in Israel.",
@@ -91,6 +97,7 @@ const PRODUCTS = [
   },
   {
     "id": "kudu-spies-meraglim",
+    "sku": "SAW-SH-006",
     "name_en": "Kudu Shofar - The Spies (Meraglim)",
     "name_he": "שופר קודו המרגלים",
     "description_en": "Kudu-horn shofar decorated in 925 silver with the Spies (Meraglim) carrying the cluster of grapes. Handmade in Israel.",
@@ -102,6 +109,7 @@ const PRODUCTS = [
   },
   {
     "id": "kudu-messianic-seal-jerusalem",
+    "sku": "SAW-SH-007",
     "name_en": "Kudu Shofar - Messianic Seal of Jerusalem",
     "name_he": "שופר קודו חותמת ירושלים אוונגליסטי",
     "description_en": "Kudu-horn shofar decorated in 925 silver with the Messianic Seal of Jerusalem - the menorah, fish and Star of David. Handmade in Israel.",
@@ -113,6 +121,7 @@ const PRODUCTS = [
   },
   {
     "id": "kudu-jerusalem",
+    "sku": "SAW-SH-008",
     "name_en": "Kudu Shofar - Jerusalem",
     "name_he": "שופר קודו ירושלים",
     "description_en": "Kudu-horn shofar decorated in 925 silver with a view of Jerusalem. Handmade in Israel.",
@@ -124,6 +133,7 @@ const PRODUCTS = [
   },
   {
     "id": "kudu-star-of-david",
+    "sku": "SAW-SH-009",
     "name_en": "Kudu Shofar - Star of David",
     "name_he": "שופר קודו מגן דוד",
     "description_en": "Kudu-horn shofar decorated in 925 silver with the Star of David. Handmade in Israel.",
@@ -135,6 +145,7 @@ const PRODUCTS = [
   },
   {
     "id": "kudu-menorah",
+    "sku": "SAW-SH-010",
     "name_en": "Kudu Shofar - Menorah",
     "name_he": "שופר קודו מנורה",
     "description_en": "Kudu-horn shofar decorated in 925 silver with a seven-branched menorah. Handmade in Israel.",
@@ -146,6 +157,7 @@ const PRODUCTS = [
   },
   {
     "id": "kudu-shofar-blowing",
+    "sku": "SAW-SH-011",
     "name_en": "Kudu Shofar - Shofar Blowing",
     "name_he": "שופר קודו תקיעה בשופר",
     "description_en": "Kudu-horn shofar decorated in 925 silver with a depiction of the shofar blowing. Handmade in Israel.",
@@ -157,6 +169,7 @@ const PRODUCTS = [
   },
   {
     "id": "rams-hoshen-stones",
+    "sku": "SAW-SH-012",
     "name_en": "Ram's Horn Shofar - Hoshen Stones",
     "name_he": "שופר איל אבני החושן",
     "description_en": "Ram's-horn shofar decorated in 925 silver with the twelve stones of the High Priest's breastplate (Hoshen). Handmade in Israel.",
@@ -170,6 +183,7 @@ const PRODUCTS = [
   },
   {
     "id": "rams-jerusalem",
+    "sku": "SAW-SH-013",
     "name_en": "Ram's Horn Shofar - Jerusalem",
     "name_he": "שופר איל ירושלים",
     "description_en": "Ram's-horn shofar decorated in 925 silver with a view of Jerusalem. Handmade in Israel.",
@@ -183,6 +197,7 @@ const PRODUCTS = [
   },
   {
     "id": "rams-star-of-david",
+    "sku": "SAW-SH-014",
     "name_en": "Ram's Horn Shofar - Star of David",
     "name_he": "שופר איל מגן דוד",
     "description_en": "Ram's-horn shofar decorated in 925 silver with the Star of David. Handmade in Israel.",
@@ -196,6 +211,7 @@ const PRODUCTS = [
   },
   {
     "id": "rams-star-of-david-blue-crystals",
+    "sku": "SAW-SH-015",
     "name_en": "Ram's Horn Shofar - Star of David with Blue Crystals",
     "name_he": "שופר איל מגן דוד וקריסטלים כחולים",
     "description_en": "Ram's-horn shofar decorated in 925 silver with the Star of David set with blue crystals. Handmade in Israel.",
@@ -209,6 +225,7 @@ const PRODUCTS = [
   },
   {
     "id": "rams-tka-beshofar-gadol",
+    "sku": "SAW-SH-016",
     "name_en": "Ram's Horn Shofar - Tka BeShofar Gadol",
     "name_he": "שופר איל בכיתוב תקע בשופר גדול",
     "description_en": "Ram's-horn shofar decorated in 925 silver with the inscription 'Tka BeShofar Gadol' - Sound the great shofar. Handmade in Israel.",
@@ -222,6 +239,7 @@ const PRODUCTS = [
   },
   {
     "id": "rams-jerusalem-lions",
+    "sku": "SAW-SH-017",
     "name_en": "Ram's Horn Shofar - Jerusalem Lions",
     "name_he": "שופר איל אריות ירושלים",
     "description_en": "Ram's-horn shofar decorated in 925 silver with the lions of Jerusalem. Handmade in Israel.",
@@ -235,6 +253,7 @@ const PRODUCTS = [
   },
   {
     "id": "rams-jerusalem-white-crystals",
+    "sku": "SAW-SH-018",
     "name_en": "Ram's Horn Shofar - Jerusalem with White Crystals",
     "name_he": "שופר איל עם קריסטלים לבנים",
     "description_en": "Ram's-horn shofar decorated in 925 silver with a view of Jerusalem set with white crystals. Handmade in Israel.",
@@ -248,6 +267,7 @@ const PRODUCTS = [
   },
   {
     "id": "rams-star-of-david-blue-stone",
+    "sku": "SAW-SH-019",
     "name_en": "Ram's Horn Shofar - Star of David with Blue Stone",
     "name_he": "שופר איל עם אבן כחולה מרכזית",
     "description_en": "Ram's-horn shofar decorated in 925 silver with the Star of David and a central blue stone. Handmade in Israel.",
@@ -261,6 +281,7 @@ const PRODUCTS = [
   },
   {
     "id": "rams-messianic-seal-jerusalem",
+    "sku": "SAW-SH-020",
     "name_en": "Ram's Horn Shofar - Messianic Seal of Jerusalem",
     "name_he": "שופר איל עם חתם אוונגליסטי של ירושלים",
     "description_en": "Ram's-horn shofar decorated in 925 silver with the Messianic Seal of Jerusalem - the menorah, fish and Star of David. Handmade in Israel.",
@@ -274,6 +295,7 @@ const PRODUCTS = [
   },
   {
     "id": "rams-menorah",
+    "sku": "SAW-SH-021",
     "name_en": "Ram's Horn Shofar - Menorah",
     "name_he": "שופר איל מנורה",
     "description_en": "Ram's-horn shofar decorated in 925 silver with a seven-branched menorah. Handmade in Israel.",
