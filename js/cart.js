@@ -631,7 +631,11 @@ function _injectCartDrawer() {
       // without it the only obvious button is WhatsApp, and the card route is
       // hidden behind a "review order" link nobody reads as "pay".
       ((typeof PAYMENTS_ENABLED !== 'undefined' && PAYMENTS_ENABLED)
-        ? '<a href="checkout.html" class="cart-pay-btn" onclick="closeCartDrawer()">' +
+        // Root-relative on purpose. This drawer is injected on /he/ pages too,
+        // and there is no /he/checkout.html - a relative link sends every
+        // Hebrew shopper to a 404. The checkout page reads the stored language
+        // and renders itself in Hebrew, so one page serves both.
+        ? '<a href="/checkout.html" class="cart-pay-btn" onclick="closeCartDrawer()">' +
             _LOCK_SVG_SM + '<span data-t="cart_pay">Pay by card</span>' +
           '</a>'
         : '') +
@@ -642,7 +646,7 @@ function _injectCartDrawer() {
       // Redundant once the pay button leads to the same page.
       ((typeof PAYMENTS_ENABLED !== 'undefined' && PAYMENTS_ENABLED)
         ? ''
-        : '<a href="checkout.html" class="cart-view-full-btn" onclick="closeCartDrawer()" data-t="cart_review">Review order →</a>') +
+        : '<a href="/checkout.html" class="cart-view-full-btn" onclick="closeCartDrawer()" data-t="cart_review">Review order →</a>') +
     '</div>';
   document.body.appendChild(drawer);
 }
