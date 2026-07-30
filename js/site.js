@@ -159,26 +159,36 @@ let currentCurrency = 'USD';
 let usdRate         = null;
 
 // ── EXCHANGE RATE ───────────────────────────────────────────────
-// Standardised: USD endpoint, +2% markup, 6s timeout, fallback renders
+// Taken from the payment backend rather than fetched here, so the figure on the
+// page is the one the order is priced with. Two independent fetches of a moving
+// rate disagree, and that gap would trip the backend's own total check on
+// international orders that were never actually wrong.
+//
+// The rate leans slightly against the shopper (mid × 0.98), which makes the
+// dollar figure a little high. That is the right direction while orders are
+// charged in shekels: the customer's bank converts at roughly mid and adds its
+// own fee, so a conservative estimate is closer to what their statement will
+// say. The previous version divided instead of multiplying and understated it.
+const FALLBACK_USD_RATE = 3.06 * 0.98;
+
 async function loadUsdRate() {
+  const rn = document.getElementById('rateNote');
   try {
+    if (typeof PAYMENT_API !== 'string' || !PAYMENT_API) throw new Error('no backend');
     const c = new AbortController();
     const t = setTimeout(function() { c.abort(); }, 6000);
-    const res = await fetch('https://open.er-api.com/v6/latest/USD', { signal: c.signal });
+    const res = await fetch(PAYMENT_API + '/rate', { signal: c.signal });
     clearTimeout(t);
-    if (!res.ok) throw new Error('API error');
+    if (!res.ok) throw new Error('rate endpoint ' + res.status);
     const data = await res.json();
-    const raw = data.rates && data.rates.ILS;
-    if (!raw) throw new Error('No ILS rate');
-    usdRate = raw / 0.98;
-    const rn = document.getElementById('rateNote');
-    if (rn) rn.textContent = 'Rate live · +2%';
+    if (!data || !isFinite(data.rate)) throw new Error('no rate');
+    usdRate = data.rate;
+    if (rn) rn.textContent = 'Rate updated ' + (data.date || 'today');
   } catch (e) {
-    // Fallback base rate 3.05 ILS/USD (live rate ~3.04 as of 2026-07-08).
-    // Re-check quarterly against open.er-api.com - a stale base skews all USD prices.
-    // /0.98 keeps the same +2% markup applied to the live rate above.
-    usdRate = 3.05 / 0.98;
-    const rn = document.getElementById('rateNote');
+    // Same base and direction as the backend's own fallback, so a shopper who
+    // loads the page while the backend is unreachable still sees a figure in
+    // the same neighbourhood as the one they would be charged.
+    usdRate = FALLBACK_USD_RATE;
     if (rn) rn.textContent = 'Est. rate';
   }
   // Duck-typed hooks - only run if page defines them
