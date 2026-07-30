@@ -593,6 +593,16 @@
           return;
         }
         if (res.ok && res.data && res.data.payment_url) {
+          // Survives the cross-domain trip through HYP. The success page uses
+          // this unguessable token to poll durable server-side order state
+          // without exposing customer details publicly.
+          try {
+            localStorage.setItem('sa_payment_status', JSON.stringify({
+              ref: res.data.order_ref,
+              token: res.data.status_token,
+              created_at: new Date().toISOString()
+            }));
+          } catch (e) {}
           // Cart is left intact on purpose: it is cleared only once a payment is
           // verified, so abandoning the HYP page brings the shopper back to a
           // basket that still has their things in it.
