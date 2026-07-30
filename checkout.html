@@ -213,7 +213,6 @@
       checkout_ship_intl:   'International',
       checkout_ship_row:    'Shipping',
       checkout_addr_title:  'Delivery details',
-      checkout_addr_note:   'Optional - you can also give these over WhatsApp. Filling them in here saves a few messages.',
       checkout_addr_fname:  'First name',
       checkout_addr_lname:  'Last name',
       checkout_addr_email:  'Email',
@@ -261,7 +260,6 @@
       checkout_ship_intl:   'בינלאומי',
       checkout_ship_row:    'משלוח',
       checkout_addr_title:  'פרטי משלוח',
-      checkout_addr_note:   'לא חובה - אפשר גם למסור ב-WhatsApp. מילוי כאן חוסך כמה הודעות.',
       checkout_addr_fname:  'שם פרטי',
       checkout_addr_lname:  'שם משפחה',
       checkout_addr_email:  'אימייל',
@@ -447,7 +445,6 @@
       '</div>' +
       '<div class="checkout-block">' +
         '<h2 class="checkout-block-title">' + escapeHtml(t.checkout_addr_title) + '</h2>' +
-        '<p class="checkout-block-note">' + escapeHtml(t.checkout_addr_note) + '</p>' +
         '<div class="addr-grid">' +
           fields.map(function (f) {
             var id = 'ship-' + f[0];

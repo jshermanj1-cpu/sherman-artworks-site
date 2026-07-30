@@ -1221,3 +1221,6 @@ button.modal-thumb:focus-visible { outline: 3px solid var(--gold-text); outline-
 
 /* Temporarily hide the Horn Goblets collection from customer-facing navigation. */
 a[href$="horn-goblets.html"] { display: none !important; }
+
+/* Product-list pages no longer show the persistent side WhatsApp shortcut. */
+.floating-wa { display: none !important; }
