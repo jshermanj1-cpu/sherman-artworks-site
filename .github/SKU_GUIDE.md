@@ -29,7 +29,7 @@ similar suffix to a product with one sellable configuration.
 | Candlesticks | `CS` | `018` |
 | Horn Goblets | `HG` | `004` |
 | Kiddush Cups | `KC` | `021` |
-| Trays & Bowls | `TB` | `008` |
+| Trays & Bowls | `TB` | `009` |
 | Mezuzahs | `MZ` | `005` |
 | Shofars | `SH` | `023` |
 | Havdalah Sets | `HS` | `005` |
@@ -188,6 +188,7 @@ configurations. They are permanent once migrated into the product data.
 | `SAW-TB-005` | `green-silver-plated-glass-tray` | Green 925 Silver-Plated Glass Tray | None |
 | `SAW-TB-006` | `black-silver-plated-glass-tray` | Black 925 Silver-Plated Glass Tray | None |
 | `SAW-TB-007` | `blue-green-silver-plated-glass-tray` | Blue-Green 925 Silver-Plated Glass Tray | None |
+| `SAW-TB-008` | `test-tray-product` | Test Tray Product | None |
 
 ### Mezuzahs (`MZ`)
 
