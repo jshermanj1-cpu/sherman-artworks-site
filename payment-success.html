@@ -159,6 +159,7 @@
       pay_contact:     'Message us on WhatsApp',
       pay_continue:    'Continue shopping',
       pay_view_cart:   'Back to cart',
+      pay_retry:       'Check again',
     },
     he: {
       topbar_right: 'עבודת יד מישראל',
@@ -181,6 +182,7 @@
       pay_contact:     'שלחו לנו הודעה ב-WhatsApp',
       pay_continue:    'המשך קנייה',
       pay_view_cart:   'חזרה לעגלה',
+      pay_retry:       'בדקו שוב',
     }
   };
 
@@ -195,6 +197,7 @@
       order:  q.get('Order')  || '',
       amount: q.get('Amount') || '',
       ccode:  q.get('CCode')  || '',
+      server: q.get('server') || '',
       raw:    location.search.replace(/^\?/, '')
     };
   }
@@ -230,7 +233,8 @@
       actions = '<a class="btn-gold" href="checkout.html">' + escapeHtml(t.pay_view_cart) + '</a>' +
                 '<a class="payment-link" href="https://wa.me/' + WA_NUMBER + '" target="_blank" rel="noopener noreferrer">' + escapeHtml(t.pay_contact) + '</a>';
     } else if (_payState === 'pending') {
-      actions = '<a class="btn-gold" href="index.html#shop">' + escapeHtml(t.pay_continue) + '</a>' +
+      actions = '<button type="button" class="btn-gold" onclick="verifyPayment(true)">' + escapeHtml(t.pay_retry) + '</button>' +
+                '<a class="btn-gold" href="index.html#shop">' + escapeHtml(t.pay_continue) + '</a>' +
                 '<a class="payment-link" href="https://wa.me/' + WA_NUMBER + '" target="_blank" rel="noopener noreferrer">' + escapeHtml(t.pay_contact) + '</a>';
     } else {
       actions = '';
@@ -255,7 +259,10 @@
   // The cart is only emptied once a payment is actually confirmed. Clearing it on
   // arrival would destroy the shopper's basket on a redirect that turned out not
   // to be a completed payment.
+  var _payFinalised = false;
   function _payFinaliseSuccess() {
+    if (_payFinalised) return;
+    _payFinalised = true;
     var p = _payParams();
     if (typeof trackGA4 === 'function') {
       trackGA4('purchase', {
@@ -269,9 +276,41 @@
       });
     }
     clearCart();
+    try { localStorage.removeItem('sa_payment_status'); } catch (e) {}
   }
 
-  function verifyPayment() {
+  function _storedPaymentStatus() {
+    try {
+      var stored = JSON.parse(localStorage.getItem('sa_payment_status')) || {};
+      return stored.ref && stored.token ? stored : null;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  var _payAttempt = 0;
+  var _payRetryDelays = [1500, 3000, 6000, 12000, 20000];
+  var _payRetryTimer = null;
+
+  function _payScheduleRetry() {
+    if (_payAttempt >= _payRetryDelays.length) {
+      _payState = 'pending';
+      renderPayment();
+      return;
+    }
+    var delay = _payRetryDelays[_payAttempt++];
+    clearTimeout(_payRetryTimer);
+    _payRetryTimer = setTimeout(function () { verifyPayment(false); }, delay);
+  }
+
+  function _payApplyConfirmed() {
+    clearTimeout(_payRetryTimer);
+    _payState = 'ok';
+    _payFinaliseSuccess();
+    renderPayment();
+  }
+
+  function verifyPayment(manual) {
     var p = _payParams();
 
     if (!PAYMENT_API) {
@@ -282,28 +321,60 @@
       return;
     }
 
-    fetch(PAYMENT_API + '/verify-payment', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ query: p.raw })
-    })
-      .then(function (r) { return r.ok ? r.json() : Promise.reject(new Error('verify failed')); })
-      .then(function (data) {
-        if (data && data.ok) { _payState = 'ok'; _payFinaliseSuccess(); }
-        // The backend could not confirm a payment HYP said was approved. The
-        // charge has probably gone through, so this stays "we are confirming"
-        // rather than becoming "it failed" - and the cart is left alone.
-        else if (data && data.unconfirmed) { _payState = 'pending'; }
-        else { _payState = 'failed'; }
-        renderPayment();
+    if (manual) {
+      _payAttempt = 0;
+      _payState = 'checking';
+      renderPayment();
+    }
+
+    // The Worker already verified new HYP returns before redirecting here.
+    if (p.server === 'ok') {
+      _payApplyConfirmed();
+      return;
+    }
+
+    var stored = _storedPaymentStatus();
+    var statusCheck = stored
+      ? fetch(PAYMENT_API + '/order-status?ref=' + encodeURIComponent(stored.ref) +
+          '&token=' + encodeURIComponent(stored.token))
+          .then(function (r) { return r.ok ? r.json() : null; })
+      : Promise.resolve(null);
+
+    statusCheck.then(function (status) {
+      if (status && status.paid) {
+        _payApplyConfirmed();
+        return null;
+      }
+
+      // Old payment pages returned directly here. Keep their verification call
+      // during rollout; new pages return through the Worker and carry server=.
+      if (p.server || !p.raw) return null;
+      return fetch(PAYMENT_API + '/verify-payment', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ query: p.raw })
       })
-      .catch(function () {
-        // Verification itself failed, which is not the same as the payment
-        // failing - the shopper may well have been charged. Say so, and keep
-        // their cart intact.
-        _payState = p.ccode === '0' ? 'pending' : 'failed';
+        .then(function (r) { return r.ok ? r.json() : Promise.reject(new Error('verify failed')); })
+        .then(function (data) {
+          if (data && data.ok) _payApplyConfirmed();
+          return data;
+        });
+    }).then(function (result) {
+      if (_payState === 'ok' || (result && result.ok)) return;
+      if (p.ccode && p.ccode !== '0') {
+        _payState = 'failed';
         renderPayment();
-      });
+        return;
+      }
+      _payScheduleRetry();
+    }).catch(function () {
+      if (p.ccode && p.ccode !== '0') {
+        _payState = 'failed';
+        renderPayment();
+      } else {
+        _payScheduleRetry();
+      }
+    });
   }
 
   document.addEventListener('DOMContentLoaded', function () {

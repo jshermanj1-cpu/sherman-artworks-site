@@ -221,7 +221,13 @@ function setShipZone(zone) {
 // domestic, English readers are not. Only ever a pre-selection - the picker on
 // checkout.html always shows which zone is currently charged.
 function effectiveShipZone() {
-  return getShipZone() || ((typeof currentLang !== 'undefined' && currentLang === 'he') ? 'IL' : 'INTL');
+  var stored = getShipZone();
+  if (stored) return stored;
+  var inferred = (typeof currentLang !== 'undefined' && currentLang === 'he') ? 'IL' : 'INTL';
+  // Persist the initial inference. Otherwise switching language after returning
+  // from payment silently changes an Israeli basket to international shipping.
+  try { localStorage.setItem(SHIP_KEY, inferred); } catch (e) {}
+  return inferred;
 }
 
 // Shipping in ILS, because the order total is ILS-native like every other price.
