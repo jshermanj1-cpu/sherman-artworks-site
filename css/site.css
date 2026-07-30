@@ -1218,3 +1218,6 @@ button.modal-thumb:focus-visible { outline: 3px solid var(--gold-text); outline-
   border-bottom: 1px solid transparent; transition: border-color 0.25s;
 }
 .faq-all-link:hover { border-bottom-color: var(--gold); }
+
+/* Temporarily hide the Horn Goblets collection from customer-facing navigation. */
+a[href$="horn-goblets.html"] { display: none !important; }
