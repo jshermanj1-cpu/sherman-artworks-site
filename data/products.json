@@ -2977,23 +2977,5 @@
       "trays-bowls.html"
     ],
     "personalisable": false
-  },
-  {
-    "id": "test-tray-product",
-    "sku": "SAW-TB-008",
-    "category": "trays-bowls",
-    "pages": [
-      "trays-bowls.html"
-    ],
-    "name_en": "Test Tray Product",
-    "name_he": "מוצר בדיקה למגשים וקערות",
-    "description_en": "Temporary test product for checking the ordering flow. Uses the Sherman Art Works logo as its image.",
-    "description_he": "מוצר בדיקה זמני לבדיקת תהליך ההזמנה. תמונת המוצר היא הלוגו של שרמן ארט וורקס.",
-    "measurements": "",
-    "price_ils": 18,
-    "photos": [
-      "WhatsApp_Image_2026-05-23_at_14.51.54_xv8lbd"
-    ],
-    "personalisable": false
   }
 ]
