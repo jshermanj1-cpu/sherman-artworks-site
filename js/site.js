@@ -80,6 +80,7 @@ const T_SITE = {
     cart_title:          'Cart',
     cart_subtotal:       'Subtotal',
     cart_total:          'Total',
+    cart_pay:            'Pay by card',
     cart_checkout:       'Order on WhatsApp',
     cart_review:         'Review order →',
 
@@ -146,6 +147,7 @@ const T_SITE = {
     cart_title:          'עגלה',
     cart_subtotal:       'סכום ביניים',
     cart_total:          'סה"כ',
+    cart_pay:            'תשלום בכרטיס אשראי',
     cart_checkout:       'הזמינו ב-WhatsApp',
     cart_review:         'לסיכום הזמנה ←',
 

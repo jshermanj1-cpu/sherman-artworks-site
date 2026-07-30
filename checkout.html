@@ -615,6 +615,41 @@
       var input = label.querySelector('input');
       label.classList.toggle('selected', !!(input && input.checked));
     });
+    syncCountryField();
+  }
+
+  /**
+   * Choosing Israel as the destination has already answered the country, so
+   * asking again is a redundant required field on the one screen where every
+   * extra field costs a sale. The input stays in the DOM, filled and hidden, so
+   * the order and the HYP prefill still carry a country.
+   *
+   * The auto-filled flag matters for the round trip: someone who picks
+   * International, types a country, then flips to Israel and back should get
+   * their own answer returned, not "Israel" left sitting there.
+   */
+  function syncCountryField() {
+    var input = document.querySelector('[data-ship="country"]');
+    if (!input) return;
+    var field = input.closest('.addr-field');
+    var isIsrael = effectiveShipZone() === 'IL';
+
+    if (isIsrael) {
+      // Always Israel, never "whatever was typed before the destination
+      // changed". A hidden field holding a stale country is worse than a
+      // visible wrong one, because nobody can see it to correct it.
+      if (input.dataset.auto !== '1') input.dataset.userValue = input.value || '';
+      input.value = 'Israel';
+      input.dataset.auto = '1';
+      if (field) field.hidden = true;
+    } else {
+      if (field) field.hidden = false;
+      if (input.dataset.auto === '1') {
+        input.value = input.dataset.userValue || '';
+        delete input.dataset.auto;
+      }
+    }
+    saveShippingAddress();
   }
 
   // A confirmed total only describes the cart it was quoted for.

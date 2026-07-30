@@ -553,6 +553,25 @@ html[dir="rtl"] .checkout-table .col-price { text-align: left; }
   box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.04);
 }
 
+/* Drawer's card-payment action. Leads to the checkout page, where the delivery
+   details a card payment needs are actually collected. */
+.cart-pay-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: var(--dark);
+  color: #fff;
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  font-size: 0.92rem;
+  font-weight: 700;
+  text-decoration: none;
+  font-family: var(--ff-body);
+  transition: background 0.2s;
+}
+.cart-pay-btn:hover { background: var(--brown); color: #fff; }
+
 /* ── PAY BY CARD ───────────────────────────────────────────────── */
 
 .checkout-pay-btn {
