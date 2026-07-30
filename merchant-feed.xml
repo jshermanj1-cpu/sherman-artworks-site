@@ -4366,5 +4366,23 @@
       <g:price>35.00 ILS</g:price>
     </g:shipping>
   </item>
+  <item>
+    <g:id>test-tray-product</g:id>
+    <g:title>Test Tray Product</g:title>
+    <g:description>Temporary test product for checking the ordering flow. Uses the Sherman Art Works logo as its image.</g:description>
+    <g:link>https://shermanartworks.com/trays-bowls.html#test-tray-product</g:link>
+    <g:image_link>https://res.cloudinary.com/doesupaf9/image/upload/w_1200,q_auto:good/WhatsApp_Image_2026-05-23_at_14.51.54_xv8lbd.jpg</g:image_link>
+    <g:availability>in_stock</g:availability>
+    <g:price>18.00 ILS</g:price>
+    <g:condition>new</g:condition>
+    <g:brand>Sherman Art Works</g:brand>
+    <g:mpn>SAW-TB-008</g:mpn>
+    <g:product_type>Trays &amp; Bowls</g:product_type>
+    <g:google_product_category>6457</g:google_product_category>
+    <g:shipping>
+      <g:country>IL</g:country>
+      <g:price>35.00 ILS</g:price>
+    </g:shipping>
+  </item>
 </channel>
 </rss>
