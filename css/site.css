@@ -298,6 +298,15 @@ nav {
 .btn-order  { background: var(--green); color: #111; border: 1px solid var(--green); text-decoration: none; }
 .btn-order:hover { background: #1da851; border-color: #1da851; }
 
+/* Product cards open from the card itself, so keep the gallery free of
+   redundant Details and WhatsApp actions. Modal and page CTAs are unchanged. */
+.product-card .view-details,
+.product-card .btn-details,
+.product-card .btn-order,
+.product-card .product-card-secondary-actions {
+  display: none;
+}
+
 /* ── 9. CARD CAROUSEL ────────────────────────────────────────── */
 .card-nav {
   position: absolute; top: 50%; transform: translateY(-50%);
