@@ -363,7 +363,7 @@
   </div>
 </footer>
 
-<script src="js/site.js"></script>
+<script src="js/site.js?v=20260801c"></script>
 <script src="js/cart.js?v=20260801b"></script>
 <script>const PRODUCTS = [
   {
@@ -902,7 +902,7 @@
     if (p.measurements) { document.getElementById('modalMeasurements').textContent = p.measurements; mrRow.style.display = ''; }
     else { mrRow.style.display = 'none'; }
     const plate = getCurrentTrayAddon();
-    document.getElementById('modalPrice').innerHTML = formatPriceModal(p.price_ils + (plate ? plate.bundle_price_ils : 0));
+    document.getElementById('modalPrice').innerHTML = formatPriceModal(p.price_ils + (plate ? plate.bundle_price_ils : 0), plate ? plate.bundle_price_ils : 0);
     const photo = plate && plate.set_photo ? plate.set_photo : p.photos[currentPhotoIdx];
     document.getElementById('modalMainImg').src = `${CDN}/q_auto,f_auto/${photo}.jpg`;
     document.getElementById('modalMainImg').alt = `${name} - photo ${currentPhotoIdx + 1} of ${p.photos.length}`;

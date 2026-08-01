@@ -33,10 +33,12 @@ function launchPill() {
 // Wraps any ils->HTML price formatter so it renders the catalogue price struck
 // through, followed by the discounted price and a launch pill. When the
 // promotion is off it is a passthrough, so wiring it in is always safe.
-function launchFormat(ils, fmt) {
+function launchFormat(ils, fmt, launchExempt) {
   if (!launchActive()) return fmt(ils);
+  var exempt = Math.max(0, Number(launchExempt) || 0);
+  var eligible = Math.max(0, ils - exempt);
   return '<span class="was-price">' + fmt(ils) + '</span> ' +
-         '<span class="now-price">' + fmt(saleIls(ils)) + '</span>' + launchPill();
+         '<span class="now-price">' + fmt(saleIls(eligible) + exempt) + '</span>' + launchPill();
 }
 
 // Backend that signs HYP Pay requests and verifies completed transactions.
@@ -600,7 +602,7 @@ function wrapLaunchFormatters() {
   ['formatPrice', 'formatPriceModal', 'formatProductPrice'].forEach(function(name) {
     var orig = window[name];
     if (typeof orig !== 'function' || orig.__launchWrapped) return;
-    var wrapped = function(ils) { return launchFormat(ils, orig); };
+    var wrapped = function(ils, launchExempt) { return launchFormat(ils, orig, launchExempt); };
     wrapped.__launchWrapped = true;
     window[name] = wrapped;
   });
