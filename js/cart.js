@@ -133,6 +133,15 @@ function productSku(product, size) {
 
 function addToCart(slug, name_en, name_he, price_ils, photo, sku, meta) {
   var items = getCart();
+  // Launch discount is applied here, at the single point every add path funnels
+  // through, so the stored price_ils - which drives the cart, checkout total and
+  // the amount sent for card repricing - is already the discounted figure. The
+  // catalogue price is kept as regular_price_ils only so the cart can strike it
+  // through. Rounding (nearest whole shekel on the combined unit) matches the
+  // payments Worker exactly, so the server's total check passes.
+  var regular = price_ils;
+  var charged = (typeof saleIls === 'function') ? saleIls(price_ils) : price_ils;
+  var discounted = charged !== regular;
   var key = meta ? slug + '::' + [meta.color || '', meta.size || '', meta.tray_id || '', meta.symbol || '', meta.text || '', meta.comment || ''].join('|') : slug;
   var page = (location.pathname.split('/').pop() || 'index.html');
   var existing = items.find(function (i) { return _cartKey(i) === key; });
@@ -140,15 +149,16 @@ function addToCart(slug, name_en, name_he, price_ils, photo, sku, meta) {
     existing.qty += 1;
     if (!existing.sku && sku) existing.sku = sku;
   } else {
-    var entry = { slug: slug, sku: sku || '', key: key, page: page, name_en: name_en, name_he: name_he || '', price_ils: price_ils, photo: photo, qty: 1 };
+    var entry = { slug: slug, sku: sku || '', key: key, page: page, name_en: name_en, name_he: name_he || '', price_ils: charged, photo: photo, qty: 1 };
+    if (discounted) entry.regular_price_ils = regular;
     if (meta) entry.meta = meta;
     items.push(entry);
   }
   _saveCart(items);
   if (typeof trackGA4 === 'function') {
     trackGA4('add_to_cart', {
-      currency: 'ILS', value: price_ils,
-      items: [{ item_id: sku || slug, item_name: name_en, price: price_ils, quantity: 1 }]
+      currency: 'ILS', value: charged,
+      items: [{ item_id: sku || slug, item_name: name_en, price: charged, quantity: 1 }]
     });
   }
   if (typeof a11yAnnounce === 'function') {
@@ -195,6 +205,14 @@ function getCartCount() {
 // Line items only - shipping is added on top by getOrderTotal().
 function getCartTotal() {
   return getCart().reduce(function (s, i) { return s + i.price_ils * i.qty; }, 0);
+}
+
+// Total shekels saved by the launch discount across the cart, for the order
+// message. Zero when nothing in the cart carries a struck catalogue price.
+function getCartLaunchSavings() {
+  return getCart().reduce(function (s, i) {
+    return s + (i.regular_price_ils ? (i.regular_price_ils - i.price_ils) * i.qty : 0);
+  }, 0);
 }
 
 // ── SHIPPING ───────────────────────────────────────────────────
@@ -417,6 +435,8 @@ function buildCheckoutWaLink() {
       }
     });
     lines.push('');
+    var heSaved = getCartLaunchSavings();
+    if (heSaved > 0) lines.push('הנחת השקה 20% הוחלה (-₪' + heSaved.toLocaleString('en-IL') + ')');
     lines.push('סכום ביניים: ₪' + total.toLocaleString('en-IL'));
     lines.push('משלוח (' + (zone === 'IL' ? 'ישראל' : 'בינלאומי') + '): ' + getShippingLabel());
     lines.push('סה"כ: ₪' + getOrderTotal().toLocaleString('en-IL'));
@@ -443,6 +463,8 @@ function buildCheckoutWaLink() {
       }
     });
     lines.push('');
+    var enSaved = getCartLaunchSavings();
+    if (enSaved > 0) lines.push('Launch 20% discount applied (-₪' + enSaved.toLocaleString('en-IL') + ')');
     lines.push('Subtotal: ₪' + total.toLocaleString('en-IL'));
     lines.push('Shipping (' + (zone === 'IL' ? 'Israel' : 'International') + '): ' + getShippingLabel());
     lines.push('Total: ₪' + getOrderTotal().toLocaleString('en-IL'));
@@ -508,6 +530,12 @@ function renderCartDrawer() {
     var lineIls = item.price_ils * item.qty;
     var priceStr = '₪' + lineIls.toLocaleString('en-IL');
     if (showUsd) priceStr += ' <span class="cart-price-alt">≈ $' + Math.round(lineIls / rate) + '</span>';
+    if (item.regular_price_ils) {
+      var wasIls = item.regular_price_ils * item.qty;
+      var wasStr = '₪' + wasIls.toLocaleString('en-IL');
+      if (showUsd) wasStr += ' <span class="cart-price-alt">≈ $' + Math.round(wasIls / rate) + '</span>';
+      priceStr = '<span class="was-price">' + wasStr + '</span> <span class="now-price">' + priceStr + '</span>';
+    }
     var slug = escapeAttr(item.slug);
     var url = _cartItemUrl(item);
     var thumbImg = `<img class="cart-item-thumb" src="${escapeAttr(thumb)}" alt="${escapeAttr(name)}" loading="lazy" />`;

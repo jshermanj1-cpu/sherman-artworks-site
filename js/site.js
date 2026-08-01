@@ -7,6 +7,38 @@
 const WA_NUMBER = '972523482278';
 const CDN = 'https://res.cloudinary.com/doesupaf9/image/upload';
 
+// ── LAUNCH DISCOUNT ────────────────────────────────────────────
+// Site-wide launch promotion. Everything except shipping is sold at
+// (1 - LAUNCH_DISCOUNT) of its catalogue price. Set to 0 to turn the whole
+// promotion off - the banner disappears, struck prices revert, and the cart /
+// checkout charge full price again, with no other change needed. The identical
+// factor and rounding rule live in the payments Worker (sherman-payments,
+// src/pricing.js) so the server reprices card orders to the same total; if you
+// change this number, change it there too or card orders will bounce.
+const LAUNCH_DISCOUNT = 0.20;
+
+function launchActive() { return LAUNCH_DISCOUNT > 0; }
+
+// Sale price for one item, rounded to the nearest whole shekel. Must match the
+// server's rounding (Math.round on the per-line unit) exactly.
+function saleIls(ils) {
+  return launchActive() ? Math.round(ils * (1 - LAUNCH_DISCOUNT)) : ils;
+}
+
+function launchPill() {
+  var label = (T_SITE[currentLang] && T_SITE[currentLang].launch_pill) || '20% launch discount';
+  return ' <span class="launch-pill">' + label + '</span>';
+}
+
+// Wraps any ils->HTML price formatter so it renders the catalogue price struck
+// through, followed by the discounted price and a launch pill. When the
+// promotion is off it is a passthrough, so wiring it in is always safe.
+function launchFormat(ils, fmt) {
+  if (!launchActive()) return fmt(ils);
+  return '<span class="was-price">' + fmt(ils) + '</span> ' +
+         '<span class="now-price">' + fmt(saleIls(ils)) + '</span>' + launchPill();
+}
+
 // Backend that signs HYP Pay requests and verifies completed transactions.
 // With this empty, the result pages report an order as awaiting confirmation
 // rather than claiming it succeeded, because a redirect back from a payment
@@ -27,6 +59,10 @@ const T_SITE = {
     nav_contact:         'Contact',
 
     badge_soon:          'Coming Soon',
+
+    launch_banner_pre:   'Official launch',
+    launch_banner_text:  '20% off everything, site-wide',
+    launch_pill:         '20% launch discount',
 
     cat1_title:          'Candlesticks',
     cat2_title:          'Horn Goblets',
@@ -96,6 +132,10 @@ const T_SITE = {
     nav_contact:         'צור קשר',
 
     badge_soon:          'בקרוב',
+
+    launch_banner_pre:   'השקה רשמית',
+    launch_banner_text:  '20% הנחה על כל האתר',
+    launch_pill:         'הנחת השקה 20%',
 
     cat1_title:          'פמוטים',
     cat2_title:          'גביעי קרן',
@@ -218,12 +258,19 @@ function updatePrices() {
   var fromLabel = (T_SITE[currentLang] && T_SITE[currentLang].cat_from)
     || (typeof T_PAGE !== 'undefined' && T_PAGE[currentLang] && T_PAGE[currentLang].cat_from)
     || 'from';
+  function fromAmount(ils) {
+    if (currentCurrency === 'ILS' || !usdRate) {
+      return '₪' + ils.toLocaleString('en-IL');
+    }
+    return '$' + Math.round(ils / usdRate).toLocaleString('en-US');
+  }
   document.querySelectorAll('.cat-card-from[data-min-ils]').forEach(function(el) {
     var ils = parseInt(el.dataset.minIls, 10);
-    if (currentCurrency === 'ILS' || !usdRate) {
-      el.textContent = fromLabel + ' ₪' + ils.toLocaleString('en-IL');
+    if (launchActive()) {
+      el.innerHTML = fromLabel + ' <span class="was-price">' + fromAmount(ils) + '</span> ' +
+                     '<span class="now-price">' + fromAmount(saleIls(ils)) + '</span>';
     } else {
-      el.textContent = fromLabel + ' $' + Math.round(ils / usdRate).toLocaleString('en-US');
+      el.textContent = fromLabel + ' ' + fromAmount(ils);
     }
   });
 }
@@ -543,9 +590,41 @@ function initA11y() {
 }
 
 // ── INIT ────────────────────────────────────────────────────────
+// Re-point the page's global price formatters at the discounted-price wrapper.
+// buildCard/renderModal call these by name at render time, so wrapping them here
+// - before the first render below - makes every card, modal and size option
+// show the launch price with no per-page edits. Passthrough when the promo is
+// off, and idempotent so a second call is harmless.
+function wrapLaunchFormatters() {
+  if (!launchActive()) return;
+  ['formatPrice', 'formatPriceModal', 'formatProductPrice'].forEach(function(name) {
+    var orig = window[name];
+    if (typeof orig !== 'function' || orig.__launchWrapped) return;
+    var wrapped = function(ils) { return launchFormat(ils, orig); };
+    wrapped.__launchWrapped = true;
+    window[name] = wrapped;
+  });
+}
+
+function initLaunchBanner() {
+  if (!launchActive()) return;
+  if (document.getElementById('launchBanner')) return;
+  var d = T_SITE[currentLang] || T_SITE.en;
+  var bar = document.createElement('div');
+  bar.className = 'launch-banner';
+  bar.id = 'launchBanner';
+  bar.setAttribute('role', 'note');
+  bar.innerHTML =
+    '<span class="launch-banner-flag" data-t="launch_banner_pre">' + d.launch_banner_pre + '</span>' +
+    '<span class="launch-banner-text" data-t="launch_banner_text">' + d.launch_banner_text + '</span>';
+  document.body.insertBefore(bar, document.body.firstChild);
+}
+
 document.addEventListener('DOMContentLoaded', function() {
+  wrapLaunchFormatters();
   initConsent();
   initA11y();
+  initLaunchBanner();
   // Static /he/ pages set window.__SA_LANG='he' so the URL (not a stale
   // localStorage value) wins - otherwise JS would re-render them in English.
   var lang = window.__SA_LANG || localStorage.getItem('sa_lang') || 'en';

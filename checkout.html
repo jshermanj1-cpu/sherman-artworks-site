@@ -327,6 +327,12 @@
       var lineIls = item.price_ils * item.qty;
       var priceStr = '₪' + lineIls.toLocaleString('en-IL');
       if (showUsd) priceStr += ' <span class="cart-price-alt">≈ $' + Math.round(lineIls / rate) + '</span>';
+      if (item.regular_price_ils) {
+        var wasIls = item.regular_price_ils * item.qty;
+        var wasStr = '₪' + wasIls.toLocaleString('en-IL');
+        if (showUsd) wasStr += ' <span class="cart-price-alt">≈ $' + Math.round(wasIls / rate) + '</span>';
+        priceStr = '<span class="was-price">' + wasStr + '</span> <span class="now-price">' + priceStr + '</span>';
+      }
       var url = _cartItemUrl(item);
       var thumbImg = '<img class="checkout-thumb" src="' + escapeAttr(thumb) + '" alt="' + escapeAttr(name) + '" loading="lazy" />';
       var metaHtml = _cartMetaHtml(item, isHe).replace('cart-item-meta', 'checkout-item-meta');

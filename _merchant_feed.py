@@ -10,6 +10,8 @@ import re
 from pathlib import Path
 from xml.sax.saxutils import escape
 
+from _launch import launch_active, sale_ils
+
 
 ROOT = Path(__file__).parent
 PRODUCTS_PATH = ROOT / "data" / "products.json"
@@ -70,7 +72,16 @@ def item_lines(product, size=None):
     lines.extend(
         [
             tag("availability", "in_stock"),
+            # g:price stays the regular catalogue price; the launch sale is
+            # expressed with g:sale_price so Google Shopping shows the markdown
+            # (struck regular + sale) rather than just a lower price.
             tag("price", f"{price:.2f} ILS"),
+        ]
+    )
+    if launch_active():
+        lines.append(tag("sale_price", f"{sale_ils(price):.2f} ILS"))
+    lines.extend(
+        [
             tag("condition", "new"),
             tag("brand", "Sherman Art Works"),
             tag("mpn", mpn),

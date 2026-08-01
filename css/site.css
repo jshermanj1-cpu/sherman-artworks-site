@@ -131,6 +131,59 @@ nav {
   letter-spacing: 0.22em;
 }
 
+/* ── 5a. LAUNCH BANNER ──────────────────────────────────────── */
+.launch-banner {
+  background: var(--gold);
+  color: #4a3800;
+  text-align: center;
+  padding: 0.7rem 1.5rem;
+  font-family: var(--ff-disp);
+  font-size: 0.9rem;
+  line-height: 1.5;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: center;
+  gap: 0.5rem;
+}
+.launch-banner-flag {
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-size: 0.78rem;
+  padding: 0.1rem 0.55rem;
+  background: var(--dark);
+  color: var(--gold);
+  border-radius: 999px;
+}
+.launch-banner-text { font-weight: 700; }
+
+/* Struck catalogue price + discounted price shown together on cards, modal,
+   homepage "from" prices and the cart. */
+.was-price {
+  text-decoration: line-through;
+  color: #a89678;
+  font-weight: 400;
+  margin-inline-end: 0.15em;
+}
+.was-price .product-card-price-alt,
+.was-price .cart-price-alt { text-decoration: line-through; }
+.now-price { font-weight: 700; color: inherit; }
+.launch-pill {
+  display: inline-block;
+  background: var(--gold);
+  color: #4a3800;
+  font-family: var(--ff-body);
+  font-weight: 700;
+  font-size: 0.62rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 0.12rem 0.5rem;
+  border-radius: 999px;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
 /* ── 5b. STUDIO STRIP ──────────────────────────────────────── */
 .studio-strip {
   background: var(--dark);
