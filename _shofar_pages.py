@@ -48,10 +48,10 @@ PAGES = {
     "rams": {
         "file": "shofars-rams.html",
         "title": "Ram's Horn Shofars, Hand-Plated in 925 Silver | Sherman Art Works",
-        "desc": "Ram's-horn shofars from 30 to 65 cm, each hand-decorated and plated in 925 silver in our studio in Israel. Ten designs plus a fully personalised option.",
+        "desc": "Ram's-horn shofars from 30 to 65 cm, each hand-plated in 925 silver in our studio in Israel. Ten designs plus a fully personalised option.",
         "og_title": "Ram's Horn Shofars, Sherman Art Works",
         "hero_headline": "Ram's Horn Shofars",
-        "hero_subtitle": "Decorated by hand in 925 silver.",
+        "hero_subtitle": "Plated by hand in 925 silver.",
         "hero_body": "Natural ram's-horn shofars from 30 to 65 cm, each hand-plated in 925 silver. Start with the personalised one, or choose a design and size.",
         "bc": "Ram's Horn Shofars",
         "image": "Magen_David_1_ram_pgvhoa",
@@ -60,10 +60,10 @@ PAGES = {
     "kudu": {
         "file": "shofars-kudu.html",
         "title": "Kudu Shofars, Hand-Plated in 925 Silver | Sherman Art Works",
-        "desc": "Kudu-horn shofars up to 129 cm, each hand-decorated and plated in 925 silver in our studio in Israel. Ten designs plus a fully personalised option.",
+        "desc": "Kudu-horn shofars up to 129 cm, each hand-plated in 925 silver in our studio in Israel. Ten designs plus a fully personalised option.",
         "og_title": "Kudu Shofars, Sherman Art Works",
         "hero_headline": "Kudu Shofars",
-        "hero_subtitle": "Decorated by hand in 925 silver.",
+        "hero_subtitle": "Plated by hand in 925 silver.",
         "hero_body": "Natural kudu-horn shofars up to 129 cm long, each hand-plated in 925 silver. Start with the personalised one, or choose a design and size.",
         "bc": "Kudu Shofars",
         "image": "Kudu_Jerusalem_Lions_xelufl",
@@ -104,7 +104,7 @@ def static_cards(items):
     out = []
     for p in items:
         ils = min_price(p)
-        alt = html.escape(f'{p["name_en"]}, handmade shofar decorated in 925 silver from Sherman Art Works', quote=True)
+        alt = html.escape(f'{p["name_en"]}, handmade shofar plated in 925 silver from Sherman Art Works', quote=True)
         out.append(f'''    <article class="product-card">
       <div class="product-card-img-wrap">
         <img src="{CDN}/w_600,c_fit,q_auto,f_auto/{p["photos"][0]}.jpg" alt="{alt}" loading="lazy" />
