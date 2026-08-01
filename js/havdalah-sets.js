@@ -10,7 +10,7 @@ const PRODUCTS = [
     "color_en": "Black",
     "color_he": "שחור",
     "measurements": "",
-    "price_ils": 1369,
+    "price_ils": 1506,
     "photos": ["Havdala_black_set_wdnnhk"]
   },
   {
@@ -24,7 +24,7 @@ const PRODUCTS = [
     "color_en": "Blue",
     "color_he": "כחול",
     "measurements": "",
-    "price_ils": 1369,
+    "price_ils": 1506,
     "photos": ["Blue_havdala_set_guzrpu"]
   },
   {
@@ -38,7 +38,7 @@ const PRODUCTS = [
     "color_en": "White",
     "color_he": "לבן",
     "measurements": "",
-    "price_ils": 1369,
+    "price_ils": 1506,
     "photos": ["Havdala_white_set_wnymec"]
   },
   {
@@ -51,7 +51,7 @@ const PRODUCTS = [
     "color_en": "Orange",
     "color_he": "כתום",
     "measurements": "",
-    "price_ils": 1212,
+    "price_ils": 1334,
     "photos": ["Orange_havdala_set_bh5ut5"]
   }
 ];

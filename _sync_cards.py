@@ -115,7 +115,7 @@ def _bg_card(photo, name_en, desc_en, from_ils, usd):
         '          <span class="product-card-price">from &#8362;%s '
         '<span class="product-card-price-alt">&#8776; $%s</span></span>\n'
         '        </div>\n'
-        '        <p class="product-color-note">* Colors may appear slightly different '
+        '        <p class="product-color-note">* Colors and measurements may appear slightly different '
         'in person, as each item is handmade.</p>\n'
         '      </div>\n'
         '    </article>'
@@ -127,9 +127,9 @@ def rebuild_business_gifts_grid():
     raw = read(page)
     cards = [
         _bg_card("Chabad_shofar_o1sgb7", "Custom Ram's Horn Shofar, Symbol & Text",
-                 DESC_EN[norm("Custom Ram's Horn Shofar, Symbol & Text")], "742", "238"),
+                 DESC_EN[norm("Custom Ram's Horn Shofar, Symbol & Text")], "817", "262"),
         _bg_card("Name_kudu_shofar_hqdju6", "Custom Kudu Shofar, Symbol & Text",
-                 DESC_EN[norm("Custom Kudu Shofar, Symbol & Text")], "1,297", "416"),
+                 DESC_EN[norm("Custom Kudu Shofar, Symbol & Text")], "1,427", "458"),
     ]
     new_block = "\n".join(cards)
     # Replace the single static SEO article with the two real cards. Consume the

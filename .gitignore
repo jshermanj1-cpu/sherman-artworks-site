@@ -6,3 +6,4 @@ pics/
 _*.py
 !_candlestick_pages.py
 _pricing/
+__pycache__/

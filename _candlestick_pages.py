@@ -92,7 +92,7 @@ def static_cards(items):
         <div class="product-card-meta">
           <span class="product-card-price">{prefix}&#8362;{ils:,} <span class="product-card-price-alt">≈ ${round(ils / USD_RATE)}</span></span>
         </div>
-        <p class="product-color-note">* Colors may appear slightly different in person, as each item is handmade.</p>
+        <p class="product-color-note">* Colors and measurements may appear slightly different in person, as each item is handmade.</p>
       </div>
     </article>""")
     return "\n".join(cards)

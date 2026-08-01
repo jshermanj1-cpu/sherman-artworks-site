@@ -24,12 +24,12 @@ SITE = Path(__file__).parent
 CDN = "https://res.cloudinary.com/doesupaf9/image/upload"
 BASE = "https://shermanartworks.com"
 USD_RATE = 3.117  # keep in step with the static "≈ $" figures in shofars.html
-COLOR_NOTE = "* Colors may appear slightly different in person, as each item is handmade."
+COLOR_NOTE = "* Colors and measurements may appear slightly different in person, as each item is handmade."
 
 # Minimum price per size ladder - the "from ₪X" on a card, for the no-JS view.
 SIZE_MIN = {
-    "RAMS_SIZES": 418, "RAMS_CUSTOM_SIZES": 742,
-    "KUDU_SIZES": 1214, "KUDU_CUSTOM_SIZES": 1297,
+    "RAMS_SIZES": 460, "RAMS_CUSTOM_SIZES": 817,
+    "KUDU_SIZES": 1336, "KUDU_CUSTOM_SIZES": 1427,
 }
 
 PAGES = {
