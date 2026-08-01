@@ -141,6 +141,8 @@ def main():
     for product in products:
         if product.get("active") is False:
             continue
+        if product.get("category") == "horn-goblets":
+            continue
         sizes = product.get("sizes") or []
         for size in sizes or [None]:
             lines.extend(item_lines(product, size))

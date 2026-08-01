@@ -1,12 +1,10 @@
 # Price Backup - 2026-08-01
 
-Snapshot of every catalogue price **before** the site-wide +10% increase
+Snapshot of every catalogue price on `main` **before** the site-wide +10% increase
 (round up to whole shekel; bundles = new regular price with the existing discount % re-applied).
 
-Restore source of truth: this table + git history of `data/products.json`, the page `PRODUCTS`
-arrays, `js/shofar-products.js`, `js/shofar-options.js`, and `js/havdalah-sets.js`.
-
-Test entries **SAW-CS-016** (₪1) and **SAW-TB-008** (₪18) are excluded from the increase.
+Restore source: this table + git history of `data/products.json`, the page `PRODUCTS` arrays,
+`js/shofar-products.js`, `js/shofar-options.js`, and `js/havdalah-sets.js`.
 
 | SKU | Product | Current ₪ | New ₪ (ref) |
 |-----|---------|----------:|-----------:|
@@ -18,43 +16,43 @@ Test entries **SAW-CS-016** (₪1) and **SAW-TB-008** (₪18) are excluded from 
 | SAW-CS-004 | White 925 Silver-Plated Glass Candlesticks - size M (19-22cm) | 623 | 686 |
 | SAW-CS-004 | White 925 Silver-Plated Glass Candlesticks - size L (23-25cm) | 712 | 784 |
 | SAW-CS-004-addon | Matching White 925 Silver-Plated Glass Tray - regular | 510 | 561 |
-| SAW-CS-004-addon | Matching White 925 Silver-Plated Glass Tray - bundle (?% off) | 406 | 447 |
+| SAW-CS-004-addon | Matching White 925 Silver-Plated Glass Tray - bundle (~20% off) | 406 | 447 |
 | SAW-CS-005 | Red 925 Silver-Plated Glass Candlesticks | 561 | 618 |
 | SAW-CS-005 | Red 925 Silver-Plated Glass Candlesticks - size S (14-18cm) | 561 | 618 |
 | SAW-CS-005 | Red 925 Silver-Plated Glass Candlesticks - size M (19-22cm) | 623 | 686 |
 | SAW-CS-005 | Red 925 Silver-Plated Glass Candlesticks - size L (23-25cm) | 712 | 784 |
 | SAW-CS-005-addon | Matching Red 925 Silver-Plated Glass Tray - regular | 510 | 561 |
-| SAW-CS-005-addon | Matching Red 925 Silver-Plated Glass Tray - bundle (?% off) | 406 | 447 |
+| SAW-CS-005-addon | Matching Red 925 Silver-Plated Glass Tray - bundle (~20% off) | 406 | 447 |
 | SAW-CS-006 | Blue 925 Silver-Plated Glass Candlesticks | 561 | 618 |
 | SAW-CS-006 | Blue 925 Silver-Plated Glass Candlesticks - size S (14-18cm) | 561 | 618 |
 | SAW-CS-006 | Blue 925 Silver-Plated Glass Candlesticks - size M (19-22cm) | 623 | 686 |
 | SAW-CS-006 | Blue 925 Silver-Plated Glass Candlesticks - size L (23-25cm) | 712 | 784 |
 | SAW-CS-006-addon | Matching Blue 925 Silver-Plated Glass Tray - regular | 510 | 561 |
-| SAW-CS-006-addon | Matching Blue 925 Silver-Plated Glass Tray - bundle (?% off) | 406 | 447 |
+| SAW-CS-006-addon | Matching Blue 925 Silver-Plated Glass Tray - bundle (~20% off) | 406 | 447 |
 | SAW-CS-007 | Green 925 Silver-Plated Glass Candlesticks | 561 | 618 |
 | SAW-CS-007 | Green 925 Silver-Plated Glass Candlesticks - size S (14-18cm) | 561 | 618 |
 | SAW-CS-007 | Green 925 Silver-Plated Glass Candlesticks - size M (19-22cm) | 623 | 686 |
 | SAW-CS-007 | Green 925 Silver-Plated Glass Candlesticks - size L (23-25cm) | 712 | 784 |
 | SAW-CS-007-addon | Matching Green 925 Silver-Plated Glass Tray - regular | 510 | 561 |
-| SAW-CS-007-addon | Matching Green 925 Silver-Plated Glass Tray - bundle (?% off) | 406 | 447 |
+| SAW-CS-007-addon | Matching Green 925 Silver-Plated Glass Tray - bundle (~20% off) | 406 | 447 |
 | SAW-CS-008 | Black 925 Silver-Plated Glass Candlesticks | 561 | 618 |
 | SAW-CS-008 | Black 925 Silver-Plated Glass Candlesticks - size S (14-18cm) | 561 | 618 |
 | SAW-CS-008 | Black 925 Silver-Plated Glass Candlesticks - size M (19-22cm) | 623 | 686 |
 | SAW-CS-008 | Black 925 Silver-Plated Glass Candlesticks - size L (23-25cm) | 712 | 784 |
 | SAW-CS-008-addon | Matching Black 925 Silver-Plated Glass Tray - regular | 510 | 561 |
-| SAW-CS-008-addon | Matching Black 925 Silver-Plated Glass Tray - bundle (?% off) | 406 | 447 |
+| SAW-CS-008-addon | Matching Black 925 Silver-Plated Glass Tray - bundle (~20% off) | 406 | 447 |
 | SAW-CS-009 | Blue-Green 925 Silver-Plated Glass Candlesticks | 561 | 618 |
 | SAW-CS-009 | Blue-Green 925 Silver-Plated Glass Candlesticks - size S (14-18cm) | 561 | 618 |
 | SAW-CS-009 | Blue-Green 925 Silver-Plated Glass Candlesticks - size M (19-22cm) | 623 | 686 |
 | SAW-CS-009 | Blue-Green 925 Silver-Plated Glass Candlesticks - size L (23-25cm) | 712 | 784 |
 | SAW-CS-009-addon | Matching Blue-Green 925 Silver-Plated Glass Tray - regular | 510 | 561 |
-| SAW-CS-009-addon | Matching Blue-Green 925 Silver-Plated Glass Tray - bundle (?% off) | 406 | 447 |
+| SAW-CS-009-addon | Matching Blue-Green 925 Silver-Plated Glass Tray - bundle (~20% off) | 406 | 447 |
 | SAW-CS-010 | Earth 925 Silver-Plated Glass Candlesticks | 561 | 618 |
 | SAW-CS-010 | Earth 925 Silver-Plated Glass Candlesticks - size S (14-18cm) | 561 | 618 |
 | SAW-CS-010 | Earth 925 Silver-Plated Glass Candlesticks - size M (19-22cm) | 623 | 686 |
 | SAW-CS-010 | Earth 925 Silver-Plated Glass Candlesticks - size L (23-25cm) | 712 | 784 |
 | SAW-CS-010-addon | Matching White 925 Silver-Plated Glass Tray - regular | 510 | 561 |
-| SAW-CS-010-addon | Matching White 925 Silver-Plated Glass Tray - bundle (?% off) | 406 | 447 |
+| SAW-CS-010-addon | Matching White 925 Silver-Plated Glass Tray - bundle (~20% off) | 406 | 447 |
 | SAW-HG-001 | Jerusalem Wine Horn | 850 | 936 |
 | SAW-HG-002 | Lion of Judah Goblet | 473 | 521 |
 | SAW-HG-003 | Menorah Goblet | 473 | 521 |
@@ -71,7 +69,7 @@ Test entries **SAW-CS-016** (₪1) and **SAW-TB-008** (₪18) are excluded from 
 | SAW-CS-013 | Green Dots Candlesticks | 540 | 594 |
 | SAW-CS-014 | Black and White Dots Candlesticks | 540 | 594 |
 | SAW-CS-015 | White Glass Candlesticks | 540 | 594 |
-| SAW-CS-016 | Clear Round Glass Candlesticks *(excluded)* | 1 | 1 |
+| SAW-CS-016 | Clear Round Glass Candlesticks | 540 | 594 |
 | SAW-CS-017 | Clear Rectangular Glass Candlesticks | 540 | 594 |
 | SAW-MZ-002 | Ram Mezuzah | 700 | 771 |
 | SAW-MZ-003 | Kudu Mezuzah | 700 | 771 |
@@ -283,4 +281,3 @@ Test entries **SAW-CS-016** (₪1) and **SAW-TB-008** (₪18) are excluded from 
 | SAW-KC-018 | White Kiddush Cup Plate | 364 | 401 |
 | SAW-KC-019 | Blue-Green Kiddush Cup Plate | 364 | 401 |
 | SAW-KC-020 | Red Kiddush Cup Plate | 364 | 401 |
-| SAW-TB-008 | Test Tray Product *(excluded)* | 18 | 18 |

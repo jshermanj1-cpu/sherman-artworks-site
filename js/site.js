@@ -104,7 +104,7 @@ const T_SITE = {
     cat5_title:          'מתנות לעסקים',
     cat6_title:          'מזוזות',
     cat7_title:          'שופרות',
-    cat8_title:          'סטי הבדלה',
+    cat8_title:          'סטים להבדלה',
 
     switch_all:          'כל השופרות',
     switch_custom:       'בהתאמה אישית',
