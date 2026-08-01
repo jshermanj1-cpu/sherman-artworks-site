@@ -368,7 +368,8 @@
     "name_he": "תחתית כתומה לכוס קידוש",
     "description_en": "Handmade orange glass Kiddush cup plate with a 925 silver-plated rim. A beautiful complement to a matching Kiddush cup. Made to order in our studio in Israel.",
     "description_he": "תחתית כתומה לכוס קידוש, עשויה מזכוכית בעבודת יד ועם מסגרת מצופה כסף 925. השלמה יפה לכוס קידוש תואמת. מיוצרת לפי הזמנה בסטודיו שלנו בישראל.",
-    "measurements": "",
+    "measurements": "Diameter: 15 cm; Depth: 1 cm",
+      "measurements_he": "קוטר: 15 ס״מ; עומק: 1 ס״מ",
     "price_ils": 401,
     "photos": [
       "Orange_plate_white_background_npkcwp",
@@ -382,7 +383,8 @@
     "name_he": "תחתית אדומה לכוס קידוש",
     "description_en": "Handmade red glass Kiddush cup plate with a 925 silver-plated rim. Made to order in our studio in Israel.",
     "description_he": "תחתית אדומה לכוס קידוש, עשויה מזכוכית בעבודת יד ועם מסגרת מצופה כסף 925. מיוצרת לפי הזמנה בסטודיו שלנו בישראל.",
-    "measurements": "",
+    "measurements": "Diameter: 15 cm; Depth: 1 cm",
+      "measurements_he": "קוטר: 15 ס״מ; עומק: 1 ס״מ",
     "price_ils": 401,
     "photos": [
       "Red_plate_qm5f5n"
@@ -395,7 +397,8 @@
     "name_he": "תחתית כחול־ירוק לכוס קידוש",
     "description_en": "Handmade blue-green glass Kiddush cup plate with a 925 silver-plated rim. Made to order in our studio in Israel.",
     "description_he": "תחתית כחול־ירוק לכוס קידוש, עשויה מזכוכית בעבודת יד ועם מסגרת מצופה כסף 925. מיוצרת לפי הזמנה בסטודיו שלנו בישראל.",
-    "measurements": "",
+    "measurements": "Diameter: 15 cm; Depth: 1 cm",
+      "measurements_he": "קוטר: 15 ס״מ; עומק: 1 ס״מ",
     "price_ils": 401,
     "photos": [
       "Green-purple_plate_tbwcn3"
@@ -408,7 +411,8 @@
     "name_he": "תחתית לבנה לכוס קידוש",
     "description_en": "Handmade white glass Kiddush cup plate with a 925 silver-plated rim. Made to order in our studio in Israel.",
     "description_he": "תחתית לבנה לכוס קידוש, עשויה מזכוכית בעבודת יד ועם מסגרת מצופה כסף 925. מיוצרת לפי הזמנה בסטודיו שלנו בישראל.",
-    "measurements": "",
+    "measurements": "Diameter: 15 cm; Depth: 1 cm",
+      "measurements_he": "קוטר: 15 ס״מ; עומק: 1 ס״מ",
     "price_ils": 401,
     "photos": [
       "White_plate_v56oez"
@@ -421,7 +425,8 @@
     "name_he": "תחתית כחולה לכוס קידוש",
     "description_en": "Handmade blue glass Kiddush cup plate with a 925 silver-plated rim. Made to order in our studio in Israel.",
     "description_he": "תחתית כחולה לכוס קידוש, עשויה מזכוכית בעבודת יד ועם מסגרת מצופה כסף 925. מיוצרת לפי הזמנה בסטודיו שלנו בישראל.",
-    "measurements": "",
+    "measurements": "Diameter: 15 cm; Depth: 1 cm",
+      "measurements_he": "קוטר: 15 ס״מ; עומק: 1 ס״מ",
     "price_ils": 401,
     "photos": [
       "Blue_plate_ixqvon"
@@ -690,8 +695,9 @@
     const dotsHtml = hasMany ? product.photos.map((_, i) =>
       '<span class="card-dot' + (i === 0 ? ' active' : '') + '" id="dot-' + idx + '-' + i + '"></span>'
     ).join('') : '';
-    const measurementsHtml = product.measurements
-      ? `<span class="product-card-measurements">${product.measurements}</span>`
+    const measurements = l === 'he' && product.measurements_he ? product.measurements_he : product.measurements;
+    const measurementsHtml = measurements
+      ? `<span class="product-card-measurements">${measurements}</span>`
       : '';
     return `
       <article class="product-card" id="${product.id}" onclick="openModal(${idx})">
@@ -846,8 +852,9 @@
 
     const measurementsEl = document.getElementById('modalMeasurements');
     const measurementsRow = document.getElementById('modalMeasurementsRow');
-    if (p.measurements) {
-      measurementsEl.textContent = p.measurements;
+    const measurements = l === 'he' && p.measurements_he ? p.measurements_he : p.measurements;
+    if (measurements) {
+      measurementsEl.textContent = measurements;
       measurementsRow.style.display = '';
     } else {
       measurementsRow.style.display = 'none';
