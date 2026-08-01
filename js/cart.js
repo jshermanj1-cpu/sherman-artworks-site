@@ -140,7 +140,12 @@ function addToCart(slug, name_en, name_he, price_ils, photo, sku, meta) {
   // through. Rounding (nearest whole shekel on the combined unit) matches the
   // payments Worker exactly, so the server's total check passes.
   var regular = price_ils;
-  var charged = (typeof saleIls === 'function') ? saleIls(price_ils) : price_ils;
+  // A cup-and-plate set already uses the plate's discounted bundle price.
+  // Apply the launch offer to the cup only, otherwise the plate receives both
+  // its set discount and the launch discount.
+  var launchExempt = meta && Number(meta.launch_discount_exempt_ils) || 0;
+  var launchEligible = Math.max(0, price_ils - launchExempt);
+  var charged = (typeof saleIls === 'function') ? saleIls(launchEligible) + launchExempt : price_ils;
   var discounted = charged !== regular;
   var key = meta ? slug + '::' + [meta.color || '', meta.size || '', meta.tray_id || '', meta.symbol || '', meta.text || '', meta.comment || ''].join('|') : slug;
   var page = (location.pathname.split('/').pop() || 'index.html');
@@ -364,6 +369,7 @@ function cartAddFromModal() {
     meta.tray_price_ils = tray.bundle_price_ils;
     meta.tray_regular_price_ils = tray.regular_price_ils;
     meta.bundle_savings_ils = tray.regular_price_ils - tray.bundle_price_ils;
+    meta.launch_discount_exempt_ils = tray.bundle_price_ils;
   }
   if (p.personalisable) {
     var symbolEl = document.getElementById('modalSymbol');
