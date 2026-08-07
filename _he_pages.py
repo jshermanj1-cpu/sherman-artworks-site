@@ -129,7 +129,7 @@ META = {
     ),
     "candlesticks-silver-plated.html": (
         "פמוטי זכוכית בציפוי כסף 925 | שרמן ארט וורקס",
-        "פמוטי זכוכית בעבודת יד בגימור כסף סטרלינג 925. שבעה צבעים, שלושה גבהים ואפשרות למגש תואם, מיוצרים בישראל.",
+        "פמוטי זכוכית בעבודת יד בגימור כסף 925. שבעה צבעים, שלושה גבהים ואפשרות למגש תואם, מיוצרים בישראל.",
     ),
     "candlesticks-artisanal.html": (
         "פמוטי זכוכית אומנותיים בעבודת יד | שרמן ארט וורקס",
@@ -406,12 +406,12 @@ T_SITE_EN = parse_he_dict(read(os.path.join(ROOT, "js/site.js")), "const T_SITE"
 PRODUCT_GROUP_HE = {
     "silver-plated-glass-candlesticks": {
         "name": "פמוטי זכוכית בציפוי כסף 925",
-        "description": "זוג פמוטי זכוכית בעבודת יד בציפוי כסף סטרלינג 925, "
+        "description": "זוג פמוטי זכוכית בעבודת יד בציפוי כסף 925, "
                        "זמין בשבעה צבעים ובשלושה גבהים.",
     },
     "silver-plated-glass-trays": {
         "name": "מגשי זכוכית בציפוי כסף 925",
-        "description": "מגשי זכוכית בעבודת יד בציפוי כסף סטרלינג 925, "
+        "description": "מגשי זכוכית בעבודת יד בציפוי כסף 925, "
                        "בשישה עיצובים מתואמים.",
     },
     "classic-havdalah-sets": {
@@ -695,7 +695,7 @@ def translate_page(page):
         if alt.get("hreflang"):
             alt.decompose()
     anchor = can or soup.title
-    for hl, href in (("en", en_url(page)), ("he", he_url(page)), ("x-default", en_url(page))):
+    for hl, href in (("en", en_url(page)), ("he-IL", he_url(page)), ("x-default", en_url(page))):
         link = soup.new_tag("link", rel="alternate", hreflang=hl, href=href)
         anchor.insert_after(link)
 
@@ -815,10 +815,10 @@ def patch_english_pages():
         orig = txt
         en, he = en_url(page), he_url(page)
 
-        if 'hreflang="he"' not in txt:
+        if 'hreflang="he-IL"' not in txt:
             block = (
                 '\n  <link rel="alternate" hreflang="en" href="%s" />'
-                '\n  <link rel="alternate" hreflang="he" href="%s" />'
+                '\n  <link rel="alternate" hreflang="he-IL" href="%s" />'
                 '\n  <link rel="alternate" hreflang="x-default" href="%s" />'
             ) % (en, he, en)
             txt = re.sub(

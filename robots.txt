@@ -1,9 +1,33 @@
-User-agent: *
-Allow: /
+# robots.txt - shermanartworks.com
+# Internal tools (product-builder, sales-dashboard, pricing-calculator) are
+# blocked for every crawler. Because a bot with its own User-agent group
+# ignores the "*" group, the same Disallow rules are repeated in each group.
 
-# Internal tools - not for public indexing
+# --- Search + AI-search crawlers: explicitly welcomed ---
+# Grouped together so being cited in AI answers is never left to a default.
+# OAI-SearchBot powers ChatGPT search and is separate from GPTBot (training).
+User-agent: Googlebot
+User-agent: Bingbot
+User-agent: OAI-SearchBot
+User-agent: ChatGPT-User
+User-agent: GPTBot
+User-agent: PerplexityBot
+User-agent: Perplexity-User
+User-agent: ClaudeBot
+User-agent: anthropic-ai
+User-agent: Claude-Web
+User-agent: Google-Extended
+User-agent: CCBot
 Disallow: /product-builder.html
 Disallow: /sales-dashboard.html
 Disallow: /pricing-calculator.html
+Allow: /
+
+# --- Everyone else ---
+User-agent: *
+Disallow: /product-builder.html
+Disallow: /sales-dashboard.html
+Disallow: /pricing-calculator.html
+Allow: /
 
 Sitemap: https://shermanartworks.com/sitemap.xml

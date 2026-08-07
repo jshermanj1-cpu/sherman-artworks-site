@@ -156,8 +156,8 @@ def build(key, cfg, src, products):
     he_url = f"{BASE}/he/{cfg['file']}"
     sub1(r'<link rel="alternate" hreflang="en" href=".*?" />',
          f'<link rel="alternate" hreflang="en" href="{url}" />', "hreflang en")
-    sub1(r'<link rel="alternate" hreflang="he" href=".*?" />',
-         f'<link rel="alternate" hreflang="he" href="{he_url}" />', "hreflang he")
+    sub1(r'<link rel="alternate" hreflang="he-IL" href=".*?" />',
+         f'<link rel="alternate" hreflang="he-IL" href="{he_url}" />', "hreflang he")
     sub1(r'<link rel="alternate" hreflang="x-default" href=".*?" />',
          f'<link rel="alternate" hreflang="x-default" href="{url}" />', "hreflang x-default")
     sub1(r"location\.href='/he/[^']*'\">עברית", f"location.href='/he/{cfg['file']}'\">עברית", "he toggle")
