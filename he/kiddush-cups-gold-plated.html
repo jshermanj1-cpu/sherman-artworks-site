@@ -461,8 +461,8 @@
 </div>
 </div>
 </footer>
-<script src="/js/site.js?v=20260901c"></script>
-<script src="/js/cart.js?v=20260901c"></script>
+<script src="/js/site.js?v=20260901d"></script>
+<script src="/js/cart.js?v=20260901d"></script>
 <script>const PRODUCTS = [
   {
     "id": "blue-green-tall-glass-cup",
@@ -922,6 +922,7 @@
       spec_price:        'Price',
       complete_set:      'Complete the set',
       plate_material:    'Glass with 925 silver-plated rim',
+      plate_material_gold:    'Glass with gold-plated rim',
       plate_save:        'Save {pct}% · {amt}',
       add_set_cart:      'Add cup & plate to cart',
       modal_order:       'Order on WhatsApp',
@@ -991,6 +992,7 @@
       spec_price:        'מחיר',
       complete_set:      'השלימו את הסט',
       plate_material:    'זכוכית עם מסגרת מצופה כסף 925',
+      plate_material_gold:    'זכוכית עם מסגרת מצופה זהב',
       plate_save:        'חיסכון {pct}% · {amt}',
       add_set_cart:      'הוספת כוס ותחתית לסל',
       modal_order:       'הזמנה דרך WhatsApp',
@@ -1207,7 +1209,7 @@
         <span class="tray-addon-content"><span class="tray-addon-check" aria-hidden="true"></span>
           <img class="tray-addon-image" src="${CDN}/w_220,h_180,c_fit,q_auto,f_auto/${addon.photo}.jpg" alt="" loading="lazy" />
           <span class="tray-addon-details"><span class="tray-addon-title">${escapeHtml(plateName)}</span>
-            <span class="tray-addon-meta">${escapeHtml(T_PAGE[l].plate_material)}</span>
+            <span class="tray-addon-meta">${escapeHtml(addonIsGold(addon) ? T_PAGE[l].plate_material_gold : T_PAGE[l].plate_material)}</span>
             <span class="tray-addon-price"><span class="tray-addon-regular">${plateMoney.regular}</span>
               <span class="tray-addon-bundle">+${plateMoney.bundle}</span>
               <span class="tray-addon-saving">${escapeHtml(addonSavingText(T_PAGE[l].plate_save, addon.regular_price_ils, addon.bundle_price_ils, p.price_ils))}</span>

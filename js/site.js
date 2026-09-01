@@ -170,6 +170,16 @@ function addonParts(regularIls, bundleIls, baseIls, cur) {
 
 // The add-on's saving line, filled from a per-language template so word order
 // stays the translator's decision rather than string concatenation's.
+// Which finish an add-on carries. This cannot be a page-level string: the
+// candlestick and kiddush landing pages list silver and gold side by side, and
+// a single T_PAGE key described the gold trays and plates as "925 silver
+// plating" under their own photos. Product names always name the plating (it is
+// a standing copy rule), so the name is the one field that is right for
+// whichever add-on is actually selected.
+function addonIsGold(addon) {
+  return /gold[- ]plated/i.test((addon && (addon.name_en || addon.id)) || '');
+}
+
 function addonSavingText(tpl, regularIls, bundleIls, baseIls) {
   var a = addonParts(regularIls, bundleIls, baseIls);
   return String(tpl).replace('{pct}', a.pct).replace('{amt}', a.saving);
