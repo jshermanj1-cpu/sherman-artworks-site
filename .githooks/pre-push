@@ -1,0 +1,59 @@
+#!/bin/sh
+# Run the site's invariant guards before a push.
+#
+# Blocks a push to main, which GitHub Pages deploys straight to the live site.
+# On any other branch the guards still run but only warn, so work in progress
+# is never held up by drift that will be regenerated before it merges.
+#
+# Every check exists because the thing it checks actually broke and nothing
+# noticed. The usual shape: a product goes in, the generator chain is not
+# re-run, and the page still looks right in a browser because JavaScript
+# rebuilds it - while the crawler-visible half, the structured data and the
+# dollar figures quietly disagree with the catalogue.
+#
+# To bypass deliberately:  git push --no-verify
+# To run by hand:          python _guards.py
+
+set -u
+
+repo=$(git rev-parse --show-toplevel 2>/dev/null) || exit 0
+cd "$repo" || exit 0
+
+[ -f _guards.py ] || exit 0
+
+# Is main among the refs being pushed? stdin gives:
+#   <local ref> <local sha> <remote ref> <remote sha>
+pushing_main=0
+while read -r _local_ref _local_sha remote_ref _remote_sha; do
+  case "$remote_ref" in
+    refs/heads/main|refs/heads/master) pushing_main=1 ;;
+  esac
+done
+# No stdin (hook invoked by hand): treat it as the strict case.
+[ -t 0 ] && pushing_main=1
+
+for py in python python3 py; do
+  if command -v "$py" >/dev/null 2>&1; then PYTHON=$py; break; fi
+done
+if [ -z "${PYTHON:-}" ]; then
+  echo "pre-push: no python on PATH, skipping guards" >&2
+  exit 0
+fi
+
+echo "pre-push: checking site invariants (about 20s, --no-verify to skip)"
+if "$PYTHON" _guards.py --quiet; then
+  echo "pre-push: guards passed"
+  exit 0
+fi
+
+if [ "$pushing_main" -eq 1 ]; then
+  echo "" >&2
+  echo "pre-push: BLOCKED - main deploys to the live site." >&2
+  echo "Fix the failures above, or push with --no-verify if you mean it." >&2
+  exit 1
+fi
+
+echo "" >&2
+echo "pre-push: guards failed, but this is not main - allowing the push." >&2
+echo "Re-run the chain before this branch merges." >&2
+exit 0
