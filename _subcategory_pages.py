@@ -15,10 +15,16 @@ import json
 import re
 from pathlib import Path
 
+# The dollar figure on a card comes from the pinned list in _usd.py, the same one
+# js/site.js and the payments Worker price from. This used to be round(ils/3.117),
+# a leftover from before the pinned list existed (2026-08-10); it understated every
+# one of the 99 catalogue entries by $6-$22 and disagreed with both the homepage's
+# baked figures and the price the page itself shows once JS has run.
+from _usd import usd_from_ils
+
 SITE = Path(__file__).parent
 BASE = "https://shermanartworks.com"
 CDN = "https://res.cloudinary.com/doesupaf9/image/upload"
-USD_RATE = 3.117
 
 CANDLE_SILVER = "silver-plated-glass-candlesticks"
 CANDLE_GOLD = "gold-plated-glass-candlesticks"
@@ -254,7 +260,7 @@ def static_cards(cat, items):
         <h2 class="product-card-name">{html.escape(p['name_en'])}</h2>
         <p class="product-card-desc">{html.escape(p['description_en'])}</p>
         <div class="product-card-meta">
-          <span class="product-card-price">{prefix}&#8362;{ils:,} <span class="product-card-price-alt">≈ ${round(ils / USD_RATE)}</span></span>
+          <span class="product-card-price">{prefix}&#8362;{ils:,} <span class="product-card-price-alt">≈ ${usd_from_ils(ils)}</span></span>
         </div>
         <p class="product-color-note">* Colors and measurements may appear slightly different in person, as each item is handmade.</p>
       </div>

@@ -30,8 +30,9 @@ Idempotent - a second run reports no changes.
     python _static_cards.py           fix in place
     python _static_cards.py --check   report only, exit 1 if anything is stale
 
-The "≈ $" figure follows the same 3.117 approximation the other generators use.
-It is deliberately not the pinned USD charging price.
+The "≈ $" figure is the pinned dollar price from _usd.py - the same figure the
+page shows once JS has run and the same one the card is charged. It used to be a
+separate round(ils/3.117) approximation that understated every entry by $6-$22.
 """
 
 import html
@@ -41,9 +42,11 @@ import re
 import sys
 from pathlib import Path
 
+# Pinned dollar list - never a live conversion. See _usd.py.
+from _usd import usd_from_ils
+
 SITE = Path(__file__).parent
 CDN = "https://res.cloudinary.com/doesupaf9/image/upload"
-USD_RATE = 3.117
 COLOR_NOTE = ("* Colors and measurements may appear slightly different in person, "
               "as each item is handmade.")
 
@@ -80,7 +83,7 @@ def price_html(p):
     # A literal ≈, not &#8776;: that is what the other generators emit and what
     # the existing cards carry, so an unchanged card stays byte-identical.
     return ('%s&#8362;%s <span class="product-card-price-alt">≈ $%d</span>'
-            % (prefix, format(ils, ","), round(ils / USD_RATE)))
+            % (prefix, format(ils, ","), usd_from_ils(ils)))
 
 
 def new_card(p, alt_phrase):
@@ -248,6 +251,39 @@ def rename_shofar_cards(page, names, check):
     return fixed
 
 
+# The "≈ $" beside a card's shekel price, on every page that has one.
+ALT_PRICE = re.compile(r'(&#8362;([\d,]+) <span class="product-card-price-alt">≈ \$)(\d+)(</span>)')
+
+
+def resync_alt_dollars(check):
+    """Re-derive every card's dollar figure from the shekel figure beside it.
+
+    Deliberately not a product lookup: the shekel price printed on the card is
+    already authoritative, so converting it in place fixes pages no generator
+    owns - shofars.html (its own cards, as opposed to the sub-pages it seeds),
+    havdalah-sets.html, and any card whose photo could not be joined. Shekel
+    figures are never touched.
+    """
+    fixed = {}
+    for path in sorted(SITE.glob("*.html")) + sorted((SITE / "he").glob("*.html")):
+        src = path.read_text(encoding="utf-8")
+        hits = []
+
+        def repl(m):
+            want = usd_from_ils(int(m.group(2).replace(",", "")))
+            if int(m.group(3)) == want:
+                return m.group(0)
+            hits.append((m.group(2), m.group(3), want))
+            return m.group(1) + str(want) + m.group(4)
+
+        out = ALT_PRICE.sub(repl, src)
+        if hits:
+            fixed[path.name if path.parent == SITE else "he/" + path.name] = hits
+            if not check:
+                path.write_text(out, encoding="utf-8")
+    return fixed
+
+
 def main():
     check = "--check" in sys.argv
     products = load()
@@ -276,6 +312,18 @@ def main():
                 print("      %s" % n)
             if len(fixed) > 3:
                 print("      ... and %d more" % (len(fixed) - 3))
+
+    dollars = resync_alt_dollars(check)
+    if dollars:
+        n = sum(len(v) for v in dollars.values())
+        stale += n
+        print("%-22s %d card dollar figure(s) %s"
+              % ("(all pages)", n, "stale" if check else "resynced"))
+        for page, hits in list(dollars.items())[:4]:
+            ils, was, now = hits[0]
+            print("      %-26s ILS %s  $%s -> $%s%s"
+                  % (page, ils, was, now,
+                     "  (+%d more)" % (len(hits) - 1) if len(hits) > 1 else ""))
 
     if not stale:
         print("every landing-page card matches data/products.json")
