@@ -526,6 +526,7 @@
     "id": "glass-decorative-bowl",
     "sku": "SAW-TB-001",
     "category": "trays-bowls",
+    "finish": "artisanal",
     "pages": [
       "trays-bowls.html"
     ],
@@ -1042,6 +1043,7 @@
     "id": "kiddush-cup-plate",
     "sku": "SAW-KC-008",
     "category": "kiddush-cups",
+    "finish": "silver-plated",
     "pages": [
       "trays-bowls.html"
     ],
@@ -2566,13 +2568,14 @@
     "sku": "SAW-HS-001",
     "family_id": "classic-havdalah-sets",
     "category": "havdalah-sets",
+    "finish": "silver-plated",
     "pages": [
       "havdalah-sets.html"
     ],
-    "name_en": "Black Havdalah Set",
-    "name_he": "סט הבדלה שחור",
-    "description_en": "Handmade black Havdalah set, crafted in our studio in Israel.",
-    "description_he": "סט הבדלה שחור בעבודת יד, מיוצר בסטודיו שלנו בישראל.",
+    "name_en": "925 Silver-Plated Black Havdalah Set",
+    "name_he": "סט הבדלה שחור בציפוי כסף 925",
+    "description_en": "Handmade black glass Havdalah set with 925 silver plating, crafted in our studio in Israel.",
+    "description_he": "סט הבדלה שחור מזכוכית בציפוי כסף 925, בעבודת יד, מיוצר בסטודיו שלנו בישראל.",
     "color_en": "Black",
     "color_he": "שחור",
     "measurements": "",
@@ -2587,13 +2590,14 @@
     "sku": "SAW-HS-002",
     "family_id": "classic-havdalah-sets",
     "category": "havdalah-sets",
+    "finish": "silver-plated",
     "pages": [
       "havdalah-sets.html"
     ],
-    "name_en": "Blue Havdalah Set",
-    "name_he": "סט הבדלה כחול",
-    "description_en": "Handmade blue Havdalah set, crafted in our studio in Israel.",
-    "description_he": "סט הבדלה כחול בעבודת יד, מיוצר בסטודיו שלנו בישראל.",
+    "name_en": "925 Silver-Plated Blue Havdalah Set",
+    "name_he": "סט הבדלה כחול בציפוי כסף 925",
+    "description_en": "Handmade blue glass Havdalah set with 925 silver plating, crafted in our studio in Israel.",
+    "description_he": "סט הבדלה כחול מזכוכית בציפוי כסף 925, בעבודת יד, מיוצר בסטודיו שלנו בישראל.",
     "color_en": "Blue",
     "color_he": "כחול",
     "measurements": "",
@@ -2608,13 +2612,14 @@
     "sku": "SAW-HS-003",
     "family_id": "classic-havdalah-sets",
     "category": "havdalah-sets",
+    "finish": "silver-plated",
     "pages": [
       "havdalah-sets.html"
     ],
-    "name_en": "White Havdalah Set",
-    "name_he": "סט הבדלה לבן",
-    "description_en": "Handmade white Havdalah set, crafted in our studio in Israel.",
-    "description_he": "סט הבדלה לבן בעבודת יד, מיוצר בסטודיו שלנו בישראל.",
+    "name_en": "925 Silver-Plated White Havdalah Set",
+    "name_he": "סט הבדלה לבן בציפוי כסף 925",
+    "description_en": "Handmade white glass Havdalah set with 925 silver plating, crafted in our studio in Israel.",
+    "description_he": "סט הבדלה לבן מזכוכית בציפוי כסף 925, בעבודת יד, מיוצר בסטודיו שלנו בישראל.",
     "color_en": "White",
     "color_he": "לבן",
     "measurements": "",
@@ -2628,19 +2633,130 @@
     "id": "orange-havdalah-set",
     "sku": "SAW-HS-004",
     "category": "havdalah-sets",
+    "finish": "silver-plated",
     "pages": [
       "havdalah-sets.html"
     ],
-    "name_en": "Orange Havdalah Set",
-    "name_he": "סט הבדלה כתום",
-    "description_en": "Handmade orange Havdalah set, crafted in our studio in Israel.",
-    "description_he": "סט הבדלה כתום בעבודת יד, מיוצר בסטודיו שלנו בישראל.",
+    "name_en": "925 Silver-Plated Orange Havdalah Set",
+    "name_he": "סט הבדלה כתום בציפוי כסף 925",
+    "description_en": "Handmade orange glass Havdalah set with 925 silver plating, crafted in our studio in Israel.",
+    "description_he": "סט הבדלה כתום מזכוכית בציפוי כסף 925, בעבודת יד, מיוצר בסטודיו שלנו בישראל.",
     "color_en": "Orange",
     "color_he": "כתום",
     "measurements": "",
     "price_ils": 1334,
     "photos": [
       "Orange_havdala_set_bh5ut5"
+    ],
+    "personalisable": false
+  },
+  {
+    "id": "gold-plated-black-havdalah-set",
+    "sku": "SAW-HS-005",
+    "family_id": "gold-plated-havdalah-sets",
+    "category": "havdalah-sets",
+    "finish": "gold-plated",
+    "pages": [
+      "havdalah-sets.html"
+    ],
+    "name_en": "Gold-Plated Black Havdalah Set",
+    "name_he": "סט הבדלה מזכוכית שחורה בציפוי זהב",
+    "description_en": "Handmade black glass Havdalah set with gold plating, crafted in our studio in Israel.",
+    "description_he": "סט הבדלה מזכוכית שחורה בציפוי זהב, בעבודת יד, מיוצר בסטודיו שלנו בישראל.",
+    "color_en": "Black",
+    "color_he": "שחור",
+    "measurements": "",
+    "price_ils": 1657,
+    "photos": [
+      "Black_havdalah_set_gold_zblb7f"
+    ],
+    "personalisable": false
+  },
+  {
+    "id": "gold-plated-blue-havdalah-set",
+    "sku": "SAW-HS-006",
+    "family_id": "gold-plated-havdalah-sets",
+    "category": "havdalah-sets",
+    "finish": "gold-plated",
+    "pages": [
+      "havdalah-sets.html"
+    ],
+    "name_en": "Gold-Plated Blue Havdalah Set",
+    "name_he": "סט הבדלה מזכוכית כחולה בציפוי זהב",
+    "description_en": "Handmade blue glass Havdalah set with gold plating, crafted in our studio in Israel.",
+    "description_he": "סט הבדלה מזכוכית כחולה בציפוי זהב, בעבודת יד, מיוצר בסטודיו שלנו בישראל.",
+    "color_en": "Blue",
+    "color_he": "כחול",
+    "measurements": "",
+    "price_ils": 1657,
+    "photos": [
+      "Blue_havdalah_set_gold_kqrs67"
+    ],
+    "personalisable": false
+  },
+  {
+    "id": "gold-plated-orange-havdalah-set",
+    "sku": "SAW-HS-007",
+    "family_id": "gold-plated-havdalah-sets",
+    "category": "havdalah-sets",
+    "finish": "gold-plated",
+    "pages": [
+      "havdalah-sets.html"
+    ],
+    "name_en": "Gold-Plated Orange Havdalah Set",
+    "name_he": "סט הבדלה מזכוכית כתומה בציפוי זהב",
+    "description_en": "Handmade orange glass Havdalah set with gold plating, crafted in our studio in Israel.",
+    "description_he": "סט הבדלה מזכוכית כתומה בציפוי זהב, בעבודת יד, מיוצר בסטודיו שלנו בישראל.",
+    "color_en": "Orange",
+    "color_he": "כתום",
+    "measurements": "",
+    "price_ils": 1467,
+    "photos": [
+      "Orange_havdalah_set_gold_ona5jl"
+    ],
+    "personalisable": false
+  },
+  {
+    "id": "gold-plated-red-havdalah-set",
+    "sku": "SAW-HS-008",
+    "family_id": "gold-plated-havdalah-sets",
+    "category": "havdalah-sets",
+    "finish": "gold-plated",
+    "pages": [
+      "havdalah-sets.html"
+    ],
+    "name_en": "Gold-Plated Red Havdalah Set",
+    "name_he": "סט הבדלה מזכוכית אדומה בציפוי זהב",
+    "description_en": "Handmade red glass Havdalah set with gold plating, crafted in our studio in Israel.",
+    "description_he": "סט הבדלה מזכוכית אדומה בציפוי זהב, בעבודת יד, מיוצר בסטודיו שלנו בישראל.",
+    "color_en": "Red",
+    "color_he": "אדום",
+    "measurements": "",
+    "price_ils": 1657,
+    "photos": [
+      "Red_havdalah_set_gold_xf0lnu"
+    ],
+    "personalisable": false
+  },
+  {
+    "id": "gold-plated-white-havdalah-set",
+    "sku": "SAW-HS-009",
+    "family_id": "gold-plated-havdalah-sets",
+    "category": "havdalah-sets",
+    "finish": "gold-plated",
+    "pages": [
+      "havdalah-sets.html"
+    ],
+    "name_en": "Gold-Plated White Havdalah Set",
+    "name_he": "סט הבדלה מזכוכית לבנה בציפוי זהב",
+    "description_en": "Handmade white glass Havdalah set with gold plating, crafted in our studio in Israel.",
+    "description_he": "סט הבדלה מזכוכית לבנה בציפוי זהב, בעבודת יד, מיוצר בסטודיו שלנו בישראל.",
+    "color_en": "White",
+    "color_he": "לבן",
+    "measurements": "",
+    "price_ils": 1657,
+    "photos": [
+      "White_havdalah_set_gold_nxxpbc"
     ],
     "personalisable": false
   },
@@ -2667,8 +2783,8 @@
       "id": "blue-green-kiddush-cup-plate",
       "sku": "SAW-KC-019",
       "kind": "plate",
-      "name_en": "Blue-Green Kiddush Cup Plate",
-      "name_he": "תחתית כחול־ירוק לכוס קידוש",
+      "name_en": "925 Silver-Plated Blue-Green Kiddush Cup Plate",
+      "name_he": "תחתית כחול־ירוק לכוס קידוש בציפוי כסף 925",
       "measurements": "Diameter: 15 cm; Depth: 1 cm",
       "measurements_he": "קוטר: 15 ס״מ; עומק: 1 ס״מ",
       "regular_price_ils": 401,
@@ -2701,8 +2817,8 @@
       "id": "blue-kiddush-cup-plate",
       "sku": "SAW-KC-017",
       "kind": "plate",
-      "name_en": "Blue Kiddush Cup Plate",
-      "name_he": "תחתית כחולה לכוס קידוש",
+      "name_en": "925 Silver-Plated Blue Kiddush Cup Plate",
+      "name_he": "תחתית כחולה לכוס קידוש בציפוי כסף 925",
       "measurements": "Diameter: 15 cm; Depth: 1 cm",
       "measurements_he": "קוטר: 15 ס״מ; עומק: 1 ס״מ",
       "regular_price_ils": 401,
@@ -2735,8 +2851,8 @@
       "id": "kiddush-cup-plate",
       "sku": "SAW-KC-008",
       "kind": "plate",
-      "name_en": "Orange Kiddush Cup Plate",
-      "name_he": "תחתית כתומה לכוס קידוש",
+      "name_en": "925 Silver-Plated Orange Kiddush Cup Plate",
+      "name_he": "תחתית כתומה לכוס קידוש בציפוי כסף 925",
       "measurements": "Diameter: 15 cm; Depth: 1 cm",
       "measurements_he": "קוטר: 15 ס״מ; עומק: 1 ס״מ",
       "regular_price_ils": 401,
@@ -2769,8 +2885,8 @@
       "id": "red-kiddush-cup-plate",
       "sku": "SAW-KC-020",
       "kind": "plate",
-      "name_en": "Red Kiddush Cup Plate",
-      "name_he": "תחתית אדומה לכוס קידוש",
+      "name_en": "925 Silver-Plated Red Kiddush Cup Plate",
+      "name_he": "תחתית אדומה לכוס קידוש בציפוי כסף 925",
       "measurements": "Diameter: 15 cm; Depth: 1 cm",
       "measurements_he": "קוטר: 15 ס״מ; עומק: 1 ס״מ",
       "regular_price_ils": 401,
@@ -2803,8 +2919,8 @@
       "id": "red-kiddush-cup-plate",
       "sku": "SAW-KC-020",
       "kind": "plate",
-      "name_en": "Red Kiddush Cup Plate",
-      "name_he": "תחתית אדומה לכוס קידוש",
+      "name_en": "925 Silver-Plated Red Kiddush Cup Plate",
+      "name_he": "תחתית אדומה לכוס קידוש בציפוי כסף 925",
       "measurements": "Diameter: 15 cm; Depth: 1 cm",
       "measurements_he": "קוטר: 15 ס״מ; עומק: 1 ס״מ",
       "regular_price_ils": 401,
@@ -2836,8 +2952,8 @@
       "id": "kiddush-cup-plate",
       "sku": "SAW-KC-008",
       "kind": "plate",
-      "name_en": "Orange Kiddush Cup Plate",
-      "name_he": "תחתית כתומה לכוס קידוש",
+      "name_en": "925 Silver-Plated Orange Kiddush Cup Plate",
+      "name_he": "תחתית כתומה לכוס קידוש בציפוי כסף 925",
       "measurements": "Diameter: 15 cm; Depth: 1 cm",
       "measurements_he": "קוטר: 15 ס״מ; עומק: 1 ס״מ",
       "regular_price_ils": 401,
@@ -2870,8 +2986,8 @@
       "id": "white-kiddush-cup-plate",
       "sku": "SAW-KC-018",
       "kind": "plate",
-      "name_en": "White Kiddush Cup Plate",
-      "name_he": "תחתית לבנה לכוס קידוש",
+      "name_en": "925 Silver-Plated White Kiddush Cup Plate",
+      "name_he": "תחתית לבנה לכוס קידוש בציפוי כסף 925",
       "measurements": "Diameter: 15 cm; Depth: 1 cm",
       "measurements_he": "קוטר: 15 ס״מ; עומק: 1 ס״מ",
       "regular_price_ils": 401,
@@ -2904,8 +3020,8 @@
       "id": "blue-kiddush-cup-plate",
       "sku": "SAW-KC-017",
       "kind": "plate",
-      "name_en": "Blue Kiddush Cup Plate",
-      "name_he": "תחתית כחולה לכוס קידוש",
+      "name_en": "925 Silver-Plated Blue Kiddush Cup Plate",
+      "name_he": "תחתית כחולה לכוס קידוש בציפוי כסף 925",
       "measurements": "Diameter: 15 cm; Depth: 1 cm",
       "measurements_he": "קוטר: 15 ס״מ; עומק: 1 ס״מ",
       "regular_price_ils": 401,
@@ -2929,6 +3045,7 @@
       "Blue_plate_ixqvon"
     ],
     "category": "kiddush-cups",
+    "finish": "silver-plated",
     "pages": [
       "trays-bowls.html"
     ],
@@ -2948,6 +3065,7 @@
       "White_plate_v56oez"
     ],
     "category": "kiddush-cups",
+    "finish": "silver-plated",
     "pages": [
       "trays-bowls.html"
     ],
@@ -2967,6 +3085,7 @@
       "Green-purple_plate_tbwcn3"
     ],
     "category": "kiddush-cups",
+    "finish": "silver-plated",
     "pages": [
       "trays-bowls.html"
     ],
@@ -2986,6 +3105,7 @@
       "Red_plate_qm5f5n"
     ],
     "category": "kiddush-cups",
+    "finish": "silver-plated",
     "pages": [
       "trays-bowls.html"
     ],
@@ -3212,11 +3332,11 @@
     "tray_addon": {
       "id": "orange-gold-plated-glass-tray",
       "sku": "SAW-TB-012",
-      "name_en": "Matching Orange Gold-Plated Glass Tray",
-      "name_he": "מגש זכוכית כתום תואם בציפוי זהב",
+      "name_en": "Matching Orange Glass Tray",
+      "name_he": "מגש זכוכית כתום תואם",
       "measurements": "30 × 18 cm",
-      "regular_price_ils": 617,
-      "bundle_price_ils": 492,
+      "regular_price_ils": 524,
+      "bundle_price_ils": 418,
       "photo": "עותק_של_Orange_tray_vwt85g",
       "set_photo": "Orange_Pamotim_gold_2_ms1pco"
     },
@@ -3458,19 +3578,19 @@
   {
     "id": "orange-gold-plated-glass-tray",
     "sku": "SAW-TB-012",
-    "family_id": "gold-plated-glass-trays",
     "category": "trays-bowls",
+    "finish": "artisanal",
     "pages": [
       "trays-bowls.html"
     ],
-    "name_en": "Orange Gold-Plated Glass Tray",
-    "name_he": "מגש זכוכית כתום בציפוי זהב",
-    "description_en": "Handmade orange glass tray finished with gold plating. Measures 30 × 18 cm and is made to order in our studio in Israel.",
-    "description_he": "מגש זכוכית כתום בעבודת יד בציפוי זהב. מידותיו 30 × 18 ס״מ והוא מיוצר לפי הזמנה בסטודיו שלנו בישראל.",
+    "name_en": "Orange Glass Tray",
+    "name_he": "מגש זכוכית כתום",
+    "description_en": "Handmade orange glass tray with a distinctive artisanal finish. Measures 30 × 18 cm and is made to order in our studio in Israel.",
+    "description_he": "מגש זכוכית כתום בעבודת יד בגימור אומנותי. מידותיו 30 × 18 ס״מ והוא מיוצר לפי הזמנה בסטודיו שלנו בישראל.",
     "color_en": "Orange",
     "color_he": "כתום",
     "measurements": "30cm × 18cm",
-    "price_ils": 617,
+    "price_ils": 524,
     "photos": [
       "עותק_של_Orange_tray_vwt85g"
     ],
@@ -3902,6 +4022,7 @@
       "Blue_plate_gold_jtsy0y"
     ],
     "category": "kiddush-cups",
+    "finish": "gold-plated",
     "pages": [
       "trays-bowls.html"
     ],
@@ -3920,6 +4041,7 @@
       "Red_plate_gold_hgzbnc"
     ],
     "category": "kiddush-cups",
+    "finish": "gold-plated",
     "pages": [
       "trays-bowls.html"
     ],
@@ -3938,6 +4060,7 @@
       "Orange_plate_gold_po1k8a"
     ],
     "category": "kiddush-cups",
+    "finish": "gold-plated",
     "pages": [
       "trays-bowls.html"
     ],
@@ -3956,6 +4079,7 @@
       "Gold_black_plate_eqqztu"
     ],
     "category": "kiddush-cups",
+    "finish": "gold-plated",
     "pages": [
       "trays-bowls.html"
     ],

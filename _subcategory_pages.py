@@ -28,6 +28,8 @@ CDN = "https://res.cloudinary.com/doesupaf9/image/upload"
 
 CANDLE_SILVER = "silver-plated-glass-candlesticks"
 CANDLE_GOLD = "gold-plated-glass-candlesticks"
+TRAY_SILVER = "silver-plated-glass-trays"
+TRAY_GOLD = "gold-plated-glass-trays"
 
 # Shipping, returns and seller are cloned verbatim from the landing pages so a
 # product describes itself identically wherever it is listed. Without these two
@@ -61,6 +63,10 @@ def family_is(*names):
 
 def finish_is(name):
     return lambda p: p.get("finish") == name
+
+
+def any_match(*predicates):
+    return lambda p: any(predicate(p) for predicate in predicates)
 
 
 # Each page's "match" selects its products. Exactly one page per category may
@@ -194,6 +200,163 @@ CATEGORIES = {
             },
         },
     },
+    "havdalah-sets": {
+        "category": "havdalah-sets",
+        "landing": "havdalah-sets.html",
+        "landing_label": "Havdalah Sets",
+        "landing_key": "cat8_title",
+        "aria": "Havdalah set categories",
+        "prefix": "switch_havdalah_",
+        "card_alt": "handmade glass Havdalah set",
+        "all_label": ("All Havdalah Sets", "כל סטי ההבדלה"),
+        "pages": {
+            "silver": {
+                "file": "havdalah-sets-silver-plated.html",
+                "match": finish_is("silver-plated"),
+                "title": "925 Silver-Plated Havdalah Sets | Sherman Art Works",
+                "desc": "Shop handmade Havdalah sets finished with 925 silver plating, available in black, blue, white and orange, made to order in our studio in Israel.",
+                "headline": "925 Silver-Plated Havdalah Sets",
+                "subtitle": "Handmade glass finished with 925 silver.",
+                "body": "Choose from four colours of silver-plated glass Havdalah sets, each crafted to order.",
+                "bc": "925 Silver-Plated Havdalah Sets",
+                "image": "Havdala_black_set_wdnnhk",
+                "he": {
+                    "headline": "סטי הבדלה בציפוי כסף 925",
+                    "subtitle": "זכוכית בעבודת יד בגימור כסף 925.",
+                    "body": "בחרו מארבעה צבעים של סטי הבדלה מזכוכית בציפוי כסף, כל אחד מיוצר לפי הזמנה.",
+                    "bc": "סטי הבדלה בציפוי כסף 925",
+                },
+            },
+            "gold": {
+                "file": "havdalah-sets-gold-plated.html",
+                "match": finish_is("gold-plated"),
+                "title": "Gold-Plated Havdalah Sets | Sherman Art Works",
+                "desc": "Shop handmade Havdalah sets finished with gold plating, available in black, blue, white, orange and red, made to order in our studio in Israel.",
+                "headline": "Gold-Plated Havdalah Sets",
+                "subtitle": "Handmade glass finished with gold.",
+                "body": "Choose from five colours of gold-plated glass Havdalah sets, each crafted to order.",
+                "bc": "Gold-Plated Havdalah Sets",
+                "guide": {
+                    "guide_q2": ("Are the gold-plated sets solid gold?",
+                                 "האם הסטים המצופים עשויים זהב מלא?"),
+                    "guide_a2": ("No. They are handmade glass Havdalah sets with gold plating, which gives a luxurious gold look at a lower price than solid gold.",
+                                 "לא. אלה סטי הבדלה מזכוכית בעבודת יד עם ציפוי זהב, שמעניק מראה זהב יוקרתי במחיר נמוך מזהב מלא."),
+                },
+                "image": "Blue_havdalah_set_gold_kqrs67",
+                "he": {
+                    "headline": "סטי הבדלה בציפוי זהב",
+                    "subtitle": "זכוכית בעבודת יד בגימור זהב.",
+                    "body": "בחרו מחמישה צבעים של סטי הבדלה מזכוכית בציפוי זהב, כל אחד מיוצר לפי הזמנה.",
+                    "bc": "סטי הבדלה בציפוי זהב",
+                },
+            },
+        },
+    },
+    "trays-bowls": {
+        # This landing page intentionally also sells Kiddush cup plates, whose
+        # primary catalogue category remains kiddush-cups. Page membership is
+        # therefore the final inclusion test after this allowed-category list.
+        "category": "trays-bowls",
+        "categories": ("trays-bowls", "kiddush-cups"),
+        "landing": "trays-bowls.html",
+        "landing_label": "Trays & Bowls",
+        "landing_key": "cat4_title",
+        "aria": "Trays and bowls categories",
+        "prefix": "switch_trays_",
+        "card_alt": "handmade glass tray, bowl or Kiddush cup plate",
+        "all_label": ("All Trays & Bowls", "כל המגשים והקערות"),
+        "require_exact_partition": True,
+        "sync_landing_jsonld": True,
+        "product_group_copy": {
+            TRAY_GOLD: {
+                "name": "Gold-Plated Glass Trays",
+                "description": "Handmade glass trays finished with gold plating, in six matching designs.",
+            },
+        },
+        "pages": {
+            "silver": {
+                "file": "trays-bowls-silver-plated.html",
+                "match": any_match(family_is(TRAY_SILVER), finish_is("silver-plated")),
+                "title": "925 Silver-Plated Glass Trays & Kiddush Plates | Sherman Art Works",
+                "desc": "Shop handmade glass trays and Kiddush cup plates finished with 925 silver plating, made to order in our studio in Israel.",
+                "headline": "925 Silver-Plated Trays & Bowls",
+                "subtitle": "Handmade glass finished with 925 silver.",
+                "body": "Choose from six glass trays and five matching Kiddush cup plates in a range of colours.",
+                "bc": "925 Silver-Plated Trays & Bowls",
+                "guide": {
+                    "guide_q1": ("What is in the silver-plated collection?",
+                                 "מה כולל אוסף ציפוי הכסף?"),
+                    "guide_a1": ("The collection includes six handmade glass trays and five Kiddush cup plates finished with 925 silver plating.",
+                                 "האוסף כולל שישה מגשי זכוכית וחמש תחתיות לכוס קידוש בעבודת יד, בגימור כסף 925."),
+                },
+                "image": "White_tray_o1npai",
+                "he": {
+                    "headline": "מגשים וקערות בציפוי כסף 925",
+                    "subtitle": "זכוכית בעבודת יד בגימור כסף 925.",
+                    "body": "בחרו מתוך שישה מגשי זכוכית וחמש תחתיות תואמות לכוס קידוש במגוון צבעים.",
+                    "bc": "מגשים וקערות בציפוי כסף 925",
+                },
+            },
+            "gold": {
+                "file": "trays-bowls-gold-plated.html",
+                "match": any_match(family_is(TRAY_GOLD), finish_is("gold-plated")),
+                "title": "Gold-Plated Glass Trays & Kiddush Plates | Sherman Art Works",
+                "desc": "Shop handmade glass trays and Kiddush cup plates finished with gold plating, made to order in our studio in Israel.",
+                "headline": "Gold-Plated Trays & Bowls",
+                "subtitle": "Handmade glass finished with gold.",
+                "body": "Choose from six glass trays and four matching Kiddush cup plates in a range of colours.",
+                "bc": "Gold-Plated Trays & Bowls",
+                "guide": {
+                    "guide_q1": ("What is in the gold-plated collection?",
+                                 "מה כולל אוסף ציפוי הזהב?"),
+                    "guide_a1": ("The collection includes six handmade glass trays and four Kiddush cup plates finished with gold plating.",
+                                 "האוסף כולל שישה מגשי זכוכית וארבע תחתיות לכוס קידוש בעבודת יד, בגימור זהב."),
+                    "guide_q3": ("How do I care for a gold-plated tray?",
+                                 "כיצד מטפלים במגש בציפוי זהב?"),
+                    "guide_a3": ("Wipe the tray with a soft dry cloth and keep it dry. Avoid abrasive polish and the dishwasher, which can damage the gold finish.",
+                                 "נגבו את המגש במטלית רכה ויבשה ושמרו עליו יבש. הימנעו מחומרי הברקה שוחקים וממדיח כלים, שעלולים לפגוע בגימור הזהב."),
+                },
+                "image": "P036_ymyrbu",
+                "he": {
+                    "headline": "מגשים וקערות בציפוי זהב",
+                    "subtitle": "זכוכית בעבודת יד בגימור זהב.",
+                    "body": "בחרו מתוך שישה מגשי זכוכית וארבע תחתיות תואמות לכוס קידוש במגוון צבעים.",
+                    "bc": "מגשים וקערות בציפוי זהב",
+                },
+            },
+            "artisanal": {
+                "file": "trays-bowls-artisanal.html",
+                "match": finish_is("artisanal"),
+                "title": "Artisanal Handmade Glass Trays & Bowls | Sherman Art Works",
+                "desc": "Shop one-of-a-kind artisanal glass trays and bowls shaped and finished by hand in our family studio in Israel.",
+                "headline": "Artisanal Trays & Bowls",
+                "subtitle": "Expressive glasswork, shaped and finished by hand.",
+                "body": "Explore our sculptural decorative bowl and the orange glass tray made to match our orange gold-plated candlesticks.",
+                "bc": "Artisanal Trays & Bowls",
+                "guide": {
+                    "guide_q1": ("What is in the artisanal collection?",
+                                 "מה כולל האוסף האומנותי?"),
+                    "guide_a1": ("The collection includes a sculptural decorative glass bowl and an orange handmade glass tray that matches our orange gold-plated candlesticks.",
+                                 "האוסף כולל קערת זכוכית דקורטיבית ופיסולית ומגש זכוכית כתום בעבודת יד, התואם לפמוטים הכתומים בציפוי זהב שלנו."),
+                    "guide_q2": ("Will my piece look exactly like the photos?",
+                                 "האם היצירה שאקבל תיראה בדיוק כמו בתמונות?"),
+                    "guide_a2": ("Not exactly. Every piece is shaped and finished by hand, so colours, patterns and measurements vary slightly from one piece to the next.",
+                                 "לא בדיוק. כל יצירה מעוצבת ומוגמרת ביד, ולכן הצבעים, הדוגמאות והמידות משתנים מעט מיצירה ליצירה."),
+                    "guide_q3": ("How do I care for artisanal glass?",
+                                 "כיצד מטפלים בזכוכית אומנותית?"),
+                    "guide_a3": ("Wipe the glass gently with a soft damp cloth, then dry it. Avoid abrasive cleaners and the dishwasher.",
+                                 "נגבו את הזכוכית בעדינות במטלית רכה ולחה ולאחר מכן יבשו אותה. הימנעו מחומרי ניקוי שוחקים וממדיח כלים."),
+                },
+                "image": "Large_glass_clear_green_bowl_white_background_aq1qam",
+                "he": {
+                    "headline": "מגשים וקערות אומנותיים",
+                    "subtitle": "עבודת זכוכית ייחודית, מעוצבת ומוגמרת ביד.",
+                    "body": "גלו את קערת הנוי הפיסולית ואת מגש הזכוכית הכתום, התואם לפמוטים הכתומים בציפוי זהב שלנו.",
+                    "bc": "מגשים וקערות אומנותיים",
+                },
+            },
+        },
+    },
 }
 
 
@@ -213,8 +376,9 @@ def products(cat):
     page, the way the feed already treats them.
     """
     data = json.loads((SITE / "data/products.json").read_text(encoding="utf-8"))
+    categories = set(cat.get("categories", (cat["category"],)))
     return [p for p in data
-            if p.get("category") == cat["category"]
+            if p.get("category") in categories
             and cat["landing"] in (p.get("pages") or [])
             and p.get("active") is not False]
 
@@ -236,7 +400,20 @@ def split(cat, items):
     else:
         orphans = [p["id"] for p in items if p["id"] not in claimed]
         if orphans:
-            print(f"  ! {cat['landing']}: on no subcategory page: {', '.join(orphans)}")
+            message = f"{cat['landing']}: on no subcategory page: {', '.join(orphans)}"
+            if cat.get("require_exact_partition"):
+                raise RuntimeError(message)
+            print(f"  ! {message}")
+    if cat.get("require_exact_partition"):
+        duplicates = [
+            p["id"] for p in items
+            if sum(p in bucket for bucket in buckets.values()) != 1
+        ]
+        if duplicates:
+            raise RuntimeError(
+                f"{cat['landing']}: products must belong to exactly one subcategory: "
+                + ", ".join(duplicates)
+            )
     return {kind: buckets.get(kind, []) for kind in pages}
 
 
@@ -318,6 +495,120 @@ def item_list(cat, items):
             product["color"] = p["color"]
         elements.append({"@type": "ListItem", "position": position, "item": product})
     return {"@context": "https://schema.org", "@type": "ItemList", "itemListElement": elements}
+
+
+def product_jsonld(cat, product):
+    """Build the Product node used by ItemList entries."""
+    return item_list(cat, [product])["itemListElement"][0]["item"]
+
+
+def jsonld_product_id(node):
+    url = node.get("url", "") if isinstance(node, dict) else ""
+    return url.split("#", 1)[1] if isinstance(url, str) and "#" in url else None
+
+
+def sync_product_jsonld(cat, node, product):
+    """Refresh product-controlled fields without discarding richer offer data."""
+    fresh = product_jsonld(cat, product)
+    for key in ("name", "url", "description", "image", "brand", "sku", "itemCondition"):
+        node[key] = fresh[key]
+    if product.get("color_en"):
+        node["color"] = product["color_en"]
+    else:
+        node.pop("color", None)
+    # fresh["offers"] is a list: one Offer per purchasable size, each carrying
+    # its own sku, shipping and returns. The branch this replaces kept a
+    # hand-authored offer dict and copied only its price across, because the
+    # generator's offer used to be a bare single dict that would have thrown
+    # shipping and returns away. There is nothing richer to preserve now, and
+    # reading fresh["offers"]["price"] off a list raised TypeError.
+    node["offers"] = fresh["offers"]
+
+
+def sync_landing_catalog_jsonld(cat, src, items):
+    """Keep a landing page's ItemList/ProductGroups aligned to catalogue data.
+
+    Most category landings are still hand-authored, so this is opt-in. It is
+    enabled for Trays & Bowls because the orange tray moved out of the gold
+    family but retains its stable legacy URL fragment and candlestick add-on ID.
+    """
+    if not cat.get("sync_landing_jsonld"):
+        return src
+
+    script_re = re.compile(
+        r'(<script type="application/ld\+json">)(.*?)(</script>)', re.S)
+    parsed = []
+    for match in script_re.finditer(src):
+        try:
+            data = json.loads(match.group(2))
+        except json.JSONDecodeError:
+            continue
+        if data.get("@type") in ("ItemList", "ProductGroup"):
+            parsed.append((match, data))
+
+    by_id = {product["id"]: product for product in items}
+    represented = set()
+    item_lists = []
+    group_copy = cat.get("product_group_copy", {})
+
+    for _match, data in parsed:
+        if data.get("@type") == "ItemList":
+            kept = []
+            for entry in data.get("itemListElement", []):
+                node = entry.get("item", {}) if isinstance(entry, dict) else {}
+                product_id = jsonld_product_id(node)
+                product = by_id.get(product_id)
+                if not product:
+                    continue
+                sync_product_jsonld(cat, node, product)
+                kept.append(entry)
+                represented.add(product_id)
+            data["itemListElement"] = kept
+            item_lists.append(data)
+            continue
+
+        group_id = data.get("productGroupID")
+        kept = []
+        for node in data.get("hasVariant", []):
+            product_id = jsonld_product_id(node)
+            product = by_id.get(product_id)
+            if not product or product.get("family_id") != group_id:
+                continue
+            sync_product_jsonld(cat, node, product)
+            kept.append(node)
+            represented.add(product_id)
+        data["hasVariant"] = kept
+        if group_id in group_copy:
+            data.update(group_copy[group_id])
+
+    if not item_lists:
+        raise RuntimeError(f"{cat['landing']}: no ItemList JSON-LD block found")
+    primary = item_lists[0]
+    for product in items:
+        if product["id"] in represented:
+            continue
+        primary["itemListElement"].append({
+            "@type": "ListItem",
+            "position": 0,
+            "item": product_jsonld(cat, product),
+        })
+        represented.add(product["id"])
+    for position, entry in enumerate(primary["itemListElement"], 1):
+        entry["position"] = position
+
+    if represented != set(by_id):
+        missing = sorted(set(by_id) - represented)
+        raise RuntimeError(f"{cat['landing']}: JSON-LD missing products: {', '.join(missing)}")
+
+    out = src
+    for match, data in reversed(parsed):
+        replacement = (
+            match.group(1)
+            + json.dumps(data, ensure_ascii=False, separators=(",", ":"))
+            + match.group(3)
+        )
+        out = out[:match.start()] + replacement + out[match.end():]
+    return out
 
 
 def switcher(cat):
@@ -421,6 +712,7 @@ def ensure_mobile_navigation(cat):
 def build(cat, kind, cfg, source, items):
     ids = [p["id"] for p in items]
     out = source
+    landing_label_html = html.escape(cat["landing_label"])
     url = f"{BASE}/{cfg['file']}"
     he_url = f"{BASE}/he/{cfg['file']}"
     image = f"{CDN}/w_1200,h_630,c_pad,b_rgb:faf7f2,q_auto,f_auto/{cfg['image']}.jpg"
@@ -462,10 +754,10 @@ def build(cat, kind, cfg, source, items):
 
     breadcrumb = f"""      <a href="index.html#shop" data-t="bc_shop">Shop</a>
       <span class="breadcrumb-sep">·</span>
-      <a href="{cat['landing']}" data-t="{cat['landing_key']}">{cat['landing_label']}</a>
+      <a href="{cat['landing']}" data-t="{cat['landing_key']}">{landing_label_html}</a>
       <span class="breadcrumb-sep">·</span>
       <span data-t="bc_current">{html.escape(cfg['bc'])}</span>"""
-    out = replace_one(out, rf'      <a href="index\.html#shop" data-t="bc_shop">Shop</a>.*?<span data-t="bc_current">{re.escape(cat["landing_label"])}</span>',
+    out = replace_one(out, rf'      <a href="index\.html#shop" data-t="bc_shop">Shop</a>.*?<span data-t="bc_current">{re.escape(landing_label_html)}</span>',
                       breadcrumb, "visible breadcrumb", re.S)
 
     overrides = [
@@ -519,9 +811,11 @@ def main():
     for cat in CATEGORIES.values():
         ensure_mobile_navigation(cat)
         source_path = SITE / cat["landing"]
+        items = products(cat)
         source = ensure_landing_switcher(cat, source_path.read_text(encoding="utf-8"))
+        source = sync_landing_catalog_jsonld(cat, source, items)
         source_path.write_text(source, encoding="utf-8")
-        buckets = split(cat, products(cat))
+        buckets = split(cat, items)
         for kind, cfg in cat["pages"].items():
             build(cat, kind, cfg, source, buckets[kind])
 

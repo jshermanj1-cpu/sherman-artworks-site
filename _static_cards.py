@@ -284,6 +284,41 @@ def resync_alt_dollars(check):
     return fixed
 
 
+A11Y_LINK = ('<li><a href="accessibility.html" data-t="nav_accessibility">'
+             'Accessibility Statement</a></li>')
+FAQ_LI = re.compile(r'([ \t]*)(<li><a href="faq\.html"[^>]*>.*?</a></li>)')
+
+
+def ensure_a11y_link(check):
+    """Every indexable page's footer must link the accessibility statement.
+
+    js/site.js appends this link at runtime if it is absent, so a crawler that
+    does not execute JavaScript never sees it - and it is a compliance page.
+    Kept here because it is the same class of problem as the static cards: a
+    no-JS view that silently falls behind. It regressed once already, when a
+    landing page was rewritten and its footer came back without the link.
+    """
+    added = []
+    for path in sorted(SITE.glob("*.html")) + sorted((SITE / "he").glob("*.html")):
+        src = path.read_text(encoding="utf-8")
+        robots = re.search(r'<meta[^>]+name=["\']robots["\'][^>]*>', src, re.I)
+        if robots and "noindex" in robots.group(0).lower():
+            continue
+        if "accessibility.html" in src:
+            continue
+        m = FAQ_LI.search(src)
+        if not m:
+            continue  # no Help footer column on this page
+        name = path.name if path.parent == SITE else "he/" + path.name
+        added.append(name)
+        if not check:
+            sep = "\n" + m.group(1) if "\n" in m.group(0) or m.start(1) else ""
+            path.write_text(
+                src.replace(m.group(0), m.group(0) + sep + A11Y_LINK, 1),
+                encoding="utf-8")
+    return added
+
+
 def main():
     check = "--check" in sys.argv
     products = load()
@@ -324,6 +359,16 @@ def main():
             print("      %-26s ILS %s  $%s -> $%s%s"
                   % (page, ils, was, now,
                      "  (+%d more)" % (len(hits) - 1) if len(hits) > 1 else ""))
+
+    a11y = ensure_a11y_link(check)
+    if a11y:
+        stale += len(a11y)
+        print("%-22s %d page(s) %s the accessibility footer link"
+              % ("(all pages)", len(a11y), "missing" if check else "given"))
+        for p in a11y[:4]:
+            print("      %s" % p)
+        if len(a11y) > 4:
+            print("      ... and %d more" % (len(a11y) - 4))
 
     if not stale:
         print("every landing-page card matches data/products.json")

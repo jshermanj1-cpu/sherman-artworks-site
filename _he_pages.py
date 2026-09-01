@@ -42,8 +42,13 @@ SHOP_PAGES = [
     "kiddush-cups-silver-plated.html",
     "kiddush-cups-gold-plated.html",
     "havdalah-sets.html",
+    "havdalah-sets-silver-plated.html",
+    "havdalah-sets-gold-plated.html",
     "mezuzahs.html",
     "trays-bowls.html",
+    "trays-bowls-silver-plated.html",
+    "trays-bowls-gold-plated.html",
+    "trays-bowls-artisanal.html",
     "business-gifts.html",
     "shofars.html",
     "shofars-custom.html",
@@ -154,6 +159,18 @@ META = {
         "מגשים וקערות זכוכית בעבודת יד | שרמן ארט וורקס",
         "קערות ומגשים דקורטיביים מזכוכית בעבודת יד, בגימור כסף 925 או זהב, למרכז השולחן ולבית. מיוצר בישראל, משלוח לכל העולם.",
     ),
+    "trays-bowls-silver-plated.html": (
+        "מגשי זכוכית ותחתיות בציפוי כסף 925 | שרמן ארט וורקס",
+        "מגשי זכוכית ותחתיות לכוס קידוש בעבודת יד בגימור כסף 925, במגוון צבעים ומיוצרים בישראל.",
+    ),
+    "trays-bowls-gold-plated.html": (
+        "מגשי זכוכית ותחתיות בציפוי זהב | שרמן ארט וורקס",
+        "מגשי זכוכית ותחתיות לכוס קידוש בעבודת יד בגימור זהב, במגוון צבעים ומיוצרים בישראל.",
+    ),
+    "trays-bowls-artisanal.html": (
+        "מגשים וקערות זכוכית אומנותיים | שרמן ארט וורקס",
+        "מגשים וקערות זכוכית אומנותיים וייחודיים, מעוצבים ומוגמרים ביד בסטודיו המשפחתי שלנו בישראל.",
+    ),
     "kiddush-cups-silver-plated.html": (
         "כוסות קידוש בציפוי כסף 925 | שרמן ארט וורקס",
         "כוסות קידוש בעבודת יד בגימור כסף 925, במבחר צבעים ועם אפשרות לצלחת תואמת. מיוצר בישראל.",
@@ -164,7 +181,15 @@ META = {
     ),
     "havdalah-sets.html": (
         "סטים להבדלה בעבודת יד | שרמן ארט וורקס",
-        "סטים להבדלה בעבודת יד בצבעים שחור, כחול, לבן וכתום. מיוצר בישראל, משלוח לכל העולם.",
+        "סטים להבדלה בעבודת יד בציפוי כסף 925 וציפוי זהב, בצבעים שחור, כחול, לבן, כתום ואדום. מיוצר בישראל, משלוח לכל העולם.",
+    ),
+    "havdalah-sets-silver-plated.html": (
+        "סטי הבדלה בציפוי כסף 925 | שרמן ארט וורקס",
+        "סטי הבדלה מזכוכית בעבודת יד בגימור כסף 925, בצבעים שחור, כחול, לבן וכתום. מיוצר בישראל.",
+    ),
+    "havdalah-sets-gold-plated.html": (
+        "סטי הבדלה בציפוי זהב | שרמן ארט וורקס",
+        "סטי הבדלה מזכוכית בעבודת יד בגימור זהב, בצבעים שחור, כחול, לבן, כתום ואדום. מיוצר בישראל.",
     ),
     "business-gifts.html": (
         "מתנות לעסקים ולאירועים | שרמן ארט וורקס",
@@ -437,7 +462,7 @@ PRODUCT_GROUP_HE = {
     "gold-plated-glass-trays": {
         "name": "מגשי זכוכית בציפוי זהב",
         "description": "מגשי זכוכית בעבודת יד בציפוי זהב, "
-                       "בשבעה עיצובים מתואמים.",
+                       "בשישה עיצובים מתואמים.",
     },
     "classic-havdalah-sets": {
         "name": "סטים להבדלה קלאסיים",
@@ -480,12 +505,18 @@ def localize_jsonld(txt, en2he):
         return s
 
     def tr_variant(node):
-        """A ProductGroup variant describes a product the Hebrew reader sees in
+        """A Product node describes a product the Hebrew reader sees in
         Hebrew, so its name/description/color come from PRODUCTS rather than
         being left in English. Joined on the English name, same key as the
         static cards. Offers are left alone - prices and the seller/shipping/
         return @id refs are language-neutral, so the /he/ page inherits the
-        English page's full merchant-listing shape for free."""
+        English page's full merchant-listing shape for free.
+
+        Used for ProductGroup variants and ItemList entries alike: the two
+        carry the same Product nodes and a reader cannot tell which block a
+        card came from, so translating only the groups stranded whatever a
+        page lists loose rather than grouped - on trays-bowls that is every
+        Kiddush plate, the decorative bowl and the orange tray."""
         rec = PRODUCTS_HE.get(norm(node.get("name")))
         if not rec:
             return
@@ -521,13 +552,19 @@ def localize_jsonld(txt, en2he):
                 for variant in node.get("hasVariant", []):
                     tr_variant(variant)
             elif ty == "Product":
-                # Plain Products - the ItemList entries that make up every
-                # category and subcategory page - get the same treatment as a
-                # ProductGroup variant. Without this the Hebrew half of the site
-                # rendered Hebrew headings over English product entities, which
-                # is the mismatch Google reads as structured data not matching
-                # the page. Re-walking a variant already translated above is a
-                # no-op: the join is on the English name, which is gone by then.
+                # Every Product node, wherever it sits: an ItemList entry, a
+                # ProductGroup variant, or one listed loose. Without this the
+                # Hebrew half of the site rendered Hebrew headings over English
+                # product entities, the mismatch Google reads as structured data
+                # not matching the page.
+                #
+                # This replaced a narrower ItemList branch that translated only
+                # itemListElement[].item. That left behind anything a page lists
+                # loose - business-gifts, mezuzahs and ten of candlesticks.html's
+                # entries, 15 entities in all. Matching on the node rather than
+                # on its container catches them, and re-walking a variant the
+                # ProductGroup branch already translated is a no-op: the join is
+                # on the English name, which is gone by then.
                 tr_variant(node)
             for v in node.values():
                 walk(v)

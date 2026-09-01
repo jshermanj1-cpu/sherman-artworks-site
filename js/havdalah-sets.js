@@ -3,10 +3,11 @@ const PRODUCTS = [
     "id": "black-havdalah-set",
     "sku": "SAW-HS-001",
     "family_id": "classic-havdalah-sets",
-    "name_en": "Black Havdalah Set",
-    "name_he": "סט הבדלה שחור",
-    "description_en": "Handmade black Havdalah set, crafted in our studio in Israel.",
-    "description_he": "סט הבדלה שחור בעבודת יד, מיוצר בסטודיו שלנו בישראל.",
+    "finish": "silver-plated",
+    "name_en": "925 Silver-Plated Black Havdalah Set",
+    "name_he": "סט הבדלה שחור בציפוי כסף 925",
+    "description_en": "Handmade black glass Havdalah set with 925 silver plating, crafted in our studio in Israel.",
+    "description_he": "סט הבדלה שחור מזכוכית בציפוי כסף 925, בעבודת יד, מיוצר בסטודיו שלנו בישראל.",
     "color_en": "Black",
     "color_he": "שחור",
     "measurements": "",
@@ -17,10 +18,11 @@ const PRODUCTS = [
     "id": "blue-havdalah-set",
     "sku": "SAW-HS-002",
     "family_id": "classic-havdalah-sets",
-    "name_en": "Blue Havdalah Set",
-    "name_he": "סט הבדלה כחול",
-    "description_en": "Handmade blue Havdalah set, crafted in our studio in Israel.",
-    "description_he": "סט הבדלה כחול בעבודת יד, מיוצר בסטודיו שלנו בישראל.",
+    "finish": "silver-plated",
+    "name_en": "925 Silver-Plated Blue Havdalah Set",
+    "name_he": "סט הבדלה כחול בציפוי כסף 925",
+    "description_en": "Handmade blue glass Havdalah set with 925 silver plating, crafted in our studio in Israel.",
+    "description_he": "סט הבדלה כחול מזכוכית בציפוי כסף 925, בעבודת יד, מיוצר בסטודיו שלנו בישראל.",
     "color_en": "Blue",
     "color_he": "כחול",
     "measurements": "",
@@ -31,10 +33,11 @@ const PRODUCTS = [
     "id": "white-havdalah-set",
     "sku": "SAW-HS-003",
     "family_id": "classic-havdalah-sets",
-    "name_en": "White Havdalah Set",
-    "name_he": "סט הבדלה לבן",
-    "description_en": "Handmade white Havdalah set, crafted in our studio in Israel.",
-    "description_he": "סט הבדלה לבן בעבודת יד, מיוצר בסטודיו שלנו בישראל.",
+    "finish": "silver-plated",
+    "name_en": "925 Silver-Plated White Havdalah Set",
+    "name_he": "סט הבדלה לבן בציפוי כסף 925",
+    "description_en": "Handmade white glass Havdalah set with 925 silver plating, crafted in our studio in Israel.",
+    "description_he": "סט הבדלה לבן מזכוכית בציפוי כסף 925, בעבודת יד, מיוצר בסטודיו שלנו בישראל.",
     "color_en": "White",
     "color_he": "לבן",
     "measurements": "",
@@ -44,15 +47,91 @@ const PRODUCTS = [
   {
     "id": "orange-havdalah-set",
     "sku": "SAW-HS-004",
-    "name_en": "Orange Havdalah Set",
-    "name_he": "סט הבדלה כתום",
-    "description_en": "Handmade orange Havdalah set, crafted in our studio in Israel.",
-    "description_he": "סט הבדלה כתום בעבודת יד, מיוצר בסטודיו שלנו בישראל.",
+    "finish": "silver-plated",
+    "name_en": "925 Silver-Plated Orange Havdalah Set",
+    "name_he": "סט הבדלה כתום בציפוי כסף 925",
+    "description_en": "Handmade orange glass Havdalah set with 925 silver plating, crafted in our studio in Israel.",
+    "description_he": "סט הבדלה כתום מזכוכית בציפוי כסף 925, בעבודת יד, מיוצר בסטודיו שלנו בישראל.",
     "color_en": "Orange",
     "color_he": "כתום",
     "measurements": "",
     "price_ils": 1334,
     "photos": ["Orange_havdala_set_bh5ut5"]
+  },
+  {
+    "id": "gold-plated-black-havdalah-set",
+    "sku": "SAW-HS-005",
+    "family_id": "gold-plated-havdalah-sets",
+    "finish": "gold-plated",
+    "name_en": "Gold-Plated Black Havdalah Set",
+    "name_he": "סט הבדלה מזכוכית שחורה בציפוי זהב",
+    "description_en": "Handmade black glass Havdalah set with gold plating, crafted in our studio in Israel.",
+    "description_he": "סט הבדלה מזכוכית שחורה בציפוי זהב, בעבודת יד, מיוצר בסטודיו שלנו בישראל.",
+    "color_en": "Black",
+    "color_he": "שחור",
+    "measurements": "",
+    "price_ils": 1657,
+    "photos": ["Black_havdalah_set_gold_zblb7f"]
+  },
+  {
+    "id": "gold-plated-blue-havdalah-set",
+    "sku": "SAW-HS-006",
+    "family_id": "gold-plated-havdalah-sets",
+    "finish": "gold-plated",
+    "name_en": "Gold-Plated Blue Havdalah Set",
+    "name_he": "סט הבדלה מזכוכית כחולה בציפוי זהב",
+    "description_en": "Handmade blue glass Havdalah set with gold plating, crafted in our studio in Israel.",
+    "description_he": "סט הבדלה מזכוכית כחולה בציפוי זהב, בעבודת יד, מיוצר בסטודיו שלנו בישראל.",
+    "color_en": "Blue",
+    "color_he": "כחול",
+    "measurements": "",
+    "price_ils": 1657,
+    "photos": ["Blue_havdalah_set_gold_kqrs67"]
+  },
+  {
+    "id": "gold-plated-orange-havdalah-set",
+    "sku": "SAW-HS-007",
+    "family_id": "gold-plated-havdalah-sets",
+    "finish": "gold-plated",
+    "name_en": "Gold-Plated Orange Havdalah Set",
+    "name_he": "סט הבדלה מזכוכית כתומה בציפוי זהב",
+    "description_en": "Handmade orange glass Havdalah set with gold plating, crafted in our studio in Israel.",
+    "description_he": "סט הבדלה מזכוכית כתומה בציפוי זהב, בעבודת יד, מיוצר בסטודיו שלנו בישראל.",
+    "color_en": "Orange",
+    "color_he": "כתום",
+    "measurements": "",
+    "price_ils": 1467,
+    "photos": ["Orange_havdalah_set_gold_ona5jl"]
+  },
+  {
+    "id": "gold-plated-red-havdalah-set",
+    "sku": "SAW-HS-008",
+    "family_id": "gold-plated-havdalah-sets",
+    "finish": "gold-plated",
+    "name_en": "Gold-Plated Red Havdalah Set",
+    "name_he": "סט הבדלה מזכוכית אדומה בציפוי זהב",
+    "description_en": "Handmade red glass Havdalah set with gold plating, crafted in our studio in Israel.",
+    "description_he": "סט הבדלה מזכוכית אדומה בציפוי זהב, בעבודת יד, מיוצר בסטודיו שלנו בישראל.",
+    "color_en": "Red",
+    "color_he": "אדום",
+    "measurements": "",
+    "price_ils": 1657,
+    "photos": ["Red_havdalah_set_gold_xf0lnu"]
+  },
+  {
+    "id": "gold-plated-white-havdalah-set",
+    "sku": "SAW-HS-009",
+    "family_id": "gold-plated-havdalah-sets",
+    "finish": "gold-plated",
+    "name_en": "Gold-Plated White Havdalah Set",
+    "name_he": "סט הבדלה מזכוכית לבנה בציפוי זהב",
+    "description_en": "Handmade white glass Havdalah set with gold plating, crafted in our studio in Israel.",
+    "description_he": "סט הבדלה מזכוכית לבנה בציפוי זהב, בעבודת יד, מיוצר בסטודיו שלנו בישראל.",
+    "color_en": "White",
+    "color_he": "לבן",
+    "measurements": "",
+    "price_ils": 1657,
+    "photos": ["White_havdalah_set_gold_nxxpbc"]
   }
 ];
 
@@ -99,7 +178,12 @@ let productDisplayOrder = null;
 
 function renderProducts() {
   const grid = document.getElementById("grid-products");
-  if (!productDisplayOrder) productDisplayOrder = shuffledProductEntries(PRODUCTS);
+  if (!productDisplayOrder) {
+    const ids = (typeof SECTIONS !== "undefined" && SECTIONS.products && SECTIONS.products.length)
+      ? SECTIONS.products : null;
+    const visible = ids ? PRODUCTS.filter(function(p) { return ids.indexOf(p.id) >= 0; }) : PRODUCTS;
+    productDisplayOrder = shuffledProductEntries(visible);
+  }
   if (grid) {
     grid.innerHTML = productDisplayOrder
       .map(function(entry) { return buildProductCard(entry.p, entry.idx); })

@@ -4058,8 +4058,8 @@
   </item>
   <item>
     <g:id>black-havdalah-set</g:id>
-    <g:title>Black Havdalah Set</g:title>
-    <g:description>Handmade black Havdalah set, crafted in our studio in Israel.</g:description>
+    <g:title>925 Silver-Plated Black Havdalah Set</g:title>
+    <g:description>Handmade black glass Havdalah set with 925 silver plating, crafted in our studio in Israel.</g:description>
     <g:link>https://shermanartworks.com/havdalah-sets.html#black-havdalah-set</g:link>
     <g:image_link>https://res.cloudinary.com/doesupaf9/image/upload/w_1200,q_auto:good/Havdala_black_set_wdnnhk.jpg</g:image_link>
     <g:availability>in_stock</g:availability>
@@ -4078,8 +4078,8 @@
   </item>
   <item>
     <g:id>blue-havdalah-set</g:id>
-    <g:title>Blue Havdalah Set</g:title>
-    <g:description>Handmade blue Havdalah set, crafted in our studio in Israel.</g:description>
+    <g:title>925 Silver-Plated Blue Havdalah Set</g:title>
+    <g:description>Handmade blue glass Havdalah set with 925 silver plating, crafted in our studio in Israel.</g:description>
     <g:link>https://shermanartworks.com/havdalah-sets.html#blue-havdalah-set</g:link>
     <g:image_link>https://res.cloudinary.com/doesupaf9/image/upload/w_1200,q_auto:good/Blue_havdala_set_guzrpu.jpg</g:image_link>
     <g:availability>in_stock</g:availability>
@@ -4098,8 +4098,8 @@
   </item>
   <item>
     <g:id>white-havdalah-set</g:id>
-    <g:title>White Havdalah Set</g:title>
-    <g:description>Handmade white Havdalah set, crafted in our studio in Israel.</g:description>
+    <g:title>925 Silver-Plated White Havdalah Set</g:title>
+    <g:description>Handmade white glass Havdalah set with 925 silver plating, crafted in our studio in Israel.</g:description>
     <g:link>https://shermanartworks.com/havdalah-sets.html#white-havdalah-set</g:link>
     <g:image_link>https://res.cloudinary.com/doesupaf9/image/upload/w_1200,q_auto:good/Havdala_white_set_wnymec.jpg</g:image_link>
     <g:availability>in_stock</g:availability>
@@ -4118,8 +4118,8 @@
   </item>
   <item>
     <g:id>orange-havdalah-set</g:id>
-    <g:title>Orange Havdalah Set</g:title>
-    <g:description>Handmade orange Havdalah set, crafted in our studio in Israel.</g:description>
+    <g:title>925 Silver-Plated Orange Havdalah Set</g:title>
+    <g:description>Handmade orange glass Havdalah set with 925 silver plating, crafted in our studio in Israel.</g:description>
     <g:link>https://shermanartworks.com/havdalah-sets.html#orange-havdalah-set</g:link>
     <g:image_link>https://res.cloudinary.com/doesupaf9/image/upload/w_1200,q_auto:good/Orange_havdala_set_bh5ut5.jpg</g:image_link>
     <g:availability>in_stock</g:availability>
@@ -4128,6 +4128,106 @@
     <g:brand>Sherman Art Works</g:brand>
     <g:mpn>SAW-HS-004</g:mpn>
     <g:color>Orange</g:color>
+    <g:product_type>Havdalah Sets</g:product_type>
+    <g:google_product_category>97</g:google_product_category>
+    <g:shipping>
+      <g:country>IL</g:country>
+      <g:price>35.00 ILS</g:price>
+    </g:shipping>
+  </item>
+  <item>
+    <g:id>gold-plated-black-havdalah-set</g:id>
+    <g:title>Gold-Plated Black Havdalah Set</g:title>
+    <g:description>Handmade black glass Havdalah set with gold plating, crafted in our studio in Israel.</g:description>
+    <g:link>https://shermanartworks.com/havdalah-sets.html#gold-plated-black-havdalah-set</g:link>
+    <g:image_link>https://res.cloudinary.com/doesupaf9/image/upload/w_1200,q_auto:good/Black_havdalah_set_gold_zblb7f.jpg</g:image_link>
+    <g:availability>in_stock</g:availability>
+    <g:price>1657.00 ILS</g:price>
+    <g:condition>new</g:condition>
+    <g:brand>Sherman Art Works</g:brand>
+    <g:mpn>SAW-HS-005</g:mpn>
+    <g:item_group_id>gold-plated-havdalah-sets</g:item_group_id>
+    <g:color>Black</g:color>
+    <g:product_type>Havdalah Sets</g:product_type>
+    <g:google_product_category>97</g:google_product_category>
+    <g:shipping>
+      <g:country>IL</g:country>
+      <g:price>35.00 ILS</g:price>
+    </g:shipping>
+  </item>
+  <item>
+    <g:id>gold-plated-blue-havdalah-set</g:id>
+    <g:title>Gold-Plated Blue Havdalah Set</g:title>
+    <g:description>Handmade blue glass Havdalah set with gold plating, crafted in our studio in Israel.</g:description>
+    <g:link>https://shermanartworks.com/havdalah-sets.html#gold-plated-blue-havdalah-set</g:link>
+    <g:image_link>https://res.cloudinary.com/doesupaf9/image/upload/w_1200,q_auto:good/Blue_havdalah_set_gold_kqrs67.jpg</g:image_link>
+    <g:availability>in_stock</g:availability>
+    <g:price>1657.00 ILS</g:price>
+    <g:condition>new</g:condition>
+    <g:brand>Sherman Art Works</g:brand>
+    <g:mpn>SAW-HS-006</g:mpn>
+    <g:item_group_id>gold-plated-havdalah-sets</g:item_group_id>
+    <g:color>Blue</g:color>
+    <g:product_type>Havdalah Sets</g:product_type>
+    <g:google_product_category>97</g:google_product_category>
+    <g:shipping>
+      <g:country>IL</g:country>
+      <g:price>35.00 ILS</g:price>
+    </g:shipping>
+  </item>
+  <item>
+    <g:id>gold-plated-orange-havdalah-set</g:id>
+    <g:title>Gold-Plated Orange Havdalah Set</g:title>
+    <g:description>Handmade orange glass Havdalah set with gold plating, crafted in our studio in Israel.</g:description>
+    <g:link>https://shermanartworks.com/havdalah-sets.html#gold-plated-orange-havdalah-set</g:link>
+    <g:image_link>https://res.cloudinary.com/doesupaf9/image/upload/w_1200,q_auto:good/Orange_havdalah_set_gold_ona5jl.jpg</g:image_link>
+    <g:availability>in_stock</g:availability>
+    <g:price>1467.00 ILS</g:price>
+    <g:condition>new</g:condition>
+    <g:brand>Sherman Art Works</g:brand>
+    <g:mpn>SAW-HS-007</g:mpn>
+    <g:item_group_id>gold-plated-havdalah-sets</g:item_group_id>
+    <g:color>Orange</g:color>
+    <g:product_type>Havdalah Sets</g:product_type>
+    <g:google_product_category>97</g:google_product_category>
+    <g:shipping>
+      <g:country>IL</g:country>
+      <g:price>35.00 ILS</g:price>
+    </g:shipping>
+  </item>
+  <item>
+    <g:id>gold-plated-red-havdalah-set</g:id>
+    <g:title>Gold-Plated Red Havdalah Set</g:title>
+    <g:description>Handmade red glass Havdalah set with gold plating, crafted in our studio in Israel.</g:description>
+    <g:link>https://shermanartworks.com/havdalah-sets.html#gold-plated-red-havdalah-set</g:link>
+    <g:image_link>https://res.cloudinary.com/doesupaf9/image/upload/w_1200,q_auto:good/Red_havdalah_set_gold_xf0lnu.jpg</g:image_link>
+    <g:availability>in_stock</g:availability>
+    <g:price>1657.00 ILS</g:price>
+    <g:condition>new</g:condition>
+    <g:brand>Sherman Art Works</g:brand>
+    <g:mpn>SAW-HS-008</g:mpn>
+    <g:item_group_id>gold-plated-havdalah-sets</g:item_group_id>
+    <g:color>Red</g:color>
+    <g:product_type>Havdalah Sets</g:product_type>
+    <g:google_product_category>97</g:google_product_category>
+    <g:shipping>
+      <g:country>IL</g:country>
+      <g:price>35.00 ILS</g:price>
+    </g:shipping>
+  </item>
+  <item>
+    <g:id>gold-plated-white-havdalah-set</g:id>
+    <g:title>Gold-Plated White Havdalah Set</g:title>
+    <g:description>Handmade white glass Havdalah set with gold plating, crafted in our studio in Israel.</g:description>
+    <g:link>https://shermanartworks.com/havdalah-sets.html#gold-plated-white-havdalah-set</g:link>
+    <g:image_link>https://res.cloudinary.com/doesupaf9/image/upload/w_1200,q_auto:good/White_havdalah_set_gold_nxxpbc.jpg</g:image_link>
+    <g:availability>in_stock</g:availability>
+    <g:price>1657.00 ILS</g:price>
+    <g:condition>new</g:condition>
+    <g:brand>Sherman Art Works</g:brand>
+    <g:mpn>SAW-HS-009</g:mpn>
+    <g:item_group_id>gold-plated-havdalah-sets</g:item_group_id>
+    <g:color>White</g:color>
     <g:product_type>Havdalah Sets</g:product_type>
     <g:google_product_category>97</g:google_product_category>
     <g:shipping>
@@ -4902,16 +5002,15 @@
   </item>
   <item>
     <g:id>orange-gold-plated-glass-tray</g:id>
-    <g:title>Orange Gold-Plated Glass Tray</g:title>
-    <g:description>Handmade orange glass tray finished with gold plating. Measures 30 × 18 cm and is made to order in our studio in Israel.</g:description>
+    <g:title>Orange Glass Tray</g:title>
+    <g:description>Handmade orange glass tray with a distinctive artisanal finish. Measures 30 × 18 cm and is made to order in our studio in Israel.</g:description>
     <g:link>https://shermanartworks.com/trays-bowls.html#orange-gold-plated-glass-tray</g:link>
     <g:image_link>https://res.cloudinary.com/doesupaf9/image/upload/w_1200,q_auto:good/עותק_של_Orange_tray_vwt85g.jpg</g:image_link>
     <g:availability>in_stock</g:availability>
-    <g:price>617.00 ILS</g:price>
+    <g:price>524.00 ILS</g:price>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
     <g:mpn>SAW-TB-012</g:mpn>
-    <g:item_group_id>gold-plated-glass-trays</g:item_group_id>
     <g:color>Orange</g:color>
     <g:product_type>Trays &amp; Bowls</g:product_type>
     <g:google_product_category>6457</g:google_product_category>
