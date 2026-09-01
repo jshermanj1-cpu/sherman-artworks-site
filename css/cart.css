@@ -39,6 +39,35 @@
 }
 html[dir="rtl"] .cart-count { right: auto; left: 0; }
 
+/* Shown only when a cart saved during the launch offer is restored to current
+   catalogue prices. It remains visible until the shopper acknowledges it. */
+.cart-price-update-notice {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin: 0 0 1rem;
+  padding: 0.85rem 0.9rem;
+  border: 1px solid #d7c28b;
+  border-radius: 8px;
+  background: #fff9e8;
+  color: #594719;
+  font-size: 0.82rem;
+  line-height: 1.5;
+}
+.cart-price-update-dismiss {
+  flex-shrink: 0;
+  border: 0;
+  border-radius: 999px;
+  padding: 0.25rem 0.6rem;
+  background: var(--brown);
+  color: #fff;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+.cart-price-update-dismiss:hover { background: var(--dark); }
+
 /* ── OVERLAY ──────────────────────────────────────────────────── */
 .cart-overlay {
   display: none;

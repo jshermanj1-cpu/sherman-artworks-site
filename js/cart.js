@@ -5,6 +5,7 @@
 
 // ── CART STORE ─────────────────────────────────────────────────
 const CART_KEY = 'sa_cart';
+const CART_PRICE_UPDATE_NOTICE_KEY = 'sa_launch_cart_updated';
 
 // Product page per slug - lets cart items link back to their product page
 // even for items added before the `page` field existed.
@@ -115,7 +116,31 @@ function _cartKey(item) {
 }
 
 function getCart() {
-  try { return JSON.parse(localStorage.getItem(CART_KEY)) || []; }
+  try {
+    var items = JSON.parse(localStorage.getItem(CART_KEY)) || [];
+    var promotionEnded = typeof launchActive === 'function' && !launchActive();
+    var updated = false;
+
+    // Carts created during the launch offer stored the discounted amount in
+    // price_ils and the catalogue amount in regular_price_ils. Restore those
+    // saved lines once the promotion is off, while preserving quantities,
+    // personalisation and bundle selections.
+    if (promotionEnded && Array.isArray(items)) {
+      items.forEach(function(item) {
+        var regular = item && Number(item.regular_price_ils);
+        if (!isFinite(regular) || regular <= 0) return;
+        item.price_ils = regular;
+        delete item.regular_price_ils;
+        updated = true;
+      });
+    }
+
+    if (updated) {
+      localStorage.setItem(CART_KEY, JSON.stringify(items));
+      localStorage.setItem(CART_PRICE_UPDATE_NOTICE_KEY, '1');
+    }
+    return Array.isArray(items) ? items : [];
+  }
   catch (e) { return []; }
 }
 
@@ -208,6 +233,27 @@ function updateCartQtyAt(idx, qty) {
 }
 
 function clearCart() { _saveCart([]); }
+
+function cartPriceUpdateNoticeHtml(isHe) {
+  try {
+    if (localStorage.getItem(CART_PRICE_UPDATE_NOTICE_KEY) !== '1') return '';
+  } catch (e) { return ''; }
+  var message = isHe
+    ? 'מבצע ההשקה הסתיים. המחירים בעגלה השמורה עודכנו למחירי המחירון הנוכחיים.'
+    : 'The launch offer has ended. Prices in your saved cart were updated to the current catalogue prices.';
+  var dismiss = isHe ? 'הבנתי' : 'OK';
+  return '<div class="cart-price-update-notice" role="status">' +
+    '<span>' + escapeHtml(message) + '</span>' +
+    '<button type="button" class="cart-price-update-dismiss" onclick="dismissCartPriceUpdateNotice()">' +
+      escapeHtml(dismiss) +
+    '</button>' +
+  '</div>';
+}
+
+function dismissCartPriceUpdateNotice() {
+  try { localStorage.removeItem(CART_PRICE_UPDATE_NOTICE_KEY); } catch (e) {}
+  document.querySelectorAll('.cart-price-update-notice').forEach(function(el) { el.remove(); });
+}
 
 function getCartCount() {
   return getCart().reduce(function (s, i) { return s + i.qty; }, 0);
@@ -641,7 +687,7 @@ function renderCartDrawer() {
   }
   if (footerEl) footerEl.style.display = '';
 
-  listEl.innerHTML = items.map(function (item, idx) {
+  listEl.innerHTML = cartPriceUpdateNoticeHtml(isHe) + items.map(function (item, idx) {
     var name  = (isHe && item.name_he) ? item.name_he : item.name_en;
     var thumb = CDN + '/w_80,h_80,c_fill,g_auto,q_auto,f_auto/' + item.photo + '.jpg';
     var priceStr = cartLinePriceHtml(item);

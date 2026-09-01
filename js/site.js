@@ -8,14 +8,12 @@ const WA_NUMBER = '972523482278';
 const CDN = 'https://res.cloudinary.com/doesupaf9/image/upload';
 
 // ── LAUNCH DISCOUNT ────────────────────────────────────────────
-// Site-wide launch promotion. Everything except shipping is sold at
-// (1 - LAUNCH_DISCOUNT) of its catalogue price. Set to 0 to turn the whole
-// promotion off - the banner disappears, struck prices revert, and the cart /
-// checkout charge full price again, with no other change needed. The identical
-// factor and rounding rule live in the payments Worker (sherman-payments,
-// src/pricing.js) so the server reprices card orders to the same total; if you
-// change this number, change it there too or card orders will bounce.
-const LAUNCH_DISCOUNT = 0.20;
+// The launch promotion ended on 1 September 2026. Keep this at 0 so the banner,
+// strike-through prices and launch savings stay off and the cart uses catalogue
+// prices. The identical value lives in _launch.py and the payments Worker
+// (sherman-payments/src/pricing.js); all three must change together if a future
+// promotion deliberately reuses this mechanism.
+const LAUNCH_DISCOUNT = 0;
 
 function launchActive() { return LAUNCH_DISCOUNT > 0; }
 
