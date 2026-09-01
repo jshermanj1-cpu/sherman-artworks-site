@@ -35,8 +35,20 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://shermanartworks.com/kiddush-cups-silver-plated.html</loc>
+    <lastmod>2026-09-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://shermanartworks.com/kiddush-cups-gold-plated.html</loc>
+    <lastmod>2026-09-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://shermanartworks.com/kiddush-cups.html</loc>
-    <lastmod>2026-08-10</lastmod>
+    <lastmod>2026-09-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -151,7 +163,7 @@
   </url>
   <url>
     <loc>https://shermanartworks.com/he/kiddush-cups.html</loc>
-    <lastmod>2026-08-10</lastmod>
+    <lastmod>2026-09-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -271,6 +283,19 @@
 
   <url>
     <loc>https://shermanartworks.com/he/candlesticks-gold-plated.html</loc>
+    <lastmod>2026-09-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://shermanartworks.com/he/kiddush-cups-silver-plated.html</loc>
+    <lastmod>2026-09-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://shermanartworks.com/he/kiddush-cups-gold-plated.html</loc>
     <lastmod>2026-09-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>

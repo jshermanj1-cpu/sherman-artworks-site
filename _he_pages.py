@@ -39,6 +39,8 @@ SHOP_PAGES = [
     "candlesticks-artisanal.html",
     "horn-goblets.html",
     "kiddush-cups.html",
+    "kiddush-cups-silver-plated.html",
+    "kiddush-cups-gold-plated.html",
     "havdalah-sets.html",
     "mezuzahs.html",
     "trays-bowls.html",
@@ -151,6 +153,14 @@ META = {
     "trays-bowls.html": (
         "מגשים וקערות זכוכית בעבודת יד | שרמן ארט וורקס",
         "קערות ומגשים דקורטיביים מזכוכית בעבודת יד למרכז השולחן ולבית. מיוצר בישראל, משלוח לכל העולם.",
+    ),
+    "kiddush-cups-silver-plated.html": (
+        "כוסות קידוש בציפוי כסף 925 | שרמן ארט וורקס",
+        "כוסות קידוש בעבודת יד בגימור כסף 925, במבחר צבעים ועם אפשרות לצלחת תואמת. מיוצר בישראל.",
+    ),
+    "kiddush-cups-gold-plated.html": (
+        "כוסות קידוש בציפוי זהב | שרמן ארט וורקס",
+        "כוסות קידוש בעבודת יד בגימור זהב, במבחר צבעים ועם אפשרות לצלחת תואמת. מיוצר בישראל.",
     ),
     "havdalah-sets.html": (
         "סטים להבדלה בעבודת יד | שרמן ארט וורקס",

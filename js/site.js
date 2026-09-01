@@ -168,6 +168,9 @@ const T_SITE = {
     switch_candles_silver:    'Silver-Plated Candlesticks',
     switch_candles_gold:      'Gold-Plated Candlesticks',
     switch_candles_artisanal: 'Artisanal Candlesticks',
+    switch_cups_all:          'All Kiddush Cups',
+    switch_cups_silver:       'Silver-Plated Kiddush Cups',
+    switch_cups_gold:         'Gold-Plated Kiddush Cups',
 
     cat_from:            'from',
     cat_cta_browse:      'Browse Collection',
@@ -240,6 +243,9 @@ const T_SITE = {
     switch_candles_silver:    'פמוטים בציפוי כסף',
     switch_candles_gold:      'פמוטים בציפוי זהב',
     switch_candles_artisanal: 'פמוטים אומנותיים',
+    switch_cups_all:          'כל כוסות הקידוש',
+    switch_cups_silver:       'כוסות קידוש בציפוי כסף',
+    switch_cups_gold:         'כוסות קידוש בציפוי זהב',
 
     cat_from:            'מ-',
     cat_cta_browse:      'לקולקציה',

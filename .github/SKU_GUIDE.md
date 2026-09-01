@@ -28,7 +28,7 @@ similar suffix to a product with one sellable configuration.
 |---|---:|---:|
 | Candlesticks | `CS` | `025` |
 | Horn Goblets | `HG` | `004` |
-| Kiddush Cups | `KC` | `021` |
+| Kiddush Cups | `KC` | `035` |
 | Trays & Bowls | `TB` | `016` |
 | Mezuzahs | `MZ` | `005` |
 | Shofars | `SH` | `023` |
@@ -183,6 +183,20 @@ configurations. They are permanent once migrated into the product data.
 | `SAW-KC-018` | `white-kiddush-cup-plate` | White Kiddush Cup Plate | None |
 | `SAW-KC-019` | `blue-green-kiddush-cup-plate` | Blue-Green Kiddush Cup Plate | None |
 | `SAW-KC-020` | `red-kiddush-cup-plate` | Red Kiddush Cup Plate | None |
+| `SAW-KC-021` | `gold-plated-blue-tall-glass-cup` | Gold-Plated Tall Blue Glass Kiddush Cup | None |
+| `SAW-KC-022` | `gold-plated-black-tall-glass-cup` | Gold-Plated Tall Black Glass Kiddush Cup | None |
+| `SAW-KC-023` | `gold-plated-blue-green-tall-glass-cup` | Gold-Plated Tall Blue-Green Glass Kiddush Cup | None |
+| `SAW-KC-024` | `gold-plated-colorful-tall-glass-cup` | Gold-Plated Tall Colorful Glass Kiddush Cup | None |
+| `SAW-KC-025` | `gold-plated-orange-glass-cup` | Gold-Plated Orange Glass Kiddush Cup | None |
+| `SAW-KC-026` | `gold-plated-vibrant-red-tall-glass-cup` | Gold-Plated Tall Vibrant Red Glass Kiddush Cup | None |
+| `SAW-KC-027` | `gold-plated-red-tall-glass-cup` | Gold-Plated Tall Red Glass Kiddush Cup | None |
+| `SAW-KC-028` | `gold-plated-orange-tall-glass-cup` | Gold-Plated Tall Orange Glass Kiddush Cup | None |
+| `SAW-KC-029` | `gold-plated-black-bore-pri-hagefen-tall-glass-cup` | Gold-Plated Tall Black Glass Kiddush Cup with Bore Pri Hagefen | None |
+| `SAW-KC-030` | `gold-plated-blue-bore-pri-hagefen-tall-glass-cup` | Gold-Plated Tall Blue Glass Kiddush Cup with Bore Pri Hagefen | None |
+| `SAW-KC-031` | `gold-plated-blue-kiddush-cup-plate` | Gold-Plated Blue Kiddush Cup Plate | None |
+| `SAW-KC-032` | `gold-plated-red-kiddush-cup-plate` | Gold-Plated Red Kiddush Cup Plate | None |
+| `SAW-KC-033` | `gold-plated-orange-kiddush-cup-plate` | Gold-Plated Orange Kiddush Cup Plate | None |
+| `SAW-KC-034` | `gold-plated-black-kiddush-cup-plate` | Gold-Plated Black Kiddush Cup Plate | None |
 
 ### Trays & Bowls (`TB`)
 
