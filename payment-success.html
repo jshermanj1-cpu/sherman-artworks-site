@@ -77,6 +77,7 @@
         <div class="mobile-shop-menu open">
           <a href="candlesticks.html" onclick="closeMobileNav()" data-t="cat1_title">Candlesticks</a>
           <a href="candlesticks-silver-plated.html" class="mobile-shop-sub" onclick="closeMobileNav()" data-t="switch_candles_silver">Silver-Plated Candlesticks</a>
+          <a href="candlesticks-gold-plated.html" class="mobile-shop-sub" onclick="closeMobileNav()" data-t="switch_candles_gold">Gold-Plated Candlesticks</a>
           <a href="candlesticks-artisanal.html" class="mobile-shop-sub" onclick="closeMobileNav()" data-t="switch_candles_artisanal">Artisanal Candlesticks</a>
           <a href="horn-goblets.html" onclick="closeMobileNav()" data-t="cat2_title">Horn Goblets</a>
           <a href="kiddush-cups.html" onclick="closeMobileNav()" data-t="cat3_title">Kiddush Cups</a>
@@ -267,6 +268,12 @@
     _payFinalised = true;
     var p = _payParams();
     if (typeof trackGA4 === 'function') {
+      // Deliberately ILS, and deliberately NOT the displayed currency like the
+      // other money events. This one reports what was actually charged, and the
+      // amount comes off HYP's own redirect, which is denominated in whatever
+      // the terminal settled in - today always shekels (Coin=1). If the terminal
+      // is ever enabled for dollar settlement, this is one of the places that
+      // has to start reading the order's charge currency instead of assuming.
       trackGA4('purchase', {
         transaction_id: p.id || p.order || '',
         currency: 'ILS',

@@ -161,9 +161,15 @@ function addToCart(slug, name_en, name_he, price_ils, photo, sku, meta) {
   }
   _saveCart(items);
   if (typeof trackGA4 === 'function') {
+    // Reported in the currency the shopper is actually being quoted in. GA4
+    // converts by the currency code on the event, so tagging a dollar figure
+    // ILS would have it converted a second time and land at about a third of
+    // the real value.
+    var gaCur = ga4Currency();
+    var gaVal = gaCur === 'USD' ? priceParts(regular, launchExempt, 'USD').sale : charged;
     trackGA4('add_to_cart', {
-      currency: 'ILS', value: charged,
-      items: [{ item_id: sku || slug, item_name: name_en, price: charged, quantity: 1 }]
+      currency: gaCur, value: gaVal,
+      items: [{ item_id: sku || slug, item_name: name_en, price: gaVal, quantity: 1 }]
     });
   }
   if (typeof a11yAnnounce === 'function') {
@@ -207,6 +213,13 @@ function getCartCount() {
   return getCart().reduce(function (s, i) { return s + i.qty; }, 0);
 }
 
+// The currency every GA4 money event is reported in. Must match the value sent
+// alongside it: GA4 converts by this code, so a mismatch misreports revenue
+// rather than merely mislabelling it.
+function ga4Currency() {
+  return (typeof activeCurrency === 'function') ? activeCurrency() : 'ILS';
+}
+
 // Line items only - shipping is added on top by getOrderTotal().
 function getCartTotal() {
   return getCart().reduce(function (s, i) { return s + i.price_ils * i.qty; }, 0);
@@ -217,6 +230,18 @@ function getCartTotal() {
 function getCartLaunchSavings() {
   return getCart().reduce(function (s, i) {
     return s + (i.regular_price_ils ? (i.regular_price_ils - i.price_ils) * i.qty : 0);
+  }, 0);
+}
+
+// The same saving in whichever currency is being displayed. Computed inside that
+// currency rather than converted, so "you saved $28" is the difference between
+// two figures the shopper actually saw.
+function getCartLaunchSavingsIn(cur) {
+  if (cur === 'ILS') return getCartLaunchSavings();
+  return getCart().reduce(function (s, i) {
+    if (!i.regular_price_ils) return s;
+    var p = cartLineParts(i, cur);
+    return s + (p.reg - p.sale) * i.qty;
   }, 0);
 }
 
@@ -253,14 +278,34 @@ function effectiveShipZone() {
   return inferred;
 }
 
-// Shipping in ILS, because the order total is ILS-native like every other price.
-// International is quoted in USD, so it rides the same usdRate the rest of the
-// site uses; before that rate loads we fall back to the same 3.05/0.98 base as
-// loadUsdRate() rather than to zero, so the total is never understated.
+// Shipping in ILS. International is quoted in USD, so it converts at the COST
+// rate - the one that leans the shop's way when turning a dollar cost into
+// shekels - because that is the rate the payments Worker rebuilds the order
+// with. Using the quote rate here instead put ₪135 on the page against the
+// Worker's ₪140 and made the totals check reject every international card order
+// on its first attempt.
+function _shipCostRate() {
+  if (typeof usdCostRate === 'number' && usdCostRate) return usdCostRate;
+  return 3.06 * 1.02;
+}
+
 function getShippingIls() {
   if (effectiveShipZone() === 'IL') return SHIPPING.IL.ils;
-  var rate = (typeof usdRate === 'number' && usdRate) ? usdRate : (3.05 / 0.98);
-  return Math.round(SHIPPING.INTL.usd * rate);
+  return Math.round(SHIPPING.INTL.usd * _shipCostRate());
+}
+
+// Shipping in whichever currency is being displayed. Each zone is authoritative
+// in the currency it is quoted in and converts into the other one; the pinned $5
+// catalogue rounding is deliberately NOT used here, because it would turn ₪35 of
+// Israeli shipping into "$15", which is not a figure anybody is charging.
+function getShippingIn(cur) {
+  var zone = effectiveShipZone();
+  if (zone === 'IL') {
+    return cur === 'ILS'
+      ? SHIPPING.IL.ils
+      : Math.max(1, Math.round(SHIPPING.IL.ils / _shipCostRate()));
+  }
+  return cur === 'USD' ? SHIPPING.INTL.usd : getShippingIls();
 }
 
 // The figure as the owner quotes it - "₪35" or "$45".
@@ -269,6 +314,59 @@ function getShippingLabel() {
 }
 
 function getOrderTotal() { return getCartTotal() + getShippingIls(); }
+
+// ── CART MONEY ─────────────────────────────────────────────────
+// The catalogue and charged figures for one cart line, in one currency.
+//
+// Derived from the line's REGULAR shekel price rather than stored, so a cart
+// that predates the USD price list still prices correctly, and so the dollar
+// figure is a real entry from the dollar list instead of a rounding of an
+// already-rounded shekel discount. Converting the discounted shekel price
+// directly would land a dollar or two away from the list price for the same
+// item on the shop page, which is the kind of gap shoppers notice and email
+// about.
+function cartLineParts(item, cur) {
+  var exempt = (item.meta && Number(item.meta.launch_discount_exempt_ils)) || 0;
+  var regularIls = item.regular_price_ils || item.price_ils;
+  return priceParts(regularIls, exempt, cur);
+}
+
+function getCartTotalIn(cur) {
+  if (cur === 'ILS') return getCartTotal();
+  return getCart().reduce(function (s, i) {
+    return s + cartLineParts(i, 'USD').sale * i.qty;
+  }, 0);
+}
+
+function getOrderTotalIn(cur) {
+  return getCartTotalIn(cur) + getShippingIn(cur);
+}
+
+// One cart line's price, in the active currency with the other one trailing.
+// Shared by the drawer and the checkout table, which used to carry two copies of
+// this and could drift apart.
+function cartLinePriceHtml(item) {
+  var cur = (typeof activeCurrency === 'function') ? activeCurrency() : 'ILS';
+  var oth = cur === 'ILS' ? 'USD' : 'ILS';
+  var m = cartLineParts(item, cur);
+  var a = cartLineParts(item, oth);
+  var q = item.qty;
+  var alt = ' <span class="cart-price-alt">' + money(a.sale * q, oth) + '</span>';
+  if (!item.regular_price_ils) return money(m.sale * q, cur) + alt;
+  return '<span class="was-price">' + money(m.reg * q, cur) + '</span> ' +
+         '<span class="now-price">' + money(m.sale * q, cur) + '</span>' + alt;
+}
+
+// The order total, leading in the active currency. Shipping is left out of the
+// trailing figure's derivation on purpose - each currency's total is the sum of
+// its own parts, exactly as the payments Worker computes them, rather than one
+// total converted into the other.
+function orderTotalHtml() {
+  var cur = (typeof activeCurrency === 'function') ? activeCurrency() : 'ILS';
+  var oth = cur === 'ILS' ? 'USD' : 'ILS';
+  return money(getOrderTotalIn(cur), cur) +
+         ' <span class="cart-price-alt">' + money(getOrderTotalIn(oth), oth) + '</span>';
+}
 
 // ── SHIPPING ADDRESS ───────────────────────────────────────────
 // Optional for WhatsApp orders - the owner can still settle details in chat -
@@ -409,12 +507,26 @@ function updateCartBadge() {
 }
 
 // ── WA CHECKOUT LINK ───────────────────────────────────────────
+// Money in the order message, as "what the shopper was quoted / what the studio
+// banks". The shopper reads this text before sending it, so it has to lead with
+// the currency they were shown; the studio prices, invoices and banks in
+// shekels, so that figure rides along rather than being converted by hand at the
+// other end.
+function _waPair(amountIn) {
+  var cur = (typeof activeCurrency === 'function') ? activeCurrency() : 'ILS';
+  var oth = cur === 'ILS' ? 'USD' : 'ILS';
+  return money(amountIn(cur), cur) + ' / ' + money(amountIn(oth), oth);
+}
+
+function _waLine(item) {
+  return _waPair(function (c) { return cartLineParts(item, c).sale * item.qty; });
+}
+
 function buildCheckoutWaLink() {
   var items = getCart();
   var l = (typeof currentLang !== 'undefined') ? currentLang : 'en';
   if (items.length === 0) return 'https://wa.me/' + WA_NUMBER;
   var lines;
-  var total = getCartTotal();
   var zone = effectiveShipZone();
   // Address is optional here - whatever the shopper filled in rides along, and
   // anything missing stays a question for the chat, exactly as before.
@@ -428,7 +540,7 @@ function buildCheckoutWaLink() {
     lines = ['שלום! אני רוצה להזמין:'];
     items.forEach(function (item) {
       var name = item.name_he || item.name_en;
-      lines.push('• ' + name + ' × ' + item.qty + ' (₪' + (item.price_ils * item.qty).toLocaleString('en-IL') + ')');
+      lines.push('• ' + name + ' × ' + item.qty + ' (' + _waLine(item) + ')');
       if (item.sku) lines.push('   SKU: ' + item.sku);
       if (item.meta) {
         if (item.meta.color)   lines.push('   צבע: ' + (item.meta.color_he || item.meta.color));
@@ -443,9 +555,9 @@ function buildCheckoutWaLink() {
     lines.push('');
     var heSaved = getCartLaunchSavings();
     if (heSaved > 0) lines.push('הנחת השקה 20% הוחלה (-₪' + heSaved.toLocaleString('en-IL') + ')');
-    lines.push('סכום ביניים: ₪' + total.toLocaleString('en-IL'));
+    lines.push('סכום ביניים: ' + _waPair(getCartTotalIn));
     lines.push('משלוח (' + (zone === 'IL' ? 'ישראל' : 'בינלאומי') + '): ' + getShippingLabel());
-    lines.push('סה"כ: ₪' + getOrderTotal().toLocaleString('en-IL'));
+    lines.push('סה"כ: ' + _waPair(getOrderTotalIn));
     if (addrLines.length) {
       lines.push('');
       lines.push('כתובת למשלוח:');
@@ -456,7 +568,7 @@ function buildCheckoutWaLink() {
   } else {
     lines = ["Hi! I'd like to order:"];
     items.forEach(function (item) {
-      lines.push('• ' + item.name_en + ' × ' + item.qty + ' (₪' + (item.price_ils * item.qty).toLocaleString('en-IL') + ')');
+      lines.push('• ' + item.name_en + ' × ' + item.qty + ' (' + _waLine(item) + ')');
       if (item.sku) lines.push('   SKU: ' + item.sku);
       if (item.meta) {
         if (item.meta.color)   lines.push('   Color: ' + item.meta.color);
@@ -469,11 +581,12 @@ function buildCheckoutWaLink() {
       }
     });
     lines.push('');
-    var enSaved = getCartLaunchSavings();
-    if (enSaved > 0) lines.push('Launch 20% discount applied (-₪' + enSaved.toLocaleString('en-IL') + ')');
-    lines.push('Subtotal: ₪' + total.toLocaleString('en-IL'));
+    var enCur = (typeof activeCurrency === 'function') ? activeCurrency() : 'ILS';
+    var enSaved = getCartLaunchSavingsIn(enCur);
+    if (enSaved > 0) lines.push('Launch 20% discount applied (-' + money(enSaved, enCur) + ')');
+    lines.push('Subtotal: ' + _waPair(getCartTotalIn));
     lines.push('Shipping (' + (zone === 'IL' ? 'Israel' : 'International') + '): ' + getShippingLabel());
-    lines.push('Total: ₪' + getOrderTotal().toLocaleString('en-IL'));
+    lines.push('Total: ' + _waPair(getOrderTotalIn));
     if (addrLines.length) {
       lines.push('');
       lines.push('Shipping address:');
@@ -512,9 +625,7 @@ function renderCartDrawer() {
   var items = getCart();
   var l = (typeof currentLang !== 'undefined') ? currentLang : 'en';
   var isHe = l === 'he';
-  var rate = (typeof usdRate === 'number') ? usdRate : null;
-  var showUsd = rate && (typeof currentCurrency === 'undefined' || currentCurrency !== 'ILS');
-  var total = getCartTotal();
+  var cur = (typeof activeCurrency === 'function') ? activeCurrency() : 'ILS';
 
   var countEl  = document.getElementById('cart-item-count');
   var listEl   = document.getElementById('cart-items-list');
@@ -533,15 +644,7 @@ function renderCartDrawer() {
   listEl.innerHTML = items.map(function (item, idx) {
     var name  = (isHe && item.name_he) ? item.name_he : item.name_en;
     var thumb = CDN + '/w_80,h_80,c_fill,g_auto,q_auto,f_auto/' + item.photo + '.jpg';
-    var lineIls = item.price_ils * item.qty;
-    var priceStr = '₪' + lineIls.toLocaleString('en-IL');
-    if (showUsd) priceStr += ' <span class="cart-price-alt">≈ $' + Math.round(lineIls / rate) + '</span>';
-    if (item.regular_price_ils) {
-      var wasIls = item.regular_price_ils * item.qty;
-      var wasStr = '₪' + wasIls.toLocaleString('en-IL');
-      if (showUsd) wasStr += ' <span class="cart-price-alt">≈ $' + Math.round(wasIls / rate) + '</span>';
-      priceStr = '<span class="was-price">' + wasStr + '</span> <span class="now-price">' + priceStr + '</span>';
-    }
+    var priceStr = cartLinePriceHtml(item);
     var slug = escapeAttr(item.slug);
     var url = _cartItemUrl(item);
     var thumbImg = `<img class="cart-item-thumb" src="${escapeAttr(thumb)}" alt="${escapeAttr(name)}" loading="lazy" />`;
@@ -565,14 +668,11 @@ function renderCartDrawer() {
 </div>`;
   }).join('');
 
-  var orderTotal = getOrderTotal();
-  var totalStr = '₪' + orderTotal.toLocaleString('en-IL');
-  if (showUsd) totalStr += ' <span class="cart-price-alt">≈ $' + Math.round(orderTotal / rate) + '</span>';
   var totalEl = document.getElementById('cart-total-price');
-  if (totalEl) totalEl.innerHTML = totalStr;
+  if (totalEl) totalEl.innerHTML = orderTotalHtml();
 
   var subEl = document.getElementById('cart-subtotal-price');
-  if (subEl) subEl.textContent = '₪' + total.toLocaleString('en-IL');
+  if (subEl) subEl.textContent = money(getCartTotalIn(cur), cur);
 
   var shipEl = document.getElementById('cart-shipping-price');
   if (shipEl) shipEl.textContent = getShippingLabel();
@@ -600,10 +700,14 @@ function openCartDrawer() {
   if (overlay) overlay.classList.add('open');
   document.body.style.overflow = 'hidden';
   if (typeof trackGA4 === 'function') {
+    var vcCur = ga4Currency();
     trackGA4('view_cart', {
-      currency: 'ILS', value: getCartTotal(),
+      currency: vcCur, value: getCartTotalIn(vcCur),
       items: getCart().map(function (i) {
-        return { item_id: i.sku || i.slug, item_name: i.name_en, price: i.price_ils, quantity: i.qty };
+        return {
+          item_id: i.sku || i.slug, item_name: i.name_en,
+          price: cartLineParts(i, vcCur).sale, quantity: i.qty
+        };
       })
     });
   }
@@ -674,7 +778,7 @@ function _injectCartDrawer() {
           '</a>'
         : '') +
       '<a id="cart-wa-checkout" href="#" target="_blank" rel="noopener noreferrer" class="cart-checkout-btn"' +
-         ' onclick="if(typeof trackGA4===\'function\')trackGA4(\'begin_checkout\',{currency:\'ILS\',value:getCartTotal()})">' +
+         ' onclick="if(typeof trackGA4===\'function\')trackGA4(\'begin_checkout\',{currency:ga4Currency(),value:getCartTotalIn(ga4Currency())})">' +
         _WA_SVG + '<span data-t="cart_checkout">Order on WhatsApp</span>' +
       '</a>' +
       // Redundant once the pay button leads to the same page.

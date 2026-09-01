@@ -35,6 +35,7 @@ SHOP_PAGES = [
     "index.html",
     "candlesticks.html",
     "candlesticks-silver-plated.html",
+    "candlesticks-gold-plated.html",
     "candlesticks-artisanal.html",
     "horn-goblets.html",
     "kiddush-cups.html",
@@ -130,6 +131,10 @@ META = {
     "candlesticks-silver-plated.html": (
         "פמוטי זכוכית בציפוי כסף 925 | שרמן ארט וורקס",
         "פמוטי זכוכית בעבודת יד בגימור כסף 925. שבעה צבעים, שלושה גבהים ואפשרות למגש תואם, מיוצרים בישראל.",
+    ),
+    "candlesticks-gold-plated.html": (
+        "פמוטי זכוכית בציפוי זהב | שרמן ארט וורקס",
+        "פמוטי זכוכית בעבודת יד בגימור זהב. שלושה גבהים ואפשרות למגש תואם, מיוצרים בישראל.",
     ),
     "candlesticks-artisanal.html": (
         "פמוטי זכוכית אומנותיים בעבודת יד | שרמן ארט וורקס",
@@ -409,10 +414,20 @@ PRODUCT_GROUP_HE = {
         "description": "זוג פמוטי זכוכית בעבודת יד בציפוי כסף 925, "
                        "זמין בשבעה צבעים ובשלושה גבהים.",
     },
+    "gold-plated-glass-candlesticks": {
+        "name": "פמוטי זכוכית בציפוי זהב",
+        "description": "זוג פמוטי זכוכית בעבודת יד בציפוי זהב, "
+                       "זמין בשבעה צבעים ובשלושה גבהים.",
+    },
     "silver-plated-glass-trays": {
         "name": "מגשי זכוכית בציפוי כסף 925",
         "description": "מגשי זכוכית בעבודת יד בציפוי כסף 925, "
                        "בשישה עיצובים מתואמים.",
+    },
+    "gold-plated-glass-trays": {
+        "name": "מגשי זכוכית בציפוי זהב",
+        "description": "מגשי זכוכית בעבודת יד בציפוי זהב, "
+                       "בשבעה עיצובים מתואמים.",
     },
     "classic-havdalah-sets": {
         "name": "סטים להבדלה קלאסיים",

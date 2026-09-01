@@ -106,6 +106,7 @@
           <a href="horn-goblets.html" onclick="closeMobileNav()" data-t="cat2_title">Horn Goblets</a>
           <a href="candlesticks.html" onclick="closeMobileNav()" data-t="cat1_title">Candlesticks</a>
           <a href="candlesticks-silver-plated.html" class="mobile-shop-sub" onclick="closeMobileNav()" data-t="switch_candles_silver">Silver-Plated Candlesticks</a>
+          <a href="candlesticks-gold-plated.html" class="mobile-shop-sub" onclick="closeMobileNav()" data-t="switch_candles_gold">Gold-Plated Candlesticks</a>
           <a href="candlesticks-artisanal.html" class="mobile-shop-sub" onclick="closeMobileNav()" data-t="switch_candles_artisanal">Artisanal Candlesticks</a>
           <a href="kiddush-cups.html" onclick="closeMobileNav()" data-t="cat3_title">Kiddush Cups</a>
           <a href="havdalah-sets.html" onclick="closeMobileNav()" data-t="cat8_title">Havdalah Sets</a>
@@ -541,20 +542,11 @@
   // ── CURRENCY (live ILS->USD) ──
   
 
-  function formatPrice(ils) {
-    const main = '₪' + ils.toLocaleString('en-IL');
-    if (!usdRate) return main;
-    const usd = ils / usdRate;
-    const usdStr = '$' + usd.toFixed(usd < 100 ? 0 : 0);
-    return `${main} <span class="product-card-price-alt">≈ ${usdStr}</span>`;
-  }
-
-  function formatPriceModal(ils) {
-    const main = '₪' + ils.toLocaleString('en-IL');
-    if (!usdRate) return main;
-    const usd = ils / usdRate;
-    return `${main} <span style="font-size:0.78rem;color:var(--brown);font-weight:400;">≈ $${usd.toFixed(0)}</span>`;
-  }
+  // Both delegate to formatMoney in js/site.js. Every category page used to
+  // carry its own near-identical copy of these, which is why the shekel was
+  // hard-wired as the leading figure in a dozen places at once.
+  function formatPrice(ils, exempt)      { return formatMoney(ils, exempt); }
+  function formatPriceModal(ils, exempt) { return formatMoneyModal(ils, exempt); }
 
   // ── PRODUCT WHATSAPP MESSAGE ──
   function waLinkForProduct(p) {

@@ -26,10 +26,10 @@ similar suffix to a product with one sellable configuration.
 
 | Category | Code | Next unassigned number |
 |---|---:|---:|
-| Candlesticks | `CS` | `018` |
+| Candlesticks | `CS` | `025` |
 | Horn Goblets | `HG` | `004` |
 | Kiddush Cups | `KC` | `021` |
-| Trays & Bowls | `TB` | `009` |
+| Trays & Bowls | `TB` | `016` |
 | Mezuzahs | `MZ` | `005` |
 | Shofars | `SH` | `023` |
 | Havdalah Sets | `HS` | `005` |
@@ -143,6 +143,13 @@ configurations. They are permanent once migrated into the product data.
 | `SAW-CS-015` | `white-glass-candlesticks` | White Glass Candlesticks | None |
 | `SAW-CS-016` | `clear-round-glass-candlesticks` | Clear Round Glass Candlesticks | None |
 | `SAW-CS-017` | `clear-rectangular-glass-candlesticks` | Clear Rectangular Glass Candlesticks | None |
+| `SAW-CS-018` | `blue-gold-plated-glass-candlesticks` | Blue Gold-Plated Glass Candlesticks | `-S`, `-M`, `-L` |
+| `SAW-CS-019` | `blue-green-gold-plated-glass-candlesticks` | Blue-Green Gold-Plated Glass Candlesticks | `-S`, `-M`, `-L` |
+| `SAW-CS-020` | `red-gold-plated-glass-candlesticks` | Red Gold-Plated Glass Candlesticks | `-S`, `-M`, `-L` |
+| `SAW-CS-021` | `orange-gold-plated-glass-candlesticks` | Orange Gold-Plated Glass Candlesticks | `-S`, `-M`, `-L` |
+| `SAW-CS-022` | `earth-gold-plated-glass-candlesticks` | Earth Gold-Plated Glass Candlesticks | `-S`, `-M`, `-L` |
+| `SAW-CS-023` | `black-gold-plated-glass-candlesticks` | Black Gold-Plated Glass Candlesticks | `-S`, `-M`, `-L` |
+| `SAW-CS-024` | `green-gold-plated-glass-candlesticks` | Green Gold-Plated Glass Candlesticks | `-S`, `-M`, `-L` |
 
 ### Horn Goblets (`HG`)
 
@@ -188,6 +195,13 @@ configurations. They are permanent once migrated into the product data.
 | `SAW-TB-005` | `green-silver-plated-glass-tray` | Green 925 Silver-Plated Glass Tray | None |
 | `SAW-TB-006` | `black-silver-plated-glass-tray` | Black 925 Silver-Plated Glass Tray | None |
 | `SAW-TB-007` | `blue-green-silver-plated-glass-tray` | Blue-Green 925 Silver-Plated Glass Tray | None |
+| `SAW-TB-009` | `blue-gold-plated-glass-tray` | Blue Gold-Plated Glass Tray | None |
+| `SAW-TB-010` | `blue-green-gold-plated-glass-tray` | Blue-Green Gold-Plated Glass Tray | None |
+| `SAW-TB-011` | `red-gold-plated-glass-tray` | Red Gold-Plated Glass Tray | None |
+| `SAW-TB-012` | `orange-gold-plated-glass-tray` | Orange Gold-Plated Glass Tray | None |
+| `SAW-TB-013` | `earth-gold-plated-glass-tray` | Earth Gold-Plated Glass Tray | None |
+| `SAW-TB-014` | `black-gold-plated-glass-tray` | Black Gold-Plated Glass Tray | None |
+| `SAW-TB-015` | `green-gold-plated-glass-tray` | Green Gold-Plated Glass Tray | None |
 
 ### Mezuzahs (`MZ`)
 

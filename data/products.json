@@ -2990,5 +2990,553 @@
       "trays-bowls.html"
     ],
     "personalisable": false
+  },
+  {
+    "id": "blue-gold-plated-glass-candlesticks",
+    "sku": "SAW-CS-018",
+    "family_id": "gold-plated-glass-candlesticks",
+    "category": "candlesticks",
+    "pages": [
+      "candlesticks.html"
+    ],
+    "name_en": "Blue Gold-Plated Glass Candlesticks",
+    "name_he": "פמוטי זכוכית כחולים בציפוי זהב",
+    "description_en": "Handmade blue glass candlesticks finished with gold plating, sold as a pair and made to order in our studio in Israel. Available in three heights.",
+    "description_he": "זוג פמוטי זכוכית כחולים בעבודת יד בציפוי זהב, מיוצרים לפי הזמנה בסטודיו שלנו בישראל. זמינים בשלושה גבהים.",
+    "color_en": "Blue",
+    "color_he": "כחול",
+    "measurements": "",
+    "price_ils": 680,
+    "sizes": [
+      {
+        "label": "S",
+        "sku": "SAW-CS-018-S",
+        "range_cm": "14-18",
+        "range_in": "5.5-7.1",
+        "price_ils": 680
+      },
+      {
+        "label": "M",
+        "sku": "SAW-CS-018-M",
+        "range_cm": "19-22",
+        "range_in": "7.5-8.7",
+        "price_ils": 755
+      },
+      {
+        "label": "L",
+        "sku": "SAW-CS-018-L",
+        "range_cm": "23-25",
+        "range_in": "9.1-9.8",
+        "price_ils": 862
+      }
+    ],
+    "photos": [
+      "Blue_Pamotim_gold_1_kdduli",
+      "Blue_Pamotim_gold_2_to3e3k",
+      "Orange_Pamotim_gold_3_b1uozp"
+    ],
+    "tray_addon": {
+      "id": "blue-gold-plated-glass-tray",
+      "sku": "SAW-TB-009",
+      "name_en": "Matching Blue Gold-Plated Glass Tray",
+      "name_he": "מגש זכוכית כחול תואם בציפוי זהב",
+      "measurements": "30 × 18 cm",
+      "regular_price_ils": 617,
+      "bundle_price_ils": 492,
+      "photo": "P036_ymyrbu",
+      "set_photo": "Orange_Pamotim_gold_3_b1uozp"
+    },
+    "require_size_selection": true,
+    "personalisable": false
+  },
+  {
+    "id": "blue-green-gold-plated-glass-candlesticks",
+    "sku": "SAW-CS-019",
+    "family_id": "gold-plated-glass-candlesticks",
+    "category": "candlesticks",
+    "pages": [
+      "candlesticks.html"
+    ],
+    "name_en": "Blue-Green Gold-Plated Glass Candlesticks",
+    "name_he": "פמוטי זכוכית כחולים-ירוקים בציפוי זהב",
+    "description_en": "Handmade blue-green glass candlesticks finished with gold plating, sold as a pair and made to order in our studio in Israel. Available in three heights.",
+    "description_he": "זוג פמוטי זכוכית כחולים-ירוקים בעבודת יד בציפוי זהב, מיוצרים לפי הזמנה בסטודיו שלנו בישראל. זמינים בשלושה גבהים.",
+    "color_en": "Blue-Green",
+    "color_he": "כחול-ירוק",
+    "measurements": "",
+    "price_ils": 680,
+    "sizes": [
+      {
+        "label": "S",
+        "sku": "SAW-CS-019-S",
+        "range_cm": "14-18",
+        "range_in": "5.5-7.1",
+        "price_ils": 680
+      },
+      {
+        "label": "M",
+        "sku": "SAW-CS-019-M",
+        "range_cm": "19-22",
+        "range_in": "7.5-8.7",
+        "price_ils": 755
+      },
+      {
+        "label": "L",
+        "sku": "SAW-CS-019-L",
+        "range_cm": "23-25",
+        "range_in": "9.1-9.8",
+        "price_ils": 862
+      }
+    ],
+    "photos": [
+      "Blue-green_Pamotim_1_hmd6nn",
+      "Blue-green_Pamotim_3_p6r7jm",
+      "Blue-green_Pamotim_3_icmrmo"
+    ],
+    "tray_addon": {
+      "id": "blue-green-gold-plated-glass-tray",
+      "sku": "SAW-TB-010",
+      "name_en": "Matching Blue-Green Gold-Plated Glass Tray",
+      "name_he": "מגש זכוכית כחול-ירוק תואם בציפוי זהב",
+      "measurements": "30 × 18 cm",
+      "regular_price_ils": 617,
+      "bundle_price_ils": 492,
+      "photo": "P031_svdkgg",
+      "set_photo": "Blue-green_Pamotim_3_icmrmo"
+    },
+    "require_size_selection": true,
+    "personalisable": false
+  },
+  {
+    "id": "red-gold-plated-glass-candlesticks",
+    "sku": "SAW-CS-020",
+    "family_id": "gold-plated-glass-candlesticks",
+    "category": "candlesticks",
+    "pages": [
+      "candlesticks.html"
+    ],
+    "name_en": "Red Gold-Plated Glass Candlesticks",
+    "name_he": "פמוטי זכוכית אדומים בציפוי זהב",
+    "description_en": "Handmade red glass candlesticks finished with gold plating, sold as a pair and made to order in our studio in Israel. Available in three heights.",
+    "description_he": "זוג פמוטי זכוכית אדומים בעבודת יד בציפוי זהב, מיוצרים לפי הזמנה בסטודיו שלנו בישראל. זמינים בשלושה גבהים.",
+    "color_en": "Red",
+    "color_he": "אדום",
+    "measurements": "",
+    "price_ils": 680,
+    "sizes": [
+      {
+        "label": "S",
+        "sku": "SAW-CS-020-S",
+        "range_cm": "14-18",
+        "range_in": "5.5-7.1",
+        "price_ils": 680
+      },
+      {
+        "label": "M",
+        "sku": "SAW-CS-020-M",
+        "range_cm": "19-22",
+        "range_in": "7.5-8.7",
+        "price_ils": 755
+      },
+      {
+        "label": "L",
+        "sku": "SAW-CS-020-L",
+        "range_cm": "23-25",
+        "range_in": "9.1-9.8",
+        "price_ils": 862
+      }
+    ],
+    "photos": [
+      "Red_Pamotim_gold_1_otqz05",
+      "Red_Pamotim_gold_2_mbxdjn",
+      "Red_pamotim_gold_3_prqvuo"
+    ],
+    "tray_addon": {
+      "id": "red-gold-plated-glass-tray",
+      "sku": "SAW-TB-011",
+      "name_en": "Matching Red Gold-Plated Glass Tray",
+      "name_he": "מגש זכוכית אדום תואם בציפוי זהב",
+      "measurements": "30 × 18 cm",
+      "regular_price_ils": 617,
+      "bundle_price_ils": 492,
+      "photo": "P011_ohf4xz",
+      "set_photo": "Red_pamotim_gold_3_prqvuo"
+    },
+    "require_size_selection": true,
+    "personalisable": false
+  },
+  {
+    "id": "orange-gold-plated-glass-candlesticks",
+    "sku": "SAW-CS-021",
+    "family_id": "gold-plated-glass-candlesticks",
+    "category": "candlesticks",
+    "pages": [
+      "candlesticks.html"
+    ],
+    "name_en": "Orange Gold-Plated Glass Candlesticks",
+    "name_he": "פמוטי זכוכית כתומים בציפוי זהב",
+    "description_en": "Handmade orange glass candlesticks finished with gold plating, sold as a pair and made to order in our studio in Israel. Available in three heights.",
+    "description_he": "זוג פמוטי זכוכית כתומים בעבודת יד בציפוי זהב, מיוצרים לפי הזמנה בסטודיו שלנו בישראל. זמינים בשלושה גבהים.",
+    "color_en": "Orange",
+    "color_he": "כתום",
+    "measurements": "",
+    "price_ils": 680,
+    "sizes": [
+      {
+        "label": "S",
+        "sku": "SAW-CS-021-S",
+        "range_cm": "14-18",
+        "range_in": "5.5-7.1",
+        "price_ils": 680
+      },
+      {
+        "label": "M",
+        "sku": "SAW-CS-021-M",
+        "range_cm": "19-22",
+        "range_in": "7.5-8.7",
+        "price_ils": 755
+      },
+      {
+        "label": "L",
+        "sku": "SAW-CS-021-L",
+        "range_cm": "23-25",
+        "range_in": "9.1-9.8",
+        "price_ils": 862
+      }
+    ],
+    "photos": [
+      "Orange_Pamotim_gold_1_usoeve",
+      "Orange_Pamotim_gold_3_cwhdwb",
+      "Orange_Pamotim_gold_2_ms1pco"
+    ],
+    "tray_addon": {
+      "id": "orange-gold-plated-glass-tray",
+      "sku": "SAW-TB-012",
+      "name_en": "Matching Orange Gold-Plated Glass Tray",
+      "name_he": "מגש זכוכית כתום תואם בציפוי זהב",
+      "measurements": "30 × 18 cm",
+      "regular_price_ils": 617,
+      "bundle_price_ils": 492,
+      "photo": "עותק_של_Orange_tray_vwt85g",
+      "set_photo": "Orange_Pamotim_gold_2_ms1pco"
+    },
+    "require_size_selection": true,
+    "personalisable": false
+  },
+  {
+    "id": "earth-gold-plated-glass-candlesticks",
+    "sku": "SAW-CS-022",
+    "family_id": "gold-plated-glass-candlesticks",
+    "category": "candlesticks",
+    "pages": [
+      "candlesticks.html"
+    ],
+    "name_en": "Earth Gold-Plated Glass Candlesticks",
+    "name_he": "פמוטי זכוכית אדמה בציפוי זהב",
+    "description_en": "Handmade earth glass candlesticks finished with gold plating, sold as a pair and made to order in our studio in Israel. Available in three heights.",
+    "description_he": "זוג פמוטי זכוכית אדמה בעבודת יד בציפוי זהב, מיוצרים לפי הזמנה בסטודיו שלנו בישראל. זמינים בשלושה גבהים.",
+    "color_en": "Earth",
+    "color_he": "אדמה",
+    "measurements": "",
+    "price_ils": 680,
+    "sizes": [
+      {
+        "label": "S",
+        "sku": "SAW-CS-022-S",
+        "range_cm": "14-18",
+        "range_in": "5.5-7.1",
+        "price_ils": 680
+      },
+      {
+        "label": "M",
+        "sku": "SAW-CS-022-M",
+        "range_cm": "19-22",
+        "range_in": "7.5-8.7",
+        "price_ils": 755
+      },
+      {
+        "label": "L",
+        "sku": "SAW-CS-022-L",
+        "range_cm": "23-25",
+        "range_in": "9.1-9.8",
+        "price_ils": 862
+      }
+    ],
+    "photos": [
+      "Adama_Pamotim_gold_1_we9ata",
+      "Adama_Pamotim_gold_2_jl69aq"
+    ],
+    "tray_addon": {
+      "id": "earth-gold-plated-glass-tray",
+      "sku": "SAW-TB-013",
+      "name_en": "Matching Earth Gold-Plated Glass Tray",
+      "name_he": "מגש זכוכית אדמה תואם בציפוי זהב",
+      "measurements": "30 × 18 cm",
+      "regular_price_ils": 617,
+      "bundle_price_ils": 492,
+      "photo": "P023_cuaxen"
+    },
+    "require_size_selection": true,
+    "personalisable": false
+  },
+  {
+    "id": "black-gold-plated-glass-candlesticks",
+    "sku": "SAW-CS-023",
+    "family_id": "gold-plated-glass-candlesticks",
+    "category": "candlesticks",
+    "pages": [
+      "candlesticks.html"
+    ],
+    "name_en": "Black Gold-Plated Glass Candlesticks",
+    "name_he": "פמוטי זכוכית שחורים בציפוי זהב",
+    "description_en": "Handmade black glass candlesticks finished with gold plating, sold as a pair and made to order in our studio in Israel. Available in three heights.",
+    "description_he": "זוג פמוטי זכוכית שחורים בעבודת יד בציפוי זהב, מיוצרים לפי הזמנה בסטודיו שלנו בישראל. זמינים בשלושה גבהים.",
+    "color_en": "Black",
+    "color_he": "שחור",
+    "measurements": "",
+    "price_ils": 680,
+    "sizes": [
+      {
+        "label": "S",
+        "sku": "SAW-CS-023-S",
+        "range_cm": "14-18",
+        "range_in": "5.5-7.1",
+        "price_ils": 680
+      },
+      {
+        "label": "M",
+        "sku": "SAW-CS-023-M",
+        "range_cm": "19-22",
+        "range_in": "7.5-8.7",
+        "price_ils": 755
+      },
+      {
+        "label": "L",
+        "sku": "SAW-CS-023-L",
+        "range_cm": "23-25",
+        "range_in": "9.1-9.8",
+        "price_ils": 862
+      }
+    ],
+    "photos": [
+      "Black_Pamotim_gold_1_yzkeqe",
+      "Black_Pamotim_gold_2_shk9gj",
+      "Black_Pamotim_gold_3_kieumf"
+    ],
+    "tray_addon": {
+      "id": "black-gold-plated-glass-tray",
+      "sku": "SAW-TB-014",
+      "name_en": "Matching Black Gold-Plated Glass Tray",
+      "name_he": "מגש זכוכית שחור תואם בציפוי זהב",
+      "measurements": "30 × 18 cm",
+      "regular_price_ils": 617,
+      "bundle_price_ils": 492,
+      "photo": "Black_tray_gold_wdxp9o",
+      "set_photo": "Black_Pamotim_gold_3_kieumf"
+    },
+    "require_size_selection": true,
+    "personalisable": false
+  },
+  {
+    "id": "green-gold-plated-glass-candlesticks",
+    "sku": "SAW-CS-024",
+    "family_id": "gold-plated-glass-candlesticks",
+    "category": "candlesticks",
+    "pages": [
+      "candlesticks.html"
+    ],
+    "name_en": "Green Gold-Plated Glass Candlesticks",
+    "name_he": "פמוטי זכוכית ירוקים בציפוי זהב",
+    "description_en": "Handmade green glass candlesticks finished with gold plating, sold as a pair and made to order in our studio in Israel. Available in three heights.",
+    "description_he": "זוג פמוטי זכוכית ירוקים בעבודת יד בציפוי זהב, מיוצרים לפי הזמנה בסטודיו שלנו בישראל. זמינים בשלושה גבהים.",
+    "color_en": "Green",
+    "color_he": "ירוק",
+    "measurements": "",
+    "price_ils": 680,
+    "sizes": [
+      {
+        "label": "S",
+        "sku": "SAW-CS-024-S",
+        "range_cm": "14-18",
+        "range_in": "5.5-7.1",
+        "price_ils": 680
+      },
+      {
+        "label": "M",
+        "sku": "SAW-CS-024-M",
+        "range_cm": "19-22",
+        "range_in": "7.5-8.7",
+        "price_ils": 755
+      },
+      {
+        "label": "L",
+        "sku": "SAW-CS-024-L",
+        "range_cm": "23-25",
+        "range_in": "9.1-9.8",
+        "price_ils": 862
+      }
+    ],
+    "photos": [
+      "P040_zgvdxy"
+    ],
+    "tray_addon": {
+      "id": "green-gold-plated-glass-tray",
+      "sku": "SAW-TB-015",
+      "name_en": "Matching Green Gold-Plated Glass Tray",
+      "name_he": "מגש זכוכית ירוק תואם בציפוי זהב",
+      "measurements": "30 × 18 cm",
+      "regular_price_ils": 617,
+      "bundle_price_ils": 492,
+      "photo": "P009_obbnmj"
+    },
+    "require_size_selection": true,
+    "personalisable": false
+  },
+  {
+    "id": "blue-gold-plated-glass-tray",
+    "sku": "SAW-TB-009",
+    "family_id": "gold-plated-glass-trays",
+    "category": "trays-bowls",
+    "pages": [
+      "trays-bowls.html"
+    ],
+    "name_en": "Blue Gold-Plated Glass Tray",
+    "name_he": "מגש זכוכית כחול בציפוי זהב",
+    "description_en": "Handmade blue glass tray finished with gold plating. Measures 30 × 18 cm and is made to order in our studio in Israel.",
+    "description_he": "מגש זכוכית כחול בעבודת יד בציפוי זהב. מידותיו 30 × 18 ס״מ והוא מיוצר לפי הזמנה בסטודיו שלנו בישראל.",
+    "color_en": "Blue",
+    "color_he": "כחול",
+    "measurements": "30cm × 18cm",
+    "price_ils": 617,
+    "photos": [
+      "P036_ymyrbu"
+    ],
+    "personalisable": false
+  },
+  {
+    "id": "blue-green-gold-plated-glass-tray",
+    "sku": "SAW-TB-010",
+    "family_id": "gold-plated-glass-trays",
+    "category": "trays-bowls",
+    "pages": [
+      "trays-bowls.html"
+    ],
+    "name_en": "Blue-Green Gold-Plated Glass Tray",
+    "name_he": "מגש זכוכית כחול-ירוק בציפוי זהב",
+    "description_en": "Handmade blue-green glass tray finished with gold plating. Measures 30 × 18 cm and is made to order in our studio in Israel.",
+    "description_he": "מגש זכוכית כחול-ירוק בעבודת יד בציפוי זהב. מידותיו 30 × 18 ס״מ והוא מיוצר לפי הזמנה בסטודיו שלנו בישראל.",
+    "color_en": "Blue-Green",
+    "color_he": "כחול-ירוק",
+    "measurements": "30cm × 18cm",
+    "price_ils": 617,
+    "photos": [
+      "P031_svdkgg"
+    ],
+    "personalisable": false
+  },
+  {
+    "id": "red-gold-plated-glass-tray",
+    "sku": "SAW-TB-011",
+    "family_id": "gold-plated-glass-trays",
+    "category": "trays-bowls",
+    "pages": [
+      "trays-bowls.html"
+    ],
+    "name_en": "Red Gold-Plated Glass Tray",
+    "name_he": "מגש זכוכית אדום בציפוי זהב",
+    "description_en": "Handmade red glass tray finished with gold plating. Measures 30 × 18 cm and is made to order in our studio in Israel.",
+    "description_he": "מגש זכוכית אדום בעבודת יד בציפוי זהב. מידותיו 30 × 18 ס״מ והוא מיוצר לפי הזמנה בסטודיו שלנו בישראל.",
+    "color_en": "Red",
+    "color_he": "אדום",
+    "measurements": "30cm × 18cm",
+    "price_ils": 617,
+    "photos": [
+      "P011_ohf4xz"
+    ],
+    "personalisable": false
+  },
+  {
+    "id": "orange-gold-plated-glass-tray",
+    "sku": "SAW-TB-012",
+    "family_id": "gold-plated-glass-trays",
+    "category": "trays-bowls",
+    "pages": [
+      "trays-bowls.html"
+    ],
+    "name_en": "Orange Gold-Plated Glass Tray",
+    "name_he": "מגש זכוכית כתום בציפוי זהב",
+    "description_en": "Handmade orange glass tray finished with gold plating. Measures 30 × 18 cm and is made to order in our studio in Israel.",
+    "description_he": "מגש זכוכית כתום בעבודת יד בציפוי זהב. מידותיו 30 × 18 ס״מ והוא מיוצר לפי הזמנה בסטודיו שלנו בישראל.",
+    "color_en": "Orange",
+    "color_he": "כתום",
+    "measurements": "30cm × 18cm",
+    "price_ils": 617,
+    "photos": [
+      "עותק_של_Orange_tray_vwt85g"
+    ],
+    "personalisable": false
+  },
+  {
+    "id": "earth-gold-plated-glass-tray",
+    "sku": "SAW-TB-013",
+    "family_id": "gold-plated-glass-trays",
+    "category": "trays-bowls",
+    "pages": [
+      "trays-bowls.html"
+    ],
+    "name_en": "Earth Gold-Plated Glass Tray",
+    "name_he": "מגש זכוכית אדמה בציפוי זהב",
+    "description_en": "Handmade earth glass tray finished with gold plating. Measures 30 × 18 cm and is made to order in our studio in Israel.",
+    "description_he": "מגש זכוכית אדמה בעבודת יד בציפוי זהב. מידותיו 30 × 18 ס״מ והוא מיוצר לפי הזמנה בסטודיו שלנו בישראל.",
+    "color_en": "Earth",
+    "color_he": "אדמה",
+    "measurements": "30cm × 18cm",
+    "price_ils": 617,
+    "photos": [
+      "P023_cuaxen"
+    ],
+    "personalisable": false
+  },
+  {
+    "id": "black-gold-plated-glass-tray",
+    "sku": "SAW-TB-014",
+    "family_id": "gold-plated-glass-trays",
+    "category": "trays-bowls",
+    "pages": [
+      "trays-bowls.html"
+    ],
+    "name_en": "Black Gold-Plated Glass Tray",
+    "name_he": "מגש זכוכית שחור בציפוי זהב",
+    "description_en": "Handmade black glass tray finished with gold plating. Measures 30 × 18 cm and is made to order in our studio in Israel.",
+    "description_he": "מגש זכוכית שחור בעבודת יד בציפוי זהב. מידותיו 30 × 18 ס״מ והוא מיוצר לפי הזמנה בסטודיו שלנו בישראל.",
+    "color_en": "Black",
+    "color_he": "שחור",
+    "measurements": "30cm × 18cm",
+    "price_ils": 617,
+    "photos": [
+      "Black_tray_gold_wdxp9o"
+    ],
+    "personalisable": false
+  },
+  {
+    "id": "green-gold-plated-glass-tray",
+    "sku": "SAW-TB-015",
+    "family_id": "gold-plated-glass-trays",
+    "category": "trays-bowls",
+    "pages": [
+      "trays-bowls.html"
+    ],
+    "name_en": "Green Gold-Plated Glass Tray",
+    "name_he": "מגש זכוכית ירוק בציפוי זהב",
+    "description_en": "Handmade green glass tray finished with gold plating. Measures 30 × 18 cm and is made to order in our studio in Israel.",
+    "description_he": "מגש זכוכית ירוק בעבודת יד בציפוי זהב. מידותיו 30 × 18 ס״מ והוא מיוצר לפי הזמנה בסטודיו שלנו בישראל.",
+    "color_en": "Green",
+    "color_he": "ירוק",
+    "measurements": "30cm × 18cm",
+    "price_ils": 617,
+    "photos": [
+      "P009_obbnmj"
+    ],
+    "personalisable": false
   }
 ]

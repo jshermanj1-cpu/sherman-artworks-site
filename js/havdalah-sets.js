@@ -56,10 +56,9 @@ const PRODUCTS = [
   }
 ];
 
-function formatProductPrice(ils) {
-  const main = "₪" + ils.toLocaleString("en-IL");
-  if (!usdRate) return main;
-  return main + ' <span class="product-card-price-alt">≈ $' + Math.round(ils / usdRate).toLocaleString("en-US") + "</span>";
+// Delegates to formatMoney in js/site.js, like every category page does.
+function formatProductPrice(ils, exempt) {
+  return formatMoney(ils, exempt);
 }
 
 function productName(product) {

@@ -98,6 +98,7 @@
 <a data-t="cat2_title" href="horn-goblets.html" onclick="closeMobileNav()">גביעי קרן</a>
 <a data-t="cat1_title" href="candlesticks.html" onclick="closeMobileNav()">פמוטים</a>
 <a class="mobile-shop-sub" data-t="switch_candles_silver" href="candlesticks-silver-plated.html" onclick="closeMobileNav()">פמוטים בציפוי כסף</a>
+<a class="mobile-shop-sub" data-t="switch_candles_gold" href="candlesticks-gold-plated.html" onclick="closeMobileNav()">פמוטים בציפוי זהב</a>
 <a class="mobile-shop-sub" data-t="switch_candles_artisanal" href="candlesticks-artisanal.html" onclick="closeMobileNav()">פמוטים אומנותיים</a>
 <a data-t="cat3_title" href="kiddush-cups.html" onclick="closeMobileNav()">כוסות קידוש</a>
 <a data-t="cat8_title" href="havdalah-sets.html" onclick="closeMobileNav()">סטים להבדלה</a>
@@ -958,20 +959,11 @@
   });
 
   // ── PRICE FORMAT ──
-  function formatPrice(ils) {
-    const main = '₪' + ils.toLocaleString('en-IL');
-    if (!usdRate) return main;
-    const usd = ils / usdRate;
-    const usdStr = '$' + usd.toFixed(0);
-    return `${main} <span class="product-card-price-alt">≈ ${usdStr}</span>`;
-  }
-
-  function formatPriceModal(ils) {
-    const main = '₪' + ils.toLocaleString('en-IL');
-    if (!usdRate) return main;
-    const usd = ils / usdRate;
-    return `${main} <span style="font-size:0.78rem;color:var(--brown);font-weight:400;">≈ $${usd.toFixed(0)}</span>`;
-  }
+  // Both delegate to formatMoney in js/site.js. Every category page used to
+  // carry its own near-identical copy of these, which is why the shekel was
+  // hard-wired as the leading figure in a dozen places at once.
+  function formatPrice(ils, exempt)      { return formatMoney(ils, exempt); }
+  function formatPriceModal(ils, exempt) { return formatMoneyModal(ils, exempt); }
 
   // Ram's-horn products carry a comment box for the plating preference, so the
   // enquiry has to pick it up the same way a personalised order does.

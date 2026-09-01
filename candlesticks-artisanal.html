@@ -104,6 +104,7 @@
           <a href="horn-goblets.html" onclick="closeMobileNav()" data-t="cat2_title">Horn Goblets</a>
           <a href="candlesticks.html" onclick="closeMobileNav()" data-t="cat1_title">Candlesticks</a>
           <a href="candlesticks-silver-plated.html" class="mobile-shop-sub" onclick="closeMobileNav()" data-t="switch_candles_silver">Silver-Plated Candlesticks</a>
+          <a href="candlesticks-gold-plated.html" class="mobile-shop-sub" onclick="closeMobileNav()" data-t="switch_candles_gold">Gold-Plated Candlesticks</a>
           <a href="candlesticks-artisanal.html" class="mobile-shop-sub" onclick="closeMobileNav()" data-t="switch_candles_artisanal">Artisanal Candlesticks</a>
           <a href="kiddush-cups.html" onclick="closeMobileNav()" data-t="cat3_title">Kiddush Cups</a>
           <a href="havdalah-sets.html" onclick="closeMobileNav()" data-t="cat8_title">Havdalah Sets</a>
@@ -143,6 +144,7 @@
 <nav class="cat-switch" aria-label="Candlestick categories">
   <a href="candlesticks.html" class="cat-switch-item" data-t="switch_candles_all">All Candlesticks</a>
   <a href="candlesticks-silver-plated.html" class="cat-switch-item" data-t="switch_candles_silver">Silver-Plated Candlesticks</a>
+  <a href="candlesticks-gold-plated.html" class="cat-switch-item" data-t="switch_candles_gold">Gold-Plated Candlesticks</a>
   <a href="candlesticks-artisanal.html" class="cat-switch-item active" aria-current="page" data-t="switch_candles_artisanal">Artisanal Candlesticks</a>
 </nav>
 
@@ -435,12 +437,18 @@
 
 <a id="floatingWa" href="https://wa.me/972523482278?text=Hi%2C%20I%20have%20a%20question%20about%20Sherman%20Art%20Works." target="_blank" rel="noopener noreferrer" class="floating-wa" aria-label="Chat on WhatsApp" title="Chat on WhatsApp"><svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
 
-<script src="js/site.js?v=20260801c"></script>
+<script src="js/site.js?v=20260810a"></script>
 <script src="js/cart.js"></script>
 <script>const SILVER_PLATED_CANDLESTICK_SIZES = [
   {"label": "S", "range_cm": "14-18", "range_in": "5.5-7.1", "price_ils": 618},
   {"label": "M", "range_cm": "19-22", "range_in": "7.5-8.7", "price_ils": 686},
   {"label": "L", "range_cm": "23-25", "range_in": "9.1-9.8", "price_ils": 784}
+];
+
+const GOLD_PLATED_CANDLESTICK_SIZES = [
+  {"label": "S", "range_cm": "14-18", "range_in": "5.5-7.1", "price_ils": 680},
+  {"label": "M", "range_cm": "19-22", "range_in": "7.5-8.7", "price_ils": 755},
+  {"label": "L", "range_cm": "23-25", "range_in": "9.1-9.8", "price_ils": 862}
 ];
 
 const PRODUCTS = [
@@ -708,6 +716,125 @@ const PRODUCTS = [
     "photos": ["Adama_pamotim_pikski", "Adama_pamotim_3_qgzseu", "Adama_pamotim2_jebzbp"],
     "tray_addon": {"id": "white-silver-plated-glass-tray", "sku": "SAW-TB-002", "name_en": "Matching White 925 Silver-Plated Glass Tray", "name_he": "מגש זכוכית לבן תואם בציפוי כסף 925", "measurements": "30 × 18 cm", "regular_price_ils": 561, "bundle_price_ils": 447, "photo": "White_tray_o1npai", "set_photo": "Adama_pamotim2_jebzbp"},
     "require_size_selection": true
+  },
+  {
+    "id": "blue-gold-plated-glass-candlesticks",
+    "sku": "SAW-CS-018",
+    "family_id": "gold-plated-glass-candlesticks",
+    "name_en": "Blue Gold-Plated Glass Candlesticks",
+    "name_he": "פמוטי זכוכית כחולים בציפוי זהב",
+    "description_en": "Handmade blue glass candlesticks finished with gold plating, sold as a pair and made to order in our studio in Israel. Available in three heights.",
+    "description_he": "זוג פמוטי זכוכית כחולים בעבודת יד בציפוי זהב, מיוצרים לפי הזמנה בסטודיו שלנו בישראל. זמינים בשלושה גבהים.",
+    "color_en": "Blue",
+    "color_he": "כחול",
+    "measurements": "",
+    "price_ils": 680,
+    "sizes": GOLD_PLATED_CANDLESTICK_SIZES,
+    "photos": ["Blue_Pamotim_gold_1_kdduli", "Blue_Pamotim_gold_2_to3e3k", "Orange_Pamotim_gold_3_b1uozp"],
+    "tray_addon": {"id": "blue-gold-plated-glass-tray", "sku": "SAW-TB-009", "name_en": "Matching Blue Gold-Plated Glass Tray", "name_he": "מגש זכוכית כחול תואם בציפוי זהב", "measurements": "30 × 18 cm", "regular_price_ils": 617, "bundle_price_ils": 492, "photo": "P036_ymyrbu", "set_photo": "Orange_Pamotim_gold_3_b1uozp"},
+    "require_size_selection": true
+  },
+  {
+    "id": "blue-green-gold-plated-glass-candlesticks",
+    "sku": "SAW-CS-019",
+    "family_id": "gold-plated-glass-candlesticks",
+    "name_en": "Blue-Green Gold-Plated Glass Candlesticks",
+    "name_he": "פמוטי זכוכית כחולים-ירוקים בציפוי זהב",
+    "description_en": "Handmade blue-green glass candlesticks finished with gold plating, sold as a pair and made to order in our studio in Israel. Available in three heights.",
+    "description_he": "זוג פמוטי זכוכית כחולים-ירוקים בעבודת יד בציפוי זהב, מיוצרים לפי הזמנה בסטודיו שלנו בישראל. זמינים בשלושה גבהים.",
+    "color_en": "Blue-Green",
+    "color_he": "כחול-ירוק",
+    "measurements": "",
+    "price_ils": 680,
+    "sizes": GOLD_PLATED_CANDLESTICK_SIZES,
+    "photos": ["Blue-green_Pamotim_1_hmd6nn", "Blue-green_Pamotim_3_p6r7jm", "Blue-green_Pamotim_3_icmrmo"],
+    "tray_addon": {"id": "blue-green-gold-plated-glass-tray", "sku": "SAW-TB-010", "name_en": "Matching Blue-Green Gold-Plated Glass Tray", "name_he": "מגש זכוכית כחול-ירוק תואם בציפוי זהב", "measurements": "30 × 18 cm", "regular_price_ils": 617, "bundle_price_ils": 492, "photo": "P031_svdkgg", "set_photo": "Blue-green_Pamotim_3_icmrmo"},
+    "require_size_selection": true
+  },
+  {
+    "id": "red-gold-plated-glass-candlesticks",
+    "sku": "SAW-CS-020",
+    "family_id": "gold-plated-glass-candlesticks",
+    "name_en": "Red Gold-Plated Glass Candlesticks",
+    "name_he": "פמוטי זכוכית אדומים בציפוי זהב",
+    "description_en": "Handmade red glass candlesticks finished with gold plating, sold as a pair and made to order in our studio in Israel. Available in three heights.",
+    "description_he": "זוג פמוטי זכוכית אדומים בעבודת יד בציפוי זהב, מיוצרים לפי הזמנה בסטודיו שלנו בישראל. זמינים בשלושה גבהים.",
+    "color_en": "Red",
+    "color_he": "אדום",
+    "measurements": "",
+    "price_ils": 680,
+    "sizes": GOLD_PLATED_CANDLESTICK_SIZES,
+    "photos": ["Red_Pamotim_gold_1_otqz05", "Red_Pamotim_gold_2_mbxdjn", "Red_pamotim_gold_3_prqvuo"],
+    "tray_addon": {"id": "red-gold-plated-glass-tray", "sku": "SAW-TB-011", "name_en": "Matching Red Gold-Plated Glass Tray", "name_he": "מגש זכוכית אדום תואם בציפוי זהב", "measurements": "30 × 18 cm", "regular_price_ils": 617, "bundle_price_ils": 492, "photo": "P011_ohf4xz", "set_photo": "Red_pamotim_gold_3_prqvuo"},
+    "require_size_selection": true
+  },
+  {
+    "id": "orange-gold-plated-glass-candlesticks",
+    "sku": "SAW-CS-021",
+    "family_id": "gold-plated-glass-candlesticks",
+    "name_en": "Orange Gold-Plated Glass Candlesticks",
+    "name_he": "פמוטי זכוכית כתומים בציפוי זהב",
+    "description_en": "Handmade orange glass candlesticks finished with gold plating, sold as a pair and made to order in our studio in Israel. Available in three heights.",
+    "description_he": "זוג פמוטי זכוכית כתומים בעבודת יד בציפוי זהב, מיוצרים לפי הזמנה בסטודיו שלנו בישראל. זמינים בשלושה גבהים.",
+    "color_en": "Orange",
+    "color_he": "כתום",
+    "measurements": "",
+    "price_ils": 680,
+    "sizes": GOLD_PLATED_CANDLESTICK_SIZES,
+    "photos": ["Orange_Pamotim_gold_1_usoeve", "Orange_Pamotim_gold_3_cwhdwb", "Orange_Pamotim_gold_2_ms1pco"],
+    "tray_addon": {"id": "orange-gold-plated-glass-tray", "sku": "SAW-TB-012", "name_en": "Matching Orange Gold-Plated Glass Tray", "name_he": "מגש זכוכית כתום תואם בציפוי זהב", "measurements": "30 × 18 cm", "regular_price_ils": 617, "bundle_price_ils": 492, "photo": "עותק_של_Orange_tray_vwt85g", "set_photo": "Orange_Pamotim_gold_2_ms1pco"},
+    "require_size_selection": true
+  },
+  {
+    "id": "earth-gold-plated-glass-candlesticks",
+    "sku": "SAW-CS-022",
+    "family_id": "gold-plated-glass-candlesticks",
+    "name_en": "Earth Gold-Plated Glass Candlesticks",
+    "name_he": "פמוטי זכוכית אדמה בציפוי זהב",
+    "description_en": "Handmade earth glass candlesticks finished with gold plating, sold as a pair and made to order in our studio in Israel. Available in three heights.",
+    "description_he": "זוג פמוטי זכוכית אדמה בעבודת יד בציפוי זהב, מיוצרים לפי הזמנה בסטודיו שלנו בישראל. זמינים בשלושה גבהים.",
+    "color_en": "Earth",
+    "color_he": "אדמה",
+    "measurements": "",
+    "price_ils": 680,
+    "sizes": GOLD_PLATED_CANDLESTICK_SIZES,
+    "photos": ["Adama_Pamotim_gold_1_we9ata", "Adama_Pamotim_gold_2_jl69aq"],
+    "tray_addon": {"id": "earth-gold-plated-glass-tray", "sku": "SAW-TB-013", "name_en": "Matching Earth Gold-Plated Glass Tray", "name_he": "מגש זכוכית אדמה תואם בציפוי זהב", "measurements": "30 × 18 cm", "regular_price_ils": 617, "bundle_price_ils": 492, "photo": "P023_cuaxen"},
+    "require_size_selection": true
+  },
+  {
+    "id": "black-gold-plated-glass-candlesticks",
+    "sku": "SAW-CS-023",
+    "family_id": "gold-plated-glass-candlesticks",
+    "name_en": "Black Gold-Plated Glass Candlesticks",
+    "name_he": "פמוטי זכוכית שחורים בציפוי זהב",
+    "description_en": "Handmade black glass candlesticks finished with gold plating, sold as a pair and made to order in our studio in Israel. Available in three heights.",
+    "description_he": "זוג פמוטי זכוכית שחורים בעבודת יד בציפוי זהב, מיוצרים לפי הזמנה בסטודיו שלנו בישראל. זמינים בשלושה גבהים.",
+    "color_en": "Black",
+    "color_he": "שחור",
+    "measurements": "",
+    "price_ils": 680,
+    "sizes": GOLD_PLATED_CANDLESTICK_SIZES,
+    "photos": ["Black_Pamotim_gold_1_yzkeqe", "Black_Pamotim_gold_2_shk9gj", "Black_Pamotim_gold_3_kieumf"],
+    "tray_addon": {"id": "black-gold-plated-glass-tray", "sku": "SAW-TB-014", "name_en": "Matching Black Gold-Plated Glass Tray", "name_he": "מגש זכוכית שחור תואם בציפוי זהב", "measurements": "30 × 18 cm", "regular_price_ils": 617, "bundle_price_ils": 492, "photo": "Black_tray_gold_wdxp9o", "set_photo": "Black_Pamotim_gold_3_kieumf"},
+    "require_size_selection": true
+  },
+  {
+    "id": "green-gold-plated-glass-candlesticks",
+    "sku": "SAW-CS-024",
+    "family_id": "gold-plated-glass-candlesticks",
+    "name_en": "Green Gold-Plated Glass Candlesticks",
+    "name_he": "פמוטי זכוכית ירוקים בציפוי זהב",
+    "description_en": "Handmade green glass candlesticks finished with gold plating, sold as a pair and made to order in our studio in Israel. Available in three heights.",
+    "description_he": "זוג פמוטי זכוכית ירוקים בעבודת יד בציפוי זהב, מיוצרים לפי הזמנה בסטודיו שלנו בישראל. זמינים בשלושה גבהים.",
+    "color_en": "Green",
+    "color_he": "ירוק",
+    "measurements": "",
+    "price_ils": 680,
+    "sizes": GOLD_PLATED_CANDLESTICK_SIZES,
+    "photos": ["P040_zgvdxy"],
+    "tray_addon": {"id": "green-gold-plated-glass-tray", "sku": "SAW-TB-015", "name_en": "Matching Green Gold-Plated Glass Tray", "name_he": "מגש זכוכית ירוק תואם בציפוי זהב", "measurements": "30 × 18 cm", "regular_price_ils": 617, "bundle_price_ils": 492, "photo": "P009_obbnmj"},
+    "require_size_selection": true
   }
 ];
 
@@ -744,6 +871,7 @@ const PRODUCTS = [
 
       switch_candles_all: 'All Candlesticks',
       switch_candles_silver: 'Silver-Plated Candlesticks',
+      switch_candles_gold: 'Gold-Plated Candlesticks',
       switch_candles_artisanal: 'Artisanal Candlesticks',
 
       bc_shop:        'Shop',
@@ -814,6 +942,7 @@ const PRODUCTS = [
 
       switch_candles_all: 'כל הפמוטים',
       switch_candles_silver: 'פמוטים בציפוי כסף',
+      switch_candles_gold: 'פמוטים בציפוי זהב',
       switch_candles_artisanal: 'פמוטים אומנותיים',
 
       bc_shop:        'חנות',
@@ -865,20 +994,11 @@ const PRODUCTS = [
   // ── CURRENCY (live ILS->USD) ──
 
 
-  function formatPrice(ils) {
-    const main = '₪' + ils.toLocaleString('en-IL');
-    if (!usdRate) return main;
-    const usd = ils / usdRate;
-    const usdStr = '$' + usd.toFixed(usd < 100 ? 0 : 0);
-    return `${main} <span class="product-card-price-alt">≈ ${usdStr}</span>`;
-  }
-
-  function formatPriceModal(ils) {
-    const main = '₪' + ils.toLocaleString('en-IL');
-    if (!usdRate) return main;
-    const usd = ils / usdRate;
-    return `${main} <span style="font-size:0.78rem;color:var(--brown);font-weight:400;">≈ $${usd.toFixed(0)}</span>`;
-  }
+  // Both delegate to formatMoney in js/site.js. Every category page used to
+  // carry its own near-identical copy of these, which is why the shekel was
+  // hard-wired as the leading figure in a dozen places at once.
+  function formatPrice(ils, exempt)      { return formatMoney(ils, exempt); }
+  function formatPriceModal(ils, exempt) { return formatMoneyModal(ils, exempt); }
 
   // ── PRODUCT WHATSAPP MESSAGE ──
   function waLinkForProduct(p, size, tray) {
@@ -1196,9 +1316,14 @@ const PRODUCTS = [
   function selectModalColor(idx) {
     if (!PRODUCTS[idx]) return;
     currentModalIdx = idx;
-    currentPhotoIdx = currentTraySelected && PRODUCTS[idx].tray_addon
-      ? Math.max(0, PRODUCTS[idx].photos.indexOf(PRODUCTS[idx].tray_addon.set_photo))
-      : 0;
+    // Colours photographed with the tray carry a set_photo; those that were not
+    // (Earth, Green) have none, and indexOf then returns -1. Math.max(0, -1)
+    // used to turn that miss into photo one, which is only the right answer by
+    // coincidence - test the miss explicitly instead.
+    const trayShot = PRODUCTS[idx].tray_addon
+      ? PRODUCTS[idx].photos.indexOf(PRODUCTS[idx].tray_addon.set_photo)
+      : -1;
+    currentPhotoIdx = currentTraySelected && trayShot !== -1 ? trayShot : 0;
     const error = document.getElementById('modalSizeError');
     if (error) error.classList.remove('visible');
     renderModal();
@@ -1223,9 +1348,11 @@ const PRODUCTS = [
     const p = PRODUCTS[currentModalIdx];
     if (!p || !p.tray_addon) return;
     currentTraySelected = Boolean(selected);
-    currentPhotoIdx = currentTraySelected
-      ? Math.max(0, p.photos.indexOf(p.tray_addon.set_photo))
-      : 0;
+    // Adding the tray swaps the gallery to the shot that includes it. Where no
+    // such shot exists the gallery stays exactly where the shopper left it,
+    // rather than snapping back to photo one on a -1 lookup.
+    const trayShot = p.photos.indexOf(p.tray_addon.set_photo);
+    if (trayShot !== -1) currentPhotoIdx = currentTraySelected ? trayShot : 0;
     renderModal();
     requestAnimationFrame(() => {
       const checkbox = document.getElementById('modalTrayAddon');

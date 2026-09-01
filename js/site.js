@@ -30,15 +30,100 @@ function launchPill() {
   return ' <span class="launch-pill">' + label + '</span>';
 }
 
-// Wraps any ils->HTML price formatter so it renders the catalogue price struck
-// through, followed by the discounted price and a launch pill. When the
-// promotion is off it is a passthrough, so wiring it in is always safe.
-function launchFormat(ils, fmt, launchExempt) {
-  if (!launchActive()) return fmt(ils);
-  var exempt = Math.max(0, Number(launchExempt) || 0);
-  var eligible = Math.max(0, ils - exempt);
-  return '<span class="was-price">' + fmt(ils) + '</span> ' +
-         '<span class="now-price">' + fmt(saleIls(eligible) + exempt) + '</span>' + launchPill();
+// ── USD PRICE LIST ─────────────────────────────────────────────
+// International shoppers are quoted a fixed dollar price, not a live
+// conversion. A figure that moves with the market between the shop page and the
+// card is a figure nobody actually quoted, and dividing by a live rate produces
+// prices like $138.72 that read as a currency widget rather than a price list.
+//
+// So the dollar price is a pure function of the shekel price at a PINNED rate,
+// rounded UP to the nearest $5: pinned so it moves only when somebody decides to
+// move it, up so a dollar figure never sits below the shekel one it came from.
+// The pin is the same mid and the same 2% margin rates.js quotes with, which
+// makes re-pinning a judgement about the market rather than about the formula.
+//
+// The identical pin and rounding live in the payments Worker (sherman-payments,
+// src/pricing.js) and in _usd.py for the generators. All three must agree, for
+// the same reason LAUNCH_DISCOUNT must: the Worker rebuilds the order total from
+// the catalogue, and a one-dollar disagreement bounces the order.
+//
+// To re-pin: change USD_PIN_MID in all three, redeploy the Worker, re-run the
+// generator chain. The live rate from /rate is still fetched, but only to cost
+// the $45 international shipping in shekels. It never prices an item.
+const USD_PIN_MID    = 3.06;
+const USD_PIN_MARGIN = 0.02;
+const USD_PIN_RATE   = USD_PIN_MID * (1 - USD_PIN_MARGIN);  // 2.9988
+const USD_ROUND_TO   = 5;
+
+function usdFromIls(ils) {
+  return Math.ceil((Number(ils) / USD_PIN_RATE) / USD_ROUND_TO) * USD_ROUND_TO;
+}
+
+// Sale price in dollars, to the nearest whole dollar rather than the nearest $5.
+// Catalogue prices want round numbers; a sale price is derived from one and
+// nobody expects it round. Rounding this to $5 as well would quietly turn "20%
+// off" into 17.9% off, which any shopper with a calculator can see is not what
+// the banner promises.
+function saleUsd(usd) {
+  return launchActive() ? Math.round(usd * (1 - LAUNCH_DISCOUNT)) : usd;
+}
+
+// ── MONEY ──────────────────────────────────────────────────────
+// The catalogue figure and the charged figure for one price, in one currency.
+// `exempt` is the part the promotion does not apply to (a bundled tray), and it
+// is held back natively in each currency rather than converted, so neither list
+// is a rounding of the other.
+function priceParts(ils, exempt, cur) {
+  var ex = Math.max(0, Number(exempt) || 0);
+  if (cur === 'ILS') {
+    var reg = Math.round(Number(ils));
+    var exIls = Math.round(ex);
+    return { reg: reg, sale: launchActive() ? saleIls(Math.max(0, reg - exIls)) + exIls : reg };
+  }
+  var regUsd = usdFromIls(ils);
+  var exUsd  = ex ? usdFromIls(ex) : 0;
+  return { reg: regUsd, sale: launchActive() ? saleUsd(Math.max(0, regUsd - exUsd)) + exUsd : regUsd };
+}
+
+function money(n, cur) {
+  return cur === 'USD'
+    ? '$' + Number(n).toLocaleString('en-US')
+    : '₪' + Number(n).toLocaleString('en-IL');
+}
+
+function activeCurrency() { return currentCurrency === 'ILS' ? 'ILS' : 'USD'; }
+function otherCurrency()  { return activeCurrency() === 'ILS' ? 'USD' : 'ILS'; }
+
+// One formatter for every price on the site. Each category page used to carry
+// its own near-identical copy, so changing how money is shown was a dozen edits
+// and the next change would have been a dozen more.
+//
+// The trailing figure is no longer marked "approximately": it used to be an
+// estimate of a shekel charge and is now an exact price from its own list. The
+// shekel is only ever demoted, never dropped - English pages are read by plenty
+// of Israelis, who expect to see a shekel price.
+//
+// `exempt` keeps the positional contract the page formatters were already
+// called with, so nothing that calls these has to learn a new shape.
+function formatMoney(ils, exempt, altAttr) {
+  var cur = activeCurrency();
+  var oth = otherCurrency();
+  var m   = priceParts(ils, exempt, cur);
+  var a   = priceParts(ils, exempt, oth);
+  var alt = ' <span ' + (altAttr || 'class="product-card-price-alt"') + '>' +
+            money(a.sale, oth) + '</span>';
+
+  if (!launchActive()) return money(m.sale, cur) + alt;
+
+  return '<span class="was-price">' + money(m.reg, cur) + '</span> ' +
+         '<span class="now-price">' + money(m.sale, cur) + '</span>' +
+         alt + launchPill();
+}
+
+// The same figures, sized for the product modal rather than a card.
+function formatMoneyModal(ils, exempt) {
+  return formatMoney(ils, exempt,
+    'style="font-size:0.78rem;color:var(--brown);font-weight:400;"');
 }
 
 // Backend that signs HYP Pay requests and verifies completed transactions.
@@ -83,6 +168,7 @@ const T_SITE = {
     switch_kudu:         'Kudu Horn',
     switch_candles_all:       'All Candlesticks',
     switch_candles_silver:    'Silver-Plated Candlesticks',
+    switch_candles_gold:      'Gold-Plated Candlesticks',
     switch_candles_artisanal: 'Artisanal Candlesticks',
 
     cat_from:            'from',
@@ -154,6 +240,7 @@ const T_SITE = {
     switch_kudu:         'שופר קודו',
     switch_candles_all:       'כל הפמוטים',
     switch_candles_silver:    'פמוטים בציפוי כסף',
+    switch_candles_gold:      'פמוטים בציפוי זהב',
     switch_candles_artisanal: 'פמוטים אומנותיים',
 
     cat_from:            'מ-',
@@ -208,19 +295,32 @@ function escapeAttr(s) { return (s || '').replace(/&/g, '&amp;').replace(/"/g, '
 let currentLang     = 'en';
 let currentCurrency = 'USD';
 let usdRate         = null;
+// The rate for costing a dollar amount in shekels, which is the opposite
+// direction from quoting a shekel price in dollars and therefore a different
+// number. Only the $45 international shipping needs it. See loadUsdRate.
+let usdCostRate     = null;
 
 // ── EXCHANGE RATE ───────────────────────────────────────────────
-// Taken from the payment backend rather than fetched here, so the figure on the
-// page is the one the order is priced with. Two independent fetches of a moving
-// rate disagree, and that gap would trip the backend's own total check on
-// international orders that were never actually wrong.
+// This no longer prices anything. Item prices come off the pinned USD list
+// above, which is the whole point of pinning: a shopper cannot see one figure on
+// the shop page and a different one at the card because the market moved between
+// the two.
 //
-// The rate leans slightly against the shopper (mid × 0.98), which makes the
-// dollar figure a little high. That is the right direction while orders are
-// charged in shekels: the customer's bank converts at roughly mid and adds its
-// own fee, so a conservative estimate is closer to what their statement will
-// say. The previous version divided instead of multiplying and understated it.
+// What is still live, and has to be, is the $45 international shipping. That is
+// quoted in dollars and has to be costed in shekels for a shekel-charged order,
+// so it converts at whatever the day's rate is. Taken from the payment backend
+// rather than fetched here, so the figure on the page is the one the order is
+// costed with; two independent fetches of a moving rate disagree, and that gap
+// would trip the backend's own total check on orders that were never wrong.
 const FALLBACK_USD_RATE = 3.06 * 0.98;
+// Costing $45 in shekels needs the rate that leans the other way, exactly as
+// rates.js costRate() does. Reading `rate` here instead of `cost_rate` was a
+// real bug: it put ₪135 of shipping on the page against the ₪140 the Worker
+// rebuilds, so the totals check rejected the first attempt at EVERY
+// international card order and made the shopper press Pay twice, watching the
+// price go up in between. The two figures now come from the same two rates the
+// backend uses, in the same directions.
+const FALLBACK_USD_COST_RATE = 3.06 * 1.02;
 
 async function loadUsdRate() {
   const rn = document.getElementById('rateNote');
@@ -234,12 +334,18 @@ async function loadUsdRate() {
     const data = await res.json();
     if (!data || !isFinite(data.rate)) throw new Error('no rate');
     usdRate = data.rate;
+    // Older backends did not send cost_rate. Falling back to the quote rate
+    // would silently reintroduce the ₪5 shipping gap, so fall back to the
+    // pinned cost rate instead - wrong by a little is recoverable, wrong in the
+    // direction that trips the totals check is not.
+    usdCostRate = isFinite(data.cost_rate) ? data.cost_rate : FALLBACK_USD_COST_RATE;
     if (rn) rn.textContent = 'Rate updated ' + (data.date || 'today');
   } catch (e) {
     // Same base and direction as the backend's own fallback, so a shopper who
     // loads the page while the backend is unreachable still sees a figure in
     // the same neighbourhood as the one they would be charged.
     usdRate = FALLBACK_USD_RATE;
+    usdCostRate = FALLBACK_USD_COST_RATE;
     if (rn) rn.textContent = 'Est. rate';
   }
   // Duck-typed hooks - only run if page defines them
@@ -260,24 +366,33 @@ function updatePrices() {
   var fromLabel = (T_SITE[currentLang] && T_SITE[currentLang].cat_from)
     || (typeof T_PAGE !== 'undefined' && T_PAGE[currentLang] && T_PAGE[currentLang].cat_from)
     || 'from';
-  function fromAmount(ils) {
-    if (currentCurrency === 'ILS' || !usdRate) {
-      return '₪' + ils.toLocaleString('en-IL');
-    }
-    return '$' + Math.round(ils / usdRate).toLocaleString('en-US');
-  }
+  // No longer waits on the live rate: the dollar figure comes off the pinned
+  // price list, so these cards are correct on first paint instead of showing
+  // shekels until /rate answers.
+  var cur = activeCurrency();
   document.querySelectorAll('.cat-card-from[data-min-ils]').forEach(function(el) {
     var ils = parseInt(el.dataset.minIls, 10);
+    if (!isFinite(ils)) return;
+    var p = priceParts(ils, 0, cur);
     if (launchActive()) {
-      el.innerHTML = fromLabel + ' <span class="was-price">' + fromAmount(ils) + '</span> ' +
-                     '<span class="now-price">' + fromAmount(saleIls(ils)) + '</span>';
+      el.innerHTML = fromLabel + ' <span class="was-price">' + money(p.reg, cur) + '</span> ' +
+                     '<span class="now-price">' + money(p.sale, cur) + '</span>';
     } else {
-      el.textContent = fromLabel + ' ' + fromAmount(ils);
+      el.textContent = fromLabel + ' ' + money(p.sale, cur);
     }
   });
 }
 
 // ── CURRENCY ────────────────────────────────────────────────────
+// Currency follows language, because that is what the choice of language is
+// actually telling us: somebody reading the English site is overwhelmingly not
+// paying in shekels, and asking them to find a second toggle to see a price they
+// can judge is friction on the one screen where friction is expensive.
+//
+// But it follows only until the shopper says otherwise. An explicit toggle is
+// remembered separately from the currency itself, so switching language
+// afterwards does not quietly undo a deliberate choice - an Israeli reading the
+// English pages picks the shekel once and it stays picked.
 var CUR_KEY = 'sa_cur';
 var CUR_EXPLICIT_KEY = 'sa_cur_explicit';
 
@@ -287,8 +402,11 @@ function currencyWasChosen() {
   try { return localStorage.getItem(CUR_EXPLICIT_KEY) === '1'; } catch (e) { return false; }
 }
 
-// Language supplies the default; a click on a currency button remains the
-// shopper's explicit preference across pages and languages.
+// The currency a given language should land on. Language supplies the default,
+// while a currency button remains an explicit shopper preference. Keeping those
+// two ideas separate means a first visit to /he/ starts in shekels and a first
+// visit to an English page starts in dollars without undoing a choice the
+// shopper has already made.
 function currencyFor(l) {
   if (currencyWasChosen()) {
     try { return localStorage.getItem(CUR_KEY) === 'ILS' ? 'ILS' : 'USD'; } catch (e) {}
@@ -296,27 +414,45 @@ function currencyFor(l) {
   return currencyForLang(l);
 }
 
-function setCurrency(cur, rememberChoice) {
-  currentCurrency = cur === 'ILS' ? 'ILS' : 'USD';
+// The shopper clicked a currency button. Every call site of setCurrency is such
+// a click, which is why marking the choice here is enough: the language-driven
+// path goes through applyCurrency instead and leaves the flag alone.
+function setCurrency(cur) {
+  try { localStorage.setItem(CUR_EXPLICIT_KEY, '1'); } catch (e) {}
+  applyCurrency(cur);
+}
+
+// State only, no repaint. setLang sets the currency through this and then does
+// its own single pass of renders, so switching language does not render the page
+// twice over.
+function setCurrencyState(cur) {
+  currentCurrency = (cur === 'ILS') ? 'ILS' : 'USD';
   var btnILS = document.getElementById('btnILS');
   var btnUSD = document.getElementById('btnUSD');
   if (btnILS) btnILS.classList.toggle('active', currentCurrency === 'ILS');
   if (btnUSD) btnUSD.classList.toggle('active', currentCurrency === 'USD');
+  try { localStorage.setItem(CUR_KEY, currentCurrency); } catch (e) {}
+}
+
+function applyCurrency(cur) {
+  setCurrencyState(cur);
   if (typeof renderProducts === 'function') renderProducts();
   updatePrices();
   // Cart surfaces quote prices too, and international shipping is converted from
   // USD - without this the drawer and checkout keep the old currency until the
   // next render for some other reason.
   if (typeof renderShipping === 'function') renderShipping();
-  if (rememberChoice !== false) {
-    localStorage.setItem(CUR_KEY, currentCurrency);
-    localStorage.setItem(CUR_EXPLICIT_KEY, '1');
-  }
+  if (typeof renderCheckout === 'function') renderCheckout();
+  if (typeof renderCartDrawer === 'function') renderCartDrawer();
+  if (typeof renderModal === 'function' && typeof currentModalIdx !== 'undefined' && currentModalIdx != null) renderModal();
 }
 
 // ── LANGUAGE ────────────────────────────────────────────────────
 function setLang(l) {
   currentLang = l;
+  // Before the renders below, so they paint in the right currency on the first
+  // pass rather than in the old one and then again in the new.
+  setCurrencyState(currencyFor(l));
   var sitePart = T_SITE[l] || {};
   var pagePart = (typeof T_PAGE !== 'undefined' && T_PAGE[l]) ? T_PAGE[l] : {};
   var dict = Object.assign({}, sitePart, pagePart);
@@ -613,21 +749,11 @@ function initA11y() {
 }
 
 // ── INIT ────────────────────────────────────────────────────────
-// Re-point the page's global price formatters at the discounted-price wrapper.
-// buildCard/renderModal call these by name at render time, so wrapping them here
-// - before the first render below - makes every card, modal and size option
-// show the launch price with no per-page edits. Passthrough when the promo is
-// off, and idempotent so a second call is harmless.
-function wrapLaunchFormatters() {
-  if (!launchActive()) return;
-  ['formatPrice', 'formatPriceModal', 'formatProductPrice'].forEach(function(name) {
-    var orig = window[name];
-    if (typeof orig !== 'function' || orig.__launchWrapped) return;
-    var wrapped = function(ils, launchExempt) { return launchFormat(ils, orig, launchExempt); };
-    wrapped.__launchWrapped = true;
-    window[name] = wrapped;
-  });
-}
+// The launch strike-through used to be bolted on here, by re-pointing each
+// page's own formatPrice/formatPriceModal at a wrapper before the first render.
+// That indirection is gone: the pages now delegate to formatMoney, which renders
+// the promotion itself, in whichever currency is active. One less layer, and one
+// less thing that has to run in the right order.
 
 function initLaunchBanner() {
   if (!launchActive()) return;
@@ -644,16 +770,16 @@ function initLaunchBanner() {
 }
 
 document.addEventListener('DOMContentLoaded', function() {
-  wrapLaunchFormatters();
   initConsent();
   initA11y();
   initLaunchBanner();
   // Static /he/ pages set window.__SA_LANG='he' so the URL (not a stale
   // localStorage value) wins - otherwise JS would re-render them in English.
   var lang = window.__SA_LANG || localStorage.getItem('sa_lang') || 'en';
-  var cur  = currencyFor(lang);
+  // setLang picks the currency too, honouring an explicit earlier choice. It is
+  // no longer read straight from localStorage here: that ignored the language
+  // and left a Hebrew page quoting dollars.
   setLang(lang);
-  setCurrency(cur, false);
   loadUsdRate();
 
   // Hash-based product anchor open (22.5)

@@ -28,7 +28,17 @@
     <span class="top-divider">|</span>
     <button id="btnHE" class="toggle-btn" onclick="setLang('he')">עברית</button>
   </div>
-  <div class="top-bar-group" data-t="topbar_right" style="font-size:0.72rem;color:var(--footer-text);letter-spacing:0.04em;"></div>
+  <!-- The currency toggle belongs here more than anywhere: this is the page where
+       somebody decides whether a price is one they want to pay. It used to exist
+       only on the shop pages, so a shopper who reached the checkout had no way to
+       change currency without going back. "Handcrafted in Israel" moves into the
+       footer's territory rather than occupying the one useful control slot. -->
+  <div class="top-bar-group">
+    <button id="btnILS" class="toggle-btn" onclick="setCurrency('ILS')">₪ ILS</button>
+    <span class="top-divider">|</span>
+    <button id="btnUSD" class="toggle-btn" onclick="setCurrency('USD')">$ USD</button>
+    <span id="rateNote"></span>
+  </div>
 </div>
 
 <div class="nav-wrap">
@@ -77,6 +87,7 @@
         <div class="mobile-shop-menu open">
           <a href="candlesticks.html" onclick="closeMobileNav()" data-t="cat1_title">Candlesticks</a>
           <a href="candlesticks-silver-plated.html" class="mobile-shop-sub" onclick="closeMobileNav()" data-t="switch_candles_silver">Silver-Plated Candlesticks</a>
+          <a href="candlesticks-gold-plated.html" class="mobile-shop-sub" onclick="closeMobileNav()" data-t="switch_candles_gold">Gold-Plated Candlesticks</a>
           <a href="candlesticks-artisanal.html" class="mobile-shop-sub" onclick="closeMobileNav()" data-t="switch_candles_artisanal">Artisanal Candlesticks</a>
           <a href="horn-goblets.html" onclick="closeMobileNav()" data-t="cat2_title">Horn Goblets</a>
           <a href="kiddush-cups.html" onclick="closeMobileNav()" data-t="cat3_title">Kiddush Cups</a>
@@ -317,22 +328,12 @@
       return;
     }
 
-    var rate = (typeof usdRate === 'number') ? usdRate : null;
-    var showUsd = rate && (typeof currentCurrency === 'undefined' || currentCurrency !== 'ILS');
-    var total = getCartTotal();
+    var cur = activeCurrency();
 
     var rows = items.map(function (item, idx) {
       var name = (isHe && item.name_he) ? item.name_he : item.name_en;
       var thumb = CDN + '/w_80,h_80,c_fill,g_auto,q_auto,f_auto/' + item.photo + '.jpg';
-      var lineIls = item.price_ils * item.qty;
-      var priceStr = '₪' + lineIls.toLocaleString('en-IL');
-      if (showUsd) priceStr += ' <span class="cart-price-alt">≈ $' + Math.round(lineIls / rate) + '</span>';
-      if (item.regular_price_ils) {
-        var wasIls = item.regular_price_ils * item.qty;
-        var wasStr = '₪' + wasIls.toLocaleString('en-IL');
-        if (showUsd) wasStr += ' <span class="cart-price-alt">≈ $' + Math.round(wasIls / rate) + '</span>';
-        priceStr = '<span class="was-price">' + wasStr + '</span> <span class="now-price">' + priceStr + '</span>';
-      }
+      var priceStr = cartLinePriceHtml(item);
       var url = _cartItemUrl(item);
       var thumbImg = '<img class="checkout-thumb" src="' + escapeAttr(thumb) + '" alt="' + escapeAttr(name) + '" loading="lazy" />';
       var metaHtml = _cartMetaHtml(item, isHe).replace('cart-item-meta', 'checkout-item-meta');
@@ -351,9 +352,7 @@
       '</tr>';
     }).join('');
 
-    var orderTotal = getOrderTotal();
-    var totalStr = '₪' + orderTotal.toLocaleString('en-IL');
-    if (showUsd) totalStr += ' <span class="cart-price-alt">≈ $' + Math.round(orderTotal / rate) + '</span>';
+    var totalStr = orderTotalHtml();
     var zoneName = effectiveShipZone() === 'IL' ? t.checkout_ship_il : t.checkout_ship_intl;
 
     el.innerHTML =
@@ -368,7 +367,7 @@
       '</table>' +
       '<div class="checkout-sub-row">' +
         '<span>' + escapeHtml(t.checkout_subtotal) + '</span>' +
-        '<span>₪' + total.toLocaleString('en-IL') + '</span>' +
+        '<span>' + money(getCartTotalIn(cur), cur) + '</span>' +
       '</div>' +
       '<div class="checkout-sub-row">' +
         '<span>' + escapeHtml(t.checkout_ship_row) + ' · ' + escapeHtml(zoneName) + '</span>' +
@@ -399,7 +398,7 @@
         // is not re-rendered as it is typed into, so a link built at render time
         // would carry a stale (or empty) address.
         '<a class="checkout-wa-btn" href="' + escapeAttr(buildCheckoutWaLink()) + '" target="_blank" rel="noopener noreferrer"' +
-           ' onclick="saveShippingAddress();this.href=buildCheckoutWaLink();if(typeof trackGA4===\'function\')trackGA4(\'begin_checkout\',{currency:\'ILS\',value:' + total + '})">' +
+           ' onclick="saveShippingAddress();this.href=buildCheckoutWaLink();if(typeof trackGA4===\'function\')trackGA4(\'begin_checkout\',{currency:ga4Currency(),value:getCartTotalIn(ga4Currency())})">' +
           _WA_SVG_LG + ' ' + escapeHtml(t.checkout_wa_btn) +
         '</a>' +
         '<p class="checkout-note">' + escapeHtml(t.checkout_note) + '</p>' +
@@ -519,27 +518,34 @@
   // the second attempt is checked against that figure rather than the stale one
   // this page rendered. Cleared whenever the cart or destination changes, since
   // that makes the old figure meaningless.
+  //
+  // Held per currency: the shopper can switch currency between the two attempts,
+  // and a dollar figure resubmitted as a shekel one would fail the check for the
+  // wrong reason and never resolve.
   var _payExpectedTotal = null;
+  var _payExpectedCurrency = null;
 
   // Rewrites the visible totals with the backend's, so the shopper is looking at
   // the amount they are about to be charged rather than the one that drifted.
+  // The backend is authoritative, and it is authoritative in shekels. It sends
+  // the dollar figures alongside when it has them; when it does not, these fall
+  // back to shekels rather than inventing a dollar figure the server never
+  // agreed to - the whole point of this path is that the shopper sees the exact
+  // amount about to be charged.
+  function _serverAmount(d, ilsKey, usdKey) {
+    if (activeCurrency() === 'USD' && isFinite(d[usdKey])) return money(Number(d[usdKey]), 'USD');
+    return money(Number(d[ilsKey]), 'ILS');
+  }
+
   function _showServerTotals(d) {
     var t = T_PAGE[currentLang];
     var rows = document.querySelectorAll('.checkout-sub-row');
     if (rows.length >= 2) {
-      rows[0].lastElementChild.textContent = '₪' + Number(d.subtotal_ils).toLocaleString('en-IL');
-      rows[1].lastElementChild.textContent = '₪' + Number(d.shipping_ils).toLocaleString('en-IL');
+      rows[0].lastElementChild.textContent = _serverAmount(d, 'subtotal_ils', 'subtotal_usd');
+      rows[1].lastElementChild.textContent = _serverAmount(d, 'shipping_ils', 'shipping_usd');
     }
     var totalEl = document.querySelector('.checkout-total-price');
-    if (totalEl) {
-      // Same shape as renderCheckout builds, so the corrected figure does not
-      // suddenly lose the USD approximation next to it.
-      var rate = (typeof usdRate === 'number') ? usdRate : null;
-      var showUsd = rate && (typeof currentCurrency === 'undefined' || currentCurrency !== 'ILS');
-      var str = '₪' + Number(d.total_ils).toLocaleString('en-IL');
-      if (showUsd) str += ' <span class="cart-price-alt">≈ $' + Math.round(d.total_ils / rate) + '</span>';
-      totalEl.innerHTML = str;
-    }
+    if (totalEl) totalEl.textContent = _serverAmount(d, 'total_ils', 'total_usd');
     var label = document.getElementById('payNowLabel');
     if (label) label.textContent = t.checkout_pay_btn;
   }
@@ -561,21 +567,37 @@
     // Prices are deliberately not sent. The backend reprices the whole cart from
     // the catalogue, so anything we put here would be ignored anyway - and the
     // shorter payload is one less thing that can disagree with the truth.
+    // The currency this page is quoting in. The backend decides whether it can
+    // honour it - the terminal has to settle dollars, and an Israel-bound order
+    // is always charged in shekels - so this is a request, not an instruction,
+    // and the response says what was actually used.
+    var payCur = activeCurrency();
+
     var payload = {
       zone: effectiveShipZone(),
       lang: currentLang,
+      currency: payCur,
       address: getShippingAddress(),
       // Not a price we are asking to be charged - the backend ignores it for
       // pricing and only checks it against the catalogue, so that a total which
       // has drifted stops the order instead of quietly charging something else.
-      expected_total_ils: _payExpectedTotal == null ? getOrderTotal() : _payExpectedTotal,
+      // Sent with its currency, because comparing a dollar figure against a
+      // shekel total would reject every correct order.
+      expected_total: (_payExpectedTotal != null && _payExpectedCurrency === payCur)
+        ? _payExpectedTotal
+        : getOrderTotalIn(payCur),
+      expected_currency: payCur,
+      // Kept for a backend deployed before the two fields above existed.
+      expected_total_ils: getOrderTotal(),
       items: getCart().map(function (i) {
         return { slug: i.slug, qty: i.qty, meta: i.meta || null };
       })
     };
 
     if (typeof trackGA4 === 'function') {
-      trackGA4('begin_checkout', { currency: 'ILS', value: getOrderTotal(), payment_type: 'card' });
+      trackGA4('begin_checkout', {
+        currency: ga4Currency(), value: getOrderTotalIn(ga4Currency()), payment_type: 'card'
+      });
     }
 
     fetch(PAYMENT_API + '/create-payment', {
@@ -589,9 +611,15 @@
         // figure and make the shopper press Pay again, so nobody is sent to a
         // payment page for an amount they were never shown.
         if (res.data && res.data.error === 'total_changed') {
-          _payExpectedTotal = res.data.total_ils;
+          // Remember the corrected figure in whichever currency this page is
+          // showing, so the retry is checked against the same one it displays.
+          var corrCur = activeCurrency();
+          var corrUsd = res.data.total_usd;
+          _payExpectedCurrency = (corrCur === 'USD' && isFinite(corrUsd)) ? 'USD' : 'ILS';
+          _payExpectedTotal = _payExpectedCurrency === 'USD' ? corrUsd : res.data.total_ils;
           _payBusy(false);
-          _payError(t.checkout_pay_changed.replace('{total}', '₪' + Number(res.data.total_ils).toLocaleString('en-IL')));
+          _payError(t.checkout_pay_changed.replace('{total}',
+            _serverAmount(res.data, 'total_ils', 'total_usd')));
           _showServerTotals(res.data);
           return;
         }
@@ -666,7 +694,7 @@
   }
 
   // A confirmed total only describes the cart it was quoted for.
-  function _clearPayExpectation() { _payExpectedTotal = null; }
+  function _clearPayExpectation() { _payExpectedTotal = null; _payExpectedCurrency = null; }
 
   document.addEventListener('DOMContentLoaded', function () { renderCheckout(); });
   document.addEventListener('sa:cart-change', function () { _clearPayExpectation(); renderCheckout(); });
