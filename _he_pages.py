@@ -784,9 +784,13 @@ def patch_category_navigation():
         with open(path, "r", encoding="utf-8") as f:
             lines = f.readlines()
         out = []
+        pending_havdalah = None
         for line in lines:
             is_menu_line = 'role="menuitem"' in line or 'onclick="closeMobileNav()"' in line
             if not is_menu_line:
+                if pending_havdalah:
+                    out.append(pending_havdalah)
+                    pending_havdalah = None
                 out.append(line)
                 continue
 
@@ -799,14 +803,17 @@ def patch_category_navigation():
                 )
 
                 def add_havdalah_after_kiddush(match):
-                    anchor = match.group(0)
+                    anchor = match.group("anchor")
                     new = anchor.replace('href="kiddush-cups.html"', 'href="havdalah-sets.html"', 1)
                     new = re.sub(r'data-t="[^"]+"', 'data-t="cat8_title"', new, count=1)
                     new = re.sub(r'(<a\b[^>]*>).*?(</a>)', r'\1Havdalah Sets\2', new, count=1)
-                    return anchor + new
+                    # Sub-links are styled as children of the entry above them,
+                    # so Havdalah follows the whole Kiddush group.
+                    return anchor + match.group("subs") + new
 
                 line = re.sub(
-                    r'<a href="kiddush-cups\.html"[^>]*(?:role="menuitem"|onclick="closeMobileNav\(\)")[^>]*>.*?</a>',
+                    r'(?P<anchor><a href="kiddush-cups\.html"[^>]*(?:role="menuitem"|onclick="closeMobileNav\(\)")[^>]*>.*?</a>)'
+                    r'(?P<subs>(?:<a href="kiddush-cups-[^"]*" class="mobile-shop-sub"[^>]*>.*?</a>)*)',
                     add_havdalah_after_kiddush,
                     line,
                 )
@@ -816,12 +823,21 @@ def patch_category_navigation():
             if 'href="havdalah-sets.html"' in line:
                 continue
 
+            # A sub-link belongs to the category above it, so Havdalah waits
+            # until the Kiddush Cups group has been written out in full.
+            if pending_havdalah and 'class="mobile-shop-sub"' not in line:
+                out.append(pending_havdalah)
+                pending_havdalah = None
+
             out.append(line)
             if 'href="kiddush-cups.html"' in line:
                 new = line.replace('href="kiddush-cups.html"', 'href="havdalah-sets.html"', 1)
                 new = re.sub(r'data-t="[^"]+"', 'data-t="cat8_title"', new, count=1)
                 new = re.sub(r'(<a\b[^>]*>).*?(</a>)', r'\1Havdalah Sets\2', new, count=1)
-                out.append(new)
+                pending_havdalah = new
+
+        if pending_havdalah:
+            out.append(pending_havdalah)
 
         if out != lines:
             with open(path, "w", encoding="utf-8", newline="\n") as f:

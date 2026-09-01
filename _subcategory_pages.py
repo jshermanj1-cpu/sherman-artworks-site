@@ -337,9 +337,13 @@ def ensure_mobile_navigation(cat):
         f'data-t="{cat["prefix"]}{kind}">{cfg["headline"]}</a>'
         for kind, cfg in cat["pages"].items())
     stem = cat["landing"][:-len(".html")]
-    menu_re = re.compile(
-        r'(?P<indent>[ \t]*)' + re.escape(anchor) +
-        rf'(?:\s*<a href="{re.escape(stem)}-[^"]*" class="mobile-shop-sub"[^>]*>.*?</a>)*')
+    anchor_re = re.compile(r'(?P<indent>[ \t]*)' + re.escape(anchor))
+    # Strip this category's sub-links wherever they sit rather than matching
+    # them as a contiguous run after the anchor: _he_pages.py splices a
+    # havdalah link in directly after the kiddush anchor, which left the
+    # existing run unmatched and appended a second copy on every chain run.
+    sub_re = re.compile(
+        rf'(?:\n[ \t]*)?<a href="{re.escape(stem)}-[^"]*" class="mobile-shop-sub"[^>]*>.*?</a>')
 
     def render(match):
         indent = match.group("indent")
@@ -355,7 +359,7 @@ def ensure_mobile_navigation(cat):
         text = path.read_text(encoding="utf-8")
         if anchor not in text:
             continue
-        updated = menu_re.sub(render, text, count=1)
+        updated = anchor_re.sub(render, sub_re.sub("", text), count=1)
         if updated != text:
             path.write_text(updated, encoding="utf-8")
 
