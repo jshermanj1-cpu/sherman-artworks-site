@@ -67,6 +67,12 @@ PAGES = {
         "subtitle": "Expressive glasswork, shaped and finished by hand.",
         "body": "Explore colourful, striped, dotted, clear and Murano-style candlesticks made in our family studio.",
         "bc": "Artisanal Candlesticks",
+        "guide": {
+            "guide_q2": ("Will my candlesticks look exactly like the photos?",
+                         "האם הפמוטים שאקבל ייראו בדיוק כמו בתמונות?"),
+            "guide_a2": ("Not exactly. Every pair is shaped and finished by hand, so colours, patterns and measurements vary a little from one pair to the next. The photographs show a representative pair rather than the exact one you will receive.",
+                         "לא בדיוק. כל זוג מעוצב ומוגמר בעבודת יד, ולכן הצבעים, הדוגמאות והמידות משתנים מעט מזוג לזוג. התמונות מציגות זוג לדוגמה ולא בדיוק את הזוג שתקבלו."),
+        },
         "image": "Gold_colorful_pamotim_white_background_tlbsyf",
         "he": {
             "headline": "פמוטים אומנותיים",
