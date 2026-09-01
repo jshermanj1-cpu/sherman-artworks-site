@@ -42,6 +42,8 @@ SHOP_PAGES = [
     "kiddush-cups-silver-plated.html",
     "kiddush-cups-gold-plated.html",
     "havdalah-sets.html",
+    "havdalah-sets-silver-plated.html",
+    "havdalah-sets-gold-plated.html",
     "mezuzahs.html",
     "trays-bowls.html",
     "trays-bowls-silver-plated.html",
@@ -179,7 +181,15 @@ META = {
     ),
     "havdalah-sets.html": (
         "סטים להבדלה בעבודת יד | שרמן ארט וורקס",
-        "סטים להבדלה בעבודת יד בצבעים שחור, כחול, לבן וכתום. מיוצר בישראל, משלוח לכל העולם.",
+        "סטים להבדלה בעבודת יד בציפוי כסף 925 וציפוי זהב, בצבעים שחור, כחול, לבן, כתום ואדום. מיוצר בישראל, משלוח לכל העולם.",
+    ),
+    "havdalah-sets-silver-plated.html": (
+        "סטי הבדלה בציפוי כסף 925 | שרמן ארט וורקס",
+        "סטי הבדלה מזכוכית בעבודת יד בגימור כסף 925, בצבעים שחור, כחול, לבן וכתום. מיוצר בישראל.",
+    ),
+    "havdalah-sets-gold-plated.html": (
+        "סטי הבדלה בציפוי זהב | שרמן ארט וורקס",
+        "סטי הבדלה מזכוכית בעבודת יד בגימור זהב, בצבעים שחור, כחול, לבן, כתום ואדום. מיוצר בישראל.",
     ),
     "business-gifts.html": (
         "מתנות לעסקים ולאירועים | שרמן ארט וורקס",

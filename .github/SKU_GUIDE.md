@@ -32,7 +32,7 @@ similar suffix to a product with one sellable configuration.
 | Trays & Bowls | `TB` | `016` |
 | Mezuzahs | `MZ` | `005` |
 | Shofars | `SH` | `023` |
-| Havdalah Sets | `HS` | `005` |
+| Havdalah Sets | `HS` | `010` |
 
 The next-number column is a convenience, not the authority. Before assigning a SKU, scan this file
 and `data/products.json` for the highest number already used in the category, then add one.
@@ -257,7 +257,12 @@ configurations. They are permanent once migrated into the product data.
 
 | Base SKU | Product ID | Product | Size suffixes |
 |---|---|---|---|
-| `SAW-HS-001` | `black-havdalah-set` | Black Havdalah Set | None |
-| `SAW-HS-002` | `blue-havdalah-set` | Blue Havdalah Set | None |
-| `SAW-HS-003` | `white-havdalah-set` | White Havdalah Set | None |
-| `SAW-HS-004` | `orange-havdalah-set` | Orange Havdalah Set | None |
+| `SAW-HS-001` | `black-havdalah-set` | 925 Silver-Plated Black Havdalah Set | None |
+| `SAW-HS-002` | `blue-havdalah-set` | 925 Silver-Plated Blue Havdalah Set | None |
+| `SAW-HS-003` | `white-havdalah-set` | 925 Silver-Plated White Havdalah Set | None |
+| `SAW-HS-004` | `orange-havdalah-set` | 925 Silver-Plated Orange Havdalah Set | None |
+| `SAW-HS-005` | `gold-plated-black-havdalah-set` | Gold-Plated Black Havdalah Set | None |
+| `SAW-HS-006` | `gold-plated-blue-havdalah-set` | Gold-Plated Blue Havdalah Set | None |
+| `SAW-HS-007` | `gold-plated-orange-havdalah-set` | Gold-Plated Orange Havdalah Set | None |
+| `SAW-HS-008` | `gold-plated-red-havdalah-set` | Gold-Plated Red Havdalah Set | None |
+| `SAW-HS-009` | `gold-plated-white-havdalah-set` | Gold-Plated White Havdalah Set | None |

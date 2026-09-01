@@ -78,9 +78,21 @@
   </url>
   <url>
     <loc>https://shermanartworks.com/havdalah-sets.html</loc>
-    <lastmod>2026-08-07</lastmod>
+    <lastmod>2026-09-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://shermanartworks.com/havdalah-sets-silver-plated.html</loc>
+    <lastmod>2026-09-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://shermanartworks.com/havdalah-sets-gold-plated.html</loc>
+    <lastmod>2026-09-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://shermanartworks.com/business-gifts.html</loc>
@@ -333,6 +345,19 @@
   </url>
   <url>
     <loc>https://shermanartworks.com/he/trays-bowls-artisanal.html</loc>
+    <lastmod>2026-09-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://shermanartworks.com/he/havdalah-sets-silver-plated.html</loc>
+    <lastmod>2026-09-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://shermanartworks.com/he/havdalah-sets-gold-plated.html</loc>
     <lastmod>2026-09-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>

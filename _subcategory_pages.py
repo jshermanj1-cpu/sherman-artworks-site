@@ -169,6 +169,58 @@ CATEGORIES = {
             },
         },
     },
+    "havdalah-sets": {
+        "category": "havdalah-sets",
+        "landing": "havdalah-sets.html",
+        "landing_label": "Havdalah Sets",
+        "landing_key": "cat8_title",
+        "aria": "Havdalah set categories",
+        "prefix": "switch_havdalah_",
+        "card_alt": "handmade glass Havdalah set",
+        "all_label": ("All Havdalah Sets", "כל סטי ההבדלה"),
+        "pages": {
+            "silver": {
+                "file": "havdalah-sets-silver-plated.html",
+                "match": finish_is("silver-plated"),
+                "title": "925 Silver-Plated Havdalah Sets | Sherman Art Works",
+                "desc": "Shop handmade Havdalah sets finished with 925 silver plating, available in black, blue, white and orange, made to order in our studio in Israel.",
+                "headline": "Silver-Plated Havdalah Sets",
+                "subtitle": "Handmade glass finished with 925 silver.",
+                "body": "Choose from four colours of silver-plated glass Havdalah sets, each crafted to order.",
+                "bc": "Silver-Plated Havdalah Sets",
+                "image": "Havdala_black_set_wdnnhk",
+                "he": {
+                    "headline": "סטי הבדלה בציפוי כסף",
+                    "subtitle": "זכוכית בעבודת יד בגימור כסף 925.",
+                    "body": "בחרו מארבעה צבעים של סטי הבדלה מזכוכית בציפוי כסף, כל אחד מיוצר לפי הזמנה.",
+                    "bc": "סטי הבדלה בציפוי כסף",
+                },
+            },
+            "gold": {
+                "file": "havdalah-sets-gold-plated.html",
+                "match": finish_is("gold-plated"),
+                "title": "Gold-Plated Havdalah Sets | Sherman Art Works",
+                "desc": "Shop handmade Havdalah sets finished with gold plating, available in black, blue, white, orange and red, made to order in our studio in Israel.",
+                "headline": "Gold-Plated Havdalah Sets",
+                "subtitle": "Handmade glass finished with gold.",
+                "body": "Choose from five colours of gold-plated glass Havdalah sets, each crafted to order.",
+                "bc": "Gold-Plated Havdalah Sets",
+                "guide": {
+                    "guide_q2": ("Are the gold-plated sets solid gold?",
+                                 "האם הסטים המצופים עשויים זהב מלא?"),
+                    "guide_a2": ("No. They are handmade glass Havdalah sets with gold plating, which gives a luxurious gold look at a lower price than solid gold.",
+                                 "לא. אלה סטי הבדלה מזכוכית בעבודת יד עם ציפוי זהב, שמעניק מראה זהב יוקרתי במחיר נמוך מזהב מלא."),
+                },
+                "image": "Blue_havdalah_set_gold_kqrs67",
+                "he": {
+                    "headline": "סטי הבדלה בציפוי זהב",
+                    "subtitle": "זכוכית בעבודת יד בגימור זהב.",
+                    "body": "בחרו מחמישה צבעים של סטי הבדלה מזכוכית בציפוי זהב, כל אחד מיוצר לפי הזמנה.",
+                    "bc": "סטי הבדלה בציפוי זהב",
+                },
+            },
+        },
+    },
     "trays-bowls": {
         # This landing page intentionally also sells Kiddush cup plates, whose
         # primary catalogue category remains kiddush-cups. Page membership is

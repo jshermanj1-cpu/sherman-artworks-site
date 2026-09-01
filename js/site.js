@@ -267,6 +267,9 @@ const T_SITE = {
     switch_trays_silver:      'Silver-Plated Trays & Bowls',
     switch_trays_gold:        'Gold-Plated Trays & Bowls',
     switch_trays_artisanal:   'Artisanal Trays & Bowls',
+    switch_havdalah_all:      'All Havdalah Sets',
+    switch_havdalah_silver:   'Silver-Plated Havdalah Sets',
+    switch_havdalah_gold:     'Gold-Plated Havdalah Sets',
 
     cat_from:            'from',
     cat_cta_browse:      'Browse Collection',
@@ -346,6 +349,9 @@ const T_SITE = {
     switch_trays_silver:      'מגשים וקערות בציפוי כסף',
     switch_trays_gold:        'מגשים וקערות בציפוי זהב',
     switch_trays_artisanal:   'מגשים וקערות אומנותיים',
+    switch_havdalah_all:      'כל סטי ההבדלה',
+    switch_havdalah_silver:   'סטי הבדלה בציפוי כסף',
+    switch_havdalah_gold:     'סטי הבדלה בציפוי זהב',
 
     cat_from:            'מ-',
     cat_cta_browse:      'לקולקציה',
