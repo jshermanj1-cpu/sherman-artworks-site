@@ -278,19 +278,40 @@ function updatePrices() {
 }
 
 // ── CURRENCY ────────────────────────────────────────────────────
-function setCurrency(cur) {
-  currentCurrency = cur;
+var CUR_KEY = 'sa_cur';
+var CUR_EXPLICIT_KEY = 'sa_cur_explicit';
+
+function currencyForLang(l) { return l === 'he' ? 'ILS' : 'USD'; }
+
+function currencyWasChosen() {
+  try { return localStorage.getItem(CUR_EXPLICIT_KEY) === '1'; } catch (e) { return false; }
+}
+
+// Language supplies the default; a click on a currency button remains the
+// shopper's explicit preference across pages and languages.
+function currencyFor(l) {
+  if (currencyWasChosen()) {
+    try { return localStorage.getItem(CUR_KEY) === 'ILS' ? 'ILS' : 'USD'; } catch (e) {}
+  }
+  return currencyForLang(l);
+}
+
+function setCurrency(cur, rememberChoice) {
+  currentCurrency = cur === 'ILS' ? 'ILS' : 'USD';
   var btnILS = document.getElementById('btnILS');
   var btnUSD = document.getElementById('btnUSD');
-  if (btnILS) btnILS.classList.toggle('active', cur === 'ILS');
-  if (btnUSD) btnUSD.classList.toggle('active', cur === 'USD');
+  if (btnILS) btnILS.classList.toggle('active', currentCurrency === 'ILS');
+  if (btnUSD) btnUSD.classList.toggle('active', currentCurrency === 'USD');
   if (typeof renderProducts === 'function') renderProducts();
   updatePrices();
   // Cart surfaces quote prices too, and international shipping is converted from
   // USD - without this the drawer and checkout keep the old currency until the
   // next render for some other reason.
   if (typeof renderShipping === 'function') renderShipping();
-  localStorage.setItem('sa_cur', cur);
+  if (rememberChoice !== false) {
+    localStorage.setItem(CUR_KEY, currentCurrency);
+    localStorage.setItem(CUR_EXPLICIT_KEY, '1');
+  }
 }
 
 // ── LANGUAGE ────────────────────────────────────────────────────
@@ -630,9 +651,9 @@ document.addEventListener('DOMContentLoaded', function() {
   // Static /he/ pages set window.__SA_LANG='he' so the URL (not a stale
   // localStorage value) wins - otherwise JS would re-render them in English.
   var lang = window.__SA_LANG || localStorage.getItem('sa_lang') || 'en';
-  var cur  = localStorage.getItem('sa_cur')  || 'USD';
+  var cur  = currencyFor(lang);
   setLang(lang);
-  setCurrency(cur);
+  setCurrency(cur, false);
   loadUsdRate();
 
   // Hash-based product anchor open (22.5)
