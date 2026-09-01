@@ -373,8 +373,8 @@
 </div>
 </div>
 </footer>
-<script src="/js/site.js?v=20260901a"></script>
-<script src="/js/cart.js?v=20260901a"></script>
+<script src="/js/site.js?v=20260901c"></script>
+<script src="/js/cart.js?v=20260901c"></script>
 <script>const PRODUCTS = [
   {
     "id": "blue-green-tall-glass-cup",
@@ -834,7 +834,7 @@
       spec_price:        'Price',
       complete_set:      'Complete the set',
       plate_material:    'Glass with 925 silver-plated rim',
-      plate_save:        'Save 25% · ₪100',
+      plate_save:        'Save {pct}% · {amt}',
       add_set_cart:      'Add cup & plate to cart',
       modal_order:       'Order on WhatsApp',
       modal_email:       'Or send an email',
@@ -903,7 +903,7 @@
       spec_price:        'מחיר',
       complete_set:      'השלימו את הסט',
       plate_material:    'זכוכית עם מסגרת מצופה כסף 925',
-      plate_save:        'חיסכון 25% · ₪100',
+      plate_save:        'חיסכון {pct}% · {amt}',
       add_set_cart:      'הוספת כוס ותחתית לסל',
       modal_order:       'הזמנה דרך WhatsApp',
       modal_email:       'או שלח במייל',
@@ -956,9 +956,11 @@
       : `Hi, I'd like to know more about "${name}".`;
     if (plate) {
       const plateName = l === 'he' ? plate.name_he : plate.name_en;
+      const plateAdd = quoteAddon(plate.regular_price_ils, plate.bundle_price_ils, p.price_ils, 'bundle');
+      const plateOff = addonParts(plate.regular_price_ils, plate.bundle_price_ils, p.price_ils).pct;
       msg += l === 'he'
-        ? `\nעם תחתית תואמת: ${plateName} (+₪${plate.bundle_price_ils}, הנחה של 25%)\nSKU תחתית: ${plate.sku}`
-        : `\nWith matching plate: ${plateName} (+₪${plate.bundle_price_ils}, 25% off)\nPlate SKU: ${plate.sku}`;
+        ? `\nעם תחתית תואמת: ${plateName} (+${plateAdd}, הנחה של ${plateOff}%)\nSKU תחתית: ${plate.sku}`
+        : `\nWith matching plate: ${plateName} (+${plateAdd}, ${plateOff}% off)\nPlate SKU: ${plate.sku}`;
     }
     return `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg + `\nSKU: ${productSku(p)}`)}`;
   }
@@ -966,7 +968,9 @@
   function emailLinkForProduct(p, plate) {
     const name    = p.name_en;
     const subject = encodeURIComponent(`Enquiry: ${name}`);
-    const plateLine = plate ? `\nWith matching plate: ${plate.name_en} (+₪${plate.bundle_price_ils}, 25% off)\nPlate SKU: ${plate.sku}\n` : '';
+    const plateAdd = plate ? quoteAddon(plate.regular_price_ils, plate.bundle_price_ils, p.price_ils, 'bundle') : '';
+    const plateOff = plate ? addonParts(plate.regular_price_ils, plate.bundle_price_ils, p.price_ils).pct : 0;
+    const plateLine = plate ? `\nWith matching plate: ${plate.name_en} (+${plateAdd}, ${plateOff}% off)\nPlate SKU: ${plate.sku}\n` : '';
     const body    = encodeURIComponent(`Hi,\n\nI'd like to know more about "${name}".${plateLine}\nThanks.`);
     return `mailto:shermanartworks@gmail.com?subject=${subject}&body=${body}`;
   }
@@ -1109,15 +1113,16 @@
     if (p.tray_addon) {
       const addon = p.tray_addon;
       const plateName = l === 'he' ? addon.name_he : addon.name_en;
+      const plateMoney = addonParts(addon.regular_price_ils, addon.bundle_price_ils, p.price_ils);
       plateOption.innerHTML = `<label class="tray-addon-option">
         <input id="modalPlateAddon" type="checkbox" ${currentPlateSelected ? 'checked' : ''} onchange="selectPlateAddon(this.checked)" />
         <span class="tray-addon-content"><span class="tray-addon-check" aria-hidden="true"></span>
           <img class="tray-addon-image" src="${CDN}/w_220,h_180,c_fit,q_auto,f_auto/${addon.photo}.jpg" alt="" loading="lazy" />
           <span class="tray-addon-details"><span class="tray-addon-title">${escapeHtml(plateName)}</span>
             <span class="tray-addon-meta">${escapeHtml(T_PAGE[l].plate_material)}</span>
-            <span class="tray-addon-price"><span class="tray-addon-regular">₪${addon.regular_price_ils}</span>
-              <span class="tray-addon-bundle">+₪${addon.bundle_price_ils}</span>
-              <span class="tray-addon-saving">${escapeHtml(T_PAGE[l].plate_save)}</span>
+            <span class="tray-addon-price"><span class="tray-addon-regular">${plateMoney.regular}</span>
+              <span class="tray-addon-bundle">+${plateMoney.bundle}</span>
+              <span class="tray-addon-saving">${escapeHtml(addonSavingText(T_PAGE[l].plate_save, addon.regular_price_ils, addon.bundle_price_ils, p.price_ils))}</span>
             </span>
           </span>
         </span>

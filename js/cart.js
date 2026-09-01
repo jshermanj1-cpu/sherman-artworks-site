@@ -553,19 +553,29 @@ function updateCartBadge() {
 }
 
 // ── WA CHECKOUT LINK ───────────────────────────────────────────
-// Money in the order message, as "what the shopper was quoted / what the studio
-// banks". The shopper reads this text before sending it, so it has to lead with
-// the currency they were shown; the studio prices, invoices and banks in
-// shekels, so that figure rides along rather than being converted by hand at the
-// other end.
+// Money in the order message is quotePair's job - see js/site.js. This wrapper
+// stays because the totals below read better through it and because it keeps
+// working if site.js has not landed yet.
 function _waPair(amountIn) {
-  var cur = (typeof activeCurrency === 'function') ? activeCurrency() : 'ILS';
-  var oth = cur === 'ILS' ? 'USD' : 'ILS';
-  return money(amountIn(cur), cur) + ' / ' + money(amountIn(oth), oth);
+  if (typeof quotePair === 'function') return quotePair(amountIn);
+  return money(amountIn('ILS'), 'ILS');
 }
 
 function _waLine(item) {
   return _waPair(function (c) { return cartLineParts(item, c).sale * item.qty; });
+}
+
+// The add-on's figures for this line, in both currencies. The base is the line
+// total less the add-on, the same split the drawer and the picker use, so the
+// message cannot quote an add-on that fails to add up to the total under it.
+function _waAddon(item, pick) {
+  var m = item.meta || {};
+  var setIls  = Number(item.regular_price_ils || item.price_ils) || 0;
+  var baseIls = Math.max(0, setIls - (Number(m.tray_price_ils) || 0));
+  return _waPair(function (c) {
+    return addonParts(m.tray_regular_price_ils || m.tray_price_ils,
+                      m.tray_price_ils, baseIls, c).amounts[pick];
+  });
 }
 
 function buildCheckoutWaLink() {
@@ -591,8 +601,8 @@ function buildCheckoutWaLink() {
       if (item.meta) {
         if (item.meta.color)   lines.push('   צבע: ' + (item.meta.color_he || item.meta.color));
         if (item.meta.size)    lines.push('   מידה: ' + item.meta.size);
-        if (item.meta.tray)    lines.push('   ' + (item.meta.tray_kind === 'plate' ? 'תחתית תואמת: ' : 'מגש תואם: ') + (item.meta.tray_he || item.meta.tray) + ' (₪' + item.meta.tray_price_ils + ')' + (item.meta.tray_sku ? ' · SKU: ' + item.meta.tray_sku : ''));
-        if (item.meta.bundle_savings_ils) lines.push('   חיסכון בסט: ₪' + item.meta.bundle_savings_ils);
+        if (item.meta.tray)    lines.push('   ' + (item.meta.tray_kind === 'plate' ? 'תחתית תואמת: ' : 'מגש תואם: ') + (item.meta.tray_he || item.meta.tray) + ' (' + _waAddon(item, 'bundle') + ')' + (item.meta.tray_sku ? ' · SKU: ' + item.meta.tray_sku : ''));
+        if (item.meta.bundle_savings_ils) lines.push('   חיסכון בסט: ' + _waAddon(item, 'saving'));
         if (item.meta.symbol)  lines.push('   סמל: ' + (item.meta.symbol_he || item.meta.symbol));
         if (item.meta.text)    lines.push('   כיתוב: ' + item.meta.text);
         if (item.meta.comment) lines.push('   הערות: ' + item.meta.comment);
@@ -619,8 +629,8 @@ function buildCheckoutWaLink() {
       if (item.meta) {
         if (item.meta.color)   lines.push('   Color: ' + item.meta.color);
         if (item.meta.size)    lines.push('   Size: ' + item.meta.size);
-        if (item.meta.tray)    lines.push('   ' + (item.meta.tray_kind === 'plate' ? 'Matching plate: ' : 'Matching tray: ') + item.meta.tray + ' (₪' + item.meta.tray_price_ils + ')' + (item.meta.tray_sku ? ' · SKU: ' + item.meta.tray_sku : ''));
-        if (item.meta.bundle_savings_ils) lines.push('   Set savings: ₪' + item.meta.bundle_savings_ils);
+        if (item.meta.tray)    lines.push('   ' + (item.meta.tray_kind === 'plate' ? 'Matching plate: ' : 'Matching tray: ') + item.meta.tray + ' (' + _waAddon(item, 'bundle') + ')' + (item.meta.tray_sku ? ' · SKU: ' + item.meta.tray_sku : ''));
+        if (item.meta.bundle_savings_ils) lines.push('   Set savings: ' + _waAddon(item, 'saving'));
         if (item.meta.symbol)  lines.push('   Symbol: ' + item.meta.symbol);
         if (item.meta.text)    lines.push('   Inscription: ' + item.meta.text);
         if (item.meta.comment) lines.push('   Comment: ' + item.meta.comment);
@@ -657,9 +667,17 @@ function _cartMetaHtml(item, isHe) {
     var addonLabel = m.tray_kind === 'plate'
       ? (isHe ? 'תחתית תואמת: ' : 'Matching plate: ')
       : (isHe ? 'מגש תואם: ' : 'Matching tray: ');
-    rows.push(addonLabel + escapeHtml(trayName) + ' · ₪' + Number(m.tray_price_ils).toLocaleString('en-IL') + (m.tray_sku ? ' · SKU: ' + escapeHtml(m.tray_sku) : ''));
+    // Converted, not printed off the shekel catalogue: the line price beside it
+    // is in the shopper's currency, so a bare shekel figure here read as the
+    // plate costing 301 dollars. The base is the line total less the add-on,
+    // matching what cartLineParts prices the line at, so the add-on's share and
+    // the line agree.
+    var setIls  = Number(item.regular_price_ils || item.price_ils) || 0;
+    var baseIls = Math.max(0, setIls - (Number(m.tray_price_ils) || 0));
+    var addonMoney = addonParts(m.tray_regular_price_ils || m.tray_price_ils, m.tray_price_ils, baseIls);
+    rows.push(addonLabel + escapeHtml(trayName) + ' · ' + addonMoney.bundle + (m.tray_sku ? ' · SKU: ' + escapeHtml(m.tray_sku) : ''));
+    if (m.bundle_savings_ils) rows.push((isHe ? 'חיסכון בסט: ' : 'Set savings: ') + addonMoney.saving);
   }
-  if (m.bundle_savings_ils) rows.push((isHe ? 'חיסכון בסט: ₪' : 'Set savings: ₪') + Number(m.bundle_savings_ils).toLocaleString('en-IL'));
   if (m.symbol)  rows.push((isHe ? 'סמל: ' : 'Symbol: ') + escapeHtml(isHe ? (m.symbol_he || m.symbol) : m.symbol));
   if (m.text)    rows.push((isHe ? 'כיתוב: ' : 'Inscription: ') + escapeHtml(m.text));
   if (m.comment) rows.push((isHe ? 'הערות: ' : 'Comment: ') + escapeHtml(m.comment));

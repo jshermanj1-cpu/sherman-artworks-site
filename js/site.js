@@ -124,6 +124,88 @@ function formatMoneyModal(ils, exempt) {
     'style="font-size:0.78rem;color:var(--brown);font-weight:400;"');
 }
 
+// A bundled add-on - the matching tray, the matching plate - in the currency
+// the shopper is actually reading. These figures used to be printed straight
+// off the shekel catalogue with a hardcoded shekel sign, so a dollar shopper
+// picked a $135 cup and was told the plate cost 301 of something.
+//
+// `baseIls` is the item the add-on attaches to, and it matters: the set price
+// is what the shopper is charged, so the add-on's figure has to be the gap
+// between the item alone and the set - both taken off the same dollar list the
+// checkout rebuilds the order from - rather than the add-on converted on its
+// own. Every price rounds up to the nearest $5 independently, so a separately
+// converted add-on does not close that gap. A 520 shekel cup and a 301 shekel
+// plate are $175 and $105 apiece but $275 together, and a row reading
+// "$175 + $105 = $275" is the sort of arithmetic a shopper checks.
+//
+// The saving is then that figure against the add-on's own standalone price,
+// which is the same figure its product page quotes. The percentage follows
+// from the pair actually printed for the same reason saleUsd rounds the way it
+// does: whatever discount the row claims, the two numbers beside it have to
+// show it.
+function addonParts(regularIls, bundleIls, baseIls, cur) {
+  var c    = cur || activeCurrency();
+  // Coerced before converting, because usdFromIls of a missing figure is NaN
+  // and would put "$NaN" on the page where the shekel side quietly shows 0. An
+  // add-on whose data is half-filled should render as no saving, not as noise.
+  var to   = function (n) {
+    var v = Number(n) || 0;
+    return c === 'USD' ? (v > 0 ? usdFromIls(v) : 0) : Math.round(v);
+  };
+  var base = Math.max(0, Number(baseIls) || 0);
+  var bun  = base ? to(base + (Number(bundleIls) || 0)) - to(base) : to(bundleIls);
+  var reg  = to(regularIls);
+  var sav  = Math.max(0, reg - bun);
+  return {
+    cur:     c,
+    regular: money(reg, c),
+    bundle:  money(bun, c),
+    saving:  money(sav, c),
+    pct:     reg > 0 ? Math.round((sav / reg) * 100) : 0,
+    // The same three figures unformatted, for callers that quote a price in two
+    // currencies at once and so cannot use a string already fixed to one.
+    amounts: { regular: reg, bundle: bun, saving: sav }
+  };
+}
+
+// The add-on's saving line, filled from a per-language template so word order
+// stays the translator's decision rather than string concatenation's.
+function addonSavingText(tpl, regularIls, bundleIls, baseIls) {
+  var a = addonParts(regularIls, bundleIls, baseIls);
+  return String(tpl).replace('{pct}', a.pct).replace('{amt}', a.saving);
+}
+
+// ── ORDER MESSAGES ─────────────────────────────────────────────
+// A figure inside a WhatsApp or email order, as "what the shopper was quoted /
+// what the studio banks". The shopper reads the message before sending it, so
+// it leads with the currency they were shown; the studio prices, invoices and
+// banks in shekels, so that figure rides along rather than being converted by
+// hand at the other end. The cart's totals have always been written this way -
+// these let the item and add-on lines match, instead of quoting a bare shekel
+// figure to somebody who has been shopping in dollars the whole way.
+function quotePair(amountIn) {
+  var cur = activeCurrency();
+  var oth = otherCurrency();
+  return money(amountIn(cur), cur) + ' / ' + money(amountIn(oth), oth);
+}
+
+// A plain catalogue amount - an item price, a set total.
+function quoteIls(ils) {
+  return quotePair(function (c) {
+    return c === 'USD' ? usdFromIls(ils) : Math.round(Number(ils) || 0);
+  });
+}
+
+// One of an add-on's three figures. `pick` is 'bundle', 'regular' or 'saving';
+// going through addonParts keeps the set price a gap from the item rather than
+// a second conversion, so item + add-on still equals the set total the message
+// quotes underneath them.
+function quoteAddon(regularIls, bundleIls, baseIls, pick) {
+  return quotePair(function (c) {
+    return addonParts(regularIls, bundleIls, baseIls, c).amounts[pick || 'bundle'];
+  });
+}
+
 // Backend that signs HYP Pay requests and verifies completed transactions.
 // With this empty, the result pages report an order as awaiting confirmation
 // rather than claiming it succeeded, because a redirect back from a payment
