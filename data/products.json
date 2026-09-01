@@ -526,6 +526,7 @@
     "id": "glass-decorative-bowl",
     "sku": "SAW-TB-001",
     "category": "trays-bowls",
+    "finish": "artisanal",
     "pages": [
       "trays-bowls.html"
     ],
@@ -1042,6 +1043,7 @@
     "id": "kiddush-cup-plate",
     "sku": "SAW-KC-008",
     "category": "kiddush-cups",
+    "finish": "silver-plated",
     "pages": [
       "trays-bowls.html"
     ],
@@ -2667,8 +2669,8 @@
       "id": "blue-green-kiddush-cup-plate",
       "sku": "SAW-KC-019",
       "kind": "plate",
-      "name_en": "Blue-Green Kiddush Cup Plate",
-      "name_he": "תחתית כחול־ירוק לכוס קידוש",
+      "name_en": "925 Silver-Plated Blue-Green Kiddush Cup Plate",
+      "name_he": "תחתית כחול־ירוק לכוס קידוש בציפוי כסף 925",
       "measurements": "Diameter: 15 cm; Depth: 1 cm",
       "measurements_he": "קוטר: 15 ס״מ; עומק: 1 ס״מ",
       "regular_price_ils": 401,
@@ -2701,8 +2703,8 @@
       "id": "blue-kiddush-cup-plate",
       "sku": "SAW-KC-017",
       "kind": "plate",
-      "name_en": "Blue Kiddush Cup Plate",
-      "name_he": "תחתית כחולה לכוס קידוש",
+      "name_en": "925 Silver-Plated Blue Kiddush Cup Plate",
+      "name_he": "תחתית כחולה לכוס קידוש בציפוי כסף 925",
       "measurements": "Diameter: 15 cm; Depth: 1 cm",
       "measurements_he": "קוטר: 15 ס״מ; עומק: 1 ס״מ",
       "regular_price_ils": 401,
@@ -2735,8 +2737,8 @@
       "id": "kiddush-cup-plate",
       "sku": "SAW-KC-008",
       "kind": "plate",
-      "name_en": "Orange Kiddush Cup Plate",
-      "name_he": "תחתית כתומה לכוס קידוש",
+      "name_en": "925 Silver-Plated Orange Kiddush Cup Plate",
+      "name_he": "תחתית כתומה לכוס קידוש בציפוי כסף 925",
       "measurements": "Diameter: 15 cm; Depth: 1 cm",
       "measurements_he": "קוטר: 15 ס״מ; עומק: 1 ס״מ",
       "regular_price_ils": 401,
@@ -2769,8 +2771,8 @@
       "id": "red-kiddush-cup-plate",
       "sku": "SAW-KC-020",
       "kind": "plate",
-      "name_en": "Red Kiddush Cup Plate",
-      "name_he": "תחתית אדומה לכוס קידוש",
+      "name_en": "925 Silver-Plated Red Kiddush Cup Plate",
+      "name_he": "תחתית אדומה לכוס קידוש בציפוי כסף 925",
       "measurements": "Diameter: 15 cm; Depth: 1 cm",
       "measurements_he": "קוטר: 15 ס״מ; עומק: 1 ס״מ",
       "regular_price_ils": 401,
@@ -2803,8 +2805,8 @@
       "id": "red-kiddush-cup-plate",
       "sku": "SAW-KC-020",
       "kind": "plate",
-      "name_en": "Red Kiddush Cup Plate",
-      "name_he": "תחתית אדומה לכוס קידוש",
+      "name_en": "925 Silver-Plated Red Kiddush Cup Plate",
+      "name_he": "תחתית אדומה לכוס קידוש בציפוי כסף 925",
       "measurements": "Diameter: 15 cm; Depth: 1 cm",
       "measurements_he": "קוטר: 15 ס״מ; עומק: 1 ס״מ",
       "regular_price_ils": 401,
@@ -2836,8 +2838,8 @@
       "id": "kiddush-cup-plate",
       "sku": "SAW-KC-008",
       "kind": "plate",
-      "name_en": "Orange Kiddush Cup Plate",
-      "name_he": "תחתית כתומה לכוס קידוש",
+      "name_en": "925 Silver-Plated Orange Kiddush Cup Plate",
+      "name_he": "תחתית כתומה לכוס קידוש בציפוי כסף 925",
       "measurements": "Diameter: 15 cm; Depth: 1 cm",
       "measurements_he": "קוטר: 15 ס״מ; עומק: 1 ס״מ",
       "regular_price_ils": 401,
@@ -2870,8 +2872,8 @@
       "id": "white-kiddush-cup-plate",
       "sku": "SAW-KC-018",
       "kind": "plate",
-      "name_en": "White Kiddush Cup Plate",
-      "name_he": "תחתית לבנה לכוס קידוש",
+      "name_en": "925 Silver-Plated White Kiddush Cup Plate",
+      "name_he": "תחתית לבנה לכוס קידוש בציפוי כסף 925",
       "measurements": "Diameter: 15 cm; Depth: 1 cm",
       "measurements_he": "קוטר: 15 ס״מ; עומק: 1 ס״מ",
       "regular_price_ils": 401,
@@ -2904,8 +2906,8 @@
       "id": "blue-kiddush-cup-plate",
       "sku": "SAW-KC-017",
       "kind": "plate",
-      "name_en": "Blue Kiddush Cup Plate",
-      "name_he": "תחתית כחולה לכוס קידוש",
+      "name_en": "925 Silver-Plated Blue Kiddush Cup Plate",
+      "name_he": "תחתית כחולה לכוס קידוש בציפוי כסף 925",
       "measurements": "Diameter: 15 cm; Depth: 1 cm",
       "measurements_he": "קוטר: 15 ס״מ; עומק: 1 ס״מ",
       "regular_price_ils": 401,
@@ -2929,6 +2931,7 @@
       "Blue_plate_ixqvon"
     ],
     "category": "kiddush-cups",
+    "finish": "silver-plated",
     "pages": [
       "trays-bowls.html"
     ],
@@ -2948,6 +2951,7 @@
       "White_plate_v56oez"
     ],
     "category": "kiddush-cups",
+    "finish": "silver-plated",
     "pages": [
       "trays-bowls.html"
     ],
@@ -2967,6 +2971,7 @@
       "Green-purple_plate_tbwcn3"
     ],
     "category": "kiddush-cups",
+    "finish": "silver-plated",
     "pages": [
       "trays-bowls.html"
     ],
@@ -2986,6 +2991,7 @@
       "Red_plate_qm5f5n"
     ],
     "category": "kiddush-cups",
+    "finish": "silver-plated",
     "pages": [
       "trays-bowls.html"
     ],
@@ -3212,11 +3218,11 @@
     "tray_addon": {
       "id": "orange-gold-plated-glass-tray",
       "sku": "SAW-TB-012",
-      "name_en": "Matching Orange Gold-Plated Glass Tray",
-      "name_he": "מגש זכוכית כתום תואם בציפוי זהב",
+      "name_en": "Matching Orange Glass Tray",
+      "name_he": "מגש זכוכית כתום תואם",
       "measurements": "30 × 18 cm",
-      "regular_price_ils": 617,
-      "bundle_price_ils": 492,
+      "regular_price_ils": 524,
+      "bundle_price_ils": 418,
       "photo": "עותק_של_Orange_tray_vwt85g",
       "set_photo": "Orange_Pamotim_gold_2_ms1pco"
     },
@@ -3458,19 +3464,19 @@
   {
     "id": "orange-gold-plated-glass-tray",
     "sku": "SAW-TB-012",
-    "family_id": "gold-plated-glass-trays",
     "category": "trays-bowls",
+    "finish": "artisanal",
     "pages": [
       "trays-bowls.html"
     ],
-    "name_en": "Orange Gold-Plated Glass Tray",
-    "name_he": "מגש זכוכית כתום בציפוי זהב",
-    "description_en": "Handmade orange glass tray finished with gold plating. Measures 30 × 18 cm and is made to order in our studio in Israel.",
-    "description_he": "מגש זכוכית כתום בעבודת יד בציפוי זהב. מידותיו 30 × 18 ס״מ והוא מיוצר לפי הזמנה בסטודיו שלנו בישראל.",
+    "name_en": "Orange Glass Tray",
+    "name_he": "מגש זכוכית כתום",
+    "description_en": "Handmade orange glass tray with a distinctive artisanal finish. Measures 30 × 18 cm and is made to order in our studio in Israel.",
+    "description_he": "מגש זכוכית כתום בעבודת יד בגימור אומנותי. מידותיו 30 × 18 ס״מ והוא מיוצר לפי הזמנה בסטודיו שלנו בישראל.",
     "color_en": "Orange",
     "color_he": "כתום",
     "measurements": "30cm × 18cm",
-    "price_ils": 617,
+    "price_ils": 524,
     "photos": [
       "עותק_של_Orange_tray_vwt85g"
     ],
@@ -3902,6 +3908,7 @@
       "Blue_plate_gold_jtsy0y"
     ],
     "category": "kiddush-cups",
+    "finish": "gold-plated",
     "pages": [
       "trays-bowls.html"
     ],
@@ -3920,6 +3927,7 @@
       "Red_plate_gold_hgzbnc"
     ],
     "category": "kiddush-cups",
+    "finish": "gold-plated",
     "pages": [
       "trays-bowls.html"
     ],
@@ -3938,6 +3946,7 @@
       "Orange_plate_gold_po1k8a"
     ],
     "category": "kiddush-cups",
+    "finish": "gold-plated",
     "pages": [
       "trays-bowls.html"
     ],
@@ -3956,6 +3965,7 @@
       "Gold_black_plate_eqqztu"
     ],
     "category": "kiddush-cups",
+    "finish": "gold-plated",
     "pages": [
       "trays-bowls.html"
     ],

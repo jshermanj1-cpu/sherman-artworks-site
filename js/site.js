@@ -263,6 +263,10 @@ const T_SITE = {
     switch_cups_all:          'All Kiddush Cups',
     switch_cups_silver:       'Silver-Plated Kiddush Cups',
     switch_cups_gold:         'Gold-Plated Kiddush Cups',
+    switch_trays_all:         'All Trays & Bowls',
+    switch_trays_silver:      'Silver-Plated Trays & Bowls',
+    switch_trays_gold:        'Gold-Plated Trays & Bowls',
+    switch_trays_artisanal:   'Artisanal Trays & Bowls',
 
     cat_from:            'from',
     cat_cta_browse:      'Browse Collection',
@@ -338,6 +342,10 @@ const T_SITE = {
     switch_cups_all:          'כל כוסות הקידוש',
     switch_cups_silver:       'כוסות קידוש בציפוי כסף',
     switch_cups_gold:         'כוסות קידוש בציפוי זהב',
+    switch_trays_all:         'כל המגשים והקערות',
+    switch_trays_silver:      'מגשים וקערות בציפוי כסף',
+    switch_trays_gold:        'מגשים וקערות בציפוי זהב',
+    switch_trays_artisanal:   'מגשים וקערות אומנותיים',
 
     cat_from:            'מ-',
     cat_cta_browse:      'לקולקציה',

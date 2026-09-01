@@ -44,6 +44,9 @@ SHOP_PAGES = [
     "havdalah-sets.html",
     "mezuzahs.html",
     "trays-bowls.html",
+    "trays-bowls-silver-plated.html",
+    "trays-bowls-gold-plated.html",
+    "trays-bowls-artisanal.html",
     "business-gifts.html",
     "shofars.html",
     "shofars-custom.html",
@@ -153,6 +156,18 @@ META = {
     "trays-bowls.html": (
         "מגשים וקערות זכוכית בעבודת יד | שרמן ארט וורקס",
         "קערות ומגשים דקורטיביים מזכוכית בעבודת יד למרכז השולחן ולבית. מיוצר בישראל, משלוח לכל העולם.",
+    ),
+    "trays-bowls-silver-plated.html": (
+        "מגשי זכוכית ותחתיות בציפוי כסף 925 | שרמן ארט וורקס",
+        "מגשי זכוכית ותחתיות לכוס קידוש בעבודת יד בגימור כסף 925, במגוון צבעים ומיוצרים בישראל.",
+    ),
+    "trays-bowls-gold-plated.html": (
+        "מגשי זכוכית ותחתיות בציפוי זהב | שרמן ארט וורקס",
+        "מגשי זכוכית ותחתיות לכוס קידוש בעבודת יד בגימור זהב, במגוון צבעים ומיוצרים בישראל.",
+    ),
+    "trays-bowls-artisanal.html": (
+        "מגשים וקערות זכוכית אומנותיים | שרמן ארט וורקס",
+        "מגשים וקערות זכוכית אומנותיים וייחודיים, מעוצבים ומוגמרים ביד בסטודיו המשפחתי שלנו בישראל.",
     ),
     "kiddush-cups-silver-plated.html": (
         "כוסות קידוש בציפוי כסף 925 | שרמן ארט וורקס",
@@ -437,7 +452,7 @@ PRODUCT_GROUP_HE = {
     "gold-plated-glass-trays": {
         "name": "מגשי זכוכית בציפוי זהב",
         "description": "מגשי זכוכית בעבודת יד בציפוי זהב, "
-                       "בשבעה עיצובים מתואמים.",
+                       "בשישה עיצובים מתואמים.",
     },
     "classic-havdalah-sets": {
         "name": "סטים להבדלה קלאסיים",
@@ -480,12 +495,18 @@ def localize_jsonld(txt, en2he):
         return s
 
     def tr_variant(node):
-        """A ProductGroup variant describes a product the Hebrew reader sees in
+        """A Product node describes a product the Hebrew reader sees in
         Hebrew, so its name/description/color come from PRODUCTS rather than
         being left in English. Joined on the English name, same key as the
         static cards. Offers are left alone - prices and the seller/shipping/
         return @id refs are language-neutral, so the /he/ page inherits the
-        English page's full merchant-listing shape for free."""
+        English page's full merchant-listing shape for free.
+
+        Used for ProductGroup variants and ItemList entries alike: the two
+        carry the same Product nodes and a reader cannot tell which block a
+        card came from, so translating only the groups stranded whatever a
+        page lists loose rather than grouped - on trays-bowls that is every
+        Kiddush plate, the decorative bowl and the orange tray."""
         rec = PRODUCTS_HE.get(norm(node.get("name")))
         if not rec:
             return
@@ -511,6 +532,11 @@ def localize_jsonld(txt, en2he):
                 node["text"] = tr(node.get("text"))
             elif ty in ("FAQPage", "HowTo"):
                 node["inLanguage"] = "he"
+            elif ty == "ItemList":
+                for entry in node.get("itemListElement", []):
+                    item = entry.get("item") if isinstance(entry, dict) else None
+                    if isinstance(item, dict):
+                        tr_variant(item)
             elif ty == "ProductGroup":
                 group = PRODUCT_GROUP_HE.get(node.get("productGroupID"))
                 if group:
