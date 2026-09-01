@@ -5,5 +5,7 @@ pics/
 .claude/
 _*.py
 !_subcategory_pages.py
+!_offer_schema.py
+!_static_cards.py
 _pricing/
 __pycache__/

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-_shofar_guide.py — regenerate the shofar sizing table on shofars.html.
+_shofar_guide.py - regenerate the shofar sizing table on shofars.html.
 
 Why this exists
 ---------------

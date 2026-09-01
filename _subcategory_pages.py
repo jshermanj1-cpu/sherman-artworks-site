@@ -23,6 +23,31 @@ USD_RATE = 3.117
 CANDLE_SILVER = "silver-plated-glass-candlesticks"
 CANDLE_GOLD = "gold-plated-glass-candlesticks"
 
+# Shipping, returns and seller are cloned verbatim from the landing pages so a
+# product describes itself identically wherever it is listed. Without these two
+# blocks Google drops the shipping and returns annotations from a merchant
+# listing and reports them as missing fields, which is what the subcategory
+# pages did until now. The rates are the authoritative ones: 35 ILS at home,
+# 45 USD abroad.
+INTL = ["US", "GB", "CA", "AU", "FR", "DE"]
+SHIPPING = [
+    {"@type": "OfferShippingDetails",
+     "shippingRate": {"@type": "MonetaryAmount", "value": 35, "currency": "ILS"},
+     "shippingDestination": {"@type": "DefinedRegion", "addressCountry": "IL"}},
+    {"@type": "OfferShippingDetails",
+     "shippingRate": {"@type": "MonetaryAmount", "value": 45, "currency": "USD"},
+     "shippingDestination": {"@type": "DefinedRegion", "addressCountry": INTL}},
+]
+RETURNS = {
+    "@type": "MerchantReturnPolicy",
+    "applicableCountry": ["IL"] + INTL,
+    "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+    "merchantReturnDays": 14,
+    "returnMethod": "https://schema.org/ReturnByMail",
+    "returnFees": "https://schema.org/ReturnFeesCustomerResponsibility",
+}
+SELLER = {"@type": "Organization", "name": "Sherman Art Works"}
+
 
 def family_is(*names):
     return lambda p: p.get("family_id") in names
@@ -51,16 +76,16 @@ CATEGORIES = {
                 "match": family_is(CANDLE_SILVER),
                 "title": "925 Silver-Plated Glass Candlesticks | Sherman Art Works",
                 "desc": "Shop handmade glass candlesticks finished with 925 silver plating. Seven colours, three heights, and optional matching trays, made in Israel.",
-                "headline": "Silver-Plated Candlesticks",
+                "headline": "925 Silver-Plated Candlesticks",
                 "subtitle": "Handmade glass finished with 925 silver.",
                 "body": "Choose from seven colours and three heights, with an optional matching glass tray.",
-                "bc": "Silver-Plated Candlesticks",
+                "bc": "925 Silver-Plated Candlesticks",
                 "image": "White_pamotim_lrdkha",
                 "he": {
-                    "headline": "פמוטים בציפוי כסף",
+                    "headline": "פמוטים בציפוי כסף 925",
                     "subtitle": "זכוכית בעבודת יד בגימור כסף 925.",
                     "body": "בחרו מתוך שבעה צבעים ושלושה גבהים, עם אפשרות למגש זכוכית תואם.",
-                    "bc": "פמוטים בציפוי כסף",
+                    "bc": "פמוטים בציפוי כסף 925",
                 },
             },
             "gold": {
@@ -126,16 +151,16 @@ CATEGORIES = {
                 "match": None,
                 "title": "925 Silver-Plated Kiddush Cups | Sherman Art Works",
                 "desc": "Shop handmade kiddush cups finished with 925 silver plating, in a range of colours with optional matching plates, made in Israel.",
-                "headline": "Silver-Plated Kiddush Cups",
+                "headline": "925 Silver-Plated Kiddush Cups",
                 "subtitle": "Handmade glass and ceramic finished with 925 silver.",
                 "body": "Choose your colour, with an optional matching plate at a set price.",
-                "bc": "Silver-Plated Kiddush Cups",
+                "bc": "925 Silver-Plated Kiddush Cups",
                 "image": "Blue_high_cup_fxhkep",
                 "he": {
-                    "headline": "כוסות קידוש בציפוי כסף",
+                    "headline": "כוסות קידוש בציפוי כסף 925",
                     "subtitle": "זכוכית וקרמיקה בעבודת יד בגימור כסף 925.",
                     "body": "בחרו את הצבע, עם אפשרות לצלחת תואמת במחיר מוזל.",
-                    "bc": "כוסות קידוש בציפוי כסף",
+                    "bc": "כוסות קידוש בציפוי כסף 925",
                 },
             },
             "gold": {
@@ -237,32 +262,55 @@ def static_cards(cat, items):
     return "\n".join(cards)
 
 
+def offers_for(p):
+    """One Offer per purchasable size, exactly as the landing page lists them.
+
+    A sized product sold as a single flat Offer priced at its smallest size
+    understates the range (the gold candlesticks run 680-862, not a flat 680)
+    and hides the other two sizes from the listing entirely. The per-size sku
+    is the id-with-suffix form the merchant feed uses as its g:id, so a feed
+    item and its landing page resolve to the same variant.
+    """
+    def offer(price_ils, sku):
+        return {
+            "@type": "Offer",
+            "sku": sku,
+            "priceCurrency": "ILS",
+            "price": str(price_ils),
+            "availability": "https://schema.org/InStock",
+            "itemCondition": "https://schema.org/NewCondition",
+            "seller": SELLER,
+            "shippingDetails": SHIPPING,
+            "hasMerchantReturnPolicy": RETURNS,
+        }
+
+    sizes = p.get("sizes") or []
+    if sizes:
+        return [offer(s["price_ils"], f"{p['id']}-{s['label'].lower()}") for s in sizes]
+    return [offer(p["price_ils"], p["id"])]
+
+
 def item_list(cat, items):
     elements = []
     for position, p in enumerate(items, 1):
-        ils = price(p)
-        elements.append({
-            "@type": "ListItem",
-            "position": position,
-            "item": {
-                "@context": "https://schema.org",
-                "@type": "Product",
-                "name": p["name_en"],
-                "url": f"{BASE}/{cat['landing']}#{p['id']}",
-                "description": p["description_en"],
-                "image": [f"{CDN}/w_800,q_auto,f_auto/{photo}.jpg" for photo in p["photos"]],
-                "brand": {"@type": "Brand", "name": "Sherman Art Works"},
-                "offers": {
-                    "@type": "Offer",
-                    "priceCurrency": "ILS",
-                    "price": str(ils),
-                    "availability": "https://schema.org/InStock",
-                    "seller": {"@type": "Organization", "name": "Sherman Art Works"},
-                },
-                "sku": p["sku"],
-                "itemCondition": "https://schema.org/NewCondition",
-            },
-        })
+        product = {
+            "@context": "https://schema.org",
+            "@type": "Product",
+            "name": p["name_en"],
+            "url": f"{BASE}/{cat['landing']}#{p['id']}",
+            "description": p["description_en"],
+            "image": [f"{CDN}/w_800,q_auto,f_auto/{photo}.jpg" for photo in p["photos"]],
+            "brand": {"@type": "Brand", "name": "Sherman Art Works"},
+            "offers": offers_for(p),
+            "sku": p["sku"],
+            "itemCondition": "https://schema.org/NewCondition",
+        }
+        sizes = p.get("sizes") or []
+        if sizes:
+            product["size"] = [f"{s['label']} ({s['range_cm']} cm)" for s in sizes]
+        if p.get("color"):
+            product["color"] = p["color"]
+        elements.append({"@type": "ListItem", "position": position, "item": product})
     return {"@context": "https://schema.org", "@type": "ItemList", "itemListElement": elements}
 
 
@@ -425,7 +473,12 @@ def build(cat, kind, cfg, source, items):
     # bc_current is already written by the breadcrumb replacement above; the
     # rest own a single data-t element each.
     for key, value, _he in overrides[1:]:
-        out = replace_one(out, rf'(<[^>]+data-t="{key}"[^>]*>).*?(</[^>]+>)', rf'\1{html.escape(value)}\2', f"visible {key}")
+        # A lambda, not a \1..\2 template: a value starting with a digit (the
+        # "925 Silver-Plated ..." headlines) would otherwise read as a group
+        # reference, and \1 + "925" parses as group 1925.
+        out = replace_one(out, rf'(<[^>]+data-t="{key}"[^>]*>).*?(</[^>]+>)',
+                          (lambda v: lambda m: m.group(1) + html.escape(v) + m.group(2))(value),
+                          f"visible {key}")
 
     nav = switcher(cat)
     nav = nav.replace(' class="cat-switch-item active" aria-current="page"', ' class="cat-switch-item"', 1)
