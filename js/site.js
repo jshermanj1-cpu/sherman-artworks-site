@@ -499,36 +499,38 @@ function updatePrices() {
 // paying in shekels, and asking them to find a second toggle to see a price they
 // can judge is friction on the one screen where friction is expensive.
 //
-// But it follows only until the shopper says otherwise. An explicit toggle is
-// remembered separately from the currency itself, so switching language
-// afterwards does not quietly undo a deliberate choice - an Israeli reading the
-// English pages picks the shekel once and it stays picked.
+// A currency clicked by hand outranks that default, but only for as long as the
+// shopper stays in the language they clicked it in. Changing language is itself
+// a statement about who is reading, and a stale toggle that outlives it strands
+// people on the wrong currency for good: pick the shekel once and every English
+// page afterwards quotes shekels, with no way back short of clearing the
+// browser. So the choice is stored against the language it was made in - it
+// survives moving from one English page to the next, and gives way when the
+// shopper switches language.
 var CUR_KEY = 'sa_cur';
-var CUR_EXPLICIT_KEY = 'sa_cur_explicit';
+var CUR_LANG_KEY = 'sa_cur_lang';
 
 function currencyForLang(l) { return l === 'he' ? 'ILS' : 'USD'; }
 
-function currencyWasChosen() {
-  try { return localStorage.getItem(CUR_EXPLICIT_KEY) === '1'; } catch (e) { return false; }
-}
-
-// The currency a given language should land on. Language supplies the default,
-// while a currency button remains an explicit shopper preference. Keeping those
-// two ideas separate means a first visit to /he/ starts in shekels and a first
-// visit to an English page starts in dollars without undoing a choice the
-// shopper has already made.
+// The currency a given language should land on: whatever is already showing if
+// we are still in the language that set it, otherwise that language's default.
+// So a first visit to /he/ starts in shekels, a first visit to an English page
+// starts in dollars, and a shopper reading the English pages in shekels keeps
+// them right through to checkout.
 function currencyFor(l) {
-  if (currencyWasChosen()) {
-    try { return localStorage.getItem(CUR_KEY) === 'ILS' ? 'ILS' : 'USD'; } catch (e) {}
-  }
+  try {
+    if (localStorage.getItem(CUR_LANG_KEY) === l) {
+      var stored = localStorage.getItem(CUR_KEY);
+      if (stored === 'ILS' || stored === 'USD') return stored;
+    }
+  } catch (e) {}
   return currencyForLang(l);
 }
 
-// The shopper clicked a currency button. Every call site of setCurrency is such
-// a click, which is why marking the choice here is enough: the language-driven
-// path goes through applyCurrency instead and leaves the flag alone.
+// The shopper clicked a currency button. Nothing to record beyond the currency
+// itself: setCurrencyState stamps it with the current language, which is what
+// makes it stick until that language changes.
 function setCurrency(cur) {
-  try { localStorage.setItem(CUR_EXPLICIT_KEY, '1'); } catch (e) {}
   applyCurrency(cur);
 }
 
@@ -541,7 +543,12 @@ function setCurrencyState(cur) {
   var btnUSD = document.getElementById('btnUSD');
   if (btnILS) btnILS.classList.toggle('active', currentCurrency === 'ILS');
   if (btnUSD) btnUSD.classList.toggle('active', currentCurrency === 'USD');
-  try { localStorage.setItem(CUR_KEY, currentCurrency); } catch (e) {}
+  // Stamped with the language it belongs to, so the next page load can tell a
+  // choice still in force from one the shopper has since switched away from.
+  try {
+    localStorage.setItem(CUR_KEY, currentCurrency);
+    localStorage.setItem(CUR_LANG_KEY, currentLang);
+  } catch (e) {}
 }
 
 function applyCurrency(cur) {
@@ -592,6 +599,10 @@ function setLang(l) {
   if (typeof renderPayment  === 'function') renderPayment();
   if (typeof renderCartDrawer === 'function') renderCartDrawer();
   if (typeof renderModal === 'function' && typeof currentModalIdx !== 'undefined' && currentModalIdx != null) renderModal();
+  // The category "from" prices are not part of any render hook, so without this
+  // an in-page language switch relabels the whole page and leaves them quoting
+  // the currency the shopper just switched away from.
+  updatePrices();
 }
 
 // ── NAV ─────────────────────────────────────────────────────────
@@ -880,6 +891,8 @@ function initLaunchBanner() {
 }
 
 document.addEventListener('DOMContentLoaded', function() {
+  // Retired: currency preference is now stamped with its language instead.
+  try { localStorage.removeItem('sa_cur_explicit'); } catch (e) {}
   initConsent();
   initA11y();
   initLaunchBanner();
