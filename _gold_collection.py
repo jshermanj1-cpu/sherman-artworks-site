@@ -82,6 +82,78 @@ COPY = {
                  "\u05d4\u05d6\u05de\u05e0\u05d4 \u05d1\u05d4\u05ea\u05d0\u05de\u05d4 \u05d0\u05d9\u05e9\u05d9\u05ea"),
 }
 
+# about.html's inline <style> carries the story/generations/craft rules, not the
+# card grid: those live in index.html's own <style>. Without them the cards fall
+# back to bare block layout - full-width stretched images and the 20x20 CTA arrow
+# blown up to the SVG default size - so the grid ships with the page.
+GRID_CSS = """
+.section-header  { text-align: center; margin-bottom: 3.5rem; }
+.category-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.75rem;
+    }
+.cat-card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      overflow: hidden;
+      transition: all 0.3s;
+      display: block;
+      position: relative;
+      color: inherit;
+      text-decoration: none;
+    }
+.cat-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 30px rgba(32,32,32,0.08);
+      border-color: var(--gold);
+    }
+.cat-card-img-wrap {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      overflow: hidden;
+      background: #f5f0e8;
+      position: relative;
+    }
+.cat-card-img {
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: center;
+      transition: transform 0.5s;
+    }
+.cat-card:hover .cat-card-img { transform: scale(1.04); }
+.cat-card-body { padding: 1.5rem 1.5rem 1.75rem; text-align: center; }
+.cat-card-title {
+      font-family: var(--ff-disp); font-size: 1.1rem;
+      letter-spacing: 0.08em; font-weight: 600;
+      color: var(--dark); margin-bottom: 0.5rem;
+    }
+.cat-card-desc {
+      font-family: var(--ff-ital); font-style: italic;
+      font-size: 0.92rem; color: var(--brown);
+      margin-bottom: 1rem; min-height: 2.6em;
+    }
+.cat-card-from {
+      font-family: var(--ff-disp); font-size: 0.78rem; letter-spacing: 0.04em;
+      color: var(--brown); margin-bottom: 0.75rem; display: block;
+    }
+.cat-card-cta {
+      display: inline-flex; align-items: center; gap: 0.45rem;
+      font-family: var(--ff-disp); font-size: 0.65rem;
+      letter-spacing: 0.15em; text-transform: uppercase;
+      color: var(--gold-text, #7d5a00); transition: gap 0.2s;
+    }
+.cat-card-cta svg { width: 14px; height: 14px; transition: transform 0.2s; flex-shrink: 0; }
+.cat-card:hover .cat-card-cta { gap: 0.75rem; }
+.cat-card:hover .cat-card-cta svg { transform: translateX(3px); }
+@media (max-width: 1024px) {
+  .category-grid { grid-template-columns: repeat(2, 1fr); gap: 1.25rem; }
+}
+@media (max-width: 480px) {
+  .category-grid { grid-template-columns: 1fr; }
+}
+"""
+
 ARROW = ('<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" '
          'aria-hidden="true"><path d="M4 10 H16 M11 5 L16 10 L11 15"/></svg>')
 
@@ -94,10 +166,10 @@ def replace_one(text, pattern, replacement, label, flags=0):
 
 
 def card_html(key, page, photo, min_ils):
-    src = "%s/w_600,h_600,c_pad,b_rgb:f5f0e8,q_auto,f_auto/%s.jpg" % (CDN, photo)
+    src = "%s/w_800,h_800,c_pad,b_rgb:f5f0e8,q_auto,f_auto/%s.jpg" % (CDN, photo)
     return """    <a href="{page}" class="cat-card">
       <div class="cat-card-img-wrap">
-        <img class="cat-card-img" loading="lazy" width="600" height="600"
+        <img class="cat-card-img" loading="lazy" width="800" height="800"
              src="{src}"
              alt="{alt}" />
       </div>
@@ -215,6 +287,16 @@ def main():
     # Language toggle has to land on the Hebrew twin of this page, not about.
     out = replace_one(out, r"location\.href='/he/%s'" % re.escape(SOURCE),
                       "location.href='/he/%s'" % TARGET, "language toggle")
+
+    # The card grid rules about.html never needed.
+    out = replace_one(out, "</style>",
+                      lambda m: GRID_CSS + "</style>", "grid stylesheet")
+
+    # about.html marks About as the current page; on this page nothing in the
+    # top nav is current - the hub sits inside the Shop dropdown.
+    out = replace_one(out, r'<a href="about\.html"(\s+)data-t="nav_about" class="nav-active">',
+                      lambda m: '<a href="about.html"%sdata-t="nav_about">' % m.group(1),
+                      "nav highlight")
 
     # Structured data: swap about's BreadcrumbList for a CollectionPage + crumbs.
     collection, crumbs = structured_data()

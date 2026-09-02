@@ -134,6 +134,72 @@
 @media (max-width: 480px) {
   .gen-grid    { grid-template-columns: 1fr; }
 }
+
+.section-header  { text-align: center; margin-bottom: 3.5rem; }
+.category-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.75rem;
+    }
+.cat-card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      overflow: hidden;
+      transition: all 0.3s;
+      display: block;
+      position: relative;
+      color: inherit;
+      text-decoration: none;
+    }
+.cat-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 30px rgba(32,32,32,0.08);
+      border-color: var(--gold);
+    }
+.cat-card-img-wrap {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      overflow: hidden;
+      background: #f5f0e8;
+      position: relative;
+    }
+.cat-card-img {
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: center;
+      transition: transform 0.5s;
+    }
+.cat-card:hover .cat-card-img { transform: scale(1.04); }
+.cat-card-body { padding: 1.5rem 1.5rem 1.75rem; text-align: center; }
+.cat-card-title {
+      font-family: var(--ff-disp); font-size: 1.1rem;
+      letter-spacing: 0.08em; font-weight: 600;
+      color: var(--dark); margin-bottom: 0.5rem;
+    }
+.cat-card-desc {
+      font-family: var(--ff-ital); font-style: italic;
+      font-size: 0.92rem; color: var(--brown);
+      margin-bottom: 1rem; min-height: 2.6em;
+    }
+.cat-card-from {
+      font-family: var(--ff-disp); font-size: 0.78rem; letter-spacing: 0.04em;
+      color: var(--brown); margin-bottom: 0.75rem; display: block;
+    }
+.cat-card-cta {
+      display: inline-flex; align-items: center; gap: 0.45rem;
+      font-family: var(--ff-disp); font-size: 0.65rem;
+      letter-spacing: 0.15em; text-transform: uppercase;
+      color: var(--gold-text, #7d5a00); transition: gap 0.2s;
+    }
+.cat-card-cta svg { width: 14px; height: 14px; transition: transform 0.2s; flex-shrink: 0; }
+.cat-card:hover .cat-card-cta { gap: 0.75rem; }
+.cat-card:hover .cat-card-cta svg { transform: translateX(3px); }
+@media (max-width: 1024px) {
+  .category-grid { grid-template-columns: repeat(2, 1fr); gap: 1.25rem; }
+}
+@media (max-width: 480px) {
+  .category-grid { grid-template-columns: 1fr; }
+}
 </style>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"CollectionPage","name":"The Gold Collection","url":"https://shermanartworks.com/gold-collection.html","description":"Handmade glass Judaica finished with gold plating: Shabbat candlesticks, Kiddush cups, trays and Havdalah sets, made to order in our studio in Israel.","isPartOf":{"@type":"WebSite","name":"Sherman Art Works","url":"https://shermanartworks.com"},"mainEntity":{"@type":"ItemList","itemListElement":[{"@type":"ListItem","position":1,"name":"Gold-Plated Candlesticks","url":"https://shermanartworks.com/candlesticks-gold-plated.html"},{"@type":"ListItem","position":2,"name":"Gold-Plated Kiddush Cups","url":"https://shermanartworks.com/kiddush-cups-gold-plated.html"},{"@type":"ListItem","position":3,"name":"Gold-Plated Trays & Bowls","url":"https://shermanartworks.com/trays-bowls-gold-plated.html"},{"@type":"ListItem","position":4,"name":"Gold-Plated Havdalah Sets","url":"https://shermanartworks.com/havdalah-sets-gold-plated.html"}]}}</script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Sherman Art Works","item":"https://shermanartworks.com"},{"@type":"ListItem","position":2,"name":"The Gold Collection","item":"https://shermanartworks.com/gold-collection.html"}]}</script>
@@ -202,7 +268,7 @@
         </div>
       </li>
       <li><a href="custom-orders.html" data-t="nav_custom">Custom Orders</a></li>
-      <li><a href="about.html"         data-t="nav_about" class="nav-active">About</a></li>
+      <li><a href="about.html"         data-t="nav_about">About</a></li>
       <li><a href="contact.html"       data-t="nav_contact">Contact</a></li>
     </ul>
     <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false" onclick="toggleNav()">
@@ -229,9 +295,9 @@
           <a href="kiddush-cups.html" onclick="closeMobileNav()" data-t="cat3_title">Kiddush Cups</a>
           <a href="kiddush-cups-silver-plated.html" class="mobile-shop-sub" onclick="closeMobileNav()" data-t="switch_cups_silver">925 Silver-Plated Kiddush Cups</a>
           <a href="kiddush-cups-gold-plated.html" class="mobile-shop-sub" onclick="closeMobileNav()" data-t="switch_cups_gold">Gold-Plated Kiddush Cups</a>
-          <a href="havdalah-sets.html" onclick="closeMobileNav()" data-t="cat8_title">Havdalah Sets</a>
           <a href="havdalah-sets-silver-plated.html" class="mobile-shop-sub" onclick="closeMobileNav()" data-t="switch_havdalah_silver">925 Silver-Plated Havdalah Sets</a>
           <a href="havdalah-sets-gold-plated.html" class="mobile-shop-sub" onclick="closeMobileNav()" data-t="switch_havdalah_gold">Gold-Plated Havdalah Sets</a>
+          <a href="havdalah-sets.html" onclick="closeMobileNav()" data-t="cat8_title">Havdalah Sets</a>
           <a href="mezuzahs.html" onclick="closeMobileNav()" data-t="cat6_title">Mezuzahs</a>
           <a href="trays-bowls.html" onclick="closeMobileNav()" data-t="cat4_title">Trays & Bowls</a>
           <a href="trays-bowls-silver-plated.html" class="mobile-shop-sub" onclick="closeMobileNav()" data-t="switch_trays_silver">925 Silver-Plated Trays & Bowls</a>
@@ -277,8 +343,8 @@
 
     <a href="candlesticks-gold-plated.html" class="cat-card">
       <div class="cat-card-img-wrap">
-        <img class="cat-card-img" loading="lazy" width="600" height="600"
-             src="https://res.cloudinary.com/doesupaf9/image/upload/w_600,h_600,c_pad,b_rgb:f5f0e8,q_auto,f_auto/Blue_Pamotim_gold_1_kdduli.jpg"
+        <img class="cat-card-img" loading="lazy" width="800" height="800"
+             src="https://res.cloudinary.com/doesupaf9/image/upload/w_800,h_800,c_pad,b_rgb:f5f0e8,q_auto,f_auto/Blue_Pamotim_gold_1_kdduli.jpg"
              alt="Gold-Plated Candlesticks by Sherman Art Works" />
       </div>
       <div class="cat-card-body">
@@ -294,8 +360,8 @@
 
     <a href="kiddush-cups-gold-plated.html" class="cat-card">
       <div class="cat-card-img-wrap">
-        <img class="cat-card-img" loading="lazy" width="600" height="600"
-             src="https://res.cloudinary.com/doesupaf9/image/upload/w_600,h_600,c_pad,b_rgb:f5f0e8,q_auto,f_auto/Blue_high_cup_gold_1_an740y.jpg"
+        <img class="cat-card-img" loading="lazy" width="800" height="800"
+             src="https://res.cloudinary.com/doesupaf9/image/upload/w_800,h_800,c_pad,b_rgb:f5f0e8,q_auto,f_auto/Blue_high_cup_gold_1_an740y.jpg"
              alt="Gold-Plated Kiddush Cups by Sherman Art Works" />
       </div>
       <div class="cat-card-body">
@@ -311,8 +377,8 @@
 
     <a href="trays-bowls-gold-plated.html" class="cat-card">
       <div class="cat-card-img-wrap">
-        <img class="cat-card-img" loading="lazy" width="600" height="600"
-             src="https://res.cloudinary.com/doesupaf9/image/upload/w_600,h_600,c_pad,b_rgb:f5f0e8,q_auto,f_auto/Black_tray_gold_wdxp9o.jpg"
+        <img class="cat-card-img" loading="lazy" width="800" height="800"
+             src="https://res.cloudinary.com/doesupaf9/image/upload/w_800,h_800,c_pad,b_rgb:f5f0e8,q_auto,f_auto/Black_tray_gold_wdxp9o.jpg"
              alt="Gold-Plated Trays &amp; Bowls by Sherman Art Works" />
       </div>
       <div class="cat-card-body">
@@ -328,8 +394,8 @@
 
     <a href="havdalah-sets-gold-plated.html" class="cat-card">
       <div class="cat-card-img-wrap">
-        <img class="cat-card-img" loading="lazy" width="600" height="600"
-             src="https://res.cloudinary.com/doesupaf9/image/upload/w_600,h_600,c_pad,b_rgb:f5f0e8,q_auto,f_auto/Black_havdalah_set_gold_zblb7f.jpg"
+        <img class="cat-card-img" loading="lazy" width="800" height="800"
+             src="https://res.cloudinary.com/doesupaf9/image/upload/w_800,h_800,c_pad,b_rgb:f5f0e8,q_auto,f_auto/Black_havdalah_set_gold_zblb7f.jpg"
              alt="Gold-Plated Havdalah Sets by Sherman Art Works" />
       </div>
       <div class="cat-card-body">
