@@ -9,6 +9,14 @@
     <priority>1.0</priority>
   </url>
 
+  <!-- Collection landing pages -->
+  <url>
+    <loc>https://shermanartworks.com/gold-collection.html</loc>
+    <lastmod>2026-09-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
   <!-- Category pages -->
   <url>
     <loc>https://shermanartworks.com/candlesticks.html</loc>
@@ -359,6 +367,13 @@
   <url>
     <loc>https://shermanartworks.com/he/havdalah-sets-gold-plated.html</loc>
     <lastmod>2026-09-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://shermanartworks.com/he/gold-collection.html</loc>
+    <lastmod>2026-09-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>

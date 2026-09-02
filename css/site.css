@@ -205,6 +205,121 @@ nav {
   opacity: 0.82;
 }
 
+/* ── 5c. GOLD RAIL (homepage "New In" strip) ────────────────────
+   Runs on a near-black ground directly under the studio strip, so the
+   top of the page reads as one dark block. The product photos are
+   knocked out of their white studio background at the CDN and flattened
+   onto the same #1a1a1a, which is why the pieces float with no visible
+   tile. .gold-word is scoped to this section only: #d4b572 needs a dark
+   ground, and would drop to ~1.8:1 on the cream used elsewhere.
+   ──────────────────────────────────────────────────────────────── */
+.gold-rail-section {
+  background: #1a1a1a;
+  padding: 3rem 2rem 3.25rem;
+  border-top: 1px solid rgba(212,181,114,0.22);
+}
+.gold-rail-inner { max-width: 1200px; margin: 0 auto; }
+
+.gold-rail-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  padding-bottom: 1rem;
+  margin-bottom: 1.75rem;
+  border-bottom: 1px solid rgba(212,181,114,0.18);
+}
+.gold-rail-tag {
+  font-family: var(--ff-disp);
+  font-size: 0.62rem; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 0.55rem;
+}
+.gold-rail-title {
+  font-family: var(--ff-disp);
+  font-size: clamp(1.5rem, 2.6vw, 1.95rem);
+  font-weight: 600; line-height: 1.15; color: var(--bg);
+}
+.gold-rail-sub { font-size: 0.85rem; color: #a99e88; margin-top: 0.4rem; }
+.gold-word { color: var(--gold); }
+
+.gold-rail-all {
+  display: inline-flex; align-items: center; gap: 0.55rem;
+  font-family: var(--ff-disp);
+  font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase;
+  color: var(--gold); white-space: nowrap;
+  padding-bottom: 3px; border-bottom: 1px solid rgba(212,181,114,0.45);
+  transition: gap 0.2s, border-color 0.2s;
+}
+.gold-rail-all svg { width: 15px; height: 15px; flex-shrink: 0; }
+.gold-rail-all:hover { gap: 0.85rem; border-color: var(--gold); }
+[dir="rtl"] .gold-rail-all svg { transform: scaleX(-1); }
+
+.gold-rail {
+  display: flex; gap: 1.25rem;
+  overflow-x: auto;
+  scroll-snap-type: x proximity;
+  padding-bottom: 0.5rem;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(212,181,114,0.45) transparent;
+}
+.gold-rail::-webkit-scrollbar { height: 6px; }
+.gold-rail::-webkit-scrollbar-track { background: transparent; }
+.gold-rail::-webkit-scrollbar-thumb { background: rgba(212,181,114,0.4); border-radius: 3px; }
+
+.gold-rail-item {
+  flex: 0 0 196px;
+  scroll-snap-align: start;
+  display: flex; flex-direction: column; gap: 0.7rem;
+  position: relative;
+}
+.gold-rail-img {
+  aspect-ratio: 1 / 1;
+  background: #1a1a1a;
+  border: 1px solid rgba(212,181,114,0.16);
+  border-radius: 3px;
+  overflow: hidden;
+}
+.gold-rail-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s; }
+.gold-rail-item:hover .gold-rail-img img { transform: scale(1.04); }
+.gold-rail-item:hover .gold-rail-img { border-color: rgba(212,181,114,0.4); }
+
+.gold-rail-pill {
+  position: absolute; top: 0.6rem; left: 0.6rem;
+  background: var(--gold); color: #3a2c00;
+  font-size: 0.55rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+  padding: 0.2rem 0.55rem; border-radius: 999px;
+}
+[dir="rtl"] .gold-rail-pill { left: auto; right: 0.6rem; }
+
+.gold-rail-name {
+  font-family: var(--ff-disp);
+  font-size: 0.78rem; font-weight: 600; line-height: 1.45;
+  color: #f0e9dc; min-height: 2.3rem;
+}
+.gold-rail-name:hover { color: var(--gold); }
+.gold-rail-price { font-family: var(--ff-disp); font-size: 0.95rem; font-weight: 600; color: var(--bg); }
+.gold-rail-price .gold-rail-price-alt { display: block; font-size: 0.68rem; color: #a99e88; font-weight: 400; }
+
+.gold-rail-btn {
+  display: block; width: 100%; margin-top: auto;
+  border: 1px solid rgba(212,181,114,0.55);
+  background: transparent; color: var(--gold);
+  font-family: var(--ff-disp);
+  font-size: 0.6rem; letter-spacing: 0.14em; text-transform: uppercase;
+  padding: 0.65rem 0.5rem; text-align: center; border-radius: 2px;
+  transition: background 0.2s, color 0.2s;
+}
+.gold-rail-btn:hover { background: var(--gold); color: #202020; }
+
+@media (max-width: 768px) {
+  .gold-rail-section { padding: 2rem 0 2.25rem; }
+  .gold-rail-inner { max-width: none; }
+  .gold-rail-head { padding: 0 1.25rem 1rem; margin-bottom: 1.25rem; }
+  .gold-rail { padding-left: 1.25rem; padding-right: 1.25rem; }
+  .gold-rail-item { flex-basis: 152px; }
+}
+
 /* ── 6. PAGE HERO (non-homepage pages) ──────────────────────── */
 .page-hero { background: var(--dark); padding: 4.5rem 2rem 4rem; text-align: center; }
 .page-hero-inner { max-width: 760px; margin: 0 auto; }

@@ -156,7 +156,7 @@ function productSku(product, size) {
   return product.sku || product.id || '';
 }
 
-function addToCart(slug, name_en, name_he, price_ils, photo, sku, meta) {
+function addToCart(slug, name_en, name_he, price_ils, photo, sku, meta, page) {
   var items = getCart();
   // Launch discount is applied here, at the single point every add path funnels
   // through, so the stored price_ils - which drives the cart, checkout total and
@@ -173,7 +173,11 @@ function addToCart(slug, name_en, name_he, price_ils, photo, sku, meta) {
   var charged = (typeof saleIls === 'function') ? saleIls(launchEligible) + launchExempt : price_ils;
   var discounted = charged !== regular;
   var key = meta ? slug + '::' + [meta.color || '', meta.size || '', meta.tray_id || '', meta.symbol || '', meta.text || '', meta.comment || ''].join('|') : slug;
-  var page = (location.pathname.split('/').pop() || 'index.html');
+  // Normally the page an item was added from is also the page it lives on, so
+  // _cartItemUrl can link the cart line back to the product. The homepage gold
+  // rail breaks that assumption - it sells pieces that live on the gold-plated
+  // category pages - so it passes the product's own page explicitly.
+  page = page || (location.pathname.split('/').pop() || 'index.html');
   var existing = items.find(function (i) { return _cartKey(i) === key; });
   if (existing) {
     existing.qty += 1;

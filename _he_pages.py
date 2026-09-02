@@ -33,6 +33,7 @@ HE_DIR = os.path.join(ROOT, "he")
 # the pages with product cards (used by build_product_records).
 SHOP_PAGES = [
     "index.html",
+    "gold-collection.html",
     "candlesticks.html",
     "candlesticks-silver-plated.html",
     "candlesticks-gold-plated.html",
@@ -86,6 +87,15 @@ PRODUCT_JS = ["js/shofar-products.js", "js/havdalah-sets.js"]
 # setLang() uses innerHTML (not textContent) only for these rich-text keys.
 RICH_KEYS = {"story_body", "craft_body"}
 
+# Keys whose Hebrew value carries markup rather than plain text. The homepage
+# gold rail wraps the word "gold" in <span class="gold-word">, so appending the
+# value as text would strip it. js/site.js setLang() applies the same prefix.
+RICH_KEY_PREFIXES = ("gold_rail_",)
+
+
+def is_rich_key(key):
+    return key in RICH_KEYS or key.startswith(RICH_KEY_PREFIXES)
+
 # Keys some pages reference via data-t but forgot to define in their own T_PAGE
 # (a latent gap the site's JS toggle shares). Filled as a last resort so no
 # label is left English on a Hebrew page. Values taken from the shofar pages.
@@ -127,6 +137,10 @@ ALT_SUPP = {
 
 # Hebrew <title> + meta description per page (authored; concise, <60 / <155 chars).
 META = {
+    "gold-collection.html": (
+        "קולקציית הזהב | שרמן ארט וורקס",
+        "יודאיקה מזכוכית בעבודת יד בציפוי זהב: פמוטי שבת, כוסות קידוש, מגשים וסטי הבדלה. מיוצר לפי הזמנה בסטודיו שלנו בישראל.",
+    ),
     "index.html": (
         "שרמן ארט וורקס | יודאיקה וזכוכית בעבודת יד מישראל",
         "יודאיקה וזכוכית בעבודת יד מישראל - פמוטים, כוסות קידוש, שופרות, מזוזות, גביעי קרן וקערות. משלוח לכל העולם. הזמנות בהתאמה אישית מתקבלות בברכה.",
@@ -247,7 +261,7 @@ META = {
 
 # sitemap priority per Hebrew page (mirrors the English sitemap).
 SITEMAP_PRIORITY = {
-    "index.html": "0.9", "custom-orders.html": "0.8", "about.html": "0.7",
+    "index.html": "0.9", "gold-collection.html": "0.8", "custom-orders.html": "0.8", "about.html": "0.7",
     "contact.html": "0.7", "faq.html": "0.6", "terms.html": "0.3", "privacy.html": "0.3",
     "accessibility.html": "0.3",
 }
@@ -636,7 +650,7 @@ def translate_page(page):
             continue
         val = dict_he[key]
         el.clear()
-        if key in RICH_KEYS:
+        if is_rich_key(key):
             for node in list(BeautifulSoup(val, "html.parser").contents):
                 el.append(node)
         else:

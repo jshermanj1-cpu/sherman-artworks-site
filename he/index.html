@@ -20,7 +20,7 @@
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Varela+Round&amp;display=swap" rel="stylesheet"/>
 <link as="image" fetchpriority="high" href="https://res.cloudinary.com/doesupaf9/image/upload/w_1024,q_auto,f_auto/Large_glass_clear_green_bowl_tree_background_g2wb8u.jpg" rel="preload"/>
-<link href="/css/site.css" rel="stylesheet"/>
+<link href="/css/site.css?v=20260902b" rel="stylesheet"/>
 <link href="/css/cart.css?v=20260901a" rel="stylesheet"/>
 <style>
 .hero {
@@ -360,6 +360,7 @@
 <a data-t="cat4_title" href="trays-bowls.html" role="menuitem">מגשים וקערות</a>
 <a data-t="cat5_title" href="business-gifts.html" role="menuitem">מתנות לעסקים</a>
 <div class="nav-dropdown-divider" role="separator"></div>
+<a data-t="gold_rail_nav" href="gold-collection.html" role="menuitem">קולקציית הזהב <span class="nav-dropdown-badge">חדש</span></a>
 <a class="nav-dropdown-all" data-t="footer_all_collections" href="#shop" role="menuitem">כל הקולקציות</a>
 </div>
 </li>
@@ -400,6 +401,7 @@
 <a class="mobile-shop-sub" data-t="switch_trays_gold" href="trays-bowls-gold-plated.html" onclick="closeMobileNav()">מגשים וקערות בציפוי זהב</a>
 <a class="mobile-shop-sub" data-t="switch_trays_artisanal" href="trays-bowls-artisanal.html" onclick="closeMobileNav()">מגשים וקערות אומנותיים</a>
 <a data-t="cat5_title" href="business-gifts.html" onclick="closeMobileNav()">מתנות לעסקים</a>
+<a data-t="gold_rail_nav" href="gold-collection.html" onclick="closeMobileNav()">קולקציית הזהב <span class="nav-dropdown-badge">חדש</span></a>
 <a class="mobile-shop-all" data-t="footer_all_collections" href="#shop" onclick="closeMobileNav()">כל הקולקציות</a>
 </div>
 </li>
@@ -415,6 +417,85 @@
 <p class="studio-strip-em" data-t="studio_strip_em">✦ ישירות מהסטודיו ✦</p>
 <p class="studio-strip-sub" data-t="studio_strip_sub">חנות המפעל. הכל מיוצר בעבודת יד ישירות מהסטודיו שלנו ומגיע עד אליכם.</p>
 </div>
+<!-- ══════════════════════════════════════════════
+     NEW IN, The Gold Collection
+     Static rail: the homepage carries no PRODUCTS array, so the six
+     pieces are baked here. Add to Cart passes the product's own page
+     as the last argument so the cart line links to the product rather
+     than back to this page. The candlesticks are sold by height, so
+     that card links through to its size picker instead of adding.
+══════════════════════════════════════════════ -->
+<section aria-labelledby="goldRailTitle" class="gold-rail-section">
+<div class="gold-rail-inner">
+<div class="gold-rail-head">
+<div>
+<p class="gold-rail-tag" data-t="gold_rail_tag">חדש בחנות</p>
+<h2 class="gold-rail-title" data-t="gold_rail_title" id="goldRailTitle">קולקציית <span class="gold-word">הזהב</span></h2>
+<p class="gold-rail-sub" data-t="gold_rail_sub">הפריטים הפופולריים ביותר שלנו, עכשיו בציפוי <span class="gold-word">זהב</span>.</p>
+</div>
+<a class="gold-rail-all" href="gold-collection.html">
+<span data-t="gold_rail_all">לצפייה בקולקציה</span>
+<svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5" viewbox="0 0 20 20"><path d="M4 10 H16 M11 5 L16 10 L11 15"></path></svg>
+</a>
+</div>
+<div class="gold-rail">
+<article class="gold-rail-item">
+<a aria-hidden="true" class="gold-rail-img" href="candlesticks-gold-plated.html#blue-gold-plated-glass-candlesticks" tabindex="-1">
+<img alt="Blue gold-plated glass candlesticks" height="600" loading="lazy" src="https://res.cloudinary.com/doesupaf9/image/upload/e_make_transparent:20/b_rgb:1a1a1a,w_600,h_600,c_pad,q_auto,f_auto/Blue_Pamotim_gold_1_kdduli.jpg" width="600"/>
+</a>
+<span class="gold-rail-pill" data-t="gold_rail_pill">חדש</span>
+<a class="gold-rail-name" data-t="gold_rail_name_1" href="candlesticks-gold-plated.html#blue-gold-plated-glass-candlesticks">פמוטי זכוכית כחולים בציפוי <span class="gold-word">זהב</span></a>
+<span class="gold-rail-price" data-from="1" data-ils="680">from ₪680</span>
+<a class="gold-rail-btn" data-t="gold_rail_choose" href="candlesticks-gold-plated.html#blue-gold-plated-glass-candlesticks">בחירת מידה</a>
+</article>
+<article class="gold-rail-item">
+<a aria-hidden="true" class="gold-rail-img" href="kiddush-cups-gold-plated.html#gold-plated-blue-tall-glass-cup" tabindex="-1">
+<img alt="Gold-plated tall blue glass Kiddush cup" height="600" loading="lazy" src="https://res.cloudinary.com/doesupaf9/image/upload/e_make_transparent:20/b_rgb:1a1a1a,w_600,h_600,c_pad,q_auto,f_auto/Blue_high_cup_gold_1_an740y.jpg" width="600"/>
+</a>
+<span class="gold-rail-pill" data-t="gold_rail_pill">חדש</span>
+<a class="gold-rail-name" data-t="gold_rail_name_2" href="kiddush-cups-gold-plated.html#gold-plated-blue-tall-glass-cup">כוס קידוש גבוהה מזכוכית כחולה בציפוי <span class="gold-word">זהב</span></a>
+<span class="gold-rail-price" data-ils="572">₪572</span>
+<button class="gold-rail-btn" data-add-en="Gold-Plated Tall Blue Glass Kiddush Cup" data-add-he="כוס קידוש גבוהה מזכוכית כחולה בציפוי זהב" data-add-ils="572" data-add-page="kiddush-cups-gold-plated.html" data-add-photo="Blue_high_cup_gold_1_an740y" data-add-sku="SAW-KC-021" data-add-slug="gold-plated-blue-tall-glass-cup" data-t="add_cart" type="button">הוסף לסל</button>
+</article>
+<article class="gold-rail-item">
+<a aria-hidden="true" class="gold-rail-img" href="havdalah-sets-gold-plated.html#gold-plated-black-havdalah-set" tabindex="-1">
+<img alt="Gold-plated black Havdalah set" height="600" loading="lazy" src="https://res.cloudinary.com/doesupaf9/image/upload/e_make_transparent:20/b_rgb:1a1a1a,w_600,h_600,c_pad,q_auto,f_auto/Black_havdalah_set_gold_zblb7f.jpg" width="600"/>
+</a>
+<span class="gold-rail-pill" data-t="gold_rail_pill">חדש</span>
+<a class="gold-rail-name" data-t="gold_rail_name_3" href="havdalah-sets-gold-plated.html#gold-plated-black-havdalah-set">סט הבדלה מזכוכית שחורה בציפוי <span class="gold-word">זהב</span></a>
+<span class="gold-rail-price" data-ils="1657">₪1,657</span>
+<button class="gold-rail-btn" data-add-en="Gold-Plated Black Havdalah Set" data-add-he="סט הבדלה מזכוכית שחורה בציפוי זהב" data-add-ils="1657" data-add-page="havdalah-sets-gold-plated.html" data-add-photo="Black_havdalah_set_gold_zblb7f" data-add-sku="SAW-HS-005" data-add-slug="gold-plated-black-havdalah-set" data-t="add_cart" type="button">הוסף לסל</button>
+</article>
+<article class="gold-rail-item">
+<a aria-hidden="true" class="gold-rail-img" href="trays-bowls-gold-plated.html#black-gold-plated-glass-tray" tabindex="-1">
+<img alt="Black gold-plated glass tray" height="600" loading="lazy" src="https://res.cloudinary.com/doesupaf9/image/upload/e_make_transparent:34/b_rgb:1a1a1a,w_600,h_600,c_pad,q_auto,f_auto/Black_tray_gold_wdxp9o.jpg" width="600"/>
+</a>
+<span class="gold-rail-pill" data-t="gold_rail_pill">חדש</span>
+<a class="gold-rail-name" data-t="gold_rail_name_4" href="trays-bowls-gold-plated.html#black-gold-plated-glass-tray">מגש זכוכית שחור בציפוי <span class="gold-word">זהב</span></a>
+<span class="gold-rail-price" data-ils="617">₪617</span>
+<button class="gold-rail-btn" data-add-en="Black Gold-Plated Glass Tray" data-add-he="מגש זכוכית שחור בציפוי זהב" data-add-ils="617" data-add-page="trays-bowls-gold-plated.html" data-add-photo="Black_tray_gold_wdxp9o" data-add-sku="SAW-TB-014" data-add-slug="black-gold-plated-glass-tray" data-t="add_cart" type="button">הוסף לסל</button>
+</article>
+<article class="gold-rail-item">
+<a aria-hidden="true" class="gold-rail-img" href="trays-bowls-gold-plated.html#gold-plated-blue-kiddush-cup-plate" tabindex="-1">
+<img alt="Gold-plated blue Kiddush cup plate" height="600" loading="lazy" src="https://res.cloudinary.com/doesupaf9/image/upload/e_make_transparent:34/b_rgb:1a1a1a,w_600,h_600,c_pad,q_auto,f_auto/Blue_plate_gold_jtsy0y.jpg" width="600"/>
+</a>
+<span class="gold-rail-pill" data-t="gold_rail_pill">חדש</span>
+<a class="gold-rail-name" data-t="gold_rail_name_5" href="trays-bowls-gold-plated.html#gold-plated-blue-kiddush-cup-plate">תחתית כחולה לכוס קידוש בציפוי <span class="gold-word">זהב</span></a>
+<span class="gold-rail-price" data-ils="441">₪441</span>
+<button class="gold-rail-btn" data-add-en="Gold-Plated Blue Kiddush Cup Plate" data-add-he="תחתית כחולה לכוס קידוש בציפוי זהב" data-add-ils="441" data-add-page="trays-bowls-gold-plated.html" data-add-photo="Blue_plate_gold_jtsy0y" data-add-sku="SAW-KC-031" data-add-slug="gold-plated-blue-kiddush-cup-plate" data-t="add_cart" type="button">הוסף לסל</button>
+</article>
+<article class="gold-rail-item">
+<a aria-hidden="true" class="gold-rail-img" href="kiddush-cups-gold-plated.html#gold-plated-colorful-tall-glass-cup" tabindex="-1">
+<img alt="Gold-plated tall colorful glass Kiddush cup" height="600" loading="lazy" src="https://res.cloudinary.com/doesupaf9/image/upload/e_make_transparent:20/b_rgb:1a1a1a,w_600,h_600,c_pad,q_auto,f_auto/Colorful_cup_gold_1_glz3rc.jpg" width="600"/>
+</a>
+<span class="gold-rail-pill" data-t="gold_rail_pill">חדש</span>
+<a class="gold-rail-name" data-t="gold_rail_name_6" href="kiddush-cups-gold-plated.html#gold-plated-colorful-tall-glass-cup">כוס קידוש גבוהה מזכוכית צבעונית בציפוי <span class="gold-word">זהב</span></a>
+<span class="gold-rail-price" data-ils="572">₪572</span>
+<button class="gold-rail-btn" data-add-en="Gold-Plated Tall Colorful Glass Kiddush Cup" data-add-he="כוס קידוש גבוהה מזכוכית צבעונית בציפוי זהב" data-add-ils="572" data-add-page="kiddush-cups-gold-plated.html" data-add-photo="Colorful_cup_gold_1_glz3rc" data-add-sku="SAW-KC-024" data-add-slug="gold-plated-colorful-tall-glass-cup" data-t="add_cart" type="button">הוסף לסל</button>
+</article>
+</div>
+</div>
+</section>
 <!-- ══════════════════════════════════════════════
      SHOP, Featured Pieces
 ══════════════════════════════════════════════ -->
@@ -771,8 +852,8 @@
 <!-- ══════════════════════════════════════════════
      JAVASCRIPT
 ══════════════════════════════════════════════ -->
-<script src="/js/site.js?v=20260901e"></script>
-<script src="/js/cart.js?v=20260901d"></script>
+<script src="/js/site.js?v=20260902b"></script>
+<script src="/js/cart.js?v=20260902b"></script>
 <script>// ⚠️ Replace with real WhatsApp number before launch
   
 
@@ -799,6 +880,19 @@
       shipping_banner:     '✦  Custom Orders Are Welcome  ✦',
       studio_strip_em:     '✦ Direct from the Studio ✦',
       studio_strip_sub:    'The factory store. Everything is handmade in our studio and comes directly to you.',
+
+      gold_rail_tag:       'New In',
+      gold_rail_title:     'The <span class="gold-word">Gold</span> Collection',
+      gold_rail_sub:       'Our most popular pieces, now in a <span class="gold-word">gold</span> plated finish.',
+      gold_rail_all:       'See the collection',
+      gold_rail_pill:      'New',
+      gold_rail_choose:    'Choose a size',
+      gold_rail_name_1:    'Blue <span class="gold-word">Gold</span>-Plated Glass Candlesticks',
+      gold_rail_name_2:    '<span class="gold-word">Gold</span>-Plated Tall Blue Glass Kiddush Cup',
+      gold_rail_name_3:    '<span class="gold-word">Gold</span>-Plated Black Havdalah Set',
+      gold_rail_name_4:    'Black <span class="gold-word">Gold</span>-Plated Glass Tray',
+      gold_rail_name_5:    '<span class="gold-word">Gold</span>-Plated Blue Kiddush Cup Plate',
+      gold_rail_name_6:    '<span class="gold-word">Gold</span>-Plated Tall Colorful Glass Kiddush Cup',
 
       shop_tag:            'Our Collections',
       shop_title:          'Browse the Shop',
@@ -902,6 +996,19 @@
       shipping_banner:     '✦  הזמנות בהתאמה אישית מתקבלות בשמחה  ✦',
       studio_strip_em:     '✦ ישירות מהסטודיו ✦',
       studio_strip_sub:    'חנות המפעל. הכל מיוצר בעבודת יד ישירות מהסטודיו שלנו ומגיע עד אליכם.',
+
+      gold_rail_tag:       'חדש בחנות',
+      gold_rail_title:     'קולקציית <span class="gold-word">הזהב</span>',
+      gold_rail_sub:       'הפריטים הפופולריים ביותר שלנו, עכשיו בציפוי <span class="gold-word">זהב</span>.',
+      gold_rail_all:       'לצפייה בקולקציה',
+      gold_rail_pill:      'חדש',
+      gold_rail_choose:    'בחירת מידה',
+      gold_rail_name_1:    'פמוטי זכוכית כחולים בציפוי <span class="gold-word">זהב</span>',
+      gold_rail_name_2:    'כוס קידוש גבוהה מזכוכית כחולה בציפוי <span class="gold-word">זהב</span>',
+      gold_rail_name_3:    'סט הבדלה מזכוכית שחורה בציפוי <span class="gold-word">זהב</span>',
+      gold_rail_name_4:    'מגש זכוכית שחור בציפוי <span class="gold-word">זהב</span>',
+      gold_rail_name_5:    'תחתית כחולה לכוס קידוש בציפוי <span class="gold-word">זהב</span>',
+      gold_rail_name_6:    'כוס קידוש גבוהה מזכוכית צבעונית בציפוי <span class="gold-word">זהב</span>',
 
       shop_tag:            'הקולקציות שלנו',
       shop_title:          'דפדפו בחנות',
@@ -1034,6 +1141,19 @@
   
 
   
+
+  // ── GOLD RAIL ──────────────────────────────────
+  // The rail is static markup, so there is no PRODUCTS array to add from.
+  // Each button carries its own product data and the page that product lives
+  // on, which addToCart stores so the cart line links to the product rather
+  // than back here. Delegated, so it survives a language toggle.
+  document.addEventListener('click', function (e) {
+    var btn = e.target.closest ? e.target.closest('.gold-rail-btn[data-add-slug]') : null;
+    if (!btn) return;
+    addToCart(btn.dataset.addSlug, btn.dataset.addEn, btn.dataset.addHe,
+              parseInt(btn.dataset.addIls, 10), btn.dataset.addPhoto,
+              btn.dataset.addSku, null, btn.dataset.addPage);
+  });
 
   // ── INIT ───────────────────────────────────────</script>
 <a aria-label="Chat on WhatsApp" class="floating-wa" href="https://wa.me/972523482278?text=Hi%2C%20I%20have%20a%20question%20about%20Sherman%20Art%20Works." id="floatingWa" rel="noopener noreferrer" target="_blank" title="Chat on WhatsApp">
