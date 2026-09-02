@@ -15,15 +15,46 @@ import json
 import re
 from pathlib import Path
 
+# The dollar figure on a card comes from the pinned list in _usd.py, the same one
+# js/site.js and the payments Worker price from. This used to be round(ils/3.117),
+# a leftover from before the pinned list existed (2026-08-10); it understated every
+# one of the 99 catalogue entries by $6-$22 and disagreed with both the homepage's
+# baked figures and the price the page itself shows once JS has run.
+from _usd import usd_from_ils
+
 SITE = Path(__file__).parent
 BASE = "https://shermanartworks.com"
 CDN = "https://res.cloudinary.com/doesupaf9/image/upload"
-USD_RATE = 3.117
 
 CANDLE_SILVER = "silver-plated-glass-candlesticks"
 CANDLE_GOLD = "gold-plated-glass-candlesticks"
 TRAY_SILVER = "silver-plated-glass-trays"
 TRAY_GOLD = "gold-plated-glass-trays"
+
+# Shipping, returns and seller are cloned verbatim from the landing pages so a
+# product describes itself identically wherever it is listed. Without these two
+# blocks Google drops the shipping and returns annotations from a merchant
+# listing and reports them as missing fields, which is what the subcategory
+# pages did until now. The rates are the authoritative ones: 35 ILS at home,
+# 45 USD abroad.
+INTL = ["US", "GB", "CA", "AU", "FR", "DE"]
+SHIPPING = [
+    {"@type": "OfferShippingDetails",
+     "shippingRate": {"@type": "MonetaryAmount", "value": 35, "currency": "ILS"},
+     "shippingDestination": {"@type": "DefinedRegion", "addressCountry": "IL"}},
+    {"@type": "OfferShippingDetails",
+     "shippingRate": {"@type": "MonetaryAmount", "value": 45, "currency": "USD"},
+     "shippingDestination": {"@type": "DefinedRegion", "addressCountry": INTL}},
+]
+RETURNS = {
+    "@type": "MerchantReturnPolicy",
+    "applicableCountry": ["IL"] + INTL,
+    "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+    "merchantReturnDays": 14,
+    "returnMethod": "https://schema.org/ReturnByMail",
+    "returnFees": "https://schema.org/ReturnFeesCustomerResponsibility",
+}
+SELLER = {"@type": "Organization", "name": "Sherman Art Works"}
 
 
 def family_is(*names):
@@ -57,16 +88,16 @@ CATEGORIES = {
                 "match": family_is(CANDLE_SILVER),
                 "title": "925 Silver-Plated Glass Candlesticks | Sherman Art Works",
                 "desc": "Shop handmade glass candlesticks finished with 925 silver plating. Seven colours, three heights, and optional matching trays, made in Israel.",
-                "headline": "Silver-Plated Candlesticks",
+                "headline": "925 Silver-Plated Candlesticks",
                 "subtitle": "Handmade glass finished with 925 silver.",
                 "body": "Choose from seven colours and three heights, with an optional matching glass tray.",
-                "bc": "Silver-Plated Candlesticks",
+                "bc": "925 Silver-Plated Candlesticks",
                 "image": "White_pamotim_lrdkha",
                 "he": {
-                    "headline": "פמוטים בציפוי כסף",
+                    "headline": "פמוטים בציפוי כסף 925",
                     "subtitle": "זכוכית בעבודת יד בגימור כסף 925.",
                     "body": "בחרו מתוך שבעה צבעים ושלושה גבהים, עם אפשרות למגש זכוכית תואם.",
-                    "bc": "פמוטים בציפוי כסף",
+                    "bc": "פמוטים בציפוי כסף 925",
                 },
             },
             "gold": {
@@ -132,16 +163,16 @@ CATEGORIES = {
                 "match": None,
                 "title": "925 Silver-Plated Kiddush Cups | Sherman Art Works",
                 "desc": "Shop handmade kiddush cups finished with 925 silver plating, in a range of colours with optional matching plates, made in Israel.",
-                "headline": "Silver-Plated Kiddush Cups",
+                "headline": "925 Silver-Plated Kiddush Cups",
                 "subtitle": "Handmade glass and ceramic finished with 925 silver.",
                 "body": "Choose your colour, with an optional matching plate at a set price.",
-                "bc": "Silver-Plated Kiddush Cups",
+                "bc": "925 Silver-Plated Kiddush Cups",
                 "image": "Blue_high_cup_fxhkep",
                 "he": {
-                    "headline": "כוסות קידוש בציפוי כסף",
+                    "headline": "כוסות קידוש בציפוי כסף 925",
                     "subtitle": "זכוכית וקרמיקה בעבודת יד בגימור כסף 925.",
                     "body": "בחרו את הצבע, עם אפשרות לצלחת תואמת במחיר מוזל.",
-                    "bc": "כוסות קידוש בציפוי כסף",
+                    "bc": "כוסות קידוש בציפוי כסף 925",
                 },
             },
             "gold": {
@@ -184,16 +215,16 @@ CATEGORIES = {
                 "match": finish_is("silver-plated"),
                 "title": "925 Silver-Plated Havdalah Sets | Sherman Art Works",
                 "desc": "Shop handmade Havdalah sets finished with 925 silver plating, available in black, blue, white and orange, made to order in our studio in Israel.",
-                "headline": "Silver-Plated Havdalah Sets",
+                "headline": "925 Silver-Plated Havdalah Sets",
                 "subtitle": "Handmade glass finished with 925 silver.",
                 "body": "Choose from four colours of silver-plated glass Havdalah sets, each crafted to order.",
-                "bc": "Silver-Plated Havdalah Sets",
+                "bc": "925 Silver-Plated Havdalah Sets",
                 "image": "Havdala_black_set_wdnnhk",
                 "he": {
-                    "headline": "סטי הבדלה בציפוי כסף",
+                    "headline": "סטי הבדלה בציפוי כסף 925",
                     "subtitle": "זכוכית בעבודת יד בגימור כסף 925.",
                     "body": "בחרו מארבעה צבעים של סטי הבדלה מזכוכית בציפוי כסף, כל אחד מיוצר לפי הזמנה.",
-                    "bc": "סטי הבדלה בציפוי כסף",
+                    "bc": "סטי הבדלה בציפוי כסף 925",
                 },
             },
             "gold": {
@@ -248,10 +279,10 @@ CATEGORIES = {
                 "match": any_match(family_is(TRAY_SILVER), finish_is("silver-plated")),
                 "title": "925 Silver-Plated Glass Trays & Kiddush Plates | Sherman Art Works",
                 "desc": "Shop handmade glass trays and Kiddush cup plates finished with 925 silver plating, made to order in our studio in Israel.",
-                "headline": "Silver-Plated Trays & Bowls",
+                "headline": "925 Silver-Plated Trays & Bowls",
                 "subtitle": "Handmade glass finished with 925 silver.",
                 "body": "Choose from six glass trays and five matching Kiddush cup plates in a range of colours.",
-                "bc": "Silver-Plated Trays & Bowls",
+                "bc": "925 Silver-Plated Trays & Bowls",
                 "guide": {
                     "guide_q1": ("What is in the silver-plated collection?",
                                  "מה כולל אוסף ציפוי הכסף?"),
@@ -260,10 +291,10 @@ CATEGORIES = {
                 },
                 "image": "White_tray_o1npai",
                 "he": {
-                    "headline": "מגשים וקערות בציפוי כסף",
+                    "headline": "מגשים וקערות בציפוי כסף 925",
                     "subtitle": "זכוכית בעבודת יד בגימור כסף 925.",
                     "body": "בחרו מתוך שישה מגשי זכוכית וחמש תחתיות תואמות לכוס קידוש במגוון צבעים.",
-                    "bc": "מגשים וקערות בציפוי כסף",
+                    "bc": "מגשים וקערות בציפוי כסף 925",
                 },
             },
             "gold": {
@@ -406,7 +437,7 @@ def static_cards(cat, items):
         <h2 class="product-card-name">{html.escape(p['name_en'])}</h2>
         <p class="product-card-desc">{html.escape(p['description_en'])}</p>
         <div class="product-card-meta">
-          <span class="product-card-price">{prefix}&#8362;{ils:,} <span class="product-card-price-alt">≈ ${round(ils / USD_RATE)}</span></span>
+          <span class="product-card-price">{prefix}&#8362;{ils:,} <span class="product-card-price-alt">≈ ${usd_from_ils(ils)}</span></span>
         </div>
         <p class="product-color-note">* Colors and measurements may appear slightly different in person, as each item is handmade.</p>
       </div>
@@ -414,32 +445,55 @@ def static_cards(cat, items):
     return "\n".join(cards)
 
 
+def offers_for(p):
+    """One Offer per purchasable size, exactly as the landing page lists them.
+
+    A sized product sold as a single flat Offer priced at its smallest size
+    understates the range (the gold candlesticks run 680-862, not a flat 680)
+    and hides the other two sizes from the listing entirely. The per-size sku
+    is the id-with-suffix form the merchant feed uses as its g:id, so a feed
+    item and its landing page resolve to the same variant.
+    """
+    def offer(price_ils, sku):
+        return {
+            "@type": "Offer",
+            "sku": sku,
+            "priceCurrency": "ILS",
+            "price": str(price_ils),
+            "availability": "https://schema.org/InStock",
+            "itemCondition": "https://schema.org/NewCondition",
+            "seller": SELLER,
+            "shippingDetails": SHIPPING,
+            "hasMerchantReturnPolicy": RETURNS,
+        }
+
+    sizes = p.get("sizes") or []
+    if sizes:
+        return [offer(s["price_ils"], f"{p['id']}-{s['label'].lower()}") for s in sizes]
+    return [offer(p["price_ils"], p["id"])]
+
+
 def item_list(cat, items):
     elements = []
     for position, p in enumerate(items, 1):
-        ils = price(p)
-        elements.append({
-            "@type": "ListItem",
-            "position": position,
-            "item": {
-                "@context": "https://schema.org",
-                "@type": "Product",
-                "name": p["name_en"],
-                "url": f"{BASE}/{cat['landing']}#{p['id']}",
-                "description": p["description_en"],
-                "image": [f"{CDN}/w_800,q_auto,f_auto/{photo}.jpg" for photo in p["photos"]],
-                "brand": {"@type": "Brand", "name": "Sherman Art Works"},
-                "offers": {
-                    "@type": "Offer",
-                    "priceCurrency": "ILS",
-                    "price": str(ils),
-                    "availability": "https://schema.org/InStock",
-                    "seller": {"@type": "Organization", "name": "Sherman Art Works"},
-                },
-                "sku": p["sku"],
-                "itemCondition": "https://schema.org/NewCondition",
-            },
-        })
+        product = {
+            "@context": "https://schema.org",
+            "@type": "Product",
+            "name": p["name_en"],
+            "url": f"{BASE}/{cat['landing']}#{p['id']}",
+            "description": p["description_en"],
+            "image": [f"{CDN}/w_800,q_auto,f_auto/{photo}.jpg" for photo in p["photos"]],
+            "brand": {"@type": "Brand", "name": "Sherman Art Works"},
+            "offers": offers_for(p),
+            "sku": p["sku"],
+            "itemCondition": "https://schema.org/NewCondition",
+        }
+        sizes = p.get("sizes") or []
+        if sizes:
+            product["size"] = [f"{s['label']} ({s['range_cm']} cm)" for s in sizes]
+        if p.get("color"):
+            product["color"] = p["color"]
+        elements.append({"@type": "ListItem", "position": position, "item": product})
     return {"@context": "https://schema.org", "@type": "ItemList", "itemListElement": elements}
 
 
@@ -462,10 +516,13 @@ def sync_product_jsonld(cat, node, product):
         node["color"] = product["color_en"]
     else:
         node.pop("color", None)
-    if isinstance(node.get("offers"), dict):
-        node["offers"]["price"] = fresh["offers"]["price"]
-    else:
-        node["offers"] = fresh["offers"]
+    # fresh["offers"] is a list: one Offer per purchasable size, each carrying
+    # its own sku, shipping and returns. The branch this replaces kept a
+    # hand-authored offer dict and copied only its price across, because the
+    # generator's offer used to be a bare single dict that would have thrown
+    # shipping and returns away. There is nothing richer to preserve now, and
+    # reading fresh["offers"]["price"] off a list raised TypeError.
+    node["offers"] = fresh["offers"]
 
 
 def sync_landing_catalog_jsonld(cat, src, items):
@@ -714,7 +771,12 @@ def build(cat, kind, cfg, source, items):
     # bc_current is already written by the breadcrumb replacement above; the
     # rest own a single data-t element each.
     for key, value, _he in overrides[1:]:
-        out = replace_one(out, rf'(<[^>]+data-t="{key}"[^>]*>).*?(</[^>]+>)', rf'\1{html.escape(value)}\2', f"visible {key}")
+        # A lambda, not a \1..\2 template: a value starting with a digit (the
+        # "925 Silver-Plated ..." headlines) would otherwise read as a group
+        # reference, and \1 + "925" parses as group 1925.
+        out = replace_one(out, rf'(<[^>]+data-t="{key}"[^>]*>).*?(</[^>]+>)',
+                          (lambda v: lambda m: m.group(1) + html.escape(v) + m.group(2))(value),
+                          f"visible {key}")
 
     nav = switcher(cat)
     nav = nav.replace(' class="cat-switch-item active" aria-current="page"', ' class="cat-switch-item"', 1)

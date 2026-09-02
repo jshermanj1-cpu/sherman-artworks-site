@@ -143,11 +143,11 @@ META = {
     ),
     "index.html": (
         "שרמן ארט וורקס | יודאיקה וזכוכית בעבודת יד מישראל",
-        "יודאיקה וזכוכית בעבודת יד מישראל - פמוטים, כוסות קידוש, שופרות, מזוזות, גביעי קרן וקערות. משלוח לכל העולם. הזמנות בהתאמה אישית מתקבלות בברכה.",
+        "יודאיקה וזכוכית בעבודת יד מישראל - פמוטים, כוסות קידוש, שופרות ומזוזות, בגימור כסף 925 או זהב. משלוח לכל העולם. הזמנות בהתאמה אישית מתקבלות בברכה.",
     ),
     "candlesticks.html": (
-        "פמוטים מזכוכית בעבודת יד | שרמן ארט וורקס",
-        "פמוטי זכוכית בעבודת יד לנרות שבת, בשיטה המשפחתית המסורתית. מגוון צבעים, מיוצר בישראל ונשלח לכל העולם.",
+        "פמוטי זכוכית בציפוי כסף 925 וזהב | שרמן ארט וורקס",
+        "פמוטי זכוכית בעבודת יד לנרות שבת, בגימור כסף 925, בגימור זהב ובעיצוב אומנותי. מגוון צבעים, מיוצר בישראל ונשלח לכל העולם.",
     ),
     "candlesticks-silver-plated.html": (
         "פמוטי זכוכית בציפוי כסף 925 | שרמן ארט וורקס",
@@ -166,12 +166,12 @@ META = {
         "גביעי קרן שתייה בציפוי כסף 925 בעבודת יד - עיצובי יודאיקה קלאסיים. מיוצר בישראל, משלוח לכל העולם.",
     ),
     "kiddush-cups.html": (
-        "כוסות קידוש בעבודת יד | שרמן ארט וורקס",
-        "כוסות וגביעי קידוש בעבודת יד במגוון סגנונות - כוסות זכוכית, כוס קרמיקה וסטים של כוס וצלחת. מיוצר בישראל, משלוח לכל העולם.",
+        "כוסות קידוש בציפוי כסף 925 וזהב | שרמן ארט וורקס",
+        "כוסות וגביעי קידוש בעבודת יד בגימור כסף 925 או זהב - כוסות זכוכית, כוס קרמיקה וצלחת תואמת. מיוצר בישראל, משלוח לכל העולם.",
     ),
     "trays-bowls.html": (
         "מגשים וקערות זכוכית בעבודת יד | שרמן ארט וורקס",
-        "קערות ומגשים דקורטיביים מזכוכית בעבודת יד למרכז השולחן ולבית. מיוצר בישראל, משלוח לכל העולם.",
+        "קערות ומגשים דקורטיביים מזכוכית בעבודת יד, בגימור כסף 925 או זהב, למרכז השולחן ולבית. מיוצר בישראל, משלוח לכל העולם.",
     ),
     "trays-bowls-silver-plated.html": (
         "מגשי זכוכית ותחתיות בציפוי כסף 925 | שרמן ארט וורקס",
@@ -556,11 +556,6 @@ def localize_jsonld(txt, en2he):
                 node["text"] = tr(node.get("text"))
             elif ty in ("FAQPage", "HowTo"):
                 node["inLanguage"] = "he"
-            elif ty == "ItemList":
-                for entry in node.get("itemListElement", []):
-                    item = entry.get("item") if isinstance(entry, dict) else None
-                    if isinstance(item, dict):
-                        tr_variant(item)
             elif ty == "ProductGroup":
                 group = PRODUCT_GROUP_HE.get(node.get("productGroupID"))
                 if group:
@@ -570,6 +565,21 @@ def localize_jsonld(txt, en2he):
                     hits[0] += 1
                 for variant in node.get("hasVariant", []):
                     tr_variant(variant)
+            elif ty == "Product":
+                # Every Product node, wherever it sits: an ItemList entry, a
+                # ProductGroup variant, or one listed loose. Without this the
+                # Hebrew half of the site rendered Hebrew headings over English
+                # product entities, the mismatch Google reads as structured data
+                # not matching the page.
+                #
+                # This replaced a narrower ItemList branch that translated only
+                # itemListElement[].item. That left behind anything a page lists
+                # loose - business-gifts, mezuzahs and ten of candlesticks.html's
+                # entries, 15 entities in all. Matching on the node rather than
+                # on its container catches them, and re-walking a variant the
+                # ProductGroup branch already translated is a no-op: the join is
+                # on the English name, which is gone by then.
+                tr_variant(node)
             for v in node.values():
                 walk(v)
         elif isinstance(node, list):
@@ -953,19 +963,51 @@ def he_lastmod(page, en_map):
     return en_map.get(en_url(page)) or datetime.date.today().isoformat()
 
 
+def _is_noindex(page):
+    """True if the generated /he/ page asks robots not to index it.
+
+    A noindex page in the sitemap is a contradiction: Search Console reports it
+    as "Submitted URL marked noindex". he/horn-goblets.html was exactly that -
+    the category was hidden on 2026-07-30 and the English URL was dropped from
+    the sitemap, but the Hebrew twin is re-added here on every run because it is
+    still in PAGES. Reading the emitted file keeps the sitemap honest without a
+    second list to maintain.
+    """
+    path = os.path.join(HE_DIR, page)
+    if not os.path.exists(path):
+        return False
+    with open(path, "r", encoding="utf-8") as f:
+        head = f.read(4000)
+    m = re.search(r'<meta[^>]+name=["\']robots["\'][^>]*>', head, re.I)
+    return bool(m and "noindex" in m.group(0).lower())
+
+
 def update_sitemap():
-    """Ensure every /he/ URL is listed in sitemap.xml with a <lastmod>. Idempotent
-    per URL, so it also backfills pages added after the first run, and backfills
-    <lastmod> onto /he/ entries written before it was emitted."""
+    """Ensure every indexable /he/ URL is listed in sitemap.xml with a <lastmod>.
+    Idempotent per URL, so it also backfills pages added after the first run, and
+    backfills <lastmod> onto /he/ entries written before it was emitted. Pages
+    marked noindex are excluded, and dropped if a previous run listed them."""
     path = os.path.join(ROOT, "sitemap.xml")
     with open(path, "r", encoding="utf-8") as f:
         xml = f.read()
     en_map = _en_lastmods(xml)
 
+    # Drop any /he/ URL that is now noindex before deciding what is missing.
+    hidden = [p for p in PAGES if _is_noindex(p)]
+    removed = 0
+    for page in hidden:
+        # Consume the blank line above the block too, or removing an entry
+        # leaves a double blank line behind in the sitemap.
+        xml, n = re.subn(
+            r"\n\n  <url>\s*<loc>%s</loc>.*?</url>" % re.escape(he_url(page)),
+            "", xml, flags=re.S)
+        removed += n
+    PAGES_INDEXABLE = [p for p in PAGES if p not in hidden]
+
     # Backfill <lastmod> on existing /he/ entries that predate this field.
     # Order matters: the sitemap schema wants loc, lastmod, changefreq, priority.
     backfilled = 0
-    for page in PAGES:
+    for page in PAGES_INDEXABLE:
         url = he_url(page)
         block_re = re.compile(
             r"(<url>\s*<loc>%s</loc>\s*)(<changefreq>)" % re.escape(url), re.S
@@ -978,7 +1020,7 @@ def update_sitemap():
             )
             backfilled += 1
 
-    missing = [p for p in PAGES if "<loc>%s</loc>" % he_url(p) not in xml]
+    missing = [p for p in PAGES_INDEXABLE if "<loc>%s</loc>" % he_url(p) not in xml]
     entries = []
     if missing and "Hebrew (/he/) pages" not in xml:
         entries.append("\n  <!-- Hebrew (/he/) pages -->")
@@ -993,8 +1035,9 @@ def update_sitemap():
     if entries:
         xml = xml.replace("</urlset>", "\n".join(entries) + "\n\n</urlset>")
 
-    if not missing and not backfilled:
-        print("sitemap already lists all %d /he/ URLs with lastmod" % len(PAGES))
+    if not missing and not backfilled and not removed:
+        print("sitemap already lists all %d indexable /he/ URLs with lastmod"
+              % len(PAGES_INDEXABLE))
         return
     with open(path, "w", encoding="utf-8", newline="\n") as f:
         f.write(xml)
@@ -1002,6 +1045,9 @@ def update_sitemap():
         print("added %d /he/ URL(s) to sitemap.xml" % len(missing))
     if backfilled:
         print("backfilled <lastmod> on %d existing /he/ URL(s)" % backfilled)
+    if removed:
+        print("removed %d noindex /he/ URL(s) from sitemap.xml: %s"
+              % (removed, ", ".join(he_url(p) for p in hidden)))
 
 
 def main():

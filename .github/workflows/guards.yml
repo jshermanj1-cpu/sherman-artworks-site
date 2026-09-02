@@ -1,0 +1,92 @@
+name: Site guards
+
+# main is what GitHub Pages serves, so this runs on anything heading there and
+# on main itself. workflow_dispatch is for checking a branch by hand.
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: guards-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  guards:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install --quiet beautifulsoup4
+
+      # The same fifteen checks the pre-push hook runs, so a green hook and a
+      # green build mean the same thing.
+      - name: Invariants
+        run: python _guards.py
+
+      # The check the hook deliberately skips. Re-running every generator takes
+      # about twenty seconds, which is too slow to sit through before each push
+      # but free here. The chain is idempotent, so on a current tree it changes
+      # nothing; any diff means someone edited a product and did not regenerate,
+      # and whatever is committed is stale.
+      - name: Generator chain is not stale
+        run: |
+          python _static_cards.py
+          python _subcategory_pages.py
+          python _shofar_pages.py
+          python _bake_en.py
+          python _offer_schema.py
+          python _he_pages.py
+          python _merchant_feed.py
+
+      - name: Report any drift
+        run: |
+          if ! git diff --quiet; then
+            echo "::error::The generator chain produced changes, so the committed files are stale."
+            echo "Run the chain locally and commit what it writes:"
+            echo "  python _static_cards.py && python _subcategory_pages.py && python _shofar_pages.py \\"
+            echo "    && python _bake_en.py && python _offer_schema.py && python _he_pages.py \\"
+            echo "    && python _merchant_feed.py"
+            echo ""
+            echo "Files the chain rewrote:"
+            git --no-pager diff --stat
+            echo ""
+            echo "First 200 lines of the diff:"
+            git --no-pager diff | head -200
+            exit 1
+          fi
+          echo "Chain is idempotent against the committed tree."
+
+      # Cheap, and the thing most likely to be wrong after a hand edit: a page
+      # that claims a canonical or hreflang target that does not exist.
+      - name: Internal links resolve
+        run: |
+          python - <<'PY'
+          import glob, os, re, sys
+          bad = []
+          for page in sorted(glob.glob("*.html")) + sorted(glob.glob("he/*.html")):
+              src = open(page, encoding="utf-8").read()
+              for attr in ("canonical", "alternate"):
+                  for href in re.findall(
+                          r'<link[^>]+rel="%s"[^>]+href="https://shermanartworks\.com([^"]*)"' % attr,
+                          src):
+                      target = href.lstrip("/") or "index.html"
+                      if target.endswith("/"):
+                          target += "index.html"
+                      if not os.path.exists(target):
+                          bad.append((page, attr, href))
+          for page, attr, href in bad:
+              print("::error file=%s::%s points at %s, which does not exist" % (page, attr, href))
+          print("broken canonical/hreflang targets: %d" % len(bad))
+          sys.exit(1 if bad else 0)
+          PY

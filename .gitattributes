@@ -1,0 +1,5 @@
+# Git hooks are shell scripts. With core.autocrlf=true (the default on Windows,
+# and what this repo is developed on) they would be checked out with CRLF line
+# endings, and /bin/sh then fails with "bad interpreter: /bin/sh^M" - a hook
+# that silently never runs is worse than no hook, because it looks installed.
+.githooks/* text eol=lf

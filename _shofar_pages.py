@@ -20,10 +20,14 @@ import json
 import re
 from pathlib import Path
 
+# Dollar figures come from the pinned list in _usd.py, the same one js/site.js and
+# the payments Worker price from. The old round(ils/3.117) approximation
+# understated every shofar by $12-$22.
+from _usd import usd_from_ils
+
 SITE = Path(__file__).parent
 CDN = "https://res.cloudinary.com/doesupaf9/image/upload"
 BASE = "https://shermanartworks.com"
-USD_RATE = 3.117  # keep in step with the static "≈ $" figures in shofars.html
 COLOR_NOTE = "* Colors and measurements may appear slightly different in person, as each item is handmade."
 
 # Minimum price per size ladder - the "from ₪X" on a card, for the no-JS view.
@@ -113,7 +117,7 @@ def static_cards(items):
         <h3 class="product-card-name">{html.escape(p["name_en"])}</h3>
         <p class="product-card-desc">{html.escape(p["description_en"])}</p>
         <div class="product-card-meta">
-          <span class="product-card-price">from &#8362;{ils:,} <span class="product-card-price-alt">≈ ${round(ils / USD_RATE)}</span></span>
+          <span class="product-card-price">from &#8362;{ils:,} <span class="product-card-price-alt">≈ ${usd_from_ils(ils)}</span></span>
         </div>
         <p class="product-color-note">{COLOR_NOTE}</p>
       </div>
