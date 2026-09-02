@@ -796,7 +796,11 @@ def build(cat, kind, cfg, source, items):
     # Runtime translations must match the subcategory page rather than reset it
     # to the landing-page copy when setLang() runs.
     for key, en_value, he_value in overrides:
-        matches = list(re.finditer(rf"({key}:\s+)'[^']*'", out))
+        # The value pattern has to tolerate escaped apostrophes: privacy.html
+        # carries "our payment provider\\'s own hosted page", and a naive
+        # '[^']*' stops at that escape, replacing half a string and leaving
+        # the rest as loose JS - which is exactly how that page broke.
+        matches = list(re.finditer(rf"({key}:\s+)'(?:\\.|[^'\\])*'", out))
         if len(matches) != 2:
             raise RuntimeError(f"{cfg['file']} {key}: expected two language values")
         for match, value in reversed(list(zip(matches, (en_value, he_value)))):
