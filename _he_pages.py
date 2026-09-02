@@ -884,8 +884,13 @@ def patch_category_navigation():
                 continue
 
             # A sub-link belongs to the category above it, so Havdalah waits
-            # until the Kiddush Cups group has been written out in full.
-            if pending_havdalah and 'class="mobile-shop-sub"' not in line:
+            # until the Kiddush Cups group has been written out in full. It has
+            # to wait for THAT group only: Havdalah's own sub-links follow next,
+            # and treating them as something to wait for parked the parent link
+            # underneath its own children.
+            kiddush_sub = ('class="mobile-shop-sub"' in line
+                           and 'href="kiddush-cups-' in line)
+            if pending_havdalah and not kiddush_sub:
                 out.append(pending_havdalah)
                 pending_havdalah = None
 
