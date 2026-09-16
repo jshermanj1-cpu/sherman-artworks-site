@@ -1,7 +1,8 @@
 # robots.txt - shermanartworks.com
-# Internal tools (product-builder, sales-dashboard, pricing-calculator) are
-# blocked for every crawler. Because a bot with its own User-agent group
-# ignores the "*" group, the same Disallow rules are repeated in each group.
+# Internal tools (product-builder, sales-dashboard, pricing-calculator) and the
+# private custom-quote page are blocked for every crawler. Because a bot with its
+# own User-agent group ignores the "*" group, the same Disallow rules are repeated
+# in each group.
 
 # --- Search + AI-search crawlers: explicitly welcomed ---
 # Grouped together so being cited in AI answers is never left to a default.
@@ -21,6 +22,7 @@ User-agent: CCBot
 Disallow: /product-builder.html
 Disallow: /sales-dashboard.html
 Disallow: /pricing-calculator.html
+Disallow: /quote.html
 Allow: /
 
 # --- Everyone else ---
@@ -28,6 +30,7 @@ User-agent: *
 Disallow: /product-builder.html
 Disallow: /sales-dashboard.html
 Disallow: /pricing-calculator.html
+Disallow: /quote.html
 Allow: /
 
 Sitemap: https://shermanartworks.com/sitemap.xml

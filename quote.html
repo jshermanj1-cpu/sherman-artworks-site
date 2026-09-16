@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Your Custom Order - Sherman Art Works | Handmade Glass Judaica</title>
+  <meta name="description" content="A piece made to order for you in our studio in Israel. Review the details and order securely." />
+  <meta name="robots" content="noindex, nofollow" />
+  <!-- The link is the only key to a quote, so the page never hands its own URL
+       to the image, font or chat hosts it loads from or links to. -->
+  <meta name="referrer" content="same-origin" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Sherman Art Works" />
+  <meta property="og:title" content="Your custom order | ההזמנה האישית שלכם" />
+  <meta property="og:description" content="Handmade to order in our studio in Israel. Open the link to see the details and order." />
+  <meta property="og:image" content="https://res.cloudinary.com/doesupaf9/image/upload/w_1200,h_630,c_pad,b_rgb:faf7f2,q_auto,f_auto/Large_glass_clear_green_bowl_tree_background_g2wb8u.jpg" />
+
+  <link rel="icon" type="image/png" sizes="32x32" href="https://res.cloudinary.com/doesupaf9/image/upload/w_32,h_32,c_fill,g_auto,q_auto,f_png/WhatsApp_Image_2026-05-23_at_14.51.54_xv8lbd.jpg" />
+  <link rel="icon" type="image/png" sizes="16x16" href="https://res.cloudinary.com/doesupaf9/image/upload/w_16,h_16,c_fill,g_auto,q_auto,f_png/WhatsApp_Image_2026-05-23_at_14.51.54_xv8lbd.jpg" />
+  <link rel="apple-touch-icon" sizes="180x180" href="https://res.cloudinary.com/doesupaf9/image/upload/w_180,h_180,c_fill,g_auto,q_auto,f_png/WhatsApp_Image_2026-05-23_at_14.51.54_xv8lbd.jpg" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/site.css?v=20260902b" />
+  <link rel="stylesheet" href="css/cart.css?v=20260901a" />
+
+  <script>
+    // The link carries the language the order was agreed in. It decides the
+    // first render only, and then comes off the address bar, so a later switch
+    // of language on this page is the one that sticks on reload.
+    (function () {
+      try {
+        var params = new URLSearchParams(location.search);
+        var lang = params.get('lang');
+        if (lang !== 'he' && lang !== 'en') return;
+        window.__SA_LANG = lang;
+        document.documentElement.lang = lang;
+        document.documentElement.dir = lang === 'he' ? 'rtl' : 'ltr';
+        params.delete('lang');
+        history.replaceState(null, '', location.pathname + '?' + params.toString() + location.hash);
+      } catch (e) {}
+    })();
+  </script>
+
+  <style>
+    .quote-section { max-width: 980px; margin: 0 auto; padding: 2.5rem 1.25rem 5rem; }
+    .quote-loading { text-align: center; color: var(--footer-text); padding: 3rem 0; }
+
+    .quote-card { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 2.5rem; align-items: start; }
+    .quote-card.no-photo { grid-template-columns: minmax(0, 1fr); max-width: 620px; margin: 0 auto; }
+    @media (max-width: 760px) {
+      .quote-card { grid-template-columns: minmax(0, 1fr); gap: 1.5rem; }
+    }
+
+    .quote-gallery-main { aspect-ratio: 1 / 1; background: #fff; border: 1px solid var(--border); border-radius: 10px; overflow: hidden; }
+    .quote-gallery-main img { width: 100%; height: 100%; object-fit: contain; display: block; }
+    .quote-thumbs { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 0.75rem; }
+    .quote-thumb { width: 64px; height: 64px; padding: 0; border: 1px solid var(--border); border-radius: 6px; overflow: hidden; background: #fff; cursor: pointer; }
+    .quote-thumb[aria-current="true"] { border-color: var(--gold); box-shadow: 0 0 0 2px var(--gold); }
+    .quote-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+    .quote-eyebrow { font-size: var(--fs-xs); letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold-text); font-weight: 700; margin: 0 0 0.5rem; }
+    .quote-title { font-size: var(--fs-xl); line-height: 1.3; color: var(--dark); margin: 0 0 0.35rem; }
+    .quote-ref { font-size: var(--fs-xs); color: var(--brown); margin: 0 0 1.5rem; letter-spacing: 0.04em; }
+    .quote-block-title { font-size: var(--fs-sm); font-weight: 700; color: var(--dark); margin: 0 0 0.5rem; }
+    .quote-spec { list-style: none; margin: 0 0 1.5rem; padding: 0; }
+    .quote-spec li { position: relative; padding-inline-start: 1.1rem; margin-bottom: 0.4rem; color: var(--brown); line-height: 1.6; }
+    .quote-spec li::before { content: ''; position: absolute; inset-inline-start: 0; top: 0.7em; width: 6px; height: 6px; border-radius: 50%; background: var(--gold); }
+
+    .quote-prices { border-top: 1px solid var(--border); margin-bottom: 1.25rem; }
+    .quote-price-row { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; padding: 0.65rem 0; border-bottom: 1px solid var(--border); color: var(--brown); font-size: var(--fs-sm); }
+    .quote-price-row.total { color: var(--dark); font-weight: 700; font-size: var(--fs-lg); }
+    .quote-price-row span:last-child { text-align: end; }
+
+    .quote-actions { display: grid; gap: 0.6rem; margin-bottom: 1.1rem; }
+    .quote-secondary-btn { display: flex; align-items: center; justify-content: center; gap: 0.5rem; width: 100%; padding: 0.85rem 1rem; background: transparent; color: var(--dark); border: 1px solid var(--dark); border-radius: 8px; font-family: var(--ff-body); font-size: 0.95rem; font-weight: 700; cursor: pointer; transition: background 0.2s, color 0.2s; }
+    .quote-secondary-btn:hover { background: var(--dark); color: #fff; }
+    .quote-in-cart { font-size: 0.85rem; color: var(--gold-text); margin: 0 0 0.6rem; }
+    .quote-note { font-size: 0.82rem; color: var(--brown); line-height: 1.65; margin: 0 0 0.6rem; }
+    .quote-note a { color: var(--gold-text); text-decoration: underline; }
+
+    .quote-paid-banner { background: #eef7ee; border: 1px solid #b9d8b9; color: #2f5d2f; border-radius: 8px; padding: 0.9rem 1rem; margin-bottom: 1.5rem; line-height: 1.6; }
+    .quote-paid-banner strong { display: block; margin-bottom: 0.15rem; }
+
+    .quote-state { max-width: 560px; margin: 0 auto; text-align: center; padding: 1rem 0 2rem; }
+    .quote-state h2 { font-size: var(--fs-xl); color: var(--dark); margin: 0 0 0.6rem; }
+    .quote-state p { color: var(--brown); margin: 0 0 1.5rem; line-height: 1.7; }
+    .quote-state .quote-secondary-btn { max-width: 320px; margin: 0 auto 0.75rem; }
+    .quote-state .checkout-wa-btn { max-width: 320px; margin: 0 auto; }
+  </style>
+</head>
+
+<body>
+
+<div class="shipping-banner" data-t="shipping_banner" role="note">✦  Custom Orders Are Welcome  ✦</div>
+
+<div class="top-bar">
+  <div class="top-bar-group">
+    <button id="btnEN" class="toggle-btn" onclick="setLang('en')">EN</button>
+    <span class="top-divider">|</span>
+    <button id="btnHE" class="toggle-btn" onclick="setLang('he')">עברית</button>
+  </div>
+  <!-- The currency toggle belongs here more than anywhere: this is the page where
+       somebody decides whether a price is one they want to pay. It used to exist
+       only on the shop pages, so a shopper who reached the checkout had no way to
+       change currency without going back. "Handcrafted in Israel" moves into the
+       footer's territory rather than occupying the one useful control slot. -->
+  <div class="top-bar-group">
+    <button id="btnILS" class="toggle-btn" onclick="setCurrency('ILS')">₪ ILS</button>
+    <span class="top-divider">|</span>
+    <button id="btnUSD" class="toggle-btn" onclick="setCurrency('USD')">$ USD</button>
+    <span id="rateNote"></span>
+  </div>
+</div>
+
+<div class="nav-wrap">
+  <nav>
+    <a href="index.html" class="logo" aria-label="Sherman Art Works">
+      <img class="logo-mark" src="https://res.cloudinary.com/doesupaf9/image/upload/h_84,c_fit,q_auto,f_auto/WhatsApp_Image_2026-05-23_at_14.51.54_xv8lbd.jpg" alt="Sherman Art Works logo" width="71" height="84" />
+      <div class="logo-text">
+        <span class="logo-name">Sherman Art Works</span>
+        <span class="logo-sub">Handcrafted Glass &amp; Judaica</span>
+      </div>
+    </a>
+    <ul class="nav-links" role="list">
+      <li class="nav-dropdown">
+        <button type="button" class="nav-dropdown-toggle" aria-expanded="false" aria-haspopup="true" onclick="toggleShopDropdown(event)">
+          <span data-t="nav_shop">Shop</span>
+          <svg class="nav-dropdown-caret" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 4.5 L6 7.5 L9 4.5" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="nav-dropdown-menu" role="menu">
+          <a href="candlesticks.html" role="menuitem" data-t="cat1_title">Candlesticks</a>
+          <a href="horn-goblets.html" role="menuitem" data-t="cat2_title">Horn Goblets</a>
+          <a href="kiddush-cups.html" role="menuitem" data-t="cat3_title">Kiddush Cups</a>
+          <a href="havdalah-sets.html" role="menuitem" data-t="cat8_title">Havdalah Sets</a>
+          <a href="trays-bowls.html" role="menuitem" data-t="cat4_title">Trays &amp; Bowls</a>
+          <a href="business-gifts.html" role="menuitem" data-t="cat5_title">Business Gifts</a>
+          <a href="mezuzahs.html" role="menuitem" data-t="cat6_title">Mezuzahs</a>
+          <a href="shofars.html" role="menuitem" data-t="cat7_title">Shofars</a>
+          <div class="nav-dropdown-divider" role="separator"></div>
+          <a href="gold-collection.html" role="menuitem" data-t="gold_rail_nav">The Gold Collection <span class="nav-dropdown-badge">New</span></a>
+          <a href="index.html#shop" role="menuitem" class="nav-dropdown-all" data-t="footer_all_collections">All Collections</a>
+        </div>
+      </li>
+      <li><a href="custom-orders.html" data-t="nav_custom">Custom Orders</a></li>
+      <li><a href="about.html"         data-t="nav_about">About</a></li>
+      <li><a href="contact.html"       data-t="nav_contact">Contact</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false" onclick="toggleNav()">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+  <div class="mobile-nav" id="mobileNav" aria-hidden="true">
+    <ul role="list">
+      <li class="mobile-shop">
+        <button type="button" class="mobile-shop-toggle" aria-expanded="true" aria-haspopup="true" onclick="toggleMobileShop(event)">
+          <span data-t="nav_shop">Shop</span>
+          <svg viewBox="0 0 12 12" aria-hidden="true"><path d="M3 4.5 L6 7.5 L9 4.5" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="mobile-shop-menu open">
+          <a href="candlesticks.html" onclick="closeMobileNav()" data-t="cat1_title">Candlesticks</a>
+          <a href="candlesticks-silver-plated.html" class="mobile-shop-sub" onclick="closeMobileNav()" data-t="switch_candles_silver">925 Silver-Plated Candlesticks</a>
+          <a href="candlesticks-gold-plated.html" class="mobile-shop-sub" onclick="closeMobileNav()" data-t="switch_candles_gold">Gold-Plated Candlesticks</a>
+          <a href="candlesticks-artisanal.html" class="mobile-shop-sub" onclick="closeMobileNav()" data-t="switch_candles_artisanal">Artisanal Candlesticks</a>
+          <a href="horn-goblets.html" onclick="closeMobileNav()" data-t="cat2_title">Horn Goblets</a>
+          <a href="kiddush-cups.html" onclick="closeMobileNav()" data-t="cat3_title">Kiddush Cups</a>
+          <a href="kiddush-cups-silver-plated.html" class="mobile-shop-sub" onclick="closeMobileNav()" data-t="switch_cups_silver">925 Silver-Plated Kiddush Cups</a>
+          <a href="kiddush-cups-gold-plated.html" class="mobile-shop-sub" onclick="closeMobileNav()" data-t="switch_cups_gold">Gold-Plated Kiddush Cups</a>
+          <a href="havdalah-sets.html" onclick="closeMobileNav()" data-t="cat8_title">Havdalah Sets</a>
+          <a href="havdalah-sets-silver-plated.html" class="mobile-shop-sub" onclick="closeMobileNav()" data-t="switch_havdalah_silver">925 Silver-Plated Havdalah Sets</a>
+          <a href="havdalah-sets-gold-plated.html" class="mobile-shop-sub" onclick="closeMobileNav()" data-t="switch_havdalah_gold">Gold-Plated Havdalah Sets</a>
+          <a href="trays-bowls.html" onclick="closeMobileNav()" data-t="cat4_title">Trays &amp; Bowls</a>
+          <a href="business-gifts.html" onclick="closeMobileNav()" data-t="cat5_title">Business Gifts</a>
+          <a href="mezuzahs.html" onclick="closeMobileNav()" data-t="cat6_title">Mezuzahs</a>
+          <a href="shofars.html" onclick="closeMobileNav()" data-t="cat7_title">Shofars</a>
+          <a href="shofars-custom.html" class="mobile-shop-sub" onclick="closeMobileNav()" data-t="switch_custom">Custom</a>
+          <a href="shofars-rams.html" class="mobile-shop-sub" onclick="closeMobileNav()" data-t="switch_rams">Ram's Horn</a>
+          <a href="shofars-kudu.html" class="mobile-shop-sub" onclick="closeMobileNav()" data-t="switch_kudu">Kudu Horn</a>
+          <a href="gold-collection.html" onclick="closeMobileNav()" data-t="gold_rail_nav">The Gold Collection <span class="nav-dropdown-badge">New</span></a>
+          <a href="index.html#shop" onclick="closeMobileNav()" class="mobile-shop-all" data-t="footer_all_collections">All Collections</a>
+        </div>
+      </li>
+      <li><a href="custom-orders.html" onclick="closeMobileNav()" data-t="nav_custom">Custom Orders</a></li>
+      <li><a href="about.html"         onclick="closeMobileNav()" data-t="nav_about">About</a></li>
+      <li><a href="contact.html"       onclick="closeMobileNav()" data-t="nav_contact">Contact</a></li>
+    </ul>
+  </div>
+</div>
+
+<section class="page-hero">
+  <div class="page-hero-inner">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="custom-orders.html" data-t="nav_custom">Custom Orders</a>
+      <span class="breadcrumb-sep">·</span>
+      <span data-t="bc_current">Your Custom Order</span>
+    </nav>
+    <h1 class="page-headline" data-t="hero_headline">Your Custom Order</h1>
+  </div>
+</section>
+
+<section class="quote-section">
+  <div id="quote-root" aria-live="polite">
+    <p class="quote-loading" data-t="quote_loading">Loading your order...</p>
+  </div>
+</section>
+
+<section class="trust-strip" aria-label="Why order from Sherman Art Works">
+  <div class="trust-strip-inner">
+    <div class="trust-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8L12 3z"/></svg>
+      <span data-t="trust_handcrafted">Handcrafted in Israel</span>
+    </div>
+    <div class="trust-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="7" cy="10" r="2.4"/><circle cx="17" cy="10" r="2.4"/><circle cx="12" cy="7.5" r="2.8"/><path d="M4 19c1.6-2.8 4.2-4.2 8-4.2s6.4 1.4 8 4.2"/></svg>
+      <span data-t="trust_generations">Three generations of artisans</span>
+    </div>
+    <div class="trust-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.2"/><path d="M3.8 12h16.4"/><path d="M12 3.8c2.7 2.4 4.1 5.1 4.1 8.2s-1.4 5.8-4.1 8.2c-2.7-2.4-4.1-5.1-4.1-8.2s1.4-5.8 4.1-8.2z"/></svg>
+      <span data-t="trust_shipping">Ships worldwide</span>
+    </div>
+    <div class="trust-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 3v5c0 4.4-2.9 8-7 10-4.1-2-7-5.6-7-10V6l7-3z"/><path d="M9 11.5l2.2 2.2 4.3-4.2"/></svg>
+      <span data-t="trust_secure">Secure ordering</span>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <a href="index.html" class="logo" aria-label="Sherman Art Works">
+          <img class="logo-mark" src="https://res.cloudinary.com/doesupaf9/image/upload/h_84,c_fit,q_auto,f_auto/WhatsApp_Image_2026-05-23_at_14.51.54_xv8lbd.jpg" alt="Sherman Art Works logo" width="71" height="84" loading="lazy" />
+          <div class="logo-text">
+            <span class="logo-name">Sherman Art Works</span>
+            <span class="logo-sub">Handcrafted Glass &amp; Judaica</span>
+          </div>
+        </a>
+        <p class="footer-tagline" data-t="footer_tagline">Handmade glass art &amp; Judaica from Israel</p>
+        <p class="footer-email"><a href="mailto:shermanartworks@gmail.com">shermanartworks@gmail.com</a></p>
+        <div class="social-links">
+          <a href="https://www.instagram.com/shermanartworks" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Instagram">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title" data-t="footer_col_shop">Shop</div>
+        <ul class="footer-links" role="list">
+          <li><a href="candlesticks.html"     data-t="footer_link_candles">Candlesticks</a></li>
+          <li><a href="horn-goblets.html"  data-t="footer_link_shofars">Horn Goblets</a></li>
+          <li><a href="trays-bowls.html"      data-t="footer_link_bowls">Trays &amp; Bowls</a></li>
+          <li><a href="havdalah-sets.html"      data-t="cat8_title">Havdalah Sets</a></li>
+          <li><a href="index.html#shop"       data-t="footer_all_collections">All Collections</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title" data-t="footer_col_studio">Studio</div>
+        <ul class="footer-links" role="list">
+          <li><a href="about.html"         data-t="nav_about">About</a></li>
+          <li><a href="custom-orders.html" data-t="nav_custom">Custom Orders</a></li>
+          <li><a href="contact.html"       data-t="nav_contact">Contact</a></li>
+          <li><a href="privacy.html" data-t="nav_privacy">Privacy Policy</a></li>
+          <li><a href="terms.html" data-t="nav_terms">Terms of Service</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title" data-t="footer_col_help">Help</div>
+        <ul class="footer-links" role="list">
+          <li><a href="faq.html" data-t="nav_faq">FAQ</a></li>
+          <li><a href="accessibility.html" data-t="nav_accessibility">Accessibility Statement</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span data-t="footer_copy">© 2026 Sherman Art Works. All rights reserved.</span>
+      <span class="footer-badge">✦ <span data-t="footer_badge">Handcrafted in Israel</span></span>
+    </div>
+  </div>
+</footer>
+
+<a id="floatingWa" href="https://wa.me/972523482278?text=Hi%2C%20I%20have%20a%20question%20about%20Sherman%20Art%20Works." target="_blank" rel="noopener noreferrer" class="floating-wa" aria-label="Chat on WhatsApp" title="Chat on WhatsApp"><svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
+
+<script src="js/site.js?v=20260902b"></script>
+<script src="js/cart.js?v=20260916a"></script>
+<script>
+  const T_PAGE = {
+    en: {
+      topbar_right:   'Handcrafted in Israel',
+      bc_current:     'Your Custom Order',
+      hero_headline:  'Your Custom Order',
+      quote_loading:  'Loading your order...',
+      quote_eyebrow:  'Made to order for you',
+      quote_ref:      'Reference',
+      quote_details:  'Details',
+      quote_price:    'Price',
+      quote_price_each: 'Price per item',
+      quote_qty:      'Quantity',
+      quote_total:    'Total',
+      quote_photo:    'Photo',
+      quote_checkout: 'Continue to checkout',
+      quote_add_cart: 'Add to cart and keep shopping',
+      quote_view_cart: 'View cart',
+      quote_in_cart:  'This order is in your cart.',
+      quote_shipping_note: 'Shipping is added at checkout: ₪35 in Israel, $45 international.',
+      quote_made_to_order: 'This piece is made especially for you to the details above, so it cannot be cancelled, returned or exchanged for a change of mind, unless it arrives defective or materially different from what is described here.',
+      quote_terms_link: 'Terms of Service',
+      quote_valid_until: 'This offer is valid until {date}.',
+      quote_question: 'Have a question about it?',
+      quote_whatsapp: 'Ask us on WhatsApp',
+      quote_paid_title: 'This order has been paid',
+      quote_paid_body:  'Thank you. Your piece is with us in the studio, and the details you ordered are below.',
+      quote_expired_title: 'This offer has expired',
+      quote_expired_body:  'Custom quotes are held for a limited time. Message us and we will be happy to renew it.',
+      quote_cancelled_title: 'This offer is no longer available',
+      quote_cancelled_body:  'It may have been replaced by an updated one. Message us and we will send you the current link.',
+      quote_missing_title: 'We could not find this order',
+      quote_missing_body:  'Please check that the link was copied in full, or message us and we will send it again.',
+      quote_error_title: 'We could not load this order just now',
+      quote_error_body:  'Please try again in a moment, or message us on WhatsApp.',
+      quote_retry:    'Try again',
+      quote_wa_msg:   'Hi, I have a question about my custom order {ref}.',
+      footer_tagline:        'Handmade glass art & Judaica from Israel',
+      footer_col_shop:       'Shop',
+      footer_col_studio:     'Studio',
+      footer_link_candles:   'Candlesticks',
+      footer_link_shofars:   'Horn Goblets',
+      footer_link_bowls:     'Trays & Bowls',
+      footer_all_collections:'All Collections',
+      footer_copy:           '© 2026 Sherman Art Works. All rights reserved.',
+      footer_badge:          'Handcrafted in Israel',
+    },
+    he: {
+      topbar_right:   'עבודת יד מישראל',
+      bc_current:     'ההזמנה האישית שלכם',
+      hero_headline:  'ההזמנה האישית שלכם',
+      quote_loading:  'טוענים את ההזמנה...',
+      quote_eyebrow:  'מיוצר במיוחד עבורכם',
+      quote_ref:      'מספר הצעה',
+      quote_details:  'פרטים',
+      quote_price:    'מחיר',
+      quote_price_each: 'מחיר ליחידה',
+      quote_qty:      'כמות',
+      quote_total:    'סה"כ',
+      quote_photo:    'תמונה',
+      quote_checkout: 'המשך לתשלום',
+      quote_add_cart: 'הוספה לעגלה והמשך קנייה',
+      quote_view_cart: 'לעגלה',
+      quote_in_cart:  'ההזמנה נמצאת בעגלה שלכם.',
+      quote_shipping_note: 'דמי המשלוח מתווספים בתשלום: 35 ₪ בארץ, $45 למשלוח בינלאומי.',
+      quote_made_to_order: 'הפריט מיוצר במיוחד עבורכם לפי הפרטים שלמעלה, ולכן לא ניתן לבטל, להחזיר או להחליף אותו בשל שינוי דעה, אלא אם הגיע פגום או שונה מהותית ממה שמתואר כאן.',
+      quote_terms_link: 'תקנון האתר',
+      quote_valid_until: 'ההצעה בתוקף עד {date}.',
+      quote_question: 'יש לכם שאלה?',
+      quote_whatsapp: 'כתבו לנו ב-WhatsApp',
+      quote_paid_title: 'ההזמנה שולמה',
+      quote_paid_body:  'תודה! הפריט שלכם נמצא אצלנו בסטודיו, והפרטים שהזמנתם מופיעים למטה.',
+      quote_expired_title: 'תוקף ההצעה פג',
+      quote_expired_body:  'הצעות מחיר להזמנות אישיות נשמרות לזמן מוגבל. כתבו לנו ונשמח לחדש אותה.',
+      quote_cancelled_title: 'ההצעה כבר אינה זמינה',
+      quote_cancelled_body:  'ייתכן שהוחלפה בהצעה מעודכנת. כתבו לנו ונשלח לכם את הקישור העדכני.',
+      quote_missing_title: 'לא מצאנו את ההזמנה',
+      quote_missing_body:  'בדקו שהקישור הועתק במלואו, או כתבו לנו ונשלח אותו שוב.',
+      quote_error_title: 'לא הצלחנו לטעון את ההזמנה כרגע',
+      quote_error_body:  'נסו שוב בעוד רגע, או כתבו לנו ב-WhatsApp.',
+      quote_retry:    'נסו שוב',
+      quote_wa_msg:   'שלום, יש לי שאלה לגבי ההזמנה האישית שלי {ref}.',
+      footer_tagline:        'אמנות זכוכית ויודאיקה בעבודת יד מישראל',
+      footer_col_shop:       'חנות',
+      footer_col_studio:     'הסטודיו',
+      footer_link_candles:   'פמוטים',
+      footer_link_shofars:   'גביעי קרן',
+      footer_link_bowls:     'מגשים וקערות',
+      footer_all_collections:'כל הקולקציות',
+      footer_copy:           '© 2026 שרמן ארט וורקס. כל הזכויות שמורות.',
+      footer_badge:          'עבודת יד מישראל',
+    }
+  };
+
+  // The quote id from the link. Only its shape is checked here; whether it is a
+  // real, payable quote is the payments Worker's call.
+  var QUOTE_ID = (function () {
+    try { return (new URLSearchParams(location.search).get('q') || '').trim().toLowerCase(); }
+    catch (e) { return ''; }
+  })();
+  var QUOTE_REF = 'Q-' + QUOTE_ID.toUpperCase();
+
+  var _quote = null;
+  var _quoteStatus = 'loading';   // loading | ready | missing | error
+  var _photoIdx = 0;
+
+  function _qt(key) {
+    var dict = T_PAGE[currentLang] || T_PAGE.en;
+    return dict[key] != null ? dict[key] : (T_PAGE.en[key] || '');
+  }
+
+  // A quote may be written in one language only; it then shows in that language
+  // on both versions of the page rather than showing nothing.
+  function _qPick(q, field) {
+    var he = currentLang === 'he';
+    var mine = q[field + (he ? '_he' : '_en')];
+    var other = q[field + (he ? '_en' : '_he')];
+    return (mine && mine.length) ? mine : other;
+  }
+
+  function _waHref() {
+    return 'https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(_qt('quote_wa_msg').replace('{ref}', QUOTE_REF));
+  }
+
+  // site.js repaints a page's products through this hook on every language and
+  // currency switch. On this page the one product is the quote.
+  function renderProducts() { renderQuote(); }
+
+  function renderQuote() {
+    var root = document.getElementById('quote-root');
+    if (!root || typeof currentLang === 'undefined') return;
+    if (_quoteStatus === 'loading') {
+      root.innerHTML = '<p class="quote-loading">' + escapeHtml(_qt('quote_loading')) + '</p>';
+    } else if (_quoteStatus === 'error') {
+      root.innerHTML = _quoteStateHtml('quote_error_title', 'quote_error_body', null, true);
+    } else if (_quoteStatus === 'missing') {
+      root.innerHTML = _quoteStateHtml('quote_missing_title', 'quote_missing_body');
+    } else if (_quote.state === 'expired') {
+      root.innerHTML = _quoteStateHtml('quote_expired_title', 'quote_expired_body', _quote);
+    } else if (_quote.state === 'cancelled') {
+      root.innerHTML = _quoteStateHtml('quote_cancelled_title', 'quote_cancelled_body', _quote);
+    } else {
+      root.innerHTML = _quoteCardHtml(_quote);
+    }
+  }
+
+  function _quoteStateHtml(titleKey, bodyKey, q, retry) {
+    var name = q ? _qPick(q, 'title') : '';
+    return '<div class="quote-state">' +
+      (name ? '<p class="quote-eyebrow">' + escapeHtml(name) + '</p>' : '') +
+      '<h2>' + escapeHtml(_qt(titleKey)) + '</h2>' +
+      '<p>' + escapeHtml(_qt(bodyKey)) + '</p>' +
+      (retry ? '<button type="button" class="quote-secondary-btn" onclick="loadQuote()">' + escapeHtml(_qt('quote_retry')) + '</button>' : '') +
+      '<a class="checkout-wa-btn" href="' + escapeAttr(_waHref()) + '" target="_blank" rel="noopener noreferrer">' +
+        _WA_SVG + ' ' + escapeHtml(_qt('quote_whatsapp')) +
+      '</a>' +
+    '</div>';
+  }
+
+  function _quoteCardHtml(q) {
+    var isHe = currentLang === 'he';
+    var cur = activeCurrency();
+    var oth = cur === 'ILS' ? 'USD' : 'ILS';
+    var unitIn = function (c) { return c === 'USD' ? q.price_usd : q.price_ils; };
+    var pair = function (amountIn) {
+      return money(amountIn(cur), cur) + ' <span class="cart-price-alt">' + money(amountIn(oth), oth) + '</span>';
+    };
+    var title = _qPick(q, 'title') || '';
+    var spec = _qPick(q, 'spec') || [];
+    var photos = q.photos || [];
+    var paid = q.state === 'paid';
+    var inCart = !paid && cartHasQuote(q.id);
+
+    var gallery = '';
+    if (photos.length) {
+      var idx = Math.min(_photoIdx, photos.length - 1);
+      gallery = '<div class="quote-gallery">' +
+        '<div class="quote-gallery-main"><img src="' + escapeAttr(CDN + '/w_900,h_900,c_limit,q_auto,f_auto/' + photos[idx] + '.jpg') + '" alt="' + escapeAttr(title) + '" /></div>' +
+        (photos.length > 1
+          ? '<div class="quote-thumbs">' + photos.map(function (p, i) {
+              return '<button type="button" class="quote-thumb" aria-current="' + (i === idx) + '" aria-label="' + escapeAttr(_qt('quote_photo') + ' ' + (i + 1)) + '" onclick="showQuotePhoto(' + i + ')">' +
+                '<img src="' + escapeAttr(CDN + '/w_128,h_128,c_fill,g_auto,q_auto,f_auto/' + p + '.jpg') + '" alt="" loading="lazy" />' +
+              '</button>';
+            }).join('') + '</div>'
+          : '') +
+      '</div>';
+    }
+
+    var prices = '<div class="quote-prices">' +
+      (q.qty > 1
+        ? '<div class="quote-price-row"><span>' + escapeHtml(_qt('quote_price_each')) + '</span><span>' + pair(unitIn) + '</span></div>' +
+          '<div class="quote-price-row"><span>' + escapeHtml(_qt('quote_qty')) + '</span><span>' + Number(q.qty) + '</span></div>'
+        : '') +
+      '<div class="quote-price-row total"><span>' + escapeHtml(_qt(q.qty > 1 ? 'quote_total' : 'quote_price')) + '</span>' +
+        '<span>' + pair(function (c) { return unitIn(c) * q.qty; }) + '</span></div>' +
+    '</div>';
+
+    var expires = q.expires_at
+      ? new Date(q.expires_at).toLocaleDateString(isHe ? 'he-IL' : 'en-GB', { day: 'numeric', month: 'long', year: 'numeric' })
+      : '';
+
+    var actions = paid ? '' :
+      (inCart ? '<p class="quote-in-cart">' + escapeHtml(_qt('quote_in_cart')) + '</p>' : '') +
+      '<div class="quote-actions">' +
+        '<button type="button" class="checkout-pay-btn" onclick="quoteCheckout()">' + _LOCK_SVG_SM + ' ' + escapeHtml(_qt('quote_checkout')) + '</button>' +
+        '<button type="button" class="quote-secondary-btn" onclick="quoteAddToCart()">' + escapeHtml(_qt(inCart ? 'quote_view_cart' : 'quote_add_cart')) + '</button>' +
+      '</div>' +
+      '<p class="quote-note">' + escapeHtml(_qt('quote_shipping_note')) + '</p>' +
+      '<p class="quote-note">' + escapeHtml(_qt('quote_made_to_order')) +
+        ' <a href="' + (isHe ? '/he/terms.html' : '/terms.html') + '">' + escapeHtml(_qt('quote_terms_link')) + '</a></p>' +
+      (expires ? '<p class="quote-note">' + escapeHtml(_qt('quote_valid_until').replace('{date}', expires)) + '</p>' : '');
+
+    return '<div class="quote-card' + (photos.length ? '' : ' no-photo') + '">' +
+      gallery +
+      '<div class="quote-info">' +
+        (paid
+          ? '<div class="quote-paid-banner" role="status"><strong>' + escapeHtml(_qt('quote_paid_title')) + '</strong>' + escapeHtml(_qt('quote_paid_body')) + '</div>'
+          : '') +
+        '<p class="quote-eyebrow">' + escapeHtml(_qt('quote_eyebrow')) + '</p>' +
+        '<h2 class="quote-title">' + escapeHtml(title) + '</h2>' +
+        '<p class="quote-ref">' + escapeHtml(_qt('quote_ref')) + ': ' + escapeHtml(q.sku || QUOTE_REF) + '</p>' +
+        (spec.length
+          ? '<h3 class="quote-block-title">' + escapeHtml(_qt('quote_details')) + '</h3>' +
+            '<ul class="quote-spec">' + spec.map(function (s) { return '<li>' + escapeHtml(s) + '</li>'; }).join('') + '</ul>'
+          : '') +
+        prices +
+        actions +
+        '<p class="quote-note">' + escapeHtml(_qt('quote_question')) +
+          ' <a href="' + escapeAttr(_waHref()) + '" target="_blank" rel="noopener noreferrer">' + escapeHtml(_qt('quote_whatsapp')) + '</a></p>' +
+      '</div>' +
+    '</div>';
+  }
+
+  function showQuotePhoto(i) { _photoIdx = i; renderQuote(); }
+
+  function quoteCheckout() {
+    if (!_quote || _quote.state !== 'open') return;
+    addQuoteToCart(_quote, false);
+    location.href = '/checkout.html';
+  }
+
+  // Also the "View cart" button once it is in the cart: adding again only
+  // refreshes the line, and the drawer opens either way.
+  function quoteAddToCart() {
+    if (!_quote || _quote.state !== 'open') return;
+    addQuoteToCart(_quote);
+  }
+
+  function loadQuote() {
+    if (!/^[2-9a-z]{12}$/.test(QUOTE_ID)) {
+      _quoteStatus = 'missing';
+      renderQuote();
+      return;
+    }
+    _quoteStatus = 'loading';
+    renderQuote();
+    fetchQuote(QUOTE_ID).then(function (res) {
+      if (res.failed) {
+        _quoteStatus = 'error';
+      } else if (!res.quote) {
+        _quoteStatus = 'missing';
+        syncQuoteLine(QUOTE_ID, null);
+      } else {
+        _quote = res.quote;
+        _quoteStatus = 'ready';
+        // Keeps a copy already in the cart in step with what this page shows.
+        syncQuoteLine(QUOTE_ID, _quote);
+      }
+      renderQuote();
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', loadQuote);
+  document.addEventListener('sa:cart-change', renderQuote);
+</script>
+
+</body>
+</html>

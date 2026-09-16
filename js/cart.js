@@ -77,7 +77,116 @@ var _SYMBOL_HE = {
   'Shofar Blowing': 'תקיעה בשופר', 'Other': 'אחר', 'No Symbol': 'ללא סמל'
 };
 
+// ── CUSTOM QUOTES ──────────────────────────────────────────────
+// A one-time piece agreed with one customer and priced by hand, sent to them as
+// a quote.html link. In the cart it is a line whose slug is "quote:<id>". The
+// payments Worker prices that line from its own record of the quote, so nothing
+// stored here decides what is charged - the figures below are only what is shown.
+var QUOTE_PREFIX = 'quote:';
+var QUOTE_NOTICE_KEY = 'sa_quote_removed';
+// Shown for a quote that has no photo of its own.
+var QUOTE_FALLBACK_PHOTO = 'WhatsApp_Image_2026-05-23_at_14.51.54_xv8lbd';
+
+function isQuoteItem(item) {
+  return !!(item && typeof item.slug === 'string' && item.slug.indexOf(QUOTE_PREFIX) === 0);
+}
+
+function _quoteId(item) {
+  return isQuoteItem(item) ? item.slug.slice(QUOTE_PREFIX.length) : null;
+}
+
+function _quoteEntry(q) {
+  var slug = QUOTE_PREFIX + q.id;
+  var specEn = (q.spec_en && q.spec_en.length) ? q.spec_en : (q.spec_he || []);
+  var specHe = (q.spec_he && q.spec_he.length) ? q.spec_he : (q.spec_en || []);
+  return {
+    slug: slug, key: slug, sku: q.sku || '', page: null,
+    name_en: q.title_en || q.title_he, name_he: q.title_he || q.title_en,
+    price_ils: q.price_ils, price_usd: q.price_usd,
+    photo: (q.photos && q.photos[0]) || QUOTE_FALLBACK_PHOTO,
+    qty: q.qty,
+    meta: { quote_id: q.sku || '', spec: specEn, spec_he: specHe }
+  };
+}
+
+// Adds a quote, or refreshes it when it is already in the cart. Never adds to
+// the quantity: a quote is an offer for the quantity it was written for, and
+// the Worker refuses any other.
+function addQuoteToCart(q, openDrawer) {
+  var items = getCart();
+  var entry = _quoteEntry(q);
+  var existing = items.find(function (i) { return _cartKey(i) === entry.key; });
+  if (existing) Object.assign(existing, entry);
+  else items.push(entry);
+  _saveCart(items);
+  if (!existing && typeof trackGA4 === 'function') {
+    var gaCur = ga4Currency();
+    var gaVal = cartLineParts(entry, gaCur).sale * entry.qty;
+    trackGA4('add_to_cart', {
+      currency: gaCur, value: gaVal,
+      items: [{ item_id: entry.sku || entry.slug, item_name: entry.name_en, price: cartLineParts(entry, gaCur).sale, quantity: entry.qty }]
+    });
+  }
+  if (openDrawer !== false) openCartDrawer();
+}
+
+function cartHasQuote(id) {
+  return getCart().some(function (i) { return _quoteId(i) === id; });
+}
+
+// Resolves to { quote } (null when the Worker has no such quote) or
+// { failed: true } when it could not be asked.
+function fetchQuote(id) {
+  if (typeof PAYMENT_API === 'undefined' || !PAYMENT_API) return Promise.resolve({ failed: true });
+  return fetch(PAYMENT_API + '/quote?id=' + encodeURIComponent(id))
+    .then(function (r) {
+      if (r.status === 404) return { quote: null };
+      if (!r.ok) return { failed: true };
+      return r.json().then(function (d) { return { quote: (d && d.quote) || null }; });
+    })
+    .catch(function () { return { failed: true }; });
+}
+
+// Brings a cart line in line with the quote as it stands now. A quote can be
+// edited after it went into the cart, and can stop being payable: paid,
+// cancelled or expired. A paid one leaves quietly (it was almost certainly this
+// shopper who paid); the others leave a notice saying why the cart changed.
+function syncQuoteLine(id, q) {
+  var items = getCart();
+  var idx = -1;
+  for (var i = 0; i < items.length; i++) { if (_quoteId(items[i]) === id) { idx = i; break; } }
+  if (idx < 0) return;
+  if (q && q.state === 'open') {
+    var merged = Object.assign({}, items[idx], _quoteEntry(q));
+    // Saving fires sa:cart-change and repaints the page, so only when it differs.
+    if (JSON.stringify(merged) === JSON.stringify(items[idx])) return;
+    items[idx] = merged;
+    _saveCart(items);
+    return;
+  }
+  items.splice(idx, 1);
+  if (!q || q.state !== 'paid') {
+    try { localStorage.setItem(QUOTE_NOTICE_KEY, '1'); } catch (e) {}
+  }
+  _saveCart(items);
+}
+
+// Re-reads every quote in the cart from the Worker. Once per page unless
+// forced, which the checkout does when the Worker has just refused a quote.
+var _quotesRefreshed = false;
+function refreshQuoteLines(force) {
+  if (_quotesRefreshed && !force) return Promise.resolve();
+  _quotesRefreshed = true;
+  var ids = getCart().filter(isQuoteItem).map(_quoteId);
+  return Promise.all(ids.map(function (id) {
+    return fetchQuote(id).then(function (res) {
+      if (!res.failed) syncQuoteLine(id, res.quote);
+    });
+  }));
+}
+
 function _cartItemUrl(item) {
+  if (isQuoteItem(item)) return '/quote.html?q=' + encodeURIComponent(_quoteId(item));
   var page = item.page || _PAGE_BY_SLUG[item.slug] || _shofarFallbackPage(item.slug);
   return page ? page + '#' + item.slug : null;
 }
@@ -221,7 +330,9 @@ function updateCartQty(key, qty) {
   if (qty < 1) { removeFromCart(key); return; }
   var items = getCart();
   var item = items.find(function (i) { return _cartKey(i) === key; });
-  if (item) { item.qty = qty; _saveCart(items); }
+  // A quote's quantity is part of the offer. It has no +/- controls, and this
+  // keeps a stray call from putting a cart into a state the Worker will refuse.
+  if (item && !isQuoteItem(item)) { item.qty = qty; _saveCart(items); }
 }
 
 // Index-based wrappers for onclick handlers - avoids embedding user text
@@ -238,26 +349,44 @@ function updateCartQtyAt(idx, qty) {
 
 function clearCart() { _saveCart([]); }
 
+// Notices about changes the shopper did not make themselves. Both the drawer and
+// the checkout show whatever is pending through this one function.
 function cartPriceUpdateNoticeHtml(isHe) {
-  try {
-    if (localStorage.getItem(CART_PRICE_UPDATE_NOTICE_KEY) !== '1') return '';
-  } catch (e) { return ''; }
-  var message = isHe
-    ? 'מבצע ההשקה הסתיים. המחירים בעגלה השמורה עודכנו למחירי המחירון הנוכחיים.'
-    : 'The launch offer has ended. Prices in your saved cart were updated to the current catalogue prices.';
+  var html = '';
   var dismiss = isHe ? 'הבנתי' : 'OK';
-  return '<div class="cart-price-update-notice" role="status">' +
+  try {
+    if (localStorage.getItem(CART_PRICE_UPDATE_NOTICE_KEY) === '1') {
+      html += _cartNoticeHtml(isHe
+        ? 'מבצע ההשקה הסתיים. המחירים בעגלה השמורה עודכנו למחירי המחירון הנוכחיים.'
+        : 'The launch offer has ended. Prices in your saved cart were updated to the current catalogue prices.',
+        dismiss, 'price', 'dismissCartPriceUpdateNotice()');
+    }
+    if (localStorage.getItem(QUOTE_NOTICE_KEY) === '1') {
+      html += _cartNoticeHtml(isHe
+        ? 'הזמנה אישית שהייתה בעגלה כבר אינה זמינה והוסרה. כתבו לנו ב-WhatsApp ונשלח לכם קישור מעודכן.'
+        : 'A custom order in your cart is no longer available and was removed. Message us on WhatsApp and we will send you an updated link.',
+        dismiss, 'quote', 'dismissQuoteNotice()');
+    }
+  } catch (e) { return ''; }
+  return html;
+}
+
+function _cartNoticeHtml(message, dismiss, kind, onclick) {
+  return '<div class="cart-price-update-notice" data-notice="' + kind + '" role="status">' +
     '<span>' + escapeHtml(message) + '</span>' +
-    '<button type="button" class="cart-price-update-dismiss" onclick="dismissCartPriceUpdateNotice()">' +
+    '<button type="button" class="cart-price-update-dismiss" onclick="' + onclick + '">' +
       escapeHtml(dismiss) +
     '</button>' +
   '</div>';
 }
 
-function dismissCartPriceUpdateNotice() {
-  try { localStorage.removeItem(CART_PRICE_UPDATE_NOTICE_KEY); } catch (e) {}
-  document.querySelectorAll('.cart-price-update-notice').forEach(function(el) { el.remove(); });
+function _dismissNotice(key, kind) {
+  try { localStorage.removeItem(key); } catch (e) {}
+  document.querySelectorAll('.cart-price-update-notice[data-notice="' + kind + '"]').forEach(function(el) { el.remove(); });
 }
+
+function dismissCartPriceUpdateNotice() { _dismissNotice(CART_PRICE_UPDATE_NOTICE_KEY, 'price'); }
+function dismissQuoteNotice() { _dismissNotice(QUOTE_NOTICE_KEY, 'quote'); }
 
 function getCartCount() {
   return getCart().reduce(function (s, i) { return s + i.qty; }, 0);
@@ -376,6 +505,14 @@ function getOrderTotal() { return getCartTotal() + getShippingIls(); }
 // item on the shop page, which is the kind of gap shoppers notice and email
 // about.
 function cartLineParts(item, cur) {
+  if (isQuoteItem(item)) {
+    // Agreed by hand, in dollars too when the quote names a dollar price, and
+    // never discounted - the Worker prices it exactly this way.
+    var agreed = cur === 'USD'
+      ? (Number(item.price_usd) || usdFromIls(item.price_ils))
+      : Number(item.price_ils);
+    return { reg: agreed, sale: agreed };
+  }
   var exempt = (item.meta && Number(item.meta.launch_discount_exempt_ils)) || 0;
   var regularIls = item.regular_price_ils || item.price_ils;
   return priceParts(regularIls, exempt, cur);
@@ -610,6 +747,7 @@ function buildCheckoutWaLink() {
         if (item.meta.symbol)  lines.push('   סמל: ' + (item.meta.symbol_he || item.meta.symbol));
         if (item.meta.text)    lines.push('   כיתוב: ' + item.meta.text);
         if (item.meta.comment) lines.push('   הערות: ' + item.meta.comment);
+        _quoteSpec(item, true).forEach(function (s) { lines.push('   - ' + s); });
       }
     });
     lines.push('');
@@ -638,6 +776,7 @@ function buildCheckoutWaLink() {
         if (item.meta.symbol)  lines.push('   Symbol: ' + item.meta.symbol);
         if (item.meta.text)    lines.push('   Inscription: ' + item.meta.text);
         if (item.meta.comment) lines.push('   Comment: ' + item.meta.comment);
+        _quoteSpec(item, false).forEach(function (s) { lines.push('   - ' + s); });
       }
     });
     lines.push('');
@@ -658,10 +797,19 @@ function buildCheckoutWaLink() {
   return 'https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(lines.join('\n'));
 }
 
+// A quote's agreed details, in the shopper's language where it was written in it.
+function _quoteSpec(item, isHe) {
+  if (!isQuoteItem(item)) return [];
+  var m = item.meta || {};
+  var spec = (isHe && m.spec_he && m.spec_he.length) ? m.spec_he : m.spec;
+  return Array.isArray(spec) ? spec : [];
+}
+
 // ── CART DRAWER RENDER ─────────────────────────────────────────
 // Personalisation lines (symbol / inscription / comment) shown under the item name.
 function _cartMetaHtml(item, isHe) {
   var rows = [];
+  if (isQuoteItem(item)) rows.push(isHe ? 'הזמנה אישית' : 'Custom order');
   if (item.sku) rows.push('SKU: ' + escapeHtml(item.sku));
   var m = item.meta || {};
   if (m.color)   rows.push((isHe ? 'צבע: ' : 'Color: ') + escapeHtml(isHe ? (m.color_he || m.color) : m.color));
@@ -685,6 +833,7 @@ function _cartMetaHtml(item, isHe) {
   if (m.symbol)  rows.push((isHe ? 'סמל: ' : 'Symbol: ') + escapeHtml(isHe ? (m.symbol_he || m.symbol) : m.symbol));
   if (m.text)    rows.push((isHe ? 'כיתוב: ' : 'Inscription: ') + escapeHtml(m.text));
   if (m.comment) rows.push((isHe ? 'הערות: ' : 'Comment: ') + escapeHtml(m.comment));
+  _quoteSpec(item, isHe).forEach(function (s) { rows.push('• ' + escapeHtml(s)); });
   if (!rows.length) return '';
   return '<div class="cart-item-meta">' + rows.join('<br>') + '</div>';
 }
@@ -703,7 +852,8 @@ function renderCartDrawer() {
   if (!listEl) return;
 
   if (items.length === 0) {
-    listEl.innerHTML = '<p class="cart-empty">' + (isHe ? 'עגלת הקניות ריקה' : 'Your cart is empty') + '</p>';
+    listEl.innerHTML = cartPriceUpdateNoticeHtml(isHe) +
+      '<p class="cart-empty">' + (isHe ? 'עגלת הקניות ריקה' : 'Your cart is empty') + '</p>';
     if (footerEl) footerEl.style.display = 'none';
     return;
   }
@@ -725,9 +875,11 @@ function renderCartDrawer() {
     ${_cartMetaHtml(item, isHe)}
     <div class="cart-item-price">${priceStr}</div>
     <div class="cart-item-controls">
-      <button class="cart-qty-btn" onclick="updateCartQtyAt(${idx},${item.qty - 1})" aria-label="Decrease">−</button>
+      ${isQuoteItem(item)
+        ? `<span class="cart-qty-val">${isHe ? 'כמות' : 'Qty'} ${item.qty}</span>`
+        : `<button class="cart-qty-btn" onclick="updateCartQtyAt(${idx},${item.qty - 1})" aria-label="Decrease">−</button>
       <span class="cart-qty-val">${item.qty}</span>
-      <button class="cart-qty-btn" onclick="updateCartQtyAt(${idx},${item.qty + 1})" aria-label="Increase">+</button>
+      <button class="cart-qty-btn" onclick="updateCartQtyAt(${idx},${item.qty + 1})" aria-label="Increase">+</button>`}
       <button class="cart-remove-btn" onclick="removeFromCartAt(${idx})" aria-label="Remove">
         <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
       </button>
@@ -902,6 +1054,7 @@ document.addEventListener('DOMContentLoaded', function () {
   }
   updateCartBadge();
   renderCartDrawer();
+  refreshQuoteLines();
 });
 
 document.addEventListener('sa:cart-change', function () {

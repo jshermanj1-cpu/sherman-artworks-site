@@ -210,7 +210,7 @@
 <a id="floatingWa" href="https://wa.me/972523482278?text=Hi%2C%20I%20have%20a%20question%20about%20Sherman%20Art%20Works." target="_blank" rel="noopener noreferrer" class="floating-wa" aria-label="Chat on WhatsApp" title="Chat on WhatsApp"><svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
 
 <script src="js/site.js?v=20260902b"></script>
-<script src="js/cart.js?v=20260902b"></script>
+<script src="js/cart.js?v=20260916a"></script>
 <script>
   const T_PAGE = {
     en: {
@@ -245,6 +245,7 @@
       checkout_pay_missing: 'Please fill in the delivery details highlighted below so we know where to send your order.',
       checkout_pay_failed:  'We could not start the payment just now. Please try again, or send the order on WhatsApp and we will take it from there.',
       checkout_pay_changed: 'The total for this order is {total}. We have updated it above so you can check it. Press Pay by card again to continue with that amount.',
+      checkout_quote_gone:  'A custom order in your cart has changed or is no longer available. We have updated your cart above, so please check it before paying.',
       checkout_pay_or:      'or',
       checkout_addr_required: 'Required to pay by card',
       checkout_wa_btn:      'Order on WhatsApp',
@@ -292,6 +293,7 @@
       checkout_pay_missing: 'נא למלא את פרטי המשלוח המסומנים למטה כדי שנדע לאן לשלוח את ההזמנה.',
       checkout_pay_failed:  'לא הצלחנו להתחיל את התשלום כרגע. אפשר לנסות שוב, או לשלוח את ההזמנה ב-WhatsApp ונמשיך מכאן.',
       checkout_pay_changed: 'הסכום לתשלום עבור הזמנה זו הוא {total}. עדכנו אותו למעלה כדי שתוכלו לבדוק. לחצו שוב על תשלום בכרטיס אשראי כדי להמשיך עם הסכום הזה.',
+      checkout_quote_gone:  'הזמנה אישית בעגלה שלכם השתנתה או שכבר אינה זמינה. עדכנו את העגלה למעלה, אנא בדקו אותה לפני התשלום.',
       checkout_pay_or:      'או',
       checkout_addr_required: 'נדרש לתשלום בכרטיס',
       checkout_wa_btn:      'הזמינו ב-WhatsApp',
@@ -323,7 +325,7 @@
     var actionsEl = document.getElementById('checkout-actions');
 
     if (items.length === 0) {
-      el.innerHTML =
+      el.innerHTML = cartPriceUpdateNoticeHtml(isHe) +
         '<div class="checkout-empty">' +
           '<h2>' + escapeHtml(t.checkout_empty_title) + '</h2>' +
           '<p>' + escapeHtml(t.checkout_empty_body) + '</p>' +
@@ -348,9 +350,12 @@
         '<td class="col-thumb">' + (url ? '<a class="checkout-item-link" href="' + escapeAttr(url) + '" aria-label="' + escapeAttr(name) + '">' + thumbImg + '</a>' : thumbImg) + '</td>' +
         '<td>' + (url ? '<a class="checkout-item-link" href="' + escapeAttr(url) + '">' + escapeHtml(name) + '</a>' : escapeHtml(name)) + metaHtml + '</td>' +
         '<td class="col-qty"><div class="checkout-qty-row">' +
-          '<button class="cart-qty-btn" onclick="updateCartQtyAt(' + idx + ',' + (item.qty - 1) + ');renderCheckout()">−</button>' +
-          '<span class="cart-qty-val">' + item.qty + '</span>' +
-          '<button class="cart-qty-btn" onclick="updateCartQtyAt(' + idx + ',' + (item.qty + 1) + ');renderCheckout()">+</button>' +
+          // A custom quote is an offer for a fixed quantity, so it only has a remove button.
+          (isQuoteItem(item)
+            ? '<span class="cart-qty-val">' + item.qty + '</span>'
+            : '<button class="cart-qty-btn" onclick="updateCartQtyAt(' + idx + ',' + (item.qty - 1) + ');renderCheckout()">−</button>' +
+              '<span class="cart-qty-val">' + item.qty + '</span>' +
+              '<button class="cart-qty-btn" onclick="updateCartQtyAt(' + idx + ',' + (item.qty + 1) + ');renderCheckout()">+</button>') +
           '<button class="cart-remove-btn" onclick="removeFromCartAt(' + idx + ');renderCheckout()" style="margin-left:0.5rem">' +
             '<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>' +
           '</button>' +
@@ -557,6 +562,20 @@
     if (label) label.textContent = t.checkout_pay_btn;
   }
 
+  function _payTotalChanged(data) {
+    var t = T_PAGE[currentLang];
+    // Remember the corrected figure in whichever currency this page is
+    // showing, so the retry is checked against the same one it displays.
+    var corrCur = activeCurrency();
+    var corrUsd = data.total_usd;
+    _payExpectedCurrency = (corrCur === 'USD' && isFinite(corrUsd)) ? 'USD' : 'ILS';
+    _payExpectedTotal = _payExpectedCurrency === 'USD' ? corrUsd : data.total_ils;
+    _payBusy(false);
+    _payError(t.checkout_pay_changed.replace('{total}',
+      _serverAmount(data, 'total_ils', 'total_usd')));
+    _showServerTotals(data);
+  }
+
   function payNow() {
     var t = T_PAGE[currentLang];
     saveShippingAddress();
@@ -617,17 +636,30 @@
         // The catalogue disagrees with what this page displayed. Show the real
         // figure and make the shopper press Pay again, so nobody is sent to a
         // payment page for an amount they were never shown.
-        if (res.data && res.data.error === 'total_changed') {
-          // Remember the corrected figure in whichever currency this page is
-          // showing, so the retry is checked against the same one it displays.
-          var corrCur = activeCurrency();
-          var corrUsd = res.data.total_usd;
-          _payExpectedCurrency = (corrCur === 'USD' && isFinite(corrUsd)) ? 'USD' : 'ILS';
-          _payExpectedTotal = _payExpectedCurrency === 'USD' ? corrUsd : res.data.total_ils;
-          _payBusy(false);
-          _payError(t.checkout_pay_changed.replace('{total}',
-            _serverAmount(res.data, 'total_ils', 'total_usd')));
-          _showServerTotals(res.data);
+        // A custom quote in the cart can be edited, cancelled, paid or expire
+        // after it was added. When the Worker refuses one, or the total moved,
+        // re-read the quotes first: if that changes the cart, the quote is the
+        // explanation and the shopper is asked to look again. The message is set
+        // after the refresh because the refresh repaints this whole section.
+        var data = res.data || {};
+        var hasQuote = getCart().some(isQuoteItem);
+        var quoteRefused = hasQuote && data.error === 'pricing_failed' &&
+          (/quote/.test(data.code || '') || data.code === 'bad_quantity');
+        if (quoteRefused || (hasQuote && data.error === 'total_changed')) {
+          var before = JSON.stringify(getCart());
+          refreshQuoteLines(true).then(function () {
+            if (quoteRefused || JSON.stringify(getCart()) !== before) {
+              _payBusy(false);
+              renderCheckout();
+              _payError(t.checkout_quote_gone);
+            } else {
+              _payTotalChanged(data);
+            }
+          });
+          return;
+        }
+        if (data.error === 'total_changed') {
+          _payTotalChanged(data);
           return;
         }
         if (res.ok && res.data && res.data.payment_url) {
