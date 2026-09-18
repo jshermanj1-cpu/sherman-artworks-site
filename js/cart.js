@@ -444,6 +444,35 @@ function setShipZone(zone) {
   document.dispatchEvent(new CustomEvent('sa:shipping-change', { detail: { zone: zone } }));
 }
 
+// ── COLLECTION FROM THE GALLERY ────────────────────────────────
+// Collecting an order is a different way of receiving it, not a third
+// destination. A collected order is an Israeli order that is simply never
+// posted, so the zone stays IL and everything that reads the zone - the country
+// field, the VAT wording, the currency the card is charged in - goes on working
+// without needing to know this exists.
+var DELIVERY_KEY = 'sa_delivery';
+
+function getDeliveryMethod() {
+  try {
+    if (localStorage.getItem(DELIVERY_KEY) === 'pickup') return 'pickup';
+  } catch (e) {}
+  return 'ship';
+}
+
+function isPickup() { return getDeliveryMethod() === 'pickup'; }
+
+function setDeliveryMethod(method) {
+  var value = method === 'pickup' ? 'pickup' : 'ship';
+  try { localStorage.setItem(DELIVERY_KEY, value); } catch (e) {}
+  // Written straight to the key rather than through setShipZone(), which would
+  // fire a second change event for a zone nobody chose. Forced here rather than
+  // left to the caller so the stored zone cannot drift from the stored method.
+  if (value === 'pickup') { try { localStorage.setItem(SHIP_KEY, 'IL'); } catch (e) {} }
+  document.dispatchEvent(new CustomEvent('sa:shipping-change', {
+    detail: { zone: effectiveShipZone(), delivery: value }
+  }));
+}
+
 // Zone applied before the shopper picks one. Hebrew readers are overwhelmingly
 // domestic, English readers are not. Only ever a pre-selection - the picker on
 // checkout.html always shows which zone is currently charged.
@@ -469,6 +498,7 @@ function _shipCostRate() {
 }
 
 function getShippingIls() {
+  if (isPickup()) return 0;
   if (effectiveShipZone() === 'IL') return SHIPPING.IL.ils;
   return Math.round(SHIPPING.INTL.usd * _shipCostRate());
 }
@@ -478,6 +508,8 @@ function getShippingIls() {
 // catalogue rounding is deliberately NOT used here, because it would turn ₪35 of
 // Israeli shipping into "$15", which is not a figure anybody is charging.
 function getShippingIn(cur) {
+  // Nothing shipped is nothing to charge, and zero is zero in both currencies.
+  if (isPickup()) return 0;
   var zone = effectiveShipZone();
   if (zone === 'IL') {
     return cur === 'ILS'
@@ -487,8 +519,12 @@ function getShippingIn(cur) {
   return cur === 'USD' ? SHIPPING.INTL.usd : getShippingIls();
 }
 
-// The figure as the owner quotes it - "₪35" or "$45".
+// The figure as the owner quotes it - "₪35" or "$45", and "₪0" for an order
+// nobody is posting. Deliberately a zero rather than the word "free": shipping
+// is never waived here, and a collected order is not shipping at all. (Writing
+// that claim out in full, even in a comment, is what _guards.py looks for.)
 function getShippingLabel() {
+  if (isPickup()) return '₪0';
   return effectiveShipZone() === 'IL' ? '₪' + SHIPPING.IL.ils : '$' + SHIPPING.INTL.usd;
 }
 
@@ -725,13 +761,17 @@ function buildCheckoutWaLink() {
   if (items.length === 0) return 'https://wa.me/' + WA_NUMBER;
   var lines;
   var zone = effectiveShipZone();
+  var pickup = isPickup();
   // Address is optional here - whatever the shopper filled in rides along, and
-  // anything missing stays a question for the chat, exactly as before.
+  // anything missing stays a question for the chat, exactly as before. A
+  // collected order sends contact details only: there is no parcel, and a
+  // street address in the message would read as somewhere to post it to.
   var addr = getShippingAddress();
   var addrLabels = l === 'he'
     ? { fname: 'שם פרטי', lname: 'שם משפחה', email: 'אימייל', phone: 'טלפון', street: 'רחוב', city: 'עיר', zip: 'מיקוד', country: 'מדינה' }
     : { fname: 'First name', lname: 'Last name', email: 'Email', phone: 'Phone', street: 'Street', city: 'City', zip: 'Postcode', country: 'Country' };
-  var addrLines = ADDR_FIELDS.filter(function (f) { return addr[f]; })
+  var PICKUP_FIELDS = ['fname', 'lname', 'email', 'phone'];
+  var addrLines = (pickup ? PICKUP_FIELDS : ADDR_FIELDS).filter(function (f) { return addr[f]; })
     .map(function (f) { return '   ' + addrLabels[f] + ': ' + addr[f]; });
   if (l === 'he') {
     lines = ['שלום! אני רוצה להזמין:'];
@@ -754,11 +794,13 @@ function buildCheckoutWaLink() {
     var heSaved = getCartLaunchSavings();
     if (heSaved > 0) lines.push('הנחת השקה 20% הוחלה (-₪' + heSaved.toLocaleString('en-IL') + ')');
     lines.push('סכום ביניים: ' + _waPair(getCartTotalIn));
-    lines.push('משלוח (' + (zone === 'IL' ? 'ישראל' : 'בינלאומי') + '): ' + getShippingLabel());
+    lines.push(pickup
+      ? 'איסוף עצמי מהגלריה (קרני שומרון): ' + getShippingLabel()
+      : 'משלוח (' + (zone === 'IL' ? 'ישראל' : 'בינלאומי') + '): ' + getShippingLabel());
     lines.push('סה"כ: ' + _waPair(getOrderTotalIn));
     if (addrLines.length) {
       lines.push('');
-      lines.push('כתובת למשלוח:');
+      lines.push(pickup ? 'פרטים ליצירת קשר (איסוף עצמי):' : 'כתובת למשלוח:');
       addrLines.forEach(function (a) { lines.push(a); });
     }
     lines.push('');
@@ -784,11 +826,13 @@ function buildCheckoutWaLink() {
     var enSaved = getCartLaunchSavingsIn(enCur);
     if (enSaved > 0) lines.push('Launch 20% discount applied (-' + money(enSaved, enCur) + ')');
     lines.push('Subtotal: ' + _waPair(getCartTotalIn));
-    lines.push('Shipping (' + (zone === 'IL' ? 'Israel' : 'International') + '): ' + getShippingLabel());
+    lines.push(pickup
+      ? 'Pickup at the gallery (Karnei Shomron): ' + getShippingLabel()
+      : 'Shipping (' + (zone === 'IL' ? 'Israel' : 'International') + '): ' + getShippingLabel());
     lines.push('Total: ' + _waPair(getOrderTotalIn));
     if (addrLines.length) {
       lines.push('');
-      lines.push('Shipping address:');
+      lines.push(pickup ? 'Contact details (collecting in person):' : 'Shipping address:');
       addrLines.forEach(function (a) { lines.push(a); });
     }
     lines.push('');
@@ -898,13 +942,18 @@ function renderCartDrawer() {
   if (shipEl) shipEl.textContent = getShippingLabel();
 
   // Name the zone in the label so the shipping figure is never ambiguous about
-  // which destination it is quoting.
+  // which destination it is quoting. A collected order names the gallery instead:
+  // a bare "₪0" against the word "shipping" reads as free delivery.
   var shipLabelEl = document.getElementById('cart-shipping-label');
   if (shipLabelEl) {
-    var zoneName = effectiveShipZone() === 'IL'
-      ? (isHe ? 'ישראל' : 'Israel')
-      : (isHe ? 'בינלאומי' : 'International');
-    shipLabelEl.textContent = (isHe ? 'משלוח' : 'Shipping') + ' · ' + zoneName;
+    if (isPickup()) {
+      shipLabelEl.textContent = isHe ? 'איסוף עצמי · קרני שומרון' : 'Pickup · Karnei Shomron';
+    } else {
+      var zoneName = effectiveShipZone() === 'IL'
+        ? (isHe ? 'ישראל' : 'Israel')
+        : (isHe ? 'בינלאומי' : 'International');
+      shipLabelEl.textContent = (isHe ? 'משלוח' : 'Shipping') + ' · ' + zoneName;
+    }
   }
 
   var waBtn = document.getElementById('cart-wa-checkout');

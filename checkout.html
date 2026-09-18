@@ -16,7 +16,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet" />
 
   <link rel="stylesheet" href="css/site.css?v=20260902b" />
-  <link rel="stylesheet" href="css/cart.css?v=20260901a" />
+  <link rel="stylesheet" href="css/cart.css?v=20260918a" />
 </head>
 <body>
 
@@ -210,7 +210,7 @@
 <a id="floatingWa" href="https://wa.me/972523482278?text=Hi%2C%20I%20have%20a%20question%20about%20Sherman%20Art%20Works." target="_blank" rel="noopener noreferrer" class="floating-wa" aria-label="Chat on WhatsApp" title="Chat on WhatsApp"><svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
 
 <script src="js/site.js?v=20260902b"></script>
-<script src="js/cart.js?v=20260916a"></script>
+<script src="js/cart.js?v=20260918a"></script>
 <script>
   const T_PAGE = {
     en: {
@@ -226,11 +226,16 @@
       checkout_col_price:   'Price',
       checkout_subtotal:    'Subtotal',
       checkout_total:       'Total',
-      checkout_ship_title:  'Shipping destination',
+      checkout_ship_title:  'How you would like it',
       checkout_ship_il:     'Israel',
       checkout_ship_intl:   'International',
       checkout_ship_row:    'Shipping',
+      checkout_ship_pickup: 'Pickup at the gallery',
+      checkout_pickup_row:  'Pickup',
+      checkout_pickup_where:'Karnei Shomron',
+      checkout_pickup_note: 'Collect from our gallery in Karnei Shomron. The full address and opening hours are in your confirmation email, and we will message you as soon as your piece is ready.',
       checkout_addr_title:  'Delivery details',
+      checkout_addr_title_pickup: 'Contact details',
       checkout_addr_fname:  'First name',
       checkout_addr_lname:  'Last name',
       checkout_addr_email:  'Email',
@@ -249,7 +254,7 @@
       checkout_pay_or:      'or',
       checkout_addr_required: 'Required to pay by card',
       checkout_wa_btn:      'Order on WhatsApp',
-      checkout_note:        '✦  Handcrafted in Israel  ·  Made to order, ships within 14 business days  ·  International shipping $45 · Israel ₪35',
+      checkout_note:        '✦  Handcrafted in Israel  ·  Made to order, ships within 14 business days  ·  International shipping $45 · Israel ₪35 · Collect from the gallery ₪0',
       checkout_clear:       'Clear cart',
       footer_tagline:        'Handmade glass art & Judaica from Israel',
       footer_col_shop:       'Shop',
@@ -274,11 +279,16 @@
       checkout_col_price:   'מחיר',
       checkout_subtotal:    'סכום ביניים',
       checkout_total:       'סה"כ',
-      checkout_ship_title:  'יעד המשלוח',
+      checkout_ship_title:  'איך תרצו לקבל את ההזמנה',
       checkout_ship_il:     'ישראל',
       checkout_ship_intl:   'בינלאומי',
       checkout_ship_row:    'משלוח',
+      checkout_ship_pickup: 'איסוף עצמי מהגלריה',
+      checkout_pickup_row:  'איסוף עצמי',
+      checkout_pickup_where:'קרני שומרון',
+      checkout_pickup_note: 'איסוף מהגלריה שלנו בקרני שומרון. הכתובת המלאה ושעות הפתיחה מופיעות במייל אישור ההזמנה, ונעדכן אתכם בהודעה ברגע שהפריט מוכן.',
       checkout_addr_title:  'פרטי משלוח',
+      checkout_addr_title_pickup: 'פרטים ליצירת קשר',
       checkout_addr_fname:  'שם פרטי',
       checkout_addr_lname:  'שם משפחה',
       checkout_addr_email:  'אימייל',
@@ -297,7 +307,7 @@
       checkout_pay_or:      'או',
       checkout_addr_required: 'נדרש לתשלום בכרטיס',
       checkout_wa_btn:      'הזמינו ב-WhatsApp',
-      checkout_note:        '✦  בעבודת יד בישראל  ·  מיוצר לפי הזמנה, נמסר למשלוח תוך 14 ימי עסקים  ·  משלוח בארץ 35 ₪ · בינלאומי $45',
+      checkout_note:        '✦  בעבודת יד בישראל  ·  מיוצר לפי הזמנה, נמסר למשלוח תוך 14 ימי עסקים  ·  משלוח בארץ 35 ₪ · בינלאומי $45 · איסוף עצמי מהגלריה 0 ₪',
       checkout_clear:       'נקה עגלה',
       footer_tagline:        'אמנות זכוכית ויודאיקה בעבודת יד מישראל',
       footer_col_shop:       'חנות',
@@ -365,7 +375,12 @@
     }).join('');
 
     var totalStr = orderTotalHtml();
-    var zoneName = effectiveShipZone() === 'IL' ? t.checkout_ship_il : t.checkout_ship_intl;
+    // A collected order names the gallery rather than a zone. "Shipping · Israel
+    // · ₪0" would read as free delivery, which is not what is on offer.
+    var shipRowLabel = isPickup()
+      ? t.checkout_pickup_row + ' · ' + t.checkout_pickup_where
+      : t.checkout_ship_row + ' · ' +
+        (effectiveShipZone() === 'IL' ? t.checkout_ship_il : t.checkout_ship_intl);
 
     el.innerHTML = cartPriceUpdateNoticeHtml(isHe) +
       '<table class="checkout-table">' +
@@ -382,7 +397,7 @@
         '<span>' + money(getCartTotalIn(cur), cur) + '</span>' +
       '</div>' +
       '<div class="checkout-sub-row">' +
-        '<span>' + escapeHtml(t.checkout_ship_row) + ' · ' + escapeHtml(zoneName) + '</span>' +
+        '<span>' + escapeHtml(shipRowLabel) + '</span>' +
         '<span>' + escapeHtml(getShippingLabel()) + '</span>' +
       '</div>' +
       '<div class="checkout-total-row">' +
@@ -421,15 +436,22 @@
   // Destination picker and the optional address form. Rendered once per language
   // rather than on every cart change, because blowing away the inputs mid-typing
   // would lose whatever the shopper had entered.
+  // Re-rendered on a delivery change as well as a language change, because
+  // collecting asks for a different set of fields. Safe to blow away: the values
+  // are saved first and read back out of `saved` below, so nothing typed is lost.
   var _detailsLang = null;
+  var _detailsDelivery = null;
   function renderCheckoutDetails() {
     var el = document.getElementById('checkout-details');
     if (!el) return;
-    if (_detailsLang === currentLang && el.children.length) return;
+    var delivery = getDeliveryMethod();
+    if (_detailsLang === currentLang && _detailsDelivery === delivery && el.children.length) return;
     var saved = saveShippingAddress();
     _detailsLang = currentLang;
+    _detailsDelivery = delivery;
     var t = T_PAGE[currentLang];
     var zone = effectiveShipZone();
+    var pickup = delivery === 'pickup';
     var payOn = (typeof PAYMENTS_ENABLED !== 'undefined' && PAYMENTS_ENABLED &&
                  typeof PAYMENT_API !== 'undefined' && PAYMENT_API);
 
@@ -446,29 +468,45 @@
       ['country', t.checkout_addr_country, 'text',  'country-name']
     ];
 
+    // Nothing is posted to a collected order, so the four fields that say who is
+    // coming are the whole form. The others are left out of the DOM rather than
+    // hidden, and their values stay in localStorage, so switching back to a
+    // shipped order returns the address the shopper already typed.
+    if (pickup) {
+      fields = fields.filter(function (f) { return PAY_REQUIRED_PICKUP.indexOf(f[0]) > -1; });
+    }
+
     el.innerHTML =
       '<div class="checkout-block">' +
         '<h2 class="checkout-block-title">' + escapeHtml(t.checkout_ship_title) + '</h2>' +
         '<div class="ship-zone-row" role="radiogroup" aria-label="' + escapeAttr(t.checkout_ship_title) + '">' +
           '<label class="ship-zone">' +
-            '<input type="radio" name="shipZone" value="IL"' + (zone === 'IL' ? ' checked' : '') + ' onchange="setShipZone(this.value);syncShipZoneUi()" />' +
+            '<input type="radio" name="shipZone" value="IL"' + (!pickup && zone === 'IL' ? ' checked' : '') + ' onchange="setShipZone(this.value);setDeliveryMethod(\'ship\');syncShipZoneUi()" />' +
             '<span>' + escapeHtml(t.checkout_ship_il) + '</span><span class="ship-zone-price">₪35</span>' +
           '</label>' +
           '<label class="ship-zone">' +
-            '<input type="radio" name="shipZone" value="INTL"' + (zone === 'INTL' ? ' checked' : '') + ' onchange="setShipZone(this.value);syncShipZoneUi()" />' +
+            // Zone first, then the method: the method is what re-renders this
+            // block, and it has to render against the zone just chosen.
+            '<input type="radio" name="shipZone" value="INTL"' + (!pickup && zone === 'INTL' ? ' checked' : '') + ' onchange="setShipZone(this.value);setDeliveryMethod(\'ship\');syncShipZoneUi()" />' +
             '<span>' + escapeHtml(t.checkout_ship_intl) + '</span><span class="ship-zone-price">$45</span>' +
           '</label>' +
+          // Collecting sets the zone to Israel itself, in setDeliveryMethod().
+          '<label class="ship-zone">' +
+            '<input type="radio" name="shipZone" value="PICKUP"' + (pickup ? ' checked' : '') + ' onchange="setDeliveryMethod(\'pickup\');syncShipZoneUi()" />' +
+            '<span>' + escapeHtml(t.checkout_ship_pickup) + '</span><span class="ship-zone-price">₪0</span>' +
+          '</label>' +
         '</div>' +
+        (pickup ? '<p class="ship-zone-note">' + escapeHtml(t.checkout_pickup_note) + '</p>' : '') +
       '</div>' +
       '<div class="checkout-block">' +
-        '<h2 class="checkout-block-title">' + escapeHtml(t.checkout_addr_title) + '</h2>' +
+        '<h2 class="checkout-block-title">' + escapeHtml(pickup ? t.checkout_addr_title_pickup : t.checkout_addr_title) + '</h2>' +
         '<div class="addr-grid">' +
           fields.map(function (f) {
             var id = 'ship-' + f[0];
             // Only flagged as required when card payment is actually available.
             // With WhatsApp as the only route these are genuinely optional, and
             // marking them otherwise would be a lie that adds friction.
-            var req = payOn && PAY_REQUIRED.indexOf(f[0]) > -1;
+            var req = payOn && payRequired().indexOf(f[0]) > -1;
             return '<div class="addr-field' + (f[0] === 'street' ? ' addr-field-wide' : '') + '">' +
               '<label for="' + id + '">' + escapeHtml(f[1]) +
                 (req ? ' <span class="addr-req" title="' + escapeAttr(t.checkout_addr_required) + '">*</span>' : '') +
@@ -491,11 +529,36 @@
   // do not know where the parcel goes. `zip` is deliberately not here - plenty
   // of countries do not use postcodes, and refusing those orders would cost
   // more than a missing postcode does.
-  var PAY_REQUIRED = ['fname', 'lname', 'email', 'phone', 'street', 'city', 'country'];
+  // Nobody is posting a collected order, so the four fields that say who is
+  // coming are the whole list. Asking for a delivery address that will never be
+  // used is friction on the one screen where friction is expensive.
+  var PAY_REQUIRED_SHIP   = ['fname', 'lname', 'email', 'phone', 'street', 'city', 'country'];
+  var PAY_REQUIRED_PICKUP = ['fname', 'lname', 'email', 'phone'];
+
+  function payRequired() {
+    return isPickup() ? PAY_REQUIRED_PICKUP : PAY_REQUIRED_SHIP;
+  }
 
   function _payFieldsMissing() {
     var addr = getShippingAddress();
-    return PAY_REQUIRED.filter(function (f) { return !addr[f]; });
+    return payRequired().filter(function (f) { return !addr[f]; });
+  }
+
+  /**
+   * The address that actually goes on the order.
+   *
+   * getShippingAddress() merges the live inputs over whatever is in
+   * localStorage, so a shopper who once entered a delivery address still has it
+   * stored when they later choose to collect. Sending it would put a street
+   * address on a collected order and the studio email would read as somewhere to
+   * post it to, so a collected order sends only who is coming.
+   */
+  function payAddress() {
+    var addr = getShippingAddress();
+    if (!isPickup()) return addr;
+    var out = { country: 'Israel' };
+    PAY_REQUIRED_PICKUP.forEach(function (f) { if (addr[f]) out[f] = addr[f]; });
+    return out;
   }
 
   function _markMissing(missing) {
@@ -601,9 +664,13 @@
 
     var payload = {
       zone: effectiveShipZone(),
+      // How the order is handed over, not where it goes. The backend forces a
+      // collected order into the Israeli zone itself, so this and `zone` cannot
+      // be talked into disagreeing.
+      delivery: getDeliveryMethod(),
       lang: currentLang,
       currency: payCur,
-      address: getShippingAddress(),
+      address: payAddress(),
       // Not a price we are asking to be charged - the backend ignores it for
       // pricing and only checks it against the catalogue, so that a total which
       // has drifted stops the order instead of quietly charging something else.

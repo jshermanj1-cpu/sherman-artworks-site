@@ -16,7 +16,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet" />
 
   <link rel="stylesheet" href="css/site.css?v=20260902b" />
-  <link rel="stylesheet" href="css/cart.css?v=20260901a" />
+  <link rel="stylesheet" href="css/cart.css?v=20260918a" />
 </head>
 <body>
 
@@ -145,7 +145,7 @@
 </footer>
 
 <script src="js/site.js?v=20260902b"></script>
-<script src="js/cart.js?v=20260916a"></script>
+<script src="js/cart.js?v=20260918a"></script>
 <script>
   const T_PAGE = {
     en: {
@@ -157,6 +157,7 @@
       pay_ok_title:   'Thank you, your order is confirmed',
       pay_ok_body:    'We have received your payment and your order is now in the studio. A confirmation email is on its way.',
       pay_ok_made:    'Every piece is made to order and handed to the shipping company within 14 business days.',
+      pay_ok_made_pickup: 'Every piece is made to order. We will have it ready within 14 business days and message you as soon as it can be collected from the gallery.',
 
       pay_pending_title: 'Thank you, we are confirming your order',
       pay_pending_body:  'Your payment went through. We are finalising the confirmation on our side and will be in touch shortly with the details.',
@@ -180,6 +181,7 @@
       pay_ok_title:   'תודה, ההזמנה אושרה',
       pay_ok_body:    'קיבלנו את התשלום וההזמנה נכנסה לסטודיו. אישור בדוא"ל בדרך אליכם.',
       pay_ok_made:    'כל פריט נוצר לפי הזמנה ונמסר לחברת השילוח בתוך 14 ימי עסקים.',
+      pay_ok_made_pickup: 'כל פריט נוצר לפי הזמנה. נכין אותו בתוך 14 ימי עסקים ונעדכן אתכם בהודעה ברגע שאפשר לאסוף אותו מהגלריה.',
 
       pay_pending_title: 'תודה, אנחנו מאשרים את ההזמנה',
       pay_pending_body:  'התשלום עבר. אנחנו משלימים את האישור אצלנו ונחזור אליכם בהקדם עם הפרטים.',
@@ -255,7 +257,11 @@
       '<div class="payment-icon" aria-hidden="true">' + _payIcon(s[2]) + '</div>' +
       '<h1 class="payment-title">' + escapeHtml(s[0]) + '</h1>' +
       '<p class="payment-body">' + escapeHtml(s[1]) + '</p>' +
-      (_payState === 'ok' ? '<p class="payment-note">' + escapeHtml(t.pay_ok_made) + '</p>' : '') +
+      // A collected order was never going to be posted, so telling somebody it
+      // has been handed to a courier is the wrong promise to end on.
+      (_payState === 'ok' ? '<p class="payment-note">' + escapeHtml(
+        (typeof isPickup === 'function' && isPickup()) ? t.pay_ok_made_pickup : t.pay_ok_made
+      ) + '</p>' : '') +
       meta +
       (actions ? '<div class="payment-actions">' + actions + '</div>' : '');
   }

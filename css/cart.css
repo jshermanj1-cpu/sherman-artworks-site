@@ -553,6 +553,16 @@ html[dir="rtl"] .checkout-table .col-price { text-align: left; }
 .ship-zone input { accent-color: var(--gold); }
 .ship-zone-price { margin-inline-start: auto; font-weight: 700; color: var(--brown); }
 
+/* Shown only when collecting is chosen. The gallery's street address is
+   deliberately not on the site, so this is where the shopper is told that the
+   address and hours arrive with their confirmation rather than here. */
+.ship-zone-note {
+  margin: 0.7rem 0 0;
+  font-size: 0.82rem;
+  line-height: 1.6;
+  color: var(--brown);
+}
+
 .addr-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
