@@ -599,9 +599,11 @@ function orderTotalHtml() {
 // Field names mirror the HYP Pay customer parameters that prefill its hosted
 // page (ClientName, ClientLName, street, city, email, cell) so the shopper is
 // never asked for the same detail twice. `zip` has no HYP equivalent - it is
-// kept because a parcel cannot be posted without one.
+// kept because a parcel cannot be posted without one. `state` has none either,
+// and unlike the rest it stays optional even for a card payment: an Israeli
+// address does not have one, and most of the world's addresses do not either.
 var ADDR_KEY = 'sa_ship_addr';
-var ADDR_FIELDS = ['fname', 'lname', 'email', 'phone', 'street', 'city', 'zip', 'country'];
+var ADDR_FIELDS = ['fname', 'lname', 'email', 'phone', 'street', 'city', 'state', 'zip', 'country'];
 
 function getShippingAddress() {
   var stored = {};
@@ -768,8 +770,8 @@ function buildCheckoutWaLink() {
   // street address in the message would read as somewhere to post it to.
   var addr = getShippingAddress();
   var addrLabels = l === 'he'
-    ? { fname: 'שם פרטי', lname: 'שם משפחה', email: 'אימייל', phone: 'טלפון', street: 'רחוב', city: 'עיר', zip: 'מיקוד', country: 'מדינה' }
-    : { fname: 'First name', lname: 'Last name', email: 'Email', phone: 'Phone', street: 'Street', city: 'City', zip: 'Postcode', country: 'Country' };
+    ? { fname: 'שם פרטי', lname: 'שם משפחה', email: 'אימייל', phone: 'טלפון', street: 'רחוב', city: 'עיר', state: 'מחוז', zip: 'מיקוד', country: 'מדינה' }
+    : { fname: 'First name', lname: 'Last name', email: 'Email', phone: 'Phone', street: 'Street', city: 'City', state: 'State / Province', zip: 'Postcode', country: 'Country' };
   var PICKUP_FIELDS = ['fname', 'lname', 'email', 'phone'];
   var addrLines = (pickup ? PICKUP_FIELDS : ADDR_FIELDS).filter(function (f) { return addr[f]; })
     .map(function (f) { return '   ' + addrLabels[f] + ': ' + addr[f]; });
