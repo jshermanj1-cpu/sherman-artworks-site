@@ -31,29 +31,15 @@ CANDLE_GOLD = "gold-plated-glass-candlesticks"
 TRAY_SILVER = "silver-plated-glass-trays"
 TRAY_GOLD = "gold-plated-glass-trays"
 
-# Shipping, returns and seller are cloned verbatim from the landing pages so a
-# product describes itself identically wherever it is listed. Without these two
-# blocks Google drops the shipping and returns annotations from a merchant
-# listing and reports them as missing fields, which is what the subcategory
-# pages did until now. The rates are the authoritative ones: 35 ILS at home,
-# 45 USD abroad.
-INTL = ["US", "GB", "CA", "AU", "FR", "DE"]
-SHIPPING = [
-    {"@type": "OfferShippingDetails",
-     "shippingRate": {"@type": "MonetaryAmount", "value": 35, "currency": "ILS"},
-     "shippingDestination": {"@type": "DefinedRegion", "addressCountry": "IL"}},
-    {"@type": "OfferShippingDetails",
-     "shippingRate": {"@type": "MonetaryAmount", "value": 45, "currency": "USD"},
-     "shippingDestination": {"@type": "DefinedRegion", "addressCountry": INTL}},
-]
-RETURNS = {
-    "@type": "MerchantReturnPolicy",
-    "applicableCountry": ["IL"] + INTL,
-    "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
-    "merchantReturnDays": 14,
-    "returnMethod": "https://schema.org/ReturnByMail",
-    "returnFees": "https://schema.org/ReturnFeesCustomerResponsibility",
-}
+# Shipping and returns are shared with the landing pages so a product describes
+# itself identically wherever it is listed. Without these two blocks Google drops
+# the shipping and returns annotations from a merchant listing and reports them
+# as missing fields, which is what the subcategory pages did until now. They come
+# from _offer_schema rather than a second copy here, because the copy that used
+# to live here is exactly what went stale: the rates (35 ILS at home, 45 USD
+# abroad), the returns window and the delivery estimate each have one right answer.
+from _offer_schema import SHIPPING, RETURNS  # noqa: E402
+
 SELLER = {"@type": "Organization", "name": "Sherman Art Works"}
 
 
@@ -454,10 +440,11 @@ def offers_for(p):
     is the id-with-suffix form the merchant feed uses as its g:id, so a feed
     item and its landing page resolve to the same variant.
     """
-    def offer(price_ils, sku):
+    def offer(price_ils, sku, mpn):
         return {
             "@type": "Offer",
             "sku": sku,
+            "mpn": mpn,
             "priceCurrency": "ILS",
             "price": str(price_ils),
             "availability": "https://schema.org/InStock",
@@ -467,10 +454,14 @@ def offers_for(p):
             "hasMerchantReturnPolicy": RETURNS,
         }
 
+    # sku is the slug the merchant feed uses as g:id; mpn is the formal SKU it
+    # emits as g:mpn for the same item. Both, so the two surfaces agree on which
+    # sellable thing this is - see _offer_schema.size_mpn.
     sizes = p.get("sizes") or []
     if sizes:
-        return [offer(s["price_ils"], f"{p['id']}-{s['label'].lower()}") for s in sizes]
-    return [offer(p["price_ils"], p["id"])]
+        return [offer(s["price_ils"], f"{p['id']}-{s['label'].lower()}", s["sku"])
+                for s in sizes]
+    return [offer(p["price_ils"], p["id"], p["sku"])]
 
 
 def item_list(cat, items):
@@ -486,6 +477,7 @@ def item_list(cat, items):
             "brand": {"@type": "Brand", "name": "Sherman Art Works"},
             "offers": offers_for(p),
             "sku": p["sku"],
+            "mpn": p["sku"],
             "itemCondition": "https://schema.org/NewCondition",
         }
         sizes = p.get("sizes") or []
@@ -510,7 +502,8 @@ def jsonld_product_id(node):
 def sync_product_jsonld(cat, node, product):
     """Refresh product-controlled fields without discarding richer offer data."""
     fresh = product_jsonld(cat, product)
-    for key in ("name", "url", "description", "image", "brand", "sku", "itemCondition"):
+    for key in ("name", "url", "description", "image", "brand", "sku", "mpn",
+                "itemCondition"):
         node[key] = fresh[key]
     if product.get("color_en"):
         node["color"] = product["color_en"]

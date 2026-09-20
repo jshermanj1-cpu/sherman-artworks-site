@@ -38,7 +38,52 @@ try:
 except Exception:
     usd_from_ils = None
 
+# What shipping costs, imported rather than copied, because the copies are what
+# drift: a retired sprint script kept its own pair and still believed shipping
+# was free over 1100 ILS. _offer_schema.py is tracked, so this normally loads.
+try:
+    from _offer_schema import SHIPPING
+
+    RATES = {}
+    for _node in SHIPPING:
+        _dest = _node["shippingDestination"]["addressCountry"]
+        _rate = _node["shippingRate"]
+        RATES["IL" if _dest in ("IL", ["IL"]) else "INTL"] = (
+            float(_rate["value"]), _rate["currency"])
+except Exception:
+    RATES = None
+
 results = []
+
+
+def misrated_shipping(node):
+    """Returns (got, want) as display strings if a shipping node misprices it.
+
+    Returns None when the node prices correctly, and also when there is nothing
+    to compare - a bare `@id` reference to a shared node carries no rate of its
+    own, and the node it points at is checked where it is defined.
+    """
+    if not RATES:
+        return None
+    dest = (node.get("shippingDestination") or {}).get("addressCountry")
+    rate = node.get("shippingRate") or {}
+    if dest is None or "value" not in rate:
+        return None
+    want = RATES.get("IL" if dest in ("IL", ["IL"]) else "INTL")
+    if not want:
+        return None
+    try:
+        got = (float(rate["value"]), rate.get("currency"))
+    except (TypeError, ValueError):
+        got = (rate["value"], rate.get("currency"))
+    if got == want:
+        return None
+    return (show_rate(got), show_rate(want))
+
+
+def show_rate(pair):
+    value, currency = pair
+    return "%s %s" % ("%g" % value if isinstance(value, float) else value, currency)
 
 
 def record(name, bad, detail="", skipped=False):
@@ -69,6 +114,7 @@ def scan():
 
     bare, eng_he, invisible, faq_orphans, ld_broken = [], [], [], [], []
     usd_wrong, no_a11y = [], []
+    undated, thin, misrated = [], [], []
     price_pat = re.compile(
         r'&#8362;([\d,]+) <span class="product-card-price-alt">≈ \$(\d+)</span>')
 
@@ -108,6 +154,19 @@ def scan():
                 continue
 
             def check(node):
+                # Checked wherever it appears rather than through the offer,
+                # because three landing pages hold one shared node per
+                # destination in an @graph block and point at it by @id.
+                if node.get("@type") == "OfferShippingDetails":
+                    where = node.get("@id") or "inline"
+                    if "deliveryTime" not in node:
+                        undated.append((name, where))
+                    # The copy rule below only searches for the words "free
+                    # shipping", so a rate written as a bare number - which is
+                    # how a generator states it - would otherwise pass unseen.
+                    wrong = misrated_shipping(node)
+                    if wrong:
+                        misrated.append((name, where) + wrong)
                 if node.get("@type") == "Product":
                     offers = node.get("offers")
                     offers = offers if isinstance(offers, list) else [offers]
@@ -117,6 +176,18 @@ def scan():
                         if ("shippingDetails" not in offer
                                 or "hasMerchantReturnPolicy" not in offer):
                             bare.append((name, node.get("sku") or node.get("name")))
+                    # Google needs the first three to show a merchant listing at
+                    # all; the Havdalah landing page shipped without any of them
+                    # for months. mpn is the identifier the feed has always sent
+                    # as g:mpn - handmade pieces have no gtin, so the SKU is all
+                    # there is, and the page has to name it too or the two
+                    # surfaces identify the same product differently.
+                    for key in ("description", "brand", "itemCondition", "mpn"):
+                        if not node.get(key):
+                            thin.append((name, node.get("sku") or node.get("name"), key))
+                    for offer in offers:
+                        if isinstance(offer, dict) and not offer.get("mpn"):
+                            thin.append((name, offer.get("sku") or node.get("sku"), "offer mpn"))
                     label = node.get("name")
                     if label:
                         if name.startswith("he/") and not HEBREW.search(label):
@@ -138,6 +209,18 @@ def scan():
 
     record("Product offers declare shipping and returns", bare,
            "%s ..." % (bare[0][1] if bare else ""))
+    record("Shipping details carry a delivery estimate", undated,
+           "%s on %s" % (undated[0][1], undated[0][0]) if undated else "")
+    if RATES:
+        record("Shipping is charged at the declared rate", misrated,
+               "%s says %s, not %s (%s)" % (misrated[0][0], misrated[0][2],
+                                            misrated[0][3], misrated[0][1])
+               if misrated else "")
+    else:
+        record("Shipping is charged at the declared rate", [],
+               "_offer_schema.py did not load", skipped=True)
+    record("Products declare description, brand, condition and mpn", thin,
+           "%s has no %s on %s" % (thin[0][1], thin[0][2], thin[0][0]) if thin else "")
     record("Hebrew pages name products in Hebrew", eng_he,
            "%s on %s" % (eng_he[0][1], eng_he[0][0]) if eng_he else "")
     record("Structured-data names appear on the page", invisible,
@@ -185,6 +268,93 @@ def copy_rules():
     record("Nothing claims free shipping", free_ship, ", ".join(free_ship[:3]))
 
 
+def feed_prices():
+    """Every feed item's price must exist as an Offer on its landing page.
+
+    _validate_skus.py already checks that the feed and the JSON-LD name the
+    same products, but it never compares what they cost, and that is the half
+    that broke. Until 2026-09-20 the shofar ItemList carried one Offer per
+    product priced at the bottom of its size ladder while the feed listed each
+    size at its own price: 123 of 255 items disagreed with their own landing
+    page, every guard passed, and Merchant Center would have read it as
+    "Mismatched value (price)" on nearly half the catalogue.
+
+    A shopper following an ad has to find the advertised price on the page it
+    lands on, so this compares by URL fragment rather than by sku - that is the
+    thing Google actually resolves.
+    """
+    import xml.etree.ElementTree as ET
+
+    feed = SITE / "merchant-feed.xml"
+    if not feed.exists():
+        record("Feed prices match the landing page", [],
+               "merchant-feed.xml not present", skipped=True)
+        return
+    ns = "{http://base.google.com/ns/1.0}"
+
+    def price_of(offer):
+        try:
+            return float(offer["price"])
+        except (KeyError, TypeError, ValueError):
+            return None
+
+    # Landing-page offers indexed by the fragment Google resolves them at.
+    offered = {}
+    for path in {
+        (item.findtext(ns + "link") or "").split("#")[0].replace(BASE + "/", "")
+        for item in ET.parse(str(feed)).getroot().findall("./channel/item")
+    }:
+        page = SITE / path
+        if not page.exists():
+            continue
+        for raw in re.findall(
+                r'<script type="application/ld\+json">(.*?)</script>',
+                page.read_text(encoding="utf-8"), re.S):
+            try:
+                data = json.loads(raw)
+            except ValueError:
+                continue  # "JSON-LD parses" already reports this
+
+            def collect(node):
+                if node.get("@type") != "Product":
+                    return
+                url = node.get("url") or ""
+                if "#" not in url:
+                    return
+                offers = node.get("offers")
+                offers = offers if isinstance(offers, list) else [offers]
+                seen = offered.setdefault((path, url.split("#", 1)[1]), set())
+                for offer in offers:
+                    if isinstance(offer, dict) and price_of(offer) is not None:
+                        seen.add(price_of(offer))
+
+            walk(data, collect)
+
+    missing, mismatched = [], []
+    for item in ET.parse(str(feed)).getroot().findall("./channel/item"):
+        item_id = item.findtext(ns + "id")
+        link = item.findtext(ns + "link") or ""
+        if "#" not in link:
+            continue
+        page, fragment = link.replace(BASE + "/", "").split("#", 1)
+        try:
+            want = float((item.findtext(ns + "price") or "").split()[0])
+        except (IndexError, ValueError):
+            continue
+        found = offered.get((page, fragment))
+        if found is None:
+            missing.append((item_id, page, fragment))
+        elif want not in found:
+            mismatched.append((item_id, want, sorted(found)))
+
+    record("Feed items resolve to a product on their landing page", missing,
+           "%s -> %s#%s" % missing[0] if missing else "")
+    record("Feed prices match the landing page", mismatched,
+           "%s: feed %g, page %s" % (mismatched[0][0], mismatched[0][1],
+                                     ", ".join("%g" % p for p in mismatched[0][2][:4]))
+           if mismatched else "")
+
+
 def external(label, argv, missing_helper=None):
     """Run one of the existing --check scripts."""
     if missing_helper and not (SITE / missing_helper).exists():
@@ -202,6 +372,7 @@ def external(label, argv, missing_helper=None):
 def main():
     scan()
     copy_rules()
+    feed_prices()
     external("Static cards match the catalogue", ["_static_cards.py", "--check"], "_usd.py")
     external("Shofar sizing table is current", ["_shofar_guide.py", "--check"])
     external("SKUs, JSON-LD and the feed agree", ["_validate_skus.py"], "_launch.py")
@@ -220,8 +391,9 @@ def main():
     if failed:
         print("\n%d guard(s) failed. Re-run the generator chain:" % len(failed))
         print("  python _static_cards.py && python _subcategory_pages.py && "
-              "python _shofar_pages.py \\\n    && python _bake_en.py && "
-              "python _offer_schema.py && python _he_pages.py && python _merchant_feed.py")
+              "python _shofar_jsonld.py \\\n    && python _shofar_pages.py && "
+              "python _bake_en.py && python _offer_schema.py \\\n    && "
+              "python _he_pages.py && python _merchant_feed.py")
         return 1
     if not QUIET:
         print("\nall guards passed")

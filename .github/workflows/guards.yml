@@ -43,6 +43,7 @@ jobs:
         run: |
           python _static_cards.py
           python _subcategory_pages.py
+          python _shofar_jsonld.py
           python _shofar_pages.py
           python _bake_en.py
           python _offer_schema.py
@@ -54,9 +55,9 @@ jobs:
           if ! git diff --quiet; then
             echo "::error::The generator chain produced changes, so the committed files are stale."
             echo "Run the chain locally and commit what it writes:"
-            echo "  python _static_cards.py && python _subcategory_pages.py && python _shofar_pages.py \\"
-            echo "    && python _bake_en.py && python _offer_schema.py && python _he_pages.py \\"
-            echo "    && python _merchant_feed.py"
+            echo "  python _static_cards.py && python _subcategory_pages.py && python _shofar_jsonld.py \\"
+            echo "    && python _shofar_pages.py && python _bake_en.py && python _offer_schema.py \\"
+            echo "    && python _he_pages.py && python _merchant_feed.py"
             echo ""
             echo "Files the chain rewrote:"
             git --no-pager diff --stat

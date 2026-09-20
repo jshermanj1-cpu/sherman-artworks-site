@@ -35,6 +35,7 @@ fifteen invariants across every page in both languages:
 - static cards match `data/products.json`
 - the shofar sizing table is current
 - SKUs, JSON-LD and the merchant feed agree
+- every feed item resolves to a product on its landing page, at the same price
 
 A push to `main` is **blocked** when any of these fail, because GitHub Pages
 deploys `main` straight to the live site. On any other branch the guards still
@@ -59,7 +60,7 @@ If a guard fails, the fix is almost always to re-run the chain and commit what
 changes:
 
 ```bash
-python _static_cards.py && python _subcategory_pages.py && python _shofar_pages.py \
-  && python _bake_en.py && python _offer_schema.py && python _he_pages.py \
-  && python _merchant_feed.py
+python _static_cards.py && python _subcategory_pages.py && python _shofar_jsonld.py \
+  && python _shofar_pages.py && python _bake_en.py && python _offer_schema.py \
+  && python _he_pages.py && python _merchant_feed.py
 ```

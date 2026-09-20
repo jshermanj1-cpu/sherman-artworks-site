@@ -104,6 +104,15 @@ def item_lines(product, size=None):
             tag("country", "IL", indent=6),
             tag("price", "35.00 ILS", indent=6),
             "    </g:shipping>",
+            # The same window the JSON-LD deliveryTime states, and from the same
+            # authority - terms.html section 1: handed to the courier within 14
+            # business days, delivered within 30. Google reads both in business
+            # days. Left off the feed, Merchant Center invents its own estimate
+            # and contradicts the landing page it links to.
+            tag("min_handling_time", 1),
+            tag("max_handling_time", 14),
+            tag("min_transit_time", 1),
+            tag("max_transit_time", 16),
             "  </item>",
         ]
     )
