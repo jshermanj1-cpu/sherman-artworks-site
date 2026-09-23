@@ -285,10 +285,20 @@ def feed_prices():
     """
     import xml.etree.ElementTree as ET
 
-    feed = SITE / "merchant-feed.xml"
-    if not feed.exists():
+    # Each feed quotes the same catalogue in its own market's money, so each
+    # needs its own way back to the shekel price the landing page states. The
+    # dollar feed is checked through usd_from_ils rather than against a dollar
+    # figure in the JSON-LD, because the structured data is shekels only - what
+    # has to hold is that the two feeds derive from one price list.
+    feeds = [("merchant-feed.xml", "ILS", lambda ils: float(ils))]
+    if usd_from_ils:
+        feeds.append(("merchant-feed-us.xml", "USD",
+                      lambda ils: float(usd_from_ils(ils))))
+
+    present = [f for f in feeds if (SITE / f[0]).exists()]
+    if not present:
         record("Feed prices match the landing page", [],
-               "merchant-feed.xml not present", skipped=True)
+               "no merchant feed present", skipped=True)
         return
     ns = "{http://base.google.com/ns/1.0}"
 
@@ -298,11 +308,15 @@ def feed_prices():
         except (KeyError, TypeError, ValueError):
             return None
 
+    def items_of(filename):
+        return ET.parse(str(SITE / filename)).getroot().findall("./channel/item")
+
     # Landing-page offers indexed by the fragment Google resolves them at.
     offered = {}
     for path in {
         (item.findtext(ns + "link") or "").split("#")[0].replace(BASE + "/", "")
-        for item in ET.parse(str(feed)).getroot().findall("./channel/item")
+        for filename, _currency, _to in present
+        for item in items_of(filename)
     }:
         page = SITE / path
         if not page.exists():
@@ -330,28 +344,40 @@ def feed_prices():
 
             walk(data, collect)
 
-    missing, mismatched = [], []
-    for item in ET.parse(str(feed)).getroot().findall("./channel/item"):
-        item_id = item.findtext(ns + "id")
-        link = item.findtext(ns + "link") or ""
-        if "#" not in link:
-            continue
-        page, fragment = link.replace(BASE + "/", "").split("#", 1)
-        try:
-            want = float((item.findtext(ns + "price") or "").split()[0])
-        except (IndexError, ValueError):
-            continue
-        found = offered.get((page, fragment))
-        if found is None:
-            missing.append((item_id, page, fragment))
-        elif want not in found:
-            mismatched.append((item_id, want, sorted(found)))
+    missing, mismatched, miscurrency = [], [], []
+    for filename, currency, to_market in present:
+        for item in items_of(filename):
+            item_id = item.findtext(ns + "id")
+            link = item.findtext(ns + "link") or ""
+            if "#" not in link:
+                continue
+            page, fragment = link.replace(BASE + "/", "").split("#", 1)
+            raw = (item.findtext(ns + "price") or "").split()
+            try:
+                want = float(raw[0])
+            except (IndexError, ValueError):
+                continue
+            # A feed targeted at one country must quote one currency. Mixing
+            # them is what a half-finished second market looks like.
+            if len(raw) < 2 or raw[1] != currency:
+                miscurrency.append((filename, item_id, " ".join(raw)))
+                continue
+            found = offered.get((page, fragment))
+            if found is None:
+                missing.append((item_id, page, fragment))
+            elif want not in {to_market(ils) for ils in found}:
+                mismatched.append((filename, item_id, want, currency,
+                                   sorted(to_market(ils) for ils in found)))
 
     record("Feed items resolve to a product on their landing page", missing,
            "%s -> %s#%s" % missing[0] if missing else "")
+    record("Feeds quote one currency each", miscurrency,
+           "%s: %s is %s" % miscurrency[0] if miscurrency else "")
     record("Feed prices match the landing page", mismatched,
-           "%s: feed %g, page %s" % (mismatched[0][0], mismatched[0][1],
-                                     ", ".join("%g" % p for p in mismatched[0][2][:4]))
+           "%s %s: feed %g %s, page %s" % (
+               mismatched[0][0], mismatched[0][1], mismatched[0][2],
+               mismatched[0][3],
+               ", ".join("%g" % p for p in mismatched[0][4][:4]))
            if mismatched else "")
 
 

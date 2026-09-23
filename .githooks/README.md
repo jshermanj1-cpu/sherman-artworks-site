@@ -36,6 +36,7 @@ fifteen invariants across every page in both languages:
 - the shofar sizing table is current
 - SKUs, JSON-LD and the merchant feed agree
 - every feed item resolves to a product on its landing page, at the same price
+- each feed quotes one currency: shekels for Israel, dollars for the US
 
 A push to `main` is **blocked** when any of these fail, because GitHub Pages
 deploys `main` straight to the live site. On any other branch the guards still
