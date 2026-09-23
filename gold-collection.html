@@ -230,7 +230,12 @@
     <span class="top-divider">|</span>
     <button id="btnHE" class="toggle-btn" onclick="localStorage.setItem('sa_lang','he');location.href='/he/gold-collection.html'">עברית</button>
   </div>
-  <div class="top-bar-group" style="font-size:0.72rem;color:var(--footer-text);letter-spacing:0.04em;" data-t="topbar_right">Handcrafted in Israel</div>
+  <div class="top-bar-group">
+    <button id="btnILS" class="toggle-btn" onclick="setCurrency('ILS')">₪ ILS</button>
+    <span class="top-divider">|</span>
+    <button id="btnUSD" class="toggle-btn" onclick="setCurrency('USD')">$ USD</button>
+    <span id="rateNote"></span>
+  </div>
 </div>
 
 <!-- ══════════════════════════════════════════════

@@ -288,6 +288,16 @@ def main():
     out = replace_one(out, r"location\.href='/he/%s'" % re.escape(SOURCE),
                       "location.href='/he/%s'" % TARGET, "language toggle")
 
+    # about.html quotes no prices, so its top bar carries a tagline where the
+    # shop pages have the currency switch. The cards here do quote prices.
+    out = replace_one(out, r'  <div class="top-bar-group"[^>]*data-t="topbar_right">[^<]*</div>',
+                      '  <div class="top-bar-group">\n'
+                      '    <button id="btnILS" class="toggle-btn" onclick="setCurrency(\'ILS\')">₪ ILS</button>\n'
+                      '    <span class="top-divider">|</span>\n'
+                      '    <button id="btnUSD" class="toggle-btn" onclick="setCurrency(\'USD\')">$ USD</button>\n'
+                      '    <span id="rateNote"></span>\n'
+                      '  </div>', "currency switch")
+
     # The card grid rules about.html never needed.
     out = replace_one(out, "</style>",
                       lambda m: GRID_CSS + "</style>", "grid stylesheet")
