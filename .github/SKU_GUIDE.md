@@ -26,7 +26,7 @@ similar suffix to a product with one sellable configuration.
 
 | Category | Code | Next unassigned number |
 |---|---:|---:|
-| Candlesticks | `CS` | `025` |
+| Candlesticks | `CS` | `026` |
 | Horn Goblets | `HG` | `004` |
 | Kiddush Cups | `KC` | `035` |
 | Trays & Bowls | `TB` | `016` |
@@ -150,6 +150,7 @@ configurations. They are permanent once migrated into the product data.
 | `SAW-CS-022` | `earth-gold-plated-glass-candlesticks` | Earth Gold-Plated Glass Candlesticks | `-S`, `-M`, `-L` |
 | `SAW-CS-023` | `black-gold-plated-glass-candlesticks` | Black Gold-Plated Glass Candlesticks | `-S`, `-M`, `-L` |
 | `SAW-CS-024` | `green-gold-plated-glass-candlesticks` | Green Gold-Plated Glass Candlesticks | `-S`, `-M`, `-L` |
+| `SAW-CS-025` | `double-sided-white-blue-glass-candlesticks` | Double-Sided White and Blue Glass Candlesticks | None |
 
 ### Horn Goblets (`HG`)
 

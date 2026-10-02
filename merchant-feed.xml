@@ -1007,6 +1007,31 @@
     <g:max_transit_time>16</g:max_transit_time>
   </item>
   <item>
+    <g:id>double-sided-white-blue-glass-candlesticks</g:id>
+    <g:title>Double-Sided White and Blue Glass Candlesticks</g:title>
+    <g:description>Handmade double-sided glass candlesticks in white and blue, an artistic and striking pair - traditional family method candle holders. The glass section measures 17cm × 6cm. Other color combinations can be made to order, just get in touch.</g:description>
+    <g:link>https://shermanartworks.com/candlesticks.html#double-sided-white-blue-glass-candlesticks</g:link>
+    <g:image_link>https://res.cloudinary.com/doesupaf9/image/upload/w_1200,q_auto:good/Double_sided_white_and_blue_1_gg0bsl.jpg</g:image_link>
+    <g:additional_image_link>https://res.cloudinary.com/doesupaf9/image/upload/w_1200,q_auto:good/Double_sided_white_and_blue_2_vskl8l.jpg</g:additional_image_link>
+    <g:additional_image_link>https://res.cloudinary.com/doesupaf9/image/upload/w_1200,q_auto:good/Double_sided_white_and_blue_3_cuz0i6.jpg</g:additional_image_link>
+    <g:additional_image_link>https://res.cloudinary.com/doesupaf9/image/upload/w_1200,q_auto:good/Double_sided_table_background_bwzdnr.jpg</g:additional_image_link>
+    <g:availability>in_stock</g:availability>
+    <g:price>594.00 ILS</g:price>
+    <g:condition>new</g:condition>
+    <g:brand>Sherman Art Works</g:brand>
+    <g:mpn>SAW-CS-025</g:mpn>
+    <g:product_type>Candlesticks</g:product_type>
+    <g:google_product_category>2784</g:google_product_category>
+    <g:shipping>
+      <g:country>IL</g:country>
+      <g:price>35.00 ILS</g:price>
+    </g:shipping>
+    <g:min_handling_time>1</g:min_handling_time>
+    <g:max_handling_time>14</g:max_handling_time>
+    <g:min_transit_time>1</g:min_transit_time>
+    <g:max_transit_time>16</g:max_transit_time>
+  </item>
+  <item>
     <g:id>white-glass-candlesticks</g:id>
     <g:title>White Glass Candlesticks</g:title>
     <g:description>Handmade white glass candlesticks - traditional family method candle holders.</g:description>
