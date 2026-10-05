@@ -157,6 +157,106 @@ def feed_title(product, size_text=None):
     return kind + (" - " + ", ".join(parts) if parts else "") + FEED_SUFFIX
 
 
+
+# Colours as the name states them, for items without a catalogue color_en (kiddush cups and
+# plates, artisanal candlesticks). Existing color_en values are kept as they are: inside an
+# item group they are what tells the variants apart. Horn items get no colour.
+_COLOR_RULES = [
+    ("Black and White", "Black/White"), ("Gold and Red", "Gold/Red"), ("White and Blue", "White/Blue"),
+    ("Blue-Green", "Blue-Green"), ("Gold Colorful", "Multicolor"), ("Colorful", "Multicolor"),
+    ("Vibrant Red", "Red"), ("Burgundy", "Burgundy"), ("Clear", "Clear"), ("Black", "Black"),
+    ("White", "White"), ("Blue", "Blue"), ("Green", "Green"), ("Red", "Red"), ("Orange", "Orange"),
+]
+
+
+def feed_color(product):
+    if product.get("color_en"):
+        return product["color_en"]
+    if product["category"] not in ("kiddush-cups", "candlesticks", "trays-bowls"):
+        return None
+    name = product["name_en"].replace("Gold-Plated", "").replace("925 Silver-Plated", "")
+    for needle, color in _COLOR_RULES:
+        if needle in name:
+            return color
+    return None
+
+
+def _finish(product):
+    name = product["name_en"]
+    return "925 Silver-Plated" if "925 Silver-Plated" in name else "Gold-Plated" if "Gold-Plated" in name else None
+
+
+def feed_material(product):
+    name, cat = product["name_en"], product["category"]
+    plating = {"925 Silver-Plated": "925 silver plating", "Gold-Plated": "Gold plating"}.get(_finish(product))
+    if cat == "shofars":
+        base = "Kudu horn" if "Kudu" in name else "Ram's horn"
+    elif cat == "mezuzahs":
+        base = "Glass" if "Glass" in name else "%s horn" % name.replace("925 Silver-Plated", "").replace("Mezuzah", "").strip().replace("Ram", "Ram's")
+    elif cat == "horn-goblets":
+        base, plating = "Horn", "925 silver plating"
+    elif "Ceramic" in name:
+        base = "Ceramic"
+    else:
+        base = "Glass"
+    return base + ("/" + plating if plating else "")
+
+
+def feed_product_type(product):
+    """Judaica > category > line, e.g. 'Judaica > Kiddush Cups > Gold-Plated'."""
+    name, cat = product["name_en"], product["category"]
+    top = CATEGORY_META[cat][0]
+    if cat == "shofars":
+        line = "Custom" if "Custom" in name else "Kudu" if "Kudu" in name else "Ram's Horn"
+    elif cat == "mezuzahs":
+        line = "Glass" if "Glass" in name else "Horn"
+    elif cat == "horn-goblets":
+        line = None
+    else:
+        line = _finish(product) or "Artisanal"
+    return " > ".join(x for x in ("Judaica", top, line) if x)
+
+
+def feed_highlights(product):
+    """Plain facts for g:product_highlight (each under 150 characters, no promotional wording)."""
+    name, cat = product["name_en"], product["category"]
+    finish = _finish(product)
+    out = ["Handmade to order in our family studio in Israel"]
+    if cat == "candlesticks":
+        out.append("Sold as a pair")
+        if finish:
+            out.append("Glass finished with %s" % ("925 silver plating" if finish.startswith("925") else "gold plating"))
+            out.append("Available in three heights: S (14-18 cm), M (19-22 cm) and L (23-25 cm)")
+        else:
+            out.append("All glass, made with our family's traditional method")
+    elif cat == "kiddush-cups":
+        rim = "925 silver-plated" if finish and finish.startswith("925") else "gold-plated"
+        if name.endswith(" Plate"):
+            out.append("15 cm glass plate with a %s rim" % rim)
+            out.append("Made to match our Kiddush cups in colour and finish")
+        else:
+            out.append(("Ceramic" if "Ceramic" in name else "Glass") + " cup with a %s rim" % rim)
+            if "Ceramic" not in name:
+                out.append("A matching glass plate is available")
+    elif cat == "havdalah-sets":
+        out.append("Four pieces: cup, spice box, candle holder and tray")
+        out.append("Glass finished with %s" % ("925 silver plating" if finish and finish.startswith("925") else "gold plating"))
+    elif cat == "trays-bowls":
+        if finish:
+            out.append("Glass finished with %s" % ("925 silver plating" if finish.startswith("925") else "gold plating"))
+    elif cat == "shofars":
+        out.append("Natural %s decorated by hand in 925 silver" % ("kudu horn" if "Kudu" in name else "ram's horn"))
+        if "Custom" in name:
+            out.append("Engraved with a symbol of your choice and an optional Hebrew or English inscription")
+    elif cat == "mezuzahs":
+        out.append("Mezuzah case only: the parchment (klaf) is bought separately")
+    if cat in ("shofars", "mezuzahs", "horn-goblets"):
+        out.append("Keep dry; wipe the plating with a soft dry cloth and do not use silver polish")
+    elif finish:
+        out.append("Wash by hand and do not use silver polish on the plating")
+    return out
+
+
 def item_lines(product, size, market):
     product_type, google_category = CATEGORY_META[product["category"]]
     if size:
@@ -207,12 +307,16 @@ def item_lines(product, size, market):
         lines.append(tag("item_group_id", group_id))
     if size_text:
         lines.append(tag("size", size_text))
-    if product.get("color_en"):
-        lines.append(tag("color", product["color_en"]))
+    color = feed_color(product)
+    if color:
+        lines.append(tag("color", color))
+    lines.append(tag("material", feed_material(product)))
+    for highlight in feed_highlights(product):
+        lines.append(tag("product_highlight", highlight))
 
     lines.extend(
         [
-            tag("product_type", product_type),
+            tag("product_type", feed_product_type(product)),
             tag("google_product_category", google_category),
             "    <g:shipping>",
             tag("country", market.country, indent=6),
