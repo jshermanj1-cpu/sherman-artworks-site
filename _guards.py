@@ -401,6 +401,7 @@ def main():
     feed_prices()
     external("Static cards match the catalogue", ["_static_cards.py", "--check"], "_usd.py")
     external("Shofar sizing table is current", ["_shofar_guide.py", "--check"])
+    external("Image sitemap is current", ["_image_sitemap.py", "--check"])
     external("SKUs, JSON-LD and the feed agree", ["_validate_skus.py"], "_launch.py")
 
     failed = [r for r in results if r[1] and not r[3]]
@@ -419,7 +420,7 @@ def main():
         print("  python _static_cards.py && python _subcategory_pages.py && "
               "python _shofar_jsonld.py \\\n    && python _shofar_pages.py && "
               "python _bake_en.py && python _offer_schema.py \\\n    && "
-              "python _he_pages.py && python _merchant_feed.py")
+              "python _he_pages.py && python _merchant_feed.py && python _image_sitemap.py")
         return 1
     if not QUIET:
         print("\nall guards passed")

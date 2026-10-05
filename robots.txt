@@ -34,3 +34,4 @@ Disallow: /quote.html
 Allow: /
 
 Sitemap: https://shermanartworks.com/sitemap.xml
+Sitemap: https://shermanartworks.com/sitemap-images.xml

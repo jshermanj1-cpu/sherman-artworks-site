@@ -64,6 +64,7 @@ STUDIO_PAGES = [
     "custom-orders.html",
     "contact.html",
     "faq.html",
+    "kiddush-cup-guide.html",
     "terms.html",
     "privacy.html",
     "accessibility.html",
@@ -245,6 +246,10 @@ META = {
         "שאלות ותשובות | שרמן ארט וורקס",
         "תשובות לשאלות הנפוצות - זמני משלוח ועלויות, זמני ייצור להזמנה אישית, תשלום, החזרות והאם השופרות כשרים.",
     ),
+    "kiddush-cup-guide.html": (
+        "איך בוחרים כוס קידוש - מדריך קנייה | שרמן ארט וורקס",
+        "איך בוחרים כוס קידוש: כמה היא צריכה להכיל, זכוכית או קרמיקה, ציפוי כסף 925 או ציפוי זהב, גבוהה או נמוכה, ואיזו כוס מתאימה למתנה.",
+    ),
     "terms.html": (
         "תקנון ומדיניות משלוחים | שרמן ארט וורקס",
         "תקנון האתר, תנאי השימוש ומדיניות המשלוחים וההחזרות של שרמן ארט וורקס.",
@@ -262,7 +267,7 @@ META = {
 # sitemap priority per Hebrew page (mirrors the English sitemap).
 SITEMAP_PRIORITY = {
     "index.html": "0.9", "gold-collection.html": "0.8", "custom-orders.html": "0.8", "about.html": "0.7",
-    "contact.html": "0.7", "faq.html": "0.6", "terms.html": "0.3", "privacy.html": "0.3",
+    "contact.html": "0.7", "faq.html": "0.6", "kiddush-cup-guide.html": "0.6", "terms.html": "0.3", "privacy.html": "0.3",
     "accessibility.html": "0.3",
 }
 
@@ -555,6 +560,12 @@ def localize_jsonld(txt, en2he):
                 node["name"] = tr(node.get("name"))
                 node["text"] = tr(node.get("text"))
             elif ty in ("FAQPage", "HowTo"):
+                node["inLanguage"] = "he"
+            elif ty == "Article":
+                # A guide's headline/description repeat its visible hero, so
+                # they translate through the same T_PAGE pairs as the page.
+                node["headline"] = tr(node.get("headline"))
+                node["description"] = tr(node.get("description"))
                 node["inLanguage"] = "he"
             elif ty == "ProductGroup":
                 group = PRODUCT_GROUP_HE.get(node.get("productGroupID"))

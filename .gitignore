@@ -12,5 +12,6 @@ _*.py
 !_guards.py
 !_usd.py
 !_launch.py
+!_image_sitemap.py
 _pricing/
 __pycache__/
