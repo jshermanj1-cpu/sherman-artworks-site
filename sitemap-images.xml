@@ -445,11 +445,31 @@
     <image:image><image:loc>https://res.cloudinary.com/doesupaf9/image/upload/q_auto,f_auto/Kosher_certification_English_g2khow.jpg</image:loc></image:image>
   </url>
   <url>
+    <loc>https://shermanartworks.com/guides.html</loc>
+    <image:image><image:loc>https://res.cloudinary.com/doesupaf9/image/upload/q_auto,f_auto/Blue_bore_cup_zsahzh.jpg</image:loc></image:image>
+    <image:image><image:loc>https://res.cloudinary.com/doesupaf9/image/upload/q_auto,f_auto/Blue_pamotim_rjokud.jpg</image:loc></image:image>
+    <image:image><image:loc>https://res.cloudinary.com/doesupaf9/image/upload/q_auto,f_auto/Blue_havdala_set_guzrpu.jpg</image:loc></image:image>
+  </url>
+  <url>
     <loc>https://shermanartworks.com/kiddush-cup-guide.html</loc>
     <image:image><image:loc>https://res.cloudinary.com/doesupaf9/image/upload/q_auto,f_auto/Blue_bore_cup_zsahzh.jpg</image:loc></image:image>
     <image:image><image:loc>https://res.cloudinary.com/doesupaf9/image/upload/q_auto,f_auto/Black_high_cup_gold_1_cac44i.jpg</image:loc></image:image>
     <image:image><image:loc>https://res.cloudinary.com/doesupaf9/image/upload/q_auto,f_auto/Ceramic_cup_menorah_white_background_kvyw2b.jpg</image:loc></image:image>
     <image:image><image:loc>https://res.cloudinary.com/doesupaf9/image/upload/q_auto,f_auto/Orange_plate_cup_white_background_hmvdcr.jpg</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://shermanartworks.com/shabbat-candlesticks-guide.html</loc>
+    <image:image><image:loc>https://res.cloudinary.com/doesupaf9/image/upload/q_auto,f_auto/Blue_pamotim_rjokud.jpg</image:loc></image:image>
+    <image:image><image:loc>https://res.cloudinary.com/doesupaf9/image/upload/q_auto,f_auto/Black_Pamotim_gold_1_yzkeqe.jpg</image:loc></image:image>
+    <image:image><image:loc>https://res.cloudinary.com/doesupaf9/image/upload/q_auto,f_auto/Double_sided_white_and_blue_1_gg0bsl.jpg</image:loc></image:image>
+    <image:image><image:loc>https://res.cloudinary.com/doesupaf9/image/upload/q_auto,f_auto/Pamotim_blue_white_background_wbzanw.jpg</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://shermanartworks.com/havdalah-set-guide.html</loc>
+    <image:image><image:loc>https://res.cloudinary.com/doesupaf9/image/upload/q_auto,f_auto/Blue_havdala_set_guzrpu.jpg</image:loc></image:image>
+    <image:image><image:loc>https://res.cloudinary.com/doesupaf9/image/upload/q_auto,f_auto/Red_havdalah_set_gold_xf0lnu.jpg</image:loc></image:image>
+    <image:image><image:loc>https://res.cloudinary.com/doesupaf9/image/upload/q_auto,f_auto/Havdala_white_set_wnymec.jpg</image:loc></image:image>
+    <image:image><image:loc>https://res.cloudinary.com/doesupaf9/image/upload/q_auto,f_auto/Black_havdalah_set_gold_zblb7f.jpg</image:loc></image:image>
   </url>
   <url>
     <loc>https://shermanartworks.com/he/</loc>
@@ -899,5 +919,25 @@
     <image:image><image:loc>https://res.cloudinary.com/doesupaf9/image/upload/q_auto,f_auto/Black_high_cup_gold_1_cac44i.jpg</image:loc></image:image>
     <image:image><image:loc>https://res.cloudinary.com/doesupaf9/image/upload/q_auto,f_auto/Ceramic_cup_menorah_white_background_kvyw2b.jpg</image:loc></image:image>
     <image:image><image:loc>https://res.cloudinary.com/doesupaf9/image/upload/q_auto,f_auto/Orange_plate_cup_white_background_hmvdcr.jpg</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://shermanartworks.com/he/shabbat-candlesticks-guide.html</loc>
+    <image:image><image:loc>https://res.cloudinary.com/doesupaf9/image/upload/q_auto,f_auto/Blue_pamotim_rjokud.jpg</image:loc></image:image>
+    <image:image><image:loc>https://res.cloudinary.com/doesupaf9/image/upload/q_auto,f_auto/Black_Pamotim_gold_1_yzkeqe.jpg</image:loc></image:image>
+    <image:image><image:loc>https://res.cloudinary.com/doesupaf9/image/upload/q_auto,f_auto/Double_sided_white_and_blue_1_gg0bsl.jpg</image:loc></image:image>
+    <image:image><image:loc>https://res.cloudinary.com/doesupaf9/image/upload/q_auto,f_auto/Pamotim_blue_white_background_wbzanw.jpg</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://shermanartworks.com/he/havdalah-set-guide.html</loc>
+    <image:image><image:loc>https://res.cloudinary.com/doesupaf9/image/upload/q_auto,f_auto/Blue_havdala_set_guzrpu.jpg</image:loc></image:image>
+    <image:image><image:loc>https://res.cloudinary.com/doesupaf9/image/upload/q_auto,f_auto/Red_havdalah_set_gold_xf0lnu.jpg</image:loc></image:image>
+    <image:image><image:loc>https://res.cloudinary.com/doesupaf9/image/upload/q_auto,f_auto/Havdala_white_set_wnymec.jpg</image:loc></image:image>
+    <image:image><image:loc>https://res.cloudinary.com/doesupaf9/image/upload/q_auto,f_auto/Black_havdalah_set_gold_zblb7f.jpg</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://shermanartworks.com/he/guides.html</loc>
+    <image:image><image:loc>https://res.cloudinary.com/doesupaf9/image/upload/q_auto,f_auto/Blue_bore_cup_zsahzh.jpg</image:loc></image:image>
+    <image:image><image:loc>https://res.cloudinary.com/doesupaf9/image/upload/q_auto,f_auto/Blue_pamotim_rjokud.jpg</image:loc></image:image>
+    <image:image><image:loc>https://res.cloudinary.com/doesupaf9/image/upload/q_auto,f_auto/Blue_havdala_set_guzrpu.jpg</image:loc></image:image>
   </url>
 </urlset>

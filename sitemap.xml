@@ -44,13 +44,13 @@
   </url>
   <url>
     <loc>https://shermanartworks.com/kiddush-cups-silver-plated.html</loc>
-    <lastmod>2026-09-01</lastmod>
+    <lastmod>2026-10-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://shermanartworks.com/kiddush-cups-gold-plated.html</loc>
-    <lastmod>2026-09-01</lastmod>
+    <lastmod>2026-10-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -165,7 +165,25 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://shermanartworks.com/guides.html</loc>
+    <lastmod>2026-10-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://shermanartworks.com/kiddush-cup-guide.html</loc>
+    <lastmod>2026-10-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://shermanartworks.com/shabbat-candlesticks-guide.html</loc>
+    <lastmod>2026-10-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://shermanartworks.com/havdalah-set-guide.html</loc>
     <lastmod>2026-10-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -327,13 +345,13 @@
 
   <url>
     <loc>https://shermanartworks.com/he/kiddush-cups-silver-plated.html</loc>
-    <lastmod>2026-09-01</lastmod>
+    <lastmod>2026-10-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://shermanartworks.com/he/kiddush-cups-gold-plated.html</loc>
-    <lastmod>2026-09-01</lastmod>
+    <lastmod>2026-10-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -379,6 +397,26 @@
 
   <url>
     <loc>https://shermanartworks.com/he/kiddush-cup-guide.html</loc>
+    <lastmod>2026-10-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://shermanartworks.com/he/shabbat-candlesticks-guide.html</loc>
+    <lastmod>2026-10-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://shermanartworks.com/he/havdalah-set-guide.html</loc>
+    <lastmod>2026-10-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://shermanartworks.com/he/guides.html</loc>
     <lastmod>2026-10-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
