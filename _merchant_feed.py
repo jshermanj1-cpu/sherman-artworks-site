@@ -95,18 +95,80 @@ def product_link(product):
     return f"{BASE_URL}/{page}#{product['id']}"
 
 
+FEED_SUFFIX = " | Handmade in Israel"
+
+
+def _strip(text, *words):
+    for w in words:
+        text = text.replace(w, " ")
+    return re.sub(r"\s+", " ", text).strip(" ,-")
+
+
+def feed_title(product, size_text=None):
+    """Shopping title: what the thing is first (the words people search),
+    then colour or design, finish and size. Product names on the site lead
+    with the finish ("925 Silver-Plated Tall Blue Glass Kiddush Cup"), which
+    pushes the product type past where Shopping truncates the title.
+    The site's own names are untouched; this only shapes the feed."""
+    name = product["name_en"]
+    cat = product["category"]
+    plating = ("925 Silver-Plated" if "925 Silver-Plated" in name
+               else "Gold-Plated" if "Gold-Plated" in name else None)
+    rest = _strip(name, "925 Silver-Plated", "Gold-Plated")
+    if cat == "candlesticks":
+        kind = "Glass Shabbat Candlesticks, Pair"
+        desc = _strip(rest, "Glass Candlesticks", "Candlesticks")
+        desc = re.sub(r"^Glass ", "", desc)
+        if desc == "Circle":
+            desc = "Circle Design"
+    elif cat == "kiddush-cups":
+        if "Plate" in rest:
+            kind, desc = "Glass Kiddush Cup Plate", _strip(rest, "Kiddush Cup Plate")
+        elif "Ceramic" in rest:
+            kind, desc = "Ceramic Kiddush Cup", "Menorah Design"
+        else:
+            kind, desc = "Glass Kiddush Cup", _strip(rest, "Glass Kiddush Cup", "Glass Cup")
+        desc = desc.replace(" with ", ", ").replace("Bore Pri Hagefen", "Bore Pri Hagefen Blessing")
+        if plating:
+            plating += " Rim"
+    elif cat == "shofars":
+        horn = "Kudu" if "Kudu" in rest else "Ram's Horn"
+        if "Custom" in rest:
+            kind, desc = "Custom Engraved %s Shofar" % horn, "Your Symbol & Text"
+        else:
+            kind = "Decorated %s Shofar" % horn
+            desc = rest.split(" - ", 1)[1] if " - " in rest else ""
+    elif cat == "havdalah-sets":
+        kind, desc = "Glass Havdalah Set", _strip(rest, "Havdalah Set")
+    elif cat == "mezuzahs":
+        if "Glass" in rest:
+            kind, desc = "Clear Glass Mezuzah Case", ""
+        else:
+            horn = _strip(rest, "Mezuzah")
+            kind, desc = "%s Horn Mezuzah Case" % ("Ram's" if horn == "Ram" else horn), ""
+    elif cat == "trays-bowls":
+        if "Bowl" in rest:
+            kind, desc = "Decorative Glass Bowl", ""
+        else:
+            kind, desc = "Glass Tray", _strip(rest, "Glass Tray")
+    else:
+        return name + (" - " + size_text if size_text else "")
+    parts = [p for p in (desc, plating, size_text) if p]
+    return kind + (" - " + ", ".join(parts) if parts else "") + FEED_SUFFIX
+
+
 def item_lines(product, size, market):
     product_type, google_category = CATEGORY_META[product["category"]]
     if size:
         item_id = f"{product['id']}-{size_slug(size['label'])}"
         size_text = f"{size['label']} ({size['range_cm']} cm)"
-        title = f"{product['name_en']} - {size_text}"
+        title = feed_title(product, size_text)
         price = size["price_ils"]
         mpn = size["sku"]
     else:
         item_id = product["id"]
         size_text = None
-        title = product["name_en"]
+        title = feed_title(product)
         price = product["price_ils"]
         mpn = product["sku"]
 
