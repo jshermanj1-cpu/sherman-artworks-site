@@ -67,6 +67,9 @@ STUDIO_PAGES = [
     "kiddush-cup-guide.html",
     "shabbat-candlesticks-guide.html",
     "havdalah-set-guide.html",
+    "shofar-guide.html",
+    "jewish-wedding-gift-guide.html",
+    "bar-bat-mitzvah-gift-guide.html",
     "guides.html",
     "terms.html",
     "privacy.html",
@@ -261,9 +264,21 @@ META = {
         "איך בוחרים סט הבדלה - מדריך קנייה | שרמן ארט וורקס",
         "איך בוחרים סט הבדלה: מה צריך להבדלה, מה כולל הסט שלנו, ציפוי כסף 925 או ציפוי זהב, צבעים, ואיזה סט מתאים למתנה.",
     ),
+    "shofar-guide.html": (
+        "איך בוחרים שופר: קודו או איל | שרמן ארט וורקס",
+        "איך בוחרים שופר: קודו או איל, איזה גודל, מעוטר או עם חריטה אישית, איך תוקעים ואיך שומרים על שופר בציפוי כסף 925.",
+    ),
+    "jewish-wedding-gift-guide.html": (
+        "רעיונות למתנה לחתונה יהודית: יודאיקה בעבודת יד | שרמן ארט וורקס",
+        "רעיונות למתנה לחתונה יהודית מסטודיו משפחתי בישראל: פמוטים לשבת, כוס קידוש ותחתית, סט הבדלה או בית מזוזה לבית הראשון של הזוג.",
+    ),
+    "bar-bat-mitzvah-gift-guide.html": (
+        "רעיונות למתנה לבר ובת מצווה מישראל | שרמן ארט וורקס",
+        "רעיונות למתנה לבר ובת מצווה מסטודיו משפחתי בישראל: כוס קידוש משלהם, פמוטים לשבת, סט הבדלה או שופר עם השם שלהם חרוט.",
+    ),
     "guides.html": (
         "מדריכי קנייה ליודאיקה בעבודת יד | שרמן ארט וורקס",
-        "מדריכי קנייה מהיוצרים: איך בוחרים כוס קידוש, פמוטים לשבת וסט הבדלה, עם מידות, ציפויים, טיפול ורעיונות למתנה.",
+        "מדריכי קנייה מהיוצרים: איך בוחרים כוס קידוש, פמוטים לשבת, סט הבדלה ושופר, ורעיונות למתנה לחתונה ולבר ובת מצווה.",
     ),
     "terms.html": (
         "תקנון ומדיניות משלוחים | שרמן ארט וורקס",
@@ -282,7 +297,7 @@ META = {
 # sitemap priority per Hebrew page (mirrors the English sitemap).
 SITEMAP_PRIORITY = {
     "index.html": "0.9", "gold-collection.html": "0.8", "custom-orders.html": "0.8", "about.html": "0.7",
-    "contact.html": "0.7", "faq.html": "0.6", "kiddush-cup-guide.html": "0.6", "shabbat-candlesticks-guide.html": "0.6", "havdalah-set-guide.html": "0.6", "guides.html": "0.6", "terms.html": "0.3", "privacy.html": "0.3",
+    "contact.html": "0.7", "faq.html": "0.6", "kiddush-cup-guide.html": "0.6", "shabbat-candlesticks-guide.html": "0.6", "havdalah-set-guide.html": "0.6", "guides.html": "0.6", "shofar-guide.html": "0.6", "jewish-wedding-gift-guide.html": "0.6", "bar-bat-mitzvah-gift-guide.html": "0.6", "terms.html": "0.3", "privacy.html": "0.3",
     "accessibility.html": "0.3",
 }
 
