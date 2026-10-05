@@ -4,11 +4,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Buying Guides for Handmade Judaica | Sherman Art Works</title>
-  <meta name="description" content="Buying guides from the makers: how to choose a Kiddush cup, Shabbat candlesticks, a Havdalah set and a shofar, plus wedding and bar mitzvah gift ideas." />
+  <meta name="description" content="Buying guides from the makers: how to choose a Kiddush cup, Shabbat candlesticks, a Havdalah set, a shofar and a mezuzah case, plus wedding and bar mitzvah gift ideas." />
 
   <!-- Open Graph -->
   <meta property="og:title" content="Buying Guides" />
-  <meta property="og:description" content="Buying guides from the makers: how to choose a Kiddush cup, Shabbat candlesticks, a Havdalah set and a shofar, plus wedding and bar mitzvah gift ideas." />
+  <meta property="og:description" content="Buying guides from the makers: how to choose a Kiddush cup, Shabbat candlesticks, a Havdalah set, a shofar and a mezuzah case, plus wedding and bar mitzvah gift ideas." />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="https://res.cloudinary.com/doesupaf9/image/upload/w_1200,h_630,c_pad,b_rgb:faf7f2,q_auto,f_auto/Blue_bore_cup_zsahzh.jpg" />
 
@@ -213,9 +213,10 @@
 .guide-cta { justify-content: center; }
 .guide-more { justify-content: center; margin-top: 1.6rem; }
 @media (max-width: 900px) { .guide-picks { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-.guide-hub { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.guide-hub { display: flex; flex-wrap: wrap; justify-content: center; }
+.guide-hub .guide-pick { flex: 0 1 calc((100% - 2.5rem) / 3); min-width: 0; }
 .guide-hub small { display: block; margin-top: 0.4rem; font-family: var(--ff-body); font-size: 0.82rem; color: var(--brown); line-height: 1.55; }
-@media (max-width: 900px) { .guide-hub { grid-template-columns: 1fr; max-width: 520px; } }
+@media (max-width: 900px) { .guide-hub { max-width: 520px; } .guide-hub .guide-pick { flex-basis: 100%; } }
 </style>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Sherman Art Works","item":"https://shermanartworks.com"},{"@type":"ListItem","position":2,"name":"Buying Guides","item":"https://shermanartworks.com/guides.html"}]}</script>
   <link rel="canonical" href="https://shermanartworks.com/guides.html" />
@@ -226,7 +227,7 @@
   <meta property="og:url" content="https://shermanartworks.com/guides.html" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Buying Guides for Handmade Judaica - Sherman Art Works" />
-  <meta name="twitter:description" content="Buying guides from the makers: how to choose a Kiddush cup, Shabbat candlesticks, a Havdalah set and a shofar, plus wedding and bar mitzvah gift ideas." />
+  <meta name="twitter:description" content="Buying guides from the makers: how to choose a Kiddush cup, Shabbat candlesticks, a Havdalah set, a shofar and a mezuzah case, plus wedding and bar mitzvah gift ideas." />
   <meta name="twitter:image" content="https://res.cloudinary.com/doesupaf9/image/upload/w_1200,h_630,c_pad,b_rgb:faf7f2,q_auto,f_auto/Blue_bore_cup_zsahzh.jpg" />
 </head>
 <body>
@@ -356,6 +357,7 @@
       <a class="guide-pick" href="shofar-guide.html"><img src="https://res.cloudinary.com/doesupaf9/image/upload/w_600,c_fit,q_auto,f_auto/Kudu_Jerusalem_Lions_xelufl.jpg" alt="How to Choose a Shofar" loading="lazy" width="600" height="600" /><span><strong data-t="card4_title">How to Choose a Shofar</strong><br /><small data-t="card4_desc">Kudu or ram's horn, which size, decorated or custom engraved, and how to care for it.</small></span></a>
       <a class="guide-pick" href="jewish-wedding-gift-guide.html"><img src="https://res.cloudinary.com/doesupaf9/image/upload/w_600,c_fit,q_auto,f_auto/White_pamotim_lrdkha.jpg" alt="Jewish Wedding Gift Ideas" loading="lazy" width="600" height="600" /><span><strong data-t="card5_title">Jewish Wedding Gift Ideas</strong><br /><small data-t="card5_desc">Shabbat candlesticks, a Kiddush cup, a Havdalah set or a mezuzah case for the couple's first home.</small></span></a>
       <a class="guide-pick" href="bar-bat-mitzvah-gift-guide.html"><img src="https://res.cloudinary.com/doesupaf9/image/upload/w_600,c_fit,q_auto,f_auto/Reddish_color_cup1_modkh4.jpg" alt="Bar and Bat Mitzvah Gift Ideas" loading="lazy" width="600" height="600" /><span><strong data-t="card6_title">Bar and Bat Mitzvah Gift Ideas</strong><br /><small data-t="card6_desc">A first piece of Judaica of their own, made by hand in Israel, to keep for life.</small></span></a>
+      <a class="guide-pick" href="mezuzah-guide.html"><img src="https://res.cloudinary.com/doesupaf9/image/upload/w_600,c_fit,q_auto,f_auto/Kudu_mezuzah_z5jg3w.jpg" alt="How to Choose a Mezuzah Case" loading="lazy" width="600" height="600" /><span><strong data-t="card7_title">How to Choose a Mezuzah Case</strong><br /><small data-t="card7_desc">Horn or glass, the scroll that goes inside, where to hang it, and the right case for a gift.</small></span></a>
   </div>
 </section>
 
@@ -493,6 +495,8 @@
       card5_desc:   "Shabbat candlesticks, a Kiddush cup, a Havdalah set or a mezuzah case for the couple's first home.",
       card6_title:  'Bar and Bat Mitzvah Gift Ideas',
       card6_desc:   'A first piece of Judaica of their own, made by hand in Israel, to keep for life.',
+      card7_title:  'How to Choose a Mezuzah Case',
+      card7_desc:   'Horn or glass, the scroll that goes inside, where to hang it, and the right case for a gift.',
 
       trust_band_title: 'Crafted in Israel, Sent With Care',
       trust_band_sub:   'Three generations of glass artists. Every piece signed, packed and shipped by family.',
@@ -544,6 +548,8 @@
       card5_desc:   'פמוטים לשבת, כוס קידוש, סט הבדלה או בית מזוזה לבית הראשון של הזוג.',
       card6_title:  'רעיונות למתנה לבר ובת מצווה',
       card6_desc:   'פריט יודאיקה ראשון משלהם, בעבודת יד מישראל, לשמור לכל החיים.',
+      card7_title:  'איך בוחרים בית מזוזה',
+      card7_desc:   'קרן או זכוכית, הקלף שבפנים, היכן קובעים אותה, ואיזה בית מזוזה מתאים למתנה.',
 
       trust_band_title: 'עשוי בישראל, נשלח באהבה',
       trust_band_sub:   'שלושה דורות של אמני זכוכית. כל יצירה חתומה, ארוזה ונשלחת על ידי המשפחה.',

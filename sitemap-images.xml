@@ -452,6 +452,7 @@
     <image:image><image:loc>https://res.cloudinary.com/doesupaf9/image/upload/q_auto,f_auto/Kudu_Jerusalem_Lions_xelufl.jpg</image:loc></image:image>
     <image:image><image:loc>https://res.cloudinary.com/doesupaf9/image/upload/q_auto,f_auto/White_pamotim_lrdkha.jpg</image:loc></image:image>
     <image:image><image:loc>https://res.cloudinary.com/doesupaf9/image/upload/q_auto,f_auto/Reddish_color_cup1_modkh4.jpg</image:loc></image:image>
+    <image:image><image:loc>https://res.cloudinary.com/doesupaf9/image/upload/q_auto,f_auto/Kudu_mezuzah_z5jg3w.jpg</image:loc></image:image>
   </url>
   <url>
     <loc>https://shermanartworks.com/kiddush-cup-guide.html</loc>
@@ -494,6 +495,13 @@
     <image:image><image:loc>https://res.cloudinary.com/doesupaf9/image/upload/q_auto,f_auto/White_pamotim_lrdkha.jpg</image:loc></image:image>
     <image:image><image:loc>https://res.cloudinary.com/doesupaf9/image/upload/q_auto,f_auto/Cover_silver_Magen_David_with_name_adq1oi.jpg</image:loc></image:image>
     <image:image><image:loc>https://res.cloudinary.com/doesupaf9/image/upload/q_auto,f_auto/Blue_havdalah_set_gold_kqrs67.jpg</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://shermanartworks.com/mezuzah-guide.html</loc>
+    <image:image><image:loc>https://res.cloudinary.com/doesupaf9/image/upload/q_auto,f_auto/Kudu_mezuzah_z5jg3w.jpg</image:loc></image:image>
+    <image:image><image:loc>https://res.cloudinary.com/doesupaf9/image/upload/q_auto,f_auto/Ram_mezuzah_ixe7f8.jpg</image:loc></image:image>
+    <image:image><image:loc>https://res.cloudinary.com/doesupaf9/image/upload/q_auto,f_auto/mezuzah_reem_03_eb6ink.jpg</image:loc></image:image>
+    <image:image><image:loc>https://res.cloudinary.com/doesupaf9/image/upload/q_auto,f_auto/Clear_glass_mezuzah_white_background_q5fbks.jpg</image:loc></image:image>
   </url>
   <url>
     <loc>https://shermanartworks.com/he/</loc>
@@ -966,6 +974,7 @@
     <image:image><image:loc>https://res.cloudinary.com/doesupaf9/image/upload/q_auto,f_auto/Kudu_Jerusalem_Lions_xelufl.jpg</image:loc></image:image>
     <image:image><image:loc>https://res.cloudinary.com/doesupaf9/image/upload/q_auto,f_auto/White_pamotim_lrdkha.jpg</image:loc></image:image>
     <image:image><image:loc>https://res.cloudinary.com/doesupaf9/image/upload/q_auto,f_auto/Reddish_color_cup1_modkh4.jpg</image:loc></image:image>
+    <image:image><image:loc>https://res.cloudinary.com/doesupaf9/image/upload/q_auto,f_auto/Kudu_mezuzah_z5jg3w.jpg</image:loc></image:image>
   </url>
   <url>
     <loc>https://shermanartworks.com/he/shofar-guide.html</loc>
@@ -987,5 +996,12 @@
     <image:image><image:loc>https://res.cloudinary.com/doesupaf9/image/upload/q_auto,f_auto/White_pamotim_lrdkha.jpg</image:loc></image:image>
     <image:image><image:loc>https://res.cloudinary.com/doesupaf9/image/upload/q_auto,f_auto/Cover_silver_Magen_David_with_name_adq1oi.jpg</image:loc></image:image>
     <image:image><image:loc>https://res.cloudinary.com/doesupaf9/image/upload/q_auto,f_auto/Blue_havdalah_set_gold_kqrs67.jpg</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://shermanartworks.com/he/mezuzah-guide.html</loc>
+    <image:image><image:loc>https://res.cloudinary.com/doesupaf9/image/upload/q_auto,f_auto/Kudu_mezuzah_z5jg3w.jpg</image:loc></image:image>
+    <image:image><image:loc>https://res.cloudinary.com/doesupaf9/image/upload/q_auto,f_auto/Ram_mezuzah_ixe7f8.jpg</image:loc></image:image>
+    <image:image><image:loc>https://res.cloudinary.com/doesupaf9/image/upload/q_auto,f_auto/mezuzah_reem_03_eb6ink.jpg</image:loc></image:image>
+    <image:image><image:loc>https://res.cloudinary.com/doesupaf9/image/upload/q_auto,f_auto/Clear_glass_mezuzah_white_background_q5fbks.jpg</image:loc></image:image>
   </url>
 </urlset>
