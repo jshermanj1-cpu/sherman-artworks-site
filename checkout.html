@@ -249,6 +249,9 @@
       checkout_pay_btn:     'Pay by card',
       checkout_pay_working: 'Taking you to secure payment...',
       checkout_pay_secure:  'Card details are entered on our payment provider\'s secure page. We never see or store them.',
+      checkout_duties_title:'Customs and import taxes',
+      checkout_duties_note: 'Import VAT, customs duties and clearance fees charged in the destination country are not included in the price and are the customer\'s responsibility. They are paid directly to customs or the delivery company, and we cannot pay or handle them for you.',
+      checkout_duties_link: 'Terms, section 7',
       checkout_pay_missing: 'Please fill in the delivery details highlighted below so we know where to send your order.',
       checkout_pay_failed:  'We could not start the payment just now. Please try again, or send the order on WhatsApp and we will take it from there.',
       checkout_pay_changed: 'The total for this order is {total}. We have updated it above so you can check it. Press Pay by card again to continue with that amount.',
@@ -303,6 +306,9 @@
       checkout_pay_btn:     'תשלום בכרטיס אשראי',
       checkout_pay_working: 'מעבירים אתכם לתשלום מאובטח...',
       checkout_pay_secure:  'פרטי הכרטיס מוזנים בדף המאובטח של ספק התשלומים. אנחנו לא רואים ולא שומרים אותם.',
+      checkout_duties_title:'מכס ומיסי יבוא',
+      checkout_duties_note: 'מע״מ יבוא, מכס ועמלות שחרור הנגבים במדינת היעד אינם כלולים במחיר והם באחריות הלקוח. התשלום נעשה ישירות לרשויות המכס או לחברת המשלוחים, ואין לנו אפשרות לשלם אותם או לטפל בהם עבורכם.',
+      checkout_duties_link: 'פרטים בתנאי השימוש',
       checkout_pay_missing: 'נא למלא את פרטי המשלוח המסומנים למטה כדי שנדע לאן לשלוח את ההזמנה.',
       checkout_pay_failed:  'לא הצלחנו להתחיל את התשלום כרגע. אפשר לנסות שוב, או לשלוח את ההזמנה ב-WhatsApp ונמשיך מכאן.',
       checkout_pay_changed: 'הסכום לתשלום עבור הזמנה זו הוא {total}. עדכנו אותו למעלה כדי שתוכלו לבדוק. לחצו שוב על תשלום בכרטיס אשראי כדי להמשיך עם הסכום הזה.',
@@ -423,7 +429,21 @@
           '<div class="checkout-or"><span>' + escapeHtml(t.checkout_pay_or) + '</span></div>'
         : '';
 
-      actionsEl.innerHTML = payBlock +
+      // Said again here, beside the button, because the terms page is where
+      // nobody reads it: a parcel refused over import charges comes back at the
+      // studio's cost. Built on every render, so it follows the zone picker.
+      var dutiesNote = (!isPickup() && effectiveShipZone() === 'INTL')
+        ? '<p class="checkout-duties-note" style="margin:0 0 0.9rem;padding:0.7rem 0.9rem;' +
+            'border-inline-start:3px solid var(--gold);background:rgba(0,0,0,0.03);' +
+            'font-size:0.8rem;line-height:1.55;color:var(--brown);text-align:start">' +
+            '<strong>' + escapeHtml(t.checkout_duties_title) + '.</strong> ' +
+            escapeHtml(t.checkout_duties_note) + ' ' +
+            '<a href="terms.html" style="color:inherit;text-decoration:underline">' +
+              escapeHtml(t.checkout_duties_link) + '</a>' +
+          '</p>'
+        : '';
+
+      actionsEl.innerHTML = dutiesNote + payBlock +
         // href is rebuilt on click: the address form sits above this button and
         // is not re-rendered as it is typed into, so a link built at render time
         // would carry a stale (or empty) address.
