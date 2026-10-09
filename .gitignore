@@ -13,5 +13,6 @@ _*.py
 !_usd.py
 !_launch.py
 !_image_sitemap.py
+!_indexnow.py
 _pricing/
 __pycache__/

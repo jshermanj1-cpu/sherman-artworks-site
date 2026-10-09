@@ -1,0 +1,66 @@
+name: IndexNow
+
+# Announces changed pages to Bing and the other IndexNow engines once they are
+# live. A push to main submits the sitemap pages that push changed; running it
+# by hand (workflow_dispatch) resubmits every URL in sitemap.xml. The work is
+# done by _indexnow.py, which explains the why.
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  indexnow:
+    runs-on: ubuntu-latest
+    steps:
+      # Full history, so the diff back to the previous tip of main always works.
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Work out which URLs to submit
+        id: urls
+        run: |
+          if [ "${{ github.event_name }}" = "push" ]; then
+            echo "args=--since ${{ github.event.before }}" >> "$GITHUB_OUTPUT"
+            python _indexnow.py --since "${{ github.event.before }}" --dry-run | tee urls.txt
+          else
+            echo "args=--all" >> "$GITHUB_OUTPUT"
+            python _indexnow.py --all --dry-run | tee urls.txt
+          fi
+          if grep -q "URL(s):" urls.txt; then
+            echo "any=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      # Announcing a page before GitHub Pages serves it would send Bingbot to
+      # the old version, so wait for this commit's deploy. A cancelled deploy
+      # means a newer push replaced it, and that one carries these pages too.
+      - name: Wait for the Pages deploy of this commit
+        if: steps.urls.outputs.any == 'true' && github.event_name == 'push'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          for i in $(seq 1 40); do
+            state=$(gh api "repos/${{ github.repository }}/actions/runs?head_sha=${{ github.sha }}" \
+              --jq '.workflow_runs[] | select(.name == "pages build and deployment") | "\(.status) \(.conclusion)"' | head -1)
+            echo "pages build and deployment: ${state:-not started yet}"
+            case "$state" in
+              "completed success"|"completed cancelled") exit 0 ;;
+              completed*) echo "::error::The Pages deploy did not succeed, so the changed pages are not live."; exit 1 ;;
+            esac
+            sleep 15
+          done
+          echo "::error::No finished Pages deploy for ${{ github.sha }} after 10 minutes."
+          exit 1
+
+      - name: Submit to IndexNow
+        if: steps.urls.outputs.any == 'true'
+        run: python _indexnow.py ${{ steps.urls.outputs.args }}
