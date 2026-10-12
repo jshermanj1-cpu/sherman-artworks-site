@@ -28,6 +28,7 @@ CATEGORY_CODES = {
     "mezuzahs": ("Mezuzahs", "MZ"),
     "shofars": ("Shofars", "SH"),
     "havdalah-sets": ("Havdalah Sets", "HS"),
+    "hanukkah-menorahs": ("Hanukkah Menorahs", "HN"),
 }
 
 

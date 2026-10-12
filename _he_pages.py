@@ -45,6 +45,7 @@ SHOP_PAGES = [
     "havdalah-sets.html",
     "havdalah-sets-silver-plated.html",
     "havdalah-sets-gold-plated.html",
+    "hanukkah-menorahs.html",
     "mezuzahs.html",
     "trays-bowls.html",
     "trays-bowls-silver-plated.html",
@@ -90,7 +91,7 @@ POLICY = {
 }
 
 # Extra JS files to mine for product name_he/description_he (shofar catalogue).
-PRODUCT_JS = ["js/shofar-products.js", "js/havdalah-sets.js"]
+PRODUCT_JS = ["js/shofar-products.js", "js/havdalah-sets.js", "js/hanukkah-menorahs.js"]
 
 # setLang() uses innerHTML (not textContent) only for these rich-text keys.
 RICH_KEYS = {"story_body", "craft_body"}
@@ -212,6 +213,10 @@ META = {
     "havdalah-sets-gold-plated.html": (
         "סטי הבדלה בציפוי זהב | שרמן ארט וורקס",
         "סטי הבדלה מזכוכית בעבודת יד בגימור זהב, בצבעים שחור, כחול, לבן, כתום ואדום. מיוצר בישראל.",
+    ),
+    "hanukkah-menorahs.html": (
+        "חנוכיות מזכוכית בעבודת יד | שרמן ארט וורקס",
+        "חנוכיות מזכוכית בעבודת יד מישראל: שתי שכבות של זכוכית בשבעה צבעים, עם כנים ובסיס בגוון כסף או בגוון זהב. מיוצר לפי הזמנה, משלוח לכל העולם.",
     ),
     "business-gifts.html": (
         "מתנות לעסקים ולאירועים | שרמן ארט וורקס",
@@ -522,6 +527,16 @@ PRODUCT_GROUP_HE = {
         "name": "סטים להבדלה קלאסיים",
         "description": "סטים להבדלה בעבודת יד בצבעים שחור, כחול ולבן, "
                        "מיוצרים בסטודיו שלנו בישראל.",
+    },
+    "silver-tone-half-moon-hanukkah-menorahs": {
+        "name": "חנוכיות חצי ירח מזכוכית עם כנים בגוון כסף",
+        "description": "חנוכיות בצורת חצי ירח בעבודת יד משתי שכבות של זכוכית בשבעה צבעים, "
+                       "עם כנים ובסיס בגוון כסף, מיוצרות בסטודיו שלנו בישראל.",
+    },
+    "gold-tone-half-moon-hanukkah-menorahs": {
+        "name": "חנוכיות חצי ירח מזכוכית עם כנים בגוון זהב",
+        "description": "חנוכיות בצורת חצי ירח בעבודת יד משתי שכבות של זכוכית בשבעה צבעים, "
+                       "עם כנים ובסיס בגוון זהב, מיוצרות בסטודיו שלנו בישראל.",
     },
 }
 

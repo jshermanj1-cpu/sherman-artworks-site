@@ -115,6 +115,7 @@ def scan():
     bare, eng_he, invisible, faq_orphans, ld_broken = [], [], [], [], []
     usd_wrong, no_a11y = [], []
     undated, thin, misrated = [], [], []
+    doubled = []
     price_pat = re.compile(
         r'&#8362;([\d,]+) <span class="product-card-price-alt">≈ \$(\d+)</span>')
 
@@ -140,6 +141,15 @@ def scan():
 
         if not noindex and "accessibility.html" not in src:
             no_a11y.append(name)
+
+        # The footer-links edit of 2026-10-05 inserted a second footer on
+        # havdalah-sets.html instead of changing the one there, because that
+        # page keeps its footer on a single line. _subcategory_pages.py and
+        # _he_pages.py then copied it onto five more pages, nested inside the
+        # first footer's Help list, where it widened the page past the viewport.
+        footers = src.count("<footer")
+        if footers > 1:
+            doubled.append((name, footers))
 
         visible = BeautifulSoup(src, "html.parser")
         for tag in visible(["script", "style", "noscript"]):
@@ -233,6 +243,8 @@ def scan():
     record("Sitemap URLs all resolve", absent, ", ".join(absent))
     record("Indexable pages link the accessibility statement", no_a11y,
            ", ".join(no_a11y[:3]))
+    record("No page carries a second footer", doubled,
+           "%s has %d" % doubled[0] if doubled else "")
     if usd_from_ils:
         record("Card dollar figures match the charged price", usd_wrong,
                "%s: %s shows $%s, charges $%s" % usd_wrong[0] if usd_wrong else "")
@@ -400,6 +412,7 @@ def main():
     copy_rules()
     feed_prices()
     external("Static cards match the catalogue", ["_static_cards.py", "--check"], "_usd.py")
+    external("Hanukkah page matches the catalogue", ["_hanukkah_page.py", "--check"], "_usd.py")
     external("Shofar sizing table is current", ["_shofar_guide.py", "--check"])
     external("Image sitemap is current", ["_image_sitemap.py", "--check"])
     external("SKUs, JSON-LD and the feed agree", ["_validate_skus.py"], "_launch.py")
@@ -417,7 +430,7 @@ def main():
 
     if failed:
         print("\n%d guard(s) failed. Re-run the generator chain:" % len(failed))
-        print("  python _static_cards.py && python _subcategory_pages.py && "
+        print("  python _hanukkah_page.py && python _static_cards.py && python _subcategory_pages.py && "
               "python _shofar_jsonld.py \\\n    && python _shofar_pages.py && "
               "python _bake_en.py && python _offer_schema.py \\\n    && "
               "python _he_pages.py && python _merchant_feed.py && python _image_sitemap.py")

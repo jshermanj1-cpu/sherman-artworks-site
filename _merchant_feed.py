@@ -79,7 +79,14 @@ CATEGORY_META = {
     "mezuzahs": ("Mezuzahs", "97"),
     "shofars": ("Shofars", "97"),
     "havdalah-sets": ("Havdalah Sets", "97"),
+    "hanukkah-menorahs": ("Hanukkah Menorahs", "97"),
 }
+
+# Hanukkah menorahs are glass with silver-tone or gold-tone sockets and base -
+# a finish, not plating - so they carry their own label rather than _finish()'s.
+TONE = {"silver-tone": "Silver-Tone", "gold-tone": "Gold-Tone"}
+# Each menorah shape is its own design; a new shape needs its label here.
+SHAPE = {"half-moon": "Half-Moon"}
 
 
 def tag(name, value, indent=4):
@@ -140,6 +147,10 @@ def feed_title(product, size_text=None):
             desc = rest.split(" - ", 1)[1] if " - " in rest else ""
     elif cat == "havdalah-sets":
         kind, desc = "Glass Havdalah Set", _strip(rest, "Havdalah Set")
+    elif cat == "hanukkah-menorahs":
+        kind = "%s Glass Hanukkah Menorah" % SHAPE[product["shape"]]
+        desc = product["color_en"]
+        plating = TONE[product["finish"]] + " Sockets & Base"
     elif cat == "mezuzahs":
         if "Glass" in rest:
             kind, desc = "Clear Glass Mezuzah Case", ""
@@ -212,6 +223,8 @@ def feed_product_type(product):
         line = "Glass" if "Glass" in name else "Horn"
     elif cat == "horn-goblets":
         line = None
+    elif cat == "hanukkah-menorahs":
+        line = SHAPE[product["shape"]] + " > " + TONE[product["finish"]]
     else:
         line = _finish(product) or "Artisanal"
     return " > ".join(x for x in ("Judaica", top, line) if x)
@@ -244,6 +257,10 @@ def feed_highlights(product):
     elif cat == "trays-bowls":
         if finish:
             out.append("Glass finished with %s" % ("925 silver plating" if finish.startswith("925") else "gold plating"))
+    elif cat == "hanukkah-menorahs":
+        out.append("%s shape in two layers of handmade glass, %s (length × height × depth)"
+                   % (SHAPE[product["shape"]], product["measurements"]))
+        out.append("%s sockets and base" % TONE[product["finish"]].capitalize())
     elif cat == "shofars":
         out.append("Natural %s decorated by hand in 925 silver" % ("kudu horn" if "Kudu" in name else "ram's horn"))
         if "Custom" in name:
@@ -369,7 +386,7 @@ def write_feed(products, market):
         "<channel>",
         "  <title>Sherman Art Works</title>",
         "  <link>https://shermanartworks.com/</link>",
-        "  <description>Handmade glass art and Judaica from Israel - candlesticks, Kiddush cups, horn goblets, shofars, mezuzahs, trays and bowls, and Havdalah sets.</description>",
+        "  <description>Handmade glass art and Judaica from Israel - candlesticks, Kiddush cups, horn goblets, shofars, mezuzahs, trays and bowls, Havdalah sets and Hanukkah menorahs.</description>",
     ]
 
     count = 0

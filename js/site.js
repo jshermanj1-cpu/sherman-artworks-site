@@ -250,6 +250,7 @@ const T_SITE = {
     cat6_title:          'Mezuzahs',
     cat7_title:          'Shofars',
     cat8_title:          'Havdalah Sets',
+    cat9_title:          'Hanukkah',
 
     // Shofar sub-categories - used by the nav on every page, not just the
     // shofar pages, so they live here rather than in a page dictionary.
@@ -336,6 +337,7 @@ const T_SITE = {
     cat6_title:          'מזוזות',
     cat7_title:          'שופרות',
     cat8_title:          'סטים להבדלה',
+    cat9_title:          'חנוכה',
 
     switch_all:          'כל השופרות',
     switch_custom:       'בהתאמה אישית',

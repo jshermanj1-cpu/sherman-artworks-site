@@ -30,6 +30,7 @@ fifteen invariants across every page in both languages:
 - all JSON-LD parses
 - the sitemap lists no noindex page, and every URL in it resolves
 - every indexable page links the accessibility statement
+- no page carries a second `<footer>`
 - card dollar figures match the price checkout charges
 - the house copy rules: plain hyphens only, never "sterling", never free shipping
 - static cards match `data/products.json`

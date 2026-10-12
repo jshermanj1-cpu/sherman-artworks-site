@@ -41,6 +41,7 @@ jobs:
       # and whatever is committed is stale.
       - name: Generator chain is not stale
         run: |
+          python _hanukkah_page.py
           python _static_cards.py
           python _subcategory_pages.py
           python _shofar_jsonld.py
@@ -56,7 +57,7 @@ jobs:
           if ! git diff --quiet; then
             echo "::error::The generator chain produced changes, so the committed files are stale."
             echo "Run the chain locally and commit what it writes:"
-            echo "  python _static_cards.py && python _subcategory_pages.py && python _shofar_jsonld.py \\"
+            echo "  python _hanukkah_page.py && python _static_cards.py && python _subcategory_pages.py && python _shofar_jsonld.py \\"
             echo "    && python _shofar_pages.py && python _bake_en.py && python _offer_schema.py \\"
             echo "    && python _he_pages.py && python _merchant_feed.py && python _image_sitemap.py"
             echo ""

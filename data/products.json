@@ -4105,5 +4105,369 @@
       "trays-bowls.html"
     ],
     "personalisable": false
+  },
+  {
+    "id": "silver-tone-pearl-white-glass-half-moon-hanukkah-menorah",
+    "sku": "SAW-HN-001",
+    "family_id": "silver-tone-half-moon-hanukkah-menorahs",
+    "category": "hanukkah-menorahs",
+    "finish": "silver-tone",
+    "shape": "half-moon",
+    "pages": [
+      "hanukkah-menorahs.html"
+    ],
+    "name_en": "Silver-Tone Pearl White Glass Half-Moon Hanukkah Menorah",
+    "name_he": "חנוכיה חצי ירח מזכוכית בצבע לבן פנינה עם כנים ובסיס בגוון כסף",
+    "description_en": "Handmade half-moon Hanukkah menorah of two layers of pearl white glass, with silver-tone sockets and base, crafted in our studio in Israel.",
+    "description_he": "חנוכיה בצורת חצי ירח בעבודת יד משתי שכבות של זכוכית בצבע לבן פנינה, עם כנים ובסיס בגוון כסף, מיוצרת בסטודיו שלנו בישראל.",
+    "color_en": "Pearl White",
+    "color_he": "לבן פנינה",
+    "measurements": "33 × 27 × 3 cm",
+    "price_ils": 1250,
+    "photos": [
+      "Milky_White_half_moon_1_-_silver_ttc6at",
+      "Milky_White_half_moon_2_-_silver_q3lz8v",
+      "Milky_White_half_moon_3_-_silver_reeeie",
+      "Milky_White_half_moon_background_-_silver_nxowqq"
+    ],
+    "personalisable": false
+  },
+  {
+    "id": "silver-tone-blue-glass-half-moon-hanukkah-menorah",
+    "sku": "SAW-HN-002",
+    "family_id": "silver-tone-half-moon-hanukkah-menorahs",
+    "category": "hanukkah-menorahs",
+    "finish": "silver-tone",
+    "shape": "half-moon",
+    "pages": [
+      "hanukkah-menorahs.html"
+    ],
+    "name_en": "Silver-Tone Blue Glass Half-Moon Hanukkah Menorah",
+    "name_he": "חנוכיה חצי ירח מזכוכית בצבע כחול עם כנים ובסיס בגוון כסף",
+    "description_en": "Handmade half-moon Hanukkah menorah of two layers of blue glass, with silver-tone sockets and base, crafted in our studio in Israel.",
+    "description_he": "חנוכיה בצורת חצי ירח בעבודת יד משתי שכבות של זכוכית בצבע כחול, עם כנים ובסיס בגוון כסף, מיוצרת בסטודיו שלנו בישראל.",
+    "color_en": "Blue",
+    "color_he": "כחול",
+    "measurements": "33 × 27 × 3 cm",
+    "price_ils": 1250,
+    "photos": [
+      "Blue_half_moon_1_e0o5wz",
+      "Blue_half_moon_2_ocuegh",
+      "Blue_half_moon_3_klwete",
+      "Blue_half_moon_background_zmhcrr"
+    ],
+    "personalisable": false
+  },
+  {
+    "id": "silver-tone-clear-glass-half-moon-hanukkah-menorah",
+    "sku": "SAW-HN-003",
+    "family_id": "silver-tone-half-moon-hanukkah-menorahs",
+    "category": "hanukkah-menorahs",
+    "finish": "silver-tone",
+    "shape": "half-moon",
+    "pages": [
+      "hanukkah-menorahs.html"
+    ],
+    "name_en": "Silver-Tone Clear Glass Half-Moon Hanukkah Menorah",
+    "name_he": "חנוכיה חצי ירח מזכוכית שקופה עם כנים ובסיס בגוון כסף",
+    "description_en": "Handmade half-moon Hanukkah menorah of two layers of clear glass, with silver-tone sockets and base, crafted in our studio in Israel.",
+    "description_he": "חנוכיה בצורת חצי ירח בעבודת יד משתי שכבות של זכוכית שקופה, עם כנים ובסיס בגוון כסף, מיוצרת בסטודיו שלנו בישראל.",
+    "color_en": "Clear",
+    "color_he": "שקוף",
+    "measurements": "33 × 27 × 3 cm",
+    "price_ils": 1250,
+    "photos": [
+      "Clear_half_moon_1_-_silver_jtlo6a",
+      "Clear_half_moon_2_-_silver_wnheg5",
+      "Clear_half_moon_3_-_silver_ytmyiq",
+      "Clear_half_moon_background_-_silver_ecel5p"
+    ],
+    "personalisable": false
+  },
+  {
+    "id": "silver-tone-emerald-green-glass-half-moon-hanukkah-menorah",
+    "sku": "SAW-HN-004",
+    "family_id": "silver-tone-half-moon-hanukkah-menorahs",
+    "category": "hanukkah-menorahs",
+    "finish": "silver-tone",
+    "shape": "half-moon",
+    "pages": [
+      "hanukkah-menorahs.html"
+    ],
+    "name_en": "Silver-Tone Emerald Green Glass Half-Moon Hanukkah Menorah",
+    "name_he": "חנוכיה חצי ירח מזכוכית בצבע ירוק עם כנים ובסיס בגוון כסף",
+    "description_en": "Handmade half-moon Hanukkah menorah of two layers of emerald green glass, with silver-tone sockets and base, crafted in our studio in Israel.",
+    "description_he": "חנוכיה בצורת חצי ירח בעבודת יד משתי שכבות של זכוכית בצבע ירוק, עם כנים ובסיס בגוון כסף, מיוצרת בסטודיו שלנו בישראל.",
+    "color_en": "Emerald Green",
+    "color_he": "ירוק",
+    "measurements": "33 × 27 × 3 cm",
+    "price_ils": 1250,
+    "photos": [
+      "Emerald_green_half_moon_1_itf3yn",
+      "Emerald_green_half_moon_2_dnxs9u",
+      "Emerald_green_half_moon_3_zlnmzd",
+      "Emerald_green_half_moon_background_q2b72c"
+    ],
+    "personalisable": false
+  },
+  {
+    "id": "silver-tone-light-blue-glass-half-moon-hanukkah-menorah",
+    "sku": "SAW-HN-005",
+    "family_id": "silver-tone-half-moon-hanukkah-menorahs",
+    "category": "hanukkah-menorahs",
+    "finish": "silver-tone",
+    "shape": "half-moon",
+    "pages": [
+      "hanukkah-menorahs.html"
+    ],
+    "name_en": "Silver-Tone Light Blue Glass Half-Moon Hanukkah Menorah",
+    "name_he": "חנוכיה חצי ירח מזכוכית בצבע כחול בהיר עם כנים ובסיס בגוון כסף",
+    "description_en": "Handmade half-moon Hanukkah menorah of two layers of light blue glass, with silver-tone sockets and base, crafted in our studio in Israel.",
+    "description_he": "חנוכיה בצורת חצי ירח בעבודת יד משתי שכבות של זכוכית בצבע כחול בהיר, עם כנים ובסיס בגוון כסף, מיוצרת בסטודיו שלנו בישראל.",
+    "color_en": "Light Blue",
+    "color_he": "כחול בהיר",
+    "measurements": "33 × 27 × 3 cm",
+    "price_ils": 1250,
+    "photos": [
+      "Light_blue_half_moon_1_dbpnlp",
+      "Light_blue_half_moon_2_yau3xy",
+      "Light_blue_half_moon_3_ouk5rl",
+      "Light_blue_half_moon_background_qzperf"
+    ],
+    "personalisable": false
+  },
+  {
+    "id": "silver-tone-terracotta-glass-half-moon-hanukkah-menorah",
+    "sku": "SAW-HN-006",
+    "family_id": "silver-tone-half-moon-hanukkah-menorahs",
+    "category": "hanukkah-menorahs",
+    "finish": "silver-tone",
+    "shape": "half-moon",
+    "pages": [
+      "hanukkah-menorahs.html"
+    ],
+    "name_en": "Silver-Tone Terracotta Glass Half-Moon Hanukkah Menorah",
+    "name_he": "חנוכיה חצי ירח מזכוכית בצבע נחושת עם כנים ובסיס בגוון כסף",
+    "description_en": "Handmade half-moon Hanukkah menorah of two layers of terracotta glass, with silver-tone sockets and base, crafted in our studio in Israel.",
+    "description_he": "חנוכיה בצורת חצי ירח בעבודת יד משתי שכבות של זכוכית בצבע נחושת, עם כנים ובסיס בגוון כסף, מיוצרת בסטודיו שלנו בישראל.",
+    "color_en": "Terracotta",
+    "color_he": "נחושת",
+    "measurements": "33 × 27 × 3 cm",
+    "price_ils": 1250,
+    "photos": [
+      "terracotta_half_moon_1_y1v1ic",
+      "terracotta_half_moon_2_yrhy9s",
+      "terracotta_half_moon_3_ywv7rj",
+      "terracotta_half_moon_background_uw7o6k"
+    ],
+    "personalisable": false
+  },
+  {
+    "id": "silver-tone-turquoise-glass-half-moon-hanukkah-menorah",
+    "sku": "SAW-HN-007",
+    "family_id": "silver-tone-half-moon-hanukkah-menorahs",
+    "category": "hanukkah-menorahs",
+    "finish": "silver-tone",
+    "shape": "half-moon",
+    "pages": [
+      "hanukkah-menorahs.html"
+    ],
+    "name_en": "Silver-Tone Turquoise Glass Half-Moon Hanukkah Menorah",
+    "name_he": "חנוכיה חצי ירח מזכוכית בצבע טורקיז עם כנים ובסיס בגוון כסף",
+    "description_en": "Handmade half-moon Hanukkah menorah of two layers of turquoise glass, with silver-tone sockets and base, crafted in our studio in Israel.",
+    "description_he": "חנוכיה בצורת חצי ירח בעבודת יד משתי שכבות של זכוכית בצבע טורקיז, עם כנים ובסיס בגוון כסף, מיוצרת בסטודיו שלנו בישראל.",
+    "color_en": "Turquoise",
+    "color_he": "טורקיז",
+    "measurements": "33 × 27 × 3 cm",
+    "price_ils": 1250,
+    "photos": [
+      "Turquoise_half_moon_1_ceudgv",
+      "Turquoise_half_moon_2_kyqxnf",
+      "Turquoise_half_moon_3_cq7rim",
+      "Turquoise_half_moon_background_hfcply"
+    ],
+    "personalisable": false
+  },
+  {
+    "id": "gold-tone-pearl-white-glass-half-moon-hanukkah-menorah",
+    "sku": "SAW-HN-008",
+    "family_id": "gold-tone-half-moon-hanukkah-menorahs",
+    "category": "hanukkah-menorahs",
+    "finish": "gold-tone",
+    "shape": "half-moon",
+    "pages": [
+      "hanukkah-menorahs.html"
+    ],
+    "name_en": "Gold-Tone Pearl White Glass Half-Moon Hanukkah Menorah",
+    "name_he": "חנוכיה חצי ירח מזכוכית בצבע לבן פנינה עם כנים ובסיס בגוון זהב",
+    "description_en": "Handmade half-moon Hanukkah menorah of two layers of pearl white glass, with gold-tone sockets and base, crafted in our studio in Israel.",
+    "description_he": "חנוכיה בצורת חצי ירח בעבודת יד משתי שכבות של זכוכית בצבע לבן פנינה, עם כנים ובסיס בגוון זהב, מיוצרת בסטודיו שלנו בישראל.",
+    "color_en": "Pearl White",
+    "color_he": "לבן פנינה",
+    "measurements": "33 × 27 × 3 cm",
+    "price_ils": 1250,
+    "photos": [
+      "Milky_White_half_moon_1_wjh6hb",
+      "Milky_White_half_moon_2_se9yd2",
+      "Milky_White_half_moon_3_mqrfy8",
+      "Milky_White_half_moon_background_iykolz"
+    ],
+    "personalisable": false
+  },
+  {
+    "id": "gold-tone-blue-glass-half-moon-hanukkah-menorah",
+    "sku": "SAW-HN-009",
+    "family_id": "gold-tone-half-moon-hanukkah-menorahs",
+    "category": "hanukkah-menorahs",
+    "finish": "gold-tone",
+    "shape": "half-moon",
+    "pages": [
+      "hanukkah-menorahs.html"
+    ],
+    "name_en": "Gold-Tone Blue Glass Half-Moon Hanukkah Menorah",
+    "name_he": "חנוכיה חצי ירח מזכוכית בצבע כחול עם כנים ובסיס בגוון זהב",
+    "description_en": "Handmade half-moon Hanukkah menorah of two layers of blue glass, with gold-tone sockets and base, crafted in our studio in Israel.",
+    "description_he": "חנוכיה בצורת חצי ירח בעבודת יד משתי שכבות של זכוכית בצבע כחול, עם כנים ובסיס בגוון זהב, מיוצרת בסטודיו שלנו בישראל.",
+    "color_en": "Blue",
+    "color_he": "כחול",
+    "measurements": "33 × 27 × 3 cm",
+    "price_ils": 1250,
+    "photos": [
+      "Blue_half_moon_1_t0poip",
+      "Blue_half_moon_2_wo3gr0",
+      "Blue_half_moon_3_wjjz67",
+      "Blue_half_moon_background_i84r6q"
+    ],
+    "personalisable": false
+  },
+  {
+    "id": "gold-tone-clear-glass-half-moon-hanukkah-menorah",
+    "sku": "SAW-HN-010",
+    "family_id": "gold-tone-half-moon-hanukkah-menorahs",
+    "category": "hanukkah-menorahs",
+    "finish": "gold-tone",
+    "shape": "half-moon",
+    "pages": [
+      "hanukkah-menorahs.html"
+    ],
+    "name_en": "Gold-Tone Clear Glass Half-Moon Hanukkah Menorah",
+    "name_he": "חנוכיה חצי ירח מזכוכית שקופה עם כנים ובסיס בגוון זהב",
+    "description_en": "Handmade half-moon Hanukkah menorah of two layers of clear glass, with gold-tone sockets and base, crafted in our studio in Israel.",
+    "description_he": "חנוכיה בצורת חצי ירח בעבודת יד משתי שכבות של זכוכית שקופה, עם כנים ובסיס בגוון זהב, מיוצרת בסטודיו שלנו בישראל.",
+    "color_en": "Clear",
+    "color_he": "שקוף",
+    "measurements": "33 × 27 × 3 cm",
+    "price_ils": 1250,
+    "photos": [
+      "Clear_half_moon_1_i5ume4",
+      "Clear_half_moon_2_qadtdr",
+      "Clear_half_moon_3_whauil",
+      "Clear_half_moon_background_jxmlzq"
+    ],
+    "personalisable": false
+  },
+  {
+    "id": "gold-tone-emerald-green-glass-half-moon-hanukkah-menorah",
+    "sku": "SAW-HN-011",
+    "family_id": "gold-tone-half-moon-hanukkah-menorahs",
+    "category": "hanukkah-menorahs",
+    "finish": "gold-tone",
+    "shape": "half-moon",
+    "pages": [
+      "hanukkah-menorahs.html"
+    ],
+    "name_en": "Gold-Tone Emerald Green Glass Half-Moon Hanukkah Menorah",
+    "name_he": "חנוכיה חצי ירח מזכוכית בצבע ירוק עם כנים ובסיס בגוון זהב",
+    "description_en": "Handmade half-moon Hanukkah menorah of two layers of emerald green glass, with gold-tone sockets and base, crafted in our studio in Israel.",
+    "description_he": "חנוכיה בצורת חצי ירח בעבודת יד משתי שכבות של זכוכית בצבע ירוק, עם כנים ובסיס בגוון זהב, מיוצרת בסטודיו שלנו בישראל.",
+    "color_en": "Emerald Green",
+    "color_he": "ירוק",
+    "measurements": "33 × 27 × 3 cm",
+    "price_ils": 1250,
+    "photos": [
+      "Emerald_green_half_moon_1_tdocav",
+      "Emerald_green_half_moon_2_v91bsk",
+      "Emerald_green_half_moon_3_nvknok",
+      "Emerald_green_half_moon_background_bhiwg1"
+    ],
+    "personalisable": false
+  },
+  {
+    "id": "gold-tone-light-blue-glass-half-moon-hanukkah-menorah",
+    "sku": "SAW-HN-012",
+    "family_id": "gold-tone-half-moon-hanukkah-menorahs",
+    "category": "hanukkah-menorahs",
+    "finish": "gold-tone",
+    "shape": "half-moon",
+    "pages": [
+      "hanukkah-menorahs.html"
+    ],
+    "name_en": "Gold-Tone Light Blue Glass Half-Moon Hanukkah Menorah",
+    "name_he": "חנוכיה חצי ירח מזכוכית בצבע כחול בהיר עם כנים ובסיס בגוון זהב",
+    "description_en": "Handmade half-moon Hanukkah menorah of two layers of light blue glass, with gold-tone sockets and base, crafted in our studio in Israel.",
+    "description_he": "חנוכיה בצורת חצי ירח בעבודת יד משתי שכבות של זכוכית בצבע כחול בהיר, עם כנים ובסיס בגוון זהב, מיוצרת בסטודיו שלנו בישראל.",
+    "color_en": "Light Blue",
+    "color_he": "כחול בהיר",
+    "measurements": "33 × 27 × 3 cm",
+    "price_ils": 1250,
+    "photos": [
+      "Light_blue_half_moon_1_kc0n3y",
+      "Light_blue_half_moon_2_eepwtj",
+      "Light_blue_half_moon_3_vffybz",
+      "Light_blue_half_moon_background_jaiksx"
+    ],
+    "personalisable": false
+  },
+  {
+    "id": "gold-tone-terracotta-glass-half-moon-hanukkah-menorah",
+    "sku": "SAW-HN-013",
+    "family_id": "gold-tone-half-moon-hanukkah-menorahs",
+    "category": "hanukkah-menorahs",
+    "finish": "gold-tone",
+    "shape": "half-moon",
+    "pages": [
+      "hanukkah-menorahs.html"
+    ],
+    "name_en": "Gold-Tone Terracotta Glass Half-Moon Hanukkah Menorah",
+    "name_he": "חנוכיה חצי ירח מזכוכית בצבע נחושת עם כנים ובסיס בגוון זהב",
+    "description_en": "Handmade half-moon Hanukkah menorah of two layers of terracotta glass, with gold-tone sockets and base, crafted in our studio in Israel.",
+    "description_he": "חנוכיה בצורת חצי ירח בעבודת יד משתי שכבות של זכוכית בצבע נחושת, עם כנים ובסיס בגוון זהב, מיוצרת בסטודיו שלנו בישראל.",
+    "color_en": "Terracotta",
+    "color_he": "נחושת",
+    "measurements": "33 × 27 × 3 cm",
+    "price_ils": 1250,
+    "photos": [
+      "Rose_gold_half_moon_1_ubcvyo",
+      "Rose_gold_half_moon_2_csbuke",
+      "Rose_gold_half_moon_3_s3dx7l",
+      "Rose_gold_half_moon_background_fov1d5"
+    ],
+    "personalisable": false
+  },
+  {
+    "id": "gold-tone-turquoise-glass-half-moon-hanukkah-menorah",
+    "sku": "SAW-HN-014",
+    "family_id": "gold-tone-half-moon-hanukkah-menorahs",
+    "category": "hanukkah-menorahs",
+    "finish": "gold-tone",
+    "shape": "half-moon",
+    "pages": [
+      "hanukkah-menorahs.html"
+    ],
+    "name_en": "Gold-Tone Turquoise Glass Half-Moon Hanukkah Menorah",
+    "name_he": "חנוכיה חצי ירח מזכוכית בצבע טורקיז עם כנים ובסיס בגוון זהב",
+    "description_en": "Handmade half-moon Hanukkah menorah of two layers of turquoise glass, with gold-tone sockets and base, crafted in our studio in Israel.",
+    "description_he": "חנוכיה בצורת חצי ירח בעבודת יד משתי שכבות של זכוכית בצבע טורקיז, עם כנים ובסיס בגוון זהב, מיוצרת בסטודיו שלנו בישראל.",
+    "color_en": "Turquoise",
+    "color_he": "טורקיז",
+    "measurements": "33 × 27 × 3 cm",
+    "price_ils": 1250,
+    "photos": [
+      "Turquoise_half_moon_1_vcjaid",
+      "Turquoise_half_moon_2_tpjunj",
+      "Turquoise_half_moon_3_sy475y",
+      "Turquoise_half_moon_background_bsn7mn"
+    ],
+    "personalisable": false
   }
 ]

@@ -14,5 +14,6 @@ _*.py
 !_launch.py
 !_image_sitemap.py
 !_indexnow.py
+!_hanukkah_page.py
 _pricing/
 __pycache__/
