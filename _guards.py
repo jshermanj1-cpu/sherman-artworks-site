@@ -316,6 +316,9 @@ def feed_prices():
 
     def price_of(offer):
         try:
+            spec = offer.get("priceSpecification", {})
+            if isinstance(spec, dict) and spec.get("priceType") == "https://schema.org/StrikethroughPrice":
+                return float(spec["price"])
             return float(offer["price"])
         except (KeyError, TypeError, ValueError):
             return None

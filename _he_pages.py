@@ -796,6 +796,10 @@ def translate_page(page):
         if img and img.has_attr("alt") and rec["name_he"]:
             img["alt"] = rec["name_he"]
 
+    # Campaign images supply their catalogue names in both languages.
+    for img in soup.select("img[data-alt-he]"):
+        img["alt"] = img["data-alt-he"]
+
     # 2-price) shofar cards show "from ₪…" (size ladders) with no data-t hook.
     #    Localise the leading label to the Hebrew price_from ("החל מ־").
     pf = dict_he.get("price_from") or "החל מ־"

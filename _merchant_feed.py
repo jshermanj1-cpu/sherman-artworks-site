@@ -29,6 +29,7 @@ import re
 from pathlib import Path
 from xml.sax.saxutils import escape
 
+from _hanukkah_sale import active as hanukkah_active, sale as hanukkah_sale, START as HANUKKAH_START, END as HANUKKAH_END
 from _launch import launch_active, sale_ils
 from _usd import sale_usd, usd_from_ils
 
@@ -309,7 +310,11 @@ def item_lines(product, size, market):
             tag("price", market.price(price)),
         ]
     )
-    if launch_active():
+    if hanukkah_active(product["id"]):
+        regular = price if market.currency == "ILS" else usd_from_ils(price)
+        lines.append(tag("sale_price", f"{hanukkah_sale(regular, product['id']):.2f} {market.currency}"))
+        lines.append(tag("sale_price_effective_date", HANUKKAH_START + "/" + HANUKKAH_END))
+    elif launch_active():
         lines.append(tag("sale_price", market.sale(price)))
     lines.extend(
         [
