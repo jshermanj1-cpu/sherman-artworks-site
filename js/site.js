@@ -638,7 +638,18 @@ function toggleNav() {
   n.classList.toggle('open', o);
   b.setAttribute('aria-expanded', o);
   n.setAttribute('aria-hidden', !o);
+  fitMobileNav();
 }
+// The open panel lives in the sticky header, so it scrolls by itself. Cap it
+// at the space left below the header, which shrinks while the top bar and
+// banners are still on screen above it.
+function fitMobileNav() {
+  var n = document.getElementById('mobileNav');
+  if (!n || !n.classList.contains('open')) return;
+  n.style.maxHeight = Math.max(240, window.innerHeight - n.getBoundingClientRect().top) + 'px';
+}
+window.addEventListener('resize', fitMobileNav);
+window.addEventListener('scroll', fitMobileNav, { passive: true });
 function closeMobileNav() {
   var b = document.getElementById('hamburger');
   var n = document.getElementById('mobileNav');
@@ -664,6 +675,54 @@ function toggleMobileShop(e) {
   var open = t.getAttribute('aria-expanded') === 'true';
   t.setAttribute('aria-expanded', String(!open));
   m.classList.toggle('open', !open);
+}
+// Every page's mobile shop list has each category's sub-categories as a flat
+// run of .mobile-shop-sub links after it. Fold each run behind a chevron on
+// its parent row so the list opens short; the group holding the current page
+// starts open. Done here so the 80-odd hand-kept and generated pages keep
+// their markup.
+function initMobileShopGroups() {
+  var menu = document.querySelector('.mobile-shop-menu');
+  if (!menu) return;
+  var page = function(href) { return (href || '').split('#')[0].split('/').pop().replace(/\.html$/, ''); };
+  var here = page(location.pathname) || 'index';
+  var n = 0;
+  Array.prototype.slice.call(menu.children).forEach(function(parent) {
+    if (parent.tagName !== 'A' || parent.classList.contains('mobile-shop-sub')) return;
+    var subs = [];
+    for (var s = parent.nextElementSibling; s && s.classList.contains('mobile-shop-sub'); s = s.nextElementSibling) subs.push(s);
+    if (!subs.length) return;
+    n++;
+    var group = document.createElement('div');
+    var row   = document.createElement('div');
+    var list  = document.createElement('div');
+    var btn   = document.createElement('button');
+    group.className = 'mobile-shop-group';
+    row.className   = 'mobile-shop-row';
+    list.className  = 'mobile-shop-sublist';
+    list.id         = 'mobileShopSub' + n;
+    if (!parent.id) parent.id = 'mobileShopCat' + n;
+    btn.type      = 'button';
+    btn.className = 'mobile-shop-group-toggle';
+    btn.setAttribute('aria-controls', list.id);
+    btn.setAttribute('aria-labelledby', parent.id);
+    btn.innerHTML = '<svg viewBox="0 0 12 12" aria-hidden="true"><path d="M3 4.5 L6 7.5 L9 4.5" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+    menu.insertBefore(group, parent);
+    row.appendChild(parent);
+    row.appendChild(btn);
+    subs.forEach(function(a) { list.appendChild(a); });
+    group.appendChild(row);
+    group.appendChild(list);
+    var open = [parent].concat(subs).some(function(a) { return page(a.getAttribute('href')) === here; });
+    btn.setAttribute('aria-expanded', String(open));
+    list.classList.toggle('open', open);
+    btn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      var o = btn.getAttribute('aria-expanded') !== 'true';
+      btn.setAttribute('aria-expanded', String(o));
+      list.classList.toggle('open', o);
+    });
+  });
 }
 
 // Click-outside closes dropdown
@@ -921,6 +980,7 @@ document.addEventListener('DOMContentLoaded', function() {
   initConsent();
   initA11y();
   initLaunchBanner();
+  initMobileShopGroups();
   // Static /he/ pages set window.__SA_LANG='he' so the URL (not a stale
   // localStorage value) wins - otherwise JS would re-render them in English.
   var lang = window.__SA_LANG || localStorage.getItem('sa_lang') || 'en';

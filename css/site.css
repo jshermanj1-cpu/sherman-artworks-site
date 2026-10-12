@@ -109,7 +109,10 @@ nav {
 .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
 .mobile-nav { display: none; background: var(--bg); border-top: 1px solid var(--border); padding: 1rem 2rem 1.5rem; }
-.mobile-nav.open { display: block; }
+/* The panel sits inside the sticky header, so scrolling the page never brings
+   its lower links into view: it has to scroll by itself. fitMobileNav() sets
+   the exact height left below the header; the calc is only a fallback. */
+.mobile-nav.open { display: block; max-height: calc(100vh - 4rem); overflow-y: auto; overscroll-behavior: contain; }
 .mobile-nav ul { list-style: none; display: flex; flex-direction: column; gap: 0; }
 .mobile-nav a {
   font-family: var(--ff-disp); font-size: 0.82rem; letter-spacing: 0.1em; text-transform: uppercase;
@@ -962,7 +965,7 @@ footer .logo-sub  { color: var(--footer-text); }
 .mobile-shop-toggle[aria-expanded="true"] svg { transform: rotate(180deg); }
 .mobile-shop-toggle[aria-expanded="true"] { color: var(--gold-text); }
 .mobile-shop-menu { max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; }
-.mobile-shop-menu.open { max-height: 900px; }   /* fits the shofar sub-categories */
+.mobile-shop-menu.open { max-height: 2000px; }  /* room for every group expanded at once */
 .mobile-shop-menu a {
   display: flex; align-items: center; justify-content: space-between; gap: 0.6rem;
   padding: 0.7rem 1.25rem;
@@ -971,12 +974,29 @@ footer .logo-sub  { color: var(--footer-text); }
   color: var(--brown); min-height: 44px;
 }
 .mobile-shop-menu a:hover { color: var(--gold); }
-.mobile-shop-menu a + a   { border-top: 1px solid var(--border); }
+.mobile-shop-menu a + a,
+.mobile-shop-menu > * + *,
+.mobile-shop-sublist > a  { border-top: 1px solid var(--border); }
 .mobile-shop-all          { color: var(--gold) !important; font-weight: 500; }
 /* Shofar sub-categories, indented under their parent link. The selector carries
    the parent class so it outranks the padding shorthand on .mobile-shop-menu a. */
-.mobile-shop-menu a.mobile-shop-sub { padding-left: 2.4rem; font-size: 0.72rem; letter-spacing: 0.06em; text-transform: none; }
+.mobile-shop-menu a.mobile-shop-sub { padding-left: 2.4rem; font-size: 0.72rem; letter-spacing: 0.06em; text-transform: none; justify-content: flex-start; }
 .mobile-shop-sub::before  { content: '-'; margin-right: 0.5rem; color: var(--gold); }
+/* initMobileShopGroups() folds each run of sub-category links into a group
+   that opens from a chevron beside its parent link; the parent link itself
+   still goes to the category page. */
+.mobile-shop-row { display: flex; align-items: stretch; }
+.mobile-shop-row > a { flex: 1 1 auto; min-width: 0; }
+.mobile-shop-group-toggle {
+  flex: 0 0 48px; min-height: 44px; padding: 0;
+  display: flex; align-items: center; justify-content: center;
+  background: none; border: none; border-left: 1px solid var(--border);
+  color: var(--gold-text); cursor: pointer;
+}
+.mobile-shop-group-toggle svg { width: 13px; height: 13px; transition: transform 0.2s; }
+.mobile-shop-group-toggle[aria-expanded="true"] svg { transform: rotate(180deg); }
+.mobile-shop-sublist { max-height: 0; overflow: hidden; visibility: hidden; transition: max-height 0.25s ease-out, visibility 0s 0.25s; }
+.mobile-shop-sublist.open { max-height: 400px; visibility: visible; transition: max-height 0.25s ease-out; }
 
 /* ── 15. RTL OVERRIDES ───────────────────────────────────────── */
 [dir="rtl"] .top-bar          { flex-direction: row-reverse; }
@@ -992,6 +1012,7 @@ footer .logo-sub  { color: var(--footer-text); }
 [dir="rtl"] .section-notes    { direction: rtl; text-align: right; }
 [dir="rtl"] .mobile-shop-menu a.mobile-shop-sub { padding-left: 1.25rem; padding-right: 2.4rem; }
 [dir="rtl"] .mobile-shop-sub::before { margin-right: 0; margin-left: 0.5rem; }
+[dir="rtl"] .mobile-shop-group-toggle { border-left: none; border-right: 1px solid var(--border); }
 [dir="rtl"] .modal-info       { direction: rtl; }
 [dir="rtl"] .custom-band      { direction: rtl; }
 [dir="rtl"] .footer-top       { direction: rtl; }
