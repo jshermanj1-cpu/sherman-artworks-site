@@ -258,7 +258,7 @@ def feed_highlights(product):
         if finish:
             out.append("Glass finished with %s" % ("925 silver plating" if finish.startswith("925") else "gold plating"))
     elif cat == "hanukkah-menorahs":
-        out.append("%s shape in two layers of handmade glass, %s (length × height × depth)"
+        out.append("%s shape in double-sided handmade glass, %s (length × height × depth)"
                    % (SHAPE[product["shape"]], product["measurements"]))
         out.append("%s sockets and base" % TONE[product["finish"]].capitalize())
     elif cat == "shofars":

@@ -43,7 +43,7 @@ COLOR_NOTE = ("* Colors and measurements may appear slightly different in person
 
 # The homepage card and the share image lead with this piece when it has a photo,
 # otherwise with the first menorah that does.
-COVER = "silver-tone-blue-glass-half-moon-hanukkah-menorah"
+COVER = "silver-tone-blue-half-moon-menorah"
 
 # One ProductGroup per family_id: a shape in one finish, its variants the glass
 # colours. A new shape means new families here (and in _he_pages.py's
@@ -52,11 +52,11 @@ COVER = "silver-tone-blue-glass-half-moon-hanukkah-menorah"
 GROUPS = {
     "silver-tone-half-moon-hanukkah-menorahs": {
         "name": "Half-Moon Glass Hanukkah Menorahs with Silver-Tone Sockets",
-        "description": "Handmade half-moon Hanukkah menorahs of two layers of glass in seven colours, "
+        "description": "Handmade half-moon Hanukkah menorahs of double-sided glass in seven colours, "
                        "with silver-tone sockets and base, crafted in our studio in Israel."},
     "gold-tone-half-moon-hanukkah-menorahs": {
         "name": "Half-Moon Glass Hanukkah Menorahs with Gold-Tone Sockets",
-        "description": "Handmade half-moon Hanukkah menorahs of two layers of glass in seven colours, "
+        "description": "Handmade half-moon Hanukkah menorahs of double-sided glass in seven colours, "
                        "with gold-tone sockets and base, crafted in our studio in Israel."},
 }
 

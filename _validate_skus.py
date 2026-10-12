@@ -286,6 +286,18 @@ def feed(validation, expected_feed):
             item.find(f"{{{G}}}identifier_exists") is None,
             f"{item_id}: feed must not emit identifier_exists=no when MPN exists",
         )
+        # Merchant Center refuses an id or item_group_id over 50 characters. Ten
+        # Hanukkah menorahs shipped with 52-58 character ids on 2026-10-12 and
+        # were dropped from both feeds while every other check passed.
+        group_id = item.findtext(f"{{{G}}}item_group_id") or ""
+        validation.check(
+            len(item_id or "") <= 50,
+            f"{item_id}: g:id is {len(item_id or '')} characters, Merchant Center allows 50",
+        )
+        validation.check(
+            len(group_id) <= 50,
+            f"{item_id}: g:item_group_id {group_id!r} is over 50 characters",
+        )
     validation.check(len(ids) == len(set(ids)), "duplicate g:id in merchant feed")
     validation.check(all(mpns), "blank g:mpn in merchant feed")
     validation.check(len(mpns) == len(set(mpns)), "duplicate g:mpn in merchant feed")

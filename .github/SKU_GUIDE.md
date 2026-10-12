@@ -273,17 +273,17 @@ configurations. They are permanent once migrated into the product data.
 
 | Base SKU | Product ID | Product | Size suffixes |
 |---|---|---|---|
-| `SAW-HN-001` | `silver-tone-pearl-white-glass-half-moon-hanukkah-menorah` | Silver-Tone Pearl White Glass Half-Moon Hanukkah Menorah | None |
-| `SAW-HN-002` | `silver-tone-blue-glass-half-moon-hanukkah-menorah` | Silver-Tone Blue Glass Half-Moon Hanukkah Menorah | None |
-| `SAW-HN-003` | `silver-tone-clear-glass-half-moon-hanukkah-menorah` | Silver-Tone Clear Glass Half-Moon Hanukkah Menorah | None |
-| `SAW-HN-004` | `silver-tone-emerald-green-glass-half-moon-hanukkah-menorah` | Silver-Tone Emerald Green Glass Half-Moon Hanukkah Menorah | None |
-| `SAW-HN-005` | `silver-tone-light-blue-glass-half-moon-hanukkah-menorah` | Silver-Tone Light Blue Glass Half-Moon Hanukkah Menorah | None |
-| `SAW-HN-006` | `silver-tone-terracotta-glass-half-moon-hanukkah-menorah` | Silver-Tone Terracotta Glass Half-Moon Hanukkah Menorah | None |
-| `SAW-HN-007` | `silver-tone-turquoise-glass-half-moon-hanukkah-menorah` | Silver-Tone Turquoise Glass Half-Moon Hanukkah Menorah | None |
-| `SAW-HN-008` | `gold-tone-pearl-white-glass-half-moon-hanukkah-menorah` | Gold-Tone Pearl White Glass Half-Moon Hanukkah Menorah | None |
-| `SAW-HN-009` | `gold-tone-blue-glass-half-moon-hanukkah-menorah` | Gold-Tone Blue Glass Half-Moon Hanukkah Menorah | None |
-| `SAW-HN-010` | `gold-tone-clear-glass-half-moon-hanukkah-menorah` | Gold-Tone Clear Glass Half-Moon Hanukkah Menorah | None |
-| `SAW-HN-011` | `gold-tone-emerald-green-glass-half-moon-hanukkah-menorah` | Gold-Tone Emerald Green Glass Half-Moon Hanukkah Menorah | None |
-| `SAW-HN-012` | `gold-tone-light-blue-glass-half-moon-hanukkah-menorah` | Gold-Tone Light Blue Glass Half-Moon Hanukkah Menorah | None |
-| `SAW-HN-013` | `gold-tone-terracotta-glass-half-moon-hanukkah-menorah` | Gold-Tone Terracotta Glass Half-Moon Hanukkah Menorah | None |
-| `SAW-HN-014` | `gold-tone-turquoise-glass-half-moon-hanukkah-menorah` | Gold-Tone Turquoise Glass Half-Moon Hanukkah Menorah | None |
+| `SAW-HN-001` | `silver-tone-pearl-white-half-moon-menorah` | Silver-Tone Pearl White Glass Half-Moon Hanukkah Menorah | None |
+| `SAW-HN-002` | `silver-tone-blue-half-moon-menorah` | Silver-Tone Blue Glass Half-Moon Hanukkah Menorah | None |
+| `SAW-HN-003` | `silver-tone-clear-half-moon-menorah` | Silver-Tone Clear Glass Half-Moon Hanukkah Menorah | None |
+| `SAW-HN-004` | `silver-tone-emerald-green-half-moon-menorah` | Silver-Tone Emerald Green Glass Half-Moon Hanukkah Menorah | None |
+| `SAW-HN-005` | `silver-tone-light-blue-half-moon-menorah` | Silver-Tone Light Blue Glass Half-Moon Hanukkah Menorah | None |
+| `SAW-HN-006` | `silver-tone-terracotta-half-moon-menorah` | Silver-Tone Terracotta Glass Half-Moon Hanukkah Menorah | None |
+| `SAW-HN-007` | `silver-tone-turquoise-half-moon-menorah` | Silver-Tone Turquoise Glass Half-Moon Hanukkah Menorah | None |
+| `SAW-HN-008` | `gold-tone-pearl-white-half-moon-menorah` | Gold-Tone Pearl White Glass Half-Moon Hanukkah Menorah | None |
+| `SAW-HN-009` | `gold-tone-blue-half-moon-menorah` | Gold-Tone Blue Glass Half-Moon Hanukkah Menorah | None |
+| `SAW-HN-010` | `gold-tone-clear-half-moon-menorah` | Gold-Tone Clear Glass Half-Moon Hanukkah Menorah | None |
+| `SAW-HN-011` | `gold-tone-emerald-green-half-moon-menorah` | Gold-Tone Emerald Green Glass Half-Moon Hanukkah Menorah | None |
+| `SAW-HN-012` | `gold-tone-light-blue-half-moon-menorah` | Gold-Tone Light Blue Glass Half-Moon Hanukkah Menorah | None |
+| `SAW-HN-013` | `gold-tone-terracotta-half-moon-menorah` | Gold-Tone Terracotta Glass Half-Moon Hanukkah Menorah | None |
+| `SAW-HN-014` | `gold-tone-turquoise-half-moon-menorah` | Gold-Tone Turquoise Glass Half-Moon Hanukkah Menorah | None |
