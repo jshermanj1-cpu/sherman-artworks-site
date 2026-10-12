@@ -700,8 +700,8 @@ let currentModalIdx = null;
 let currentPhotoIdx = 0;
 
 // Delegates to formatMoney in js/site.js, like every category page does.
-function formatProductPrice(ils, exempt) {
-  return formatMoney(ils, exempt);
+function formatProductPrice(ils, exempt, slug) {
+  return formatMoney(ils, exempt, null, slug);
 }
 
 function pageText(key) {
@@ -821,7 +821,7 @@ function buildProductCard(product, index) {
     '<div class="product-card-img-wrap" data-product-idx="' + index + '">' + cardPhotoHtml(product, index) + "</div>" +
     '<div class="product-card-body"><h2 class="product-card-name">' + escapeHtml(name) + "</h2>" +
     '<p class="product-card-desc">' + escapeHtml(productDescription(product)) + "</p>" +
-    '<div class="product-card-meta"><span class="product-card-price">' + formatProductPrice(product.price_ils) + "</span>" +
+    '<div class="product-card-meta"><span class="product-card-price">' + formatProductPrice(product.price_ils, 0, product.id) + "</span>" +
     (product.measurements ? cardMeasurementsHtml(product.measurements) : "") +
     "</div>" +
     '<p class="product-color-note">' + escapeHtml(T_SITE[currentLang].color_note) + "</p>" +
@@ -960,7 +960,7 @@ function renderModal() {
                pageText("choice_glass").replace("{color}", productColor(product)) + ", " +
                pageText("choice_metal").replace("{finish}", finishText));
   document.getElementById("modalMeasurements").textContent = pageText("measurements_value");
-  document.getElementById("modalPrice").innerHTML = formatProductPrice(product.price_ils);
+  document.getElementById("modalPrice").innerHTML = formatProductPrice(product.price_ils, 0, product.id);
   document.getElementById("modalOrderCta").href = productWhatsApp(product);
 
   // Photos
@@ -1016,4 +1016,11 @@ document.addEventListener("DOMContentLoaded", function() {
   const index = PRODUCTS.findIndex(function(product) { return product.id === slug; });
   renderProducts();
   if (index >= 0) openModal(index);
+});
+
+// Refresh an open product price without resetting the shopper's chosen variant.
+document.addEventListener('sa:cart-change', function() {
+  if (currentModalIdx < 0 || !PRODUCTS[currentModalIdx]) return;
+  var product = PRODUCTS[currentModalIdx];
+  document.getElementById('modalPrice').innerHTML = formatProductPrice(product.price_ils, 0, product.id);
 });

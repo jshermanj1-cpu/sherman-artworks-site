@@ -15,6 +15,46 @@ const CDN = 'https://res.cloudinary.com/doesupaf9/image/upload';
 // promotion deliberately reuses this mechanism.
 const LAUNCH_DISCOUNT = 0;
 
+// Inclusive through December 4 in Israel; the cutoff is midnight December 5.
+const HANUKKAH_SALE_START = Date.parse('2026-10-12T00:00:00+03:00');
+const HANUKKAH_SALE_END = Date.parse('2026-12-05T00:00:00+02:00');
+function hanukkahSaleActive(now) {
+  var at = now === undefined ? Date.now() : now;
+  return at >= HANUKKAH_SALE_START && at < HANUKKAH_SALE_END;
+}
+function isHanukkahMenorah(slug) {
+  return /^(silver|gold)-tone-(pearl-white|blue|clear|emerald-green|light-blue|terracotta|turquoise)-(half-moon|rectangular|trapezoid)-menorah$/.test(slug || '');
+}
+// After expiry, restore dated offer markup for crawlers that execute JS too.
+function refreshHanukkahOffers() {
+  if (hanukkahSaleActive()) return;
+  document.querySelectorAll('script[type="application/ld+json"]').forEach(function(script) {
+    try {
+      var data = JSON.parse(script.textContent);
+      var changed = false;
+      function walk(node) {
+        if (!node || typeof node !== 'object') return;
+        if (node['@type'] === 'Product' && isHanukkahMenorah((node.url || '').split('#')[1])) {
+          var offer = node.offers;
+          var spec = offer && offer.priceSpecification;
+          if (spec && spec.priceType === 'https://schema.org/StrikethroughPrice') {
+            offer.price = spec.price;
+            delete offer.priceSpecification;
+            delete offer.priceValidUntil;
+            changed = true;
+          }
+        }
+        Object.keys(node).forEach(function(key) { walk(node[key]); });
+      }
+      walk(data);
+      if (changed) script.textContent = JSON.stringify(data);
+    } catch (_) { /* Other schema blocks are independent of the campaign. */ }
+  });
+}
+function productDiscount(slug, now) {
+  return isHanukkahMenorah(slug) && hanukkahSaleActive(now) ? 0.20 : LAUNCH_DISCOUNT;
+}
+
 function launchActive() { return LAUNCH_DISCOUNT > 0; }
 
 // Sale price for one item, rounded to the nearest whole shekel. Must match the
@@ -71,16 +111,17 @@ function saleUsd(usd) {
 // `exempt` is the part the promotion does not apply to (a bundled tray), and it
 // is held back natively in each currency rather than converted, so neither list
 // is a rounding of the other.
-function priceParts(ils, exempt, cur) {
+function priceParts(ils, exempt, cur, slug) {
+  var discount = productDiscount(slug);
   var ex = Math.max(0, Number(exempt) || 0);
   if (cur === 'ILS') {
     var reg = Math.round(Number(ils));
     var exIls = Math.round(ex);
-    return { reg: reg, sale: launchActive() ? saleIls(Math.max(0, reg - exIls)) + exIls : reg };
+    return { reg: reg, sale: discount > 0 ? Math.round(Math.max(0, reg - exIls) * (1 - discount)) + exIls : reg };
   }
   var regUsd = usdFromIls(ils);
   var exUsd  = ex ? usdFromIls(ex) : 0;
-  return { reg: regUsd, sale: launchActive() ? saleUsd(Math.max(0, regUsd - exUsd)) + exUsd : regUsd };
+  return { reg: regUsd, sale: discount > 0 ? Math.round(Math.max(0, regUsd - exUsd) * (1 - discount)) + exUsd : regUsd };
 }
 
 function money(n, cur) {
@@ -103,19 +144,20 @@ function otherCurrency()  { return activeCurrency() === 'ILS' ? 'USD' : 'ILS'; }
 //
 // `exempt` keeps the positional contract the page formatters were already
 // called with, so nothing that calls these has to learn a new shape.
-function formatMoney(ils, exempt, altAttr) {
+function formatMoney(ils, exempt, altAttr, slug) {
   var cur = activeCurrency();
   var oth = otherCurrency();
-  var m   = priceParts(ils, exempt, cur);
-  var a   = priceParts(ils, exempt, oth);
+  var m   = priceParts(ils, exempt, cur, slug);
+  var a   = priceParts(ils, exempt, oth, slug);
   var alt = ' <span ' + (altAttr || 'class="product-card-price-alt"') + '>' +
             money(a.sale, oth) + '</span>';
 
-  if (!launchActive()) return money(m.sale, cur) + alt;
+  if (m.sale === m.reg) return money(m.sale, cur) + alt;
 
   return '<span class="was-price">' + money(m.reg, cur) + '</span> ' +
          '<span class="now-price">' + money(m.sale, cur) + '</span>' +
-         alt + launchPill();
+         alt + (isHanukkahMenorah(slug) ? ' <span class="launch-pill">' +
+         (currentLang === 'he' ? '20% הנחת חנוכה' : '20% Hanukkah sale') + '</span>' : launchPill());
 }
 
 // The same figures, sized for the product modal rather than a card.
@@ -230,6 +272,21 @@ const PAYMENTS_ENABLED = true;
 // ── SHARED TRANSLATIONS (T_SITE) ───────────────────────────────
 const T_SITE = {
   en: {
+    hn_sale_tag: "The Hanukkah Sale",
+    hn_sale_title: "Make this Hanukkah shine brighter.",
+    hn_sale_off: "OFF",
+    hn_sale_all: "All Hanukkah menorahs",
+    hn_sale_terms: "20% off automatically · Ends December 4, 2026.",
+    hn_sale_detail: "Handmade glass. Three distinctive shapes. Made with care in our studio in Israel.",
+    hn_sale_cta: "Shop all menorahs",
+    hn_sale_shapes: "Half-moon · Rectangular · Trapezoid",
+    hn_sale_blue: "Blue",
+    hn_sale_white: "Pearl white",
+    hn_sale_green: "Emerald green",
+    hn_sale_terracotta: "Terracotta",
+    hn_sale_clear: "Clear",
+    hn_sale_turquoise: "Turquoise",
+
     nav_shop:            'Shop',
     gold_rail_nav:       'The Gold Collection <span class="nav-dropdown-badge">New</span>',
     nav_custom:          'Custom Orders',
@@ -321,6 +378,21 @@ const T_SITE = {
     trust_secure:        'Secure ordering',
   },
   he: {
+    hn_sale_tag: "מבצע חנוכה",
+    hn_sale_title: "מאירים את החנוכה שלכם.",
+    hn_sale_off: "הנחה",
+    hn_sale_all: "על כל החנוכיות",
+    hn_sale_terms: "20% הנחה אוטומטית · עד 4 בדצמבר 2026.",
+    hn_sale_detail: "זכוכית בעבודת יד. שלוש צורות ייחודיות. מיוצרות באהבה בסטודיו שלנו בישראל.",
+    hn_sale_cta: "לכל החנוכיות",
+    hn_sale_shapes: "חצי עיגול · מלבן · טרפז",
+    hn_sale_blue: "כחול",
+    hn_sale_white: "לבן פנינה",
+    hn_sale_green: "ירוק",
+    hn_sale_terracotta: "טרקוטה",
+    hn_sale_clear: "שקוף",
+    hn_sale_turquoise: "טורקיז",
+
     nav_shop:            'חנות',
     gold_rail_nav:       'קולקציית הזהב <span class="nav-dropdown-badge">חדש</span>',
     nav_custom:          'הזמנות בהתאמה אישית',
@@ -497,8 +569,11 @@ function updatePrices() {
   document.querySelectorAll('.cat-card-from[data-min-ils]').forEach(function(el) {
     var ils = parseInt(el.dataset.minIls, 10);
     if (!isFinite(ils)) return;
-    var p = priceParts(ils, 0, cur);
-    if (launchActive()) {
+    var card = el.closest('a');
+    var slug = card && /hanukkah-menorahs\.html/.test(card.getAttribute('href') || '')
+      ? 'silver-tone-blue-half-moon-menorah' : null;
+    var p = priceParts(ils, 0, cur, slug);
+    if (p.sale !== p.reg) {
       el.innerHTML = fromLabel + ' <span class="was-price">' + money(p.reg, cur) + '</span> ' +
                      '<span class="now-price">' + money(p.sale, cur) + '</span>';
     } else {
@@ -600,6 +675,9 @@ function setLang(l) {
     } else {
       el.textContent = val;
     }
+  });
+  document.querySelectorAll('[data-alt-en][data-alt-he]').forEach(function(img) {
+    img.alt = l === 'he' ? img.dataset.altHe : img.dataset.altEn;
   });
   document.documentElement.lang = l;
   document.documentElement.dir  = l === 'he' ? 'rtl' : 'ltr';
@@ -973,6 +1051,23 @@ document.addEventListener('DOMContentLoaded', function() {
   initConsent();
   initA11y();
   initLaunchBanner();
+  function refreshHanukkahSale() {
+    refreshHanukkahOffers();
+    document.querySelectorAll('[data-hanukkah-sale]').forEach(function(el) {
+      el.hidden = !hanukkahSaleActive();
+    });
+  }
+  refreshHanukkahSale();
+  var wasHanukkahActive = hanukkahSaleActive();
+  setInterval(function() {
+    var active = hanukkahSaleActive();
+    if (active === wasHanukkahActive) return;
+    wasHanukkahActive = active;
+    refreshHanukkahSale();
+    // Re-render open product, cart and checkout views at the expiry boundary.
+    setLang(currentLang);
+    document.dispatchEvent(new CustomEvent('sa:cart-change'));
+  }, 1000);
   initMobileShopGroups();
   // Static /he/ pages set window.__SA_LANG='he' so the URL (not a stale
   // localStorage value) wins - otherwise JS would re-render them in English.

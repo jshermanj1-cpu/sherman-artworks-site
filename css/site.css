@@ -1307,3 +1307,36 @@ a[href$="horn-goblets.html"] { display: none !important; }
 
 /* Product-list pages no longer show the persistent side WhatsApp shortcut. */
 .floating-wa { display: none !important; }
+
+/* Hanukkah campaign: the site's cream, charcoal and gold palette. */
+.hn-sale[hidden] { display: none; }
+.hn-sale { background: var(--bg); color: var(--dark); border-bottom: 1px solid var(--border); }
+.hn-sale-inner { max-width: 1440px; margin: auto; padding: 58px 6%; display: grid; grid-template-columns: .86fr 1.4fr; gap: 52px; align-items: center; }
+.hn-sale-tag { font-size: .8rem; letter-spacing: .18em; text-transform: uppercase; color: var(--gold-text); margin-bottom: 24px; }
+.hn-sale-title { font-size: clamp(30px,3.4vw,48px); font-weight: 400; line-height: 1.2; margin-bottom: 24px; }
+.hn-sale-discount { font-size: clamp(66px,7.5vw,106px); color: var(--gold-text); line-height: 1; letter-spacing: -.04em; white-space: nowrap; }
+.hn-sale-off { font-size: .36em; letter-spacing: 0; }
+.hn-sale-all { font-size: 23px; margin: 22px 0 18px; }
+.hn-sale-terms,.hn-sale-detail { font-size: 14px; line-height: 1.7; color: var(--brown); margin-bottom: 18px; }
+.hn-sale-detail { max-width: 320px; }
+.hn-sale-cta { display: inline-flex; justify-content: center; align-items: center; gap: 25px; background: var(--dark); color: var(--bg); padding: 17px 24px; min-height: 48px; margin-top: 12px; border-radius: 3px; font-size: 15px; }
+.hn-sale-cta:hover { background: #3c3325; }
+.hn-sale-cta:focus-visible { outline: 3px solid var(--gold-text); outline-offset: 5px; }
+.hn-sale-photos { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 12px; }
+.hn-sale-photos figure { margin: 0; min-width: 0; }
+.hn-sale-photo { background: white; aspect-ratio: 1.23; border: 1px solid var(--border); border-radius: 4px; overflow: hidden; padding: 8px; }
+.hn-sale-photo img { width: 100%; height: 100%; object-fit: contain; }
+.hn-sale-color,.hn-sale-caption { font-size: 12px; text-align: center; color: var(--brown); }
+.hn-sale-color { padding: 8px 0 2px; }
+.hn-sale-caption { margin-top: 16px; }
+[dir="rtl"] .hn-sale-tag { letter-spacing: 0; }
+[dir="rtl"] .hn-sale-arrow { transform: scaleX(-1); }
+@media(max-width:700px) {
+  .hn-sale-inner { grid-template-columns: 1fr; padding: 32px 20px; gap: 28px; }
+  .hn-sale-title { font-size: 32px; }
+  .hn-sale-discount { font-size: 78px; }
+  .hn-sale-photos { gap: 8px; }
+  .hn-sale-photo { padding: 3px; }
+  .hn-sale-cta { width: 100%; }
+  .hn-sale-detail { max-width: none; }
+}

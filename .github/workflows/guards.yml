@@ -31,6 +31,11 @@ jobs:
 
       # The same fifteen checks the pre-push hook runs, so a green hook and a
       # green build mean the same thing.
+      - name: Hanukkah sale pricing and expiry
+        run: |
+          node --test .github/tests/hanukkah-sale.test.cjs
+          python .github/tests/test_hanukkah_sale.py
+
       - name: Invariants
         run: python _guards.py
 

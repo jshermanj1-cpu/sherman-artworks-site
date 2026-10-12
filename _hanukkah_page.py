@@ -31,6 +31,7 @@ the page can be previewed while photos are still being shot.
     python _hanukkah_page.py --check   report only, exit 1 if anything is stale
 """
 
+from _hanukkah_sale import price_html, offer_fields
 import html
 import json
 import re
@@ -197,8 +198,7 @@ def card(p):
         f'        <h2 class="product-card-name">{name}</h2>\n'
         f'        <p class="product-card-desc">{html.escape(p["description_en"])}</p>\n'
         '        <div class="product-card-meta">\n'
-        f'          <span class="product-card-price">&#8362;{ils:,} '
-        f'<span class="product-card-price-alt">≈ ${usd_from_ils(ils)}</span></span>\n'
+        f'          <span class="product-card-price">{price_html(p)}</span>\n'
         '        </div>\n'
         f'        <p class="product-color-note">{COLOR_NOTE}</p>\n'
         '      </div>\n'
@@ -221,6 +221,7 @@ def variant(p):
             "@type": "Offer",
             "priceCurrency": "ILS",
             "price": str(p["price_ils"]),
+            **offer_fields(p),
             "availability": "https://schema.org/InStock",
             "itemCondition": "https://schema.org/NewCondition",
             "seller": {"@id": f"{BASE}/#seller"},

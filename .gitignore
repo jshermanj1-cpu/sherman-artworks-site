@@ -15,5 +15,6 @@ _*.py
 !_image_sitemap.py
 !_indexnow.py
 !_hanukkah_page.py
+!_hanukkah_sale.py
 _pricing/
 __pycache__/

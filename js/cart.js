@@ -227,22 +227,22 @@ function _cartKey(item) {
 function getCart() {
   try {
     var items = JSON.parse(localStorage.getItem(CART_KEY)) || [];
-    var promotionEnded = typeof launchActive === 'function' && !launchActive();
     var updated = false;
-
-    // Carts created during the launch offer stored the discounted amount in
-    // price_ils and the catalogue amount in regular_price_ils. Restore those
-    // saved lines once the promotion is off, while preserving quantities,
-    // personalisation and bundle selections.
-    if (promotionEnded && Array.isArray(items)) {
-      items.forEach(function(item) {
-        var regular = item && Number(item.regular_price_ils);
-        if (!isFinite(regular) || regular <= 0) return;
-        item.price_ils = regular;
-        delete item.regular_price_ils;
+    // Reprice saved catalogue lines on every read, including carts saved before
+    // the sale and carts reopened after expiry. Never discount private quotes.
+    if (Array.isArray(items)) items.forEach(function(item) {
+      if (!item || isQuoteItem(item)) return;
+      var regular = Number(item.regular_price_ils || item.price_ils);
+      if (!isFinite(regular) || regular <= 0) return;
+      var exempt = item.meta && Number(item.meta.launch_discount_exempt_ils) || 0;
+      var charged = priceParts(regular, exempt, 'ILS', item.slug).sale;
+      if (charged !== item.price_ils || (charged === regular && item.regular_price_ils)) {
+        item.price_ils = charged;
+        if (charged !== regular) item.regular_price_ils = regular;
+        else delete item.regular_price_ils;
         updated = true;
-      });
-    }
+      }
+    });
 
     if (updated) {
       localStorage.setItem(CART_KEY, JSON.stringify(items));
@@ -267,7 +267,7 @@ function productSku(product, size) {
 
 function addToCart(slug, name_en, name_he, price_ils, photo, sku, meta, page) {
   var items = getCart();
-  // Launch discount is applied here, at the single point every add path funnels
+  // The current product discount is applied here, at the single point every add path funnels
   // through, so the stored price_ils - which drives the cart, checkout total and
   // the amount sent for card repricing - is already the discounted figure. The
   // catalogue price is kept as regular_price_ils only so the cart can strike it
@@ -278,8 +278,7 @@ function addToCart(slug, name_en, name_he, price_ils, photo, sku, meta, page) {
   // Apply the launch offer to the cup only, otherwise the plate receives both
   // its set discount and the launch discount.
   var launchExempt = meta && Number(meta.launch_discount_exempt_ils) || 0;
-  var launchEligible = Math.max(0, price_ils - launchExempt);
-  var charged = (typeof saleIls === 'function') ? saleIls(launchEligible) + launchExempt : price_ils;
+  var charged = priceParts(regular, launchExempt, 'ILS', slug).sale;
   var discounted = charged !== regular;
   var key = meta ? slug + '::' + [meta.color || '', meta.size || '', meta.tray_id || '', meta.symbol || '', meta.text || '', meta.comment || ''].join('|') : slug;
   // Normally the page an item was added from is also the page it lives on, so
@@ -304,7 +303,7 @@ function addToCart(slug, name_en, name_he, price_ils, photo, sku, meta, page) {
     // ILS would have it converted a second time and land at about a third of
     // the real value.
     var gaCur = ga4Currency();
-    var gaVal = gaCur === 'USD' ? priceParts(regular, launchExempt, 'USD').sale : charged;
+    var gaVal = gaCur === 'USD' ? priceParts(regular, launchExempt, 'USD', slug).sale : charged;
     trackGA4('add_to_cart', {
       currency: gaCur, value: gaVal,
       items: [{ item_id: sku || slug, item_name: name_en, price: gaVal, quantity: 1 }]
@@ -357,8 +356,8 @@ function cartPriceUpdateNoticeHtml(isHe) {
   try {
     if (localStorage.getItem(CART_PRICE_UPDATE_NOTICE_KEY) === '1') {
       html += _cartNoticeHtml(isHe
-        ? 'מבצע ההשקה הסתיים. המחירים בעגלה השמורה עודכנו למחירי המחירון הנוכחיים.'
-        : 'The launch offer has ended. Prices in your saved cart were updated to the current catalogue prices.',
+        ? 'המחירים בעגלה השמורה עודכנו בהתאם למבצעים הנוכחיים.'
+        : 'Prices in your saved cart have been updated to reflect current offers.',
         dismiss, 'price', 'dismissCartPriceUpdateNotice()');
     }
     if (localStorage.getItem(QUOTE_NOTICE_KEY) === '1') {
@@ -551,7 +550,7 @@ function cartLineParts(item, cur) {
   }
   var exempt = (item.meta && Number(item.meta.launch_discount_exempt_ils)) || 0;
   var regularIls = item.regular_price_ils || item.price_ils;
-  return priceParts(regularIls, exempt, cur);
+  return priceParts(regularIls, exempt, cur, item.slug);
 }
 
 function getCartTotalIn(cur) {
@@ -794,7 +793,7 @@ function buildCheckoutWaLink() {
     });
     lines.push('');
     var heSaved = getCartLaunchSavings();
-    if (heSaved > 0) lines.push('הנחת השקה 20% הוחלה (-₪' + heSaved.toLocaleString('en-IL') + ')');
+    if (heSaved > 0) lines.push('הנחת חנוכה 20% הוחלה (-₪' + heSaved.toLocaleString('en-IL') + ')');
     lines.push('סכום ביניים: ' + _waPair(getCartTotalIn));
     lines.push(pickup
       ? 'איסוף עצמי מהגלריה (קרני שומרון): ' + getShippingLabel()
@@ -826,7 +825,7 @@ function buildCheckoutWaLink() {
     lines.push('');
     var enCur = (typeof activeCurrency === 'function') ? activeCurrency() : 'ILS';
     var enSaved = getCartLaunchSavingsIn(enCur);
-    if (enSaved > 0) lines.push('Launch 20% discount applied (-' + money(enSaved, enCur) + ')');
+    if (enSaved > 0) lines.push('Hanukkah 20% discount applied (-' + money(enSaved, enCur) + ')');
     lines.push('Subtotal: ' + _waPair(getCartTotalIn));
     lines.push(pickup
       ? 'Pickup at the gallery (Karnei Shomron): ' + getShippingLabel()
@@ -1111,6 +1110,7 @@ document.addEventListener('DOMContentLoaded', function () {
 document.addEventListener('sa:cart-change', function () {
   updateCartBadge();
   renderCartDrawer();
+  if (typeof renderCheckout === 'function') renderCheckout();
 });
 
 document.addEventListener('sa:shipping-change', function () {
