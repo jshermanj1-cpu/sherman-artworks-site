@@ -21,23 +21,32 @@ git config core.hooksPath
 ## What runs
 
 `pre-push` runs `_guards.py`, which takes about twenty seconds and checks
-fifteen invariants across every page in both languages:
+twenty-four invariants across every page in both languages:
 
 - every Product offer declares `shippingDetails` and `hasMerchantReturnPolicy`
+- every shipping-details block carries a delivery estimate
+- shipping in structured data is charged at the rate `_offer_schema.py` declares
+- every Product declares a description, brand, condition and `mpn`
 - Hebrew pages name their products in Hebrew
 - structured-data names actually appear on the page
 - FAQ answers are rendered, not only marked up
 - all JSON-LD parses
-- the sitemap lists no noindex page, and every URL in it resolves
+- the sitemap lists no noindex page
+- every URL in the sitemap resolves
 - every indexable page links the accessibility statement
 - no page carries a second `<footer>`
 - card dollar figures match the price checkout charges
-- the house copy rules: plain hyphens only, never "sterling", never free shipping
-- static cards match `data/products.json`
-- the shofar sizing table is current
-- SKUs, JSON-LD and the merchant feed agree
-- every feed item resolves to a product on its landing page, at the same price
+- house copy rule: plain hyphens only, no em or en dashes
+- house copy rule: the word "sterling" never appears
+- house copy rule: nothing claims free shipping
+- every feed item resolves to a product on its landing page
 - each feed quotes one currency: shekels for Israel, dollars for the US
+- every feed price matches its landing page
+- static cards match `data/products.json`
+- the Hanukkah page, its product script and the homepage card match `data/products.json`
+- the shofar sizing table is current
+- `sitemap-images.xml` is current
+- SKUs, JSON-LD and the merchant feed agree
 
 A push to `main` is **blocked** when any of these fail, because GitHub Pages
 deploys `main` straight to the live site. On any other branch the guards still
