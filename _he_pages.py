@@ -923,7 +923,9 @@ def translate_page(page):
         txt, _ = localize_jsonld(txt, en2he)
         s.string = txt
 
-    return str(soup)
+    # BeautifulSoup versions differ on empty image tags after tree edits.
+    # Canonicalise void elements so Windows and CI generate identical HTML.
+    return re.sub(r"(<img\b[^>]*?)(?<!/)>(\s*)</img>", r"\1/>\2", str(soup))
 
 
 def he_href(page):
