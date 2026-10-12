@@ -53,7 +53,7 @@ COLOR_NOTE = ("* Colors and measurements may appear slightly different in person
 
 # The homepage card and the share image lead with this piece when it has a photo,
 # otherwise with the first menorah that does.
-COVER = "silver-tone-blue-half-moon-menorah"
+COVER = "gold-tone-terracotta-trapezoid-menorah"
 
 # One ProductGroup per family_id: a shape in one finish, its variants the glass
 # colours. A new shape means new families here (and in _he_pages.py's
