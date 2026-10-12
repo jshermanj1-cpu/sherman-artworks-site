@@ -505,21 +505,6 @@ function updatePrices() {
       el.textContent = fromLabel + ' ' + money(p.sale, cur);
     }
   });
-  // Gold rail cards use the same pinned-price contract, but each one quotes a
-  // single product rather than a category minimum, so the "from" prefix is
-  // opt-in (data-from) and only the sized candlesticks set it.
-  document.querySelectorAll('.gold-rail-price[data-ils]').forEach(function(el) {
-    var ils = parseInt(el.dataset.ils, 10);
-    if (!isFinite(ils)) return;
-    var p = priceParts(ils, 0, cur);
-    var prefix = el.dataset.from ? fromLabel + ' ' : '';
-    if (launchActive()) {
-      el.innerHTML = prefix + '<span class="was-price">' + money(p.reg, cur) + '</span> ' +
-                     '<span class="now-price">' + money(p.sale, cur) + '</span>';
-    } else {
-      el.textContent = prefix + money(p.sale, cur);
-    }
-  });
 }
 
 // ── CURRENCY ────────────────────────────────────────────────────
@@ -606,9 +591,9 @@ function setLang(l) {
     var val = dict[el.dataset.t];
     if (val === undefined) return;
     // Use innerHTML only for known rich-text keys; textContent for everything else.
-    // gold_rail_* keys wrap the word "gold" in <span class="gold-word">, which
+    // gold_rail_nav includes the New badge, which
     // textContent would strip on the first language toggle. _he_pages.py mirrors
-    // this same prefix so the baked Hebrew pages keep the span too.
+    // this same prefix so the baked Hebrew pages keep the badge too.
     if (el.dataset.t === 'story_body' || el.dataset.t === 'craft_body' ||
         el.dataset.t.indexOf('gold_rail_') === 0) {
       el.innerHTML = val;

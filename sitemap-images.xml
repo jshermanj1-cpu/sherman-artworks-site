@@ -4,12 +4,6 @@
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://shermanartworks.com/</loc>
-    <image:image><image:loc>https://res.cloudinary.com/doesupaf9/image/upload/q_auto,f_auto/Blue_Pamotim_gold_1_kdduli.jpg</image:loc></image:image>
-    <image:image><image:loc>https://res.cloudinary.com/doesupaf9/image/upload/q_auto,f_auto/Blue_high_cup_gold_1_an740y.jpg</image:loc></image:image>
-    <image:image><image:loc>https://res.cloudinary.com/doesupaf9/image/upload/q_auto,f_auto/Black_havdalah_set_gold_zblb7f.jpg</image:loc></image:image>
-    <image:image><image:loc>https://res.cloudinary.com/doesupaf9/image/upload/q_auto,f_auto/Black_tray_gold_wdxp9o.jpg</image:loc></image:image>
-    <image:image><image:loc>https://res.cloudinary.com/doesupaf9/image/upload/q_auto,f_auto/Blue_plate_gold_jtsy0y.jpg</image:loc></image:image>
-    <image:image><image:loc>https://res.cloudinary.com/doesupaf9/image/upload/q_auto,f_auto/Colorful_cup_gold_1_glz3rc.jpg</image:loc></image:image>
     <image:image><image:loc>https://res.cloudinary.com/doesupaf9/image/upload/q_auto,f_auto/Cover_silver_Magen_David_with_name_adq1oi.jpg</image:loc></image:image>
     <image:image><image:loc>https://res.cloudinary.com/doesupaf9/image/upload/q_auto,f_auto/horn-jerusalem_k5fryr.jpg</image:loc></image:image>
     <image:image><image:loc>https://res.cloudinary.com/doesupaf9/image/upload/q_auto,f_auto/Blue_green_pamotim_oix8h3.jpg</image:loc></image:image>
@@ -854,12 +848,6 @@
   </url>
   <url>
     <loc>https://shermanartworks.com/he/</loc>
-    <image:image><image:loc>https://res.cloudinary.com/doesupaf9/image/upload/q_auto,f_auto/Blue_Pamotim_gold_1_kdduli.jpg</image:loc></image:image>
-    <image:image><image:loc>https://res.cloudinary.com/doesupaf9/image/upload/q_auto,f_auto/Blue_high_cup_gold_1_an740y.jpg</image:loc></image:image>
-    <image:image><image:loc>https://res.cloudinary.com/doesupaf9/image/upload/q_auto,f_auto/Black_havdalah_set_gold_zblb7f.jpg</image:loc></image:image>
-    <image:image><image:loc>https://res.cloudinary.com/doesupaf9/image/upload/q_auto,f_auto/Black_tray_gold_wdxp9o.jpg</image:loc></image:image>
-    <image:image><image:loc>https://res.cloudinary.com/doesupaf9/image/upload/q_auto,f_auto/Blue_plate_gold_jtsy0y.jpg</image:loc></image:image>
-    <image:image><image:loc>https://res.cloudinary.com/doesupaf9/image/upload/q_auto,f_auto/Colorful_cup_gold_1_glz3rc.jpg</image:loc></image:image>
     <image:image><image:loc>https://res.cloudinary.com/doesupaf9/image/upload/q_auto,f_auto/Cover_silver_Magen_David_with_name_adq1oi.jpg</image:loc></image:image>
     <image:image><image:loc>https://res.cloudinary.com/doesupaf9/image/upload/q_auto,f_auto/horn-jerusalem_k5fryr.jpg</image:loc></image:image>
     <image:image><image:loc>https://res.cloudinary.com/doesupaf9/image/upload/q_auto,f_auto/Blue_green_pamotim_oix8h3.jpg</image:loc></image:image>
