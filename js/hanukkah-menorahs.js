@@ -332,6 +332,15 @@ function finishOptionsHtml(group, handler, selected) {
   }).join("");
 }
 
+// "33 × 27 × 3 cm". In a right-to-left page the bidi algorithm reverses a run of
+// numbers joined by ×, so the Hebrew card read "cm 3 × 27 × 33". The figures sit
+// in their own left-to-right isolate and the unit follows in the page language.
+function cardMeasurementsHtml(measurements) {
+  const dims = measurements.replace(/\s*cm\s*$/, "");
+  const unit = currentLang === "he" ? "ס״מ" : "cm";
+  return '<span class="product-card-measurements"><bdi dir="ltr">' + escapeHtml(dims) + "</bdi> " + unit + "</span>";
+}
+
 function buildProductCard(product, index) {
   const name = productName(product);
   return '<article class="product-card" id="' + product.id + '" onclick="openModal(' + index + ')">' +
@@ -339,7 +348,7 @@ function buildProductCard(product, index) {
     '<div class="product-card-body"><h2 class="product-card-name">' + escapeHtml(name) + "</h2>" +
     '<p class="product-card-desc">' + escapeHtml(productDescription(product)) + "</p>" +
     '<div class="product-card-meta"><span class="product-card-price">' + formatProductPrice(product.price_ils) + "</span>" +
-    (product.measurements ? '<span class="product-card-measurements">' + escapeHtml(product.measurements) + "</span>" : "") +
+    (product.measurements ? cardMeasurementsHtml(product.measurements) : "") +
     "</div>" +
     '<p class="product-color-note">' + escapeHtml(T_SITE[currentLang].color_note) + "</p>" +
     '<div class="product-card-actions"><button class="btn-cart" onclick="event.stopPropagation();cartAddFromProduct(' + index + ')">' +
