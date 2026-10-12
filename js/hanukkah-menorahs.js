@@ -1,8 +1,10 @@
-// Hanukkah menorahs: one design in seven glass colours, each with silver-tone or
-// gold-tone sockets and base. Every colour/finish pair is its own product, so
-// the cart, the order email, the payments Worker and the feed all see exactly
-// which one was bought. The grid shows all fourteen, like the candlesticks page;
-// the product modal is where the shopper switches finish and glass colour.
+// Hanukkah menorahs: three shapes, each in seven glass colours with silver-tone
+// or gold-tone sockets and base. Every shape/colour/finish is its own product,
+// so the cart, the order email, the payments Worker and the feed all see exactly
+// which one was bought. The landing page's grid shows them all, like the
+// candlesticks page; a shape's own page carries data-shape on the grid and shows
+// only that shape. The product modal is where the shopper switches shape, finish
+// and glass colour.
 //
 // The PRODUCTS array is written by _hanukkah_page.py from data/products.json -
 // edit products.json and rerun the chain, never the array.
@@ -231,6 +233,454 @@ const PRODUCTS = [
     "measurements": "33 × 27 × 3 cm",
     "price_ils": 1250,
     "photos": ["Turquoise_half_moon_1_vcjaid", "Turquoise_half_moon_2_tpjunj", "Turquoise_half_moon_3_sy475y", "Turquoise_half_moon_background_bsn7mn"]
+  },
+  {
+    "id": "silver-tone-pearl-white-rectangular-menorah",
+    "sku": "SAW-HN-015",
+    "family_id": "silver-tone-rectangular-hanukkah-menorahs",
+    "finish": "silver-tone",
+    "shape": "rectangular",
+    "name_en": "Silver-Tone Pearl White Glass Rectangular Hanukkah Menorah",
+    "name_he": "חנוכיה מלבנית מזכוכית בצבע לבן פנינה עם קנים ובסיס בגוון כסף",
+    "description_en": "Handmade rectangular Hanukkah menorah of double-sided pearl white glass, with silver-tone sockets and base, crafted in our studio in Israel.",
+    "description_he": "חנוכיה מלבנית בעבודת יד מזכוכית דו־צדדית בצבע לבן פנינה, עם קנים ובסיס בגוון כסף, מיוצרת בסטודיו שלנו בישראל.",
+    "color_en": "Pearl White",
+    "color_he": "לבן פנינה",
+    "measurements": "33 × 27 × 3 cm",
+    "price_ils": 1250,
+    "photos": ["Milky_White_rectangle_1_yfnzjz", "Milky_White_rectangle_2_s9zgwq", "Milky_White_rectangle_3_vmvupe", "Milky_White_rectangle_background_dcp10j"]
+  },
+  {
+    "id": "silver-tone-blue-rectangular-menorah",
+    "sku": "SAW-HN-016",
+    "family_id": "silver-tone-rectangular-hanukkah-menorahs",
+    "finish": "silver-tone",
+    "shape": "rectangular",
+    "name_en": "Silver-Tone Blue Glass Rectangular Hanukkah Menorah",
+    "name_he": "חנוכיה מלבנית מזכוכית בצבע כחול עם קנים ובסיס בגוון כסף",
+    "description_en": "Handmade rectangular Hanukkah menorah of double-sided blue glass, with silver-tone sockets and base, crafted in our studio in Israel.",
+    "description_he": "חנוכיה מלבנית בעבודת יד מזכוכית דו־צדדית בצבע כחול, עם קנים ובסיס בגוון כסף, מיוצרת בסטודיו שלנו בישראל.",
+    "color_en": "Blue",
+    "color_he": "כחול",
+    "measurements": "33 × 27 × 3 cm",
+    "price_ils": 1250,
+    "photos": ["Blue_rectangle_1_czurvw", "Blue_rectangle_2_swwbtc", "Blue_rectangle_3_t24djm", "Blue_rectangle_background_ucn6zl"]
+  },
+  {
+    "id": "silver-tone-clear-rectangular-menorah",
+    "sku": "SAW-HN-017",
+    "family_id": "silver-tone-rectangular-hanukkah-menorahs",
+    "finish": "silver-tone",
+    "shape": "rectangular",
+    "name_en": "Silver-Tone Clear Glass Rectangular Hanukkah Menorah",
+    "name_he": "חנוכיה מלבנית מזכוכית שקופה עם קנים ובסיס בגוון כסף",
+    "description_en": "Handmade rectangular Hanukkah menorah of double-sided clear glass, with silver-tone sockets and base, crafted in our studio in Israel.",
+    "description_he": "חנוכיה מלבנית בעבודת יד מזכוכית דו־צדדית שקופה, עם קנים ובסיס בגוון כסף, מיוצרת בסטודיו שלנו בישראל.",
+    "color_en": "Clear",
+    "color_he": "שקוף",
+    "measurements": "33 × 27 × 3 cm",
+    "price_ils": 1250,
+    "photos": ["Clear_rectangle_1_meb02j", "Clear_rectangle_2_ivglbk", "Clear_rectangle_3_zskrsv", "Clear_rectangle_background_kbtbyd"]
+  },
+  {
+    "id": "silver-tone-emerald-green-rectangular-menorah",
+    "sku": "SAW-HN-018",
+    "family_id": "silver-tone-rectangular-hanukkah-menorahs",
+    "finish": "silver-tone",
+    "shape": "rectangular",
+    "name_en": "Silver-Tone Emerald Green Glass Rectangular Hanukkah Menorah",
+    "name_he": "חנוכיה מלבנית מזכוכית בצבע ירוק עם קנים ובסיס בגוון כסף",
+    "description_en": "Handmade rectangular Hanukkah menorah of double-sided emerald green glass, with silver-tone sockets and base, crafted in our studio in Israel.",
+    "description_he": "חנוכיה מלבנית בעבודת יד מזכוכית דו־צדדית בצבע ירוק, עם קנים ובסיס בגוון כסף, מיוצרת בסטודיו שלנו בישראל.",
+    "color_en": "Emerald Green",
+    "color_he": "ירוק",
+    "measurements": "33 × 27 × 3 cm",
+    "price_ils": 1250,
+    "photos": ["Emerald_green_rectangle_1_dzgryh", "Emerald_green_rectangle_2_ydnevt", "Emerald_green_rectangle_3_czc3d9", "Emerald_green_rectangle_background_m4e3ee"]
+  },
+  {
+    "id": "silver-tone-light-blue-rectangular-menorah",
+    "sku": "SAW-HN-019",
+    "family_id": "silver-tone-rectangular-hanukkah-menorahs",
+    "finish": "silver-tone",
+    "shape": "rectangular",
+    "name_en": "Silver-Tone Light Blue Glass Rectangular Hanukkah Menorah",
+    "name_he": "חנוכיה מלבנית מזכוכית בצבע כחול בהיר עם קנים ובסיס בגוון כסף",
+    "description_en": "Handmade rectangular Hanukkah menorah of double-sided light blue glass, with silver-tone sockets and base, crafted in our studio in Israel.",
+    "description_he": "חנוכיה מלבנית בעבודת יד מזכוכית דו־צדדית בצבע כחול בהיר, עם קנים ובסיס בגוון כסף, מיוצרת בסטודיו שלנו בישראל.",
+    "color_en": "Light Blue",
+    "color_he": "כחול בהיר",
+    "measurements": "33 × 27 × 3 cm",
+    "price_ils": 1250,
+    "photos": ["Light_blue_rectangle_1_x9ipra", "Light_blue_rectangle_2_ddfwao", "Light_blue_rectangle_3_jfmrpq", "Light_blue_rectangle_background_j59xd7"]
+  },
+  {
+    "id": "silver-tone-terracotta-rectangular-menorah",
+    "sku": "SAW-HN-020",
+    "family_id": "silver-tone-rectangular-hanukkah-menorahs",
+    "finish": "silver-tone",
+    "shape": "rectangular",
+    "name_en": "Silver-Tone Terracotta Glass Rectangular Hanukkah Menorah",
+    "name_he": "חנוכיה מלבנית מזכוכית בצבע נחושת עם קנים ובסיס בגוון כסף",
+    "description_en": "Handmade rectangular Hanukkah menorah of double-sided terracotta glass, with silver-tone sockets and base, crafted in our studio in Israel.",
+    "description_he": "חנוכיה מלבנית בעבודת יד מזכוכית דו־צדדית בצבע נחושת, עם קנים ובסיס בגוון כסף, מיוצרת בסטודיו שלנו בישראל.",
+    "color_en": "Terracotta",
+    "color_he": "נחושת",
+    "measurements": "33 × 27 × 3 cm",
+    "price_ils": 1250,
+    "photos": ["Terracotta_rectangle_1_argxek", "Terracotta_rectangle_2_zngoqy", "Terracotta_rectangle_3_nebnrj", "Terracotta_rectangle_background_dmlfay"]
+  },
+  {
+    "id": "silver-tone-turquoise-rectangular-menorah",
+    "sku": "SAW-HN-021",
+    "family_id": "silver-tone-rectangular-hanukkah-menorahs",
+    "finish": "silver-tone",
+    "shape": "rectangular",
+    "name_en": "Silver-Tone Turquoise Glass Rectangular Hanukkah Menorah",
+    "name_he": "חנוכיה מלבנית מזכוכית בצבע טורקיז עם קנים ובסיס בגוון כסף",
+    "description_en": "Handmade rectangular Hanukkah menorah of double-sided turquoise glass, with silver-tone sockets and base, crafted in our studio in Israel.",
+    "description_he": "חנוכיה מלבנית בעבודת יד מזכוכית דו־צדדית בצבע טורקיז, עם קנים ובסיס בגוון כסף, מיוצרת בסטודיו שלנו בישראל.",
+    "color_en": "Turquoise",
+    "color_he": "טורקיז",
+    "measurements": "33 × 27 × 3 cm",
+    "price_ils": 1250,
+    "photos": ["Turquoise_rectangle_1_xibpwt", "Turquoise_rectangle_2_hfk6wi", "Turquoise_rectangle_3_byc78v", "Turquoise_rectangle_background_hrp0sk"]
+  },
+  {
+    "id": "gold-tone-pearl-white-rectangular-menorah",
+    "sku": "SAW-HN-022",
+    "family_id": "gold-tone-rectangular-hanukkah-menorahs",
+    "finish": "gold-tone",
+    "shape": "rectangular",
+    "name_en": "Gold-Tone Pearl White Glass Rectangular Hanukkah Menorah",
+    "name_he": "חנוכיה מלבנית מזכוכית בצבע לבן פנינה עם קנים ובסיס בגוון זהב",
+    "description_en": "Handmade rectangular Hanukkah menorah of double-sided pearl white glass, with gold-tone sockets and base, crafted in our studio in Israel.",
+    "description_he": "חנוכיה מלבנית בעבודת יד מזכוכית דו־צדדית בצבע לבן פנינה, עם קנים ובסיס בגוון זהב, מיוצרת בסטודיו שלנו בישראל.",
+    "color_en": "Pearl White",
+    "color_he": "לבן פנינה",
+    "measurements": "33 × 27 × 3 cm",
+    "price_ils": 1250,
+    "photos": ["Milky_White_rectangle_1_k0jjem", "Milky_White_rectangle_2_yxhfxu", "Milky_White_rectangle_3_xvaamr", "Milky_White_rectangle_background_q5qxok"]
+  },
+  {
+    "id": "gold-tone-blue-rectangular-menorah",
+    "sku": "SAW-HN-023",
+    "family_id": "gold-tone-rectangular-hanukkah-menorahs",
+    "finish": "gold-tone",
+    "shape": "rectangular",
+    "name_en": "Gold-Tone Blue Glass Rectangular Hanukkah Menorah",
+    "name_he": "חנוכיה מלבנית מזכוכית בצבע כחול עם קנים ובסיס בגוון זהב",
+    "description_en": "Handmade rectangular Hanukkah menorah of double-sided blue glass, with gold-tone sockets and base, crafted in our studio in Israel.",
+    "description_he": "חנוכיה מלבנית בעבודת יד מזכוכית דו־צדדית בצבע כחול, עם קנים ובסיס בגוון זהב, מיוצרת בסטודיו שלנו בישראל.",
+    "color_en": "Blue",
+    "color_he": "כחול",
+    "measurements": "33 × 27 × 3 cm",
+    "price_ils": 1250,
+    "photos": ["Blue_rectangle_1_j59egc", "Blue_rectangle_2_opczbf", "Blue_rectangle_3_x2mee5", "Blue_rectangle_background_ckmhzs"]
+  },
+  {
+    "id": "gold-tone-clear-rectangular-menorah",
+    "sku": "SAW-HN-024",
+    "family_id": "gold-tone-rectangular-hanukkah-menorahs",
+    "finish": "gold-tone",
+    "shape": "rectangular",
+    "name_en": "Gold-Tone Clear Glass Rectangular Hanukkah Menorah",
+    "name_he": "חנוכיה מלבנית מזכוכית שקופה עם קנים ובסיס בגוון זהב",
+    "description_en": "Handmade rectangular Hanukkah menorah of double-sided clear glass, with gold-tone sockets and base, crafted in our studio in Israel.",
+    "description_he": "חנוכיה מלבנית בעבודת יד מזכוכית דו־צדדית שקופה, עם קנים ובסיס בגוון זהב, מיוצרת בסטודיו שלנו בישראל.",
+    "color_en": "Clear",
+    "color_he": "שקוף",
+    "measurements": "33 × 27 × 3 cm",
+    "price_ils": 1250,
+    "photos": ["Clear_rectangle_1_ookx3j", "Clear_rectangle_2_l4hubs", "Clear_rectangle_3_cvc5sj", "Clear_rectangle_background_lgkdkq"]
+  },
+  {
+    "id": "gold-tone-emerald-green-rectangular-menorah",
+    "sku": "SAW-HN-025",
+    "family_id": "gold-tone-rectangular-hanukkah-menorahs",
+    "finish": "gold-tone",
+    "shape": "rectangular",
+    "name_en": "Gold-Tone Emerald Green Glass Rectangular Hanukkah Menorah",
+    "name_he": "חנוכיה מלבנית מזכוכית בצבע ירוק עם קנים ובסיס בגוון זהב",
+    "description_en": "Handmade rectangular Hanukkah menorah of double-sided emerald green glass, with gold-tone sockets and base, crafted in our studio in Israel.",
+    "description_he": "חנוכיה מלבנית בעבודת יד מזכוכית דו־צדדית בצבע ירוק, עם קנים ובסיס בגוון זהב, מיוצרת בסטודיו שלנו בישראל.",
+    "color_en": "Emerald Green",
+    "color_he": "ירוק",
+    "measurements": "33 × 27 × 3 cm",
+    "price_ils": 1250,
+    "photos": ["Emerald_green_rectangle_1_jyejd7", "Emerald_green_rectangle_2_zz2r4f", "Emerald_green_rectangle_3_npff9m", "Emerald_green_rectangle_background_sarekd"]
+  },
+  {
+    "id": "gold-tone-light-blue-rectangular-menorah",
+    "sku": "SAW-HN-026",
+    "family_id": "gold-tone-rectangular-hanukkah-menorahs",
+    "finish": "gold-tone",
+    "shape": "rectangular",
+    "name_en": "Gold-Tone Light Blue Glass Rectangular Hanukkah Menorah",
+    "name_he": "חנוכיה מלבנית מזכוכית בצבע כחול בהיר עם קנים ובסיס בגוון זהב",
+    "description_en": "Handmade rectangular Hanukkah menorah of double-sided light blue glass, with gold-tone sockets and base, crafted in our studio in Israel.",
+    "description_he": "חנוכיה מלבנית בעבודת יד מזכוכית דו־צדדית בצבע כחול בהיר, עם קנים ובסיס בגוון זהב, מיוצרת בסטודיו שלנו בישראל.",
+    "color_en": "Light Blue",
+    "color_he": "כחול בהיר",
+    "measurements": "33 × 27 × 3 cm",
+    "price_ils": 1250,
+    "photos": ["Light_blue_rectangle_1_xu5kjt", "Light_blue_rectangle_2_sgqnuu", "Light_blue_rectangle_3_n9gynq", "Light_blue_rectangle_background_nim46w"]
+  },
+  {
+    "id": "gold-tone-terracotta-rectangular-menorah",
+    "sku": "SAW-HN-027",
+    "family_id": "gold-tone-rectangular-hanukkah-menorahs",
+    "finish": "gold-tone",
+    "shape": "rectangular",
+    "name_en": "Gold-Tone Terracotta Glass Rectangular Hanukkah Menorah",
+    "name_he": "חנוכיה מלבנית מזכוכית בצבע נחושת עם קנים ובסיס בגוון זהב",
+    "description_en": "Handmade rectangular Hanukkah menorah of double-sided terracotta glass, with gold-tone sockets and base, crafted in our studio in Israel.",
+    "description_he": "חנוכיה מלבנית בעבודת יד מזכוכית דו־צדדית בצבע נחושת, עם קנים ובסיס בגוון זהב, מיוצרת בסטודיו שלנו בישראל.",
+    "color_en": "Terracotta",
+    "color_he": "נחושת",
+    "measurements": "33 × 27 × 3 cm",
+    "price_ils": 1250,
+    "photos": ["Terracotta_rectangle_1_cavxmq", "Terracotta_rectangle_2_xmqc1w", "Terracotta_rectangle_3_xmn8sr", "Terracotta_rectangle_background_iquffw"]
+  },
+  {
+    "id": "gold-tone-turquoise-rectangular-menorah",
+    "sku": "SAW-HN-028",
+    "family_id": "gold-tone-rectangular-hanukkah-menorahs",
+    "finish": "gold-tone",
+    "shape": "rectangular",
+    "name_en": "Gold-Tone Turquoise Glass Rectangular Hanukkah Menorah",
+    "name_he": "חנוכיה מלבנית מזכוכית בצבע טורקיז עם קנים ובסיס בגוון זהב",
+    "description_en": "Handmade rectangular Hanukkah menorah of double-sided turquoise glass, with gold-tone sockets and base, crafted in our studio in Israel.",
+    "description_he": "חנוכיה מלבנית בעבודת יד מזכוכית דו־צדדית בצבע טורקיז, עם קנים ובסיס בגוון זהב, מיוצרת בסטודיו שלנו בישראל.",
+    "color_en": "Turquoise",
+    "color_he": "טורקיז",
+    "measurements": "33 × 27 × 3 cm",
+    "price_ils": 1250,
+    "photos": ["Turquoise_rectangle_1_wfkqr4", "Turquoise_rectangle_2_lu5ta3", "Turquoise_rectangle_3_lrasn3", "Turquoise_rectangle_background_mjlymh"]
+  },
+  {
+    "id": "silver-tone-pearl-white-trapezoid-menorah",
+    "sku": "SAW-HN-029",
+    "family_id": "silver-tone-trapezoid-hanukkah-menorahs",
+    "finish": "silver-tone",
+    "shape": "trapezoid",
+    "name_en": "Silver-Tone Pearl White Glass Trapezoid Hanukkah Menorah",
+    "name_he": "חנוכיה טרפז מזכוכית בצבע לבן פנינה עם קנים ובסיס בגוון כסף",
+    "description_en": "Handmade trapezoid Hanukkah menorah of double-sided pearl white glass, with silver-tone sockets and base, crafted in our studio in Israel.",
+    "description_he": "חנוכיה בצורת טרפז בעבודת יד מזכוכית דו־צדדית בצבע לבן פנינה, עם קנים ובסיס בגוון כסף, מיוצרת בסטודיו שלנו בישראל.",
+    "color_en": "Pearl White",
+    "color_he": "לבן פנינה",
+    "measurements": "33 × 27 × 3 cm",
+    "price_ils": 1250,
+    "photos": ["Milky_White_trapeze_1_vncpfv", "Milky_White_trapeze_2_oju4jo", "Milky_White_trapeze_3_oqi3wk", "Milky_White_trapeze_background_ajuz5p"]
+  },
+  {
+    "id": "silver-tone-blue-trapezoid-menorah",
+    "sku": "SAW-HN-030",
+    "family_id": "silver-tone-trapezoid-hanukkah-menorahs",
+    "finish": "silver-tone",
+    "shape": "trapezoid",
+    "name_en": "Silver-Tone Blue Glass Trapezoid Hanukkah Menorah",
+    "name_he": "חנוכיה טרפז מזכוכית בצבע כחול עם קנים ובסיס בגוון כסף",
+    "description_en": "Handmade trapezoid Hanukkah menorah of double-sided blue glass, with silver-tone sockets and base, crafted in our studio in Israel.",
+    "description_he": "חנוכיה בצורת טרפז בעבודת יד מזכוכית דו־צדדית בצבע כחול, עם קנים ובסיס בגוון כסף, מיוצרת בסטודיו שלנו בישראל.",
+    "color_en": "Blue",
+    "color_he": "כחול",
+    "measurements": "33 × 27 × 3 cm",
+    "price_ils": 1250,
+    "photos": ["Blue_trapeze_1_s9amc8", "Blue_trapeze_2_oz7kqr", "Blue_trapeze_3_w5pztt", "Blue_trapeze_background_nrjtkl"]
+  },
+  {
+    "id": "silver-tone-clear-trapezoid-menorah",
+    "sku": "SAW-HN-031",
+    "family_id": "silver-tone-trapezoid-hanukkah-menorahs",
+    "finish": "silver-tone",
+    "shape": "trapezoid",
+    "name_en": "Silver-Tone Clear Glass Trapezoid Hanukkah Menorah",
+    "name_he": "חנוכיה טרפז מזכוכית שקופה עם קנים ובסיס בגוון כסף",
+    "description_en": "Handmade trapezoid Hanukkah menorah of double-sided clear glass, with silver-tone sockets and base, crafted in our studio in Israel.",
+    "description_he": "חנוכיה בצורת טרפז בעבודת יד מזכוכית דו־צדדית שקופה, עם קנים ובסיס בגוון כסף, מיוצרת בסטודיו שלנו בישראל.",
+    "color_en": "Clear",
+    "color_he": "שקוף",
+    "measurements": "33 × 27 × 3 cm",
+    "price_ils": 1250,
+    "photos": ["Clear_trapeze_1_vovbaj", "Clear_trapeze_2_ydceml", "Clear_trapeze_3_egxywh", "Clear_trapeze_background_hw2uen"]
+  },
+  {
+    "id": "silver-tone-emerald-green-trapezoid-menorah",
+    "sku": "SAW-HN-032",
+    "family_id": "silver-tone-trapezoid-hanukkah-menorahs",
+    "finish": "silver-tone",
+    "shape": "trapezoid",
+    "name_en": "Silver-Tone Emerald Green Glass Trapezoid Hanukkah Menorah",
+    "name_he": "חנוכיה טרפז מזכוכית בצבע ירוק עם קנים ובסיס בגוון כסף",
+    "description_en": "Handmade trapezoid Hanukkah menorah of double-sided emerald green glass, with silver-tone sockets and base, crafted in our studio in Israel.",
+    "description_he": "חנוכיה בצורת טרפז בעבודת יד מזכוכית דו־צדדית בצבע ירוק, עם קנים ובסיס בגוון כסף, מיוצרת בסטודיו שלנו בישראל.",
+    "color_en": "Emerald Green",
+    "color_he": "ירוק",
+    "measurements": "33 × 27 × 3 cm",
+    "price_ils": 1250,
+    "photos": ["Emerald_green_trapeze_1_wsf6hm", "Emerald_green_trapeze_2_nnss8j", "Emerald_green_trapeze_3_a9bwpw", "Emerald_green_trapeze_background_koditk"]
+  },
+  {
+    "id": "silver-tone-light-blue-trapezoid-menorah",
+    "sku": "SAW-HN-033",
+    "family_id": "silver-tone-trapezoid-hanukkah-menorahs",
+    "finish": "silver-tone",
+    "shape": "trapezoid",
+    "name_en": "Silver-Tone Light Blue Glass Trapezoid Hanukkah Menorah",
+    "name_he": "חנוכיה טרפז מזכוכית בצבע כחול בהיר עם קנים ובסיס בגוון כסף",
+    "description_en": "Handmade trapezoid Hanukkah menorah of double-sided light blue glass, with silver-tone sockets and base, crafted in our studio in Israel.",
+    "description_he": "חנוכיה בצורת טרפז בעבודת יד מזכוכית דו־צדדית בצבע כחול בהיר, עם קנים ובסיס בגוון כסף, מיוצרת בסטודיו שלנו בישראל.",
+    "color_en": "Light Blue",
+    "color_he": "כחול בהיר",
+    "measurements": "33 × 27 × 3 cm",
+    "price_ils": 1250,
+    "photos": ["Light_blue_trapeze_1_emd22s", "Light_blue_trapeze_2_bncvmi", "Light_blue_trapeze_3_gwm9ha", "Light_blue_trapeze_background_nydsyq"]
+  },
+  {
+    "id": "silver-tone-terracotta-trapezoid-menorah",
+    "sku": "SAW-HN-034",
+    "family_id": "silver-tone-trapezoid-hanukkah-menorahs",
+    "finish": "silver-tone",
+    "shape": "trapezoid",
+    "name_en": "Silver-Tone Terracotta Glass Trapezoid Hanukkah Menorah",
+    "name_he": "חנוכיה טרפז מזכוכית בצבע נחושת עם קנים ובסיס בגוון כסף",
+    "description_en": "Handmade trapezoid Hanukkah menorah of double-sided terracotta glass, with silver-tone sockets and base, crafted in our studio in Israel.",
+    "description_he": "חנוכיה בצורת טרפז בעבודת יד מזכוכית דו־צדדית בצבע נחושת, עם קנים ובסיס בגוון כסף, מיוצרת בסטודיו שלנו בישראל.",
+    "color_en": "Terracotta",
+    "color_he": "נחושת",
+    "measurements": "33 × 27 × 3 cm",
+    "price_ils": 1250,
+    "photos": ["Terracotta_trapeze_1_vhiphv", "Terracotta_trapeze_2_bomukz", "Terracotta_trapeze_3_utlf5o", "Terracotta_trapeze_background_eivdsv"]
+  },
+  {
+    "id": "silver-tone-turquoise-trapezoid-menorah",
+    "sku": "SAW-HN-035",
+    "family_id": "silver-tone-trapezoid-hanukkah-menorahs",
+    "finish": "silver-tone",
+    "shape": "trapezoid",
+    "name_en": "Silver-Tone Turquoise Glass Trapezoid Hanukkah Menorah",
+    "name_he": "חנוכיה טרפז מזכוכית בצבע טורקיז עם קנים ובסיס בגוון כסף",
+    "description_en": "Handmade trapezoid Hanukkah menorah of double-sided turquoise glass, with silver-tone sockets and base, crafted in our studio in Israel.",
+    "description_he": "חנוכיה בצורת טרפז בעבודת יד מזכוכית דו־צדדית בצבע טורקיז, עם קנים ובסיס בגוון כסף, מיוצרת בסטודיו שלנו בישראל.",
+    "color_en": "Turquoise",
+    "color_he": "טורקיז",
+    "measurements": "33 × 27 × 3 cm",
+    "price_ils": 1250,
+    "photos": ["Turquoise_trapeze_1_eocand", "Turquoise_trapeze_2_w6lzvw", "Turquoise_trapeze_3_frqbwx", "Turquoise_trapeze_background_ihwzv1"]
+  },
+  {
+    "id": "gold-tone-pearl-white-trapezoid-menorah",
+    "sku": "SAW-HN-036",
+    "family_id": "gold-tone-trapezoid-hanukkah-menorahs",
+    "finish": "gold-tone",
+    "shape": "trapezoid",
+    "name_en": "Gold-Tone Pearl White Glass Trapezoid Hanukkah Menorah",
+    "name_he": "חנוכיה טרפז מזכוכית בצבע לבן פנינה עם קנים ובסיס בגוון זהב",
+    "description_en": "Handmade trapezoid Hanukkah menorah of double-sided pearl white glass, with gold-tone sockets and base, crafted in our studio in Israel.",
+    "description_he": "חנוכיה בצורת טרפז בעבודת יד מזכוכית דו־צדדית בצבע לבן פנינה, עם קנים ובסיס בגוון זהב, מיוצרת בסטודיו שלנו בישראל.",
+    "color_en": "Pearl White",
+    "color_he": "לבן פנינה",
+    "measurements": "33 × 27 × 3 cm",
+    "price_ils": 1250,
+    "photos": ["Milky_White_trapeze_1_lg7bvx", "Milky_White_trapeze_2_gvvt3r", "Milky_White_trapeze_3_ywodse", "Milky_White_trapeze_background_kptfgt"]
+  },
+  {
+    "id": "gold-tone-blue-trapezoid-menorah",
+    "sku": "SAW-HN-037",
+    "family_id": "gold-tone-trapezoid-hanukkah-menorahs",
+    "finish": "gold-tone",
+    "shape": "trapezoid",
+    "name_en": "Gold-Tone Blue Glass Trapezoid Hanukkah Menorah",
+    "name_he": "חנוכיה טרפז מזכוכית בצבע כחול עם קנים ובסיס בגוון זהב",
+    "description_en": "Handmade trapezoid Hanukkah menorah of double-sided blue glass, with gold-tone sockets and base, crafted in our studio in Israel.",
+    "description_he": "חנוכיה בצורת טרפז בעבודת יד מזכוכית דו־צדדית בצבע כחול, עם קנים ובסיס בגוון זהב, מיוצרת בסטודיו שלנו בישראל.",
+    "color_en": "Blue",
+    "color_he": "כחול",
+    "measurements": "33 × 27 × 3 cm",
+    "price_ils": 1250,
+    "photos": ["Blue_trapeze_1_gc1jbn", "Blue_trapeze_2_zvkrit", "Blue_trapeze_3_ygf2bx", "Blue_trapeze_background_tfb5gx"]
+  },
+  {
+    "id": "gold-tone-clear-trapezoid-menorah",
+    "sku": "SAW-HN-038",
+    "family_id": "gold-tone-trapezoid-hanukkah-menorahs",
+    "finish": "gold-tone",
+    "shape": "trapezoid",
+    "name_en": "Gold-Tone Clear Glass Trapezoid Hanukkah Menorah",
+    "name_he": "חנוכיה טרפז מזכוכית שקופה עם קנים ובסיס בגוון זהב",
+    "description_en": "Handmade trapezoid Hanukkah menorah of double-sided clear glass, with gold-tone sockets and base, crafted in our studio in Israel.",
+    "description_he": "חנוכיה בצורת טרפז בעבודת יד מזכוכית דו־צדדית שקופה, עם קנים ובסיס בגוון זהב, מיוצרת בסטודיו שלנו בישראל.",
+    "color_en": "Clear",
+    "color_he": "שקוף",
+    "measurements": "33 × 27 × 3 cm",
+    "price_ils": 1250,
+    "photos": ["Clear_trapeze_1_lqsbmq", "Clear_trapeze_2_fhvrbu", "Clear_trapeze_3_ljyq31", "Clear_trapeze_background_afibb7"]
+  },
+  {
+    "id": "gold-tone-emerald-green-trapezoid-menorah",
+    "sku": "SAW-HN-039",
+    "family_id": "gold-tone-trapezoid-hanukkah-menorahs",
+    "finish": "gold-tone",
+    "shape": "trapezoid",
+    "name_en": "Gold-Tone Emerald Green Glass Trapezoid Hanukkah Menorah",
+    "name_he": "חנוכיה טרפז מזכוכית בצבע ירוק עם קנים ובסיס בגוון זהב",
+    "description_en": "Handmade trapezoid Hanukkah menorah of double-sided emerald green glass, with gold-tone sockets and base, crafted in our studio in Israel.",
+    "description_he": "חנוכיה בצורת טרפז בעבודת יד מזכוכית דו־צדדית בצבע ירוק, עם קנים ובסיס בגוון זהב, מיוצרת בסטודיו שלנו בישראל.",
+    "color_en": "Emerald Green",
+    "color_he": "ירוק",
+    "measurements": "33 × 27 × 3 cm",
+    "price_ils": 1250,
+    "photos": ["Emerald_green_trapeze_1_fsbta0", "Emerald_green_trapeze_2_veiyht", "Emerald_green_trapeze_3_ia94nz", "Emerald_green_trapeze_background_pr9eq5"]
+  },
+  {
+    "id": "gold-tone-light-blue-trapezoid-menorah",
+    "sku": "SAW-HN-040",
+    "family_id": "gold-tone-trapezoid-hanukkah-menorahs",
+    "finish": "gold-tone",
+    "shape": "trapezoid",
+    "name_en": "Gold-Tone Light Blue Glass Trapezoid Hanukkah Menorah",
+    "name_he": "חנוכיה טרפז מזכוכית בצבע כחול בהיר עם קנים ובסיס בגוון זהב",
+    "description_en": "Handmade trapezoid Hanukkah menorah of double-sided light blue glass, with gold-tone sockets and base, crafted in our studio in Israel.",
+    "description_he": "חנוכיה בצורת טרפז בעבודת יד מזכוכית דו־צדדית בצבע כחול בהיר, עם קנים ובסיס בגוון זהב, מיוצרת בסטודיו שלנו בישראל.",
+    "color_en": "Light Blue",
+    "color_he": "כחול בהיר",
+    "measurements": "33 × 27 × 3 cm",
+    "price_ils": 1250,
+    "photos": ["Light_blue_trapeze_1_olnws2", "Light_blue_trapeze_2_etjk0l", "Light_blue_trapeze_3_q2mds5", "Light_blue_trapeze_background_ol02g2"]
+  },
+  {
+    "id": "gold-tone-terracotta-trapezoid-menorah",
+    "sku": "SAW-HN-041",
+    "family_id": "gold-tone-trapezoid-hanukkah-menorahs",
+    "finish": "gold-tone",
+    "shape": "trapezoid",
+    "name_en": "Gold-Tone Terracotta Glass Trapezoid Hanukkah Menorah",
+    "name_he": "חנוכיה טרפז מזכוכית בצבע נחושת עם קנים ובסיס בגוון זהב",
+    "description_en": "Handmade trapezoid Hanukkah menorah of double-sided terracotta glass, with gold-tone sockets and base, crafted in our studio in Israel.",
+    "description_he": "חנוכיה בצורת טרפז בעבודת יד מזכוכית דו־צדדית בצבע נחושת, עם קנים ובסיס בגוון זהב, מיוצרת בסטודיו שלנו בישראל.",
+    "color_en": "Terracotta",
+    "color_he": "נחושת",
+    "measurements": "33 × 27 × 3 cm",
+    "price_ils": 1250,
+    "photos": ["Terracotta_trapeze_1_uj1bod", "Terracotta_trapeze_2_hhqa2z", "Terracotta_trapeze_3_eii7yg", "Terracotta_trapeze_background_rnhlhh"]
+  },
+  {
+    "id": "gold-tone-turquoise-trapezoid-menorah",
+    "sku": "SAW-HN-042",
+    "family_id": "gold-tone-trapezoid-hanukkah-menorahs",
+    "finish": "gold-tone",
+    "shape": "trapezoid",
+    "name_en": "Gold-Tone Turquoise Glass Trapezoid Hanukkah Menorah",
+    "name_he": "חנוכיה טרפז מזכוכית בצבע טורקיז עם קנים ובסיס בגוון זהב",
+    "description_en": "Handmade trapezoid Hanukkah menorah of double-sided turquoise glass, with gold-tone sockets and base, crafted in our studio in Israel.",
+    "description_he": "חנוכיה בצורת טרפז בעבודת יד מזכוכית דו־צדדית בצבע טורקיז, עם קנים ובסיס בגוון זהב, מיוצרת בסטודיו שלנו בישראל.",
+    "color_en": "Turquoise",
+    "color_he": "טורקיז",
+    "measurements": "33 × 27 × 3 cm",
+    "price_ils": 1250,
+    "photos": ["Turquoise_trapeze_1_mckfrc", "Turquoise_trapeze_2_m4lnex", "Turquoise_trapeze_3_oaqadm", "Turquoise_trapeze_background_umoblf"]
   }
 ];
 // </generated>
@@ -238,6 +688,12 @@ const PRODUCTS = [
 const FINISHES = [
   { key: "silver-tone", label: "metal_silver" },
   { key: "gold-tone", label: "metal_gold" }
+];
+
+const SHAPES = [
+  { key: "half-moon", label: "shape_half_moon" },
+  { key: "rectangular", label: "shape_rectangular" },
+  { key: "trapezoid", label: "shape_trapezoid" }
 ];
 
 let currentModalIdx = null;
@@ -323,6 +779,24 @@ function cardNext(index, event) {
   cardGoTo(index, (cardPhotoIdx[index] || 0) + 1);
 }
 
+function shapeLabel(shape) {
+  const s = SHAPES.find(function(item) { return item.key === shape; });
+  return s ? pageText(s.label) : "";
+}
+
+// Only shapes the catalogue actually has, so a shape with no products yet
+// never shows up as a choice.
+function shapeOptionsHtml(selected) {
+  return SHAPES.filter(function(s) {
+    return PRODUCTS.some(function(item) { return item.shape === s.key; });
+  }).map(function(s) {
+    return '<label class="variant-size-option"><input type="radio" name="modalShape" value="' + s.key + '"' +
+      (s.key === selected ? " checked" : "") + " onchange=\"selectModalShape('" + s.key + "')\" />" +
+      '<span class="variant-size-content"><span class="variant-size-label">' + escapeHtml(pageText(s.label)) +
+      "</span></span></label>";
+  }).join("");
+}
+
 function finishOptionsHtml(group, handler, selected) {
   return FINISHES.map(function(f) {
     return '<label class="variant-size-option"><input type="radio" name="' + group + '" value="' + f.key + '"' +
@@ -386,17 +860,27 @@ function renderProducts() {
   renderCustomNote();
   const grid = document.getElementById("grid-products");
   if (!grid) return;
-  if (!productDisplayOrder) productDisplayOrder = shuffledProductEntries(PRODUCTS);
+  // A shape's own page names its shape on the grid; the landing page shows all.
+  const shape = grid.getAttribute("data-shape");
+  if (!productDisplayOrder) {
+    productDisplayOrder = shuffledProductEntries(PRODUCTS).filter(function(entry) {
+      return !shape || entry.p.shape === shape;
+    });
+  }
   grid.innerHTML = productDisplayOrder
     .map(function(entry) { return buildProductCard(entry.p, entry.idx); })
     .join("");
 }
 
-// The same shape and glass colour with the other finish.
-function twinIndex(product, finish) {
+// The same glass colour in another finish or shape: change one, keep the rest.
+function variantIndex(product, finish, shape) {
   return PRODUCTS.findIndex(function(item) {
-    return item.finish === finish && item.shape === product.shape && item.color_en === product.color_en;
+    return item.finish === finish && item.shape === shape && item.color_en === product.color_en;
   });
+}
+
+function twinIndex(product, finish) {
+  return variantIndex(product, finish, product.shape);
 }
 
 function openModal(index) {
@@ -434,6 +918,12 @@ function selectModalFinish(finish) {
   switchModalProduct(twinIndex(product, finish), 'input[name="modalFinish"]:checked');
 }
 
+function selectModalShape(shape) {
+  const product = PRODUCTS[currentModalIdx];
+  if (!product) return;
+  switchModalProduct(variantIndex(product, product.finish, shape), 'input[name="modalShape"]:checked');
+}
+
 function selectModalColor(index) {
   switchModalProduct(index, '.variant-color-option[aria-pressed="true"]');
 }
@@ -446,6 +936,7 @@ function renderModal() {
   document.getElementById("modalNameAlt").textContent = currentLang === "he" ? product.name_en : product.name_he;
   document.getElementById("modalDesc").textContent = productDescription(product);
 
+  document.getElementById("modalShapeOptions").innerHTML = shapeOptionsHtml(product.shape);
   document.getElementById("modalMetalOptions").innerHTML =
     finishOptionsHtml("modalFinish", "selectModalFinish", product.finish);
   document.getElementById("modalColorOptions").innerHTML = PRODUCTS
@@ -465,7 +956,8 @@ function renderModal() {
   const finishText = currentLang === "he" ? finishLabel(product.finish) : finishLabel(product.finish).toLowerCase();
   document.getElementById("modalChoice").innerHTML =
     "<strong>" + escapeHtml(pageText("your_choice")) + "</strong> " +
-    escapeHtml(pageText("choice_glass").replace("{color}", productColor(product)) + ", " +
+    escapeHtml(pageText("choice_shape").replace("{shape}", shapeLabel(product.shape)) + ", " +
+               pageText("choice_glass").replace("{color}", productColor(product)) + ", " +
                pageText("choice_metal").replace("{finish}", finishText));
   document.getElementById("modalMeasurements").textContent = pageText("measurements_value");
   document.getElementById("modalPrice").innerHTML = formatProductPrice(product.price_ils);

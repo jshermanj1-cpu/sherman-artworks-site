@@ -272,6 +272,10 @@ const T_SITE = {
     switch_havdalah_all:      'All Havdalah Sets',
     switch_havdalah_silver:   'Silver-Plated Havdalah Sets',
     switch_havdalah_gold:     'Gold-Plated Havdalah Sets',
+    switch_hanukkah_all:         'All Menorahs',
+    switch_hanukkah_half_moon:   'Half-Moon Menorahs',
+    switch_hanukkah_rectangular: 'Rectangular Menorahs',
+    switch_hanukkah_trapezoid:   'Trapezoid Menorahs',
 
     cat_from:            'from',
     cat_cta_browse:      'Browse Collection',
@@ -357,6 +361,10 @@ const T_SITE = {
     switch_havdalah_all:      'כל סטי ההבדלה',
     switch_havdalah_silver:   'סטי הבדלה בציפוי כסף',
     switch_havdalah_gold:     'סטי הבדלה בציפוי זהב',
+    switch_hanukkah_all:         'כל החנוכיות',
+    switch_hanukkah_half_moon:   'חנוכיות חצי עיגול',
+    switch_hanukkah_rectangular: 'חנוכיות מלבניות',
+    switch_hanukkah_trapezoid:   'חנוכיות טרפז',
 
     cat_from:            'מ-',
     cat_cta_browse:      'לקולקציה',

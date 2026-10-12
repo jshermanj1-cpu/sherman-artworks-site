@@ -1,9 +1,10 @@
 # -*- coding: utf-8 -*-
 """_hanukkah_page.py - build the Hanukkah menorah page from data/products.json.
 
-Every menorah exists twice over - seven glass colours, each with silver-tone or
-gold-tone sockets and base - so the page carries fourteen products, and a
-photo or a price lives on five surfaces of it at once: the runtime catalogue in
+Every menorah shape exists fourteen times over - seven glass colours, each with
+silver-tone or gold-tone sockets and base - and there are three shapes, so the
+page carries forty-two products, and a photo or a price lives on five surfaces
+of it at once: the runtime catalogue in
 js/hanukkah-menorahs.js, the no-JS cards crawlers read, two ProductGroup blocks,
 the share image, and the homepage category card. Hand-keeping five copies in
 step is how every other category on this site drifted, so here data/products.json
@@ -11,9 +12,15 @@ is the only copy anyone edits and this script writes the rest.
 
 What it owns, each between marker comments so nothing around it is touched:
 
-  js/hanukkah-menorahs.js   the PRODUCTS array (all fourteen, photo or not)
-  hanukkah-menorahs.html    static cards + ProductGroup JSON-LD + og/twitter image
+  js/hanukkah-menorahs.js   the PRODUCTS array (every menorah, photo or not)
+  hanukkah-menorahs.html    static cards + ProductGroup JSON-LD + og/twitter image,
+                            and the shape switcher above the grid
+  hanukkah-menorahs-*.html  one page per shape (SHAPES below), written whole from
+                            the landing page: its own title, hero, breadcrumb,
+                            cards and ProductGroups, and data-shape on the grid
+                            so the runtime shows only that shape
   index.html                the Hanukkah category card's image
+  every English page        the shape links under Hanukkah in the phone menu
 
 A menorah with no photo yet is held back: products.json marks it
 "active": false, and it gets no static card, no JSON-LD and no feed item until
@@ -31,6 +38,9 @@ import sys
 from pathlib import Path
 
 from _usd import usd_from_ils
+# The switcher, its translation keys and the phone-menu links work exactly as
+# on the other categories, so they come from the same engine.
+from _subcategory_pages import ensure_landing_switcher, ensure_mobile_navigation, replace_one, switcher
 
 SITE = Path(__file__).parent
 BASE = "https://shermanartworks.com"
@@ -58,6 +68,91 @@ GROUPS = {
         "name": "Half-Moon Glass Hanukkah Menorahs with Gold-Tone Sockets",
         "description": "Handmade half-moon Hanukkah menorahs of double-sided glass in seven colours, "
                        "with gold-tone sockets and base, crafted in our studio in Israel."},
+    "silver-tone-rectangular-hanukkah-menorahs": {
+        "name": "Rectangular Glass Hanukkah Menorahs with Silver-Tone Sockets",
+        "description": "Handmade rectangular Hanukkah menorahs of double-sided glass in seven colours, "
+                       "with silver-tone sockets and base, crafted in our studio in Israel."},
+    "gold-tone-rectangular-hanukkah-menorahs": {
+        "name": "Rectangular Glass Hanukkah Menorahs with Gold-Tone Sockets",
+        "description": "Handmade rectangular Hanukkah menorahs of double-sided glass in seven colours, "
+                       "with gold-tone sockets and base, crafted in our studio in Israel."},
+    "silver-tone-trapezoid-hanukkah-menorahs": {
+        "name": "Trapezoid Glass Hanukkah Menorahs with Silver-Tone Sockets",
+        "description": "Handmade trapezoid Hanukkah menorahs of double-sided glass in seven colours, "
+                       "with silver-tone sockets and base, crafted in our studio in Israel."},
+    "gold-tone-trapezoid-hanukkah-menorahs": {
+        "name": "Trapezoid Glass Hanukkah Menorahs with Gold-Tone Sockets",
+        "description": "Handmade trapezoid Hanukkah menorahs of double-sided glass in seven colours, "
+                       "with gold-tone sockets and base, crafted in our studio in Israel."},
+}
+
+# One page per shape. The key is the products' "shape"; "kind" names its
+# switcher and menu keys (switch_hanukkah_<kind>, which js/site.js also carries
+# for the phone menu on every page); "headline" is the page's h1 and its label in
+# the switcher and the menu, like the other categories. Hebrew titles and
+# descriptions live in _he_pages.py's META with every other page's, and each
+# page needs a line in its PAGES list and in sitemap.xml.
+SHAPES = {
+    "half-moon": {
+        "kind": "half_moon",
+        "file": "hanukkah-menorahs-half-moon.html",
+        "cover": "silver-tone-blue-half-moon-menorah",
+        "title": "Half-Moon Glass Hanukkah Menorahs | Sherman Art Works",
+        "desc": "Handmade half-moon Hanukkah menorahs from Israel, in double-sided glass in seven colours "
+                "with silver-tone or gold-tone sockets and base. Made to order and shipped worldwide.",
+        "headline": "Half-Moon Menorahs",
+        "subtitle": "Double-sided handmade glass in a half-moon shape, in seven colours.",
+        "body": "Choose silver-tone or gold-tone sockets and base. Each menorah is shaped by hand in our studio in Israel.",
+        "he": {
+            "headline": "חנוכיות חצי עיגול",
+            "subtitle": "זכוכית דו־צדדית בעבודת יד בצורת חצי עיגול, בשבעה צבעים.",
+            "body": "בחרו קנים ובסיס בגוון כסף או בגוון זהב. כל חנוכיה מעוצבת בעבודת יד בסטודיו שלנו בישראל.",
+        },
+    },
+    "rectangular": {
+        "kind": "rectangular",
+        "file": "hanukkah-menorahs-rectangular.html",
+        "cover": "silver-tone-blue-rectangular-menorah",
+        "title": "Rectangular Glass Hanukkah Menorahs | Sherman Art Works",
+        "desc": "Handmade rectangular Hanukkah menorahs from Israel, in double-sided glass in seven colours "
+                "with silver-tone or gold-tone sockets and base. Made to order and shipped worldwide.",
+        "headline": "Rectangular Menorahs",
+        "subtitle": "Double-sided handmade glass in a rectangular shape, in seven colours.",
+        "body": "Choose silver-tone or gold-tone sockets and base. Each menorah is shaped by hand in our studio in Israel.",
+        "he": {
+            "headline": "חנוכיות מלבניות",
+            "subtitle": "זכוכית דו־צדדית בעבודת יד בצורת מלבן, בשבעה צבעים.",
+            "body": "בחרו קנים ובסיס בגוון כסף או בגוון זהב. כל חנוכיה מעוצבת בעבודת יד בסטודיו שלנו בישראל.",
+        },
+    },
+    "trapezoid": {
+        "kind": "trapezoid",
+        "file": "hanukkah-menorahs-trapezoid.html",
+        "cover": "silver-tone-blue-trapezoid-menorah",
+        "title": "Trapezoid Glass Hanukkah Menorahs | Sherman Art Works",
+        "desc": "Handmade trapezoid Hanukkah menorahs from Israel, in double-sided glass in seven colours "
+                "with silver-tone or gold-tone sockets and base. Made to order and shipped worldwide.",
+        "headline": "Trapezoid Menorahs",
+        "subtitle": "Double-sided handmade glass in a trapezoid shape, in seven colours.",
+        "body": "Choose silver-tone or gold-tone sockets and base. Each menorah is shaped by hand in our studio in Israel.",
+        "he": {
+            "headline": "חנוכיות טרפז",
+            "subtitle": "זכוכית דו־צדדית בעבודת יד בצורת טרפז, בשבעה צבעים.",
+            "body": "בחרו קנים ובסיס בגוון כסף או בגוון זהב. כל חנוכיה מעוצבת בעבודת יד בסטודיו שלנו בישראל.",
+        },
+    },
+}
+
+# The shape of _subcategory_pages.CATEGORIES that its switcher and menu helpers read.
+NAV = {
+    "landing": PAGE,
+    "landing_label": "Hanukkah",
+    "landing_key": "cat9_title",
+    "aria": "Menorah shapes",
+    "prefix": "switch_hanukkah_",
+    "all_label": ("All Menorahs", "כל החנוכיות"),
+    "pages": {s["kind"]: {"file": s["file"], "headline": s["headline"], "he": {"headline": s["he"]["headline"]}}
+              for s in SHAPES.values()},
 }
 
 # Fields copied into the runtime array, in this order. "id" then "sku" must be
@@ -164,10 +259,10 @@ def jsonld(products):
     return "\n".join(blocks)
 
 
-def cover(products):
+def cover(products, preferred=COVER):
     by_id = {p["id"]: p for p in products}
-    if COVER in by_id:
-        return by_id[COVER]["photos"][0]
+    if preferred in by_id:
+        return by_id[preferred]["photos"][0]
     return products[0]["photos"][0] if products else None
 
 
@@ -183,6 +278,7 @@ def between(text, start, end, inner, label):
 def build_page(src, products):
     shown = live(products)
     indent = "  "
+    src = ensure_landing_switcher(NAV, src)
     out = between(src, "<!-- hanukkah:jsonld -->", indent + "<!-- /hanukkah:jsonld -->",
                   jsonld(shown), PAGE)
     out = between(out, "<!-- hanukkah:cards -->", "    <!-- /hanukkah:cards -->",
@@ -192,6 +288,79 @@ def build_page(src, products):
     for attr, key in (("property", "og:image"), ("name", "twitter:image")):
         out = re.sub(rf'<meta {attr}="{key}" content="[^"]*" />',
                      f'<meta {attr}="{key}" content="{share}" />', out, count=1)
+    return out
+
+
+def build_shape_page(landing, products, shape):
+    """One shape's page, written whole from the finished landing page."""
+    cfg = SHAPES[shape]
+    name = cfg["file"]
+    mine = [p for p in live(products) if p.get("shape") == shape]
+    url = f"{BASE}/{name}"
+    he_url = f"{BASE}/he/{name}"
+    photo = cover(mine, cfg["cover"])
+    share = image(photo, "w_1200,h_630,c_pad,b_rgb:faf7f2,q_auto,f_auto") if photo else ""
+    title = html.escape(cfg["headline"] + " | Sherman Art Works", quote=True)
+    desc = html.escape(cfg["desc"], quote=True)
+    out = landing
+    for pattern, value, label in (
+        (r"<title>.*?</title>", f"<title>{html.escape(cfg['title'])}</title>", "title"),
+        (r'<meta name="description" content="[^"]*" />', f'<meta name="description" content="{desc}" />', "description"),
+        (r'<meta property="og:title" content="[^"]*" />', f'<meta property="og:title" content="{title}" />', "og title"),
+        (r'<meta property="og:description" content="[^"]*" />', f'<meta property="og:description" content="{desc}" />', "og description"),
+        (r'<meta property="og:url" content="[^"]*" />', f'<meta property="og:url" content="{url}" />', "og url"),
+        (r'<meta property="og:image" content="[^"]*" />', f'<meta property="og:image" content="{share}" />', "og image"),
+        (r'<meta name="twitter:title" content="[^"]*" />', f'<meta name="twitter:title" content="{title}" />', "twitter title"),
+        (r'<meta name="twitter:description" content="[^"]*" />', f'<meta name="twitter:description" content="{desc}" />', "twitter description"),
+        (r'<meta name="twitter:image" content="[^"]*" />', f'<meta name="twitter:image" content="{share}" />', "twitter image"),
+        (r'<link rel="canonical" href="[^"]*" />', f'<link rel="canonical" href="{url}" />', "canonical"),
+        (r'<link rel="alternate" hreflang="en" href="[^"]*" />', f'<link rel="alternate" hreflang="en" href="{url}" />', "alternate en"),
+        (r'<link rel="alternate" hreflang="he-IL" href="[^"]*" />', f'<link rel="alternate" hreflang="he-IL" href="{he_url}" />', "alternate he"),
+        (r'<link rel="alternate" hreflang="x-default" href="[^"]*" />', f'<link rel="alternate" hreflang="x-default" href="{url}" />', "alternate default"),
+        (rf"location\.href='/he/{re.escape(PAGE)}'", f"location.href='/he/{name}'", "language toggle"),
+    ):
+        # A function, not a template: a value with a backslash or "\1" stays literal.
+        out = replace_one(out, pattern, lambda m, v=value: v, f"{name} {label}")
+
+    out = between(out, "<!-- hanukkah:jsonld -->", "  <!-- /hanukkah:jsonld -->", jsonld(mine), name)
+    crumbs = {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Sherman Art Works", "item": BASE},
+        {"@type": "ListItem", "position": 2, "name": "Hanukkah Menorahs", "item": f"{BASE}/{PAGE}"},
+        {"@type": "ListItem", "position": 3, "name": cfg["headline"], "item": url},
+    ]}
+    out = replace_one(out, r'<script type="application/ld\+json">\{"@context":"https://schema\.org","@type":"BreadcrumbList".*?</script>',
+                      lambda m: '<script type="application/ld+json">' + json.dumps(crumbs, separators=(",", ":")) + "</script>",
+                      f"{name} breadcrumb list")
+
+    # Shop · Hanukkah · <shape>, with Hanukkah linking back to all the menorahs.
+    out = replace_one(out, r'<span data-t="bc_current">[^<]*</span>',
+                      lambda m: (f'<a href="{PAGE}" data-t="cat9_title">Hanukkah</a>\n'
+                                 '      <span class="breadcrumb-sep">·</span>\n'
+                                 f'      <span data-t="bc_current">{html.escape(cfg["headline"])}</span>'),
+                      f"{name} visible breadcrumb")
+    for key, en, he in (("bc_current", cfg["headline"], cfg["he"]["headline"]),
+                        ("hero_headline", cfg["headline"], cfg["he"]["headline"]),
+                        ("hero_subtitle", cfg["subtitle"], cfg["he"]["subtitle"]),
+                        ("hero_body", cfg["body"], cfg["he"]["body"])):
+        if key != "bc_current":     # the breadcrumb above already wrote its text
+            out = replace_one(out, rf'(<[^>]+data-t="{key}"[^>]*>)[^<]*(</[^>]+>)',
+                              lambda m, v=en: m.group(1) + html.escape(v) + m.group(2), f"{name} {key}")
+        # The runtime copy too, or setLang() would put the landing page's back.
+        values = list(re.finditer(rf"({key}:\s+)'(?:\\.|[^'\\])*'", out))
+        if len(values) != 2:
+            raise RuntimeError(f"{name} {key}: expected an English and a Hebrew value")
+        for m, v in reversed(list(zip(values, (en, he)))):
+            out = out[:m.start()] + m.group(1) + repr(v) + out[m.end():]
+
+    nav = switcher(NAV).replace(' class="cat-switch-item active" aria-current="page"', ' class="cat-switch-item"', 1)
+    nav = nav.replace(f'href="{name}" class="cat-switch-item"',
+                      f'href="{name}" class="cat-switch-item active" aria-current="page"')
+    out = replace_one(out, rf'<nav class="cat-switch" aria-label="{NAV["aria"]}">.*?</nav>',
+                      lambda m: nav, f"{name} switcher", re.S)
+    out = between(out, "<!-- hanukkah:cards -->", "    <!-- /hanukkah:cards -->",
+                  "\n".join(card(p) for p in mine), name)
+    out = replace_one(out, r'<div class="products-grid" id="grid-products">',
+                      lambda m: f'<div class="products-grid" id="grid-products" data-shape="{shape}">', f"{name} grid")
     return out
 
 
@@ -215,15 +384,28 @@ def main():
     products = load()
     if not products:
         raise SystemExit("no hanukkah-menorahs products in data/products.json")
-    stale = []
+    unknown = sorted({str(p.get("shape")) for p in products} - set(SHAPES))
+    if unknown:
+        raise RuntimeError("no SHAPES entry for shape(s): " + ", ".join(unknown))
+    stale, written = [], {}
     for rel, fn in ((PAGE, build_page), ("index.html", build_index), (JS, build_js)):
         path = SITE / rel
         src = path.read_text(encoding="utf-8")
         out = fn(src, products)
+        written[rel] = out
         if out != src:
             stale.append(rel)
             if not check:
                 path.write_text(out, encoding="utf-8")
+    for shape, cfg in SHAPES.items():
+        path = SITE / cfg["file"]
+        out = build_shape_page(written[PAGE], products, shape)
+        if not path.exists() or path.read_text(encoding="utf-8") != out:
+            stale.append(cfg["file"])
+            if not check:
+                path.write_text(out, encoding="utf-8")
+    if not check:
+        ensure_mobile_navigation(NAV)
     shown = len(live(products))
     waiting = len(products) - shown
     note = f"{shown} of {len(products)} menorahs live" + (

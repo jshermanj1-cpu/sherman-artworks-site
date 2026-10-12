@@ -86,7 +86,7 @@ CATEGORY_META = {
 # a finish, not plating - so they carry their own label rather than _finish()'s.
 TONE = {"silver-tone": "Silver-Tone", "gold-tone": "Gold-Tone"}
 # Each menorah shape is its own design; a new shape needs its label here.
-SHAPE = {"half-moon": "Half-Moon"}
+SHAPE = {"half-moon": "Half-Moon", "rectangular": "Rectangular", "trapezoid": "Trapezoid"}
 
 
 def tag(name, value, indent=4):

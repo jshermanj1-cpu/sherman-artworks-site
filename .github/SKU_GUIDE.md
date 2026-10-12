@@ -33,7 +33,7 @@ similar suffix to a product with one sellable configuration.
 | Mezuzahs | `MZ` | `005` |
 | Shofars | `SH` | `023` |
 | Havdalah Sets | `HS` | `010` |
-| Hanukkah Menorahs | `HN` | `015` |
+| Hanukkah Menorahs | `HN` | `043` |
 
 The next-number column is a convenience, not the authority. Before assigning a SKU, scan this file
 and `data/products.json` for the highest number already used in the category, then add one.
@@ -287,3 +287,31 @@ configurations. They are permanent once migrated into the product data.
 | `SAW-HN-012` | `gold-tone-light-blue-half-moon-menorah` | Gold-Tone Light Blue Glass Half-Moon Hanukkah Menorah | None |
 | `SAW-HN-013` | `gold-tone-terracotta-half-moon-menorah` | Gold-Tone Terracotta Glass Half-Moon Hanukkah Menorah | None |
 | `SAW-HN-014` | `gold-tone-turquoise-half-moon-menorah` | Gold-Tone Turquoise Glass Half-Moon Hanukkah Menorah | None |
+| `SAW-HN-015` | `silver-tone-pearl-white-rectangular-menorah` | Silver-Tone Pearl White Glass Rectangular Hanukkah Menorah | None |
+| `SAW-HN-016` | `silver-tone-blue-rectangular-menorah` | Silver-Tone Blue Glass Rectangular Hanukkah Menorah | None |
+| `SAW-HN-017` | `silver-tone-clear-rectangular-menorah` | Silver-Tone Clear Glass Rectangular Hanukkah Menorah | None |
+| `SAW-HN-018` | `silver-tone-emerald-green-rectangular-menorah` | Silver-Tone Emerald Green Glass Rectangular Hanukkah Menorah | None |
+| `SAW-HN-019` | `silver-tone-light-blue-rectangular-menorah` | Silver-Tone Light Blue Glass Rectangular Hanukkah Menorah | None |
+| `SAW-HN-020` | `silver-tone-terracotta-rectangular-menorah` | Silver-Tone Terracotta Glass Rectangular Hanukkah Menorah | None |
+| `SAW-HN-021` | `silver-tone-turquoise-rectangular-menorah` | Silver-Tone Turquoise Glass Rectangular Hanukkah Menorah | None |
+| `SAW-HN-022` | `gold-tone-pearl-white-rectangular-menorah` | Gold-Tone Pearl White Glass Rectangular Hanukkah Menorah | None |
+| `SAW-HN-023` | `gold-tone-blue-rectangular-menorah` | Gold-Tone Blue Glass Rectangular Hanukkah Menorah | None |
+| `SAW-HN-024` | `gold-tone-clear-rectangular-menorah` | Gold-Tone Clear Glass Rectangular Hanukkah Menorah | None |
+| `SAW-HN-025` | `gold-tone-emerald-green-rectangular-menorah` | Gold-Tone Emerald Green Glass Rectangular Hanukkah Menorah | None |
+| `SAW-HN-026` | `gold-tone-light-blue-rectangular-menorah` | Gold-Tone Light Blue Glass Rectangular Hanukkah Menorah | None |
+| `SAW-HN-027` | `gold-tone-terracotta-rectangular-menorah` | Gold-Tone Terracotta Glass Rectangular Hanukkah Menorah | None |
+| `SAW-HN-028` | `gold-tone-turquoise-rectangular-menorah` | Gold-Tone Turquoise Glass Rectangular Hanukkah Menorah | None |
+| `SAW-HN-029` | `silver-tone-pearl-white-trapezoid-menorah` | Silver-Tone Pearl White Glass Trapezoid Hanukkah Menorah | None |
+| `SAW-HN-030` | `silver-tone-blue-trapezoid-menorah` | Silver-Tone Blue Glass Trapezoid Hanukkah Menorah | None |
+| `SAW-HN-031` | `silver-tone-clear-trapezoid-menorah` | Silver-Tone Clear Glass Trapezoid Hanukkah Menorah | None |
+| `SAW-HN-032` | `silver-tone-emerald-green-trapezoid-menorah` | Silver-Tone Emerald Green Glass Trapezoid Hanukkah Menorah | None |
+| `SAW-HN-033` | `silver-tone-light-blue-trapezoid-menorah` | Silver-Tone Light Blue Glass Trapezoid Hanukkah Menorah | None |
+| `SAW-HN-034` | `silver-tone-terracotta-trapezoid-menorah` | Silver-Tone Terracotta Glass Trapezoid Hanukkah Menorah | None |
+| `SAW-HN-035` | `silver-tone-turquoise-trapezoid-menorah` | Silver-Tone Turquoise Glass Trapezoid Hanukkah Menorah | None |
+| `SAW-HN-036` | `gold-tone-pearl-white-trapezoid-menorah` | Gold-Tone Pearl White Glass Trapezoid Hanukkah Menorah | None |
+| `SAW-HN-037` | `gold-tone-blue-trapezoid-menorah` | Gold-Tone Blue Glass Trapezoid Hanukkah Menorah | None |
+| `SAW-HN-038` | `gold-tone-clear-trapezoid-menorah` | Gold-Tone Clear Glass Trapezoid Hanukkah Menorah | None |
+| `SAW-HN-039` | `gold-tone-emerald-green-trapezoid-menorah` | Gold-Tone Emerald Green Glass Trapezoid Hanukkah Menorah | None |
+| `SAW-HN-040` | `gold-tone-light-blue-trapezoid-menorah` | Gold-Tone Light Blue Glass Trapezoid Hanukkah Menorah | None |
+| `SAW-HN-041` | `gold-tone-terracotta-trapezoid-menorah` | Gold-Tone Terracotta Glass Trapezoid Hanukkah Menorah | None |
+| `SAW-HN-042` | `gold-tone-turquoise-trapezoid-menorah` | Gold-Tone Turquoise Glass Trapezoid Hanukkah Menorah | None |
