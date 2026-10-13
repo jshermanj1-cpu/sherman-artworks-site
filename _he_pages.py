@@ -75,6 +75,10 @@ STUDIO_PAGES = [
     "jewish-wedding-gift-guide.html",
     "bar-bat-mitzvah-gift-guide.html",
     "mezuzah-guide.html",
+    "hanukkah-menorah-guide.html",
+    "how-to-light-hanukkah-candles.html",
+    "hanukkah-gift-guide.html",
+    "menorah-vs-hanukkiah.html",
     "guides.html",
     "terms.html",
     "privacy.html",
@@ -301,9 +305,25 @@ META = {
         "איך בוחרים בית מזוזה - מדריך קנייה | שרמן ארט וורקס",
         "איך בוחרים בית מזוזה: קרן או זכוכית, הקלף הכשר שבפנים, היכן ואיך קובעים אותה, ואיזה בית מזוזה מתאים למתנה לחנוכת בית או לחתונה.",
     ),
+    "hanukkah-menorah-guide.html": (
+        "איך בוחרים חנוכיה - מדריך קנייה | שרמן ארט וורקס",
+        "איך בוחרים חנוכיה: שמונה נרות ושמש, נרות או שמן, צורה, צבע הזכוכית, גודל, בטיחות, ניקוי שעווה, וחנוכיה כמתנה. מדריך מסטודיו משפחתי בישראל.",
+    ),
+    "how-to-light-hanukkah-candles.html": (
+        "איך מדליקים נרות חנוכה וברכות ההדלקה | שרמן ארט וורקס",
+        "איך מדליקים נרות חנוכה: ברכות הדלקת נרות חנוכה, כמה נרות בכל לילה, סדר ההדלקה, מתי והיכן מדליקים, שישי ומוצאי שבת, ותאריכי חנוכה 2026.",
+    ),
+    "hanukkah-gift-guide.html": (
+        "מתנה לחנוכה: רעיונות מסטודיו בישראל | שרמן ארט וורקס",
+        "רעיונות למתנה לחנוכה בעבודת יד מישראל: חנוכיה מזכוכית, פמוטים לשבת, כוס קידוש, סט הבדלה או מגש, ו-20% הנחה על חנוכיות עד 4 בדצמבר.",
+    ),
+    "menorah-vs-hanukkiah.html": (
+        "מנורה או חנוכיה? מה ההבדל | שרמן ארט וורקס",
+        "מנורה או חנוכיה? מה ההבדל בין מנורת שבעת הקנים של בית המקדש לחנוכיה בת תשעת הנרות, סיפור חנוכה, למה שמונה לילות ולמה צריך שמש.",
+    ),
     "guides.html": (
         "מדריכי קנייה ליודאיקה בעבודת יד | שרמן ארט וורקס",
-        "מדריכי קנייה מהיוצרים: איך בוחרים כוס קידוש, פמוטים לשבת, סט הבדלה, שופר ובית מזוזה, ורעיונות למתנה לחתונה ולבר ובת מצווה.",
+        "מדריכי קנייה מהיוצרים: איך בוחרים כוס קידוש, פמוטים לשבת, סט הבדלה, שופר, בית מזוזה וחנוכיה, איך מדליקים נרות חנוכה, ורעיונות למתנה לחגים ולאירועים.",
     ),
     "terms.html": (
         "תקנון ומדיניות משלוחים | שרמן ארט וורקס",
@@ -322,7 +342,7 @@ META = {
 # sitemap priority per Hebrew page (mirrors the English sitemap).
 SITEMAP_PRIORITY = {
     "index.html": "0.9", "gold-collection.html": "0.8", "custom-orders.html": "0.8", "about.html": "0.7",
-    "contact.html": "0.7", "faq.html": "0.6", "kiddush-cup-guide.html": "0.6", "shabbat-candlesticks-guide.html": "0.6", "havdalah-set-guide.html": "0.6", "guides.html": "0.6", "shofar-guide.html": "0.6", "jewish-wedding-gift-guide.html": "0.6", "bar-bat-mitzvah-gift-guide.html": "0.6", "mezuzah-guide.html": "0.6", "terms.html": "0.3", "privacy.html": "0.3",
+    "contact.html": "0.7", "faq.html": "0.6", "kiddush-cup-guide.html": "0.6", "shabbat-candlesticks-guide.html": "0.6", "havdalah-set-guide.html": "0.6", "guides.html": "0.6", "shofar-guide.html": "0.6", "jewish-wedding-gift-guide.html": "0.6", "bar-bat-mitzvah-gift-guide.html": "0.6", "mezuzah-guide.html": "0.6", "hanukkah-menorah-guide.html": "0.6", "how-to-light-hanukkah-candles.html": "0.6", "hanukkah-gift-guide.html": "0.6", "menorah-vs-hanukkiah.html": "0.6", "terms.html": "0.3", "privacy.html": "0.3",
     "accessibility.html": "0.3",
 }
 

@@ -156,6 +156,24 @@ NAV = {
               for s in SHAPES.values()},
 }
 
+# The Hanukkah guides, linked under the landing page's questions. The shape pages
+# are copied from the landing page, so they carry the same links. Each entry is
+# (page, translation key, English, Hebrew).
+GUIDES = (
+    ("hanukkah-menorah-guide.html", "hguide_choose",
+     "Read our guide: how to choose a Hanukkah menorah",
+     "למדריך: איך בוחרים חנוכיה"),
+    ("how-to-light-hanukkah-candles.html", "hguide_light",
+     "How to light the Hanukkah menorah: the blessings, the order and the 2026 dates",
+     "איך מדליקים נרות חנוכה: הברכות, סדר ההדלקה ותאריכי 2026"),
+    ("hanukkah-gift-guide.html", "hguide_gifts",
+     "Hanukkah gift ideas, and when to order before the first night",
+     "רעיונות למתנה לחנוכה, ועד מתי להזמין לפני הנר הראשון"),
+    ("menorah-vs-hanukkiah.html", "hguide_hanukkiah",
+     "Menorah or hanukkiah? The difference, and the story of Hanukkah",
+     "מנורה או חנוכיה? ההבדל, וסיפור חנוכה"),
+)
+
 # Fields copied into the runtime array, in this order. "id" then "sku" must be
 # adjacent lines - _validate_skus.py matches them as one pair.
 JS_FIELDS = ("id", "sku", "family_id", "finish", "shape", "name_en", "name_he",
@@ -276,10 +294,36 @@ def between(text, start, end, inner, label):
     return pat.sub(lambda m: start + "\n" + body + end, text, count=1)
 
 
+def ensure_guide_links(src):
+    """The guide links under the questions, and their keys in both T_PAGE
+    blocks, each between markers so a rerun rewrites rather than repeats them."""
+    links = "\n".join(f'    <p  class="guide-note"><a href="{page}" data-t="{key}">{html.escape(en)}</a></p>'
+                      for page, key, en, _ in GUIDES)
+    start, end = "    <!-- hanukkah:guides -->", "    <!-- /hanukkah:guides -->"
+    if start not in src:
+        pat = re.compile(r'(<section class="section section-divider" id="guide">.*?)(\n  </div>\n</section>)', re.S)
+        if not pat.search(src):
+            raise RuntimeError(f"{PAGE}: no questions section for the guide links")
+        src = pat.sub(lambda m: m.group(1) + "\n" + start + "\n" + end + m.group(2), src, count=1)
+    src = between(src, start, end, links, PAGE)
+    for lang, close in (("en", "\n  },\n  he: {"), ("he", "\n  }\n};")):
+        kstart, kend = f"      // hanukkah:guides {lang}", f"      // /hanukkah:guides {lang}"
+        if kstart not in src:
+            at = src.find(close, src.find("const T_PAGE"))
+            if at < 0:
+                raise RuntimeError(f"{PAGE}: T_PAGE {lang} block not found")
+            src = src[:at] + "\n" + kstart + "\n" + kend + src[at:]
+        keys = "\n".join(f"      {key}: {json.dumps(en if lang == 'en' else he, ensure_ascii=False)},"
+                         for _, key, en, he in GUIDES)
+        src = between(src, kstart, kend, keys, PAGE)
+    return src
+
+
 def build_page(src, products):
     shown = live(products)
     indent = "  "
     src = ensure_landing_switcher(NAV, src)
+    src = ensure_guide_links(src)
     out = between(src, "<!-- hanukkah:jsonld -->", indent + "<!-- /hanukkah:jsonld -->",
                   jsonld(shown), PAGE)
     out = between(out, "<!-- hanukkah:cards -->", "    <!-- /hanukkah:cards -->",
