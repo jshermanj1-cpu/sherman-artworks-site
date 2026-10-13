@@ -56,7 +56,7 @@ const PRODUCTS = [
     "color_he": "שקוף",
     "measurements": "33 × 27 × 3 cm",
     "price_ils": 1250,
-    "photos": ["Clear_half_moon_1_-_silver_jtlo6a", "Clear_half_moon_2_-_silver_wnheg5", "Clear_half_moon_3_-_silver_ytmyiq", "Clear_half_moon_background_-_silver_ecel5p"]
+    "photos": ["2A5122CB-4A50-418F-B48E-5BC43B361568_ebt4zv", "D199294E-ADDF-48CE-8CD8-09F0C4A8D643_qft7pd", "Clear_half_moon_3_hwjdft", "Clear_half_moon_background_jy9pgu"]
   },
   {
     "id": "silver-tone-emerald-green-half-moon-menorah",
@@ -168,7 +168,7 @@ const PRODUCTS = [
     "color_he": "שקוף",
     "measurements": "33 × 27 × 3 cm",
     "price_ils": 1250,
-    "photos": ["Clear_half_moon_1_i5ume4", "Clear_half_moon_2_qadtdr", "Clear_half_moon_3_whauil", "Clear_half_moon_background_jxmlzq"]
+    "photos": ["Clear_half_moon_1_srrspn", "Clear_half_moon_2_na9z9t", "Clear_half_moon_3_v5vtad", "Clear_half_moon_background_msob92"]
   },
   {
     "id": "gold-tone-emerald-green-half-moon-menorah",
@@ -280,7 +280,7 @@ const PRODUCTS = [
     "color_he": "שקוף",
     "measurements": "33 × 27 × 3 cm",
     "price_ils": 1250,
-    "photos": ["Clear_rectangle_1_meb02j", "Clear_rectangle_2_ivglbk", "Clear_rectangle_3_zskrsv", "Clear_rectangle_background_kbtbyd"]
+    "photos": ["Clear_rectangle_1_keun1e", "Clear_rectangle_2_c4gtbs", "Clear_rectangle_3_lnsohj", "Clear_rectangle_background_e4pof8"]
   },
   {
     "id": "silver-tone-emerald-green-rectangular-menorah",
@@ -392,7 +392,7 @@ const PRODUCTS = [
     "color_he": "שקוף",
     "measurements": "33 × 27 × 3 cm",
     "price_ils": 1250,
-    "photos": ["Clear_rectangle_1_ookx3j", "Clear_rectangle_2_l4hubs", "Clear_rectangle_3_cvc5sj", "Clear_rectangle_background_lgkdkq"]
+    "photos": ["Clear_rectangle_1_vy0zrs", "Clear_rectangle_2_gyaoh1", "Clear_rectangle_3_zgtixg", "Clear_rectangle_background_yzypyo"]
   },
   {
     "id": "gold-tone-emerald-green-rectangular-menorah",
@@ -504,7 +504,7 @@ const PRODUCTS = [
     "color_he": "שקוף",
     "measurements": "33 × 27 × 3 cm",
     "price_ils": 1250,
-    "photos": ["Clear_trapeze_1_vovbaj", "Clear_trapeze_2_ydceml", "Clear_trapeze_3_egxywh", "Clear_trapeze_background_hw2uen"]
+    "photos": ["Clear_trapeze_1_qwfjx7", "Clear_trapeze_2_pdyfki", "Clear_trapeze_3_vd0hyu", "Clear_trapeze_background_bxcx4p"]
   },
   {
     "id": "silver-tone-emerald-green-trapezoid-menorah",
@@ -616,7 +616,7 @@ const PRODUCTS = [
     "color_he": "שקוף",
     "measurements": "33 × 27 × 3 cm",
     "price_ils": 1250,
-    "photos": ["Clear_trapeze_1_lqsbmq", "Clear_trapeze_2_fhvrbu", "Clear_trapeze_3_ljyq31", "Clear_trapeze_background_afibb7"]
+    "photos": ["Clear_trapeze_1_ktepum", "Clear_trapeze_2_pjw1ci", "Clear_trapeze_3_v8u5to", "Clear_trapeze_background_ghct5v"]
   },
   {
     "id": "gold-tone-emerald-green-trapezoid-menorah",
