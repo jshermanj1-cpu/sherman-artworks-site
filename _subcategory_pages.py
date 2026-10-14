@@ -28,6 +28,10 @@ CDN = "https://res.cloudinary.com/doesupaf9/image/upload"
 
 CANDLE_SILVER = "silver-plated-glass-candlesticks"
 CANDLE_GOLD = "gold-plated-glass-candlesticks"
+# Double-sided glass with silver-tone or gold-tone sockets and base: a finish,
+# not plating. One family per finish, its variants the glass colors.
+CANDLE_DS_SILVER = "silver-tone-double-sided-glass-candlesticks"
+CANDLE_DS_GOLD = "gold-tone-double-sided-glass-candlesticks"
 TRAY_SILVER = "silver-plated-glass-trays"
 TRAY_GOLD = "gold-plated-glass-trays"
 
@@ -107,6 +111,36 @@ CATEGORIES = {
                     "subtitle": "זכוכית בעבודת יד בגימור זהב.",
                     "body": "בחרו מתוך שבעה צבעים ושלושה גבהים, עם אפשרות למגש זכוכית תואם.",
                     "bc": "פמוטים בציפוי זהב",
+                },
+            },
+            # Listed before "artisanal" on purpose: ensure_landing_switcher finds
+            # the existing translation block by its last key, so a new page
+            # appended after the catch-all would add a second block instead.
+            "double": {
+                "file": "candlesticks-double-sided.html",
+                "match": family_is(CANDLE_DS_SILVER, CANDLE_DS_GOLD),
+                "title": "Double-Sided Glass Candlesticks | Sherman Art Works",
+                "desc": "Shop handmade double-sided glass candlesticks in five colors, with silver-tone or gold-tone sockets and base, made in our studio in Israel.",
+                "headline": "Double-Sided Glass Candlesticks",
+                "subtitle": "Double-sided handmade glass with silver-tone or gold-tone sockets and base.",
+                "body": "Choose from five glass colors, each with silver-tone or gold-tone sockets and base, all at the same price.",
+                "bc": "Double-Sided Glass Candlesticks",
+                "guide": {
+                    "guide_q1": ("What colors and finishes are available?",
+                                 "אילו צבעים וגימורים זמינים?"),
+                    "guide_a1": ("The glass comes in five colors: white and blue, terracotta, pearl white, dark turquoise and blue. The sockets and base come in silver-tone or gold-tone, and every color and finish is the same price. Each candlestick is 24 cm tall, with a glass section of 17 × 6 cm.",
+                                 "הזכוכית זמינה בחמישה צבעים: כחול־לבן, נחושת, לבן פנינה, טורקיז כהה וכחול. הקנים והבסיס זמינים בגוון כסף או בגוון זהב, וכל הצבעים והגימורים באותו מחיר. גובה כל פמוט 24 ס״מ, וחלק הזכוכית במידות 17 × 6 ס״מ."),
+                    "guide_q2": ("Are the double-sided candlesticks plated?",
+                                 "האם הפמוטים הדו־צדדיים מצופים?"),
+                    "guide_a2": ("No. The candlesticks are handmade glass, and their sockets and base have a silver-tone or gold-tone finish rather than plating.",
+                                 "לא. הפמוטים עשויים מזכוכית בעבודת יד, והקנים והבסיס בגימור בגוון כסף או בגוון זהב, ללא ציפוי."),
+                },
+                "image": "Terracotta_double_sided_1_ppmijq",
+                "he": {
+                    "headline": "פמוטים מזכוכית דו־צדדית",
+                    "subtitle": "זכוכית דו־צדדית בעבודת יד עם קנים ובסיס בגוון כסף או בגוון זהב.",
+                    "body": "בחרו מתוך חמישה צבעי זכוכית, כל אחד עם קנים ובסיס בגוון כסף או בגוון זהב, באותו מחיר.",
+                    "bc": "פמוטים מזכוכית דו־צדדית",
                 },
             },
             "artisanal": {

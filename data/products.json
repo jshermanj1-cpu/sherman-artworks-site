@@ -782,21 +782,250 @@
   {
     "id": "double-sided-white-blue-glass-candlesticks",
     "sku": "SAW-CS-025",
+    "family_id": "silver-tone-double-sided-glass-candlesticks",
     "category": "candlesticks",
+    "finish": "silver-tone",
     "pages": [
       "candlesticks.html"
     ],
-    "name_en": "Double-Sided White and Blue Glass Candlesticks",
-    "name_he": "זוג פמוטים מזכוכית דו־צדדית בצבע לבן־כחול",
-    "description_en": "Handmade double-sided glass candlesticks in white and blue, an artistic and striking pair - traditional family method candle holders. The glass section measures 17cm × 6cm. Other color combinations can be made to order, just get in touch.",
-    "description_he": "פמוטי זכוכית דו-צדדיים בעבודת יד בלבן וכחול, זוג אומנותי ומרהיב - בשיטה המסורתית המשפחתית. חלק הזכוכית במידות 17 × 6 ס״מ. אפשר להזמין בשילובי צבעים אחרים, פשוט צרו קשר.",
-    "measurements": "24cm × 6cm × 4cm",
+    "name_en": "Silver-Tone White and Blue Double-Sided Glass Candlesticks",
+    "name_he": "זוג פמוטים מזכוכית דו־צדדית בצבע כחול־לבן עם קנים ובסיס בגוון כסף",
+    "description_en": "Handmade pair of double-sided white and blue glass candlesticks with silver-tone sockets and base, crafted in our studio in Israel. The glass section measures 17 × 6 cm.",
+    "description_he": "זוג פמוטים בעבודת יד מזכוכית דו־צדדית בצבע כחול־לבן, עם קנים ובסיס בגוון כסף, מיוצרים בסטודיו שלנו בישראל. חלק הזכוכית במידות 17 × 6 ס״מ.",
+    "color_en": "White and Blue",
+    "color_he": "כחול־לבן",
+    "measurements": "24 × 6 × 4 cm",
     "price_ils": 594,
     "photos": [
       "Double_sided_white_and_blue_1_gg0bsl",
       "Double_sided_white_and_blue_2_vskl8l",
       "Double_sided_white_and_blue_3_cuz0i6",
       "Double_sided_table_background_bwzdnr"
+    ],
+    "personalisable": false
+  },
+  {
+    "id": "double-sided-terracotta-silver-candlesticks",
+    "sku": "SAW-CS-026",
+    "family_id": "silver-tone-double-sided-glass-candlesticks",
+    "category": "candlesticks",
+    "finish": "silver-tone",
+    "pages": [
+      "candlesticks.html"
+    ],
+    "name_en": "Silver-Tone Terracotta Double-Sided Glass Candlesticks",
+    "name_he": "זוג פמוטים מזכוכית דו־צדדית בצבע נחושת עם קנים ובסיס בגוון כסף",
+    "description_en": "Handmade pair of double-sided terracotta glass candlesticks with silver-tone sockets and base, crafted in our studio in Israel. The glass section measures 17 × 6 cm.",
+    "description_he": "זוג פמוטים בעבודת יד מזכוכית דו־צדדית בצבע נחושת, עם קנים ובסיס בגוון כסף, מיוצרים בסטודיו שלנו בישראל. חלק הזכוכית במידות 17 × 6 ס״מ.",
+    "color_en": "Terracotta",
+    "color_he": "נחושת",
+    "measurements": "24 × 6 × 4 cm",
+    "price_ils": 594,
+    "photos": [
+      "Terracotta_double_sided_1_g38r8t",
+      "Terracotta_double_sided_2_abstrc",
+      "Terracotta_double_sided_3_sg0iia",
+      "Terracotta_double_sided_background_csm1o2"
+    ],
+    "personalisable": false
+  },
+  {
+    "id": "double-sided-pearl-white-silver-candlesticks",
+    "sku": "SAW-CS-027",
+    "family_id": "silver-tone-double-sided-glass-candlesticks",
+    "category": "candlesticks",
+    "finish": "silver-tone",
+    "pages": [
+      "candlesticks.html"
+    ],
+    "name_en": "Silver-Tone Pearl White Double-Sided Glass Candlesticks",
+    "name_he": "זוג פמוטים מזכוכית דו־צדדית בצבע לבן פנינה עם קנים ובסיס בגוון כסף",
+    "description_en": "Handmade pair of double-sided pearl white glass candlesticks with silver-tone sockets and base, crafted in our studio in Israel. The glass section measures 17 × 6 cm.",
+    "description_he": "זוג פמוטים בעבודת יד מזכוכית דו־צדדית בצבע לבן פנינה, עם קנים ובסיס בגוון כסף, מיוצרים בסטודיו שלנו בישראל. חלק הזכוכית במידות 17 × 6 ס״מ.",
+    "color_en": "Pearl White",
+    "color_he": "לבן פנינה",
+    "measurements": "24 × 6 × 4 cm",
+    "price_ils": 594,
+    "photos": [
+      "pearl_white_double_sided_1_zhlpy8",
+      "pearl_white_double_sided_2_nke2wk",
+      "pearl_white_double_sided_3_qbbo03",
+      "pearl_white_double_sided_background_jeuagc"
+    ],
+    "personalisable": false
+  },
+  {
+    "id": "double-sided-dark-turquoise-silver-candlesticks",
+    "sku": "SAW-CS-028",
+    "family_id": "silver-tone-double-sided-glass-candlesticks",
+    "category": "candlesticks",
+    "finish": "silver-tone",
+    "pages": [
+      "candlesticks.html"
+    ],
+    "name_en": "Silver-Tone Dark Turquoise Double-Sided Glass Candlesticks",
+    "name_he": "זוג פמוטים מזכוכית דו־צדדית בצבע טורקיז כהה עם קנים ובסיס בגוון כסף",
+    "description_en": "Handmade pair of double-sided dark turquoise glass candlesticks with silver-tone sockets and base, crafted in our studio in Israel. The glass section measures 17 × 6 cm.",
+    "description_he": "זוג פמוטים בעבודת יד מזכוכית דו־צדדית בצבע טורקיז כהה, עם קנים ובסיס בגוון כסף, מיוצרים בסטודיו שלנו בישראל. חלק הזכוכית במידות 17 × 6 ס״מ.",
+    "color_en": "Dark Turquoise",
+    "color_he": "טורקיז כהה",
+    "measurements": "24 × 6 × 4 cm",
+    "price_ils": 594,
+    "photos": [
+      "Dark_turquoise_double_sided_1_avawqh",
+      "Dark_turquoise_double_sided_2_o6y5bp",
+      "Dark_turquoise_double_sided_3_zsmist",
+      "Dark_turquoise_double_sided_background_ldujvk"
+    ],
+    "personalisable": false
+  },
+  {
+    "id": "double-sided-blue-silver-candlesticks",
+    "sku": "SAW-CS-029",
+    "family_id": "silver-tone-double-sided-glass-candlesticks",
+    "category": "candlesticks",
+    "finish": "silver-tone",
+    "pages": [
+      "candlesticks.html"
+    ],
+    "name_en": "Silver-Tone Blue Double-Sided Glass Candlesticks",
+    "name_he": "זוג פמוטים מזכוכית דו־צדדית בצבע כחול עם קנים ובסיס בגוון כסף",
+    "description_en": "Handmade pair of double-sided blue glass candlesticks with silver-tone sockets and base, crafted in our studio in Israel. The glass section measures 17 × 6 cm.",
+    "description_he": "זוג פמוטים בעבודת יד מזכוכית דו־צדדית בצבע כחול, עם קנים ובסיס בגוון כסף, מיוצרים בסטודיו שלנו בישראל. חלק הזכוכית במידות 17 × 6 ס״מ.",
+    "color_en": "Blue",
+    "color_he": "כחול",
+    "measurements": "24 × 6 × 4 cm",
+    "price_ils": 594,
+    "photos": [
+      "Blue_double_sided_1_xdua5v",
+      "Blue_double_sided_2_yjvoli",
+      "Blue_double_sided_3_pwzocg",
+      "Blue_double_sided_background_wjeuch"
+    ],
+    "personalisable": false
+  },
+  {
+    "id": "double-sided-white-blue-gold-candlesticks",
+    "sku": "SAW-CS-030",
+    "family_id": "gold-tone-double-sided-glass-candlesticks",
+    "category": "candlesticks",
+    "finish": "gold-tone",
+    "pages": [
+      "candlesticks.html"
+    ],
+    "name_en": "Gold-Tone White and Blue Double-Sided Glass Candlesticks",
+    "name_he": "זוג פמוטים מזכוכית דו־צדדית בצבע כחול־לבן עם קנים ובסיס בגוון זהב",
+    "description_en": "Handmade pair of double-sided white and blue glass candlesticks with gold-tone sockets and base, crafted in our studio in Israel. The glass section measures 17 × 6 cm.",
+    "description_he": "זוג פמוטים בעבודת יד מזכוכית דו־צדדית בצבע כחול־לבן, עם קנים ובסיס בגוון זהב, מיוצרים בסטודיו שלנו בישראל. חלק הזכוכית במידות 17 × 6 ס״מ.",
+    "color_en": "White and Blue",
+    "color_he": "כחול־לבן",
+    "measurements": "24 × 6 × 4 cm",
+    "price_ils": 594,
+    "photos": [
+      "White_and_blue_double_sided_1_b5gmya",
+      "White_and_blue_double_sided_2_nyymhu",
+      "White_and_blue_double_sided_3_exrdwi",
+      "White_and_blue_double_sided_background_kue3pk"
+    ],
+    "personalisable": false
+  },
+  {
+    "id": "double-sided-terracotta-gold-candlesticks",
+    "sku": "SAW-CS-031",
+    "family_id": "gold-tone-double-sided-glass-candlesticks",
+    "category": "candlesticks",
+    "finish": "gold-tone",
+    "pages": [
+      "candlesticks.html"
+    ],
+    "name_en": "Gold-Tone Terracotta Double-Sided Glass Candlesticks",
+    "name_he": "זוג פמוטים מזכוכית דו־צדדית בצבע נחושת עם קנים ובסיס בגוון זהב",
+    "description_en": "Handmade pair of double-sided terracotta glass candlesticks with gold-tone sockets and base, crafted in our studio in Israel. The glass section measures 17 × 6 cm.",
+    "description_he": "זוג פמוטים בעבודת יד מזכוכית דו־צדדית בצבע נחושת, עם קנים ובסיס בגוון זהב, מיוצרים בסטודיו שלנו בישראל. חלק הזכוכית במידות 17 × 6 ס״מ.",
+    "color_en": "Terracotta",
+    "color_he": "נחושת",
+    "measurements": "24 × 6 × 4 cm",
+    "price_ils": 594,
+    "photos": [
+      "Terracotta_double_sided_1_ppmijq",
+      "Terracotta_double_sided_2_ddthly",
+      "Terracotta_double_sided_3_lr7ftw",
+      "Terracotta_double_sided_background_qaxwni"
+    ],
+    "personalisable": false
+  },
+  {
+    "id": "double-sided-pearl-white-gold-candlesticks",
+    "sku": "SAW-CS-032",
+    "family_id": "gold-tone-double-sided-glass-candlesticks",
+    "category": "candlesticks",
+    "finish": "gold-tone",
+    "pages": [
+      "candlesticks.html"
+    ],
+    "name_en": "Gold-Tone Pearl White Double-Sided Glass Candlesticks",
+    "name_he": "זוג פמוטים מזכוכית דו־צדדית בצבע לבן פנינה עם קנים ובסיס בגוון זהב",
+    "description_en": "Handmade pair of double-sided pearl white glass candlesticks with gold-tone sockets and base, crafted in our studio in Israel. The glass section measures 17 × 6 cm.",
+    "description_he": "זוג פמוטים בעבודת יד מזכוכית דו־צדדית בצבע לבן פנינה, עם קנים ובסיס בגוון זהב, מיוצרים בסטודיו שלנו בישראל. חלק הזכוכית במידות 17 × 6 ס״מ.",
+    "color_en": "Pearl White",
+    "color_he": "לבן פנינה",
+    "measurements": "24 × 6 × 4 cm",
+    "price_ils": 594,
+    "photos": [
+      "pearl_white_double_sided_1_hd6ijl",
+      "pearl_white_double_sided_2_wphnzt",
+      "pearl_white_double_sided_3_fajwsj",
+      "pearl_white_double_sided_background_yawuim"
+    ],
+    "personalisable": false
+  },
+  {
+    "id": "double-sided-dark-turquoise-gold-candlesticks",
+    "sku": "SAW-CS-033",
+    "family_id": "gold-tone-double-sided-glass-candlesticks",
+    "category": "candlesticks",
+    "finish": "gold-tone",
+    "pages": [
+      "candlesticks.html"
+    ],
+    "name_en": "Gold-Tone Dark Turquoise Double-Sided Glass Candlesticks",
+    "name_he": "זוג פמוטים מזכוכית דו־צדדית בצבע טורקיז כהה עם קנים ובסיס בגוון זהב",
+    "description_en": "Handmade pair of double-sided dark turquoise glass candlesticks with gold-tone sockets and base, crafted in our studio in Israel. The glass section measures 17 × 6 cm.",
+    "description_he": "זוג פמוטים בעבודת יד מזכוכית דו־צדדית בצבע טורקיז כהה, עם קנים ובסיס בגוון זהב, מיוצרים בסטודיו שלנו בישראל. חלק הזכוכית במידות 17 × 6 ס״מ.",
+    "color_en": "Dark Turquoise",
+    "color_he": "טורקיז כהה",
+    "measurements": "24 × 6 × 4 cm",
+    "price_ils": 594,
+    "photos": [
+      "Dark_turquoise_double_sided_1_te7nvt",
+      "Dark_turquoise_double_sided_2_rnywqp",
+      "Dark_turquoise_double_sided_3_vbxsxv",
+      "Dark_turquoise_double_sided_background_woymly"
+    ],
+    "personalisable": false
+  },
+  {
+    "id": "double-sided-blue-gold-candlesticks",
+    "sku": "SAW-CS-034",
+    "family_id": "gold-tone-double-sided-glass-candlesticks",
+    "category": "candlesticks",
+    "finish": "gold-tone",
+    "pages": [
+      "candlesticks.html"
+    ],
+    "name_en": "Gold-Tone Blue Double-Sided Glass Candlesticks",
+    "name_he": "זוג פמוטים מזכוכית דו־צדדית בצבע כחול עם קנים ובסיס בגוון זהב",
+    "description_en": "Handmade pair of double-sided blue glass candlesticks with gold-tone sockets and base, crafted in our studio in Israel. The glass section measures 17 × 6 cm.",
+    "description_he": "זוג פמוטים בעבודת יד מזכוכית דו־צדדית בצבע כחול, עם קנים ובסיס בגוון זהב, מיוצרים בסטודיו שלנו בישראל. חלק הזכוכית במידות 17 × 6 ס״מ.",
+    "color_en": "Blue",
+    "color_he": "כחול",
+    "measurements": "24 × 6 × 4 cm",
+    "price_ils": 594,
+    "photos": [
+      "Blue_double_sided_1_vnav2f",
+      "Blue_double_sided_2_ahs0ed",
+      "Blue_double_sided_3_shdr5c",
+      "Blue_double_sided_background_as6dye"
     ],
     "personalisable": false
   },

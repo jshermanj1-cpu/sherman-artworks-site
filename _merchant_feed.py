@@ -140,7 +140,13 @@ def feed_title(product, size_text=None):
     plating = ("925 Silver-Plated" if "925 Silver-Plated" in name
                else "Gold-Plated" if "Gold-Plated" in name else None)
     rest = _strip(name, "925 Silver-Plated", "Gold-Plated")
-    if cat == "candlesticks":
+    if cat == "candlesticks" and product.get("finish") in TONE:
+        # Double-sided glass on silver-tone or gold-tone sockets and base: a
+        # finish, not plating, labelled the same way as the menorahs.
+        kind = "Double-Sided Glass Shabbat Candlesticks, Pair"
+        desc = product["color_en"]
+        plating = TONE[product["finish"]] + " Sockets & Base"
+    elif cat == "candlesticks":
         kind = "Glass Shabbat Candlesticks, Pair"
         desc = _strip(rest, "Glass Candlesticks", "Candlesticks")
         desc = re.sub(r"^Glass ", "", desc)
@@ -243,6 +249,8 @@ def feed_product_type(product):
         line = None
     elif cat == "hanukkah-menorahs":
         line = SHAPE[product["shape"]] + " > " + TONE[product["finish"]]
+    elif cat == "candlesticks" and product.get("finish") in TONE:
+        line = "Double-Sided > " + TONE[product["finish"]]
     else:
         line = _finish(product) or "Artisanal"
     return " > ".join(x for x in ("Judaica", top, line) if x)
@@ -257,7 +265,10 @@ def feed_highlights(product):
            else "Handmade to order in our family studio in Israel"]
     if cat == "candlesticks":
         out.append("Sold as a pair")
-        if finish:
+        if product.get("finish") in TONE:
+            out.append("Double-sided handmade glass, %s" % product["measurements"])
+            out.append("%s sockets and base" % TONE[product["finish"]].capitalize())
+        elif finish:
             out.append("Glass finished with %s" % ("925 silver plating" if finish.startswith("925") else "gold plating"))
             out.append("Available in three heights: S (14-18 cm), M (19-22 cm) and L (23-25 cm)")
         else:
@@ -352,7 +363,10 @@ def feed_highlights_he(product):
            else "נעשה בעבודת יד לפי הזמנה בסטודיו המשפחתי שלנו בישראל"]
     if cat == "candlesticks":
         out.append("נמכרים כזוג")
-        if finish:
+        if product.get("finish") in TONE_HE:
+            out.append("זכוכית דו־צדדית בעבודת יד, %s" % he_units(product["measurements"]))
+            out.append("קנים ובסיס %s" % TONE_HE[product["finish"]])
+        elif finish:
             out.append("זכוכית ב%s" % plating)
             out.append("בשלושה גבהים: S (14-18 ס״מ), M (19-22 ס״מ) ו-L (23-25 ס״מ)")
         else:

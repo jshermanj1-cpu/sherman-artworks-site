@@ -26,7 +26,7 @@ similar suffix to a product with one sellable configuration.
 
 | Category | Code | Next unassigned number |
 |---|---:|---:|
-| Candlesticks | `CS` | `026` |
+| Candlesticks | `CS` | `035` |
 | Horn Goblets | `HG` | `004` |
 | Kiddush Cups | `KC` | `035` |
 | Trays & Bowls | `TB` | `016` |
@@ -151,7 +151,16 @@ configurations. They are permanent once migrated into the product data.
 | `SAW-CS-022` | `earth-gold-plated-glass-candlesticks` | Earth Gold-Plated Glass Candlesticks | `-S`, `-M`, `-L` |
 | `SAW-CS-023` | `black-gold-plated-glass-candlesticks` | Black Gold-Plated Glass Candlesticks | `-S`, `-M`, `-L` |
 | `SAW-CS-024` | `green-gold-plated-glass-candlesticks` | Green Gold-Plated Glass Candlesticks | `-S`, `-M`, `-L` |
-| `SAW-CS-025` | `double-sided-white-blue-glass-candlesticks` | Double-Sided White and Blue Glass Candlesticks | None |
+| `SAW-CS-025` | `double-sided-white-blue-glass-candlesticks` | Silver-Tone White and Blue Double-Sided Glass Candlesticks | None |
+| `SAW-CS-026` | `double-sided-terracotta-silver-candlesticks` | Silver-Tone Terracotta Double-Sided Glass Candlesticks | None |
+| `SAW-CS-027` | `double-sided-pearl-white-silver-candlesticks` | Silver-Tone Pearl White Double-Sided Glass Candlesticks | None |
+| `SAW-CS-028` | `double-sided-dark-turquoise-silver-candlesticks` | Silver-Tone Dark Turquoise Double-Sided Glass Candlesticks | None |
+| `SAW-CS-029` | `double-sided-blue-silver-candlesticks` | Silver-Tone Blue Double-Sided Glass Candlesticks | None |
+| `SAW-CS-030` | `double-sided-white-blue-gold-candlesticks` | Gold-Tone White and Blue Double-Sided Glass Candlesticks | None |
+| `SAW-CS-031` | `double-sided-terracotta-gold-candlesticks` | Gold-Tone Terracotta Double-Sided Glass Candlesticks | None |
+| `SAW-CS-032` | `double-sided-pearl-white-gold-candlesticks` | Gold-Tone Pearl White Double-Sided Glass Candlesticks | None |
+| `SAW-CS-033` | `double-sided-dark-turquoise-gold-candlesticks` | Gold-Tone Dark Turquoise Double-Sided Glass Candlesticks | None |
+| `SAW-CS-034` | `double-sided-blue-gold-candlesticks` | Gold-Tone Blue Double-Sided Glass Candlesticks | None |
 
 ### Horn Goblets (`HG`)
 

@@ -37,6 +37,7 @@ SHOP_PAGES = [
     "candlesticks.html",
     "candlesticks-silver-plated.html",
     "candlesticks-gold-plated.html",
+    "candlesticks-double-sided.html",
     "candlesticks-artisanal.html",
     "horn-goblets.html",
     "kiddush-cups.html",
@@ -172,6 +173,10 @@ META = {
     "candlesticks-gold-plated.html": (
         "פמוטי זכוכית בציפוי זהב | שרמן ארט וורקס",
         "פמוטי זכוכית בעבודת יד בגימור זהב. שלושה גבהים ואפשרות למגש תואם, מיוצרים בישראל.",
+    ),
+    "candlesticks-double-sided.html": (
+        "פמוטים מזכוכית דו־צדדית | שרמן ארט וורקס",
+        "פמוטים מזכוכית דו־צדדית בעבודת יד בחמישה צבעים, עם קנים ובסיס בגוון כסף או בגוון זהב, מיוצרים בסטודיו שלנו בישראל.",
     ),
     "candlesticks-artisanal.html": (
         "פמוטי זכוכית אומנותיים בעבודת יד | שרמן ארט וורקס",
@@ -562,6 +567,16 @@ PRODUCT_GROUP_HE = {
         "name": "סטים להבדלה קלאסיים",
         "description": "סטים להבדלה בעבודת יד בצבעים שחור, כחול ולבן, "
                        "מיוצרים בסטודיו שלנו בישראל.",
+    },
+    "silver-tone-double-sided-glass-candlesticks": {
+        "name": "פמוטים מזכוכית דו־צדדית עם קנים ובסיס בגוון כסף",
+        "description": "זוג פמוטים בעבודת יד מזכוכית דו־צדדית בחמישה צבעים, "
+                       "עם קנים ובסיס בגוון כסף, מיוצרים בסטודיו שלנו בישראל.",
+    },
+    "gold-tone-double-sided-glass-candlesticks": {
+        "name": "פמוטים מזכוכית דו־צדדית עם קנים ובסיס בגוון זהב",
+        "description": "זוג פמוטים בעבודת יד מזכוכית דו־צדדית בחמישה צבעים, "
+                       "עם קנים ובסיס בגוון זהב, מיוצרים בסטודיו שלנו בישראל.",
     },
     "silver-tone-half-moon-hanukkah-menorahs": {
         "name": "חנוכיות חצי עיגול מזכוכית עם קנים בגוון כסף",
