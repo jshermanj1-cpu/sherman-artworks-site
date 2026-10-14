@@ -906,7 +906,7 @@ function renderCartDrawer() {
 
   listEl.innerHTML = cartPriceUpdateNoticeHtml(isHe) + items.map(function (item, idx) {
     var name  = (isHe && item.name_he) ? item.name_he : item.name_en;
-    var thumb = CDN + '/w_80,h_80,c_fill,g_auto,q_auto,f_auto/' + item.photo + '.jpg';
+    var thumb = CDN + '/w_144,h_144,c_pad,b_auto,q_auto,f_auto/' + item.photo + '.jpg';
     var priceStr = cartLinePriceHtml(item);
     var slug = escapeAttr(item.slug);
     var url = _cartItemUrl(item);
