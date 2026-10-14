@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 """_hanukkah_page.py - build the Hanukkah menorah page from data/products.json.
 
-Every menorah shape exists fourteen times over - seven glass colours, each with
+Every menorah shape exists sixteen times over - eight glass colours, each with
 silver-tone or gold-tone sockets and base - and there are three shapes, so the
-page carries forty-two products, and a photo or a price lives on five surfaces
+page carries forty-eight products, and a photo or a price lives on five surfaces
 of it at once: the runtime catalogue in
 js/hanukkah-menorahs.js, the no-JS cards crawlers read, two ProductGroup blocks,
 the share image, and the homepage category card. Hand-keeping five copies in
@@ -63,27 +63,27 @@ COVER = "gold-tone-terracotta-trapezoid-menorah"
 GROUPS = {
     "silver-tone-half-moon-hanukkah-menorahs": {
         "name": "Half-Moon Glass Hanukkah Menorahs with Silver-Tone Sockets",
-        "description": "Handmade half-moon Hanukkah menorahs of double-sided glass in seven colours, "
+        "description": "Handmade half-moon Hanukkah menorahs of double-sided glass in eight colors, "
                        "with silver-tone sockets and base, crafted in our studio in Israel."},
     "gold-tone-half-moon-hanukkah-menorahs": {
         "name": "Half-Moon Glass Hanukkah Menorahs with Gold-Tone Sockets",
-        "description": "Handmade half-moon Hanukkah menorahs of double-sided glass in seven colours, "
+        "description": "Handmade half-moon Hanukkah menorahs of double-sided glass in eight colors, "
                        "with gold-tone sockets and base, crafted in our studio in Israel."},
     "silver-tone-rectangular-hanukkah-menorahs": {
         "name": "Rectangular Glass Hanukkah Menorahs with Silver-Tone Sockets",
-        "description": "Handmade rectangular Hanukkah menorahs of double-sided glass in seven colours, "
+        "description": "Handmade rectangular Hanukkah menorahs of double-sided glass in eight colors, "
                        "with silver-tone sockets and base, crafted in our studio in Israel."},
     "gold-tone-rectangular-hanukkah-menorahs": {
         "name": "Rectangular Glass Hanukkah Menorahs with Gold-Tone Sockets",
-        "description": "Handmade rectangular Hanukkah menorahs of double-sided glass in seven colours, "
+        "description": "Handmade rectangular Hanukkah menorahs of double-sided glass in eight colors, "
                        "with gold-tone sockets and base, crafted in our studio in Israel."},
     "silver-tone-trapezoid-hanukkah-menorahs": {
         "name": "Trapezoid Glass Hanukkah Menorahs with Silver-Tone Sockets",
-        "description": "Handmade trapezoid Hanukkah menorahs of double-sided glass in seven colours, "
+        "description": "Handmade trapezoid Hanukkah menorahs of double-sided glass in eight colors, "
                        "with silver-tone sockets and base, crafted in our studio in Israel."},
     "gold-tone-trapezoid-hanukkah-menorahs": {
         "name": "Trapezoid Glass Hanukkah Menorahs with Gold-Tone Sockets",
-        "description": "Handmade trapezoid Hanukkah menorahs of double-sided glass in seven colours, "
+        "description": "Handmade trapezoid Hanukkah menorahs of double-sided glass in eight colors, "
                        "with gold-tone sockets and base, crafted in our studio in Israel."},
 }
 
@@ -99,14 +99,14 @@ SHAPES = {
         "file": "hanukkah-menorahs-half-moon.html",
         "cover": "silver-tone-blue-half-moon-menorah",
         "title": "Half-Moon Glass Hanukkah Menorahs | Sherman Art Works",
-        "desc": "Handmade half-moon Hanukkah menorahs from Israel, in double-sided glass in seven colours "
+        "desc": "Handmade half-moon Hanukkah menorahs from Israel, in double-sided glass in eight colors "
                 "with silver-tone or gold-tone sockets and base. Made to order and shipped worldwide.",
         "headline": "Half-Moon Menorahs",
-        "subtitle": "Double-sided handmade glass in a half-moon shape, in seven colours.",
+        "subtitle": "Double-sided handmade glass in a half-moon shape, in eight colors.",
         "body": "Choose silver-tone or gold-tone sockets and base. Each menorah is shaped by hand in our studio in Israel.",
         "he": {
             "headline": "חנוכיות חצי עיגול",
-            "subtitle": "זכוכית דו־צדדית בעבודת יד בצורת חצי עיגול, בשבעה צבעים.",
+            "subtitle": "זכוכית דו־צדדית בעבודת יד בצורת חצי עיגול, בשמונה צבעים.",
             "body": "בחרו קנים ובסיס בגוון כסף או בגוון זהב. כל חנוכיה מעוצבת בעבודת יד בסטודיו שלנו בישראל.",
         },
     },
@@ -115,14 +115,14 @@ SHAPES = {
         "file": "hanukkah-menorahs-rectangular.html",
         "cover": "silver-tone-blue-rectangular-menorah",
         "title": "Rectangular Glass Hanukkah Menorahs | Sherman Art Works",
-        "desc": "Handmade rectangular Hanukkah menorahs from Israel, in double-sided glass in seven colours "
+        "desc": "Handmade rectangular Hanukkah menorahs from Israel, in double-sided glass in eight colors "
                 "with silver-tone or gold-tone sockets and base. Made to order and shipped worldwide.",
         "headline": "Rectangular Menorahs",
-        "subtitle": "Double-sided handmade glass in a rectangular shape, in seven colours.",
+        "subtitle": "Double-sided handmade glass in a rectangular shape, in eight colors.",
         "body": "Choose silver-tone or gold-tone sockets and base. Each menorah is shaped by hand in our studio in Israel.",
         "he": {
             "headline": "חנוכיות מלבניות",
-            "subtitle": "זכוכית דו־צדדית בעבודת יד בצורת מלבן, בשבעה צבעים.",
+            "subtitle": "זכוכית דו־צדדית בעבודת יד בצורת מלבן, בשמונה צבעים.",
             "body": "בחרו קנים ובסיס בגוון כסף או בגוון זהב. כל חנוכיה מעוצבת בעבודת יד בסטודיו שלנו בישראל.",
         },
     },
@@ -131,14 +131,14 @@ SHAPES = {
         "file": "hanukkah-menorahs-trapezoid.html",
         "cover": "silver-tone-blue-trapezoid-menorah",
         "title": "Trapezoid Glass Hanukkah Menorahs | Sherman Art Works",
-        "desc": "Handmade trapezoid Hanukkah menorahs from Israel, in double-sided glass in seven colours "
+        "desc": "Handmade trapezoid Hanukkah menorahs from Israel, in double-sided glass in eight colors "
                 "with silver-tone or gold-tone sockets and base. Made to order and shipped worldwide.",
         "headline": "Trapezoid Menorahs",
-        "subtitle": "Double-sided handmade glass in a trapezoid shape, in seven colours.",
+        "subtitle": "Double-sided handmade glass in a trapezoid shape, in eight colors.",
         "body": "Choose silver-tone or gold-tone sockets and base. Each menorah is shaped by hand in our studio in Israel.",
         "he": {
             "headline": "חנוכיות טרפז",
-            "subtitle": "זכוכית דו־צדדית בעבודת יד בצורת טרפז, בשבעה צבעים.",
+            "subtitle": "זכוכית דו־צדדית בעבודת יד בצורת טרפז, בשמונה צבעים.",
             "body": "בחרו קנים ובסיס בגוון כסף או בגוון זהב. כל חנוכיה מעוצבת בעבודת יד בסטודיו שלנו בישראל.",
         },
     },

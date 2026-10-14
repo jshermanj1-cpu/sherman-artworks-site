@@ -33,7 +33,7 @@ similar suffix to a product with one sellable configuration.
 | Mezuzahs | `MZ` | `005` |
 | Shofars | `SH` | `023` |
 | Havdalah Sets | `HS` | `010` |
-| Hanukkah Menorahs | `HN` | `043` |
+| Hanukkah Menorahs | `HN` | `049` |
 
 The next-number column is a convenience, not the authority. Before assigning a SKU, scan this file
 and `data/products.json` for the highest number already used in the category, then add one.
@@ -324,3 +324,9 @@ configurations. They are permanent once migrated into the product data.
 | `SAW-HN-040` | `gold-tone-light-blue-trapezoid-menorah` | Gold-Tone Light Blue Glass Trapezoid Hanukkah Menorah | None |
 | `SAW-HN-041` | `gold-tone-terracotta-trapezoid-menorah` | Gold-Tone Terracotta Glass Trapezoid Hanukkah Menorah | None |
 | `SAW-HN-042` | `gold-tone-turquoise-trapezoid-menorah` | Gold-Tone Turquoise Glass Trapezoid Hanukkah Menorah | None |
+| `SAW-HN-043` | `silver-tone-white-blue-half-moon-menorah` | Silver-Tone White and Blue Glass Half-Moon Hanukkah Menorah | None |
+| `SAW-HN-044` | `gold-tone-white-blue-half-moon-menorah` | Gold-Tone White and Blue Glass Half-Moon Hanukkah Menorah | None |
+| `SAW-HN-045` | `silver-tone-white-blue-rectangular-menorah` | Silver-Tone White and Blue Glass Rectangular Hanukkah Menorah | None |
+| `SAW-HN-046` | `gold-tone-white-blue-rectangular-menorah` | Gold-Tone White and Blue Glass Rectangular Hanukkah Menorah | None |
+| `SAW-HN-047` | `silver-tone-white-blue-trapezoid-menorah` | Silver-Tone White and Blue Glass Trapezoid Hanukkah Menorah | None |
+| `SAW-HN-048` | `gold-tone-white-blue-trapezoid-menorah` | Gold-Tone White and Blue Glass Trapezoid Hanukkah Menorah | None |

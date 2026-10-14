@@ -6,7 +6,7 @@ from _usd import usd_from_ils
 
 START = "2026-10-12T00:00:00+03:00"
 END = "2026-12-05T00:00:00+02:00"
-ELIGIBLE = re.compile(r"^(silver|gold)-tone-(pearl-white|blue|clear|emerald-green|light-blue|terracotta|turquoise)-(half-moon|rectangular|trapezoid)-menorah$")
+ELIGIBLE = re.compile(r"^(silver|gold)-tone-(pearl-white|blue|clear|emerald-green|light-blue|terracotta|turquoise|white-blue)-(half-moon|rectangular|trapezoid)-menorah$")
 
 def active(slug, now=None):
     at = now or datetime.now(timezone.utc)

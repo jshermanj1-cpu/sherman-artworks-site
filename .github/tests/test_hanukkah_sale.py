@@ -23,7 +23,7 @@ class HanukkahSale(unittest.TestCase):
         for filename, regular, discounted in [("merchant-feed.xml", "1250.00 ILS", "1000.00 ILS"), ("merchant-feed-us.xml", "420.00 USD", "336.00 USD")]:
             items = ET.parse(ROOT / filename).getroot().findall("./channel/item")
             on_sale = [i for i in items if i.find(ns + "sale_price") is not None]
-            expected_count = 42 if active("silver-tone-blue-half-moon-menorah") else 0
+            expected_count = 48 if active("silver-tone-blue-half-moon-menorah") else 0
             self.assertEqual(len(on_sale), expected_count)
             for item in on_sale:
                 self.assertIn("hanukkah-menorahs", item.findtext(ns + "link"))

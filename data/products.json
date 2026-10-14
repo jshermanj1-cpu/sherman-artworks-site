@@ -5468,5 +5468,167 @@
       "Turquoise_trapeze_background_umoblf"
     ],
     "personalisable": false
+  },
+  {
+    "id": "silver-tone-white-blue-half-moon-menorah",
+    "sku": "SAW-HN-043",
+    "family_id": "silver-tone-half-moon-hanukkah-menorahs",
+    "category": "hanukkah-menorahs",
+    "finish": "silver-tone",
+    "shape": "half-moon",
+    "pages": [
+      "hanukkah-menorahs.html",
+      "hanukkah-menorahs-half-moon.html"
+    ],
+    "name_en": "Silver-Tone White and Blue Glass Half-Moon Hanukkah Menorah",
+    "name_he": "חנוכיה חצי עיגול מזכוכית בצבע כחול־לבן עם קנים ובסיס בגוון כסף",
+    "description_en": "Handmade half-moon Hanukkah menorah of double-sided white and blue glass, with silver-tone sockets and base, crafted in our studio in Israel.",
+    "description_he": "חנוכיה בצורת חצי עיגול בעבודת יד מזכוכית דו־צדדית בצבע כחול־לבן, עם קנים ובסיס בגוון כסף, מיוצרת בסטודיו שלנו בישראל.",
+    "color_en": "White and Blue",
+    "color_he": "כחול־לבן",
+    "measurements": "33 × 27 × 3 cm",
+    "price_ils": 1250,
+    "photos": [
+      "White_and_blue_half_moon_1_cvncvl",
+      "White_and_blue_half_moon_2_m66faz",
+      "White_and_blue_half_moon_3_nyqihk",
+      "White_and_blue_half_moon_background_wrhepu"
+    ],
+    "personalisable": false
+  },
+  {
+    "id": "gold-tone-white-blue-half-moon-menorah",
+    "sku": "SAW-HN-044",
+    "family_id": "gold-tone-half-moon-hanukkah-menorahs",
+    "category": "hanukkah-menorahs",
+    "finish": "gold-tone",
+    "shape": "half-moon",
+    "pages": [
+      "hanukkah-menorahs.html",
+      "hanukkah-menorahs-half-moon.html"
+    ],
+    "name_en": "Gold-Tone White and Blue Glass Half-Moon Hanukkah Menorah",
+    "name_he": "חנוכיה חצי עיגול מזכוכית בצבע כחול־לבן עם קנים ובסיס בגוון זהב",
+    "description_en": "Handmade half-moon Hanukkah menorah of double-sided white and blue glass, with gold-tone sockets and base, crafted in our studio in Israel.",
+    "description_he": "חנוכיה בצורת חצי עיגול בעבודת יד מזכוכית דו־צדדית בצבע כחול־לבן, עם קנים ובסיס בגוון זהב, מיוצרת בסטודיו שלנו בישראל.",
+    "color_en": "White and Blue",
+    "color_he": "כחול־לבן",
+    "measurements": "33 × 27 × 3 cm",
+    "price_ils": 1250,
+    "photos": [
+      "White_and_blue_half_moon_1_nxn5qv",
+      "White_and_blue_half_moon_2_zmknq1",
+      "White_and_blue_half_moon_3_cnizia",
+      "White_and_blue_half_moon_background_tkirb6"
+    ],
+    "personalisable": false
+  },
+  {
+    "id": "silver-tone-white-blue-rectangular-menorah",
+    "sku": "SAW-HN-045",
+    "family_id": "silver-tone-rectangular-hanukkah-menorahs",
+    "category": "hanukkah-menorahs",
+    "finish": "silver-tone",
+    "shape": "rectangular",
+    "pages": [
+      "hanukkah-menorahs.html",
+      "hanukkah-menorahs-rectangular.html"
+    ],
+    "name_en": "Silver-Tone White and Blue Glass Rectangular Hanukkah Menorah",
+    "name_he": "חנוכיה מלבנית מזכוכית בצבע כחול־לבן עם קנים ובסיס בגוון כסף",
+    "description_en": "Handmade rectangular Hanukkah menorah of double-sided white and blue glass, with silver-tone sockets and base, crafted in our studio in Israel.",
+    "description_he": "חנוכיה מלבנית בעבודת יד מזכוכית דו־צדדית בצבע כחול־לבן, עם קנים ובסיס בגוון כסף, מיוצרת בסטודיו שלנו בישראל.",
+    "color_en": "White and Blue",
+    "color_he": "כחול־לבן",
+    "measurements": "33 × 27 × 3 cm",
+    "price_ils": 1250,
+    "photos": [
+      "White_and_blue_menorah_1_y3dhck",
+      "White_and_blue_menorah_2_b63e4d",
+      "White_and_blue_menorah_3_wrhbvq",
+      "White_and_blue_menorah_background_wrkfxu"
+    ],
+    "personalisable": false
+  },
+  {
+    "id": "gold-tone-white-blue-rectangular-menorah",
+    "sku": "SAW-HN-046",
+    "family_id": "gold-tone-rectangular-hanukkah-menorahs",
+    "category": "hanukkah-menorahs",
+    "finish": "gold-tone",
+    "shape": "rectangular",
+    "pages": [
+      "hanukkah-menorahs.html",
+      "hanukkah-menorahs-rectangular.html"
+    ],
+    "name_en": "Gold-Tone White and Blue Glass Rectangular Hanukkah Menorah",
+    "name_he": "חנוכיה מלבנית מזכוכית בצבע כחול־לבן עם קנים ובסיס בגוון זהב",
+    "description_en": "Handmade rectangular Hanukkah menorah of double-sided white and blue glass, with gold-tone sockets and base, crafted in our studio in Israel.",
+    "description_he": "חנוכיה מלבנית בעבודת יד מזכוכית דו־צדדית בצבע כחול־לבן, עם קנים ובסיס בגוון זהב, מיוצרת בסטודיו שלנו בישראל.",
+    "color_en": "White and Blue",
+    "color_he": "כחול־לבן",
+    "measurements": "33 × 27 × 3 cm",
+    "price_ils": 1250,
+    "photos": [
+      "White_and_blue_rectangle_1_uoxhmt",
+      "White_and_blue_rectangle_2_m660q8",
+      "White_and_blue_rectangle_3_upa2xs",
+      "White_and_blue_rectangle_background_opqkqv"
+    ],
+    "personalisable": false
+  },
+  {
+    "id": "silver-tone-white-blue-trapezoid-menorah",
+    "sku": "SAW-HN-047",
+    "family_id": "silver-tone-trapezoid-hanukkah-menorahs",
+    "category": "hanukkah-menorahs",
+    "finish": "silver-tone",
+    "shape": "trapezoid",
+    "pages": [
+      "hanukkah-menorahs.html",
+      "hanukkah-menorahs-trapezoid.html"
+    ],
+    "name_en": "Silver-Tone White and Blue Glass Trapezoid Hanukkah Menorah",
+    "name_he": "חנוכיה טרפז מזכוכית בצבע כחול־לבן עם קנים ובסיס בגוון כסף",
+    "description_en": "Handmade trapezoid Hanukkah menorah of double-sided white and blue glass, with silver-tone sockets and base, crafted in our studio in Israel.",
+    "description_he": "חנוכיה בצורת טרפז בעבודת יד מזכוכית דו־צדדית בצבע כחול־לבן, עם קנים ובסיס בגוון כסף, מיוצרת בסטודיו שלנו בישראל.",
+    "color_en": "White and Blue",
+    "color_he": "כחול־לבן",
+    "measurements": "33 × 27 × 3 cm",
+    "price_ils": 1250,
+    "photos": [
+      "White_and_blue_trapeze_1_dlgj5w",
+      "White_and_blue_trapeze_2_bkkwba",
+      "White_and_blue_trapeze_3_bierya",
+      "White_and_blue_trapeze_background_cvaxre"
+    ],
+    "personalisable": false
+  },
+  {
+    "id": "gold-tone-white-blue-trapezoid-menorah",
+    "sku": "SAW-HN-048",
+    "family_id": "gold-tone-trapezoid-hanukkah-menorahs",
+    "category": "hanukkah-menorahs",
+    "finish": "gold-tone",
+    "shape": "trapezoid",
+    "pages": [
+      "hanukkah-menorahs.html",
+      "hanukkah-menorahs-trapezoid.html"
+    ],
+    "name_en": "Gold-Tone White and Blue Glass Trapezoid Hanukkah Menorah",
+    "name_he": "חנוכיה טרפז מזכוכית בצבע כחול־לבן עם קנים ובסיס בגוון זהב",
+    "description_en": "Handmade trapezoid Hanukkah menorah of double-sided white and blue glass, with gold-tone sockets and base, crafted in our studio in Israel.",
+    "description_he": "חנוכיה בצורת טרפז בעבודת יד מזכוכית דו־צדדית בצבע כחול־לבן, עם קנים ובסיס בגוון זהב, מיוצרת בסטודיו שלנו בישראל.",
+    "color_en": "White and Blue",
+    "color_he": "כחול־לבן",
+    "measurements": "33 × 27 × 3 cm",
+    "price_ils": 1250,
+    "photos": [
+      "White_and_blue_trapeze_1_gnv8fl",
+      "White_and_blue_trapeze_2_ys9vpv",
+      "White_and_blue_trapeze_3_diuovq",
+      "White_and_blue_trapeze_background_fszbh8"
+    ],
+    "personalisable": false
   }
 ]

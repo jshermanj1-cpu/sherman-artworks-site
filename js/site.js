@@ -23,7 +23,7 @@ function hanukkahSaleActive(now) {
   return at >= HANUKKAH_SALE_START && at < HANUKKAH_SALE_END;
 }
 function isHanukkahMenorah(slug) {
-  return /^(silver|gold)-tone-(pearl-white|blue|clear|emerald-green|light-blue|terracotta|turquoise)-(half-moon|rectangular|trapezoid)-menorah$/.test(slug || '');
+  return /^(silver|gold)-tone-(pearl-white|blue|clear|emerald-green|light-blue|terracotta|turquoise|white-blue)-(half-moon|rectangular|trapezoid)-menorah$/.test(slug || '');
 }
 // After expiry, restore dated offer markup for crawlers that execute JS too.
 function refreshHanukkahOffers() {
