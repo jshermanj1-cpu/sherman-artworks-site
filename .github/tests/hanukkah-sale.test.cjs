@@ -19,7 +19,7 @@ function browser(at) {
 const id = 'silver-tone-blue-half-moon-menorah';
 const start = Date.parse('2026-10-12T00:00:00+03:00');
 const end = Date.parse('2026-12-05T00:00:00+02:00');
-test('all 42 menorahs get the sale, unrelated products remain regular', () => {
+test('every menorah gets the sale, unrelated products remain regular', () => {
   const ctx = browser({value:start});
   const products = JSON.parse(fs.readFileSync(path.join(root,'data/products.json'),'utf8'));
   let eligible=0;
@@ -29,7 +29,10 @@ test('all 42 menorahs get the sale, unrelated products remain regular', () => {
     const ils=p.price_ils || 500;
     assert.equal(ctx.priceParts(ils,0,'ILS',p.id).sale,rate ? Math.round(ils*.8) : ils);
   }
-  assert.equal(eligible,42);
+  // A new menorah colour has to join the sale list in js/site.js too.
+  const menorahs = products.filter(p => p.category === 'hanukkah-menorahs').length;
+  assert.ok(menorahs >= 48);
+  assert.equal(eligible,menorahs);
   assert.equal(ctx.priceParts(1250,0,'USD',id).sale,336);
   assert.equal(ctx.priceParts(1250,0,'USD','kudu-menorah').sale,420);
 });
