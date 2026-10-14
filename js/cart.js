@@ -121,11 +121,8 @@ function addQuoteToCart(q, openDrawer) {
   _saveCart(items);
   if (!existing && typeof trackGA4 === 'function') {
     var gaCur = ga4Currency();
-    var gaVal = cartLineParts(entry, gaCur).sale * entry.qty;
-    trackGA4('add_to_cart', {
-      currency: gaCur, value: gaVal,
-      items: [{ item_id: entry.sku || entry.slug, item_name: entry.name_en, price: cartLineParts(entry, gaCur).sale, quantity: entry.qty }]
-    });
+    var gaItem = ga4Item(entry, gaCur);
+    trackGA4('add_to_cart', { currency: gaCur, value: gaItem.price * gaItem.quantity, items: [gaItem] });
   }
   if (openDrawer !== false) openCartDrawer();
 }
@@ -303,11 +300,8 @@ function addToCart(slug, name_en, name_he, price_ils, photo, sku, meta, page) {
     // ILS would have it converted a second time and land at about a third of
     // the real value.
     var gaCur = ga4Currency();
-    var gaVal = gaCur === 'USD' ? priceParts(regular, launchExempt, 'USD', slug).sale : charged;
-    trackGA4('add_to_cart', {
-      currency: gaCur, value: gaVal,
-      items: [{ item_id: sku || slug, item_name: name_en, price: gaVal, quantity: 1 }]
-    });
+    var gaItem = ga4Item(existing || entry, gaCur, 1);
+    trackGA4('add_to_cart', { currency: gaCur, value: gaItem.price, items: [gaItem] });
   }
   if (typeof a11yAnnounce === 'function') {
     var addedMsg = (typeof T_SITE !== 'undefined' && T_SITE[currentLang] && T_SITE[currentLang].cart_item_added) || 'Item added to cart';
@@ -322,7 +316,10 @@ function removeFromCart(key) {
     var removedMsg = (typeof T_SITE !== 'undefined' && T_SITE[currentLang] && T_SITE[currentLang].cart_item_removed) || 'Item removed from cart';
     a11yAnnounce(removedMsg);
   }
-  _saveCart(getCart().filter(function (i) { return _cartKey(i) !== key; }));
+  var items = getCart();
+  var gone = items.find(function (i) { return _cartKey(i) === key; });
+  _saveCart(items.filter(function (i) { return _cartKey(i) !== key; }));
+  if (gone) ga4CartChange('remove_from_cart', gone, gone.qty);
 }
 
 function updateCartQty(key, qty) {
@@ -331,7 +328,24 @@ function updateCartQty(key, qty) {
   var item = items.find(function (i) { return _cartKey(i) === key; });
   // A quote's quantity is part of the offer. It has no +/- controls, and this
   // keeps a stray call from putting a cart into a state the Worker will refuse.
-  if (item && !isQuoteItem(item)) { item.qty = qty; _saveCart(items); }
+  if (item && !isQuoteItem(item)) {
+    var delta = qty - item.qty;
+    item.qty = qty;
+    _saveCart(items);
+    if (delta) ga4CartChange(delta > 0 ? 'add_to_cart' : 'remove_from_cart', item, Math.abs(delta));
+  }
+}
+
+// The checkout's "clear cart" button. Not clearCart() itself, which also runs
+// after a confirmed payment, when emptying the cart is not the shopper leaving.
+function clearCartByShopper() {
+  var items = getCart();
+  clearCart();
+  if (items.length && typeof trackGA4 === 'function') {
+    var cur = ga4Currency();
+    var gaItems = items.map(function (i) { return ga4Item(i, cur); });
+    trackGA4('remove_from_cart', { currency: cur, value: ga4Value(gaItems), items: gaItems });
+  }
 }
 
 // Index-based wrappers for onclick handlers - avoids embedding user text
@@ -396,6 +410,86 @@ function getCartCount() {
 // rather than merely mislabelling it.
 function ga4Currency() {
   return (typeof activeCurrency === 'function') ? activeCurrency() : 'ILS';
+}
+
+// One shape for a cart line in every GA4 event, so a product can be followed
+// from view to purchase: the same item_id, name and variant each time, priced
+// per unit in the currency the event is tagged with.
+function ga4Item(item, cur, qty) {
+  var out = {
+    item_id: item.sku || item.slug,
+    item_name: item.name_en,
+    price: cartLineParts(item, cur).sale,
+    quantity: qty == null ? item.qty : qty
+  };
+  var m = item.meta;
+  var variant = m ? [m.size, m.color, m.tray].filter(Boolean).join(' / ') : '';
+  if (variant) out.item_variant = variant;
+  return out;
+}
+
+function ga4Items(cur) {
+  return getCart().map(function (i) { return ga4Item(i, cur); });
+}
+
+function ga4Value(gaItems) {
+  return gaItems.reduce(function (s, i) { return s + i.price * i.quantity; }, 0);
+}
+
+function ga4CartChange(eventName, item, qty) {
+  if (typeof trackGA4 !== 'function') return;
+  var cur = ga4Currency();
+  var gaItem = ga4Item(item, cur, qty);
+  trackGA4(eventName, { currency: cur, value: gaItem.price * qty, items: [gaItem] });
+}
+
+// The whole cart at a checkout step, in the currency the shopper is looking at.
+function ga4CheckoutStep(eventName, extra) {
+  if (typeof trackGA4 !== 'function' || !getCart().length) return;
+  var cur = ga4Currency();
+  var gaItems = ga4Items(cur);
+  var params = { currency: cur, value: ga4Value(gaItems), items: gaItems };
+  for (var k in extra) params[k] = extra[k];
+  trackGA4(eventName, params);
+}
+
+// Opening a product. Each category page carries its own openModal(), but all
+// of them open the same #productModal and point currentModalIdx into PRODUCTS,
+// so this watches the modal rather than patching every copy.
+function _openModalIdx() {
+  return typeof currentModalIdx === 'undefined' ? null : currentModalIdx;
+}
+
+function _ga4ViewItem() {
+  var idx = _openModalIdx();
+  if (typeof trackGA4 !== 'function' || typeof PRODUCTS === 'undefined' || idx == null) return;
+  var p = PRODUCTS[idx];
+  if (!p) return;
+  var price = p.price_ils || (p.sizes && p.sizes[0] && p.sizes[0].price_ils);
+  if (!price) return;
+  var cur = ga4Currency();
+  var gaItem = ga4Item({
+    slug: p.id, sku: productSku(p), name_en: p.name_en, price_ils: price,
+    meta: p.color_en ? { color: p.color_en } : null
+  }, cur, 1);
+  trackGA4('view_item', { currency: cur, value: gaItem.price, items: [gaItem] });
+}
+
+function _watchProductModal() {
+  var modal = document.getElementById('productModal');
+  if (!modal || typeof MutationObserver === 'undefined') return;
+  var shown = modal.classList.contains('open') ? _openModalIdx() : null;
+  if (shown != null) _ga4ViewItem();
+  var watcher = new MutationObserver(function () {
+    var now = modal.classList.contains('open') ? _openModalIdx() : null;
+    if (now != null && now !== shown) _ga4ViewItem();
+    shown = now;
+  });
+  watcher.observe(modal, { attributes: true, attributeFilter: ['class'] });
+  // Switching colour or finish inside an open modal re-points it at another
+  // product without touching its class, but every page re-renders the name.
+  var name = document.getElementById('modalName');
+  if (name) watcher.observe(name, { childList: true, characterData: true, subtree: true });
 }
 
 // Line items only - shipping is added on top by getOrderTotal().
@@ -969,18 +1063,15 @@ function openCartDrawer() {
   if (drawer)  drawer.classList.add('open');
   if (overlay) overlay.classList.add('open');
   document.body.style.overflow = 'hidden';
-  if (typeof trackGA4 === 'function') {
-    var vcCur = ga4Currency();
-    trackGA4('view_cart', {
-      currency: vcCur, value: getCartTotalIn(vcCur),
-      items: getCart().map(function (i) {
-        return {
-          item_id: i.sku || i.slug, item_name: i.name_en,
-          price: cartLineParts(i, vcCur).sale, quantity: i.qty
-        };
-      })
-    });
-  }
+  ga4CheckoutStep('view_cart');
+}
+
+// An order sent as a WhatsApp message rather than paid by card. It never
+// passes through the card checkout, so it is reported as its own payment type
+// instead of a begin_checkout, and as the WhatsApp click Google Ads counts.
+function ga4WhatsAppOrder(where) {
+  ga4CheckoutStep('add_payment_info', { payment_type: 'whatsapp' });
+  if (typeof trackGA4 === 'function') trackGA4('whatsapp_click', { location: where });
 }
 
 function closeCartDrawer() {
@@ -1048,7 +1139,7 @@ function _injectCartDrawer() {
           '</a>'
         : '') +
       '<a id="cart-wa-checkout" href="#" target="_blank" rel="noopener noreferrer" class="cart-checkout-btn"' +
-         ' onclick="if(typeof trackGA4===\'function\')trackGA4(\'begin_checkout\',{currency:ga4Currency(),value:getCartTotalIn(ga4Currency())})">' +
+         ' onclick="ga4WhatsAppOrder(\'cart_drawer\')">' +
         _WA_SVG + '<span data-t="cart_checkout">Order on WhatsApp</span>' +
       '</a>' +
       // Redundant once the pay button leads to the same page.
@@ -1105,6 +1196,7 @@ document.addEventListener('DOMContentLoaded', function () {
   updateCartBadge();
   renderCartDrawer();
   refreshQuoteLines();
+  _watchProductModal();
 });
 
 document.addEventListener('sa:cart-change', function () {

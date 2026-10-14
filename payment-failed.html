@@ -151,8 +151,8 @@
   </div>
 </footer>
 
-<script src="js/site.js?v=20261014d"></script>
-<script src="js/cart.js?v=20261014c"></script>
+<script src="js/site.js?v=20261014e"></script>
+<script src="js/cart.js?v=20261014e"></script>
 <script>
   const T_PAGE = {
     en: {
@@ -214,7 +214,14 @@
       '</div>';
   }
 
-  document.addEventListener('DOMContentLoaded', function () { renderPayment(); });
+  document.addEventListener('DOMContentLoaded', function () {
+    renderPayment();
+    // The card step of the checkout funnel: reached the payment page, was
+    // turned back there.
+    if (typeof trackGA4 === 'function') {
+      trackGA4('checkout_error', { reason: 'card_declined', ccode: new URLSearchParams(location.search).get('CCode') || '' });
+    }
+  });
 </script>
 
 </body>

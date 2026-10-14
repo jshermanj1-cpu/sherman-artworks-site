@@ -151,8 +151,8 @@
   </div>
 </footer>
 
-<script src="js/site.js?v=20261014d"></script>
-<script src="js/cart.js?v=20261014c"></script>
+<script src="js/site.js?v=20261014e"></script>
+<script src="js/cart.js?v=20261014e"></script>
 <script>
   const T_PAGE = {
     en: {
@@ -223,6 +223,17 @@
 
   var _payState = 'checking';
 
+  // What the card was charged in. Checkout stores it before handing over to
+  // HYP, whose Amount is denominated in that currency. Only trusted for the
+  // order this redirect is about; anything without it predates dollar charging
+  // and was charged in shekels. Read now, because a confirmed payment clears it.
+  var _payCharge = (function () {
+    var s = _storedPaymentStatus();
+    var order = new URLSearchParams(location.search).get('Order');
+    return (s && (!order || s.ref === order)) ? s : {};
+  })();
+  var _payCurrency = _payCharge.charge_currency === 'USD' ? 'USD' : 'ILS';
+
   function renderPayment() {
     var t = T_PAGE[currentLang];
     var el = document.getElementById('payment-result');
@@ -241,7 +252,7 @@
     if (_payState !== 'checking' && (p.order || p.amount)) {
       var rows = [];
       if (p.order)  rows.push('<div><span>' + escapeHtml(t.pay_order_label) + '</span><strong>' + escapeHtml(p.order) + '</strong></div>');
-      if (p.amount) rows.push('<div><span>' + escapeHtml(t.pay_amount_label) + '</span><strong>₪' + escapeHtml(p.amount) + '</strong></div>');
+      if (p.amount) rows.push('<div><span>' + escapeHtml(t.pay_amount_label) + '</span><strong>' + (_payCurrency === 'USD' ? '$' : '₪') + escapeHtml(p.amount) + '</strong></div>');
       meta = '<div class="payment-meta">' + rows.join('') + '</div>';
     }
 
@@ -288,20 +299,19 @@
     _payFinalised = true;
     var p = _payParams();
     if (typeof trackGA4 === 'function') {
-      // Deliberately ILS, and deliberately NOT the displayed currency like the
-      // other money events. This one reports what was actually charged, and the
-      // amount comes off HYP's own redirect, which is denominated in whatever
-      // the terminal settled in - today always shekels (Coin=1). If the terminal
-      // is ever enabled for dollar settlement, this is one of the places that
-      // has to start reading the order's charge currency instead of assuming.
+      // Deliberately the charge currency, NOT the displayed one like the other
+      // money events: this reports what was actually charged, and the amount
+      // comes off HYP's own redirect, which is denominated in it. Items use the
+      // same ga4Item() as every earlier step, so GA4 can join a purchase back
+      // to the views and adds that led to it.
+      var cur = _payCurrency;
+      var gaItems = getCart().map(function (i) { return ga4Item(i, cur); });
       trackGA4('purchase', {
         transaction_id: p.id || p.order || '',
-        currency: 'ILS',
-        value: p.amount ? Number(p.amount) : getOrderTotal(),
-        shipping: getShippingIls(),
-        items: getCart().map(function (i) {
-          return { item_id: i.slug, item_name: i.name_en, price: i.price_ils, quantity: i.qty };
-        })
+        currency: cur,
+        value: p.amount ? Number(p.amount) : (Number(_payCharge.charge_amount) || getOrderTotalIn(cur)),
+        shipping: _payCharge.charge_shipping != null ? Number(_payCharge.charge_shipping) : getShippingIn(cur),
+        items: gaItems
       });
     }
     clearCart();

@@ -845,6 +845,27 @@ function _getConsent() {
   return m ? m[1] : null;
 }
 
+// Our own visits, so testing does not read as shoppers in the cart reports.
+// Opening any page with ?internal=1 marks this browser for good (?internal=0
+// unmarks it), and GA4's Internal traffic data filter drops what it sends.
+function _isInternalVisit() {
+  var q = location.search.match(/[?&]internal=([01])(?:&|$)/);
+  try {
+    if (q && q[1] === '1') localStorage.setItem('sa_internal', '1');
+    if (q && q[1] === '0') localStorage.removeItem('sa_internal');
+    return localStorage.getItem('sa_internal') === '1';
+  } catch (e) {
+    return !!(q && q[1] === '1');
+  }
+}
+
+// A local dev server is never a shopper. Events still queue in dataLayer, where
+// they can be inspected, but gtag.js is never loaded so nothing reaches GA4.
+function _isDevHost() {
+  var h = location.hostname;
+  return h === 'localhost' || h === '127.0.0.1' || h === '[::1]' || /\.(localhost|test)$/.test(h);
+}
+
 function loadGA4() {
   if (window.__ga4Loaded) return;
   window.__ga4Loaded = true;
@@ -854,7 +875,10 @@ function loadGA4() {
   // Purchases are shared with Google Ads to measure the ads (privacy.html,
   // Google Analytics and Google Ads). Google signals and ad personalization
   // stay off, so the visit is never used to build audiences or target ads.
-  gtag('config', GA4_ID, { allow_google_signals: false, allow_ad_personalization_signals: false });
+  var cfg = { allow_google_signals: false, allow_ad_personalization_signals: false };
+  if (_isInternalVisit()) cfg.traffic_type = 'internal';
+  gtag('config', GA4_ID, cfg);
+  if (_isDevHost()) return;
   var s = document.createElement('script');
   s.async = true;
   s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA4_ID;
@@ -916,11 +940,8 @@ document.addEventListener('click', function(e) {
     var n = c && c.querySelector('.product-card-name');
     trackGA4('whatsapp_click', { location: 'product_card', product_name: n ? n.textContent : '' });
   }
-  if (e.target.closest('.btn-details')) {
-    var c2 = e.target.closest('.product-card');
-    var n2 = c2 && c2.querySelector('.product-card-name');
-    trackGA4('view_details', { product_name: n2 ? n2.textContent : '' });
-  }
+  // Opening a product is reported as view_item by cart.js, which watches the
+  // modal itself: every Details button stops its click from bubbling up to here.
   if (e.target.closest('#modalOrderCta')) {
     var mn = document.getElementById('modalName');
     trackGA4('whatsapp_click', { location: 'product_modal', product_name: mn ? mn.textContent : '' });

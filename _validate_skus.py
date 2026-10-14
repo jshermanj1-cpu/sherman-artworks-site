@@ -314,7 +314,7 @@ def cart_ordering(validation):
         "sku: sku || ''",
         "SKU: ' + item.sku",
         "tray_sku",
-        "item_id: i.sku || i.slug",
+        "item_id: item.sku || item.slug",
     ):
         validation.check(required in text, f"cart ordering is missing required SKU logic: {required}")
     candlesticks = (ROOT / "candlesticks.html").read_text(encoding="utf-8")
