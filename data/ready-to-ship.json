@@ -1,0 +1,26 @@
+{
+  "_about": "Menorahs the studio has in stock and can ship right away. Used only for g:custom_label_0 in the merchant feeds (Hanukkah ads); never shown on the pages. Update when stock changes, then rerun _merchant_feed.py.",
+  "updated": "2026-10-14",
+  "ids": [
+    "silver-tone-pearl-white-rectangular-menorah",
+    "silver-tone-blue-rectangular-menorah",
+    "silver-tone-clear-rectangular-menorah",
+    "silver-tone-light-blue-rectangular-menorah",
+    "silver-tone-terracotta-rectangular-menorah",
+    "silver-tone-turquoise-rectangular-menorah",
+    "silver-tone-terracotta-half-moon-menorah",
+    "silver-tone-clear-half-moon-menorah",
+    "silver-tone-pearl-white-half-moon-menorah",
+    "silver-tone-emerald-green-trapezoid-menorah",
+    "gold-tone-pearl-white-rectangular-menorah",
+    "gold-tone-blue-rectangular-menorah",
+    "gold-tone-clear-rectangular-menorah",
+    "gold-tone-light-blue-rectangular-menorah",
+    "gold-tone-terracotta-rectangular-menorah",
+    "gold-tone-turquoise-rectangular-menorah",
+    "gold-tone-terracotta-half-moon-menorah",
+    "gold-tone-clear-half-moon-menorah",
+    "gold-tone-pearl-white-half-moon-menorah",
+    "gold-tone-emerald-green-trapezoid-menorah"
+  ]
+}

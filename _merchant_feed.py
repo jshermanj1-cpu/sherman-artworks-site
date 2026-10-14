@@ -22,6 +22,18 @@ Shipping is authoritative in the currency it is quoted in (35 ILS at home, 45
 USD abroad) and is never converted between them - see the same note in
 js/cart.js, where converting 35 ILS of Israeli shipping would invent a "$15"
 nobody charges.
+
+The Israeli feed speaks Hebrew. Merchant Center declares that source Hebrew,
+and until 2026-10-14 it carried English titles linking to English pages, so it
+barely matched Hebrew searches (107 impressions, 0 clicks in 28 days to 5 Oct).
+Its titles, descriptions, colours, materials and highlights now come from the
+Hebrew catalogue fields, and its links go to the /he/ twin of each page, which
+also always shows shekels. g:product_type stays English in both feeds: shoppers
+never see it, and Shopping campaigns subdivide by it, so one value per product
+keeps the two campaigns' product groups identical.
+
+g:custom_label_0 tells ready-to-ship menorahs apart from made-to-order ones for
+the Hanukkah ads (data/ready-to-ship.json, updated from the studio's stock).
 """
 
 import json
@@ -36,20 +48,22 @@ from _usd import sale_usd, usd_from_ils
 
 ROOT = Path(__file__).parent
 PRODUCTS_PATH = ROOT / "data" / "products.json"
+READY_PATH = ROOT / "data" / "ready-to-ship.json"
 BASE_URL = "https://shermanartworks.com"
 CDN = "https://res.cloudinary.com/doesupaf9/image/upload"
 
 
 class Market:
-    """One target country: where the feed goes, and what money it speaks."""
+    """One target country: where the feed goes, what money and language it speaks."""
 
-    def __init__(self, filename, country, currency, shipping, price, sale):
+    def __init__(self, filename, country, currency, shipping, price, sale, lang):
         self.filename = filename
         self.country = country
         self.currency = currency
         self.shipping = shipping  # "35.00 ILS", already in this market's money
         self._price = price
         self._sale = sale
+        self.lang = lang  # "he" or "en": titles, descriptions and landing pages
 
     @property
     def path(self):
@@ -66,10 +80,12 @@ class Market:
 MARKETS = [
     Market("merchant-feed.xml", "IL", "ILS", "35.00 ILS",
            lambda ils: f"{ils:.2f} ILS",
-           lambda ils: f"{sale_ils(ils):.2f} ILS"),
+           lambda ils: f"{sale_ils(ils):.2f} ILS",
+           "he"),
     Market("merchant-feed-us.xml", "US", "USD", "45.00 USD",
            lambda ils: f"{usd_from_ils(ils):.2f} USD",
-           lambda ils: f"{sale_usd(usd_from_ils(ils)):.2f} USD"),
+           lambda ils: f"{sale_usd(usd_from_ils(ils)):.2f} USD",
+           "en"),
 ]
 
 CATEGORY_META = {
@@ -98,9 +114,10 @@ def size_slug(label):
     return re.sub(r"[^a-z0-9]+", "-", str(label).lower()).strip("-")
 
 
-def product_link(product):
+def product_link(product, lang="en"):
     page = product["pages"][0]
-    return f"{BASE_URL}/{page}#{product['id']}"
+    prefix = "he/" if lang == "he" else ""
+    return f"{BASE_URL}/{prefix}{page}#{product['id']}"
 
 
 FEED_SUFFIX = " | Handmade in Israel"
@@ -235,7 +252,9 @@ def feed_highlights(product):
     """Plain facts for g:product_highlight (each under 150 characters, no promotional wording)."""
     name, cat = product["name_en"], product["category"]
     finish = _finish(product)
-    out = ["Handmade to order in our family studio in Israel"]
+    # Some menorahs are in stock (data/ready-to-ship.json), so theirs does not say "to order".
+    out = ["Handmade in our family studio in Israel" if cat == "hanukkah-menorahs"
+           else "Handmade to order in our family studio in Israel"]
     if cat == "candlesticks":
         out.append("Sold as a pair")
         if finish:
@@ -275,27 +294,145 @@ def feed_highlights(product):
     return out
 
 
+# ── Hebrew (the Israeli feed) ─────────────────────────────────────
+# Hebrew names already lead with what the thing is ("חנוכיה חצי עיגול
+# מזכוכית...", "זוג פמוטים מזכוכית..."), so the site's own name_he is the
+# title; feed_title's reordering exists only because English names lead with
+# the finish.
+
+FEED_SUFFIX_HE = " | עבודת יד מישראל"
+
+COLOR_HE = {
+    "Black/White": "שחור/לבן", "Gold/Red": "זהב/אדום", "White/Blue": "לבן/כחול",
+    "Blue-Green": "כחול-ירוק", "Multicolor": "צבעוני", "Red": "אדום",
+    "Burgundy": "בורדו", "Clear": "שקוף", "Black": "שחור", "White": "לבן",
+    "Blue": "כחול", "Green": "ירוק", "Orange": "כתום",
+}
+
+MATERIAL_HE = {
+    "Glass": "זכוכית", "Ceramic": "קרמיקה", "Horn": "קרן",
+    "Kudu horn": "קרן קודו", "Ram's horn": "קרן איל", "Oryx horn": "קרן ראם",
+    "925 silver plating": "ציפוי כסף 925", "Gold plating": "ציפוי זהב",
+}
+
+SHAPE_HE = {"half-moon": "חצי עיגול", "rectangular": "מלבן", "trapezoid": "טרפז"}
+TONE_HE = {"silver-tone": "בגוון כסף", "gold-tone": "בגוון זהב"}
+
+
+def he_units(text):
+    """cm -> ס״מ, as the /he/ pages write it ("33 × 27 × 3 ס״מ")."""
+    return re.sub(r"(\d)\s*cm\b", "\\1 ס״מ", text)
+
+
+def feed_title_he(product, size_text_he=None):
+    return product["name_he"] + (" - מידה " + size_text_he if size_text_he else "") + FEED_SUFFIX_HE
+
+
+def feed_color_he(product):
+    if product.get("color_he"):
+        return product["color_he"]
+    color = feed_color(product)
+    return COLOR_HE[color] if color else None
+
+
+def feed_material_he(product):
+    # A KeyError here means a new English material needs its Hebrew above;
+    # failing beats shipping English into the Hebrew feed.
+    return "/".join(MATERIAL_HE[part] for part in feed_material(product).split("/"))
+
+
+def feed_highlights_he(product):
+    """feed_highlights() in Hebrew, line for line."""
+    name, cat = product["name_en"], product["category"]
+    finish = _finish(product)
+    plating = None
+    if finish:
+        plating = "ציפוי כסף 925" if finish.startswith("925") else "ציפוי זהב"
+    out = ["נעשה בעבודת יד בסטודיו המשפחתי שלנו בישראל" if cat == "hanukkah-menorahs"
+           else "נעשה בעבודת יד לפי הזמנה בסטודיו המשפחתי שלנו בישראל"]
+    if cat == "candlesticks":
+        out.append("נמכרים כזוג")
+        if finish:
+            out.append("זכוכית ב%s" % plating)
+            out.append("בשלושה גבהים: S (14-18 ס״מ), M (19-22 ס״מ) ו-L (23-25 ס״מ)")
+        else:
+            out.append("זכוכית בלבד, בשיטה המסורתית של המשפחה שלנו")
+    elif cat == "kiddush-cups":
+        rim = "ציפוי כסף 925" if finish and finish.startswith("925") else "ציפוי זהב"
+        if name.endswith(" Plate"):
+            out.append("תחתית זכוכית בקוטר 15 ס״מ עם שוליים ב%s" % rim)
+            out.append("מותאמת לכוסות הקידוש שלנו בצבע ובגימור")
+        else:
+            out.append("כוס %s עם שפה ב%s" % ("קרמיקה" if "Ceramic" in name else "זכוכית", rim))
+            if "Ceramic" not in name:
+                out.append("יש תחתית זכוכית תואמת")
+    elif cat == "havdalah-sets":
+        out.append("ארבעה חלקים: כוס, קופסת בשמים, פמוט לנר ומגש")
+        out.append("זכוכית ב%s" % ("ציפוי כסף 925" if finish and finish.startswith("925") else "ציפוי זהב"))
+    elif cat == "trays-bowls":
+        if finish:
+            out.append("זכוכית ב%s" % plating)
+    elif cat == "hanukkah-menorahs":
+        out.append("צורת %s מזכוכית דו־צדדית בעבודת יד, %s (אורך × גובה × עומק)"
+                   % (SHAPE_HE[product["shape"]], he_units(product["measurements"])))
+        out.append("קנים ובסיס %s" % TONE_HE[product["finish"]])
+    elif cat == "shofars":
+        out.append("%s טבעית בעיטור יד בציפוי כסף 925" % ("קרן קודו" if "Kudu" in name else "קרן איל"))
+        if "Custom" in name:
+            out.append("עם סמל לבחירתכם וכיתוב לבחירה בעברית או באנגלית")
+    elif cat == "mezuzahs":
+        out.append("בית מזוזה בלבד: הקלף נרכש בנפרד")
+    if cat in ("shofars", "mezuzahs", "horn-goblets"):
+        out.append("לשמור ביובש, לנגב את הציפוי במטלית רכה ויבשה ולא להשתמש בחומר לניקוי כסף")
+    elif finish:
+        out.append("לשטוף ביד בלבד ולא להשתמש בחומר לניקוי כסף על הציפוי")
+    return out
+
+
+def load_ready_to_ship(products):
+    """Menorah ids the studio has in stock now (data/ready-to-ship.json)."""
+    if not READY_PATH.exists():
+        return set()
+    ids = set(json.loads(READY_PATH.read_text(encoding="utf-8"))["ids"])
+    known = {p["id"] for p in products if p["category"] == "hanukkah-menorahs"}
+    unknown = sorted(ids - known)
+    if unknown:
+        raise ValueError(f"data/ready-to-ship.json names unknown menorah ids: {unknown}")
+    return ids
+
+
+READY = set()
+
+
+def stock_label(product):
+    """g:custom_label_0 for the Hanukkah ads: menorahs only."""
+    if product["category"] != "hanukkah-menorahs":
+        return None
+    return "ready to ship" if product["id"] in READY else "made to order"
+
+
 def item_lines(product, size, market):
     product_type, google_category = CATEGORY_META[product["category"]]
+    hebrew = market.lang == "he"
     if size:
         item_id = f"{product['id']}-{size_slug(size['label'])}"
-        size_text = f"{size['label']} ({size['range_cm']} cm)"
-        title = feed_title(product, size_text)
+        size_text = (f"{size['label']} ({size['range_cm']} ס״מ)" if hebrew
+                     else f"{size['label']} ({size['range_cm']} cm)")
         price = size["price_ils"]
         mpn = size["sku"]
     else:
         item_id = product["id"]
         size_text = None
-        title = feed_title(product)
         price = product["price_ils"]
         mpn = product["sku"]
+    title = feed_title_he(product, size_text) if hebrew else feed_title(product, size_text)
 
     lines = [
         "  <item>",
         tag("id", item_id),
         tag("title", title),
-        tag("description", product["description_en"]),
-        tag("link", product_link(product)),
+        tag("description", product["description_he" if hebrew else "description_en"]),
+        tag("link", product_link(product, market.lang)),
         tag("image_link", f"{CDN}/w_1200,q_auto:good/{product['photos'][0]}.jpg"),
     ]
     for photo in product["photos"][1:]:
@@ -329,12 +466,15 @@ def item_lines(product, size, market):
         lines.append(tag("item_group_id", group_id))
     if size_text:
         lines.append(tag("size", size_text))
-    color = feed_color(product)
+    color = feed_color_he(product) if hebrew else feed_color(product)
     if color:
         lines.append(tag("color", color))
-    lines.append(tag("material", feed_material(product)))
-    for highlight in feed_highlights(product):
+    lines.append(tag("material", feed_material_he(product) if hebrew else feed_material(product)))
+    for highlight in (feed_highlights_he(product) if hebrew else feed_highlights(product)):
         lines.append(tag("product_highlight", highlight))
+    label = stock_label(product)
+    if label:
+        lines.append(tag("custom_label_0", label))
 
     lines.extend(
         [
@@ -412,6 +552,10 @@ def write_feed(products, market):
 def main():
     products = json.loads(PRODUCTS_PATH.read_text(encoding="utf-8"))
     validate(products)
+    for product in products:
+        if len(feed_highlights_he(product)) != len(feed_highlights(product)):
+            raise ValueError(f"{product['id']}: Hebrew highlights out of step with the English ones")
+    READY.update(load_ready_to_ship(products))
     for market in MARKETS:
         write_feed(products, market)
 

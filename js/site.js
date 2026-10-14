@@ -359,7 +359,7 @@ const T_SITE = {
     cart_item_added:     'Item added to cart',
     cart_item_removed:   'Item removed from cart',
     consent_sr:          'Cookie consent',
-    consent_text:        'We use anonymous analytics cookies to understand how visitors use the site - no ads, no cross-site tracking.',
+    consent_text:        'We use analytics cookies to understand how visitors use the site and to see whether our Google ads lead to orders. They are never used to target ads at you.',
     consent_more:        'Privacy Policy',
     consent_accept:      'Accept',
     consent_decline:     'Decline',
@@ -463,7 +463,7 @@ const T_SITE = {
     cart_item_added:     'פריט נוסף לסל',
     cart_item_removed:   'פריט הוסר מהסל',
     consent_sr:          'הסכמה לשימוש בעוגיות',
-    consent_text:        'אנחנו משתמשים בעוגיות אנליטיקה אנונימיות כדי להבין איך מבקרים משתמשים באתר - ללא פרסומות וללא מעקב בין אתרים.',
+    consent_text:        'אנחנו משתמשים בעוגיות אנליטיקה כדי להבין איך מבקרים משתמשים באתר ולבדוק אם המודעות שלנו בגוגל מביאות הזמנות. הן לעולם לא משמשות להצגת פרסומות מותאמות אליכם.',
     consent_more:        'מדיניות פרטיות',
     consent_accept:      'אישור',
     consent_decline:     'לא תודה',
@@ -849,7 +849,10 @@ function loadGA4() {
   window.dataLayer = window.dataLayer || [];
   window.gtag = function () { window.dataLayer.push(arguments); };
   gtag('js', new Date());
-  gtag('config', GA4_ID);
+  // Purchases are shared with Google Ads to measure the ads (privacy.html,
+  // Google Analytics and Google Ads). Google signals and ad personalization
+  // stay off, so the visit is never used to build audiences or target ads.
+  gtag('config', GA4_ID, { allow_google_signals: false, allow_ad_personalization_signals: false });
   var s = document.createElement('script');
   s.async = true;
   s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA4_ID;
@@ -885,7 +888,7 @@ function initConsent() {
   div.setAttribute('aria-labelledby', 'consentBannerTitle');
   div.innerHTML =
     '<p class="sr-only" id="consentBannerTitle" data-t="consent_sr">Cookie consent</p>' +
-    '<p class="consent-text"><span data-t="consent_text">We use anonymous analytics cookies to understand how visitors use the site - no ads, no cross-site tracking.</span> ' +
+    '<p class="consent-text"><span data-t="consent_text">We use analytics cookies to understand how visitors use the site and to see whether our Google ads lead to orders. They are never used to target ads at you.</span> ' +
     '<a href="privacy.html" data-t="consent_more">Privacy Policy</a></p>' +
     '<div class="consent-actions">' +
       '<button type="button" class="consent-btn consent-accept" id="consentAcceptBtn" data-t="consent_accept" onclick="acceptConsent()">Accept</button>' +
