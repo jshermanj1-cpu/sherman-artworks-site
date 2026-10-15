@@ -34,6 +34,8 @@ keeps the two campaigns' product groups identical.
 
 g:custom_label_0 tells ready-to-ship menorahs apart from made-to-order ones for
 the Hanukkah ads (data/ready-to-ship.json, updated from the studio's stock).
+g:custom_label_1 is "menorah" on every menorah, so a campaign inventory filter
+(one value per condition, no OR) can pick out all of them at once.
 """
 
 import json
@@ -489,6 +491,7 @@ def item_lines(product, size, market):
     label = stock_label(product)
     if label:
         lines.append(tag("custom_label_0", label))
+        lines.append(tag("custom_label_1", "menorah"))
 
     lines.extend(
         [
