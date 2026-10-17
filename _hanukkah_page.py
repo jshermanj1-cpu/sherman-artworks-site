@@ -19,8 +19,12 @@ What it owns, each between marker comments so nothing around it is touched:
                             the landing page: its own title, hero, breadcrumb,
                             cards and ProductGroups, and data-shape on the grid
                             so the runtime shows only that shape
-  index.html                the Hanukkah category card's image
+  index.html                the Hanukkah category card's image and its "from" price
   every English page        the shape links under Hanukkah in the phone menu
+
+While the Hanukkah sale runs (_hanukkah_sale.py), the meta descriptions and the
+homepage card lead with the sale price. Rerun the chain after the sale ends and
+they go back to the regular copy, like the card prices and the JSON-LD.
 
 A menorah with no photo yet is held back: products.json marks it
 "active": false, and it gets no static card, no JSON-LD and no feed item until
@@ -31,7 +35,7 @@ the page can be previewed while photos are still being shot.
     python _hanukkah_page.py --check   report only, exit 1 if anything is stale
 """
 
-from _hanukkah_sale import price_html, offer_fields
+from _hanukkah_sale import price_html, offer_fields, running, sale
 import html
 import json
 import re
@@ -99,8 +103,6 @@ SHAPES = {
         "file": "hanukkah-menorahs-half-moon.html",
         "cover": "silver-tone-blue-half-moon-menorah",
         "title": "Half-Moon Glass Hanukkah Menorahs | Sherman Art Works",
-        "desc": "Handmade half-moon Hanukkah menorahs from Israel, in double-sided glass in eight colors "
-                "with silver-tone or gold-tone sockets and base. Made to order and shipped worldwide.",
         "headline": "Half-Moon Menorahs",
         "subtitle": "Double-sided handmade glass in a half-moon shape, in eight colors.",
         "body": "Choose silver-tone or gold-tone sockets and base. Each menorah is shaped by hand in our studio in Israel.",
@@ -115,8 +117,6 @@ SHAPES = {
         "file": "hanukkah-menorahs-rectangular.html",
         "cover": "silver-tone-blue-rectangular-menorah",
         "title": "Rectangular Glass Hanukkah Menorahs | Sherman Art Works",
-        "desc": "Handmade rectangular Hanukkah menorahs from Israel, in double-sided glass in eight colors "
-                "with silver-tone or gold-tone sockets and base. Made to order and shipped worldwide.",
         "headline": "Rectangular Menorahs",
         "subtitle": "Double-sided handmade glass in a rectangular shape, in eight colors.",
         "body": "Choose silver-tone or gold-tone sockets and base. Each menorah is shaped by hand in our studio in Israel.",
@@ -131,8 +131,6 @@ SHAPES = {
         "file": "hanukkah-menorahs-trapezoid.html",
         "cover": "silver-tone-blue-trapezoid-menorah",
         "title": "Trapezoid Glass Hanukkah Menorahs | Sherman Art Works",
-        "desc": "Handmade trapezoid Hanukkah menorahs from Israel, in double-sided glass in eight colors "
-                "with silver-tone or gold-tone sockets and base. Made to order and shipped worldwide.",
         "headline": "Trapezoid Menorahs",
         "subtitle": "Double-sided handmade glass in a trapezoid shape, in eight colors.",
         "body": "Choose silver-tone or gold-tone sockets and base. Each menorah is shaped by hand in our studio in Israel.",
@@ -143,6 +141,18 @@ SHAPES = {
         },
     },
 }
+
+# Meta descriptions, kept to 155 characters so results do not cut them off. While
+# the sale runs they lead with its price ({price}); afterwards the regular copy.
+# Hebrew ones live in _he_pages.py's META, switched the same way.
+LANDING_DESC = ("Handmade half-moon, rectangular and trapezoid glass Hanukkah menorahs from Israel "
+                "in eight colors, silver-tone or gold-tone sockets. Shipped worldwide.")
+LANDING_DESC_SALE = ("Handmade glass Hanukkah menorahs from Israel: half-moon, rectangular and trapezoid, "
+                     "in eight colors. Hanukkah price {price} until December 4.")
+SHAPE_DESC = ("Handmade {shape} Hanukkah menorahs from Israel in double-sided glass, eight colors, "
+              "with silver-tone or gold-tone sockets and base. Shipped worldwide.")
+SHAPE_DESC_SALE = ("Handmade {shape} glass Hanukkah menorahs from Israel in eight colors, silver-tone or "
+                   "gold-tone sockets. Hanukkah price {price} until December 4.")
 
 # The shape of _subcategory_pages.CATEGORIES that its switcher and menu helpers read.
 NAV = {
@@ -205,7 +215,6 @@ def js_array(products):
 
 def card(p):
     name = html.escape(p["name_en"])
-    ils = p["price_ils"]
     return (
         f'    <article class="product-card" id="{p["id"]}">\n'
         '      <div class="product-card-img-wrap">\n'
@@ -285,6 +294,34 @@ def cover(products, preferred=COVER):
     return products[0]["photos"][0] if products else None
 
 
+def sale_price_text(products):
+    """The sale price as the descriptions quote it, e.g. "₪1,000 ($336)"."""
+    p = min(live(products), key=lambda item: item["price_ils"])
+    return f'₪{sale(p["price_ils"], p["id"]):,} (${sale(usd_from_ils(p["price_ils"]), p["id"])})'
+
+
+def meta_desc(products, shape=None):
+    on_sale = bool(running() and live(products))
+    if shape:
+        tpl = SHAPE_DESC_SALE if on_sale else SHAPE_DESC
+    else:
+        tpl = LANDING_DESC_SALE if on_sale else LANDING_DESC
+    desc = tpl.format(shape=shape or "", price=sale_price_text(products) if on_sale else "")
+    if len(desc) > 155:
+        raise RuntimeError(f"meta description is {len(desc)} characters, over 155: {desc}")
+    return desc
+
+
+def set_descriptions(out, desc, label):
+    """The description, og:description and twitter:description, all the same."""
+    value = html.escape(desc, quote=True)
+    for attr, key in (("name", "description"), ("property", "og:description"), ("name", "twitter:description")):
+        tag = f'<meta {attr}="{key}" content="{value}" />'
+        out = replace_one(out, rf'<meta {attr}="{re.escape(key)}" content="[^"]*" />',
+                          lambda m, v=tag: v, f"{label} {key}")
+    return out
+
+
 def between(text, start, end, inner, label):
     """Replace what sits between two marker comments. Raises if they are missing."""
     pat = re.compile(re.escape(start) + r"\n.*?" + re.escape(end), re.S)
@@ -333,7 +370,7 @@ def build_page(src, products):
     for attr, key in (("property", "og:image"), ("name", "twitter:image")):
         out = re.sub(rf'<meta {attr}="{key}" content="[^"]*" />',
                      f'<meta {attr}="{key}" content="{share}" />', out, count=1)
-    return out
+    return set_descriptions(out, meta_desc(products), PAGE)
 
 
 def build_shape_page(landing, products, shape):
@@ -346,17 +383,13 @@ def build_shape_page(landing, products, shape):
     photo = cover(mine, cfg["cover"])
     share = image(photo, "w_1200,h_630,c_pad,b_rgb:faf7f2,q_auto,f_auto") if photo else ""
     title = html.escape(cfg["headline"] + " | Sherman Art Works", quote=True)
-    desc = html.escape(cfg["desc"], quote=True)
     out = landing
     for pattern, value, label in (
         (r"<title>.*?</title>", f"<title>{html.escape(cfg['title'])}</title>", "title"),
-        (r'<meta name="description" content="[^"]*" />', f'<meta name="description" content="{desc}" />', "description"),
         (r'<meta property="og:title" content="[^"]*" />', f'<meta property="og:title" content="{title}" />', "og title"),
-        (r'<meta property="og:description" content="[^"]*" />', f'<meta property="og:description" content="{desc}" />', "og description"),
         (r'<meta property="og:url" content="[^"]*" />', f'<meta property="og:url" content="{url}" />', "og url"),
         (r'<meta property="og:image" content="[^"]*" />', f'<meta property="og:image" content="{share}" />', "og image"),
         (r'<meta name="twitter:title" content="[^"]*" />', f'<meta name="twitter:title" content="{title}" />', "twitter title"),
-        (r'<meta name="twitter:description" content="[^"]*" />', f'<meta name="twitter:description" content="{desc}" />', "twitter description"),
         (r'<meta name="twitter:image" content="[^"]*" />', f'<meta name="twitter:image" content="{share}" />', "twitter image"),
         (r'<link rel="canonical" href="[^"]*" />', f'<link rel="canonical" href="{url}" />', "canonical"),
         (r'<link rel="alternate" hreflang="en" href="[^"]*" />', f'<link rel="alternate" hreflang="en" href="{url}" />', "alternate en"),
@@ -366,6 +399,7 @@ def build_shape_page(landing, products, shape):
     ):
         # A function, not a template: a value with a backslash or "\1" stays literal.
         out = replace_one(out, pattern, lambda m, v=value: v, f"{name} {label}")
+    out = set_descriptions(out, meta_desc(products, shape), name)
 
     out = between(out, "<!-- hanukkah:jsonld -->", "  <!-- /hanukkah:jsonld -->", jsonld(mine), name)
     crumbs = {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
@@ -410,13 +444,27 @@ def build_shape_page(landing, products, shape):
 
 
 def build_index(src, products):
-    photo = cover(live(products))
+    shown = live(products)
+    photo = cover(shown)
     src_attr = image(photo, "w_600,h_600,c_pad,b_rgb:faf7f2,q_auto,f_auto") if photo else "data:,"
     pat = re.compile(r'(<a href="hanukkah-menorahs\.html" class="cat-card">\s*'
                      r'<div class="cat-card-img-wrap">\s*<img [^>]*?src=")[^"]*(")', re.S)
     if not pat.search(src):
         raise RuntimeError("index.html: Hanukkah category card not found")
-    return pat.sub(lambda m: m.group(1) + src_attr + m.group(2), src, count=1)
+    src = pat.sub(lambda m: m.group(1) + src_attr + m.group(2), src, count=1)
+    if not shown:
+        return src
+    # data-min-ils stays the regular price: js/site.js applies the sale to it at
+    # runtime and strikes the old figure. The static text is what crawlers read,
+    # so it carries the price a shopper pays today.
+    low = min(shown, key=lambda item: item["price_ils"])
+    regular = low["price_ils"]
+    ils, usd = sale(regular, low["id"]), sale(usd_from_ils(regular), low["id"])
+    pat = re.compile(r'(<a href="hanukkah-menorahs\.html" class="cat-card">.*?<span class="cat-card-from" data-min-ils=")'
+                     r'\d+(">)[^<]*(</span>)', re.S)
+    if not pat.search(src):
+        raise RuntimeError("index.html: Hanukkah card price not found")
+    return pat.sub(lambda m: f"{m.group(1)}{regular}{m.group(2)}from ₪{ils:,} · ${usd}{m.group(3)}", src, count=1)
 
 
 def build_js(src, products):
