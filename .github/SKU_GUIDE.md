@@ -28,7 +28,7 @@ similar suffix to a product with one sellable configuration.
 |---|---:|---:|
 | Candlesticks | `CS` | `035` |
 | Horn Goblets | `HG` | `004` |
-| Kiddush Cups | `KC` | `035` |
+| Kiddush Cups | `KC` | `039` |
 | Trays & Bowls | `TB` | `016` |
 | Mezuzahs | `MZ` | `005` |
 | Shofars | `SH` | `023` |
@@ -208,6 +208,10 @@ configurations. They are permanent once migrated into the product data.
 | `SAW-KC-032` | `gold-plated-red-kiddush-cup-plate` | Gold-Plated Red Kiddush Cup Plate | None |
 | `SAW-KC-033` | `gold-plated-orange-kiddush-cup-plate` | Gold-Plated Orange Kiddush Cup Plate | None |
 | `SAW-KC-034` | `gold-plated-black-kiddush-cup-plate` | Gold-Plated Black Kiddush Cup Plate | None |
+| `SAW-KC-035` | `orange-tall-glass-cup` | 925 Silver-Plated Tall Orange Glass Kiddush Cup | None |
+| `SAW-KC-036` | `white-curved-tall-glass-cup` | 925 Silver-Plated Tall Curved White Glass Kiddush Cup | None |
+| `SAW-KC-037` | `gold-plated-white-kiddush-cup-plate` | Gold-Plated White Kiddush Cup Plate | None |
+| `SAW-KC-038` | `gold-plated-blue-green-kiddush-cup-plate` | Gold-Plated Blue-Green Kiddush Cup Plate | None |
 
 ### Trays & Bowls (`TB`)
 
