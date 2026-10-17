@@ -150,6 +150,8 @@ ALT_SUPP = {
     # faq.html kashrut certificate
     "Kosher certificate for the Sherman Art Works shofar supplier, issued by the Chief Rabbinate of Tel Aviv-Yafo for 2025/26":
         "אישור כשרות של ספק השופרות של שרמן ארט וורקס, מטעם הרבנות הראשית תל אביב-יפו לשנת 2025/26",
+    # hidden product-modal image: placeholder alt until openModal() sets the product name
+    "Product photo": "תמונת מוצר",
 }
 
 # Hebrew <title> + meta description per page (authored; concise, <60 / <155 chars).
