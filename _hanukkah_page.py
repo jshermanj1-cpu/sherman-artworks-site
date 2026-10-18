@@ -145,14 +145,15 @@ SHAPES = {
 # Meta descriptions, kept to 155 characters so results do not cut them off. While
 # the sale runs they lead with its price ({price}); afterwards the regular copy.
 # Hebrew ones live in _he_pages.py's META, switched the same way.
-LANDING_DESC = ("Handmade half-moon, rectangular and trapezoid glass Hanukkah menorahs from Israel "
-                "in eight colors, silver-tone or gold-tone sockets. Shipped worldwide.")
-LANDING_DESC_SALE = ("Handmade glass Hanukkah menorahs from Israel: half-moon, rectangular and trapezoid, "
-                     "in eight colors. Hanukkah price {price} until December 4.")
-SHAPE_DESC = ("Handmade {shape} Hanukkah menorahs from Israel in double-sided glass, eight colors, "
-              "with silver-tone or gold-tone sockets and base. Shipped worldwide.")
-SHAPE_DESC_SALE = ("Handmade {shape} glass Hanukkah menorahs from Israel in eight colors, silver-tone or "
-                   "gold-tone sockets. Hanukkah price {price} until December 4.")
+# "Modern" and "colorful" are the words shoppers type; the pages never said them.
+LANDING_DESC = ("Modern, colorful handmade glass Hanukkah menorahs from Israel: half-moon, rectangular "
+                "and trapezoid, silver-tone or gold-tone sockets. Shipped worldwide.")
+LANDING_DESC_SALE = ("Modern, colorful handmade glass Hanukkah menorahs from Israel in three shapes and "
+                     "eight colors. Hanukkah price {price} until December 4.")
+SHAPE_DESC = ("Modern {shape} Hanukkah menorahs handmade in Israel of double-sided glass, eight colors, "
+              "silver-tone or gold-tone sockets and base. Shipped worldwide.")
+SHAPE_DESC_SALE = ("Modern {shape} glass Hanukkah menorahs, handmade in Israel in eight colors. "
+                   "Hanukkah price {price} until December 4.")
 
 # The shape of _subcategory_pages.CATEGORIES that its switcher and menu helpers read.
 NAV = {

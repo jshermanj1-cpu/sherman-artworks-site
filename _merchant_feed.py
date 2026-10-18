@@ -258,6 +258,31 @@ def feed_product_type(product):
     return " > ".join(x for x in ("Judaica", top, line) if x)
 
 
+# Clear and pearl white glass is not "colorful"; every other menorah color is.
+PLAIN_MENORAH_COLORS = {"Clear", "Pearl White"}
+
+
+def feed_description(product, hebrew):
+    """The catalogue description, plus for menorahs the facts and words shoppers
+    search with (modern, colorful, hanukkiah, kosher layout, candles or oil)."""
+    base = product["description_he" if hebrew else "description_en"]
+    if product["category"] != "hanukkah-menorahs":
+        return base
+    colorful = product.get("color_en") not in PLAIN_MENORAH_COLORS
+    if hebrew:
+        lead = "חנוכייה מודרנית וצבעונית מזכוכית" if colorful else "חנוכייה מודרנית מזכוכית"
+        extra = (f"{lead}: שמונה נרות בשורה ישרה ובגובה אחד, והשמש מופרד מהם. "
+                 "מתאימה לנרות חנוכה רגילים, ואפשר להניח בקנים כוסיות שמן. "
+                 "הבסיס עומד יציב גם על אדן חלון צר. כל חנוכיה נעשית בעבודת יד, ולכן אין שתיים זהות לגמרי.")
+    else:
+        lead = "A modern, colorful glass" if colorful else "A modern glass"
+        extra = (f"{lead} Hanukkah menorah (hanukkiah, or Chanukah menorah): eight lights in a straight row "
+                 "at one height, with the shamash set apart. It takes standard Hanukkah candles, or oil cups "
+                 "in the sockets, and the base stands steadily on a narrow windowsill. Each piece is handmade, "
+                 "so no two are exactly alike.")
+    return base + " " + extra
+
+
 def feed_highlights(product):
     """Plain facts for g:product_highlight (each under 150 characters, no promotional wording)."""
     name, cat = product["name_en"], product["category"]
@@ -294,6 +319,8 @@ def feed_highlights(product):
         out.append("%s shape in double-sided handmade glass, %s (length × height × depth)"
                    % (SHAPE[product["shape"]], product["measurements"]))
         out.append("%s sockets and base" % TONE[product["finish"]].capitalize())
+        out.append("Eight lights in a straight row at one height, with the shamash set apart")
+        out.append("Takes standard Hanukkah candles, or oil cups in the sockets")
     elif cat == "shofars":
         out.append("Natural %s decorated by hand in 925 silver" % ("kudu horn" if "Kudu" in name else "ram's horn"))
         if "Custom" in name:
@@ -392,6 +419,8 @@ def feed_highlights_he(product):
         out.append("צורת %s מזכוכית דו־צדדית בעבודת יד, %s (אורך × גובה × עומק)"
                    % (SHAPE_HE[product["shape"]], he_units(product["measurements"])))
         out.append("קנים ובסיס %s" % TONE_HE[product["finish"]])
+        out.append("שמונה נרות בשורה ישרה ובגובה אחד, והשמש מופרד מהם")
+        out.append("מתאימה לנרות חנוכה רגילים או לכוסיות שמן בקנים")
     elif cat == "shofars":
         out.append("%s טבעית בעיטור יד בציפוי כסף 925" % ("קרן קודו" if "Kudu" in name else "קרן איל"))
         if "Custom" in name:
@@ -447,7 +476,7 @@ def item_lines(product, size, market):
         "  <item>",
         tag("id", item_id),
         tag("title", title),
-        tag("description", product["description_he" if hebrew else "description_en"]),
+        tag("description", feed_description(product, hebrew)),
         tag("link", product_link(product, market.lang)),
         tag("image_link", f"{CDN}/w_1200,q_auto:good/{product['photos'][0]}.jpg"),
     ]
