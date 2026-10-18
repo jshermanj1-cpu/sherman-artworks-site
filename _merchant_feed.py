@@ -304,7 +304,7 @@ def feed_highlights(product):
         rim = "925 silver-plated" if finish and finish.startswith("925") else "gold-plated"
         if name.endswith(" Plate"):
             out.append("15 cm glass plate with a %s rim" % rim)
-            out.append("Made to match our Kiddush cups in colour and finish")
+            out.append("Made to match our Kiddush cups in color and finish")
         else:
             out.append(("Ceramic" if "Ceramic" in name else "Glass") + " cup with a %s rim" % rim)
             if "Ceramic" not in name:

@@ -864,7 +864,7 @@ function buildCheckoutWaLink() {
   var addr = getShippingAddress();
   var addrLabels = l === 'he'
     ? { fname: 'שם פרטי', lname: 'שם משפחה', email: 'אימייל', phone: 'טלפון', street: 'רחוב', city: 'עיר', state: 'מחוז', zip: 'מיקוד', country: 'מדינה' }
-    : { fname: 'First name', lname: 'Last name', email: 'Email', phone: 'Phone', street: 'Street', city: 'City', state: 'State / Province', zip: 'Postcode', country: 'Country' };
+    : { fname: 'First name', lname: 'Last name', email: 'Email', phone: 'Phone', street: 'Street', city: 'City', state: 'State / Province', zip: 'ZIP / Postal code', country: 'Country' };
   var PICKUP_FIELDS = ['fname', 'lname', 'email', 'phone'];
   var addrLines = (pickup ? PICKUP_FIELDS : ADDR_FIELDS).filter(function (f) { return addr[f]; })
     .map(function (f) { return '   ' + addrLabels[f] + ': ' + addr[f]; });

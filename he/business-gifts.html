@@ -46,7 +46,7 @@
 <meta content="https://shermanartworks.com/he/business-gifts.html" property="og:url"/>
 <meta content="summary_large_image" name="twitter:card"/>
 <meta content="Business Gifts - Sherman Art Works" name="twitter:title"/>
-<meta content="Custom shofars and handmade glass corporate gifts from Sherman Art Works. Made to order in Israel with personalisation. Worldwide shipping." name="twitter:description"/>
+<meta content="Custom shofars and handmade glass corporate gifts from Sherman Art Works. Made to order in Israel with personalization. Worldwide shipping." name="twitter:description"/>
 <meta content="https://res.cloudinary.com/doesupaf9/image/upload/w_1200,h_630,c_pad,b_rgb:faf7f2,q_auto,f_auto/goblets-jerusalem-menorah_xms7et.jpg" name="twitter:image"/>
 <meta content="he_IL" property="og:locale"/></head>
 <body>
@@ -372,16 +372,16 @@
 </div>
 </footer>
 <script src="/js/site.js?v=20261014e"></script>
-<script src="/js/cart.js?v=20261014e"></script>
+<script src="/js/cart.js?v=20261018a"></script>
 <script src="/js/shofar-options.js"></script>
 <script>const T_PAGE = {
     en: {
       guide_tag:   'Before You Order',
       guide_title: 'About Business Gifts',
-      guide_q1:    'Can the gifts be personalised?',
-      guide_a1:    'Yes. Custom shofars and handmade glass gifts can be engraved with a symbol of your choice and an inscription in Hebrew or English, so each piece carries your organisation\'s name or message.',
+      guide_q1:    'Can the gifts be personalized?',
+      guide_a1:    'Yes. Custom shofars and handmade glass gifts can be engraved with a symbol of your choice and an inscription in Hebrew or English, so each piece carries your organization\'s name or message.',
       guide_q2:    'Do you take corporate and bulk orders?',
-      guide_a2:    'Yes. The gifts are made to order for synagogues, Jewish organisations and companies. For quantities and a quote, contact us on WhatsApp or by email; we reply within 24 hours.',
+      guide_a2:    'Yes. The gifts are made to order for synagogues, Jewish organizations and companies. For quantities and a quote, contact us on WhatsApp or by email; we reply within 24 hours.',
       guide_q3:    'What is the lead time?',
       guide_a3:    'Custom gifts are made to order, with delivery within up to 30 business days and usually sooner. Shipping is 35 NIS within Israel and 45 USD internationally.',
       nav_shop:    'Shop',
@@ -420,14 +420,14 @@
       modal_shipping_link: 'Shipping & returns policy',
       sec_custom_tag: 'Made to Order',
       sec_custom_title: 'Custom Shofars',
-      sec_custom_sub: 'Order your shofar with a personalised symbol and inscription (Hebrew/English).',
-      personalise_btn: 'Personalise',
+      sec_custom_sub: 'Order your shofar with a personalized symbol and inscription (Hebrew/English).',
+      personalise_btn: 'Personalize',
       custom_symbol_label: 'Symbol',
       custom_text_label: 'Inscription',
       custom_text_hint: '(optional, up to 10 characters, עברית/English)',
       custom_symbol_required: 'Please select a symbol to continue.',
 
-      about_tag:   'Personalised Orders',
+      about_tag:   'Personalized Orders',
       about_title: 'About Our Business Gifts',
       about_body:  'We have crafted bespoke gift sets for weddings, end-of-year corporate gifts, conference welcome packages and recognition awards. Each piece can carry your logo or a personal inscription, and we handle worldwide shipping ourselves. Tell us what you need, we will put a proposal together within 48 hours.',
 
@@ -522,7 +522,7 @@ const PRODUCTS = [
     "sku": "SAW-SH-001",
     "name_en": "925 Silver-Plated Custom Ram's Horn Shofar, Symbol & Text",
     "name_he": "שופר איל בציפוי כסף 925 מותאם אישית, סמל וטקסט",
-    "description_en": "Ram's-horn shofar plated in 925 silver and personalised with your choice of symbol and an optional text inscription (Hebrew/English). Made to order in our studio in Israel.",
+    "description_en": "Ram's-horn shofar plated in 925 silver and personalized with your choice of symbol and an optional text inscription (Hebrew/English). Made to order in our studio in Israel.",
     "description_he": "שופר מקרן איל מעוטר בכסף 925, מותאם אישית עם בחירת סמל וכיתוב אישי (עברית/English). מיוצר לפי הזמנה בסטודיו שלנו בישראל.",
     "measurements": "",
     "price_ils": 817,
@@ -536,7 +536,7 @@ const PRODUCTS = [
     "sku": "SAW-SH-022",
     "name_en": "925 Silver-Plated Custom Kudu Shofar, Symbol & Text",
     "name_he": "שופר קודו בציפוי כסף 925 מותאם אישית, סמל וטקסט",
-    "description_en": "Kudu-horn shofar plated in 925 silver and personalised with your choice of symbol and an optional text inscription (Hebrew/English). Made to order in our studio in Israel.",
+    "description_en": "Kudu-horn shofar plated in 925 silver and personalized with your choice of symbol and an optional text inscription (Hebrew/English). Made to order in our studio in Israel.",
     "description_he": "שופר מקרן קודו מעוטר בכסף 925, מותאם אישית עם בחירת סמל וכיתוב אישי (עברית/English). מיוצר לפי הזמנה בסטודיו שלנו בישראל.",
     "measurements": "",
     "price_ils": 1427,
@@ -564,7 +564,7 @@ function waLinkForProduct(p) {
 }
 function emailLinkForProduct(p) {
   const name = p.name_en;
-  const subject = encodeURIComponent(`Enquiry: ${name}`);
+  const subject = encodeURIComponent(`Inquiry: ${name}`);
   const body = encodeURIComponent(`Hi,\n\nI'd like to know more about "${name}".\n\nPlease send me any further info you have.\n\nThanks.`);
   return `mailto:shermanartworks@gmail.com?subject=${subject}&body=${body}`;
 }
@@ -695,7 +695,7 @@ function buildCard(product, idx) {
           <div class="product-card-secondary-actions">
             <button class="btn-details" onclick="event.stopPropagation();openModal(${idx})">${T_PAGE[l].view_details || 'View Details'}</button>
             ${product.personalisable
-              ? `<button class="btn-order" onclick="event.stopPropagation();openModal(${idx})"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg><span>${T_PAGE[l].personalise_btn || 'Personalise'}</span></button>`
+              ? `<button class="btn-order" onclick="event.stopPropagation();openModal(${idx})"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg><span>${T_PAGE[l].personalise_btn || 'Personalize'}</span></button>`
               : `<a class="btn-order" target="_blank" rel="noopener noreferrer" href="${waLinkForProduct(product)}" onclick="event.stopPropagation()"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg><span>${T_PAGE[l].order_btn || 'Order'}</span></a>`
             }
           </div>

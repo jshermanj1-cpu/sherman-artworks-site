@@ -39,7 +39,7 @@ SIZE_MIN = {
 PAGES = {
     "custom": {
         "file": "shofars-custom.html",
-        "title": "Custom Shofars - Personalised Ram's & Kudu | Sherman Art Works",
+        "title": "Custom Shofars - Personalized Ram's & Kudu | Sherman Art Works",
         "desc": "Order a custom shofar - ram's horn or kudu, hand-plated in 925 silver and engraved with the symbol you choose plus an optional Hebrew or English inscription.",
         "og_title": "Custom Shofars, Sherman Art Works",
         "hero_headline": "Custom Shofars",
@@ -52,11 +52,11 @@ PAGES = {
     "rams": {
         "file": "shofars-rams.html",
         "title": "Ram's Horn Shofars, Hand-Plated in 925 Silver | Sherman Art Works",
-        "desc": "Ram's-horn shofars from 30 to 65 cm, each hand-plated in 925 silver in our studio in Israel. Ten designs plus a fully personalised option.",
+        "desc": "Ram's-horn shofars from 30 to 65 cm, each hand-plated in 925 silver in our studio in Israel. Ten designs plus a fully personalized option.",
         "og_title": "Ram's Horn Shofars, Sherman Art Works",
         "hero_headline": "Ram's Horn Shofars",
         "hero_subtitle": "Plated by hand in 925 silver.",
-        "hero_body": "Natural ram's-horn shofars from 30 to 65 cm, each hand-plated in 925 silver. Start with the personalised one, or choose a design and size.",
+        "hero_body": "Natural ram's-horn shofars from 30 to 65 cm, each hand-plated in 925 silver. Start with the personalized one, or choose a design and size.",
         "bc": "Ram's Horn Shofars",
         "image": "Magen_David_1_ram_pgvhoa",
         "notes": True,
@@ -64,11 +64,11 @@ PAGES = {
     "kudu": {
         "file": "shofars-kudu.html",
         "title": "Kudu Shofars, Hand-Plated in 925 Silver | Sherman Art Works",
-        "desc": "Kudu-horn shofars up to 129 cm, each hand-plated in 925 silver in our studio in Israel. Ten designs plus a fully personalised option.",
+        "desc": "Kudu-horn shofars up to 129 cm, each hand-plated in 925 silver in our studio in Israel. Ten designs plus a fully personalized option.",
         "og_title": "Kudu Shofars, Sherman Art Works",
         "hero_headline": "Kudu Shofars",
         "hero_subtitle": "Plated by hand in 925 silver.",
-        "hero_body": "Natural kudu-horn shofars up to 129 cm long, each hand-plated in 925 silver. Start with the personalised one, or choose a design and size.",
+        "hero_body": "Natural kudu-horn shofars up to 129 cm long, each hand-plated in 925 silver. Start with the personalized one, or choose a design and size.",
         "bc": "Kudu Shofars",
         "image": "Kudu_Jerusalem_Lions_xelufl",
         "notes": False,

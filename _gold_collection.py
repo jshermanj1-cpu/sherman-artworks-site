@@ -75,7 +75,7 @@ COPY = {
     "cta_tag": ("Made to Order", "\u05d1\u05d9\u05e6\u05d5\u05e2 \u05dc\u05e4\u05d9 \u05d4\u05d6\u05de\u05e0\u05d4"),
     "cta_title": ("Something Made Just for You",
                   "\u05de\u05e9\u05d4\u05d5 \u05e9\u05e0\u05e2\u05e9\u05d4 \u05d1\u05d3\u05d9\u05d5\u05e7 \u05e2\u05d1\u05d5\u05e8\u05db\u05dd"),
-    "cta_sub": ("Every piece here is made to order. Tell us the colour you want and we will make it.",
+    "cta_sub": ("Every piece here is made to order. Tell us the color you want and we will make it.",
                 "\u05db\u05dc \u05e4\u05e8\u05d9\u05d8 \u05db\u05d0\u05df \u05e0\u05e2\u05e9\u05d4 \u05dc\u05e4\u05d9 \u05d4\u05d6\u05de\u05e0\u05d4. \u05e1\u05e4\u05e8\u05d5 \u05dc\u05e0\u05d5 \u05d0\u05d9\u05d6\u05d4 \u05e6\u05d1\u05e2 \u05d0\u05ea\u05dd \u05e8\u05d5\u05e6\u05d9\u05dd \u05d5\u05e0\u05d9\u05d9\u05e6\u05e8 \u05d0\u05d5\u05ea\u05d5."),
     "cta_btn1": ("Browse the Shop", "\u05d3\u05e4\u05d3\u05e4\u05d5 \u05d1\u05d7\u05e0\u05d5\u05ea"),
     "cta_btn2": ("Commission a Custom Piece",

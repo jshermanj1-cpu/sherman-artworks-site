@@ -110,7 +110,7 @@ def table_html():
         '        <th scope="col" data-t="guide_th_cm">Length (cm)</th>\n'
         '        <th scope="col" data-t="guide_th_in">Length (in)</th>\n'
         '        <th scope="col" data-t="guide_th_dec">Decorated</th>\n'
-        '        <th scope="col" data-t="guide_th_per">Personalised</th>\n'
+        '        <th scope="col" data-t="guide_th_per">Personalized</th>\n'
         '      </tr>\n'
         '      </thead>\n'
         '      <tbody>\n'

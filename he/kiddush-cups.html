@@ -548,7 +548,7 @@
 </div>
 </footer>
 <script src="/js/site.js?v=20261014e"></script>
-<script src="/js/cart.js?v=20261014e"></script>
+<script src="/js/cart.js?v=20261018a"></script>
 <script>const PRODUCTS = [
   {
     "id": "blue-green-tall-glass-cup",
@@ -1026,7 +1026,7 @@
       guide_tag:   'Before You Order',
       guide_title: 'About the Kiddush Cups',
       guide_q1:    'What are the Kiddush cups made of?',
-      guide_a1:    'Each cup is handmade to order in Israel, in glass or ceramic, with a 925 silver-plated rim. The glass cups come in several colours, including a design carrying the Bore Pri Hagefen blessing.',
+      guide_a1:    'Each cup is handmade to order in Israel, in glass or ceramic, with a 925 silver-plated rim. The glass cups come in several colors, including a design carrying the Bore Pri Hagefen blessing.',
       guide_q2:    'Can I add a matching plate?',
       guide_a2:    'Yes. A matching plate can be added to any glass cup for 301 NIS instead of the standalone price of 401 NIS, a saving of 25% when bought together.',
       guide_q3:    'How do I care for the 925 silver-plated rim?',
@@ -1202,7 +1202,7 @@
 
   function emailLinkForProduct(p, plate) {
     const name    = p.name_en;
-    const subject = encodeURIComponent(`Enquiry: ${name}`);
+    const subject = encodeURIComponent(`Inquiry: ${name}`);
     const plateAdd = plate ? quoteAddon(plate.regular_price_ils, plate.bundle_price_ils, p.price_ils, 'bundle') : '';
     const plateOff = plate ? addonParts(plate.regular_price_ils, plate.bundle_price_ils, p.price_ils).pct : 0;
     const plateLine = plate ? `\nWith matching plate: ${plate.name_en} (+${plateAdd}, ${plateOff}% off)\nPlate SKU: ${plate.sku}\n` : '';
