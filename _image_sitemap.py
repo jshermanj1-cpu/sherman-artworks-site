@@ -16,11 +16,15 @@ What goes in
 ------------
 For each URL in sitemap.xml (English and /he/ alike):
   - every res.cloudinary.com image in the page's markup (outside <script>),
-    except the logo/favicon;
+    except the logo/favicon, at the exact URL the page shows (the card size);
   - every photo of every active product whose `pages` in data/products.json
     lists that page (a /he/ page takes its English twin's products).
-Each photo is listed once per page, at full size (q_auto,f_auto), the same URL
-the product window loads. Order follows sitemap.xml, then first appearance.
+Every photo is also listed at full size (q_auto,f_auto), the same URL the
+product window loads. A card photo is therefore listed twice: as the page shows
+it and at full size. On 19 Oct 2026, Bing Images had none of our photos, and
+none of the sitemap's full-size URLs appeared as an <img> on any page, so the
+sitemap never named an image a crawler could find on the page it listed it
+under. Order follows sitemap.xml, then first appearance.
 
 Run it after the rest of the generator chain (it reads the finished pages).
   python _image_sitemap.py           write sitemap-images.xml
@@ -32,6 +36,7 @@ import json
 import os
 import re
 import sys
+from urllib.parse import quote
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
 BASE = "https://shermanartworks.com"
@@ -52,6 +57,12 @@ def public_id(url):
 
 def full_size(pid):
     return CDN + "q_auto,f_auto/" + pid + ".jpg"
+
+
+def escaped(url):
+    """Percent-encode non-ASCII characters, as sitemaps require (one live photo
+    has a Hebrew public id, עותק_של_Orange_tray)."""
+    return "".join(c if ord(c) < 128 else quote(c) for c in url)
 
 
 def sitemap_pages():
@@ -87,14 +98,22 @@ def build():
         if not os.path.exists(path):
             continue
         markup = SCRIPT.sub("", io.open(path, encoding="utf-8-sig").read())
-        ids = [public_id(src) for src in IMG_SRC.findall(markup)]
         en_rel = rel[3:] if rel.startswith("he/") else rel
-        ids += by_page.get(en_rel, [])
         seen, photos = set(), []
-        for pid in ids:
-            if pid and pid not in SKIP_IDS and pid not in seen:
-                seen.add(pid)
-                photos.append(full_size(pid))
+
+        def add(img):
+            if img not in seen:
+                seen.add(img)
+                photos.append(img)
+
+        for src in IMG_SRC.findall(markup):
+            pid = public_id(src)
+            if pid and pid not in SKIP_IDS:
+                add(src)
+                add(full_size(pid))
+        for pid in by_page.get(en_rel, []):
+            if pid and pid not in SKIP_IDS:
+                add(full_size(pid))
         if photos:
             rows.append((url, photos[:1000]))
 
@@ -106,7 +125,7 @@ def build():
         out.append("  <url>")
         out.append("    <loc>%s</loc>" % url)
         for img in photos:
-            out.append("    <image:image><image:loc>%s</image:loc></image:image>" % img)
+            out.append("    <image:image><image:loc>%s</image:loc></image:image>" % escaped(img))
         out.append("  </url>")
     out.append("</urlset>")
     return "\n".join(out) + "\n", rows
