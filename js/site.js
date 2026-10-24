@@ -859,6 +859,45 @@ function _isInternalVisit() {
   }
 }
 
+// Whether this browser arrived through one of our ads, so a card order can say
+// so (privacy.html: "Ad visits" and sa_ad). It runs whatever the cookie choice,
+// because GA4 already covers the shoppers who accept and most buyers do not.
+// Only the kind of ad and the UTC date are kept: the click id is read here and
+// dropped, and nothing leaves the browser except with a card order.
+var SA_AD_KEY = 'sa_ad';
+var SA_AD_WINDOW_DAYS = 30;
+var SA_PAID_MEDIUMS = ['cpc', 'ppc', 'paid', 'paid_social', 'paidsocial', 'display', 'cpm'];
+(function _noteAdVisit() {
+  var p;
+  try { p = new URLSearchParams(location.search); } catch (e) { return; }
+  var via = (p.get('gclid') || p.get('gbraid') || p.get('wbraid')) ? 'google_ads'
+    : SA_PAID_MEDIUMS.indexOf(String(p.get('utm_medium') || '').toLowerCase()) !== -1 ? 'other_ad'
+    : null;
+  if (!via) return;
+  try {
+    localStorage.setItem(SA_AD_KEY, JSON.stringify({ via: via, d: new Date().toISOString().slice(0, 10) }));
+  } catch (e) {}
+})();
+
+// The ad note a card order carries, or null. A note older than the window is
+// deleted here rather than sent.
+function saAdVisitForOrder() {
+  var v = null;
+  try { v = JSON.parse(localStorage.getItem(SA_AD_KEY)); } catch (e) {}
+  if (!v || (v.via !== 'google_ads' && v.via !== 'other_ad') || !/^\d{4}-\d{2}-\d{2}$/.test(v.d || '')) {
+    return null;
+  }
+  var today = new Date().toISOString().slice(0, 10);
+  var days = Math.round((Date.parse(today) - Date.parse(v.d)) / 86400000);
+  if (!(days <= SA_AD_WINDOW_DAYS)) { saClearAdVisit(); return null; }
+  return { via: v.via, d: v.d };
+}
+
+// Once an order is paid, so a later order is not credited to the same click.
+function saClearAdVisit() {
+  try { localStorage.removeItem(SA_AD_KEY); } catch (e) {}
+}
+
 // A local dev server is never a shopper. Events still queue in dataLayer, where
 // they can be inspected, but gtag.js is never loaded so nothing reaches GA4.
 function _isDevHost() {
