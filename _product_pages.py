@@ -1,43 +1,58 @@
 # -*- coding: utf-8 -*-
-"""_product_pages.py - one page per menorah, in English and in Hebrew.
+"""_product_pages.py - one page per product, in English and in Hebrew.
 
 Why this exists
 ---------------
 Every product on this site used to live only at a fragment of its category page
-(hanukkah-menorahs.html#<id>), one small card among about fifty. Image search,
-Google Shopping and ChatGPT tie a photo to a product through a page that is
-about that one product, so no page here "owned" any photo. On 25 Oct 2026
-ChatGPT was still showing other makers' menorahs on our answers, and Bing Images
-had none of ours. These pages are the fix the owner asked for: the shop looks
-and works exactly as before, the product window gets a "View full product page"
-button, and each card's name links to the page.
+(candlesticks.html#<id>), one small card among dozens. Image search, Google
+Shopping and ChatGPT tie a photo to a product through a page that is about that
+one product, so no page here "owned" any photo. On 25 Oct 2026 ChatGPT was still
+showing other makers' photos on our answers, and Bing Images had none of ours.
+These pages are the fix the owner asked for: the shop looks and works exactly
+as before, the product window gets a "View full product page" button, and each
+card's name links to the page. The menorahs came first (25 Oct 2026); every
+other live product followed. Horn goblets have none: they are kept out of
+search on purpose (noindex), see _static_cards.has_page.
 
 What it writes
 --------------
-  products/<id>.html        English page for each live menorah
+  products/<id>.html        English page for each live product
   he/products/<id>.html     its Hebrew twin
   sitemap.xml               the block between the "Product pages" markers
 
-Each page is the product window laid out as a page (the same markup and CSS),
-built from the finished landing pages - hanukkah-menorahs.html and
-he/hanukkah-menorahs.html - so the header, menus, footer, cookie banner, cart
-and the ?v= tokens are always the real ones. It therefore runs after
-_he_pages.py and before _image_sitemap.py, which picks up the photos.
+Each page is the product window laid out as a page, built from the finished
+category page in each language (candlesticks.html, he/candlesticks.html ...) so
+the header, menus, footer, cookie banner, cart and the ?v= tokens are always the
+real ones. It therefore runs after _he_pages.py and before _image_sitemap.py,
+which picks up the photos.
+
+Two kinds of page:
+
+  * Menorahs. The window's markup is written out here with its choices as
+    links, and a small script prices it and adds it to the cart.
+  * Everything else. These windows carry sizes, matching trays and plates at a
+    set price, and shofar symbols and inscriptions, each priced by its own
+    category's code. That code stays on the page and renders the window in
+    place, so every option prices and reaches the cart through exactly the
+    same lines as in the shop (cartAddFromModal in js/cart.js, which the
+    payments Worker reprices). The window's content is also written out here
+    as plain HTML, which is all a crawler that does not run JavaScript sees.
 
 What it does not change: the category pages' JSON-LD and the Merchant Center
-feeds still point at hanukkah-menorahs.html#<id>. The owner asked for the feed
-links to stay put until the menorah Shopping ads end (14 Nov 2026); the guard
-"Feed items resolve to a product on their landing page" depends on that pairing.
+feeds still point at <category>.html#<id>. The owner asked for the feed links
+to stay put until the menorah Shopping ads end (14 Nov 2026); the guard "Feed
+items resolve to a product on their landing page" depends on that pairing.
 
-Prices follow _hanukkah_sale like the cards, so the chain run after the sale
-ends puts the regular price back here too. Wording comes from the landing
-pages' T_PAGE, js/site.js's T_SITE and the feed's owner-approved highlights;
-only the strings in TEXT below are new.
+Menorah prices follow _hanukkah_sale like the cards, so the chain run after the
+sale ends puts the regular price back here too. Wording comes from the category
+pages, js/site.js's T_SITE and the feed's owner-approved highlights; only the
+strings in TEXT and ABOUT below are new.
 
     python _product_pages.py           write in place
     python _product_pages.py --check   report only, exit 1 if anything is stale
 """
 
+import copy
 import datetime
 import html
 import json
@@ -46,10 +61,15 @@ import sys
 from pathlib import Path
 from urllib.parse import quote, urljoin
 
+from bs4 import BeautifulSoup
+
 from _hanukkah_page import BASE, CDN, CATEGORY, PAGE as LANDING, SHAPES, image, live, load
 from _hanukkah_sale import offer_fields, price_html
 from _he_pages import T_SITE_EN, T_SITE_HE, parse_he_dict
-from _merchant_feed import feed_highlights, feed_highlights_he
+from _merchant_feed import feed_highlights, feed_highlights_he, feed_material, feed_material_he, he_units
+from _shofar_pages import PAGES as SHOFAR_PAGES, page_ids as shofar_page_ids
+from _static_cards import has_page, price_html as card_price_html
+from _subcategory_pages import CATEGORIES as SUBCATEGORIES, products as subcategory_products, split
 
 SITE = Path(__file__).parent
 SITEMAP = SITE / "sitemap.xml"
@@ -57,6 +77,7 @@ SITEMAP_START = "  <!-- Product pages (generated by _product_pages.py) -->"
 SITEMAP_END = "  <!-- /Product pages -->"
 SKIP = ("http://", "https://", "//", "#", "mailto:", "tel:", "javascript:", "data:", "/")
 WA_NUMBER = re.search(r"const WA_NUMBER = '(\d+)'", (SITE / "js" / "site.js").read_text(encoding="utf-8")).group(1)
+JSONLD = re.compile(r'<script type="application/ld\+json">(.*?)</script>', re.S)
 
 # The only new copy. Everything else is the shop's existing wording.
 TEXT = {
@@ -79,6 +100,25 @@ TEXT = {
         "wa": 'שלום, אני מתעניין/ת ב"{name}". אשמח לפרטים נוספים.',
     },
 }
+
+# Per category page: the heading over the highlights, and the link back to the shop.
+ABOUT = {
+    "candlesticks.html": {"en": ("About these candlesticks", "See all candlesticks"),
+                          "he": ("על הפמוטים", "לכל הפמוטים")},
+    "kiddush-cups.html": {"en": ("About this Kiddush cup", "See all Kiddush cups"),
+                          "he": ("על כוס הקידוש", "לכל כוסות הקידוש")},
+    "trays-bowls.html": {"en": ("About this piece", "See all trays & bowls"),
+                         "he": ("על הפריט", "לכל המגשים והקערות")},
+    "shofars.html": {"en": ("About this shofar", "See all shofars"),
+                     "he": ("על השופר", "לכל השופרות")},
+    "havdalah-sets.html": {"en": ("About this Havdalah set", "See all Havdalah sets"),
+                           "he": ("על סט ההבדלה", "לכל סטי ההבדלה")},
+    "mezuzahs.html": {"en": ("About this mezuzah", "See all mezuzahs"),
+                      "he": ("על המזוזה", "לכל המזוזות")},
+}
+
+# Where a category page keeps its catalogue when it is not inline.
+CATALOG_JS = {"shofars.html": "js/shofar-products.js", "havdalah-sets.html": "js/havdalah-sets.js"}
 
 CSS = """
     /* Product page (_product_pages.py): the product window laid out as a page. */
@@ -145,6 +185,54 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 </script>"""
 
+# The category's own window code runs this page (see the module docstring).
+WINDOW_SCRIPT = """<script>
+// This page is one product's window laid out as a page (_product_pages.py). The
+// window code above is the shop page's own, so the price, the options and Add
+// to Cart work exactly as they do in the window there.
+currentModalIdx = PRODUCTS.findIndex(function (p) { return p.id === %(id)s; });
+// Any other product opens on its own page; this one is already open.
+function openModal(idx) {
+  if (PRODUCTS[idx] && idx !== currentModalIdx) location.href = productPageUrl(PRODUCTS[idx]);
+}
+// The window never closes here; Escape and Add to Cart both call this.
+function closeModal() {}
+// The window draws its color and finish choices as buttons that swap the
+// product in place. Here each one is a link to that product's own page,
+// as in the markup a crawler reads.
+var ppRenderModal = renderModal;
+renderModal = function () {
+  ppRenderModal();
+  document.querySelectorAll('#productModal button.variant-color-option[data-product-id]').forEach(function (b) {
+    var i = PRODUCTS.findIndex(function (p) { return p.id === b.getAttribute('data-product-id'); });
+    if (i < 0) return;
+    var a = document.createElement('a');
+    a.className = b.className;
+    a.href = productPageUrl(PRODUCTS[i]);
+    if (b.hasAttribute('aria-label')) a.setAttribute('aria-label', b.getAttribute('aria-label'));
+    if (i === currentModalIdx) a.setAttribute('aria-current', 'page');
+    a.innerHTML = b.innerHTML;
+    b.replaceWith(a);
+  });
+  document.querySelectorAll('#productModal input[name="modalFinish"]').forEach(function (input) {
+    var label = input.closest('label');
+    var i = finishTwinIndex(PRODUCTS[currentModalIdx], input.value);
+    if (!label || i < 0) return;
+    var a = document.createElement('a');
+    a.className = label.className;
+    a.href = productPageUrl(PRODUCTS[i]);
+    if (i === currentModalIdx) a.setAttribute('aria-current', 'page');
+    input.remove();
+    a.innerHTML = label.innerHTML;
+    label.replaceWith(a);
+  });
+};
+</script>"""
+
+CART_SVG = ('<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">'
+            '<circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/>'
+            '<path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>')
+
 
 def e(s):
     return html.escape(s, quote=True)
@@ -199,6 +287,53 @@ def color(p, lang):
     return p["color_he"] if lang == "he" else p["color_en"]
 
 
+def description(p, lang):
+    return p["description_he"] if lang == "he" else p["description_en"]
+
+
+def walk(node, fn):
+    if isinstance(node, dict):
+        fn(node)
+        for v in node.values():
+            walk(v, fn)
+    elif isinstance(node, list):
+        for v in node:
+            walk(v, fn)
+
+
+def breadcrumb_list(src, label):
+    crumbs = None
+    for raw in JSONLD.findall(src):
+        node = json.loads(raw)
+        if node.get("@type") == "BreadcrumbList":
+            crumbs = node
+    if not crumbs:
+        raise RuntimeError(f"{label}: no BreadcrumbList")
+    return crumbs
+
+
+def crumbs_jsonld(crumbs, p, lang):
+    """A category page's breadcrumb, one step longer."""
+    items = crumbs["itemListElement"] + [{"@type": "ListItem", "position": len(crumbs["itemListElement"]) + 1,
+                                          "name": name(p, lang), "item": page_url(p, lang)}]
+    return {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": items}
+
+
+def jsonld_html(blocks, graph):
+    return "\n".join('  <script type="application/ld+json">'
+                     + json.dumps(b, ensure_ascii=False, separators=(",", ":")) + "</script>"
+                     for b in blocks) + "\n  " + graph
+
+
+def shared_graph(src, label):
+    """The seller, shipping and returns block the offers point at by @id."""
+    for raw in JSONLD.findall(src):
+        node = json.loads(raw)
+        if "@graph" in node and any(n.get("@type") == "MerchantReturnPolicy" for n in node["@graph"]):
+            return '<script type="application/ld+json">' + raw + "</script>"
+    raise RuntimeError(f"{label}: no shared seller/shipping/returns block")
+
+
 def jsonld_blocks(p, lang, landing_src, shape_src, graph):
     url = page_url(p, lang)
     sku = p["sku"]
@@ -208,7 +343,7 @@ def jsonld_blocks(p, lang, landing_src, shape_src, graph):
         "@id": url + "#product",
         "url": url,
         "name": name(p, lang),
-        "description": p["description_he"] if lang == "he" else p["description_en"],
+        "description": description(p, lang),
         "image": [image(ph, "w_1200,q_auto,f_auto") for ph in p["photos"]],
         "color": color(p, lang),
         "material": "זכוכית" if lang == "he" else "Glass",
@@ -234,20 +369,8 @@ def jsonld_blocks(p, lang, landing_src, shape_src, graph):
         },
     }
     # The shape page's breadcrumb, one step longer.
-    crumbs = None
-    for raw in re.findall(r'<script type="application/ld\+json">(.*?)</script>', shape_src, re.S):
-        node = json.loads(raw)
-        if node.get("@type") == "BreadcrumbList":
-            crumbs = node
-    if not crumbs:
-        raise RuntimeError(f"{lang}: shape page has no BreadcrumbList")
-    items = crumbs["itemListElement"] + [{"@type": "ListItem", "position": len(crumbs["itemListElement"]) + 1,
-                                          "name": name(p, lang), "item": url}]
-    crumbs = {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": items}
-    blocks = [product, crumbs]
-    return "\n".join('  <script type="application/ld+json">'
-                     + json.dumps(b, ensure_ascii=False, separators=(",", ":")) + "</script>"
-                     for b in blocks) + "\n  " + graph
+    crumbs = crumbs_jsonld(breadcrumb_list(shape_src, f"{lang} shape page"), p, lang)
+    return jsonld_html([product, crumbs], graph)
 
 
 def main_html(p, products, lang, d, s):
@@ -311,7 +434,7 @@ def main_html(p, products, lang, d, s):
   <div class="modal-info">
     <h1 id="modalName" class="modal-name">{e(nm)}</h1>
     <p class="modal-name-alt">{e(alt_name)}</p>
-    <p class="modal-desc">{e(p['description_he'] if lang == 'he' else p['description_en'])}</p>
+    <p class="modal-desc">{e(description(p, lang))}</p>
     <p class="product-color-note" data-t="color_note">{e(s['color_note'])}</p>
     <fieldset class="variant-picker"><legend class="variant-picker-legend" data-t="choose_shape">{e(d['choose_shape'])}</legend>
       <div class="variant-size-options shape-options">{shapes}</div></fieldset>
@@ -349,9 +472,9 @@ def head_block(p, lang):
     if lang == "he":
         desc = p["description_he"]
     else:
-        desc = f"{p['description_en']} {p['measurements']}."
-        if len(desc) > 160:
-            desc = p["description_en"]
+        desc = p["description_en"]
+        if p["measurements"] and len(f"{desc} {p['measurements']}.") <= 160:
+            desc = f"{desc} {p['measurements']}."
     share = image(p["photos"][0], "w_1200,h_630,c_pad,b_rgb:faf7f2,q_auto,f_auto")
     rows = [
         f"<title>{html.escape(title)}</title>",
@@ -381,27 +504,32 @@ def strip_one(src, pattern, label, flags=re.S, count_ok=(1,)):
 
 
 def rootify(src, base):
-    """Relative href/src in the template, made root-absolute for /products/."""
+    """Relative href/src in the template, made root-absolute for /products/.
+
+    Script bodies are left alone: the category pages build their cards and
+    windows in JavaScript, and a template like href="${...}" is not a URL.
+    """
     def fix(m):
         value = m.group(2)
         if not value or value.startswith(SKIP):
             return m.group(0)
         return m.group(1) + urljoin(base, value) + '"'
-    return re.sub(r'(\b(?:href|src)=")([^"]*)"', fix, src)
+
+    def attrs(chunk):
+        return re.sub(r'(\b(?:href|src)=")([^"]*)"', fix, chunk)
+
+    parts = re.split(r"(<script\b[^>]*>.*?</script>)", src, flags=re.S)
+    for i, part in enumerate(parts):
+        if i % 2:
+            tag = part.index(">") + 1
+            parts[i] = attrs(part[:tag]) + part[tag:]
+        else:
+            parts[i] = attrs(part)
+    return "".join(parts)
 
 
-def build(p, products, lang, landing_src, shape_src, d, s):
-    out = landing_src
-    graph = None
-    for raw in re.findall(r'<script type="application/ld\+json">(.*?)</script>', out, re.S):
-        node = json.loads(raw)
-        if "@graph" in node and any(n.get("@type") == "MerchantReturnPolicy" for n in node["@graph"]):
-            graph = '<script type="application/ld+json">' + raw + "</script>"
-    if not graph:
-        raise RuntimeError(f"{lang} landing page: no shared seller/shipping/returns block")
-    wa_svg = re.search(r'id="modalOrderCta".*?(<svg.*?</svg>)', out, re.S).group(1)
-
-    # Head: drop the landing page's identity, then write this product's.
+def new_head(out, p, lang, ld):
+    """Drop the category page's identity from the head, then write this product's."""
     out = re.sub(r'\s*<script type="application/ld\+json">.*?</script>', "", out, flags=re.S)
     out = re.sub(r"\s*<!-- /?hanukkah:jsonld -->", "", out)
     out = strip_one(out, r"\s*<title>.*?</title>", f"{lang} title")
@@ -416,12 +544,25 @@ def build(p, products, lang, landing_src, shape_src, d, s):
         # The URL decides the language, as on the /he/ pages: a stale Hebrew
         # choice in localStorage would otherwise translate only half this page.
         out = out.replace("<head>", "<head>\n  <script>window.__SA_LANG='en';</script>", 1)
-    out = out.replace("</head>", jsonld_blocks(p, lang, landing_src, shape_src, graph) + "\n</head>", 1)
-    out = re.sub(r"(<style>.*?)(\s*</style>)", lambda m: m.group(1) + CSS.rstrip() + m.group(2), out, count=1, flags=re.S)
+    out = out.replace("</head>", ld + "\n</head>", 1)
+    if "<style>" in out:
+        return re.sub(r"(<style>.*?)(\s*</style>)", lambda m: m.group(1) + CSS.rstrip() + m.group(2), out, count=1, flags=re.S)
+    return out.replace("</head>", "<style>" + CSS.rstrip() + "\n  </style>\n</head>", 1)
 
-    # Language toggles go to this product's twin, not the landing page's.
-    out = out.replace("location.href='/he/hanukkah-menorahs.html'", f"location.href='{page_path(p, 'he')}'")
-    out = out.replace("location.href='/hanukkah-menorahs.html'", f"location.href='{page_path(p, 'en')}'")
+
+def twin_toggles(out, p, landing):
+    """Language toggles go to this product's twin, not the category page's."""
+    out = out.replace(f"location.href='/he/{landing}'", f"location.href='{page_path(p, 'he')}'")
+    return out.replace(f"location.href='/{landing}'", f"location.href='{page_path(p, 'en')}'")
+
+
+def build(p, products, lang, landing_src, shape_src, d, s):
+    out = landing_src
+    graph = shared_graph(out, f"{lang} landing page")
+    wa_svg = re.search(r'id="modalOrderCta".*?(<svg.*?</svg>)', out, re.S).group(1)
+
+    out = new_head(out, p, lang, jsonld_blocks(p, lang, landing_src, shape_src, graph))
+    out = twin_toggles(out, p, LANDING)
 
     # Body: the product instead of the grid; no product window, questions or grid script.
     main = main_html(p, products, lang, d, s).replace("{WA_SVG}", wa_svg)
@@ -452,6 +593,351 @@ def build(p, products, lang, landing_src, shape_src, d, s):
     return rootify(out, "/he/" if lang == "he" else "/")
 
 
+# ── Every other category: the shop's own product window, laid out as a page ──
+
+def element(src, start, tag="div"):
+    """The end of the element whose opening tag starts at `start`, counting nesting."""
+    depth = 0
+    for m in re.finditer(rf"<(/?){tag}\b[^>]*>", src[start:]):
+        depth += -1 if m.group(1) else 1
+        if depth == 0:
+            return start + m.end()
+    raise RuntimeError(f"unclosed <{tag}> at {start}")
+
+
+def window_parts(src, label):
+    """The product window's inner markup, and where the shop section around it starts and ends."""
+    at = re.search(r'<div\b[^>]*\bid="productModal"', src)
+    inner = re.search(r'<div\b[^>]*\bclass="modal-inner"[^>]*>', src[at.start():]) if at else None
+    if not inner:
+        raise RuntimeError(f"{label}: no product window")
+    open_end = at.start() + inner.end()
+    inner_end = element(src, at.start() + inner.start())
+    body = src[open_end:inner_end - len("</div>")]
+    start = re.search(r'<main id="main-content">|<section\b[^>]*class="page-hero"', src)
+    trust = re.search(r'<section\b[^>]*class="trust-strip"', src)
+    if not start or not trust or not start.start() < at.start() < trust.start():
+        raise RuntimeError(f"{label}: hero, window and trust strip are not in that order")
+    return body, start.start(), trust.start()
+
+
+def he_measure(p, lang):
+    if lang != "he":
+        return p["measurements"]
+    return p.get("measurements_he") or he_units(p["measurements"])
+
+
+def static_price(p, site):
+    # The dollar figure is the pinned list's, as on the cards, so the guard that
+    # compares card prices with what checkout charges covers these pages too.
+    out = card_price_html(p)
+    return out.replace("from ", site["cat_from"] + " ", 1) if p.get("sizes") else out
+
+
+def fill_window(body, p, family, twins, lang, site, page_t):
+    """The window's markup with this product written into it, for crawlers.
+
+    The window's own code redraws all of it in the browser; this is what a
+    reader without JavaScript, and every AI crawler, gets.
+    """
+    t = TEXT[lang]
+    nm = name(p, lang)
+    photos = p["photos"]
+    soup = BeautifulSoup(body, "html.parser")
+
+    def find(i):
+        return soup.find(id=i)
+
+    def put(el, markup):
+        el.clear()
+        for node in list(BeautifulSoup(markup, "html.parser").contents):
+            el.append(node)
+
+    def show(el, visible):
+        if el is None:
+            return
+        if visible:
+            if el.has_attr("style"):
+                del el["style"]
+        else:
+            el["style"] = "display:none;"
+
+    for close in soup.select(".modal-close"):
+        close.decompose()
+    link = find("modalPageLink")
+    if link:
+        link.decompose()
+
+    heading = find("modalName")
+    heading.name = "h1"
+    heading.string = nm
+    alt = find("modalNameAlt")
+    if alt:
+        alt.string = p["name_en"] if lang == "he" else p["name_he"]
+    desc = find("modalDesc")
+    if desc:
+        desc.string = description(p, lang)
+
+    img = find("modalMainImg")
+    img["src"] = image(photos[0], "w_1200,q_auto,f_auto")
+    img["alt"] = nm
+    img["fetchpriority"] = "high"
+    for nav in ("modalPrev", "modalNext"):
+        show(find(nav), len(photos) > 1)
+    thumbs = find("modalThumbs")
+    if thumbs:
+        label = lambda i: e(t["photo"].format(name=nm, n=i + 1, total=len(photos)))
+        put(thumbs, "".join(
+            f'<button type="button" class="modal-thumb{" active" if i == 0 else ""}" onclick="setModalPhoto({i})" '
+            f'aria-label="{label(i)}" aria-pressed="{"true" if i == 0 else "false"}">'
+            f'<img src="{image(ph, "w_120,h_120,c_fill,g_auto,q_auto,f_auto")}" alt="{label(i)}" /></button>'
+            for i, ph in enumerate(photos)) if len(photos) > 1 else "")
+        show(thumbs, len(photos) > 1)
+
+    # Choices that are other products: links to their pages.
+    current = ' aria-current="page"'
+    options = find("modalColorOptions")
+    if options and len(family) > 1:
+        put(options, "".join(
+            f'<a class="variant-color-option" href="{page_path(x, lang)}"{current if x["id"] == p["id"] else ""}>'
+            f'<img src="{image(x["photos"][0], "w_120,h_120,c_fill,g_auto,q_auto,f_auto")}" alt="" loading="lazy" />'
+            f'<span>{e(color(x, lang))}</span></a>' for x in family))
+        show(find("modalColorRow"), True)
+    options = find("modalFinishOptions")
+    if options and len(twins) > 1:
+        put(options, "".join(
+            f'<a class="variant-size-option" href="{page_path(x, lang)}"{current if x["id"] == p["id"] else ""}>'
+            f'<span class="variant-size-content"><span class="metal-swatch {key}" aria-hidden="true"></span>'
+            f'<span class="variant-size-label">{e(page_t[label])}</span></span></a>'
+            for key, label, x in twins))
+        show(find("modalFinishRow"), True)
+
+    # Sizes: the same controls the window draws, with each size's price.
+    sizes = p.get("sizes") or []
+    radios, select = find("modalSizeOptions"), find("modalSize")
+    if sizes and radios:
+        put(radios, "".join(
+            f'<label class="variant-size-option"><input type="radio" name="modalSizeOption" value="{i}" '
+            f'onchange="selectModalSize({i})" /><span class="variant-size-content">'
+            f'<span class="variant-size-label">{e(sz["label"])}</span>'
+            f'<span class="variant-size-range">{e(sz["range_cm"])} cm</span>'
+            f'<span class="variant-size-price">@@PRICE{i}@@</span>'
+            f'</span></label>' for i, sz in enumerate(sizes)))
+    elif sizes and select:
+        put(select, "".join(
+            f'<option value="{i}"{" selected" if i == 0 else ""}>'
+            f'{e(sz["label"])} · {e(sz["range_cm"])} cm ({e(sz["range_in"])}″)</option>'
+            for i, sz in enumerate(sizes)))
+    elif sizes:
+        raise RuntimeError(f"{p['id']}: has sizes, but its window has no size control")
+    show(find("modalSizeRow"), bool(sizes))
+
+    measurements = find("modalMeasurements")
+    if measurements:
+        if p["measurements"] and not sizes:
+            measurements.string = he_measure(p, lang)
+        show(find("modalMeasurementsRow"), bool(p["measurements"] and not sizes))
+    find("modalPrice").string = "@@PRICE@@"
+
+    # Add to Cart is the button js/cart.js puts into every window.
+    stack = soup.select_one(".modal-cta-stack")
+    if not find("modalAddCartCta"):
+        put_first = BeautifulSoup(
+            f'<button id="modalAddCartCta" class="modal-cta cart-cta" onclick="cartAddFromModal()">{CART_SVG}'
+            f'<span data-t="add_cart">{e(site["add_cart"])}</span></button>', "html.parser").contents[0]
+        stack.insert(0, put_first)
+    find("modalOrderCta")["href"] = (f"https://wa.me/{WA_NUMBER}?text="
+                                     + quote(t["wa"].format(name=nm) + "\nSKU: " + p["sku"]))
+    email = find("modalEmailCta")
+    if email:
+        email["href"] = ("mailto:shermanartworks@gmail.com?subject=" + quote(f"Inquiry: {p['name_en']}")
+                         + "&body=" + quote(f"Hi,\n\nI'd like to know more about \"{p['name_en']}\".\n\n"
+                                            "Please send me any further info you have.\n\nThanks."))
+    # Prices go in after serializing, which would turn &#8362; into a bare
+    # shekel sign that the guard on card dollar figures no longer recognizes.
+    out = str(soup).replace("@@PRICE@@", static_price(p, site))
+    for i, sz in enumerate(sizes):
+        out = out.replace(f"@@PRICE{i}@@", static_price({"price_ils": sz["price_ils"]}, site))
+    return out
+
+
+def trail(src, rel, label):
+    """The category page's visible breadcrumb, with its last step linked."""
+    nav = re.search(r'<nav\b(?=[^>]*class="breadcrumb")[^>]*>(.*?)</nav>', src, re.S)
+    if not nav:
+        raise RuntimeError(f"{label}: no breadcrumb")
+    # Its last step names that page, through a key this page's dictionary gives
+    # the category's own name, so it keeps the text and loses the key.
+    inner, n = re.subn(r'<span data-t="bc_current">(.*?)</span>', lambda m: f'<a href="{rel}">{m.group(1)}</a>', nav.group(1))
+    if n != 1:
+        raise RuntimeError(f"{label}: breadcrumb has {n} current steps")
+    return re.sub(r"\s+", " ", inner).strip()
+
+
+def window_main(p, lang, ctx, filled):
+    about, back = ABOUT[ctx["landing"]][lang]
+    highlights = feed_highlights_he(p) if lang == "he" else feed_highlights(p)
+    return f"""<main id="main-content" class="pp">
+<nav class="breadcrumb pp-breadcrumb" aria-label="Breadcrumb">
+  {ctx["trail"]} <span class="breadcrumb-sep">·</span>
+  <span aria-current="page">{e(name(p, lang))}</span>
+</nav>
+<div id="productModal" class="pp-window open">
+<article class="modal-inner pp-inner">{filled}</article>
+</div>
+<section class="pp-details">
+  <h2 class="pp-details-title">{e(about)}</h2>
+  <ul>
+{chr(10).join('    <li>' + e(h) + '</li>' for h in highlights)}
+  </ul>
+  <p><a href="{ctx["landing"]}">{e(back)}</a></p>
+</section>
+</main>
+"""
+
+
+def product_node(p, lang, base, groups):
+    """This product as its category page describes it, at this page's address."""
+    url = page_url(p, lang)
+    node = {"@context": "https://schema.org", "@type": "Product", "@id": url + "#product", "url": url,
+            "name": name(p, lang), "description": description(p, lang),
+            "image": [image(ph, "w_1200,q_auto,f_auto") for ph in p["photos"]]}
+    if p.get("color_en"):
+        node["color"] = color(p, lang)
+    node["material"] = feed_material_he(p) if lang == "he" else feed_material(p)
+    if base.get("size"):
+        node["size"] = base["size"]
+    node.update({"sku": p["sku"], "mpn": p["sku"], "brand": {"@type": "Brand", "name": "Sherman Art Works"},
+                 "itemCondition": "https://schema.org/NewCondition"})
+    if p.get("family_id"):
+        node["inProductGroupWithID"] = p["family_id"]
+        if p["family_id"] in groups:
+            node["isVariantOf"] = {"@id": groups[p["family_id"]]}
+    # The category page's offers, one per size where there are sizes, so this
+    # page and the feed quote the same prices under the same skus.
+    offers = copy.deepcopy(base["offers"])
+    for offer in offers if isinstance(offers, list) else [offers]:
+        offer["url"] = url
+        offer.setdefault("seller", {"@id": f"{BASE}/#seller"})
+        offer.setdefault("itemCondition", "https://schema.org/NewCondition")
+    node["offers"] = offers
+    return node
+
+
+def catalogue(src):
+    """Product nodes by id, and ProductGroup @ids by group id, from a page's JSON-LD."""
+    nodes, groups = {}, {}
+
+    def visit(n):
+        if n.get("@type") == "Product" and "#" in (n.get("url") or ""):
+            nodes.setdefault(n["url"].split("#", 1)[1], n)
+        if n.get("@type") == "ProductGroup" and n.get("productGroupID") and n.get("@id"):
+            groups[n["productGroupID"]] = n["@id"]
+
+    for raw in JSONLD.findall(src):
+        walk(json.loads(raw), visit)
+    return nodes, groups
+
+
+def subpage(p, split_pages):
+    """The subcategory page a product's breadcrumb passes through, if the shop has one.
+
+    A custom shofar is listed on its horn's page too, but its own page is the
+    custom one.
+    """
+    if p["pages"][0] == "shofars.html":
+        if p["id"] in shofar_page_ids("custom", []):
+            return SHOFAR_PAGES["custom"]["file"]
+        return SHOFAR_PAGES["kudu" if p["id"].startswith("kudu-") else "rams"]["file"]
+    return split_pages.get(p["id"], p["pages"][0])
+
+
+def split_pages():
+    """Each product's page in _subcategory_pages.py's split of its category."""
+    out = {}
+    for cat in SUBCATEGORIES.values():
+        for kind, items in split(cat, subcategory_products(cat)).items():
+            for p in items:
+                out.setdefault(p["id"], cat["pages"][kind]["file"])
+    return out
+
+
+def build_window(p, lang, ctx):
+    out = ctx["src"]
+    page_t = ctx["page_t"]
+    site = T_SITE_HE if lang == "he" else T_SITE_EN
+    body, start, end = window_parts(out, f"{lang} {ctx['landing']}")
+    landing_items = ctx["items"]
+    family = [x for x in landing_items if p.get("family_id") and x.get("family_id") == p["family_id"]]
+    twins = []
+    if p.get("finish") in ("silver-tone", "gold-tone") and p.get("family_id"):
+        for key, label in (("silver-tone", "metal_silver"), ("gold-tone", "metal_gold")):
+            group = p["family_id"].replace(p["finish"], key)
+            x = next((x for x in landing_items if x.get("family_id") == group and x.get("color_en") == p["color_en"]), None)
+            if x:
+                twins.append((key, label, x))
+    filled = fill_window(body, p, family, twins, lang, site, page_t)
+    main = window_main(p, lang, ctx, filled)
+    out = out[:start] + main + "\n" + out[end:]
+    guide = re.search(r'<section\b[^>]*id="guide"[^>]*>.*?</section>\s*', out, re.S)
+    if guide and "<section" not in guide.group(0)[8:]:
+        out = out[:guide.start()] + out[guide.end():]
+
+    nodes, groups = ctx["catalogue"]
+    if p["id"] not in nodes:
+        raise RuntimeError(f"{lang} {ctx['landing']}: no structured data for {p['id']}")
+    ld = jsonld_html([product_node(p, lang, nodes[p["id"]], groups),
+                      crumbs_jsonld(ctx["crumbs"], p, lang)], ctx["graph"])
+    out = new_head(out, p, lang, ld)
+    out = twin_toggles(out, p, ctx["landing"])
+    script = WINDOW_SCRIPT % {"id": json.dumps(p["id"])}
+    out = out.replace("</body>", script + "\n</body>", 1)
+    return rootify(out, "/he/" if lang == "he" else "/")
+
+
+def window_contexts(products):
+    """What every page built from one category page in one language shares."""
+    graph_src = (SITE / LANDING).read_text(encoding="utf-8")
+    graph = shared_graph(graph_src, LANDING)
+    sub = split_pages()
+    contexts = {}
+    for p in products:
+        landing = p["pages"][0]
+        if landing not in ABOUT:
+            raise RuntimeError(f"{p['id']}: no product page layout for {landing}")
+        rel = subpage(p, sub)
+        for lang in ("en", "he"):
+            key = (landing, rel, lang)
+            if key in contexts:
+                continue
+            prefix = "he/" if lang == "he" else ""
+            src = (SITE / prefix / landing).read_text(encoding="utf-8")
+            crumb_src = (SITE / prefix / rel).read_text(encoding="utf-8")
+            contexts[key] = {
+                "landing": landing,
+                "src": src,
+                "page_t": parse_he_dict(src, "const T_PAGE", lang),
+                "items": [x for x in products if x["pages"][0] == landing],
+                "catalogue": catalogue(src),
+                "graph": graph,
+                "trail": trail(crumb_src, rel, f"{lang} {rel}"),
+                "crumbs": breadcrumb_list(crumb_src, f"{lang} {rel}"),
+            }
+    return contexts, sub
+
+
+def check_runtime(products):
+    """Every product must be in the PRODUCTS its category page's code reads."""
+    for landing in sorted({p["pages"][0] for p in products}):
+        code = (SITE / landing).read_text(encoding="utf-8")
+        if landing in CATALOG_JS:
+            code += (SITE / CATALOG_JS[landing]).read_text(encoding="utf-8")
+        missing = [p["id"] for p in products if p["pages"][0] == landing
+                   and not re.search(r"""["']%s["']""" % re.escape(p["id"]), code)]
+        if missing:
+            raise RuntimeError(f"{landing}: not in the page's PRODUCTS: {', '.join(missing)}")
+
+
 def sitemap_block(urls, xml, changed, today):
     old = dict(re.findall(r"<loc>(.*?)</loc>\s*<lastmod>(.*?)</lastmod>", xml, re.S))
     rows = []
@@ -475,22 +961,31 @@ def update_sitemap(xml, block):
 
 def main():
     check = "--check" in sys.argv
-    products = live(load())
-    if not products:
+    menorahs = live(load())
+    if not menorahs:
         raise SystemExit(f"no live {CATEGORY} products")
+    catalog = json.loads((SITE / "data" / "products.json").read_text(encoding="utf-8"))
+    others = [p for p in catalog if has_page(p) and p["category"] != CATEGORY]
+    check_runtime(others)
+
     sources = {}
     for lang in ("en", "he"):
         prefix = "he/" if lang == "he" else ""
         landing = (SITE / prefix / LANDING).read_text(encoding="utf-8")
         shapes = {k: (SITE / prefix / cfg["file"]).read_text(encoding="utf-8") for k, cfg in SHAPES.items()}
         sources[lang] = (landing, shapes, *strings(lang, landing))
+    contexts, sub = window_contexts(others)
 
     wanted, stale, changed_urls = {}, [], set()
-    for p in products:
+    for p in menorahs:
         for lang in ("en", "he"):
             landing, shapes, d, s = sources[lang]
             rel = page_path(p, lang).lstrip("/")
-            wanted[rel] = build(p, products, lang, landing, shapes[p["shape"]], d, s)
+            wanted[rel] = build(p, menorahs, lang, landing, shapes[p["shape"]], d, s)
+    for p in others:
+        key = (p["pages"][0], subpage(p, sub))
+        for lang in ("en", "he"):
+            wanted[page_path(p, lang).lstrip("/")] = build_window(p, lang, contexts[key + (lang,)])
     for rel, out in wanted.items():
         path = SITE / rel
         if not path.exists() or path.read_text(encoding="utf-8") != out:
@@ -504,11 +999,12 @@ def main():
         for old in sorted(folder.glob("*.html")) if folder.exists() else []:
             rel = old.relative_to(SITE).as_posix()
             if rel not in wanted:
-                stale.append(rel + " (no longer a live menorah)")
+                stale.append(rel + " (no longer a live product)")
                 if not check:
                     old.unlink()
 
-    urls = [page_url(p, "en") for p in products] + [page_url(p, "he") for p in products]
+    everything = menorahs + others
+    urls = [page_url(p, "en") for p in everything] + [page_url(p, "he") for p in everything]
     xml = SITEMAP.read_text(encoding="utf-8")
     new_xml = update_sitemap(xml, sitemap_block(urls, xml, changed_urls, datetime.date.today().isoformat()))
     if new_xml != xml:
@@ -517,7 +1013,7 @@ def main():
             with open(SITEMAP, "w", encoding="utf-8", newline="\n") as fh:
                 fh.write(new_xml)
 
-    note = f"{len(products)} menorahs, {len(wanted)} pages"
+    note = f"{len(everything)} products, {len(wanted)} pages"
     if not stale:
         print(f"Product pages are current ({note})")
         return 0

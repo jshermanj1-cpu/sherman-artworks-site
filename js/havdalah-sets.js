@@ -162,7 +162,8 @@ function buildProductCard(product, index) {
   return '<article class="product-card" id="' + product.id + '" onclick="openModal(' + index + ')">' +
     '<div class="product-card-img-wrap"><img class="product-card-img" loading="lazy" src="' +
     CDN + "/w_600,c_fit,q_auto,f_auto/" + product.photos[0] + '.jpg" alt="' + escapeAttr(name) + '" /></div>' +
-    '<div class="product-card-body"><h2 class="product-card-name">' + escapeHtml(name) + "</h2>" +
+    '<div class="product-card-body"><h2 class="product-card-name"><a class="product-card-link" href="' +
+    productPageUrl(product) + '" onclick="return cardLinkClick(event)">' + escapeHtml(name) + "</a></h2>" +
     '<p class="product-card-desc">' + escapeHtml(description) + '</p><div class="product-card-meta">' +
     '<span class="product-card-price">' + formatProductPrice(product.price_ils) + "</span></div>" +
     '<p class="product-color-note">' + escapeHtml(T_SITE[currentLang].color_note) + "</p>" +
@@ -182,7 +183,12 @@ function renderProducts() {
     const ids = (typeof SECTIONS !== "undefined" && SECTIONS.products && SECTIONS.products.length)
       ? SECTIONS.products : null;
     const visible = ids ? PRODUCTS.filter(function(p) { return ids.indexOf(p.id) >= 0; }) : PRODUCTS;
-    productDisplayOrder = shuffledProductEntries(visible);
+    // A card opens and adds PRODUCTS[idx], so idx must count in PRODUCTS, not
+    // in the filtered list: on the gold-plated page it used to open and add
+    // the 925 silver-plated set of the same color.
+    productDisplayOrder = shuffledProductEntries(visible).map(function(entry) {
+      return { p: entry.p, idx: PRODUCTS.indexOf(entry.p) };
+    });
   }
   if (grid) {
     grid.innerHTML = productDisplayOrder
@@ -248,6 +254,8 @@ function renderModal() {
   const name = productName(product);
   const altName = currentLang === "he" ? product.name_en : product.name_he;
   document.getElementById("modalName").textContent = name;
+  const pageLink = document.getElementById("modalPageLink");
+  if (pageLink) pageLink.href = productPageUrl(product);
   document.getElementById("modalNameAlt").textContent = altName;
   document.getElementById("modalDesc").textContent = productDescription(product);
   document.getElementById("modalPrice").innerHTML = formatProductPrice(product.price_ils);

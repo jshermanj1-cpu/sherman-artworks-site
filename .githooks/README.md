@@ -21,7 +21,7 @@ git config core.hooksPath
 ## What runs
 
 `pre-push` runs `_guards.py`, which takes about twenty seconds and checks
-twenty-four invariants across every page in both languages:
+twenty-five invariants across every page in both languages:
 
 - every Product offer declares `shippingDetails` and `hasMerchantReturnPolicy`
 - every shipping-details block carries a delivery estimate
@@ -45,6 +45,7 @@ twenty-four invariants across every page in both languages:
 - static cards match `data/products.json`
 - the Hanukkah page, its product script and the homepage card match `data/products.json`
 - the shofar sizing table is current
+- every live product's own page (`products/`, `he/products/`) is current
 - `sitemap-images.xml` is current
 - SKUs, JSON-LD and the merchant feed agree
 

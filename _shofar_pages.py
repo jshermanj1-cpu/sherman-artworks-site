@@ -25,6 +25,9 @@ from pathlib import Path
 # understated every shofar by $12-$22.
 from _usd import usd_from_ils
 
+# Card names link to each shofar's own page, exactly as on shofars.html.
+from _static_cards import card_name
+
 SITE = Path(__file__).parent
 CDN = "https://res.cloudinary.com/doesupaf9/image/upload"
 BASE = "https://shermanartworks.com"
@@ -114,7 +117,7 @@ def static_cards(items):
         <img src="{CDN}/w_600,c_fit,q_auto,f_auto/{p["photos"][0]}.jpg" alt="{alt}" loading="lazy" />
       </div>
       <div class="product-card-body">
-        <h3 class="product-card-name">{html.escape(p["name_en"])}</h3>
+        <h3 class="product-card-name">{card_name(p, html.escape(p["name_en"]))}</h3>
         <p class="product-card-desc">{html.escape(p["description_en"])}</p>
         <div class="product-card-meta">
           <span class="product-card-price">from &#8362;{ils:,} <span class="product-card-price-alt">≈ ${usd_from_ils(ils)}</span></span>

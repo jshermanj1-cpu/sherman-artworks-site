@@ -22,6 +22,9 @@ from pathlib import Path
 # baked figures and the price the page itself shows once JS has run.
 from _usd import usd_from_ils
 
+# Card names link to each product's own page, exactly as on the landing page.
+from _static_cards import card_name
+
 SITE = Path(__file__).parent
 BASE = "https://shermanartworks.com"
 CDN = "https://res.cloudinary.com/doesupaf9/image/upload"
@@ -454,7 +457,7 @@ def static_cards(cat, items):
         <img src="{CDN}/w_600,c_fit,q_auto,f_auto/{p['photos'][0]}.jpg" alt="{html.escape(p['name_en'], quote=True)} - {cat['card_alt']}" loading="lazy" />
       </div>
       <div class="product-card-body">
-        <h2 class="product-card-name">{html.escape(p['name_en'])}</h2>
+        <h2 class="product-card-name">{card_name(p, html.escape(p['name_en']))}</h2>
         <p class="product-card-desc">{html.escape(p['description_en'])}</p>
         <div class="product-card-meta">
           <span class="product-card-price">{prefix}&#8362;{ils:,} <span class="product-card-price-alt">≈ ${usd_from_ils(ils)}</span></span>

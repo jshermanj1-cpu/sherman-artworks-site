@@ -489,6 +489,25 @@ const T_SITE = {
 function escapeHtml(s) { return (s || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); }
 function escapeAttr(s) { return (s || '').replace(/&/g, '&amp;').replace(/"/g, '&quot;'); }
 
+// ── PRODUCT PAGES ───────────────────────────────────────────────
+// Each product's own page (written by _product_pages.py), in the page language.
+// The product windows link to it, and so does the name on every card.
+function productPageUrl(product) {
+  return (currentLang === 'he' ? '/he' : '') + '/products/' + product.id + '.html';
+}
+
+// The card name is a real link so crawlers reach the product page, but a plain
+// click keeps opening the product window like the rest of the card. A click
+// with a modifier key (new tab, new window) is left to the browser.
+function cardLinkClick(event) {
+  if (event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) {
+    event.stopPropagation();
+    return true;
+  }
+  event.preventDefault();
+  return false;
+}
+
 // ── STATE ───────────────────────────────────────────────────────
 let currentLang     = 'en';
 let currentCurrency = 'USD';

@@ -319,6 +319,8 @@ nav {
   letter-spacing: 0.04em; font-weight: 600;
   color: var(--dark); line-height: 1.3;
 }
+/* Card names link to the product pages for crawlers; clicking still opens the window. */
+.product-card-name a.product-card-link { color: inherit; text-decoration: none; }
 .product-card-desc {
   font-family: var(--ff-ital); font-style: italic;
   font-size: 0.88rem; color: var(--brown);

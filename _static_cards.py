@@ -21,6 +21,8 @@ What this does, per landing page:
     <img src>, which survives every rename, then refreshes the heading, the alt
     prefix, the description and the price from data/products.json;
   * appends a card for any product on that page that has none;
+  * links each card's name to the product's own page (_product_pages.py),
+    here and on the pages in LINK_ONLY, whose cards are otherwise hand-kept;
   * leaves the hand-written half of the alt text ("- handmade deep burgundy
     glass candle holders") alone, and leaves cards it cannot join alone, so the
     JS template card at the end of a grid is never touched.
@@ -60,6 +62,14 @@ PAGES = {
     "horn-goblets.html": "handmade horn goblet",
 }
 
+# Pages whose static cards are hand-written and owned by no generator: only
+# their names are linked to the product pages here, nothing else is touched.
+LINK_ONLY = ["havdalah-sets.html"]
+
+# Horn goblets are kept out of search on purpose (noindex), so they have no
+# product page of their own; every other live product does (_product_pages.py).
+NO_PAGE = {"horn-goblets"}
+
 CARD = re.compile(r'<article class="product-card"[^>]*>.*?</article>', re.S)
 # Not [A-Za-z0-9_-]: one Cloudinary id carries Hebrew characters, and excluding
 # them silently failed to join that card, so every run re-added it as missing.
@@ -70,6 +80,18 @@ CARD_ID = re.compile(r'<article class="product-card" id="([^"]+)"')
 def load():
     data = json.loads((SITE / "data" / "products.json").read_text(encoding="utf-8"))
     return data["products"] if isinstance(data, dict) else data
+
+
+def has_page(p):
+    return p.get("active") is not False and p.get("category") not in NO_PAGE
+
+
+def card_name(p, name_html):
+    """A card heading's content. The name links to the product's own page, the
+    crawlable path to it; in a browser a plain click still opens the window."""
+    if not has_page(p):
+        return name_html
+    return f'<a class="product-card-link" href="/products/{p["id"]}.html">{name_html}</a>'
 
 
 def price_of(p):
@@ -103,7 +125,7 @@ def new_card(p, alt_phrase):
         '    </article>'
         % (html.escape(p["id"], quote=True), CDN, p["photos"][0],
            html.escape(p["name_en"], quote=True), alt_phrase,
-           html.escape(p["name_en"]), html.escape(p.get("description_en", "")),
+           card_name(p, html.escape(p["name_en"])), html.escape(p.get("description_en", "")),
            price_html(p), COLOR_NOTE))
 
 
@@ -116,7 +138,7 @@ def refresh(card, p):
         return re.sub(pattern, lambda m: repl(m), text, count=1)
 
     out = sub(r'(<h[23] class="product-card-name">)(.*?)(</h[23]>)',
-              lambda m: m.group(1) + name + m.group(3), out)
+              lambda m: m.group(1) + card_name(p, name) + m.group(3), out)
     out = sub(r'(<p class="product-card-desc">)(.*?)(</p>)',
               lambda m: m.group(1) + html.escape(p.get("description_en", "")) + m.group(3), out)
     out = sub(r'(<span class="product-card-price">)(.*?)(</span>\s*</div>)',
@@ -201,12 +223,12 @@ def process(page, alt_phrase, products, check):
 
 
 def shofar_names():
-    """Current shofar names from js/shofar-products.js (the catalogue that
-    _shofar_pages.py builds the sub-pages from)."""
+    """Current shofar names, each with its product id, from js/shofar-products.js
+    (the catalogue that _shofar_pages.py builds the sub-pages from)."""
     js = (SITE / "js" / "shofar-products.js").read_text(encoding="utf-8")
     body = re.search(r"const PRODUCTS = \[\n(.*?)\n\];", js, re.S).group(1)
     quoted = re.sub(r": ([A-Z][A-Z_]+)(,?)$", r': "\1"\2', body, flags=re.M)
-    return [p["name_en"] for p in json.loads("[\n" + quoted + "\n]") if p.get("name_en")]
+    return {p["name_en"]: p["id"] for p in json.loads("[\n" + quoted + "\n]") if p.get("name_en")}
 
 
 # shofars.html and business-gifts.html hold hand-written cards for the shofar
@@ -230,15 +252,19 @@ def rename_shofar_cards(page, names, check):
         m = re.search(r'<h[23] class="product-card-name">(.*?)</h[23]>', card, re.S)
         if not m:
             continue
-        cur = html.unescape(m.group(1)).strip()
+        link = re.fullmatch(r'<a class="product-card-link" href="[^"]*">(.*?)</a>', m.group(1), re.S)
+        cur = html.unescape(link.group(1) if link else m.group(1)).strip()
         want = byshort.get(cur)
-        if not want or want == cur:
+        if not want:
+            continue
+        heading = card_name({"id": names[want], "category": "shofars"}, html.escape(want))
+        if heading == m.group(1):
             continue
         # Splice on the match span, not card.replace(name, ...): the same text
         # appears earlier in the card's alt attribute, so a blind first-match
         # replace renamed the alt and left the heading untouched.
-        new = card[:m.start(1)] + html.escape(want) + card[m.end(1):]
-        am = re.search(r'(<img[^>]*alt=")([^"]*)(")', new)
+        new = card[:m.start(1)] + heading + card[m.end(1):]
+        am = re.search(r'(<img[^>]*alt=")([^"]*)(")', new) if want != cur else None
         if am:
             alt = html.unescape(am.group(2))
             tail = alt.split(" - ", 1)[1] if " - " in alt else None
@@ -249,6 +275,28 @@ def rename_shofar_cards(page, names, check):
     if fixed and not check:
         path.write_text(out, encoding="utf-8")
     return fixed
+
+
+def link_card_names(page, products, check):
+    """Link the card names on a page whose hand-written cards no generator owns."""
+    path = SITE / page
+    src = path.read_text(encoding="utf-8")
+    lo, hi = grid_region(src, page)
+    byid = {p["id"]: p for p in products}
+    out, linked = src, []
+    for card in CARD.findall(src[lo:hi]):
+        m = CARD_ID.match(card)
+        p = byid.get(m.group(1)) if m else None
+        h = re.search(r'<h[23] class="product-card-name">(.*?)</h[23]>', card, re.S)
+        if not p or not h or "product-card-link" in h.group(1):
+            continue
+        new = card[:h.start(1)] + card_name(p, h.group(1)) + card[h.end(1):]
+        if new != card:
+            out = out.replace(card, new, 1)
+            linked.append(p["name_en"])
+    if linked and not check:
+        path.write_text(out, encoding="utf-8")
+    return linked
 
 
 # The "≈ $" beside a card's shekel price, on every page that has one.
@@ -347,6 +395,12 @@ def main():
                 print("      %s" % n)
             if len(fixed) > 3:
                 print("      ... and %d more" % (len(fixed) - 3))
+    for page in LINK_ONLY:
+        linked = link_card_names(page, products, check)
+        if linked:
+            stale += len(linked)
+            print("%-22s %d card name(s) %s"
+                  % (page, len(linked), "not linked" if check else "linked to their product pages"))
 
     dollars = resync_alt_dollars(check)
     if dollars:

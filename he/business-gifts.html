@@ -16,7 +16,7 @@
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Varela+Round&amp;display=swap" rel="stylesheet"/>
-<link href="/css/site.css?v=20261012a" rel="stylesheet"/>
+<link href="/css/site.css?v=20261025a" rel="stylesheet"/>
 <link href="/css/cart.css?v=20260920a" rel="stylesheet"/>
 <style>
 .hero-icon { margin-bottom: 1.5rem; opacity: 0.7; color: var(--gold); display: flex; justify-content: center; }
@@ -193,7 +193,7 @@
 <img alt="שופר איל בציפוי כסף 925 מותאם אישית, סמל וטקסט" loading="lazy" src="https://res.cloudinary.com/doesupaf9/image/upload/w_600,c_fit,q_auto,f_auto/Chabad_shofar_o1sgb7.jpg"/>
 </div>
 <div class="product-card-body">
-<h3 class="product-card-name">שופר איל בציפוי כסף 925 מותאם אישית, סמל וטקסט</h3>
+<h3 class="product-card-name"><a class="product-card-link" href="/he/products/custom-shofar.html">שופר איל בציפוי כסף 925 מותאם אישית, סמל וטקסט</a></h3>
 <p class="product-card-desc">שופר מקרן איל מעוטר בכסף 925, מותאם אישית עם בחירת סמל וכיתוב אישי (עברית/English). מיוצר לפי הזמנה בסטודיו שלנו בישראל.</p>
 <div class="product-card-meta">
 <span class="product-card-price">החל מ־ ₪817 <span class="product-card-price-alt">≈ $262</span></span>
@@ -206,7 +206,7 @@
 <img alt="שופר קודו בציפוי כסף 925 מותאם אישית, סמל וטקסט" loading="lazy" src="https://res.cloudinary.com/doesupaf9/image/upload/w_600,c_fit,q_auto,f_auto/Name_kudu_shofar_hqdju6.jpg"/>
 </div>
 <div class="product-card-body">
-<h3 class="product-card-name">שופר קודו בציפוי כסף 925 מותאם אישית, סמל וטקסט</h3>
+<h3 class="product-card-name"><a class="product-card-link" href="/he/products/custom-kudu-shofar.html">שופר קודו בציפוי כסף 925 מותאם אישית, סמל וטקסט</a></h3>
 <p class="product-card-desc">שופר מקרן קודו מעוטר בכסף 925, מותאם אישית עם בחירת סמל וכיתוב אישי (עברית/English). מיוצר לפי הזמנה בסטודיו שלנו בישראל.</p>
 <div class="product-card-meta">
 <span class="product-card-price">החל מ־ ₪1,427 <span class="product-card-price-alt">≈ $458</span></span>
@@ -273,6 +273,7 @@
 <svg fill="none" height="15" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="15"><rect height="16" rx="2" width="20" x="2" y="4"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg>
 <span data-t="modal_email">או שלחו מייל</span>
 </a>
+<a class="modal-cta secondary" href="#" id="modalPageLink"><span data-t="modal_page">לעמוד המוצר המלא</span></a>
 </div>
 <p class="modal-shipping-note">
 <span data-t="modal_shipping">מיוצר בעבודת יד לפי הזמנה - נמסר למשלוח תוך 14 ימי עסקים. משלוח בארץ ₪35 · לחו"ל $45.</span>
@@ -371,8 +372,8 @@
 </div>
 </div>
 </footer>
-<script src="/js/site.js?v=20261024a"></script>
-<script src="/js/cart.js?v=20261018a"></script>
+<script src="/js/site.js?v=20261025a"></script>
+<script src="/js/cart.js?v=20261025a"></script>
 <script src="/js/shofar-options.js"></script>
 <script>const T_PAGE = {
     en: {
@@ -416,6 +417,7 @@
       spec_price:     'Price',
       modal_order:    'Order on WhatsApp',
       modal_email:    'Or send an email',
+      modal_page:     'View full product page',
       modal_shipping: 'Made to order - ships from Israel within 14 business days. International shipping $45 · Israel ₪35.',
       modal_shipping_link: 'Shipping & returns policy',
       sec_custom_tag: 'Made to Order',
@@ -484,6 +486,7 @@
       spec_price:     'מחיר',
       modal_order:    'הזמינו ב-WhatsApp',
       modal_email:    'או שלחו מייל',
+      modal_page:     'לעמוד המוצר המלא',
       modal_shipping: 'מיוצר בעבודת יד לפי הזמנה - נמסר למשלוח תוך 14 ימי עסקים. משלוח בארץ ₪35 · לחו"ל $45.',
       modal_shipping_link: 'מדיניות משלוחים והחזרות',
       sec_custom_tag: 'לפי הזמנה',
@@ -680,7 +683,7 @@ function buildCard(product, idx) {
         ${hasMany ? `<button class="card-nav card-prev" onclick="cardPrev(${idx}, event)" aria-label="Previous photo">&#8249;</button><button class="card-nav card-next" onclick="cardNext(${idx}, event)" aria-label="Next photo">&#8250;</button><div class="card-dots" aria-hidden="true">${dotsHtml}</div>` : ''}
       </div>
       <div class="product-card-body">
-        <h3 class="product-card-name">${escapeHtml(name)}</h3>
+        <h3 class="product-card-name"><a class="product-card-link" href="${productPageUrl(product)}" onclick="return cardLinkClick(event)">${escapeHtml(name)}</a></h3>
         ${desc ? `<p class="product-card-desc">${escapeHtml(desc)}</p>` : ''}
         <div class="product-card-meta">
           <span class="product-card-price">${formatPrice(product.price_ils)}</span>
@@ -759,6 +762,8 @@ function renderModal() {
   const altName = l === 'he' ? (p.name_en || '') : (p.name_he || '');
   const desc = l === 'he' && p.description_he ? p.description_he : p.description_en;
   document.getElementById('modalName').textContent = name;
+  const pageLink = document.getElementById('modalPageLink');
+  if (pageLink) pageLink.href = productPageUrl(p);
   document.getElementById('modalNameAlt').textContent = altName;
   document.getElementById('modalNameAlt').style.display = altName ? '' : 'none';
   document.getElementById('modalDesc').textContent = desc || '';

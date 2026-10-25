@@ -182,15 +182,24 @@ function refreshQuoteLines(force) {
   }));
 }
 
+// Root-absolute, in the language of the page showing the cart. A stored page is
+// relative to the language root ("candlesticks.html", "products/<id>.html"), and
+// a relative href only resolved from pages that sit at that root: from a
+// product page in /products/ it pointed into /products/ and 404ed. Lines saved
+// by the first menorah product pages carry "he/products/..." and are read the
+// same way.
 function _cartItemUrl(item) {
   if (isQuoteItem(item)) return '/quote.html?q=' + encodeURIComponent(_quoteId(item));
   var page = item.page || _PAGE_BY_SLUG[item.slug] || _shofarFallbackPage(item.slug);
-  return page ? page + '#' + item.slug : null;
+  if (!page) return null;
+  var root = location.pathname.indexOf('/he/') === 0 ? '/he/' : '/';
+  return root + page.replace(/^\/?(he\/)?/, '') + '#' + item.slug;
 }
 
-// Current page filename, matching what addToCart() stores on an entry.
+// This page, in the form addToCart() stores on an entry: relative to the
+// language root, so a product page in /products/ keeps its folder.
 function _currentPageFile() {
-  return location.pathname.split('/').pop() || 'index.html';
+  return location.pathname.replace(/^\/(he\/)?/, '') || 'index.html';
 }
 
 // Cart line click. A plain href only changes the hash when the item lives on the
@@ -202,7 +211,7 @@ function cartGoToItem(idx, e) {
   var url = _cartItemUrl(item);
   if (!url) return;
   var page = url.split('#')[0];
-  if (page !== _currentPageFile() || typeof PRODUCTS === 'undefined' || typeof openModal !== 'function') {
+  if (page !== location.pathname || typeof PRODUCTS === 'undefined' || typeof openModal !== 'function') {
     return; // let the link navigate; site.js opens the modal from the hash on load
   }
   var pIdx = -1;
@@ -282,7 +291,7 @@ function addToCart(slug, name_en, name_he, price_ils, photo, sku, meta, page) {
   // _cartItemUrl can link the cart line back to the product. The homepage gold
   // rail breaks that assumption - it sells pieces that live on the gold-plated
   // category pages - so it passes the product's own page explicitly.
-  page = page || (location.pathname.split('/').pop() || 'index.html');
+  page = page || _currentPageFile();
   var existing = items.find(function (i) { return _cartKey(i) === key; });
   if (existing) {
     existing.qty += 1;
