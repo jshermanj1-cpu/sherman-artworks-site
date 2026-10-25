@@ -91,11 +91,13 @@ def record(name, bad, detail="", skipped=False):
 
 
 def pages():
-    return sorted(SITE.glob("*.html")) + sorted((SITE / "he").glob("*.html"))
+    # products/ and he/products/ are the per-product pages (_product_pages.py).
+    return (sorted(SITE.glob("*.html")) + sorted((SITE / "he").glob("*.html"))
+            + sorted((SITE / "products").glob("*.html")) + sorted((SITE / "he" / "products").glob("*.html")))
 
 
 def rel(path):
-    return path.name if path.parent == SITE else "he/" + path.name
+    return path.relative_to(SITE).as_posix()
 
 
 def walk(node, fn):
@@ -417,6 +419,7 @@ def main():
     external("Static cards match the catalogue", ["_static_cards.py", "--check"], "_usd.py")
     external("Hanukkah page matches the catalogue", ["_hanukkah_page.py", "--check"], "_usd.py")
     external("Shofar sizing table is current", ["_shofar_guide.py", "--check"])
+    external("Product pages are current", ["_product_pages.py", "--check"], "_usd.py")
     external("Image sitemap is current", ["_image_sitemap.py", "--check"])
     external("SKUs, JSON-LD and the feed agree", ["_validate_skus.py"], "_launch.py")
 
@@ -436,7 +439,7 @@ def main():
         print("  python _hanukkah_page.py && python _static_cards.py && python _subcategory_pages.py && "
               "python _shofar_jsonld.py \\\n    && python _shofar_pages.py && "
               "python _bake_en.py && python _offer_schema.py \\\n    && "
-              "python _he_pages.py && python _merchant_feed.py && python _image_sitemap.py")
+              "python _he_pages.py && python _product_pages.py && python _merchant_feed.py && python _image_sitemap.py")
         return 1
     if not QUIET:
         print("\nall guards passed")

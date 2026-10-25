@@ -73,5 +73,5 @@ changes:
 ```bash
 python _static_cards.py && python _subcategory_pages.py && python _shofar_jsonld.py \
   && python _shofar_pages.py && python _bake_en.py && python _offer_schema.py \
-  && python _he_pages.py && python _merchant_feed.py
+  && python _he_pages.py && python _product_pages.py && python _merchant_feed.py
 ```

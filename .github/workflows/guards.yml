@@ -54,6 +54,7 @@ jobs:
           python _bake_en.py
           python _offer_schema.py
           python _he_pages.py
+          python _product_pages.py
           python _merchant_feed.py
           python _image_sitemap.py
 
@@ -64,7 +65,7 @@ jobs:
             echo "Run the chain locally and commit what it writes:"
             echo "  python _hanukkah_page.py && python _static_cards.py && python _subcategory_pages.py && python _shofar_jsonld.py \\"
             echo "    && python _shofar_pages.py && python _bake_en.py && python _offer_schema.py \\"
-            echo "    && python _he_pages.py && python _merchant_feed.py && python _image_sitemap.py"
+            echo "    && python _he_pages.py && python _product_pages.py && python _merchant_feed.py && python _image_sitemap.py"
             echo ""
             echo "Files the chain rewrote:"
             git --no-pager diff --stat
@@ -82,7 +83,8 @@ jobs:
           python - <<'PY'
           import glob, os, re, sys
           bad = []
-          for page in sorted(glob.glob("*.html")) + sorted(glob.glob("he/*.html")):
+          for page in (sorted(glob.glob("*.html")) + sorted(glob.glob("he/*.html"))
+                       + sorted(glob.glob("products/*.html")) + sorted(glob.glob("he/products/*.html"))):
               src = open(page, encoding="utf-8").read()
               for attr in ("canonical", "alternate"):
                   for href in re.findall(

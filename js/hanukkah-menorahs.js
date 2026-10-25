@@ -821,6 +821,23 @@ function finishLabel(finish) {
   return f ? pageText(f.label) : "";
 }
 
+// Each menorah's own page (written by _product_pages.py), in the page language.
+function productPageUrl(product) {
+  return (currentLang === "he" ? "/he" : "") + "/products/" + product.id + ".html";
+}
+
+// The card name is a real link so crawlers reach the product page, but a plain
+// click keeps opening the product window like the rest of the card. A click
+// with a modifier key (new tab, new window) is left to the browser.
+function cardLinkClick(event) {
+  if (event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) {
+    event.stopPropagation();
+    return true;
+  }
+  event.preventDefault();
+  return false;
+}
+
 function productWhatsApp(product) {
   const name = productName(product);
   const message = currentLang === "he"
@@ -915,7 +932,8 @@ function buildProductCard(product, index) {
   const name = productName(product);
   return '<article class="product-card" id="' + product.id + '" onclick="openModal(' + index + ')">' +
     '<div class="product-card-img-wrap" data-product-idx="' + index + '">' + cardPhotoHtml(product, index) + "</div>" +
-    '<div class="product-card-body"><h2 class="product-card-name">' + escapeHtml(name) + "</h2>" +
+    '<div class="product-card-body"><h2 class="product-card-name"><a class="product-card-link" href="' +
+    productPageUrl(product) + '" onclick="return cardLinkClick(event)">' + escapeHtml(name) + "</a></h2>" +
     '<p class="product-card-desc">' + escapeHtml(productDescription(product)) + "</p>" +
     '<div class="product-card-meta"><span class="product-card-price">' + formatProductPrice(product.price_ils, 0, product.id) + "</span>" +
     (product.measurements ? cardMeasurementsHtml(product.measurements) : "") +
@@ -1058,6 +1076,8 @@ function renderModal() {
   document.getElementById("modalMeasurements").textContent = pageText("measurements_value");
   document.getElementById("modalPrice").innerHTML = formatProductPrice(product.price_ils, 0, product.id);
   document.getElementById("modalOrderCta").href = productWhatsApp(product);
+  const pageLink = document.getElementById("modalPageLink");
+  if (pageLink) pageLink.href = productPageUrl(product);
 
   // Photos
   const photos = product.photos;

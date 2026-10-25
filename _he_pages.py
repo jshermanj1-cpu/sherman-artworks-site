@@ -844,8 +844,14 @@ def translate_page(page):
         if not rec:
             continue
         if rec["name_he"]:
-            name_el.clear()
-            name_el.append(rec["name_he"])
+            # A name that links to the product's own page (_product_pages.py)
+            # keeps the link: only its text changes, and it goes to the Hebrew page.
+            link = name_el.find("a", class_="product-card-link")
+            target = link or name_el
+            target.clear()
+            target.append(rec["name_he"])
+            if link and link.get("href", "").startswith("/products/"):
+                link["href"] = "/he" + link["href"]
         desc_el = card.select_one(".product-card-desc")
         if desc_el and rec["desc_he"]:
             desc_el.clear()

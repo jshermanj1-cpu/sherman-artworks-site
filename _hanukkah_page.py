@@ -223,7 +223,9 @@ def card(p):
         f'alt="{html.escape(p["name_en"], quote=True)}" loading="lazy" />\n'
         '      </div>\n'
         '      <div class="product-card-body">\n'
-        f'        <h2 class="product-card-name">{name}</h2>\n'
+        # The name links to the product's own page (_product_pages.py), the
+        # crawlable path to it; in a browser the click still opens the window.
+        f'        <h2 class="product-card-name"><a class="product-card-link" href="/products/{p["id"]}.html">{name}</a></h2>\n'
         f'        <p class="product-card-desc">{html.escape(p["description_en"])}</p>\n'
         '        <div class="product-card-meta">\n'
         f'          <span class="product-card-price">{price_html(p)}</span>\n'
