@@ -913,7 +913,7 @@ function cardMeasurementsHtml(measurements) {
 
 function buildProductCard(product, index) {
   const name = productName(product);
-  return '<article class="product-card" id="' + product.id + '" onclick="openModal(' + index + ')">' +
+  return '<article class="product-card" id="' + product.id + '" onclick="cardClick(event, \'' + productPageUrl(product) + '\')">' +
     '<div class="product-card-img-wrap" data-product-idx="' + index + '">' + cardPhotoHtml(product, index) + "</div>" +
     '<div class="product-card-body"><h2 class="product-card-name"><a class="product-card-link" href="' +
     productPageUrl(product) + '" onclick="return cardLinkClick(event)">' + escapeHtml(name) + "</a></h2>" +
@@ -922,7 +922,8 @@ function buildProductCard(product, index) {
     (product.measurements ? cardMeasurementsHtml(product.measurements) : "") +
     "</div>" +
     '<p class="product-color-note">' + escapeHtml(T_SITE[currentLang].color_note) + "</p>" +
-    '<div class="product-card-actions"><button class="btn-cart" onclick="event.stopPropagation();cartAddFromProduct(' + index + ')">' +
+    '<div class="product-card-actions"><button class="btn-quick-view" onclick="event.stopPropagation();openModal(' + index + ')">' +
+    escapeHtml(T_SITE[currentLang].quick_view) + '</button><button class="btn-cart" onclick="event.stopPropagation();cartAddFromProduct(' + index + ')">' +
     escapeHtml(T_SITE[currentLang].add_cart) + '</button><div class="product-card-secondary-actions">' +
     '<button class="btn-details" onclick="event.stopPropagation();openModal(' + index + ')">' +
     escapeHtml(pageText("view_details")) + '</button><a class="btn-order" target="_blank" rel="noopener noreferrer" href="' +
@@ -987,13 +988,13 @@ function openModal(index) {
   renderModal();
   document.getElementById("productModal").classList.add("open");
   document.body.style.overflow = "hidden";
-  history.replaceState(null, "", "#" + PRODUCTS[index].id);
+  productWindowOpened(PRODUCTS[index].id);
 }
 
 function closeModal() {
   document.getElementById("productModal").classList.remove("open");
   document.body.style.overflow = "";
-  history.replaceState(null, "", location.pathname + location.search);
+  productWindowClosed();
   currentModalIdx = null;
 }
 
@@ -1002,7 +1003,7 @@ function switchModalProduct(index, focusSelector) {
   currentModalIdx = index;
   currentPhotoIdx = 0;
   renderModal();
-  history.replaceState(null, "", "#" + PRODUCTS[index].id);
+  productWindowShows(PRODUCTS[index].id);
   requestAnimationFrame(function() {
     const el = document.querySelector(focusSelector);
     if (el) el.focus();

@@ -88,7 +88,7 @@ def has_page(p):
 
 def card_name(p, name_html):
     """A card heading's content. The name links to the product's own page, the
-    crawlable path to it; in a browser a plain click still opens the window."""
+    crawlable path to it; in a browser the whole card opens that page."""
     if not has_page(p):
         return name_html
     return f'<a class="product-card-link" href="/products/{p["id"]}.html">{name_html}</a>'

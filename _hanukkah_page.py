@@ -224,7 +224,7 @@ def card(p):
         '      </div>\n'
         '      <div class="product-card-body">\n'
         # The name links to the product's own page (_product_pages.py), the
-        # crawlable path to it; in a browser the click still opens the window.
+        # crawlable path to it; in a browser the whole card opens that page.
         f'        <h2 class="product-card-name"><a class="product-card-link" href="/products/{p["id"]}.html">{name}</a></h2>\n'
         f'        <p class="product-card-desc">{html.escape(p["description_en"])}</p>\n'
         '        <div class="product-card-meta">\n'

@@ -365,6 +365,7 @@ const T_SITE = {
     consent_accept:      'Accept',
     consent_decline:     'Decline',
     add_cart:            'Add to Cart',
+    quick_view:          'Quick view',
     color_note:          '* Colors and measurements may appear slightly different in person, as each item is handmade.',
     cart_title:          'Cart',
     cart_subtotal:       'Subtotal',
@@ -470,6 +471,7 @@ const T_SITE = {
     consent_accept:      'אישור',
     consent_decline:     'לא תודה',
     add_cart:            'הוסף לסל',
+    quick_view:          'תצוגה מהירה',
     color_note:          '* הצבעים והמידות עשויים להראות מעט שונים במציאות, מכיוון שכל פריט נעשה בעבודת יד.',
     cart_title:          'עגלה',
     cart_subtotal:       'סכום ביניים',
@@ -496,17 +498,64 @@ function productPageUrl(product) {
   return (currentLang === 'he' ? '/he' : '') + '/products/' + product.id + '.html';
 }
 
-// The card name is a real link so crawlers reach the product page, but a plain
-// click keeps opening the product window like the rest of the card. A click
-// with a modifier key (new tab, new window) is left to the browser.
-function cardLinkClick(event) {
-  if (event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) {
-    event.stopPropagation();
-    return true;
+// A click anywhere on a card opens the product's own page, as on most shops;
+// the card's Quick view button opens the product window instead. A click with
+// a modifier key opens the page in a new tab, as the name link would.
+function cardClick(event, url) {
+  if (event.ctrlKey || event.metaKey || event.shiftKey) {
+    window.open(url, '_blank', 'noopener');
+    return;
   }
-  event.preventDefault();
-  return false;
+  location.href = url;
 }
+
+// The card name is a real link to the same page. The browser follows it, so
+// the card's own click handler must not run as well.
+function cardLinkClick(event) {
+  event.stopPropagation();
+  return true;
+}
+
+// ── PRODUCT WINDOW HISTORY ──────────────────────────────────────
+// Opening the product window adds a step to the browser history, so Back (the
+// back gesture on a phone above all) closes the window instead of leaving the
+// shop page. The address carries the product's #id while the window is open.
+let productWindowStep = false;
+
+function productWindowOpened(id) {
+  if (history.state && history.state.saWindow) {
+    history.replaceState(history.state, '', '#' + id);
+  } else {
+    // Arriving on a #id link opens the window straight away; the step under
+    // it is the shop page itself.
+    if (location.hash) history.replaceState(null, '', location.pathname + location.search);
+    history.pushState({ saWindow: true }, '', '#' + id);
+  }
+  productWindowStep = true;
+}
+
+// Switching color or finish inside the window shows another product.
+function productWindowShows(id) {
+  history.replaceState(history.state, '', '#' + id);
+}
+
+// Closing the window with its X, Escape or Add to Cart takes the step back
+// off the history; the popstate that follows finds the window already shut.
+function productWindowClosed() {
+  if (productWindowStep && history.state && history.state.saWindow) {
+    productWindowStep = false;
+    history.back();
+    return;
+  }
+  productWindowStep = false;
+  history.replaceState(null, '', location.pathname + location.search);
+}
+
+window.addEventListener('popstate', function () {
+  if (!productWindowStep || (history.state && history.state.saWindow)) return;
+  productWindowStep = false;
+  if (typeof closeModal === 'function') closeModal();
+});
 
 // ── STATE ───────────────────────────────────────────────────────
 let currentLang     = 'en';
@@ -1183,18 +1232,35 @@ document.addEventListener('DOMContentLoaded', function() {
   if (waCorp) waCorp.href = 'https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent("Hi, I'm interested in a corporate or bulk order.");
 });
 
-// Return product/index pairs in a new random order. Category pages cache the
+// A random order for these product ids, kept for the rest of the visit (per
+// tab). A card click leaves for the product's page, and coming Back must find
+// every card where it was, even when the browser reloads the shop page instead
+// of restoring it from memory.
+function rememberedOrder(ids) {
+  var key = 'sa_order:' + location.pathname + ':' + ids.slice().sort().join(',');
+  try {
+    var saved = JSON.parse(sessionStorage.getItem(key));
+    if (Array.isArray(saved) && saved.length === ids.length &&
+        saved.every(function(id) { return ids.indexOf(id) >= 0; })) return saved;
+  } catch (e) {}
+  var order = ids.slice();
+  for (var i = order.length - 1; i > 0; i--) {
+    var j = Math.floor(Math.random() * (i + 1));
+    var current = order[i];
+    order[i] = order[j];
+    order[j] = current;
+  }
+  try { sessionStorage.setItem(key, JSON.stringify(order)); } catch (e) {}
+  return order;
+}
+
+// Return product/index pairs in a random order. Category pages cache the
 // result for the lifetime of the page so language and currency changes do not
 // make products jump around while someone is browsing.
 function shuffledProductEntries(products) {
-  var entries = products.map(function(product, index) {
-    return { p: product, idx: index };
+  var ids = products.map(function(product) { return product.id; });
+  return rememberedOrder(ids).map(function(id) {
+    var index = ids.indexOf(id);
+    return { p: products[index], idx: index };
   });
-  for (var i = entries.length - 1; i > 0; i--) {
-    var j = Math.floor(Math.random() * (i + 1));
-    var current = entries[i];
-    entries[i] = entries[j];
-    entries[j] = current;
-  }
-  return entries;
 }

@@ -28,7 +28,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet" />
 
-  <link rel="stylesheet" href="/css/site.css?v=20261025a" />
+  <link rel="stylesheet" href="/css/site.css?v=20261026a" />
   <link rel="stylesheet" href="/css/cart.css?v=20260920a" />
   <style>
 .hero-icon { margin-bottom: 1.5rem; opacity: 0.7; color: var(--gold); display: flex; justify-content: center; }
@@ -322,7 +322,7 @@
   </div>
 </footer>
 
-<script src="/js/site.js?v=20261025a"></script>
+<script src="/js/site.js?v=20261026a"></script>
 <script src="/js/cart.js?v=20261025a"></script>
 <script>const PRODUCTS = [
   {
@@ -1004,7 +1004,7 @@
       ? `<span class="product-card-measurements">${product.measurements}</span>`
       : '';
     return `
-      <article class="product-card" id="${product.id}" onclick="openModal(${idx})">
+      <article class="product-card" id="${product.id}" onclick="cardClick(event, '${productPageUrl(product)}')">
         <div class="product-card-img-wrap" data-product-idx="${idx}">
           <img class="product-card-img" id="card-img-${idx}" loading="lazy"
                src="${CDN}/w_600,c_fit,q_auto,f_auto/${firstPhoto}.jpg"
@@ -1020,6 +1020,7 @@
           </div>
           <p class="product-color-note">${T_SITE[l] && T_SITE[l].color_note ? T_SITE[l].color_note : ''}</p>
           <div class="product-card-actions">
+            <button class="btn-quick-view" onclick="event.stopPropagation();openModal(${idx})">${T_SITE[l].quick_view}</button>
             <button class="btn-cart" onclick="event.stopPropagation();cartAddFromProduct(${idx})">
               <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
               ${T_SITE[l] ? T_SITE[l].add_cart : 'Add to Cart'}
@@ -1078,8 +1079,8 @@
   let currentModalIdx = null;
   let currentPhotoIdx = 0;
   let currentPlateSelected = false;
-  function openModal(idx) { currentModalIdx = idx; currentPhotoIdx = 0; currentPlateSelected = false; renderModal(); document.getElementById('productModal').classList.add('open'); document.body.style.overflow = 'hidden'; history.replaceState(null, '', '#' + PRODUCTS[idx].id); }
-  function closeModal() { document.getElementById('productModal').classList.remove('open'); history.replaceState(null, '', location.pathname + location.search); document.body.style.overflow = ''; currentModalIdx = null; currentPlateSelected = false; }
+  function openModal(idx) { currentModalIdx = idx; currentPhotoIdx = 0; currentPlateSelected = false; renderModal(); document.getElementById('productModal').classList.add('open'); document.body.style.overflow = 'hidden'; productWindowOpened(PRODUCTS[idx].id); }
+  function closeModal() { document.getElementById('productModal').classList.remove('open'); productWindowClosed(); document.body.style.overflow = ''; currentModalIdx = null; currentPlateSelected = false; }
   function getCurrentTrayAddon() {
     const p = PRODUCTS[currentModalIdx];
     return currentPlateSelected && p && p.tray_addon ? p.tray_addon : null;

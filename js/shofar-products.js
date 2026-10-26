@@ -323,17 +323,12 @@ const PAGE_GROUPS = {
 };
 
 // PRODUCTS indices to render, in display order. Call once per page load: the
-// 'all' shuffle must survive a language or currency toggle, which re-renders.
+// 'all' shuffle must survive a language or currency toggle, which re-renders,
+// and rememberedOrder (js/site.js) keeps it for the visit, so coming Back from
+// a shofar's own page finds the grid as it was.
 function buildPageOrder(pageKey) {
   var ids = PAGE_GROUPS[pageKey];
-  if (!ids) {
-    var order = PRODUCTS.map(function (_, i) { return i; });
-    for (var i = order.length - 1; i > 0; i--) {   // Fisher-Yates
-      var j = Math.floor(Math.random() * (i + 1));
-      var tmp = order[i]; order[i] = order[j]; order[j] = tmp;
-    }
-    return order;
-  }
+  if (!ids) ids = rememberedOrder(PRODUCTS.map(function (p) { return p.id; }));
   return ids
     .map(function (id) { return PRODUCTS.findIndex(function (p) { return p.id === id; }); })
     .filter(function (i) { return i >= 0; });

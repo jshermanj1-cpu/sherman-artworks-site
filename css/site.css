@@ -319,7 +319,7 @@ nav {
   letter-spacing: 0.04em; font-weight: 600;
   color: var(--dark); line-height: 1.3;
 }
-/* Card names link to the product pages for crawlers; clicking still opens the window. */
+/* The card opens its product page; the name is the real link to it. */
 .product-card-name a.product-card-link { color: inherit; text-decoration: none; }
 .product-card-desc {
   font-family: var(--ff-ital); font-style: italic;
@@ -364,6 +364,24 @@ nav {
 .product-card .product-card-secondary-actions {
   display: none;
 }
+
+/* Quick view opens the product window without leaving the shop page. It sits
+   beside Add to Cart (css/cart.css stacks the card actions in a column for the
+   hidden secondary row, so the row is restored here) and matches its size. */
+.product-card .product-card-actions { flex-direction: row; }
+.btn-quick-view {
+  background: transparent;
+  color: var(--dark);
+  border: 1px solid var(--dark);
+  border-radius: 6px;
+  padding: 0.55rem 0.75rem;
+  font-family: var(--ff-body);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+.btn-quick-view:hover { background: var(--dark); color: #fff; }
+.btn-quick-view:active { transform: scale(0.97); }
 
 /* ── 9. CARD CAROUSEL ────────────────────────────────────────── */
 .card-nav {
@@ -973,6 +991,7 @@ footer .logo-sub  { color: var(--footer-text); }
 [lang="he"] .btn-gold,
 [lang="he"] .btn-wa,
 [lang="he"] .btn-cart,
+[lang="he"] .btn-quick-view,
 [lang="he"] .form-submit,
 [lang="he"] .cta-link,
 [lang="he"] .section-tag,
