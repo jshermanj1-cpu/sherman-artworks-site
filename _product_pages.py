@@ -394,8 +394,8 @@ def main_html(p, products, lang, d, s):
                        for k in ("silver-tone", "gold-tone") if sibling(products, p, finish=k))
     colors = "".join(
         f'<a class="variant-color-option" href="{page_path(x, lang)}"{cur if x["id"] == p["id"] else ""}>'
-        f'<img src="{image(x["photos"][0], "w_120,h_120,c_fill,g_auto,q_auto,f_auto")}" alt="" loading="lazy" />'
-        f'<span>{e(color(x, lang))}</span></a>'
+        f'<img src="{image(x["photos"][0], "w_120,h_120,c_fill,g_auto,q_auto,f_auto")}" alt="{e(name(x, lang))}" loading="lazy" />'
+        f'<span aria-hidden="true">{e(color(x, lang))}</span></a>'
         for x in products if x["family_id"] == p["family_id"])
     thumbs = "".join(
         f'<button type="button" class="modal-thumb{" active" if i == 0 else ""}" onclick="ppShow({i})" '
@@ -464,15 +464,40 @@ def main_html(p, products, lang, d, s):
 </main>"""
 
 
+HE_DESC_TAIL = "משלוח לכל העולם או איסוף עצמי מקרני שומרון."
+
+
+def meta_description(text, limit=160):
+    """The product copy cut to whole sentences that fit in a search snippet.
+
+    Footnote lines ("* mezuzah case doesn't include the parchment") stay on
+    the page only. A first sentence that is already too long is cut at a word.
+    """
+    kept = [line for line in text.splitlines() if not line.lstrip().startswith("*")]
+    text = " ".join(" ".join(kept).split())
+    out = ""
+    for sentence in re.split(r"(?<=\.)\s+", text):
+        if len(f"{out} {sentence}".strip()) > limit:
+            break
+        out = f"{out} {sentence}".strip()
+    if not out:
+        out = text[:limit - 1].rsplit(" ", 1)[0].rstrip(",;:") + "…"
+    return out
+
+
 def head_block(p, lang):
     url = page_url(p, lang)
     t = TEXT[lang]
     nm = name(p, lang)
     title = f"{nm} | {t['brand']}"
+    if len(title) > 70:  # Bing flags longer titles; the name alone carries the page
+        title = nm
     if lang == "he":
-        desc = p["description_he"]
+        desc = meta_description(p["description_he"])
+        if len(desc) < 70:
+            desc = f"{desc} {HE_DESC_TAIL}"
     else:
-        desc = p["description_en"]
+        desc = meta_description(p["description_en"])
         if p["measurements"] and len(f"{desc} {p['measurements']}.") <= 160:
             desc = f"{desc} {p['measurements']}."
     share = image(p["photos"][0], "w_1200,h_630,c_pad,b_rgb:faf7f2,q_auto,f_auto")
@@ -700,8 +725,8 @@ def fill_window(body, p, family, twins, lang, site, page_t):
     if options and len(family) > 1:
         put(options, "".join(
             f'<a class="variant-color-option" href="{page_path(x, lang)}"{current if x["id"] == p["id"] else ""}>'
-            f'<img src="{image(x["photos"][0], "w_120,h_120,c_fill,g_auto,q_auto,f_auto")}" alt="" loading="lazy" />'
-            f'<span>{e(color(x, lang))}</span></a>' for x in family))
+            f'<img src="{image(x["photos"][0], "w_120,h_120,c_fill,g_auto,q_auto,f_auto")}" alt="{e(name(x, lang))}" loading="lazy" />'
+            f'<span aria-hidden="true">{e(color(x, lang))}</span></a>' for x in family))
         show(find("modalColorRow"), True)
     options = find("modalFinishOptions")
     if options and len(twins) > 1:

@@ -934,6 +934,9 @@ def translate_page(page):
     set_meta("property", "og:description", desc_he)
     set_meta("property", "og:locale", "he_IL")
     set_meta("property", "og:url", he_url(page))
+    for key, value in (("twitter:title", title_he), ("twitter:description", desc_he)):
+        if soup.find("meta", attrs={"name": key}):
+            set_meta("name", key, value)
 
     can = soup.find("link", attrs={"rel": "canonical"})
     if can:
