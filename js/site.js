@@ -724,6 +724,21 @@ function applyCurrency(cur) {
 }
 
 // ── LANGUAGE ────────────────────────────────────────────────────
+// The URL decides the language a page opens in: /he/ pages are Hebrew and every
+// other page is English, whatever the last page saved. Following the saved
+// value made an English page re-render in Hebrew after any visit to a /he/
+// page. Only the pages both languages share (checkout and the payment results)
+// follow it, and the page the shopper came from has just written it.
+function pageLang() {
+  if (window.__SA_LANG) return window.__SA_LANG;
+  var path = location.pathname;
+  if (/^\/he(\/|$)/.test(path)) return 'he';
+  if (/\/(checkout|payment-success|payment-failed)(\.html)?$/.test(path)) {
+    return localStorage.getItem('sa_lang') || 'en';
+  }
+  return 'en';
+}
+
 function setLang(l) {
   currentLang = l;
   // Before the renders below, so they paint in the right currency on the first
@@ -749,6 +764,13 @@ function setLang(l) {
   document.querySelectorAll('[data-alt-en][data-alt-he]').forEach(function(img) {
     img.alt = l === 'he' ? img.dataset.altHe : img.dataset.altEn;
   });
+  // The hero "Ask on WhatsApp" button (Kiddush cups, business gifts) is href="#"
+  // in the markup and opens a chat pre-filled from the page's wa_hero_msg.
+  var waHero = document.getElementById('waLink');
+  if (waHero) {
+    waHero.href = 'https://wa.me/' + WA_NUMBER + '?text=' +
+      encodeURIComponent(dict.wa_hero_msg || "Hi, I have a question about Sherman Art Works.");
+  }
   document.documentElement.lang = l;
   document.documentElement.dir  = l === 'he' ? 'rtl' : 'ltr';
   var btnEN = document.getElementById('btnEN');
@@ -1022,7 +1044,9 @@ function initConsent() {
   div.innerHTML =
     '<p class="sr-only" id="consentBannerTitle" data-t="consent_sr">Cookie consent</p>' +
     '<p class="consent-text"><span data-t="consent_text">We use analytics cookies to understand how visitors use the site and to see whether our Google ads lead to orders. They are never used to target ads at you.</span> ' +
-    '<a href="privacy.html" data-t="consent_more">Privacy Policy</a></p>' +
+    // Root-absolute: a relative href resolved to /products/privacy.html on
+    // the product pages, which does not exist.
+    '<a href="' + (pageLang() === 'he' ? '/he/' : '/') + 'privacy.html" data-t="consent_more">Privacy Policy</a></p>' +
     '<div class="consent-actions">' +
       '<button type="button" class="consent-btn consent-accept" id="consentAcceptBtn" data-t="consent_accept" onclick="acceptConsent()">Accept</button>' +
       '<button type="button" class="consent-btn consent-decline" data-t="consent_decline" onclick="declineConsent()">Decline</button>' +
@@ -1088,7 +1112,7 @@ function a11yAnnounce(msg) {
 
 function initA11y() {
   // Skip-to-content link - targets existing main id or falls back to 'main-content'
-  var lang = localStorage.getItem('sa_lang') || 'en';
+  var lang = pageLang();
   var main = document.querySelector('main');
   if (main && !main.id) main.id = 'main-content';
   if (main) main.setAttribute('tabindex', '-1');
@@ -1108,22 +1132,10 @@ function initA11y() {
   live.className = 'sr-only';
   document.body.appendChild(live);
 
-  // Add accessibility link to the last footer column (Help) if not already present
-  if (!document.querySelector('a[href="accessibility.html"]')) {
-    var footerStudio = document.querySelector('.footer-links');
-    if (footerStudio) {
-      var li = document.createElement('li');
-      var a = document.createElement('a');
-      a.href = 'accessibility.html';
-      a.dataset.t = 'nav_accessibility';
-      a.textContent = (T_SITE[lang] && T_SITE[lang].nav_accessibility) || 'Accessibility Statement';
-      li.appendChild(a);
-      // append to LAST footer-links column (the Help column)
-      var allFooterLists = document.querySelectorAll('.footer-links');
-      var studioList = allFooterLists[allFooterLists.length - 1];
-      if (studioList) studioList.appendChild(li);
-    }
-  }
+  // Every page's footer carries its own Accessibility Statement link. This
+  // used to add one when it found none, but it matched only the bare relative
+  // href, so the product pages (which link "/accessibility.html") got a second
+  // copy pointing at a products/accessibility.html that does not exist.
 
   // Modal accessibility: focus trap + focus return (works on any page with #productModal)
   var modal = document.getElementById('productModal');
@@ -1202,9 +1214,7 @@ document.addEventListener('DOMContentLoaded', function() {
     document.dispatchEvent(new CustomEvent('sa:cart-change'));
   }, 1000);
   initMobileShopGroups();
-  // Static /he/ pages set window.__SA_LANG='he' so the URL (not a stale
-  // localStorage value) wins - otherwise JS would re-render them in English.
-  var lang = window.__SA_LANG || localStorage.getItem('sa_lang') || 'en';
+  var lang = pageLang();
   // setLang picks the currency too, honouring an explicit earlier choice. It is
   // no longer read straight from localStorage here: that ignored the language
   // and left a Hebrew page quoting dollars.

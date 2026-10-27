@@ -257,7 +257,7 @@ def scan():
 
 def copy_rules():
     """The owner's standing copy rules, which regenerating can reintroduce."""
-    long_dash, sterling, free_ship = [], [], []
+    long_dash, sterling, free_ship, email = [], [], [], []
     tracked = subprocess.run(["git", "ls-files"], cwd=str(SITE),
                              capture_output=True, text=True).stdout.split()
     for name in tracked:
@@ -277,9 +277,14 @@ def copy_rules():
             sterling.append(name)
         if "free shipping" in low or u"משלוח חינם" in text:
             free_ship.append(name)
+        # The contact card splits the address with a <br>, so a dropped "s"
+        # there stayed live for weeks while every mailto: link was right.
+        if re.search(r"shermanartwork(?!s)", low):
+            email.append(name)
     record("No em or en dashes (plain hyphens only)", long_dash, ", ".join(long_dash[:3]))
     record("The word 'sterling' never appears", sterling, ", ".join(sterling[:3]))
     record("Nothing claims free shipping", free_ship, ", ".join(free_ship[:3]))
+    record("The shop name is spelled shermanartworks", email, ", ".join(email[:3]))
 
 
 def feed_prices():
