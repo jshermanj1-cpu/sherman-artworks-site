@@ -303,6 +303,7 @@ function addToCart(slug, name_en, name_he, price_ils, photo, sku, meta, page) {
     items.push(entry);
   }
   _saveCart(items);
+  countFunnel('add_to_cart', [funnelLine(existing || entry, 1)]);
   if (typeof trackGA4 === 'function') {
     // Reported in the currency the shopper is actually being quoted in. GA4
     // converts by the currency code on the event, so tagging a dollar figure
@@ -342,6 +343,7 @@ function updateCartQty(key, qty) {
     item.qty = qty;
     _saveCart(items);
     if (delta) ga4CartChange(delta > 0 ? 'add_to_cart' : 'remove_from_cart', item, Math.abs(delta));
+    if (delta > 0) countFunnel('add_to_cart', [funnelLine(item, delta)]);
   }
 }
 
@@ -460,6 +462,52 @@ function ga4CheckoutStep(eventName, extra) {
   var params = { currency: cur, value: ga4Value(gaItems), items: gaItems };
   for (var k in extra) params[k] = extra[k];
   trackGA4(eventName, params);
+}
+
+// The cookie-free funnel counter (sherman-payments, src/events.js). GA4 sees
+// these four steps only for shoppers who accept cookies; this counts them for
+// everyone, which it can do because it sends nothing about the person: no
+// cookie, no id, only the cart lines, the page, and whether GA4 saw it too.
+// Each line is built from ga4Item, so both report the same SKU, variant and
+// price. A local dev host never sends: the payload queues in window.__saFunnel,
+// the way GA4 events queue in dataLayer, which is how to test it.
+var FUNNEL_STEPS = ['add_to_cart', 'begin_checkout', 'pay_click', 'whatsapp_order'];
+
+function funnelLine(item, qty) {
+  var g = ga4Item(item, ga4Currency(), qty);
+  return { slug: item.slug, sku: item.sku || '', variant: g.item_variant || '', qty: g.quantity, price: g.price };
+}
+
+function countFunnel(step, lines, place) {
+  if (FUNNEL_STEPS.indexOf(step) < 0 || !lines.length) return;
+  var body = {
+    e: step,
+    items: lines,
+    cur: ga4Currency(),
+    lang: (typeof currentLang !== 'undefined' && currentLang) || 'en',
+    page: location.pathname,
+    ga4: !!window.__ga4Loaded,
+    internal: typeof _isInternalVisit === 'function' && _isInternalVisit()
+  };
+  if (place) body.place = place;
+  if ((typeof _isDevHost === 'function' && _isDevHost()) || typeof PAYMENT_API === 'undefined') {
+    (window.__saFunnel = window.__saFunnel || []).push(body);
+    return;
+  }
+  // keepalive, so a step that leaves the page (Pay, a WhatsApp order) is still
+  // delivered. text/plain keeps it a simple request with no preflight, and the
+  // response is never read, so a failure is simply dropped.
+  try {
+    fetch(PAYMENT_API + '/e', {
+      method: 'POST', body: JSON.stringify(body), keepalive: true, credentials: 'omit',
+      headers: { 'Content-Type': 'text/plain' }
+    }).catch(function () {});
+  } catch (e) {}
+}
+
+// The whole cart at one of the checkout steps.
+function countFunnelCart(step, place) {
+  countFunnel(step, getCart().map(function (i) { return funnelLine(i); }), place);
 }
 
 // Opening a product. Each category page carries its own openModal(), but all
@@ -1079,6 +1127,7 @@ function openCartDrawer() {
 // passes through the card checkout, so it is reported as its own payment type
 // instead of a begin_checkout, and as the WhatsApp click Google Ads counts.
 function ga4WhatsAppOrder(where) {
+  countFunnelCart('whatsapp_order', where);
   ga4CheckoutStep('add_payment_info', { payment_type: 'whatsapp' });
   if (typeof trackGA4 === 'function') trackGA4('whatsapp_click', { location: where });
 }
