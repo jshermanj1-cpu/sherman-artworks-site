@@ -652,11 +652,11 @@ def he_measure(p, lang):
     return p.get("measurements_he") or he_units(p["measurements"])
 
 
-def static_price(p, site):
+def static_price(p, site, lead=None):
     # The dollar figure is the pinned list's, as on the cards, so the guard that
     # compares card prices with what checkout charges covers these pages too.
     out = card_price_html(p)
-    return out.replace("from ", site["cat_from"] + " ", 1) if p.get("sizes") else out
+    return out.replace("from ", (lead or site["cat_from"]) + " ", 1) if p.get("sizes") else out
 
 
 def fill_window(body, p, family, twins, lang, site, page_t):
@@ -749,8 +749,8 @@ def fill_window(body, p, family, twins, lang, site, page_t):
             f'<span class="variant-size-price">@@PRICE{i}@@</span>'
             f'</span></label>' for i, sz in enumerate(sizes)))
     elif sizes and select:
-        put(select, "".join(
-            f'<option value="{i}"{" selected" if i == 0 else ""}>'
+        put(select, f'<option value="" selected>{e(page_t["size_placeholder"])}</option>' + "".join(
+            f'<option value="{i}">'
             f'{e(sz["label"])} · {e(sz["range_cm"])} cm ({e(sz["range_in"])}″)</option>'
             for i, sz in enumerate(sizes)))
     elif sizes:
@@ -780,7 +780,7 @@ def fill_window(body, p, family, twins, lang, site, page_t):
                                             "Please send me any further info you have.\n\nThanks."))
     # Prices go in after serializing, which would turn &#8362; into a bare
     # shekel sign that the guard on card dollar figures no longer recognizes.
-    out = str(soup).replace("@@PRICE@@", static_price(p, site))
+    out = str(soup).replace("@@PRICE@@", static_price(p, site, page_t.get("price_starting")))
     for i, sz in enumerate(sizes):
         out = out.replace(f"@@PRICE{i}@@", static_price({"price_ils": sz["price_ils"]}, site))
     return out

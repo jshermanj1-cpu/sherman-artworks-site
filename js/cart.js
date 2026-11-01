@@ -808,14 +808,11 @@ function cartAddFromModal() {
     var sizeChoice = document.querySelector('input[name="modalSizeOption"]:checked');
     var si = sizeChoice ? parseInt(sizeChoice.value, 10) : (sizeEl ? parseInt(sizeEl.value, 10) : NaN);
     if (isNaN(si) || si < 0 || si >= p.sizes.length) {
-      if (p.require_size_selection) {
-        var sizeError = document.getElementById('modalSizeError');
-        if (sizeError) sizeError.classList.add('visible');
-        var firstSize = document.querySelector('input[name="modalSizeOption"]');
-        if (firstSize) firstSize.focus();
-        return;
-      }
-      si = 0;
+      var sizeError = document.getElementById('modalSizeError');
+      if (sizeError) sizeError.classList.add('visible');
+      var firstSize = document.querySelector('input[name="modalSizeOption"]') || sizeEl;
+      if (firstSize) firstSize.focus();
+      return;
     }
     var sz = p.sizes[si];
     price = sz.price_ils;
