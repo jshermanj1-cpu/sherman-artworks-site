@@ -352,7 +352,6 @@ def jsonld_blocks(p, lang, landing_src, shape_src, graph):
         "brand": {"@type": "Brand", "name": "Sherman Art Works"},
         "itemCondition": "https://schema.org/NewCondition",
         "inProductGroupWithID": p["family_id"],
-        "isVariantOf": {"@id": BASE + landing_path(lang) + "#" + p["family_id"]},
         "offers": {
             "@type": "Offer",
             "url": url,
@@ -821,7 +820,7 @@ def window_main(p, lang, ctx, filled):
 """
 
 
-def product_node(p, lang, base, groups):
+def product_node(p, lang, base):
     """This product as its category page describes it, at this page's address."""
     url = page_url(p, lang)
     node = {"@context": "https://schema.org", "@type": "Product", "@id": url + "#product", "url": url,
@@ -834,10 +833,11 @@ def product_node(p, lang, base, groups):
         node["size"] = base["size"]
     node.update({"sku": p["sku"], "mpn": p["sku"], "brand": {"@type": "Brand", "name": "Sherman Art Works"},
                  "itemCondition": "https://schema.org/NewCondition"})
+    # The family as a plain id, never isVariantOf: the ProductGroup lives on the
+    # category page and Google does not follow an @id there, so the link reads as
+    # a Product with no name or offers and this page's product is filed under it.
     if p.get("family_id"):
         node["inProductGroupWithID"] = p["family_id"]
-        if p["family_id"] in groups:
-            node["isVariantOf"] = {"@id": groups[p["family_id"]]}
     # The category page's offers, one per size where there are sizes, so this
     # page and the feed quote the same prices under the same skus.
     offers = copy.deepcopy(base["offers"])
@@ -850,18 +850,16 @@ def product_node(p, lang, base, groups):
 
 
 def catalogue(src):
-    """Product nodes by id, and ProductGroup @ids by group id, from a page's JSON-LD."""
-    nodes, groups = {}, {}
+    """Product nodes by id from a page's JSON-LD."""
+    nodes = {}
 
     def visit(n):
         if n.get("@type") == "Product" and "#" in (n.get("url") or ""):
             nodes.setdefault(n["url"].split("#", 1)[1], n)
-        if n.get("@type") == "ProductGroup" and n.get("productGroupID") and n.get("@id"):
-            groups[n["productGroupID"]] = n["@id"]
 
     for raw in JSONLD.findall(src):
         walk(json.loads(raw), visit)
-    return nodes, groups
+    return nodes
 
 
 def subpage(p, split_pages):
@@ -908,10 +906,10 @@ def build_window(p, lang, ctx):
     if guide and "<section" not in guide.group(0)[8:]:
         out = out[:guide.start()] + out[guide.end():]
 
-    nodes, groups = ctx["catalogue"]
+    nodes = ctx["catalogue"]
     if p["id"] not in nodes:
         raise RuntimeError(f"{lang} {ctx['landing']}: no structured data for {p['id']}")
-    ld = jsonld_html([product_node(p, lang, nodes[p["id"]], groups),
+    ld = jsonld_html([product_node(p, lang, nodes[p["id"]]),
                       crumbs_jsonld(ctx["crumbs"], p, lang)], ctx["graph"])
     out = new_head(out, p, lang, ld)
     out = twin_toggles(out, p, ctx["landing"])
