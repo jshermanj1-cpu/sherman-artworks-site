@@ -88,6 +88,7 @@ TEXT = {
         "none": "לא נמצא פריט. נסו מילה אחרת.",
         "sale": "יש מבצע באתר עכשיו, והמחירים כאן כבר אחרי ההנחה.",
         "collection": "שליחת כל הקולקציה",
+        "copy_link": "העתקת קישור לדף",
         "footer": "המחירים והפריטים מתעדכנים יחד עם האתר. קישורים שנשלחים מהדף הזה מסומנים, "
                   "כדי שהסטודיו יוכל לראות אילו הזמנות הגיעו דרכם.",
         "other": "English",
@@ -124,6 +125,7 @@ TEXT = {
         "none": "Nothing found. Try another word.",
         "sale": "There is a sale on the site right now, and the prices here already include it.",
         "collection": "Send the whole collection",
+        "copy_link": "Copy link to page",
         "footer": "Prices and pieces update with the site. Links sent from this page are tagged "
                   "so the studio can see which orders came through them.",
         "other": "עברית",
@@ -175,6 +177,7 @@ h2{font-size:1.1rem;margin:22px 0 10px}
 .chip[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:#fff}
 .search{width:100%;font:inherit;font-size:1rem;padding:12px 14px;border:1px solid var(--line);border-radius:10px;background:var(--card);color:var(--ink);margin:4px 0 10px;min-height:48px}
 .bar{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-bottom:10px;color:var(--muted);font-size:.92rem}
+#collection{flex:1 1 100%}#collection:empty{display:none}#collection .pair .btn{flex:1}
 .grid{display:grid;gap:12px;grid-template-columns:repeat(2,minmax(0,1fr))}
 @media (min-width:700px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media (min-width:1000px){.grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
@@ -276,17 +279,20 @@ function list() {
   }).join('') : '<p class="empty">' + esc(t.none) + '</p>';
 }
 
+// The copy button takes the bare link (still tagged), for pasting into his own
+// words rather than the ready message.
 function buttonsCollection(c) {
   var t = TEXT[lang], msg = fill(t.msg_collection, c[lang], link(c.page));
-  return '<a class="btn send" href="' + esc(wa(msg)) + '" target="_blank" rel="noopener">' + esc(t.collection) + '</a>';
+  return '<span class="pair"><a class="btn send" href="' + esc(wa(msg)) + '" target="_blank" rel="noopener">' + esc(t.collection) + '</a>' +
+    '<button type="button" class="btn ghost" data-copy="' + esc(link(c.page)) + '">' + esc(t.copy_link) + '</button></span>';
 }
 
 function copy(text, btn) {
+  var label = btn.textContent;
   function done() {
-    var t = TEXT[lang];
-    btn.textContent = t.copied + ' \\u2713';
+    btn.textContent = TEXT[lang].copied + ' \\u2713';
     btn.classList.add('done');
-    setTimeout(function () { btn.textContent = t.copy; btn.classList.remove('done'); }, 1800);
+    setTimeout(function () { btn.textContent = label; btn.classList.remove('done'); }, 1800);
   }
   function fallback() {
     var ta = document.createElement('textarea');
