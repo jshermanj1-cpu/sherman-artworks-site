@@ -1278,7 +1278,7 @@ function refreshShoppingilBar() {
       bar.removeAttribute('data-t');
       bar.classList.add('shoppingil-bar');
       bar.innerHTML =
-        '<img class="shoppingil-logo" src="/img/shoppingil-2026-logo.svg" width="80" height="30" alt="ShoppingIL by Google">' +
+        '<img class="shoppingil-logo" src="/img/shoppingil-2026-logo-line.svg" width="218" height="44" alt="ShoppingIL by Google">' +
         '<span class="shoppingil-text" data-t="shoppingil_bar"></span>';
       bar.lastChild.textContent = (T_SITE[currentLang] || T_SITE.en).shoppingil_bar;
     } else if (bar._saIdle) {
