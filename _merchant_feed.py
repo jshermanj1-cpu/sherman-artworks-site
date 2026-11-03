@@ -44,6 +44,8 @@ from pathlib import Path
 from xml.sax.saxutils import escape
 
 from _hanukkah_sale import active as hanukkah_active, sale as hanukkah_sale, START as HANUKKAH_START, END as HANUKKAH_END
+from _shoppingil_sale import (eligible as shoppingil_eligible, sale as shoppingil_sale, upcoming as shoppingil_upcoming,
+                              START as SHOPPINGIL_START, END as SHOPPINGIL_END)
 from _launch import launch_active, sale_ils
 from _usd import sale_usd, usd_from_ils
 
@@ -496,6 +498,10 @@ def item_lines(product, size, market):
         regular = price if market.currency == "ILS" else usd_from_ils(price)
         lines.append(tag("sale_price", f"{hanukkah_sale(regular, product['id']):.2f} {market.currency}"))
         lines.append(tag("sale_price_effective_date", HANUKKAH_START + "/" + HANUKKAH_END))
+    elif shoppingil_eligible(product["id"]) and shoppingil_upcoming():
+        regular = price if market.currency == "ILS" else usd_from_ils(price)
+        lines.append(tag("sale_price", f"{shoppingil_sale(regular):.2f} {market.currency}"))
+        lines.append(tag("sale_price_effective_date", SHOPPINGIL_START + "/" + SHOPPINGIL_END))
     elif launch_active():
         lines.append(tag("sale_price", market.sale(price)))
     lines.extend(

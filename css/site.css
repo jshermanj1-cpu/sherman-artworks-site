@@ -161,6 +161,23 @@ nav {
 }
 .launch-banner-text { font-weight: 700; }
 
+/* ShoppingIL bar: the announcement bar during the 4-5 November sale. Same height
+   as the usual bar. The logo keeps its white background and sits at the left
+   edge in both languages, as ShoppingIL's media kit requires. */
+.shipping-banner.shoppingil-bar {
+  display: flex; align-items: center; justify-content: center;
+  gap: 1rem; padding: 0.5625rem 2rem; letter-spacing: 0.08em;
+}
+[dir="rtl"] .shipping-banner.shoppingil-bar { flex-direction: row-reverse; }
+.shoppingil-logo { display: block; flex: none; height: 30px; width: auto; }
+@media (max-width: 600px) {
+  .shipping-banner.shoppingil-bar {
+    gap: 0.625rem; padding: 0.5rem 1rem; font-size: 0.6875rem;
+    letter-spacing: 0.04em; line-height: 1.4; text-align: start;
+  }
+  .shoppingil-logo { height: 26px; }
+}
+
 /* Struck catalogue price + discounted price shown together on cards, modal,
    homepage "from" prices and the cart. */
 .was-price {

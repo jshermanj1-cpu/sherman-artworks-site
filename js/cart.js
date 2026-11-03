@@ -562,6 +562,17 @@ function getCartLaunchSavings() {
   }, 0);
 }
 
+// Names the sale behind the order message's saving line. Menorah lines carry the
+// Hanukkah 20%; any other discounted line can only be the ShoppingIL 10%.
+function _waSaleLabel(items, he) {
+  var sale = items.filter(function (i) { return i.regular_price_ils; });
+  var menorah = sale.some(function (i) { return isHanukkahMenorah(i.slug); });
+  var other = sale.some(function (i) { return !isHanukkahMenorah(i.slug); });
+  if (menorah && other) return he ? 'הנחות ShoppingIL 10% וחנוכה 20% הוחלו' : 'ShoppingIL 10% and Hanukkah 20% discounts applied';
+  if (other) return he ? 'הנחת ShoppingIL 10% הוחלה' : 'ShoppingIL 10% discount applied';
+  return he ? 'הנחת חנוכה 20% הוחלה' : 'Hanukkah 20% discount applied';
+}
+
 // The same saving in whichever currency is being displayed. Computed inside that
 // currency rather than converted, so "you saved $28" is the difference between
 // two figures the shopper actually saw.
@@ -941,7 +952,7 @@ function buildCheckoutWaLink() {
     });
     lines.push('');
     var heSaved = getCartLaunchSavings();
-    if (heSaved > 0) lines.push('הנחת חנוכה 20% הוחלה (-₪' + heSaved.toLocaleString('en-IL') + ')');
+    if (heSaved > 0) lines.push(_waSaleLabel(items, true) + ' (-₪' + heSaved.toLocaleString('en-IL') + ')');
     lines.push('סכום ביניים: ' + _waPair(getCartTotalIn));
     lines.push(pickup
       ? 'איסוף עצמי מהגלריה (קרני שומרון): ' + getShippingLabel()
@@ -973,7 +984,7 @@ function buildCheckoutWaLink() {
     lines.push('');
     var enCur = (typeof activeCurrency === 'function') ? activeCurrency() : 'ILS';
     var enSaved = getCartLaunchSavingsIn(enCur);
-    if (enSaved > 0) lines.push('Hanukkah 20% discount applied (-' + money(enSaved, enCur) + ')');
+    if (enSaved > 0) lines.push(_waSaleLabel(items, false) + ' (-' + money(enSaved, enCur) + ')');
     lines.push('Subtotal: ' + _waPair(getCartTotalIn));
     lines.push(pickup
       ? 'Pickup at the gallery (Karnei Shomron): ' + getShippingLabel()
