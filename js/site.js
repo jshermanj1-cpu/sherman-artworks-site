@@ -225,7 +225,8 @@ function salePill(slug) {
   }
   if (shoppingilSaleActive()) {
     var d = T_SITE[currentLang] || T_SITE.en;
-    return ' <span class="launch-pill">' + d.shoppingil_pill + '</span>';
+    return ' <span class="launch-pill">' +
+      d.shoppingil_pill.replace('ShoppingIL', '<span class="brand-name">ShoppingIL</span>') + '</span>';
   }
   return launchPill();
 }

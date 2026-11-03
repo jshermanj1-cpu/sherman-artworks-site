@@ -206,6 +206,8 @@ nav {
   vertical-align: middle;
   white-space: nowrap;
 }
+/* The pill is set in capitals, but a brand keeps its own spelling: ShoppingIL. */
+.launch-pill .brand-name { text-transform: none; }
 
 /* ── 5b. STUDIO STRIP ──────────────────────────────────────── */
 .studio-strip {
