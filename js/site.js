@@ -51,13 +51,14 @@ function refreshHanukkahOffers() {
     } catch (_) { /* Other schema blocks are independent of the campaign. */ }
   });
 }
-// ShoppingIL by Google: 10% off every catalogue product for Wednesday and
-// Thursday, November 4-5 in Israel; the cutoff is midnight November 6. Menorahs
+// ShoppingIL by Google: 10% off every catalogue product from Tuesday, November 3
+// through Wednesday, November 11 in Israel (the owner ran it past the 4-5 November
+// event days); the cutoff is midnight November 12. Menorahs
 // keep their Hanukkah 20% (the two never add up) and private quotes keep their
 // agreed price. The identical window lives in _shoppingil_sale.py and the
 // payments Worker (sherman-payments/src/pricing.js); all three must agree.
-const SHOPPINGIL_SALE_START = Date.parse('2026-11-04T00:00:00+02:00');
-const SHOPPINGIL_SALE_END = Date.parse('2026-11-06T00:00:00+02:00');
+const SHOPPINGIL_SALE_START = Date.parse('2026-11-03T00:00:00+02:00');
+const SHOPPINGIL_SALE_END = Date.parse('2026-11-12T00:00:00+02:00');
 const SHOPPINGIL_DISCOUNT = 0.10;
 function shoppingilSaleActive(now) {
   var at = now === undefined ? Date.now() : now;
@@ -88,12 +89,12 @@ function refreshShoppingilOffers() {
               price: String(node.price), priceCurrency: node.priceCurrency
             };
             node.price = cut(node.price);
-            node.priceValidUntil = '2026-11-05';
+            node.priceValidUntil = '2026-11-11';
             changed = true;
           } else if (type === 'AggregateOffer' && cut(node.lowPrice)) {
             node.lowPrice = cut(node.lowPrice);
             if (cut(node.highPrice)) node.highPrice = cut(node.highPrice);
-            node.priceValidUntil = '2026-11-05';
+            node.priceValidUntil = '2026-11-11';
             changed = true;
           }
         }
@@ -367,7 +368,7 @@ const T_SITE = {
     launch_banner_pre:   'Official launch',
     launch_banner_text:  '20% off everything, site-wide',
     launch_pill:         '20% launch discount',
-    shoppingil_bar:      '10% off the whole shop through Thursday, November 5 ✦ menorahs 20% off',
+    shoppingil_bar:      '10% off the whole shop through Wednesday, November 11 ✦ menorahs 20% off',
     shoppingil_pill:     '10% ShoppingIL sale',
 
     cat1_title:          'Candlesticks',
@@ -477,7 +478,7 @@ const T_SITE = {
     launch_banner_pre:   'השקה רשמית',
     launch_banner_text:  '20% הנחה על כל האתר',
     launch_pill:         'הנחת השקה 20%',
-    shoppingil_bar:      '10% הנחה על כל האתר עד יום חמישי, 5 בנובמבר ✦ החנוכיות ב־20% הנחה',
+    shoppingil_bar:      '10% הנחה על כל האתר עד יום רביעי, 11 בנובמבר ✦ החנוכיות ב־20% הנחה',
     shoppingil_pill:     '10% הנחת ShoppingIL',
 
     cat1_title:          'פמוטים',
@@ -1277,7 +1278,7 @@ function refreshShoppingilBar() {
       bar.removeAttribute('data-t');
       bar.classList.add('shoppingil-bar');
       bar.innerHTML =
-        '<img class="shoppingil-logo" src="/img/shoppingil-2026.svg" width="80" height="30" alt="ShoppingIL by Google, 4-5.11">' +
+        '<img class="shoppingil-logo" src="/img/shoppingil-2026-logo.svg" width="80" height="30" alt="ShoppingIL by Google">' +
         '<span class="shoppingil-text" data-t="shoppingil_bar"></span>';
       bar.lastChild.textContent = (T_SITE[currentLang] || T_SITE.en).shoppingil_bar;
     } else if (bar._saIdle) {

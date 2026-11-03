@@ -11,7 +11,8 @@ from _hanukkah_sale import START as HANUKKAH_START, END as HANUKKAH_END
 
 class ShoppingILSale(unittest.TestCase):
     def test_window_rounding_and_eligibility(self):
-        self.assertEqual(datetime.fromisoformat(START).isoformat(), "2026-11-04T00:00:00+02:00")
+        self.assertEqual(datetime.fromisoformat(START).isoformat(), "2026-11-03T00:00:00+02:00")
+        self.assertEqual(datetime.fromisoformat(END).isoformat(), "2026-11-12T00:00:00+02:00")
         self.assertTrue(upcoming(datetime.fromisoformat(START)))
         self.assertFalse(upcoming(datetime.fromisoformat(END)))
         self.assertEqual(sale(505), 455)   # 454.5 rounds half up, like Math.round

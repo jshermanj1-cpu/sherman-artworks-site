@@ -16,11 +16,11 @@ function browser(at) {
   for(const file of ['js/site.js','js/cart.js']) vm.runInContext(fs.readFileSync(path.join(root,file),'utf8'),context);
   return context;
 }
-const start = Date.parse('2026-11-04T00:00:00+02:00');
-const end = Date.parse('2026-11-06T00:00:00+02:00');
+const start = Date.parse('2026-11-03T00:00:00+02:00');
+const end = Date.parse('2026-11-12T00:00:00+02:00');
 const products = JSON.parse(fs.readFileSync(path.join(root,'data/products.json'),'utf8'));
 
-test('10% on every product but the menorahs, Wednesday and Thursday only', () => {
+test('10% on every product but the menorahs, 3-11 November only', () => {
   const at = {value: start};
   const ctx = browser(at);
   for (const p of products) {
