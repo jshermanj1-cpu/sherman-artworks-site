@@ -291,6 +291,11 @@ CATEGORIES = {
         "require_exact_partition": True,
         "sync_landing_jsonld": True,
         "product_group_copy": {
+            TRAY_SILVER: {
+                "name": "925 Silver-Plated Glass Trays",
+                "description": "Handmade glass trays finished with 925 silver plating, in six colors and two sizes.",
+                "variesBy": ["https://schema.org/color", "https://schema.org/size"],
+            },
             TRAY_GOLD: {
                 "name": "Gold-Plated Glass Trays",
                 "description": "Handmade glass trays finished with gold plating, in six matching designs.",
@@ -304,19 +309,19 @@ CATEGORIES = {
                 "desc": "Shop handmade glass trays and Kiddush cup plates finished with 925 silver plating, made to order in our studio in Israel.",
                 "headline": "925 Silver-Plated Trays & Bowls",
                 "subtitle": "Handmade glass finished with 925 silver.",
-                "body": "Choose from six glass trays and five matching Kiddush cup plates in a range of colors.",
+                "body": "Choose from six glass trays, each in a standard size or as a large challah tray, and five matching Kiddush cup plates.",
                 "bc": "925 Silver-Plated Trays & Bowls",
                 "guide": {
                     "guide_q1": ("What is in the silver-plated collection?",
                                  "מה כולל אוסף ציפוי הכסף?"),
-                    "guide_a1": ("The collection includes six handmade glass trays and five Kiddush cup plates finished with 925 silver plating.",
-                                 "האוסף כולל שישה מגשי זכוכית וחמש תחתיות לכוס קידוש בעבודת יד, בגימור כסף 925."),
+                    "guide_a1": ("The collection includes six handmade glass trays and five Kiddush cup plates finished with 925 silver plating. Each tray comes in two sizes: 30 × 18 cm to match our candlesticks, or a large 38 × 23 cm challah tray.",
+                                 "האוסף כולל שישה מגשי זכוכית וחמש תחתיות לכוס קידוש בעבודת יד, בגימור כסף 925. כל מגש זמין בשתי מידות: 30 × 18 ס״מ בהתאמה לפמוטים, או מגש חלה גדול של 38 × 23 ס״מ."),
                 },
                 "image": "White_tray_o1npai",
                 "he": {
                     "headline": "מגשים וקערות בציפוי כסף 925",
                     "subtitle": "זכוכית בעבודת יד בגימור כסף 925.",
-                    "body": "בחרו מתוך שישה מגשי זכוכית וחמש תחתיות תואמות לכוס קידוש במגוון צבעים.",
+                    "body": "בחרו מתוך שישה מגשי זכוכית, כל אחד במידה רגילה או כמגש חלה גדול, וחמש תחתיות תואמות לכוס קידוש.",
                     "bc": "מגשים וקערות בציפוי כסף 925",
                 },
             },
@@ -546,6 +551,10 @@ def sync_product_jsonld(cat, node, product):
         node["color"] = product["color_en"]
     else:
         node.pop("color", None)
+    # A sized product lists its sizes; an unsized one keeps any hand-written
+    # measurement, which the catalogue has no field for.
+    if fresh.get("size"):
+        node["size"] = fresh["size"]
     # fresh["offers"] is a list: one Offer per purchasable size, each carrying
     # its own sku, shipping and returns. The branch this replaces kept a
     # hand-authored offer dict and copied only its price across, because the

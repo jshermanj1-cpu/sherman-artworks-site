@@ -317,6 +317,8 @@ def feed_highlights(product):
     elif cat == "trays-bowls":
         if finish:
             out.append("Glass finished with %s" % ("925 silver plating" if finish.startswith("925") else "gold plating"))
+        if product.get("sizes"):
+            out.append("Two sizes: Standard (30 × 18 cm) to match our candlesticks, or Large (38 × 23 cm) as a challah tray")
     elif cat == "hanukkah-menorahs":
         out.append("%s shape in double-sided handmade glass, %s (length × height × depth)"
                    % (SHAPE[product["shape"]], product["measurements"]))
@@ -417,6 +419,8 @@ def feed_highlights_he(product):
     elif cat == "trays-bowls":
         if finish:
             out.append("זכוכית ב%s" % plating)
+        if product.get("sizes"):
+            out.append("בשתי מידות: רגיל (30 × 18 ס״מ) בהתאמה לפמוטים, או גדול (38 × 23 ס״מ) כמגש לחלה")
     elif cat == "hanukkah-menorahs":
         out.append("צורת %s מזכוכית דו־צדדית בעבודת יד, %s (אורך × גובה × עומק)"
                    % (SHAPE_HE[product["shape"]], he_units(product["measurements"])))
@@ -463,7 +467,7 @@ def item_lines(product, size, market):
     hebrew = market.lang == "he"
     if size:
         item_id = f"{product['id']}-{size_slug(size['label'])}"
-        size_text = (f"{size['label']} ({size['range_cm']} ס״מ)" if hebrew
+        size_text = (f"{size.get('label_he') or size['label']} ({size['range_cm']} ס״מ)" if hebrew
                      else f"{size['label']} ({size['range_cm']} cm)")
         price = size["price_ils"]
         mpn = size["sku"]

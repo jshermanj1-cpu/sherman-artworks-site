@@ -218,12 +218,12 @@ configurations. They are permanent once migrated into the product data.
 | Base SKU | Product ID | Product | Size suffixes |
 |---|---|---|---|
 | `SAW-TB-001` | `glass-decorative-bowl` | Glass Decorative Bowl | None |
-| `SAW-TB-002` | `white-silver-plated-glass-tray` | White 925 Silver-Plated Glass Tray | None |
-| `SAW-TB-003` | `red-silver-plated-glass-tray` | Red 925 Silver-Plated Glass Tray | None |
-| `SAW-TB-004` | `blue-silver-plated-glass-tray` | Blue 925 Silver-Plated Glass Tray | None |
-| `SAW-TB-005` | `green-silver-plated-glass-tray` | Green 925 Silver-Plated Glass Tray | None |
-| `SAW-TB-006` | `black-silver-plated-glass-tray` | Black 925 Silver-Plated Glass Tray | None |
-| `SAW-TB-007` | `blue-green-silver-plated-glass-tray` | Blue-Green 925 Silver-Plated Glass Tray | None |
+| `SAW-TB-002` | `white-silver-plated-glass-tray` | White 925 Silver-Plated Glass Tray | `-STANDARD`, `-LARGE` |
+| `SAW-TB-003` | `red-silver-plated-glass-tray` | Red 925 Silver-Plated Glass Tray | `-STANDARD`, `-LARGE` |
+| `SAW-TB-004` | `blue-silver-plated-glass-tray` | Blue 925 Silver-Plated Glass Tray | `-STANDARD`, `-LARGE` |
+| `SAW-TB-005` | `green-silver-plated-glass-tray` | Green 925 Silver-Plated Glass Tray | `-STANDARD`, `-LARGE` |
+| `SAW-TB-006` | `black-silver-plated-glass-tray` | Black 925 Silver-Plated Glass Tray | `-STANDARD`, `-LARGE` |
+| `SAW-TB-007` | `blue-green-silver-plated-glass-tray` | Blue-Green 925 Silver-Plated Glass Tray | `-STANDARD`, `-LARGE` |
 | `SAW-TB-009` | `blue-gold-plated-glass-tray` | Blue Gold-Plated Glass Tray | None |
 | `SAW-TB-010` | `blue-green-gold-plated-glass-tray` | Blue-Green Gold-Plated Glass Tray | None |
 | `SAW-TB-011` | `red-gold-plated-glass-tray` | Red Gold-Plated Glass Tray | None |

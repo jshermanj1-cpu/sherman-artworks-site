@@ -554,17 +554,40 @@
     ],
     "name_en": "White 925 Silver-Plated Glass Tray",
     "name_he": "מגש זכוכית לבן בציפוי כסף 925",
-    "description_en": "Handmade white glass tray finished with 925 silver plating. Measures 30 × 18 cm and is made to order in our studio in Israel.",
-    "description_he": "מגש זכוכית לבן בעבודת יד בציפוי כסף 925. מידותיו 30 × 18 ס״מ והוא מיוצר לפי הזמנה בסטודיו שלנו בישראל.",
+    "description_en": "Handmade white glass tray finished with 925 silver plating and made to order in our studio in Israel. Available in two sizes: 30 × 18 cm to match our candlesticks, or a large 38 × 23 cm challah tray.",
+    "description_he": "מגש זכוכית לבן בעבודת יד בציפוי כסף 925, מיוצר לפי הזמנה בסטודיו שלנו בישראל. זמין בשתי מידות: 30 × 18 ס״מ בהתאמה לפמוטים, או מגש חלה גדול של 38 × 23 ס״מ.",
     "color_en": "White",
     "color_he": "לבן",
-    "measurements": "30cm × 18cm",
+    "measurements": "",
     "price_ils": 561,
+    "sizes": [
+      {
+        "label": "Standard",
+        "label_he": "רגיל",
+        "note_en": "Matches our candlesticks",
+        "note_he": "תואם לפמוטים",
+        "sku": "SAW-TB-002-STANDARD",
+        "range_cm": "30 × 18",
+        "range_in": "11.8 × 7.1",
+        "price_ils": 561
+      },
+      {
+        "label": "Large",
+        "label_he": "גדול",
+        "note_en": "Challah tray",
+        "note_he": "מגש לחלה",
+        "sku": "SAW-TB-002-LARGE",
+        "range_cm": "38 × 23",
+        "range_in": "15 × 9.1",
+        "price_ils": 835
+      }
+    ],
     "bundle_price_ils": 447,
     "bundle_with_family_id": "silver-plated-glass-candlesticks",
     "photos": [
       "White_tray_o1npai"
     ],
+    "require_size_selection": true,
     "personalisable": false
   },
   {
@@ -577,17 +600,40 @@
     ],
     "name_en": "Red 925 Silver-Plated Glass Tray",
     "name_he": "מגש זכוכית אדום בציפוי כסף 925",
-    "description_en": "Handmade red glass tray finished with 925 silver plating. Measures 30 × 18 cm and is made to order in our studio in Israel.",
-    "description_he": "מגש זכוכית אדום בעבודת יד בציפוי כסף 925. מידותיו 30 × 18 ס״מ והוא מיוצר לפי הזמנה בסטודיו שלנו בישראל.",
+    "description_en": "Handmade red glass tray finished with 925 silver plating and made to order in our studio in Israel. Available in two sizes: 30 × 18 cm to match our candlesticks, or a large 38 × 23 cm challah tray.",
+    "description_he": "מגש זכוכית אדום בעבודת יד בציפוי כסף 925, מיוצר לפי הזמנה בסטודיו שלנו בישראל. זמין בשתי מידות: 30 × 18 ס״מ בהתאמה לפמוטים, או מגש חלה גדול של 38 × 23 ס״מ.",
     "color_en": "Red",
     "color_he": "אדום",
-    "measurements": "30cm × 18cm",
+    "measurements": "",
     "price_ils": 561,
+    "sizes": [
+      {
+        "label": "Standard",
+        "label_he": "רגיל",
+        "note_en": "Matches our candlesticks",
+        "note_he": "תואם לפמוטים",
+        "sku": "SAW-TB-003-STANDARD",
+        "range_cm": "30 × 18",
+        "range_in": "11.8 × 7.1",
+        "price_ils": 561
+      },
+      {
+        "label": "Large",
+        "label_he": "גדול",
+        "note_en": "Challah tray",
+        "note_he": "מגש לחלה",
+        "sku": "SAW-TB-003-LARGE",
+        "range_cm": "38 × 23",
+        "range_in": "15 × 9.1",
+        "price_ils": 835
+      }
+    ],
     "bundle_price_ils": 447,
     "bundle_with_family_id": "silver-plated-glass-candlesticks",
     "photos": [
       "Red_tray_zhqmoo"
     ],
+    "require_size_selection": true,
     "personalisable": false
   },
   {
@@ -600,17 +646,40 @@
     ],
     "name_en": "Blue 925 Silver-Plated Glass Tray",
     "name_he": "מגש זכוכית כחול בציפוי כסף 925",
-    "description_en": "Handmade blue glass tray finished with 925 silver plating. Measures 30 × 18 cm and is made to order in our studio in Israel.",
-    "description_he": "מגש זכוכית כחול בעבודת יד בציפוי כסף 925. מידותיו 30 × 18 ס״מ והוא מיוצר לפי הזמנה בסטודיו שלנו בישראל.",
+    "description_en": "Handmade blue glass tray finished with 925 silver plating and made to order in our studio in Israel. Available in two sizes: 30 × 18 cm to match our candlesticks, or a large 38 × 23 cm challah tray.",
+    "description_he": "מגש זכוכית כחול בעבודת יד בציפוי כסף 925, מיוצר לפי הזמנה בסטודיו שלנו בישראל. זמין בשתי מידות: 30 × 18 ס״מ בהתאמה לפמוטים, או מגש חלה גדול של 38 × 23 ס״מ.",
     "color_en": "Blue",
     "color_he": "כחול",
-    "measurements": "30cm × 18cm",
+    "measurements": "",
     "price_ils": 561,
+    "sizes": [
+      {
+        "label": "Standard",
+        "label_he": "רגיל",
+        "note_en": "Matches our candlesticks",
+        "note_he": "תואם לפמוטים",
+        "sku": "SAW-TB-004-STANDARD",
+        "range_cm": "30 × 18",
+        "range_in": "11.8 × 7.1",
+        "price_ils": 561
+      },
+      {
+        "label": "Large",
+        "label_he": "גדול",
+        "note_en": "Challah tray",
+        "note_he": "מגש לחלה",
+        "sku": "SAW-TB-004-LARGE",
+        "range_cm": "38 × 23",
+        "range_in": "15 × 9.1",
+        "price_ils": 835
+      }
+    ],
     "bundle_price_ils": 447,
     "bundle_with_family_id": "silver-plated-glass-candlesticks",
     "photos": [
       "Blue_tray_jvaf8d"
     ],
+    "require_size_selection": true,
     "personalisable": false
   },
   {
@@ -623,17 +692,40 @@
     ],
     "name_en": "Green 925 Silver-Plated Glass Tray",
     "name_he": "מגש זכוכית ירוק בציפוי כסף 925",
-    "description_en": "Handmade green glass tray finished with 925 silver plating. Measures 30 × 18 cm and is made to order in our studio in Israel.",
-    "description_he": "מגש זכוכית ירוק בעבודת יד בציפוי כסף 925. מידותיו 30 × 18 ס״מ והוא מיוצר לפי הזמנה בסטודיו שלנו בישראל.",
+    "description_en": "Handmade green glass tray finished with 925 silver plating and made to order in our studio in Israel. Available in two sizes: 30 × 18 cm to match our candlesticks, or a large 38 × 23 cm challah tray.",
+    "description_he": "מגש זכוכית ירוק בעבודת יד בציפוי כסף 925, מיוצר לפי הזמנה בסטודיו שלנו בישראל. זמין בשתי מידות: 30 × 18 ס״מ בהתאמה לפמוטים, או מגש חלה גדול של 38 × 23 ס״מ.",
     "color_en": "Green",
     "color_he": "ירוק",
-    "measurements": "30cm × 18cm",
+    "measurements": "",
     "price_ils": 561,
+    "sizes": [
+      {
+        "label": "Standard",
+        "label_he": "רגיל",
+        "note_en": "Matches our candlesticks",
+        "note_he": "תואם לפמוטים",
+        "sku": "SAW-TB-005-STANDARD",
+        "range_cm": "30 × 18",
+        "range_in": "11.8 × 7.1",
+        "price_ils": 561
+      },
+      {
+        "label": "Large",
+        "label_he": "גדול",
+        "note_en": "Challah tray",
+        "note_he": "מגש לחלה",
+        "sku": "SAW-TB-005-LARGE",
+        "range_cm": "38 × 23",
+        "range_in": "15 × 9.1",
+        "price_ils": 835
+      }
+    ],
     "bundle_price_ils": 447,
     "bundle_with_family_id": "silver-plated-glass-candlesticks",
     "photos": [
       "Green_tray_ylui7h"
     ],
+    "require_size_selection": true,
     "personalisable": false
   },
   {
@@ -646,17 +738,40 @@
     ],
     "name_en": "Black 925 Silver-Plated Glass Tray",
     "name_he": "מגש זכוכית שחור בציפוי כסף 925",
-    "description_en": "Handmade black glass tray finished with 925 silver plating. Measures 30 × 18 cm and is made to order in our studio in Israel.",
-    "description_he": "מגש זכוכית שחור בעבודת יד בציפוי כסף 925. מידותיו 30 × 18 ס״מ והוא מיוצר לפי הזמנה בסטודיו שלנו בישראל.",
+    "description_en": "Handmade black glass tray finished with 925 silver plating and made to order in our studio in Israel. Available in two sizes: 30 × 18 cm to match our candlesticks, or a large 38 × 23 cm challah tray.",
+    "description_he": "מגש זכוכית שחור בעבודת יד בציפוי כסף 925, מיוצר לפי הזמנה בסטודיו שלנו בישראל. זמין בשתי מידות: 30 × 18 ס״מ בהתאמה לפמוטים, או מגש חלה גדול של 38 × 23 ס״מ.",
     "color_en": "Black",
     "color_he": "שחור",
-    "measurements": "30cm × 18cm",
+    "measurements": "",
     "price_ils": 561,
+    "sizes": [
+      {
+        "label": "Standard",
+        "label_he": "רגיל",
+        "note_en": "Matches our candlesticks",
+        "note_he": "תואם לפמוטים",
+        "sku": "SAW-TB-006-STANDARD",
+        "range_cm": "30 × 18",
+        "range_in": "11.8 × 7.1",
+        "price_ils": 561
+      },
+      {
+        "label": "Large",
+        "label_he": "גדול",
+        "note_en": "Challah tray",
+        "note_he": "מגש לחלה",
+        "sku": "SAW-TB-006-LARGE",
+        "range_cm": "38 × 23",
+        "range_in": "15 × 9.1",
+        "price_ils": 835
+      }
+    ],
     "bundle_price_ils": 447,
     "bundle_with_family_id": "silver-plated-glass-candlesticks",
     "photos": [
       "Black_tray_cqaohw"
     ],
+    "require_size_selection": true,
     "personalisable": false
   },
   {
@@ -669,17 +784,40 @@
     ],
     "name_en": "Blue-Green 925 Silver-Plated Glass Tray",
     "name_he": "מגש זכוכית כחול־ירוק בציפוי כסף 925",
-    "description_en": "Handmade blue-green glass tray finished with 925 silver plating. Measures 30 × 18 cm and is made to order in our studio in Israel.",
-    "description_he": "מגש זכוכית כחול־ירוק בעבודת יד בציפוי כסף 925. מידותיו 30 × 18 ס״מ והוא מיוצר לפי הזמנה בסטודיו שלנו בישראל.",
+    "description_en": "Handmade blue-green glass tray finished with 925 silver plating and made to order in our studio in Israel. Available in two sizes: 30 × 18 cm to match our candlesticks, or a large 38 × 23 cm challah tray.",
+    "description_he": "מגש זכוכית כחול־ירוק בעבודת יד בציפוי כסף 925, מיוצר לפי הזמנה בסטודיו שלנו בישראל. זמין בשתי מידות: 30 × 18 ס״מ בהתאמה לפמוטים, או מגש חלה גדול של 38 × 23 ס״מ.",
     "color_en": "Blue-Green",
     "color_he": "כחול־ירוק",
-    "measurements": "30cm × 18cm",
+    "measurements": "",
     "price_ils": 561,
+    "sizes": [
+      {
+        "label": "Standard",
+        "label_he": "רגיל",
+        "note_en": "Matches our candlesticks",
+        "note_he": "תואם לפמוטים",
+        "sku": "SAW-TB-007-STANDARD",
+        "range_cm": "30 × 18",
+        "range_in": "11.8 × 7.1",
+        "price_ils": 561
+      },
+      {
+        "label": "Large",
+        "label_he": "גדול",
+        "note_en": "Challah tray",
+        "note_he": "מגש לחלה",
+        "sku": "SAW-TB-007-LARGE",
+        "range_cm": "38 × 23",
+        "range_in": "15 × 9.1",
+        "price_ils": 835
+      }
+    ],
     "bundle_price_ils": 447,
     "bundle_with_family_id": "silver-plated-glass-candlesticks",
     "photos": [
       "Vibrant_blue_tray_pyqqto"
     ],
+    "require_size_selection": true,
     "personalisable": false
   },
   {

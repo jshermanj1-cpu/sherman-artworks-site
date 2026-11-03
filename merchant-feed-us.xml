@@ -952,9 +952,9 @@
     <g:max_transit_time>16</g:max_transit_time>
   </item>
   <item>
-    <g:id>white-silver-plated-glass-tray</g:id>
-    <g:title>Glass Tray - White, 925 Silver-Plated | Handmade in Israel</g:title>
-    <g:description>Handmade white glass tray finished with 925 silver plating. Measures 30 × 18 cm and is made to order in our studio in Israel.</g:description>
+    <g:id>white-silver-plated-glass-tray-standard</g:id>
+    <g:title>Glass Tray - White, 925 Silver-Plated, Standard (30 × 18 cm) | Handmade in Israel</g:title>
+    <g:description>Handmade white glass tray finished with 925 silver plating and made to order in our studio in Israel. Available in two sizes: 30 × 18 cm to match our candlesticks, or a large 38 × 23 cm challah tray.</g:description>
     <g:link>https://shermanartworks.com/trays-bowls.html#white-silver-plated-glass-tray</g:link>
     <g:image_link>https://res.cloudinary.com/doesupaf9/image/upload/w_1200,q_auto:good/White_tray_o1npai.jpg</g:image_link>
     <g:availability>in_stock</g:availability>
@@ -963,12 +963,14 @@
     <g:sale_price_effective_date>2026-11-04T00:00:00+02:00/2026-11-06T00:00:00+02:00</g:sale_price_effective_date>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:mpn>SAW-TB-002</g:mpn>
+    <g:mpn>SAW-TB-002-STANDARD</g:mpn>
     <g:item_group_id>silver-plated-glass-trays</g:item_group_id>
+    <g:size>Standard (30 × 18 cm)</g:size>
     <g:color>White</g:color>
     <g:material>Glass/925 silver plating</g:material>
     <g:product_highlight>Handmade to order in our family studio in Israel</g:product_highlight>
     <g:product_highlight>Glass finished with 925 silver plating</g:product_highlight>
+    <g:product_highlight>Two sizes: Standard (30 × 18 cm) to match our candlesticks, or Large (38 × 23 cm) as a challah tray</g:product_highlight>
     <g:product_highlight>Wash by hand and do not use silver polish on the plating</g:product_highlight>
     <g:product_type>Judaica &gt; Trays &amp; Bowls &gt; 925 Silver-Plated</g:product_type>
     <g:google_product_category>6457</g:google_product_category>
@@ -982,9 +984,41 @@
     <g:max_transit_time>16</g:max_transit_time>
   </item>
   <item>
-    <g:id>red-silver-plated-glass-tray</g:id>
-    <g:title>Glass Tray - Red, 925 Silver-Plated | Handmade in Israel</g:title>
-    <g:description>Handmade red glass tray finished with 925 silver plating. Measures 30 × 18 cm and is made to order in our studio in Israel.</g:description>
+    <g:id>white-silver-plated-glass-tray-large</g:id>
+    <g:title>Glass Tray - White, 925 Silver-Plated, Large (38 × 23 cm) | Handmade in Israel</g:title>
+    <g:description>Handmade white glass tray finished with 925 silver plating and made to order in our studio in Israel. Available in two sizes: 30 × 18 cm to match our candlesticks, or a large 38 × 23 cm challah tray.</g:description>
+    <g:link>https://shermanartworks.com/trays-bowls.html#white-silver-plated-glass-tray</g:link>
+    <g:image_link>https://res.cloudinary.com/doesupaf9/image/upload/w_1200,q_auto:good/White_tray_o1npai.jpg</g:image_link>
+    <g:availability>in_stock</g:availability>
+    <g:price>280.00 USD</g:price>
+    <g:sale_price>252.00 USD</g:sale_price>
+    <g:sale_price_effective_date>2026-11-04T00:00:00+02:00/2026-11-06T00:00:00+02:00</g:sale_price_effective_date>
+    <g:condition>new</g:condition>
+    <g:brand>Sherman Art Works</g:brand>
+    <g:mpn>SAW-TB-002-LARGE</g:mpn>
+    <g:item_group_id>silver-plated-glass-trays</g:item_group_id>
+    <g:size>Large (38 × 23 cm)</g:size>
+    <g:color>White</g:color>
+    <g:material>Glass/925 silver plating</g:material>
+    <g:product_highlight>Handmade to order in our family studio in Israel</g:product_highlight>
+    <g:product_highlight>Glass finished with 925 silver plating</g:product_highlight>
+    <g:product_highlight>Two sizes: Standard (30 × 18 cm) to match our candlesticks, or Large (38 × 23 cm) as a challah tray</g:product_highlight>
+    <g:product_highlight>Wash by hand and do not use silver polish on the plating</g:product_highlight>
+    <g:product_type>Judaica &gt; Trays &amp; Bowls &gt; 925 Silver-Plated</g:product_type>
+    <g:google_product_category>6457</g:google_product_category>
+    <g:shipping>
+      <g:country>US</g:country>
+      <g:price>45.00 USD</g:price>
+    </g:shipping>
+    <g:min_handling_time>1</g:min_handling_time>
+    <g:max_handling_time>14</g:max_handling_time>
+    <g:min_transit_time>1</g:min_transit_time>
+    <g:max_transit_time>16</g:max_transit_time>
+  </item>
+  <item>
+    <g:id>red-silver-plated-glass-tray-standard</g:id>
+    <g:title>Glass Tray - Red, 925 Silver-Plated, Standard (30 × 18 cm) | Handmade in Israel</g:title>
+    <g:description>Handmade red glass tray finished with 925 silver plating and made to order in our studio in Israel. Available in two sizes: 30 × 18 cm to match our candlesticks, or a large 38 × 23 cm challah tray.</g:description>
     <g:link>https://shermanartworks.com/trays-bowls.html#red-silver-plated-glass-tray</g:link>
     <g:image_link>https://res.cloudinary.com/doesupaf9/image/upload/w_1200,q_auto:good/Red_tray_zhqmoo.jpg</g:image_link>
     <g:availability>in_stock</g:availability>
@@ -993,12 +1027,14 @@
     <g:sale_price_effective_date>2026-11-04T00:00:00+02:00/2026-11-06T00:00:00+02:00</g:sale_price_effective_date>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:mpn>SAW-TB-003</g:mpn>
+    <g:mpn>SAW-TB-003-STANDARD</g:mpn>
     <g:item_group_id>silver-plated-glass-trays</g:item_group_id>
+    <g:size>Standard (30 × 18 cm)</g:size>
     <g:color>Red</g:color>
     <g:material>Glass/925 silver plating</g:material>
     <g:product_highlight>Handmade to order in our family studio in Israel</g:product_highlight>
     <g:product_highlight>Glass finished with 925 silver plating</g:product_highlight>
+    <g:product_highlight>Two sizes: Standard (30 × 18 cm) to match our candlesticks, or Large (38 × 23 cm) as a challah tray</g:product_highlight>
     <g:product_highlight>Wash by hand and do not use silver polish on the plating</g:product_highlight>
     <g:product_type>Judaica &gt; Trays &amp; Bowls &gt; 925 Silver-Plated</g:product_type>
     <g:google_product_category>6457</g:google_product_category>
@@ -1012,9 +1048,41 @@
     <g:max_transit_time>16</g:max_transit_time>
   </item>
   <item>
-    <g:id>blue-silver-plated-glass-tray</g:id>
-    <g:title>Glass Tray - Blue, 925 Silver-Plated | Handmade in Israel</g:title>
-    <g:description>Handmade blue glass tray finished with 925 silver plating. Measures 30 × 18 cm and is made to order in our studio in Israel.</g:description>
+    <g:id>red-silver-plated-glass-tray-large</g:id>
+    <g:title>Glass Tray - Red, 925 Silver-Plated, Large (38 × 23 cm) | Handmade in Israel</g:title>
+    <g:description>Handmade red glass tray finished with 925 silver plating and made to order in our studio in Israel. Available in two sizes: 30 × 18 cm to match our candlesticks, or a large 38 × 23 cm challah tray.</g:description>
+    <g:link>https://shermanartworks.com/trays-bowls.html#red-silver-plated-glass-tray</g:link>
+    <g:image_link>https://res.cloudinary.com/doesupaf9/image/upload/w_1200,q_auto:good/Red_tray_zhqmoo.jpg</g:image_link>
+    <g:availability>in_stock</g:availability>
+    <g:price>280.00 USD</g:price>
+    <g:sale_price>252.00 USD</g:sale_price>
+    <g:sale_price_effective_date>2026-11-04T00:00:00+02:00/2026-11-06T00:00:00+02:00</g:sale_price_effective_date>
+    <g:condition>new</g:condition>
+    <g:brand>Sherman Art Works</g:brand>
+    <g:mpn>SAW-TB-003-LARGE</g:mpn>
+    <g:item_group_id>silver-plated-glass-trays</g:item_group_id>
+    <g:size>Large (38 × 23 cm)</g:size>
+    <g:color>Red</g:color>
+    <g:material>Glass/925 silver plating</g:material>
+    <g:product_highlight>Handmade to order in our family studio in Israel</g:product_highlight>
+    <g:product_highlight>Glass finished with 925 silver plating</g:product_highlight>
+    <g:product_highlight>Two sizes: Standard (30 × 18 cm) to match our candlesticks, or Large (38 × 23 cm) as a challah tray</g:product_highlight>
+    <g:product_highlight>Wash by hand and do not use silver polish on the plating</g:product_highlight>
+    <g:product_type>Judaica &gt; Trays &amp; Bowls &gt; 925 Silver-Plated</g:product_type>
+    <g:google_product_category>6457</g:google_product_category>
+    <g:shipping>
+      <g:country>US</g:country>
+      <g:price>45.00 USD</g:price>
+    </g:shipping>
+    <g:min_handling_time>1</g:min_handling_time>
+    <g:max_handling_time>14</g:max_handling_time>
+    <g:min_transit_time>1</g:min_transit_time>
+    <g:max_transit_time>16</g:max_transit_time>
+  </item>
+  <item>
+    <g:id>blue-silver-plated-glass-tray-standard</g:id>
+    <g:title>Glass Tray - Blue, 925 Silver-Plated, Standard (30 × 18 cm) | Handmade in Israel</g:title>
+    <g:description>Handmade blue glass tray finished with 925 silver plating and made to order in our studio in Israel. Available in two sizes: 30 × 18 cm to match our candlesticks, or a large 38 × 23 cm challah tray.</g:description>
     <g:link>https://shermanartworks.com/trays-bowls.html#blue-silver-plated-glass-tray</g:link>
     <g:image_link>https://res.cloudinary.com/doesupaf9/image/upload/w_1200,q_auto:good/Blue_tray_jvaf8d.jpg</g:image_link>
     <g:availability>in_stock</g:availability>
@@ -1023,12 +1091,14 @@
     <g:sale_price_effective_date>2026-11-04T00:00:00+02:00/2026-11-06T00:00:00+02:00</g:sale_price_effective_date>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:mpn>SAW-TB-004</g:mpn>
+    <g:mpn>SAW-TB-004-STANDARD</g:mpn>
     <g:item_group_id>silver-plated-glass-trays</g:item_group_id>
+    <g:size>Standard (30 × 18 cm)</g:size>
     <g:color>Blue</g:color>
     <g:material>Glass/925 silver plating</g:material>
     <g:product_highlight>Handmade to order in our family studio in Israel</g:product_highlight>
     <g:product_highlight>Glass finished with 925 silver plating</g:product_highlight>
+    <g:product_highlight>Two sizes: Standard (30 × 18 cm) to match our candlesticks, or Large (38 × 23 cm) as a challah tray</g:product_highlight>
     <g:product_highlight>Wash by hand and do not use silver polish on the plating</g:product_highlight>
     <g:product_type>Judaica &gt; Trays &amp; Bowls &gt; 925 Silver-Plated</g:product_type>
     <g:google_product_category>6457</g:google_product_category>
@@ -1042,9 +1112,41 @@
     <g:max_transit_time>16</g:max_transit_time>
   </item>
   <item>
-    <g:id>green-silver-plated-glass-tray</g:id>
-    <g:title>Glass Tray - Green, 925 Silver-Plated | Handmade in Israel</g:title>
-    <g:description>Handmade green glass tray finished with 925 silver plating. Measures 30 × 18 cm and is made to order in our studio in Israel.</g:description>
+    <g:id>blue-silver-plated-glass-tray-large</g:id>
+    <g:title>Glass Tray - Blue, 925 Silver-Plated, Large (38 × 23 cm) | Handmade in Israel</g:title>
+    <g:description>Handmade blue glass tray finished with 925 silver plating and made to order in our studio in Israel. Available in two sizes: 30 × 18 cm to match our candlesticks, or a large 38 × 23 cm challah tray.</g:description>
+    <g:link>https://shermanartworks.com/trays-bowls.html#blue-silver-plated-glass-tray</g:link>
+    <g:image_link>https://res.cloudinary.com/doesupaf9/image/upload/w_1200,q_auto:good/Blue_tray_jvaf8d.jpg</g:image_link>
+    <g:availability>in_stock</g:availability>
+    <g:price>280.00 USD</g:price>
+    <g:sale_price>252.00 USD</g:sale_price>
+    <g:sale_price_effective_date>2026-11-04T00:00:00+02:00/2026-11-06T00:00:00+02:00</g:sale_price_effective_date>
+    <g:condition>new</g:condition>
+    <g:brand>Sherman Art Works</g:brand>
+    <g:mpn>SAW-TB-004-LARGE</g:mpn>
+    <g:item_group_id>silver-plated-glass-trays</g:item_group_id>
+    <g:size>Large (38 × 23 cm)</g:size>
+    <g:color>Blue</g:color>
+    <g:material>Glass/925 silver plating</g:material>
+    <g:product_highlight>Handmade to order in our family studio in Israel</g:product_highlight>
+    <g:product_highlight>Glass finished with 925 silver plating</g:product_highlight>
+    <g:product_highlight>Two sizes: Standard (30 × 18 cm) to match our candlesticks, or Large (38 × 23 cm) as a challah tray</g:product_highlight>
+    <g:product_highlight>Wash by hand and do not use silver polish on the plating</g:product_highlight>
+    <g:product_type>Judaica &gt; Trays &amp; Bowls &gt; 925 Silver-Plated</g:product_type>
+    <g:google_product_category>6457</g:google_product_category>
+    <g:shipping>
+      <g:country>US</g:country>
+      <g:price>45.00 USD</g:price>
+    </g:shipping>
+    <g:min_handling_time>1</g:min_handling_time>
+    <g:max_handling_time>14</g:max_handling_time>
+    <g:min_transit_time>1</g:min_transit_time>
+    <g:max_transit_time>16</g:max_transit_time>
+  </item>
+  <item>
+    <g:id>green-silver-plated-glass-tray-standard</g:id>
+    <g:title>Glass Tray - Green, 925 Silver-Plated, Standard (30 × 18 cm) | Handmade in Israel</g:title>
+    <g:description>Handmade green glass tray finished with 925 silver plating and made to order in our studio in Israel. Available in two sizes: 30 × 18 cm to match our candlesticks, or a large 38 × 23 cm challah tray.</g:description>
     <g:link>https://shermanartworks.com/trays-bowls.html#green-silver-plated-glass-tray</g:link>
     <g:image_link>https://res.cloudinary.com/doesupaf9/image/upload/w_1200,q_auto:good/Green_tray_ylui7h.jpg</g:image_link>
     <g:availability>in_stock</g:availability>
@@ -1053,12 +1155,14 @@
     <g:sale_price_effective_date>2026-11-04T00:00:00+02:00/2026-11-06T00:00:00+02:00</g:sale_price_effective_date>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:mpn>SAW-TB-005</g:mpn>
+    <g:mpn>SAW-TB-005-STANDARD</g:mpn>
     <g:item_group_id>silver-plated-glass-trays</g:item_group_id>
+    <g:size>Standard (30 × 18 cm)</g:size>
     <g:color>Green</g:color>
     <g:material>Glass/925 silver plating</g:material>
     <g:product_highlight>Handmade to order in our family studio in Israel</g:product_highlight>
     <g:product_highlight>Glass finished with 925 silver plating</g:product_highlight>
+    <g:product_highlight>Two sizes: Standard (30 × 18 cm) to match our candlesticks, or Large (38 × 23 cm) as a challah tray</g:product_highlight>
     <g:product_highlight>Wash by hand and do not use silver polish on the plating</g:product_highlight>
     <g:product_type>Judaica &gt; Trays &amp; Bowls &gt; 925 Silver-Plated</g:product_type>
     <g:google_product_category>6457</g:google_product_category>
@@ -1072,9 +1176,41 @@
     <g:max_transit_time>16</g:max_transit_time>
   </item>
   <item>
-    <g:id>black-silver-plated-glass-tray</g:id>
-    <g:title>Glass Tray - Black, 925 Silver-Plated | Handmade in Israel</g:title>
-    <g:description>Handmade black glass tray finished with 925 silver plating. Measures 30 × 18 cm and is made to order in our studio in Israel.</g:description>
+    <g:id>green-silver-plated-glass-tray-large</g:id>
+    <g:title>Glass Tray - Green, 925 Silver-Plated, Large (38 × 23 cm) | Handmade in Israel</g:title>
+    <g:description>Handmade green glass tray finished with 925 silver plating and made to order in our studio in Israel. Available in two sizes: 30 × 18 cm to match our candlesticks, or a large 38 × 23 cm challah tray.</g:description>
+    <g:link>https://shermanartworks.com/trays-bowls.html#green-silver-plated-glass-tray</g:link>
+    <g:image_link>https://res.cloudinary.com/doesupaf9/image/upload/w_1200,q_auto:good/Green_tray_ylui7h.jpg</g:image_link>
+    <g:availability>in_stock</g:availability>
+    <g:price>280.00 USD</g:price>
+    <g:sale_price>252.00 USD</g:sale_price>
+    <g:sale_price_effective_date>2026-11-04T00:00:00+02:00/2026-11-06T00:00:00+02:00</g:sale_price_effective_date>
+    <g:condition>new</g:condition>
+    <g:brand>Sherman Art Works</g:brand>
+    <g:mpn>SAW-TB-005-LARGE</g:mpn>
+    <g:item_group_id>silver-plated-glass-trays</g:item_group_id>
+    <g:size>Large (38 × 23 cm)</g:size>
+    <g:color>Green</g:color>
+    <g:material>Glass/925 silver plating</g:material>
+    <g:product_highlight>Handmade to order in our family studio in Israel</g:product_highlight>
+    <g:product_highlight>Glass finished with 925 silver plating</g:product_highlight>
+    <g:product_highlight>Two sizes: Standard (30 × 18 cm) to match our candlesticks, or Large (38 × 23 cm) as a challah tray</g:product_highlight>
+    <g:product_highlight>Wash by hand and do not use silver polish on the plating</g:product_highlight>
+    <g:product_type>Judaica &gt; Trays &amp; Bowls &gt; 925 Silver-Plated</g:product_type>
+    <g:google_product_category>6457</g:google_product_category>
+    <g:shipping>
+      <g:country>US</g:country>
+      <g:price>45.00 USD</g:price>
+    </g:shipping>
+    <g:min_handling_time>1</g:min_handling_time>
+    <g:max_handling_time>14</g:max_handling_time>
+    <g:min_transit_time>1</g:min_transit_time>
+    <g:max_transit_time>16</g:max_transit_time>
+  </item>
+  <item>
+    <g:id>black-silver-plated-glass-tray-standard</g:id>
+    <g:title>Glass Tray - Black, 925 Silver-Plated, Standard (30 × 18 cm) | Handmade in Israel</g:title>
+    <g:description>Handmade black glass tray finished with 925 silver plating and made to order in our studio in Israel. Available in two sizes: 30 × 18 cm to match our candlesticks, or a large 38 × 23 cm challah tray.</g:description>
     <g:link>https://shermanartworks.com/trays-bowls.html#black-silver-plated-glass-tray</g:link>
     <g:image_link>https://res.cloudinary.com/doesupaf9/image/upload/w_1200,q_auto:good/Black_tray_cqaohw.jpg</g:image_link>
     <g:availability>in_stock</g:availability>
@@ -1083,12 +1219,14 @@
     <g:sale_price_effective_date>2026-11-04T00:00:00+02:00/2026-11-06T00:00:00+02:00</g:sale_price_effective_date>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:mpn>SAW-TB-006</g:mpn>
+    <g:mpn>SAW-TB-006-STANDARD</g:mpn>
     <g:item_group_id>silver-plated-glass-trays</g:item_group_id>
+    <g:size>Standard (30 × 18 cm)</g:size>
     <g:color>Black</g:color>
     <g:material>Glass/925 silver plating</g:material>
     <g:product_highlight>Handmade to order in our family studio in Israel</g:product_highlight>
     <g:product_highlight>Glass finished with 925 silver plating</g:product_highlight>
+    <g:product_highlight>Two sizes: Standard (30 × 18 cm) to match our candlesticks, or Large (38 × 23 cm) as a challah tray</g:product_highlight>
     <g:product_highlight>Wash by hand and do not use silver polish on the plating</g:product_highlight>
     <g:product_type>Judaica &gt; Trays &amp; Bowls &gt; 925 Silver-Plated</g:product_type>
     <g:google_product_category>6457</g:google_product_category>
@@ -1102,9 +1240,41 @@
     <g:max_transit_time>16</g:max_transit_time>
   </item>
   <item>
-    <g:id>blue-green-silver-plated-glass-tray</g:id>
-    <g:title>Glass Tray - Blue-Green, 925 Silver-Plated | Handmade in Israel</g:title>
-    <g:description>Handmade blue-green glass tray finished with 925 silver plating. Measures 30 × 18 cm and is made to order in our studio in Israel.</g:description>
+    <g:id>black-silver-plated-glass-tray-large</g:id>
+    <g:title>Glass Tray - Black, 925 Silver-Plated, Large (38 × 23 cm) | Handmade in Israel</g:title>
+    <g:description>Handmade black glass tray finished with 925 silver plating and made to order in our studio in Israel. Available in two sizes: 30 × 18 cm to match our candlesticks, or a large 38 × 23 cm challah tray.</g:description>
+    <g:link>https://shermanartworks.com/trays-bowls.html#black-silver-plated-glass-tray</g:link>
+    <g:image_link>https://res.cloudinary.com/doesupaf9/image/upload/w_1200,q_auto:good/Black_tray_cqaohw.jpg</g:image_link>
+    <g:availability>in_stock</g:availability>
+    <g:price>280.00 USD</g:price>
+    <g:sale_price>252.00 USD</g:sale_price>
+    <g:sale_price_effective_date>2026-11-04T00:00:00+02:00/2026-11-06T00:00:00+02:00</g:sale_price_effective_date>
+    <g:condition>new</g:condition>
+    <g:brand>Sherman Art Works</g:brand>
+    <g:mpn>SAW-TB-006-LARGE</g:mpn>
+    <g:item_group_id>silver-plated-glass-trays</g:item_group_id>
+    <g:size>Large (38 × 23 cm)</g:size>
+    <g:color>Black</g:color>
+    <g:material>Glass/925 silver plating</g:material>
+    <g:product_highlight>Handmade to order in our family studio in Israel</g:product_highlight>
+    <g:product_highlight>Glass finished with 925 silver plating</g:product_highlight>
+    <g:product_highlight>Two sizes: Standard (30 × 18 cm) to match our candlesticks, or Large (38 × 23 cm) as a challah tray</g:product_highlight>
+    <g:product_highlight>Wash by hand and do not use silver polish on the plating</g:product_highlight>
+    <g:product_type>Judaica &gt; Trays &amp; Bowls &gt; 925 Silver-Plated</g:product_type>
+    <g:google_product_category>6457</g:google_product_category>
+    <g:shipping>
+      <g:country>US</g:country>
+      <g:price>45.00 USD</g:price>
+    </g:shipping>
+    <g:min_handling_time>1</g:min_handling_time>
+    <g:max_handling_time>14</g:max_handling_time>
+    <g:min_transit_time>1</g:min_transit_time>
+    <g:max_transit_time>16</g:max_transit_time>
+  </item>
+  <item>
+    <g:id>blue-green-silver-plated-glass-tray-standard</g:id>
+    <g:title>Glass Tray - Blue-Green, 925 Silver-Plated, Standard (30 × 18 cm) | Handmade in Israel</g:title>
+    <g:description>Handmade blue-green glass tray finished with 925 silver plating and made to order in our studio in Israel. Available in two sizes: 30 × 18 cm to match our candlesticks, or a large 38 × 23 cm challah tray.</g:description>
     <g:link>https://shermanartworks.com/trays-bowls.html#blue-green-silver-plated-glass-tray</g:link>
     <g:image_link>https://res.cloudinary.com/doesupaf9/image/upload/w_1200,q_auto:good/Vibrant_blue_tray_pyqqto.jpg</g:image_link>
     <g:availability>in_stock</g:availability>
@@ -1113,12 +1283,46 @@
     <g:sale_price_effective_date>2026-11-04T00:00:00+02:00/2026-11-06T00:00:00+02:00</g:sale_price_effective_date>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:mpn>SAW-TB-007</g:mpn>
+    <g:mpn>SAW-TB-007-STANDARD</g:mpn>
     <g:item_group_id>silver-plated-glass-trays</g:item_group_id>
+    <g:size>Standard (30 × 18 cm)</g:size>
     <g:color>Blue-Green</g:color>
     <g:material>Glass/925 silver plating</g:material>
     <g:product_highlight>Handmade to order in our family studio in Israel</g:product_highlight>
     <g:product_highlight>Glass finished with 925 silver plating</g:product_highlight>
+    <g:product_highlight>Two sizes: Standard (30 × 18 cm) to match our candlesticks, or Large (38 × 23 cm) as a challah tray</g:product_highlight>
+    <g:product_highlight>Wash by hand and do not use silver polish on the plating</g:product_highlight>
+    <g:product_type>Judaica &gt; Trays &amp; Bowls &gt; 925 Silver-Plated</g:product_type>
+    <g:google_product_category>6457</g:google_product_category>
+    <g:shipping>
+      <g:country>US</g:country>
+      <g:price>45.00 USD</g:price>
+    </g:shipping>
+    <g:min_handling_time>1</g:min_handling_time>
+    <g:max_handling_time>14</g:max_handling_time>
+    <g:min_transit_time>1</g:min_transit_time>
+    <g:max_transit_time>16</g:max_transit_time>
+  </item>
+  <item>
+    <g:id>blue-green-silver-plated-glass-tray-large</g:id>
+    <g:title>Glass Tray - Blue-Green, 925 Silver-Plated, Large (38 × 23 cm) | Handmade in Israel</g:title>
+    <g:description>Handmade blue-green glass tray finished with 925 silver plating and made to order in our studio in Israel. Available in two sizes: 30 × 18 cm to match our candlesticks, or a large 38 × 23 cm challah tray.</g:description>
+    <g:link>https://shermanartworks.com/trays-bowls.html#blue-green-silver-plated-glass-tray</g:link>
+    <g:image_link>https://res.cloudinary.com/doesupaf9/image/upload/w_1200,q_auto:good/Vibrant_blue_tray_pyqqto.jpg</g:image_link>
+    <g:availability>in_stock</g:availability>
+    <g:price>280.00 USD</g:price>
+    <g:sale_price>252.00 USD</g:sale_price>
+    <g:sale_price_effective_date>2026-11-04T00:00:00+02:00/2026-11-06T00:00:00+02:00</g:sale_price_effective_date>
+    <g:condition>new</g:condition>
+    <g:brand>Sherman Art Works</g:brand>
+    <g:mpn>SAW-TB-007-LARGE</g:mpn>
+    <g:item_group_id>silver-plated-glass-trays</g:item_group_id>
+    <g:size>Large (38 × 23 cm)</g:size>
+    <g:color>Blue-Green</g:color>
+    <g:material>Glass/925 silver plating</g:material>
+    <g:product_highlight>Handmade to order in our family studio in Israel</g:product_highlight>
+    <g:product_highlight>Glass finished with 925 silver plating</g:product_highlight>
+    <g:product_highlight>Two sizes: Standard (30 × 18 cm) to match our candlesticks, or Large (38 × 23 cm) as a challah tray</g:product_highlight>
     <g:product_highlight>Wash by hand and do not use silver polish on the plating</g:product_highlight>
     <g:product_type>Judaica &gt; Trays &amp; Bowls &gt; 925 Silver-Plated</g:product_type>
     <g:google_product_category>6457</g:google_product_category>

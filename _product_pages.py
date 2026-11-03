@@ -658,6 +658,26 @@ def static_price(p, site, lead=None):
     return out.replace("from ", (lead or site["cat_from"]) + " ", 1) if p.get("sizes") else out
 
 
+# Sizes that carry Hebrew (the silver trays) are drawn in the page language,
+# as trays-bowls.html draws them; the S/M/L ladders have none and stay as before.
+def size_label(sz, lang):
+    return sz["label_he"] if lang == "he" and sz.get("label_he") else sz["label"]
+
+
+def size_range(sz, lang):
+    if lang == "he" and sz.get("label_he"):
+        return f'<bdi dir="ltr">{e(sz["range_cm"])}</bdi> ס״מ'
+    return f'{e(sz["range_cm"])} cm'
+
+
+def size_note(sz, lang):
+    note = sz.get("note_he" if lang == "he" else "note_en")
+    if not note:
+        return ""
+    return ('<span class="variant-size-note" style="font-size: 0.72rem; line-height: 1.3; '
+            f'color: var(--dark); font-style: italic;">{e(note)}</span>')
+
+
 def fill_window(body, p, family, twins, lang, site, page_t):
     """The window's markup with this product written into it, for crawlers.
 
@@ -743,8 +763,9 @@ def fill_window(body, p, family, twins, lang, site, page_t):
         put(radios, "".join(
             f'<label class="variant-size-option"><input type="radio" name="modalSizeOption" value="{i}" '
             f'onchange="selectModalSize({i})" /><span class="variant-size-content">'
-            f'<span class="variant-size-label">{e(sz["label"])}</span>'
-            f'<span class="variant-size-range">{e(sz["range_cm"])} cm</span>'
+            f'<span class="variant-size-label">{e(size_label(sz, lang))}</span>'
+            f'<span class="variant-size-range">{size_range(sz, lang)}</span>'
+            f'{size_note(sz, lang)}'
             f'<span class="variant-size-price">@@PRICE{i}@@</span>'
             f'</span></label>' for i, sz in enumerate(sizes)))
     elif sizes and select:
