@@ -933,6 +933,9 @@ function buildCheckoutWaLink() {
   var PICKUP_FIELDS = ['fname', 'lname', 'email', 'phone'];
   var addrLines = (pickup ? PICKUP_FIELDS : ADDR_FIELDS).filter(function (f) { return addr[f]; })
     .map(function (f) { return '   ' + addrLabels[f] + ': ' + addr[f]; });
+  // A WhatsApp order never reaches the Worker, so a link from the share page is
+  // named in the message itself; the studio then ticks it when logging the sale.
+  var sharedLink = typeof saSharedVisitForOrder === 'function' && saSharedVisitForOrder();
   if (l === 'he') {
     lines = ['שלום! אני רוצה להזמין:'];
     items.forEach(function (item) {
@@ -964,6 +967,7 @@ function buildCheckoutWaLink() {
       addrLines.forEach(function (a) { lines.push(a); });
     }
     lines.push('');
+    if (sharedLink) lines.push('הגעתי דרך קישור ששלחו לי.');
     lines.push('מה השלב הבא?');
   } else {
     lines = ["Hi! I'd like to order:"];
@@ -996,6 +1000,7 @@ function buildCheckoutWaLink() {
       addrLines.forEach(function (a) { lines.push(a); });
     }
     lines.push('');
+    if (sharedLink) lines.push('I came through a link I was sent.');
     lines.push("What's the next step?");
   }
   return 'https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(lines.join('\n'));

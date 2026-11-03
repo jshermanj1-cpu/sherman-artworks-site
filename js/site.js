@@ -1063,6 +1063,36 @@ function saClearAdVisit() {
   try { localStorage.removeItem(SA_AD_KEY); } catch (e) {}
 }
 
+// Whether this browser opened a link sent from the share page, the unlisted
+// page family uses to send old clients product links instead of photos. Its
+// links carry ?ref=share, so a card order can say so and the studio can see
+// what those links sell (privacy.html: sa_shared). Same rules as sa_ad: only the
+// date is kept, and it leaves the browser only with an order.
+var SA_SHARED_KEY = 'sa_shared';
+(function _noteSharedVisit() {
+  var p;
+  try { p = new URLSearchParams(location.search); } catch (e) { return; }
+  if (p.get('ref') !== 'share') return;
+  try {
+    localStorage.setItem(SA_SHARED_KEY, JSON.stringify({ via: 'share_page', d: new Date().toISOString().slice(0, 10) }));
+  } catch (e) {}
+})();
+
+// The shared-link note an order carries, or null, on the ad note's 30 days.
+function saSharedVisitForOrder() {
+  var v = null;
+  try { v = JSON.parse(localStorage.getItem(SA_SHARED_KEY)); } catch (e) {}
+  if (!v || v.via !== 'share_page' || !/^\d{4}-\d{2}-\d{2}$/.test(v.d || '')) return null;
+  var today = new Date().toISOString().slice(0, 10);
+  var days = Math.round((Date.parse(today) - Date.parse(v.d)) / 86400000);
+  if (!(days <= SA_AD_WINDOW_DAYS)) { saClearSharedVisit(); return null; }
+  return { via: v.via, d: v.d };
+}
+
+function saClearSharedVisit() {
+  try { localStorage.removeItem(SA_SHARED_KEY); } catch (e) {}
+}
+
 // A local dev server is never a shopper. Events still queue in dataLayer, where
 // they can be inspected, but gtag.js is never loaded so nothing reaches GA4.
 function _isDevHost() {

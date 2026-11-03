@@ -425,6 +425,7 @@ def main():
     external("Hanukkah page matches the catalogue", ["_hanukkah_page.py", "--check"], "_usd.py")
     external("Shofar sizing table is current", ["_shofar_guide.py", "--check"])
     external("Product pages are current", ["_product_pages.py", "--check"], "_usd.py")
+    external("Share page is current", ["_share_page.py", "--check"], "_usd.py")
     external("Image sitemap is current", ["_image_sitemap.py", "--check"])
     external("SKUs, JSON-LD and the feed agree", ["_validate_skus.py"], "_launch.py")
 
@@ -444,7 +445,8 @@ def main():
         print("  python _hanukkah_page.py && python _static_cards.py && python _subcategory_pages.py && "
               "python _shofar_jsonld.py \\\n    && python _shofar_pages.py && "
               "python _bake_en.py && python _offer_schema.py \\\n    && "
-              "python _he_pages.py && python _product_pages.py && python _merchant_feed.py && python _image_sitemap.py")
+              "python _he_pages.py && python _product_pages.py && python _share_page.py \\\n    && "
+              "python _merchant_feed.py && python _image_sitemap.py")
         return 1
     if not QUIET:
         print("\nall guards passed")

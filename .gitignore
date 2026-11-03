@@ -18,5 +18,6 @@ _*.py
 !_hanukkah_sale.py
 !_shoppingil_sale.py
 !_product_pages.py
+!_share_page.py
 _pricing/
 __pycache__/

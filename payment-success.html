@@ -151,8 +151,8 @@
   </div>
 </footer>
 
-<script src="js/site.js?v=20261103c"></script>
-<script src="js/cart.js?v=20261102a"></script>
+<script src="js/site.js?v=20261103s"></script>
+<script src="js/cart.js?v=20261103s"></script>
 <script>
   const T_PAGE = {
     en: {
@@ -316,6 +316,7 @@
     }
     clearCart();
     if (typeof saClearAdVisit === 'function') saClearAdVisit();
+    if (typeof saClearSharedVisit === 'function') saClearSharedVisit();
     try { localStorage.removeItem('sa_payment_status'); } catch (e) {}
   }
 
