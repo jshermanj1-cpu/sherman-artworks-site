@@ -584,7 +584,7 @@ PRODUCT_GROUP_HE = {
     "gold-plated-glass-trays": {
         "name": "מגשי זכוכית בציפוי זהב",
         "description": "מגשי זכוכית בעבודת יד בציפוי זהב, "
-                       "בשישה עיצובים מתואמים.",
+                       "בשישה צבעים ובשתי מידות.",
     },
     "classic-havdalah-sets": {
         "name": "סטי הבדלה קלאסיים",

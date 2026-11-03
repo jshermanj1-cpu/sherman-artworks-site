@@ -224,13 +224,13 @@ configurations. They are permanent once migrated into the product data.
 | `SAW-TB-005` | `green-silver-plated-glass-tray` | Green 925 Silver-Plated Glass Tray | `-STANDARD`, `-LARGE` |
 | `SAW-TB-006` | `black-silver-plated-glass-tray` | Black 925 Silver-Plated Glass Tray | `-STANDARD`, `-LARGE` |
 | `SAW-TB-007` | `blue-green-silver-plated-glass-tray` | Blue-Green 925 Silver-Plated Glass Tray | `-STANDARD`, `-LARGE` |
-| `SAW-TB-009` | `blue-gold-plated-glass-tray` | Blue Gold-Plated Glass Tray | None |
-| `SAW-TB-010` | `blue-green-gold-plated-glass-tray` | Blue-Green Gold-Plated Glass Tray | None |
-| `SAW-TB-011` | `red-gold-plated-glass-tray` | Red Gold-Plated Glass Tray | None |
+| `SAW-TB-009` | `blue-gold-plated-glass-tray` | Blue Gold-Plated Glass Tray | `-STANDARD`, `-LARGE` |
+| `SAW-TB-010` | `blue-green-gold-plated-glass-tray` | Blue-Green Gold-Plated Glass Tray | `-STANDARD`, `-LARGE` |
+| `SAW-TB-011` | `red-gold-plated-glass-tray` | Red Gold-Plated Glass Tray | `-STANDARD`, `-LARGE` |
 | `SAW-TB-012` | `orange-gold-plated-glass-tray` | Orange Gold-Plated Glass Tray | None |
-| `SAW-TB-013` | `earth-gold-plated-glass-tray` | Earth Gold-Plated Glass Tray | None |
-| `SAW-TB-014` | `black-gold-plated-glass-tray` | Black Gold-Plated Glass Tray | None |
-| `SAW-TB-015` | `green-gold-plated-glass-tray` | Green Gold-Plated Glass Tray | None |
+| `SAW-TB-013` | `earth-gold-plated-glass-tray` | Earth Gold-Plated Glass Tray | `-STANDARD`, `-LARGE` |
+| `SAW-TB-014` | `black-gold-plated-glass-tray` | Black Gold-Plated Glass Tray | `-STANDARD`, `-LARGE` |
+| `SAW-TB-015` | `green-gold-plated-glass-tray` | Green Gold-Plated Glass Tray | `-STANDARD`, `-LARGE` |
 
 ### Mezuzahs (`MZ`)
 

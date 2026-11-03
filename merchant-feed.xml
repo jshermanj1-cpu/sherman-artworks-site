@@ -7963,9 +7963,9 @@
     <g:max_transit_time>16</g:max_transit_time>
   </item>
   <item>
-    <g:id>blue-gold-plated-glass-tray</g:id>
-    <g:title>מגש זכוכית כחול בציפוי זהב | עבודת יד מישראל</g:title>
-    <g:description>מגש זכוכית כחול בעבודת יד בציפוי זהב. מידותיו 30 × 18 ס״מ והוא מיוצר לפי הזמנה בסטודיו שלנו בישראל.</g:description>
+    <g:id>blue-gold-plated-glass-tray-standard</g:id>
+    <g:title>מגש זכוכית כחול בציפוי זהב - מידה רגיל (30 × 18 ס״מ) | עבודת יד מישראל</g:title>
+    <g:description>מגש זכוכית כחול בעבודת יד בציפוי זהב, מיוצר לפי הזמנה בסטודיו שלנו בישראל. זמין בשתי מידות: 30 × 18 ס״מ בהתאמה לפמוטים, או מגש חלה גדול של 38 × 23 ס״מ.</g:description>
     <g:link>https://shermanartworks.com/he/trays-bowls.html#blue-gold-plated-glass-tray</g:link>
     <g:image_link>https://res.cloudinary.com/doesupaf9/image/upload/w_1200,q_auto:good/P036_ymyrbu.jpg</g:image_link>
     <g:availability>in_stock</g:availability>
@@ -7974,12 +7974,14 @@
     <g:sale_price_effective_date>2026-11-04T00:00:00+02:00/2026-11-06T00:00:00+02:00</g:sale_price_effective_date>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:mpn>SAW-TB-009</g:mpn>
+    <g:mpn>SAW-TB-009-STANDARD</g:mpn>
     <g:item_group_id>gold-plated-glass-trays</g:item_group_id>
+    <g:size>רגיל (30 × 18 ס״מ)</g:size>
     <g:color>כחול</g:color>
     <g:material>זכוכית/ציפוי זהב</g:material>
     <g:product_highlight>נעשה בעבודת יד לפי הזמנה בסטודיו המשפחתי שלנו בישראל</g:product_highlight>
     <g:product_highlight>זכוכית בציפוי זהב</g:product_highlight>
+    <g:product_highlight>בשתי מידות: רגיל (30 × 18 ס״מ) בהתאמה לפמוטים, או גדול (38 × 23 ס״מ) כמגש לחלה</g:product_highlight>
     <g:product_highlight>לשטוף ביד בלבד ולא להשתמש בחומר לניקוי כסף על הציפוי</g:product_highlight>
     <g:product_type>Judaica &gt; Trays &amp; Bowls &gt; Gold-Plated</g:product_type>
     <g:google_product_category>6457</g:google_product_category>
@@ -7993,9 +7995,41 @@
     <g:max_transit_time>16</g:max_transit_time>
   </item>
   <item>
-    <g:id>blue-green-gold-plated-glass-tray</g:id>
-    <g:title>מגש זכוכית כחול-ירוק בציפוי זהב | עבודת יד מישראל</g:title>
-    <g:description>מגש זכוכית כחול-ירוק בעבודת יד בציפוי זהב. מידותיו 30 × 18 ס״מ והוא מיוצר לפי הזמנה בסטודיו שלנו בישראל.</g:description>
+    <g:id>blue-gold-plated-glass-tray-large</g:id>
+    <g:title>מגש זכוכית כחול בציפוי זהב - מידה גדול (38 × 23 ס״מ) | עבודת יד מישראל</g:title>
+    <g:description>מגש זכוכית כחול בעבודת יד בציפוי זהב, מיוצר לפי הזמנה בסטודיו שלנו בישראל. זמין בשתי מידות: 30 × 18 ס״מ בהתאמה לפמוטים, או מגש חלה גדול של 38 × 23 ס״מ.</g:description>
+    <g:link>https://shermanartworks.com/he/trays-bowls.html#blue-gold-plated-glass-tray</g:link>
+    <g:image_link>https://res.cloudinary.com/doesupaf9/image/upload/w_1200,q_auto:good/P036_ymyrbu.jpg</g:image_link>
+    <g:availability>in_stock</g:availability>
+    <g:price>918.00 ILS</g:price>
+    <g:sale_price>826.00 ILS</g:sale_price>
+    <g:sale_price_effective_date>2026-11-04T00:00:00+02:00/2026-11-06T00:00:00+02:00</g:sale_price_effective_date>
+    <g:condition>new</g:condition>
+    <g:brand>Sherman Art Works</g:brand>
+    <g:mpn>SAW-TB-009-LARGE</g:mpn>
+    <g:item_group_id>gold-plated-glass-trays</g:item_group_id>
+    <g:size>גדול (38 × 23 ס״מ)</g:size>
+    <g:color>כחול</g:color>
+    <g:material>זכוכית/ציפוי זהב</g:material>
+    <g:product_highlight>נעשה בעבודת יד לפי הזמנה בסטודיו המשפחתי שלנו בישראל</g:product_highlight>
+    <g:product_highlight>זכוכית בציפוי זהב</g:product_highlight>
+    <g:product_highlight>בשתי מידות: רגיל (30 × 18 ס״מ) בהתאמה לפמוטים, או גדול (38 × 23 ס״מ) כמגש לחלה</g:product_highlight>
+    <g:product_highlight>לשטוף ביד בלבד ולא להשתמש בחומר לניקוי כסף על הציפוי</g:product_highlight>
+    <g:product_type>Judaica &gt; Trays &amp; Bowls &gt; Gold-Plated</g:product_type>
+    <g:google_product_category>6457</g:google_product_category>
+    <g:shipping>
+      <g:country>IL</g:country>
+      <g:price>35.00 ILS</g:price>
+    </g:shipping>
+    <g:min_handling_time>1</g:min_handling_time>
+    <g:max_handling_time>14</g:max_handling_time>
+    <g:min_transit_time>1</g:min_transit_time>
+    <g:max_transit_time>16</g:max_transit_time>
+  </item>
+  <item>
+    <g:id>blue-green-gold-plated-glass-tray-standard</g:id>
+    <g:title>מגש זכוכית כחול-ירוק בציפוי זהב - מידה רגיל (30 × 18 ס״מ) | עבודת יד מישראל</g:title>
+    <g:description>מגש זכוכית כחול-ירוק בעבודת יד בציפוי זהב, מיוצר לפי הזמנה בסטודיו שלנו בישראל. זמין בשתי מידות: 30 × 18 ס״מ בהתאמה לפמוטים, או מגש חלה גדול של 38 × 23 ס״מ.</g:description>
     <g:link>https://shermanartworks.com/he/trays-bowls.html#blue-green-gold-plated-glass-tray</g:link>
     <g:image_link>https://res.cloudinary.com/doesupaf9/image/upload/w_1200,q_auto:good/P031_svdkgg.jpg</g:image_link>
     <g:availability>in_stock</g:availability>
@@ -8004,12 +8038,14 @@
     <g:sale_price_effective_date>2026-11-04T00:00:00+02:00/2026-11-06T00:00:00+02:00</g:sale_price_effective_date>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:mpn>SAW-TB-010</g:mpn>
+    <g:mpn>SAW-TB-010-STANDARD</g:mpn>
     <g:item_group_id>gold-plated-glass-trays</g:item_group_id>
+    <g:size>רגיל (30 × 18 ס״מ)</g:size>
     <g:color>כחול-ירוק</g:color>
     <g:material>זכוכית/ציפוי זהב</g:material>
     <g:product_highlight>נעשה בעבודת יד לפי הזמנה בסטודיו המשפחתי שלנו בישראל</g:product_highlight>
     <g:product_highlight>זכוכית בציפוי זהב</g:product_highlight>
+    <g:product_highlight>בשתי מידות: רגיל (30 × 18 ס״מ) בהתאמה לפמוטים, או גדול (38 × 23 ס״מ) כמגש לחלה</g:product_highlight>
     <g:product_highlight>לשטוף ביד בלבד ולא להשתמש בחומר לניקוי כסף על הציפוי</g:product_highlight>
     <g:product_type>Judaica &gt; Trays &amp; Bowls &gt; Gold-Plated</g:product_type>
     <g:google_product_category>6457</g:google_product_category>
@@ -8023,9 +8059,41 @@
     <g:max_transit_time>16</g:max_transit_time>
   </item>
   <item>
-    <g:id>red-gold-plated-glass-tray</g:id>
-    <g:title>מגש זכוכית אדום בציפוי זהב | עבודת יד מישראל</g:title>
-    <g:description>מגש זכוכית אדום בעבודת יד בציפוי זהב. מידותיו 30 × 18 ס״מ והוא מיוצר לפי הזמנה בסטודיו שלנו בישראל.</g:description>
+    <g:id>blue-green-gold-plated-glass-tray-large</g:id>
+    <g:title>מגש זכוכית כחול-ירוק בציפוי זהב - מידה גדול (38 × 23 ס״מ) | עבודת יד מישראל</g:title>
+    <g:description>מגש זכוכית כחול-ירוק בעבודת יד בציפוי זהב, מיוצר לפי הזמנה בסטודיו שלנו בישראל. זמין בשתי מידות: 30 × 18 ס״מ בהתאמה לפמוטים, או מגש חלה גדול של 38 × 23 ס״מ.</g:description>
+    <g:link>https://shermanartworks.com/he/trays-bowls.html#blue-green-gold-plated-glass-tray</g:link>
+    <g:image_link>https://res.cloudinary.com/doesupaf9/image/upload/w_1200,q_auto:good/P031_svdkgg.jpg</g:image_link>
+    <g:availability>in_stock</g:availability>
+    <g:price>918.00 ILS</g:price>
+    <g:sale_price>826.00 ILS</g:sale_price>
+    <g:sale_price_effective_date>2026-11-04T00:00:00+02:00/2026-11-06T00:00:00+02:00</g:sale_price_effective_date>
+    <g:condition>new</g:condition>
+    <g:brand>Sherman Art Works</g:brand>
+    <g:mpn>SAW-TB-010-LARGE</g:mpn>
+    <g:item_group_id>gold-plated-glass-trays</g:item_group_id>
+    <g:size>גדול (38 × 23 ס״מ)</g:size>
+    <g:color>כחול-ירוק</g:color>
+    <g:material>זכוכית/ציפוי זהב</g:material>
+    <g:product_highlight>נעשה בעבודת יד לפי הזמנה בסטודיו המשפחתי שלנו בישראל</g:product_highlight>
+    <g:product_highlight>זכוכית בציפוי זהב</g:product_highlight>
+    <g:product_highlight>בשתי מידות: רגיל (30 × 18 ס״מ) בהתאמה לפמוטים, או גדול (38 × 23 ס״מ) כמגש לחלה</g:product_highlight>
+    <g:product_highlight>לשטוף ביד בלבד ולא להשתמש בחומר לניקוי כסף על הציפוי</g:product_highlight>
+    <g:product_type>Judaica &gt; Trays &amp; Bowls &gt; Gold-Plated</g:product_type>
+    <g:google_product_category>6457</g:google_product_category>
+    <g:shipping>
+      <g:country>IL</g:country>
+      <g:price>35.00 ILS</g:price>
+    </g:shipping>
+    <g:min_handling_time>1</g:min_handling_time>
+    <g:max_handling_time>14</g:max_handling_time>
+    <g:min_transit_time>1</g:min_transit_time>
+    <g:max_transit_time>16</g:max_transit_time>
+  </item>
+  <item>
+    <g:id>red-gold-plated-glass-tray-standard</g:id>
+    <g:title>מגש זכוכית אדום בציפוי זהב - מידה רגיל (30 × 18 ס״מ) | עבודת יד מישראל</g:title>
+    <g:description>מגש זכוכית אדום בעבודת יד בציפוי זהב, מיוצר לפי הזמנה בסטודיו שלנו בישראל. זמין בשתי מידות: 30 × 18 ס״מ בהתאמה לפמוטים, או מגש חלה גדול של 38 × 23 ס״מ.</g:description>
     <g:link>https://shermanartworks.com/he/trays-bowls.html#red-gold-plated-glass-tray</g:link>
     <g:image_link>https://res.cloudinary.com/doesupaf9/image/upload/w_1200,q_auto:good/P011_ohf4xz.jpg</g:image_link>
     <g:availability>in_stock</g:availability>
@@ -8034,12 +8102,46 @@
     <g:sale_price_effective_date>2026-11-04T00:00:00+02:00/2026-11-06T00:00:00+02:00</g:sale_price_effective_date>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:mpn>SAW-TB-011</g:mpn>
+    <g:mpn>SAW-TB-011-STANDARD</g:mpn>
     <g:item_group_id>gold-plated-glass-trays</g:item_group_id>
+    <g:size>רגיל (30 × 18 ס״מ)</g:size>
     <g:color>אדום</g:color>
     <g:material>זכוכית/ציפוי זהב</g:material>
     <g:product_highlight>נעשה בעבודת יד לפי הזמנה בסטודיו המשפחתי שלנו בישראל</g:product_highlight>
     <g:product_highlight>זכוכית בציפוי זהב</g:product_highlight>
+    <g:product_highlight>בשתי מידות: רגיל (30 × 18 ס״מ) בהתאמה לפמוטים, או גדול (38 × 23 ס״מ) כמגש לחלה</g:product_highlight>
+    <g:product_highlight>לשטוף ביד בלבד ולא להשתמש בחומר לניקוי כסף על הציפוי</g:product_highlight>
+    <g:product_type>Judaica &gt; Trays &amp; Bowls &gt; Gold-Plated</g:product_type>
+    <g:google_product_category>6457</g:google_product_category>
+    <g:shipping>
+      <g:country>IL</g:country>
+      <g:price>35.00 ILS</g:price>
+    </g:shipping>
+    <g:min_handling_time>1</g:min_handling_time>
+    <g:max_handling_time>14</g:max_handling_time>
+    <g:min_transit_time>1</g:min_transit_time>
+    <g:max_transit_time>16</g:max_transit_time>
+  </item>
+  <item>
+    <g:id>red-gold-plated-glass-tray-large</g:id>
+    <g:title>מגש זכוכית אדום בציפוי זהב - מידה גדול (38 × 23 ס״מ) | עבודת יד מישראל</g:title>
+    <g:description>מגש זכוכית אדום בעבודת יד בציפוי זהב, מיוצר לפי הזמנה בסטודיו שלנו בישראל. זמין בשתי מידות: 30 × 18 ס״מ בהתאמה לפמוטים, או מגש חלה גדול של 38 × 23 ס״מ.</g:description>
+    <g:link>https://shermanartworks.com/he/trays-bowls.html#red-gold-plated-glass-tray</g:link>
+    <g:image_link>https://res.cloudinary.com/doesupaf9/image/upload/w_1200,q_auto:good/P011_ohf4xz.jpg</g:image_link>
+    <g:availability>in_stock</g:availability>
+    <g:price>918.00 ILS</g:price>
+    <g:sale_price>826.00 ILS</g:sale_price>
+    <g:sale_price_effective_date>2026-11-04T00:00:00+02:00/2026-11-06T00:00:00+02:00</g:sale_price_effective_date>
+    <g:condition>new</g:condition>
+    <g:brand>Sherman Art Works</g:brand>
+    <g:mpn>SAW-TB-011-LARGE</g:mpn>
+    <g:item_group_id>gold-plated-glass-trays</g:item_group_id>
+    <g:size>גדול (38 × 23 ס״מ)</g:size>
+    <g:color>אדום</g:color>
+    <g:material>זכוכית/ציפוי זהב</g:material>
+    <g:product_highlight>נעשה בעבודת יד לפי הזמנה בסטודיו המשפחתי שלנו בישראל</g:product_highlight>
+    <g:product_highlight>זכוכית בציפוי זהב</g:product_highlight>
+    <g:product_highlight>בשתי מידות: רגיל (30 × 18 ס״מ) בהתאמה לפמוטים, או גדול (38 × 23 ס״מ) כמגש לחלה</g:product_highlight>
     <g:product_highlight>לשטוף ביד בלבד ולא להשתמש בחומר לניקוי כסף על הציפוי</g:product_highlight>
     <g:product_type>Judaica &gt; Trays &amp; Bowls &gt; Gold-Plated</g:product_type>
     <g:google_product_category>6457</g:google_product_category>
@@ -8080,9 +8182,9 @@
     <g:max_transit_time>16</g:max_transit_time>
   </item>
   <item>
-    <g:id>earth-gold-plated-glass-tray</g:id>
-    <g:title>מגש זכוכית אדמה בציפוי זהב | עבודת יד מישראל</g:title>
-    <g:description>מגש זכוכית אדמה בעבודת יד בציפוי זהב. מידותיו 30 × 18 ס״מ והוא מיוצר לפי הזמנה בסטודיו שלנו בישראל.</g:description>
+    <g:id>earth-gold-plated-glass-tray-standard</g:id>
+    <g:title>מגש זכוכית אדמה בציפוי זהב - מידה רגיל (30 × 18 ס״מ) | עבודת יד מישראל</g:title>
+    <g:description>מגש זכוכית אדמה בעבודת יד בציפוי זהב, מיוצר לפי הזמנה בסטודיו שלנו בישראל. זמין בשתי מידות: 30 × 18 ס״מ בהתאמה לפמוטים, או מגש חלה גדול של 38 × 23 ס״מ.</g:description>
     <g:link>https://shermanartworks.com/he/trays-bowls.html#earth-gold-plated-glass-tray</g:link>
     <g:image_link>https://res.cloudinary.com/doesupaf9/image/upload/w_1200,q_auto:good/P023_cuaxen.jpg</g:image_link>
     <g:availability>in_stock</g:availability>
@@ -8091,12 +8193,14 @@
     <g:sale_price_effective_date>2026-11-04T00:00:00+02:00/2026-11-06T00:00:00+02:00</g:sale_price_effective_date>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:mpn>SAW-TB-013</g:mpn>
+    <g:mpn>SAW-TB-013-STANDARD</g:mpn>
     <g:item_group_id>gold-plated-glass-trays</g:item_group_id>
+    <g:size>רגיל (30 × 18 ס״מ)</g:size>
     <g:color>אדמה</g:color>
     <g:material>זכוכית/ציפוי זהב</g:material>
     <g:product_highlight>נעשה בעבודת יד לפי הזמנה בסטודיו המשפחתי שלנו בישראל</g:product_highlight>
     <g:product_highlight>זכוכית בציפוי זהב</g:product_highlight>
+    <g:product_highlight>בשתי מידות: רגיל (30 × 18 ס״מ) בהתאמה לפמוטים, או גדול (38 × 23 ס״מ) כמגש לחלה</g:product_highlight>
     <g:product_highlight>לשטוף ביד בלבד ולא להשתמש בחומר לניקוי כסף על הציפוי</g:product_highlight>
     <g:product_type>Judaica &gt; Trays &amp; Bowls &gt; Gold-Plated</g:product_type>
     <g:google_product_category>6457</g:google_product_category>
@@ -8110,9 +8214,41 @@
     <g:max_transit_time>16</g:max_transit_time>
   </item>
   <item>
-    <g:id>black-gold-plated-glass-tray</g:id>
-    <g:title>מגש זכוכית שחור בציפוי זהב | עבודת יד מישראל</g:title>
-    <g:description>מגש זכוכית שחור בעבודת יד בציפוי זהב. מידותיו 30 × 18 ס״מ והוא מיוצר לפי הזמנה בסטודיו שלנו בישראל.</g:description>
+    <g:id>earth-gold-plated-glass-tray-large</g:id>
+    <g:title>מגש זכוכית אדמה בציפוי זהב - מידה גדול (38 × 23 ס״מ) | עבודת יד מישראל</g:title>
+    <g:description>מגש זכוכית אדמה בעבודת יד בציפוי זהב, מיוצר לפי הזמנה בסטודיו שלנו בישראל. זמין בשתי מידות: 30 × 18 ס״מ בהתאמה לפמוטים, או מגש חלה גדול של 38 × 23 ס״מ.</g:description>
+    <g:link>https://shermanartworks.com/he/trays-bowls.html#earth-gold-plated-glass-tray</g:link>
+    <g:image_link>https://res.cloudinary.com/doesupaf9/image/upload/w_1200,q_auto:good/P023_cuaxen.jpg</g:image_link>
+    <g:availability>in_stock</g:availability>
+    <g:price>918.00 ILS</g:price>
+    <g:sale_price>826.00 ILS</g:sale_price>
+    <g:sale_price_effective_date>2026-11-04T00:00:00+02:00/2026-11-06T00:00:00+02:00</g:sale_price_effective_date>
+    <g:condition>new</g:condition>
+    <g:brand>Sherman Art Works</g:brand>
+    <g:mpn>SAW-TB-013-LARGE</g:mpn>
+    <g:item_group_id>gold-plated-glass-trays</g:item_group_id>
+    <g:size>גדול (38 × 23 ס״מ)</g:size>
+    <g:color>אדמה</g:color>
+    <g:material>זכוכית/ציפוי זהב</g:material>
+    <g:product_highlight>נעשה בעבודת יד לפי הזמנה בסטודיו המשפחתי שלנו בישראל</g:product_highlight>
+    <g:product_highlight>זכוכית בציפוי זהב</g:product_highlight>
+    <g:product_highlight>בשתי מידות: רגיל (30 × 18 ס״מ) בהתאמה לפמוטים, או גדול (38 × 23 ס״מ) כמגש לחלה</g:product_highlight>
+    <g:product_highlight>לשטוף ביד בלבד ולא להשתמש בחומר לניקוי כסף על הציפוי</g:product_highlight>
+    <g:product_type>Judaica &gt; Trays &amp; Bowls &gt; Gold-Plated</g:product_type>
+    <g:google_product_category>6457</g:google_product_category>
+    <g:shipping>
+      <g:country>IL</g:country>
+      <g:price>35.00 ILS</g:price>
+    </g:shipping>
+    <g:min_handling_time>1</g:min_handling_time>
+    <g:max_handling_time>14</g:max_handling_time>
+    <g:min_transit_time>1</g:min_transit_time>
+    <g:max_transit_time>16</g:max_transit_time>
+  </item>
+  <item>
+    <g:id>black-gold-plated-glass-tray-standard</g:id>
+    <g:title>מגש זכוכית שחור בציפוי זהב - מידה רגיל (30 × 18 ס״מ) | עבודת יד מישראל</g:title>
+    <g:description>מגש זכוכית שחור בעבודת יד בציפוי זהב, מיוצר לפי הזמנה בסטודיו שלנו בישראל. זמין בשתי מידות: 30 × 18 ס״מ בהתאמה לפמוטים, או מגש חלה גדול של 38 × 23 ס״מ.</g:description>
     <g:link>https://shermanartworks.com/he/trays-bowls.html#black-gold-plated-glass-tray</g:link>
     <g:image_link>https://res.cloudinary.com/doesupaf9/image/upload/w_1200,q_auto:good/Black_tray_gold_wdxp9o.jpg</g:image_link>
     <g:availability>in_stock</g:availability>
@@ -8121,12 +8257,14 @@
     <g:sale_price_effective_date>2026-11-04T00:00:00+02:00/2026-11-06T00:00:00+02:00</g:sale_price_effective_date>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:mpn>SAW-TB-014</g:mpn>
+    <g:mpn>SAW-TB-014-STANDARD</g:mpn>
     <g:item_group_id>gold-plated-glass-trays</g:item_group_id>
+    <g:size>רגיל (30 × 18 ס״מ)</g:size>
     <g:color>שחור</g:color>
     <g:material>זכוכית/ציפוי זהב</g:material>
     <g:product_highlight>נעשה בעבודת יד לפי הזמנה בסטודיו המשפחתי שלנו בישראל</g:product_highlight>
     <g:product_highlight>זכוכית בציפוי זהב</g:product_highlight>
+    <g:product_highlight>בשתי מידות: רגיל (30 × 18 ס״מ) בהתאמה לפמוטים, או גדול (38 × 23 ס״מ) כמגש לחלה</g:product_highlight>
     <g:product_highlight>לשטוף ביד בלבד ולא להשתמש בחומר לניקוי כסף על הציפוי</g:product_highlight>
     <g:product_type>Judaica &gt; Trays &amp; Bowls &gt; Gold-Plated</g:product_type>
     <g:google_product_category>6457</g:google_product_category>
@@ -8140,9 +8278,41 @@
     <g:max_transit_time>16</g:max_transit_time>
   </item>
   <item>
-    <g:id>green-gold-plated-glass-tray</g:id>
-    <g:title>מגש זכוכית ירוק בציפוי זהב | עבודת יד מישראל</g:title>
-    <g:description>מגש זכוכית ירוק בעבודת יד בציפוי זהב. מידותיו 30 × 18 ס״מ והוא מיוצר לפי הזמנה בסטודיו שלנו בישראל.</g:description>
+    <g:id>black-gold-plated-glass-tray-large</g:id>
+    <g:title>מגש זכוכית שחור בציפוי זהב - מידה גדול (38 × 23 ס״מ) | עבודת יד מישראל</g:title>
+    <g:description>מגש זכוכית שחור בעבודת יד בציפוי זהב, מיוצר לפי הזמנה בסטודיו שלנו בישראל. זמין בשתי מידות: 30 × 18 ס״מ בהתאמה לפמוטים, או מגש חלה גדול של 38 × 23 ס״מ.</g:description>
+    <g:link>https://shermanartworks.com/he/trays-bowls.html#black-gold-plated-glass-tray</g:link>
+    <g:image_link>https://res.cloudinary.com/doesupaf9/image/upload/w_1200,q_auto:good/Black_tray_gold_wdxp9o.jpg</g:image_link>
+    <g:availability>in_stock</g:availability>
+    <g:price>918.00 ILS</g:price>
+    <g:sale_price>826.00 ILS</g:sale_price>
+    <g:sale_price_effective_date>2026-11-04T00:00:00+02:00/2026-11-06T00:00:00+02:00</g:sale_price_effective_date>
+    <g:condition>new</g:condition>
+    <g:brand>Sherman Art Works</g:brand>
+    <g:mpn>SAW-TB-014-LARGE</g:mpn>
+    <g:item_group_id>gold-plated-glass-trays</g:item_group_id>
+    <g:size>גדול (38 × 23 ס״מ)</g:size>
+    <g:color>שחור</g:color>
+    <g:material>זכוכית/ציפוי זהב</g:material>
+    <g:product_highlight>נעשה בעבודת יד לפי הזמנה בסטודיו המשפחתי שלנו בישראל</g:product_highlight>
+    <g:product_highlight>זכוכית בציפוי זהב</g:product_highlight>
+    <g:product_highlight>בשתי מידות: רגיל (30 × 18 ס״מ) בהתאמה לפמוטים, או גדול (38 × 23 ס״מ) כמגש לחלה</g:product_highlight>
+    <g:product_highlight>לשטוף ביד בלבד ולא להשתמש בחומר לניקוי כסף על הציפוי</g:product_highlight>
+    <g:product_type>Judaica &gt; Trays &amp; Bowls &gt; Gold-Plated</g:product_type>
+    <g:google_product_category>6457</g:google_product_category>
+    <g:shipping>
+      <g:country>IL</g:country>
+      <g:price>35.00 ILS</g:price>
+    </g:shipping>
+    <g:min_handling_time>1</g:min_handling_time>
+    <g:max_handling_time>14</g:max_handling_time>
+    <g:min_transit_time>1</g:min_transit_time>
+    <g:max_transit_time>16</g:max_transit_time>
+  </item>
+  <item>
+    <g:id>green-gold-plated-glass-tray-standard</g:id>
+    <g:title>מגש זכוכית ירוק בציפוי זהב - מידה רגיל (30 × 18 ס״מ) | עבודת יד מישראל</g:title>
+    <g:description>מגש זכוכית ירוק בעבודת יד בציפוי זהב, מיוצר לפי הזמנה בסטודיו שלנו בישראל. זמין בשתי מידות: 30 × 18 ס״מ בהתאמה לפמוטים, או מגש חלה גדול של 38 × 23 ס״מ.</g:description>
     <g:link>https://shermanartworks.com/he/trays-bowls.html#green-gold-plated-glass-tray</g:link>
     <g:image_link>https://res.cloudinary.com/doesupaf9/image/upload/w_1200,q_auto:good/P009_obbnmj.jpg</g:image_link>
     <g:availability>in_stock</g:availability>
@@ -8151,12 +8321,46 @@
     <g:sale_price_effective_date>2026-11-04T00:00:00+02:00/2026-11-06T00:00:00+02:00</g:sale_price_effective_date>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:mpn>SAW-TB-015</g:mpn>
+    <g:mpn>SAW-TB-015-STANDARD</g:mpn>
     <g:item_group_id>gold-plated-glass-trays</g:item_group_id>
+    <g:size>רגיל (30 × 18 ס״מ)</g:size>
     <g:color>ירוק</g:color>
     <g:material>זכוכית/ציפוי זהב</g:material>
     <g:product_highlight>נעשה בעבודת יד לפי הזמנה בסטודיו המשפחתי שלנו בישראל</g:product_highlight>
     <g:product_highlight>זכוכית בציפוי זהב</g:product_highlight>
+    <g:product_highlight>בשתי מידות: רגיל (30 × 18 ס״מ) בהתאמה לפמוטים, או גדול (38 × 23 ס״מ) כמגש לחלה</g:product_highlight>
+    <g:product_highlight>לשטוף ביד בלבד ולא להשתמש בחומר לניקוי כסף על הציפוי</g:product_highlight>
+    <g:product_type>Judaica &gt; Trays &amp; Bowls &gt; Gold-Plated</g:product_type>
+    <g:google_product_category>6457</g:google_product_category>
+    <g:shipping>
+      <g:country>IL</g:country>
+      <g:price>35.00 ILS</g:price>
+    </g:shipping>
+    <g:min_handling_time>1</g:min_handling_time>
+    <g:max_handling_time>14</g:max_handling_time>
+    <g:min_transit_time>1</g:min_transit_time>
+    <g:max_transit_time>16</g:max_transit_time>
+  </item>
+  <item>
+    <g:id>green-gold-plated-glass-tray-large</g:id>
+    <g:title>מגש זכוכית ירוק בציפוי זהב - מידה גדול (38 × 23 ס״מ) | עבודת יד מישראל</g:title>
+    <g:description>מגש זכוכית ירוק בעבודת יד בציפוי זהב, מיוצר לפי הזמנה בסטודיו שלנו בישראל. זמין בשתי מידות: 30 × 18 ס״מ בהתאמה לפמוטים, או מגש חלה גדול של 38 × 23 ס״מ.</g:description>
+    <g:link>https://shermanartworks.com/he/trays-bowls.html#green-gold-plated-glass-tray</g:link>
+    <g:image_link>https://res.cloudinary.com/doesupaf9/image/upload/w_1200,q_auto:good/P009_obbnmj.jpg</g:image_link>
+    <g:availability>in_stock</g:availability>
+    <g:price>918.00 ILS</g:price>
+    <g:sale_price>826.00 ILS</g:sale_price>
+    <g:sale_price_effective_date>2026-11-04T00:00:00+02:00/2026-11-06T00:00:00+02:00</g:sale_price_effective_date>
+    <g:condition>new</g:condition>
+    <g:brand>Sherman Art Works</g:brand>
+    <g:mpn>SAW-TB-015-LARGE</g:mpn>
+    <g:item_group_id>gold-plated-glass-trays</g:item_group_id>
+    <g:size>גדול (38 × 23 ס״מ)</g:size>
+    <g:color>ירוק</g:color>
+    <g:material>זכוכית/ציפוי זהב</g:material>
+    <g:product_highlight>נעשה בעבודת יד לפי הזמנה בסטודיו המשפחתי שלנו בישראל</g:product_highlight>
+    <g:product_highlight>זכוכית בציפוי זהב</g:product_highlight>
+    <g:product_highlight>בשתי מידות: רגיל (30 × 18 ס״מ) בהתאמה לפמוטים, או גדול (38 × 23 ס״מ) כמגש לחלה</g:product_highlight>
     <g:product_highlight>לשטוף ביד בלבד ולא להשתמש בחומר לניקוי כסף על הציפוי</g:product_highlight>
     <g:product_type>Judaica &gt; Trays &amp; Bowls &gt; Gold-Plated</g:product_type>
     <g:google_product_category>6457</g:google_product_category>

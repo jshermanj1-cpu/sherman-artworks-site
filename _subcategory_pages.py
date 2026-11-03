@@ -298,7 +298,8 @@ CATEGORIES = {
             },
             TRAY_GOLD: {
                 "name": "Gold-Plated Glass Trays",
-                "description": "Handmade glass trays finished with gold plating, in six matching designs.",
+                "description": "Handmade glass trays finished with gold plating, in six colors and two sizes.",
+                "variesBy": ["https://schema.org/color", "https://schema.org/size"],
             },
         },
         "pages": {
@@ -332,13 +333,13 @@ CATEGORIES = {
                 "desc": "Shop handmade glass trays and Kiddush cup plates finished with gold plating, made to order in our studio in Israel.",
                 "headline": "Gold-Plated Trays & Bowls",
                 "subtitle": "Handmade glass finished with gold.",
-                "body": "Choose from six glass trays and six matching Kiddush cup plates in a range of colors.",
+                "body": "Choose from six glass trays, each in a standard size or as a large challah tray, and six matching Kiddush cup plates.",
                 "bc": "Gold-Plated Trays & Bowls",
                 "guide": {
                     "guide_q1": ("What is in the gold-plated collection?",
                                  "מה כולל אוסף ציפוי הזהב?"),
-                    "guide_a1": ("The collection includes six handmade glass trays and six Kiddush cup plates finished with gold plating.",
-                                 "האוסף כולל שישה מגשי זכוכית ושש תחתיות לכוס קידוש בעבודת יד, בגימור זהב."),
+                    "guide_a1": ("The collection includes six handmade glass trays and six Kiddush cup plates finished with gold plating. Each tray comes in two sizes: 30 × 18 cm to match our candlesticks, or a large 38 × 23 cm challah tray.",
+                                 "האוסף כולל שישה מגשי זכוכית ושש תחתיות לכוס קידוש בעבודת יד, בגימור זהב. כל מגש זמין בשתי מידות: 30 × 18 ס״מ בהתאמה לפמוטים, או מגש חלה גדול של 38 × 23 ס״מ."),
                     "guide_q3": ("How do I care for a gold-plated tray?",
                                  "כיצד מטפלים במגש בציפוי זהב?"),
                     "guide_a3": ("Wipe the tray with a soft dry cloth and keep it dry. Avoid abrasive polish and the dishwasher, which can damage the gold finish.",
@@ -348,7 +349,7 @@ CATEGORIES = {
                 "he": {
                     "headline": "מגשים וקערות בציפוי זהב",
                     "subtitle": "זכוכית בעבודת יד בגימור זהב.",
-                    "body": "בחרו מתוך שישה מגשי זכוכית ושש תחתיות תואמות לכוס קידוש במגוון צבעים.",
+                    "body": "בחרו מתוך שישה מגשי זכוכית, כל אחד במידה רגילה או כמגש חלה גדול, ושש תחתיות תואמות לכוס קידוש.",
                     "bc": "מגשים וקערות בציפוי זהב",
                 },
             },

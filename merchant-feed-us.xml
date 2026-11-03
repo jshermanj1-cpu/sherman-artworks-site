@@ -7963,9 +7963,9 @@
     <g:max_transit_time>16</g:max_transit_time>
   </item>
   <item>
-    <g:id>blue-gold-plated-glass-tray</g:id>
-    <g:title>Glass Tray - Blue, Gold-Plated | Handmade in Israel</g:title>
-    <g:description>Handmade blue glass tray finished with gold plating. Measures 30 × 18 cm and is made to order in our studio in Israel.</g:description>
+    <g:id>blue-gold-plated-glass-tray-standard</g:id>
+    <g:title>Glass Tray - Blue, Gold-Plated, Standard (30 × 18 cm) | Handmade in Israel</g:title>
+    <g:description>Handmade blue glass tray finished with gold plating and made to order in our studio in Israel. Available in two sizes: 30 × 18 cm to match our candlesticks, or a large 38 × 23 cm challah tray.</g:description>
     <g:link>https://shermanartworks.com/trays-bowls.html#blue-gold-plated-glass-tray</g:link>
     <g:image_link>https://res.cloudinary.com/doesupaf9/image/upload/w_1200,q_auto:good/P036_ymyrbu.jpg</g:image_link>
     <g:availability>in_stock</g:availability>
@@ -7974,12 +7974,14 @@
     <g:sale_price_effective_date>2026-11-04T00:00:00+02:00/2026-11-06T00:00:00+02:00</g:sale_price_effective_date>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:mpn>SAW-TB-009</g:mpn>
+    <g:mpn>SAW-TB-009-STANDARD</g:mpn>
     <g:item_group_id>gold-plated-glass-trays</g:item_group_id>
+    <g:size>Standard (30 × 18 cm)</g:size>
     <g:color>Blue</g:color>
     <g:material>Glass/Gold plating</g:material>
     <g:product_highlight>Handmade to order in our family studio in Israel</g:product_highlight>
     <g:product_highlight>Glass finished with gold plating</g:product_highlight>
+    <g:product_highlight>Two sizes: Standard (30 × 18 cm) to match our candlesticks, or Large (38 × 23 cm) as a challah tray</g:product_highlight>
     <g:product_highlight>Wash by hand and do not use silver polish on the plating</g:product_highlight>
     <g:product_type>Judaica &gt; Trays &amp; Bowls &gt; Gold-Plated</g:product_type>
     <g:google_product_category>6457</g:google_product_category>
@@ -7993,9 +7995,41 @@
     <g:max_transit_time>16</g:max_transit_time>
   </item>
   <item>
-    <g:id>blue-green-gold-plated-glass-tray</g:id>
-    <g:title>Glass Tray - Blue-Green, Gold-Plated | Handmade in Israel</g:title>
-    <g:description>Handmade blue-green glass tray finished with gold plating. Measures 30 × 18 cm and is made to order in our studio in Israel.</g:description>
+    <g:id>blue-gold-plated-glass-tray-large</g:id>
+    <g:title>Glass Tray - Blue, Gold-Plated, Large (38 × 23 cm) | Handmade in Israel</g:title>
+    <g:description>Handmade blue glass tray finished with gold plating and made to order in our studio in Israel. Available in two sizes: 30 × 18 cm to match our candlesticks, or a large 38 × 23 cm challah tray.</g:description>
+    <g:link>https://shermanartworks.com/trays-bowls.html#blue-gold-plated-glass-tray</g:link>
+    <g:image_link>https://res.cloudinary.com/doesupaf9/image/upload/w_1200,q_auto:good/P036_ymyrbu.jpg</g:image_link>
+    <g:availability>in_stock</g:availability>
+    <g:price>310.00 USD</g:price>
+    <g:sale_price>279.00 USD</g:sale_price>
+    <g:sale_price_effective_date>2026-11-04T00:00:00+02:00/2026-11-06T00:00:00+02:00</g:sale_price_effective_date>
+    <g:condition>new</g:condition>
+    <g:brand>Sherman Art Works</g:brand>
+    <g:mpn>SAW-TB-009-LARGE</g:mpn>
+    <g:item_group_id>gold-plated-glass-trays</g:item_group_id>
+    <g:size>Large (38 × 23 cm)</g:size>
+    <g:color>Blue</g:color>
+    <g:material>Glass/Gold plating</g:material>
+    <g:product_highlight>Handmade to order in our family studio in Israel</g:product_highlight>
+    <g:product_highlight>Glass finished with gold plating</g:product_highlight>
+    <g:product_highlight>Two sizes: Standard (30 × 18 cm) to match our candlesticks, or Large (38 × 23 cm) as a challah tray</g:product_highlight>
+    <g:product_highlight>Wash by hand and do not use silver polish on the plating</g:product_highlight>
+    <g:product_type>Judaica &gt; Trays &amp; Bowls &gt; Gold-Plated</g:product_type>
+    <g:google_product_category>6457</g:google_product_category>
+    <g:shipping>
+      <g:country>US</g:country>
+      <g:price>45.00 USD</g:price>
+    </g:shipping>
+    <g:min_handling_time>1</g:min_handling_time>
+    <g:max_handling_time>14</g:max_handling_time>
+    <g:min_transit_time>1</g:min_transit_time>
+    <g:max_transit_time>16</g:max_transit_time>
+  </item>
+  <item>
+    <g:id>blue-green-gold-plated-glass-tray-standard</g:id>
+    <g:title>Glass Tray - Blue-Green, Gold-Plated, Standard (30 × 18 cm) | Handmade in Israel</g:title>
+    <g:description>Handmade blue-green glass tray finished with gold plating and made to order in our studio in Israel. Available in two sizes: 30 × 18 cm to match our candlesticks, or a large 38 × 23 cm challah tray.</g:description>
     <g:link>https://shermanartworks.com/trays-bowls.html#blue-green-gold-plated-glass-tray</g:link>
     <g:image_link>https://res.cloudinary.com/doesupaf9/image/upload/w_1200,q_auto:good/P031_svdkgg.jpg</g:image_link>
     <g:availability>in_stock</g:availability>
@@ -8004,12 +8038,14 @@
     <g:sale_price_effective_date>2026-11-04T00:00:00+02:00/2026-11-06T00:00:00+02:00</g:sale_price_effective_date>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:mpn>SAW-TB-010</g:mpn>
+    <g:mpn>SAW-TB-010-STANDARD</g:mpn>
     <g:item_group_id>gold-plated-glass-trays</g:item_group_id>
+    <g:size>Standard (30 × 18 cm)</g:size>
     <g:color>Blue-Green</g:color>
     <g:material>Glass/Gold plating</g:material>
     <g:product_highlight>Handmade to order in our family studio in Israel</g:product_highlight>
     <g:product_highlight>Glass finished with gold plating</g:product_highlight>
+    <g:product_highlight>Two sizes: Standard (30 × 18 cm) to match our candlesticks, or Large (38 × 23 cm) as a challah tray</g:product_highlight>
     <g:product_highlight>Wash by hand and do not use silver polish on the plating</g:product_highlight>
     <g:product_type>Judaica &gt; Trays &amp; Bowls &gt; Gold-Plated</g:product_type>
     <g:google_product_category>6457</g:google_product_category>
@@ -8023,9 +8059,41 @@
     <g:max_transit_time>16</g:max_transit_time>
   </item>
   <item>
-    <g:id>red-gold-plated-glass-tray</g:id>
-    <g:title>Glass Tray - Red, Gold-Plated | Handmade in Israel</g:title>
-    <g:description>Handmade red glass tray finished with gold plating. Measures 30 × 18 cm and is made to order in our studio in Israel.</g:description>
+    <g:id>blue-green-gold-plated-glass-tray-large</g:id>
+    <g:title>Glass Tray - Blue-Green, Gold-Plated, Large (38 × 23 cm) | Handmade in Israel</g:title>
+    <g:description>Handmade blue-green glass tray finished with gold plating and made to order in our studio in Israel. Available in two sizes: 30 × 18 cm to match our candlesticks, or a large 38 × 23 cm challah tray.</g:description>
+    <g:link>https://shermanartworks.com/trays-bowls.html#blue-green-gold-plated-glass-tray</g:link>
+    <g:image_link>https://res.cloudinary.com/doesupaf9/image/upload/w_1200,q_auto:good/P031_svdkgg.jpg</g:image_link>
+    <g:availability>in_stock</g:availability>
+    <g:price>310.00 USD</g:price>
+    <g:sale_price>279.00 USD</g:sale_price>
+    <g:sale_price_effective_date>2026-11-04T00:00:00+02:00/2026-11-06T00:00:00+02:00</g:sale_price_effective_date>
+    <g:condition>new</g:condition>
+    <g:brand>Sherman Art Works</g:brand>
+    <g:mpn>SAW-TB-010-LARGE</g:mpn>
+    <g:item_group_id>gold-plated-glass-trays</g:item_group_id>
+    <g:size>Large (38 × 23 cm)</g:size>
+    <g:color>Blue-Green</g:color>
+    <g:material>Glass/Gold plating</g:material>
+    <g:product_highlight>Handmade to order in our family studio in Israel</g:product_highlight>
+    <g:product_highlight>Glass finished with gold plating</g:product_highlight>
+    <g:product_highlight>Two sizes: Standard (30 × 18 cm) to match our candlesticks, or Large (38 × 23 cm) as a challah tray</g:product_highlight>
+    <g:product_highlight>Wash by hand and do not use silver polish on the plating</g:product_highlight>
+    <g:product_type>Judaica &gt; Trays &amp; Bowls &gt; Gold-Plated</g:product_type>
+    <g:google_product_category>6457</g:google_product_category>
+    <g:shipping>
+      <g:country>US</g:country>
+      <g:price>45.00 USD</g:price>
+    </g:shipping>
+    <g:min_handling_time>1</g:min_handling_time>
+    <g:max_handling_time>14</g:max_handling_time>
+    <g:min_transit_time>1</g:min_transit_time>
+    <g:max_transit_time>16</g:max_transit_time>
+  </item>
+  <item>
+    <g:id>red-gold-plated-glass-tray-standard</g:id>
+    <g:title>Glass Tray - Red, Gold-Plated, Standard (30 × 18 cm) | Handmade in Israel</g:title>
+    <g:description>Handmade red glass tray finished with gold plating and made to order in our studio in Israel. Available in two sizes: 30 × 18 cm to match our candlesticks, or a large 38 × 23 cm challah tray.</g:description>
     <g:link>https://shermanartworks.com/trays-bowls.html#red-gold-plated-glass-tray</g:link>
     <g:image_link>https://res.cloudinary.com/doesupaf9/image/upload/w_1200,q_auto:good/P011_ohf4xz.jpg</g:image_link>
     <g:availability>in_stock</g:availability>
@@ -8034,12 +8102,46 @@
     <g:sale_price_effective_date>2026-11-04T00:00:00+02:00/2026-11-06T00:00:00+02:00</g:sale_price_effective_date>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:mpn>SAW-TB-011</g:mpn>
+    <g:mpn>SAW-TB-011-STANDARD</g:mpn>
     <g:item_group_id>gold-plated-glass-trays</g:item_group_id>
+    <g:size>Standard (30 × 18 cm)</g:size>
     <g:color>Red</g:color>
     <g:material>Glass/Gold plating</g:material>
     <g:product_highlight>Handmade to order in our family studio in Israel</g:product_highlight>
     <g:product_highlight>Glass finished with gold plating</g:product_highlight>
+    <g:product_highlight>Two sizes: Standard (30 × 18 cm) to match our candlesticks, or Large (38 × 23 cm) as a challah tray</g:product_highlight>
+    <g:product_highlight>Wash by hand and do not use silver polish on the plating</g:product_highlight>
+    <g:product_type>Judaica &gt; Trays &amp; Bowls &gt; Gold-Plated</g:product_type>
+    <g:google_product_category>6457</g:google_product_category>
+    <g:shipping>
+      <g:country>US</g:country>
+      <g:price>45.00 USD</g:price>
+    </g:shipping>
+    <g:min_handling_time>1</g:min_handling_time>
+    <g:max_handling_time>14</g:max_handling_time>
+    <g:min_transit_time>1</g:min_transit_time>
+    <g:max_transit_time>16</g:max_transit_time>
+  </item>
+  <item>
+    <g:id>red-gold-plated-glass-tray-large</g:id>
+    <g:title>Glass Tray - Red, Gold-Plated, Large (38 × 23 cm) | Handmade in Israel</g:title>
+    <g:description>Handmade red glass tray finished with gold plating and made to order in our studio in Israel. Available in two sizes: 30 × 18 cm to match our candlesticks, or a large 38 × 23 cm challah tray.</g:description>
+    <g:link>https://shermanartworks.com/trays-bowls.html#red-gold-plated-glass-tray</g:link>
+    <g:image_link>https://res.cloudinary.com/doesupaf9/image/upload/w_1200,q_auto:good/P011_ohf4xz.jpg</g:image_link>
+    <g:availability>in_stock</g:availability>
+    <g:price>310.00 USD</g:price>
+    <g:sale_price>279.00 USD</g:sale_price>
+    <g:sale_price_effective_date>2026-11-04T00:00:00+02:00/2026-11-06T00:00:00+02:00</g:sale_price_effective_date>
+    <g:condition>new</g:condition>
+    <g:brand>Sherman Art Works</g:brand>
+    <g:mpn>SAW-TB-011-LARGE</g:mpn>
+    <g:item_group_id>gold-plated-glass-trays</g:item_group_id>
+    <g:size>Large (38 × 23 cm)</g:size>
+    <g:color>Red</g:color>
+    <g:material>Glass/Gold plating</g:material>
+    <g:product_highlight>Handmade to order in our family studio in Israel</g:product_highlight>
+    <g:product_highlight>Glass finished with gold plating</g:product_highlight>
+    <g:product_highlight>Two sizes: Standard (30 × 18 cm) to match our candlesticks, or Large (38 × 23 cm) as a challah tray</g:product_highlight>
     <g:product_highlight>Wash by hand and do not use silver polish on the plating</g:product_highlight>
     <g:product_type>Judaica &gt; Trays &amp; Bowls &gt; Gold-Plated</g:product_type>
     <g:google_product_category>6457</g:google_product_category>
@@ -8080,9 +8182,9 @@
     <g:max_transit_time>16</g:max_transit_time>
   </item>
   <item>
-    <g:id>earth-gold-plated-glass-tray</g:id>
-    <g:title>Glass Tray - Earth, Gold-Plated | Handmade in Israel</g:title>
-    <g:description>Handmade earth glass tray finished with gold plating. Measures 30 × 18 cm and is made to order in our studio in Israel.</g:description>
+    <g:id>earth-gold-plated-glass-tray-standard</g:id>
+    <g:title>Glass Tray - Earth, Gold-Plated, Standard (30 × 18 cm) | Handmade in Israel</g:title>
+    <g:description>Handmade earth glass tray finished with gold plating and made to order in our studio in Israel. Available in two sizes: 30 × 18 cm to match our candlesticks, or a large 38 × 23 cm challah tray.</g:description>
     <g:link>https://shermanartworks.com/trays-bowls.html#earth-gold-plated-glass-tray</g:link>
     <g:image_link>https://res.cloudinary.com/doesupaf9/image/upload/w_1200,q_auto:good/P023_cuaxen.jpg</g:image_link>
     <g:availability>in_stock</g:availability>
@@ -8091,12 +8193,14 @@
     <g:sale_price_effective_date>2026-11-04T00:00:00+02:00/2026-11-06T00:00:00+02:00</g:sale_price_effective_date>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:mpn>SAW-TB-013</g:mpn>
+    <g:mpn>SAW-TB-013-STANDARD</g:mpn>
     <g:item_group_id>gold-plated-glass-trays</g:item_group_id>
+    <g:size>Standard (30 × 18 cm)</g:size>
     <g:color>Earth</g:color>
     <g:material>Glass/Gold plating</g:material>
     <g:product_highlight>Handmade to order in our family studio in Israel</g:product_highlight>
     <g:product_highlight>Glass finished with gold plating</g:product_highlight>
+    <g:product_highlight>Two sizes: Standard (30 × 18 cm) to match our candlesticks, or Large (38 × 23 cm) as a challah tray</g:product_highlight>
     <g:product_highlight>Wash by hand and do not use silver polish on the plating</g:product_highlight>
     <g:product_type>Judaica &gt; Trays &amp; Bowls &gt; Gold-Plated</g:product_type>
     <g:google_product_category>6457</g:google_product_category>
@@ -8110,9 +8214,41 @@
     <g:max_transit_time>16</g:max_transit_time>
   </item>
   <item>
-    <g:id>black-gold-plated-glass-tray</g:id>
-    <g:title>Glass Tray - Black, Gold-Plated | Handmade in Israel</g:title>
-    <g:description>Handmade black glass tray finished with gold plating. Measures 30 × 18 cm and is made to order in our studio in Israel.</g:description>
+    <g:id>earth-gold-plated-glass-tray-large</g:id>
+    <g:title>Glass Tray - Earth, Gold-Plated, Large (38 × 23 cm) | Handmade in Israel</g:title>
+    <g:description>Handmade earth glass tray finished with gold plating and made to order in our studio in Israel. Available in two sizes: 30 × 18 cm to match our candlesticks, or a large 38 × 23 cm challah tray.</g:description>
+    <g:link>https://shermanartworks.com/trays-bowls.html#earth-gold-plated-glass-tray</g:link>
+    <g:image_link>https://res.cloudinary.com/doesupaf9/image/upload/w_1200,q_auto:good/P023_cuaxen.jpg</g:image_link>
+    <g:availability>in_stock</g:availability>
+    <g:price>310.00 USD</g:price>
+    <g:sale_price>279.00 USD</g:sale_price>
+    <g:sale_price_effective_date>2026-11-04T00:00:00+02:00/2026-11-06T00:00:00+02:00</g:sale_price_effective_date>
+    <g:condition>new</g:condition>
+    <g:brand>Sherman Art Works</g:brand>
+    <g:mpn>SAW-TB-013-LARGE</g:mpn>
+    <g:item_group_id>gold-plated-glass-trays</g:item_group_id>
+    <g:size>Large (38 × 23 cm)</g:size>
+    <g:color>Earth</g:color>
+    <g:material>Glass/Gold plating</g:material>
+    <g:product_highlight>Handmade to order in our family studio in Israel</g:product_highlight>
+    <g:product_highlight>Glass finished with gold plating</g:product_highlight>
+    <g:product_highlight>Two sizes: Standard (30 × 18 cm) to match our candlesticks, or Large (38 × 23 cm) as a challah tray</g:product_highlight>
+    <g:product_highlight>Wash by hand and do not use silver polish on the plating</g:product_highlight>
+    <g:product_type>Judaica &gt; Trays &amp; Bowls &gt; Gold-Plated</g:product_type>
+    <g:google_product_category>6457</g:google_product_category>
+    <g:shipping>
+      <g:country>US</g:country>
+      <g:price>45.00 USD</g:price>
+    </g:shipping>
+    <g:min_handling_time>1</g:min_handling_time>
+    <g:max_handling_time>14</g:max_handling_time>
+    <g:min_transit_time>1</g:min_transit_time>
+    <g:max_transit_time>16</g:max_transit_time>
+  </item>
+  <item>
+    <g:id>black-gold-plated-glass-tray-standard</g:id>
+    <g:title>Glass Tray - Black, Gold-Plated, Standard (30 × 18 cm) | Handmade in Israel</g:title>
+    <g:description>Handmade black glass tray finished with gold plating and made to order in our studio in Israel. Available in two sizes: 30 × 18 cm to match our candlesticks, or a large 38 × 23 cm challah tray.</g:description>
     <g:link>https://shermanartworks.com/trays-bowls.html#black-gold-plated-glass-tray</g:link>
     <g:image_link>https://res.cloudinary.com/doesupaf9/image/upload/w_1200,q_auto:good/Black_tray_gold_wdxp9o.jpg</g:image_link>
     <g:availability>in_stock</g:availability>
@@ -8121,12 +8257,14 @@
     <g:sale_price_effective_date>2026-11-04T00:00:00+02:00/2026-11-06T00:00:00+02:00</g:sale_price_effective_date>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:mpn>SAW-TB-014</g:mpn>
+    <g:mpn>SAW-TB-014-STANDARD</g:mpn>
     <g:item_group_id>gold-plated-glass-trays</g:item_group_id>
+    <g:size>Standard (30 × 18 cm)</g:size>
     <g:color>Black</g:color>
     <g:material>Glass/Gold plating</g:material>
     <g:product_highlight>Handmade to order in our family studio in Israel</g:product_highlight>
     <g:product_highlight>Glass finished with gold plating</g:product_highlight>
+    <g:product_highlight>Two sizes: Standard (30 × 18 cm) to match our candlesticks, or Large (38 × 23 cm) as a challah tray</g:product_highlight>
     <g:product_highlight>Wash by hand and do not use silver polish on the plating</g:product_highlight>
     <g:product_type>Judaica &gt; Trays &amp; Bowls &gt; Gold-Plated</g:product_type>
     <g:google_product_category>6457</g:google_product_category>
@@ -8140,9 +8278,41 @@
     <g:max_transit_time>16</g:max_transit_time>
   </item>
   <item>
-    <g:id>green-gold-plated-glass-tray</g:id>
-    <g:title>Glass Tray - Green, Gold-Plated | Handmade in Israel</g:title>
-    <g:description>Handmade green glass tray finished with gold plating. Measures 30 × 18 cm and is made to order in our studio in Israel.</g:description>
+    <g:id>black-gold-plated-glass-tray-large</g:id>
+    <g:title>Glass Tray - Black, Gold-Plated, Large (38 × 23 cm) | Handmade in Israel</g:title>
+    <g:description>Handmade black glass tray finished with gold plating and made to order in our studio in Israel. Available in two sizes: 30 × 18 cm to match our candlesticks, or a large 38 × 23 cm challah tray.</g:description>
+    <g:link>https://shermanartworks.com/trays-bowls.html#black-gold-plated-glass-tray</g:link>
+    <g:image_link>https://res.cloudinary.com/doesupaf9/image/upload/w_1200,q_auto:good/Black_tray_gold_wdxp9o.jpg</g:image_link>
+    <g:availability>in_stock</g:availability>
+    <g:price>310.00 USD</g:price>
+    <g:sale_price>279.00 USD</g:sale_price>
+    <g:sale_price_effective_date>2026-11-04T00:00:00+02:00/2026-11-06T00:00:00+02:00</g:sale_price_effective_date>
+    <g:condition>new</g:condition>
+    <g:brand>Sherman Art Works</g:brand>
+    <g:mpn>SAW-TB-014-LARGE</g:mpn>
+    <g:item_group_id>gold-plated-glass-trays</g:item_group_id>
+    <g:size>Large (38 × 23 cm)</g:size>
+    <g:color>Black</g:color>
+    <g:material>Glass/Gold plating</g:material>
+    <g:product_highlight>Handmade to order in our family studio in Israel</g:product_highlight>
+    <g:product_highlight>Glass finished with gold plating</g:product_highlight>
+    <g:product_highlight>Two sizes: Standard (30 × 18 cm) to match our candlesticks, or Large (38 × 23 cm) as a challah tray</g:product_highlight>
+    <g:product_highlight>Wash by hand and do not use silver polish on the plating</g:product_highlight>
+    <g:product_type>Judaica &gt; Trays &amp; Bowls &gt; Gold-Plated</g:product_type>
+    <g:google_product_category>6457</g:google_product_category>
+    <g:shipping>
+      <g:country>US</g:country>
+      <g:price>45.00 USD</g:price>
+    </g:shipping>
+    <g:min_handling_time>1</g:min_handling_time>
+    <g:max_handling_time>14</g:max_handling_time>
+    <g:min_transit_time>1</g:min_transit_time>
+    <g:max_transit_time>16</g:max_transit_time>
+  </item>
+  <item>
+    <g:id>green-gold-plated-glass-tray-standard</g:id>
+    <g:title>Glass Tray - Green, Gold-Plated, Standard (30 × 18 cm) | Handmade in Israel</g:title>
+    <g:description>Handmade green glass tray finished with gold plating and made to order in our studio in Israel. Available in two sizes: 30 × 18 cm to match our candlesticks, or a large 38 × 23 cm challah tray.</g:description>
     <g:link>https://shermanartworks.com/trays-bowls.html#green-gold-plated-glass-tray</g:link>
     <g:image_link>https://res.cloudinary.com/doesupaf9/image/upload/w_1200,q_auto:good/P009_obbnmj.jpg</g:image_link>
     <g:availability>in_stock</g:availability>
@@ -8151,12 +8321,46 @@
     <g:sale_price_effective_date>2026-11-04T00:00:00+02:00/2026-11-06T00:00:00+02:00</g:sale_price_effective_date>
     <g:condition>new</g:condition>
     <g:brand>Sherman Art Works</g:brand>
-    <g:mpn>SAW-TB-015</g:mpn>
+    <g:mpn>SAW-TB-015-STANDARD</g:mpn>
     <g:item_group_id>gold-plated-glass-trays</g:item_group_id>
+    <g:size>Standard (30 × 18 cm)</g:size>
     <g:color>Green</g:color>
     <g:material>Glass/Gold plating</g:material>
     <g:product_highlight>Handmade to order in our family studio in Israel</g:product_highlight>
     <g:product_highlight>Glass finished with gold plating</g:product_highlight>
+    <g:product_highlight>Two sizes: Standard (30 × 18 cm) to match our candlesticks, or Large (38 × 23 cm) as a challah tray</g:product_highlight>
+    <g:product_highlight>Wash by hand and do not use silver polish on the plating</g:product_highlight>
+    <g:product_type>Judaica &gt; Trays &amp; Bowls &gt; Gold-Plated</g:product_type>
+    <g:google_product_category>6457</g:google_product_category>
+    <g:shipping>
+      <g:country>US</g:country>
+      <g:price>45.00 USD</g:price>
+    </g:shipping>
+    <g:min_handling_time>1</g:min_handling_time>
+    <g:max_handling_time>14</g:max_handling_time>
+    <g:min_transit_time>1</g:min_transit_time>
+    <g:max_transit_time>16</g:max_transit_time>
+  </item>
+  <item>
+    <g:id>green-gold-plated-glass-tray-large</g:id>
+    <g:title>Glass Tray - Green, Gold-Plated, Large (38 × 23 cm) | Handmade in Israel</g:title>
+    <g:description>Handmade green glass tray finished with gold plating and made to order in our studio in Israel. Available in two sizes: 30 × 18 cm to match our candlesticks, or a large 38 × 23 cm challah tray.</g:description>
+    <g:link>https://shermanartworks.com/trays-bowls.html#green-gold-plated-glass-tray</g:link>
+    <g:image_link>https://res.cloudinary.com/doesupaf9/image/upload/w_1200,q_auto:good/P009_obbnmj.jpg</g:image_link>
+    <g:availability>in_stock</g:availability>
+    <g:price>310.00 USD</g:price>
+    <g:sale_price>279.00 USD</g:sale_price>
+    <g:sale_price_effective_date>2026-11-04T00:00:00+02:00/2026-11-06T00:00:00+02:00</g:sale_price_effective_date>
+    <g:condition>new</g:condition>
+    <g:brand>Sherman Art Works</g:brand>
+    <g:mpn>SAW-TB-015-LARGE</g:mpn>
+    <g:item_group_id>gold-plated-glass-trays</g:item_group_id>
+    <g:size>Large (38 × 23 cm)</g:size>
+    <g:color>Green</g:color>
+    <g:material>Glass/Gold plating</g:material>
+    <g:product_highlight>Handmade to order in our family studio in Israel</g:product_highlight>
+    <g:product_highlight>Glass finished with gold plating</g:product_highlight>
+    <g:product_highlight>Two sizes: Standard (30 × 18 cm) to match our candlesticks, or Large (38 × 23 cm) as a challah tray</g:product_highlight>
     <g:product_highlight>Wash by hand and do not use silver polish on the plating</g:product_highlight>
     <g:product_type>Judaica &gt; Trays &amp; Bowls &gt; Gold-Plated</g:product_type>
     <g:google_product_category>6457</g:google_product_category>

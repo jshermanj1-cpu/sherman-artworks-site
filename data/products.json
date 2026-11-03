@@ -3910,15 +3910,38 @@
     ],
     "name_en": "Blue Gold-Plated Glass Tray",
     "name_he": "מגש זכוכית כחול בציפוי זהב",
-    "description_en": "Handmade blue glass tray finished with gold plating. Measures 30 × 18 cm and is made to order in our studio in Israel.",
-    "description_he": "מגש זכוכית כחול בעבודת יד בציפוי זהב. מידותיו 30 × 18 ס״מ והוא מיוצר לפי הזמנה בסטודיו שלנו בישראל.",
+    "description_en": "Handmade blue glass tray finished with gold plating and made to order in our studio in Israel. Available in two sizes: 30 × 18 cm to match our candlesticks, or a large 38 × 23 cm challah tray.",
+    "description_he": "מגש זכוכית כחול בעבודת יד בציפוי זהב, מיוצר לפי הזמנה בסטודיו שלנו בישראל. זמין בשתי מידות: 30 × 18 ס״מ בהתאמה לפמוטים, או מגש חלה גדול של 38 × 23 ס״מ.",
     "color_en": "Blue",
     "color_he": "כחול",
-    "measurements": "30cm × 18cm",
+    "measurements": "",
     "price_ils": 617,
+    "sizes": [
+      {
+        "label": "Standard",
+        "label_he": "רגיל",
+        "note_en": "Matches our candlesticks",
+        "note_he": "תואם לפמוטים",
+        "sku": "SAW-TB-009-STANDARD",
+        "range_cm": "30 × 18",
+        "range_in": "11.8 × 7.1",
+        "price_ils": 617
+      },
+      {
+        "label": "Large",
+        "label_he": "גדול",
+        "note_en": "Challah tray",
+        "note_he": "מגש לחלה",
+        "sku": "SAW-TB-009-LARGE",
+        "range_cm": "38 × 23",
+        "range_in": "15 × 9.1",
+        "price_ils": 918
+      }
+    ],
     "photos": [
       "P036_ymyrbu"
     ],
+    "require_size_selection": true,
     "personalisable": false
   },
   {
@@ -3931,15 +3954,38 @@
     ],
     "name_en": "Blue-Green Gold-Plated Glass Tray",
     "name_he": "מגש זכוכית כחול-ירוק בציפוי זהב",
-    "description_en": "Handmade blue-green glass tray finished with gold plating. Measures 30 × 18 cm and is made to order in our studio in Israel.",
-    "description_he": "מגש זכוכית כחול-ירוק בעבודת יד בציפוי זהב. מידותיו 30 × 18 ס״מ והוא מיוצר לפי הזמנה בסטודיו שלנו בישראל.",
+    "description_en": "Handmade blue-green glass tray finished with gold plating and made to order in our studio in Israel. Available in two sizes: 30 × 18 cm to match our candlesticks, or a large 38 × 23 cm challah tray.",
+    "description_he": "מגש זכוכית כחול-ירוק בעבודת יד בציפוי זהב, מיוצר לפי הזמנה בסטודיו שלנו בישראל. זמין בשתי מידות: 30 × 18 ס״מ בהתאמה לפמוטים, או מגש חלה גדול של 38 × 23 ס״מ.",
     "color_en": "Blue-Green",
     "color_he": "כחול-ירוק",
-    "measurements": "30cm × 18cm",
+    "measurements": "",
     "price_ils": 617,
+    "sizes": [
+      {
+        "label": "Standard",
+        "label_he": "רגיל",
+        "note_en": "Matches our candlesticks",
+        "note_he": "תואם לפמוטים",
+        "sku": "SAW-TB-010-STANDARD",
+        "range_cm": "30 × 18",
+        "range_in": "11.8 × 7.1",
+        "price_ils": 617
+      },
+      {
+        "label": "Large",
+        "label_he": "גדול",
+        "note_en": "Challah tray",
+        "note_he": "מגש לחלה",
+        "sku": "SAW-TB-010-LARGE",
+        "range_cm": "38 × 23",
+        "range_in": "15 × 9.1",
+        "price_ils": 918
+      }
+    ],
     "photos": [
       "P031_svdkgg"
     ],
+    "require_size_selection": true,
     "personalisable": false
   },
   {
@@ -3952,15 +3998,38 @@
     ],
     "name_en": "Red Gold-Plated Glass Tray",
     "name_he": "מגש זכוכית אדום בציפוי זהב",
-    "description_en": "Handmade red glass tray finished with gold plating. Measures 30 × 18 cm and is made to order in our studio in Israel.",
-    "description_he": "מגש זכוכית אדום בעבודת יד בציפוי זהב. מידותיו 30 × 18 ס״מ והוא מיוצר לפי הזמנה בסטודיו שלנו בישראל.",
+    "description_en": "Handmade red glass tray finished with gold plating and made to order in our studio in Israel. Available in two sizes: 30 × 18 cm to match our candlesticks, or a large 38 × 23 cm challah tray.",
+    "description_he": "מגש זכוכית אדום בעבודת יד בציפוי זהב, מיוצר לפי הזמנה בסטודיו שלנו בישראל. זמין בשתי מידות: 30 × 18 ס״מ בהתאמה לפמוטים, או מגש חלה גדול של 38 × 23 ס״מ.",
     "color_en": "Red",
     "color_he": "אדום",
-    "measurements": "30cm × 18cm",
+    "measurements": "",
     "price_ils": 617,
+    "sizes": [
+      {
+        "label": "Standard",
+        "label_he": "רגיל",
+        "note_en": "Matches our candlesticks",
+        "note_he": "תואם לפמוטים",
+        "sku": "SAW-TB-011-STANDARD",
+        "range_cm": "30 × 18",
+        "range_in": "11.8 × 7.1",
+        "price_ils": 617
+      },
+      {
+        "label": "Large",
+        "label_he": "גדול",
+        "note_en": "Challah tray",
+        "note_he": "מגש לחלה",
+        "sku": "SAW-TB-011-LARGE",
+        "range_cm": "38 × 23",
+        "range_in": "15 × 9.1",
+        "price_ils": 918
+      }
+    ],
     "photos": [
       "P011_ohf4xz"
     ],
+    "require_size_selection": true,
     "personalisable": false
   },
   {
@@ -3994,15 +4063,38 @@
     ],
     "name_en": "Earth Gold-Plated Glass Tray",
     "name_he": "מגש זכוכית אדמה בציפוי זהב",
-    "description_en": "Handmade earth glass tray finished with gold plating. Measures 30 × 18 cm and is made to order in our studio in Israel.",
-    "description_he": "מגש זכוכית אדמה בעבודת יד בציפוי זהב. מידותיו 30 × 18 ס״מ והוא מיוצר לפי הזמנה בסטודיו שלנו בישראל.",
+    "description_en": "Handmade earth glass tray finished with gold plating and made to order in our studio in Israel. Available in two sizes: 30 × 18 cm to match our candlesticks, or a large 38 × 23 cm challah tray.",
+    "description_he": "מגש זכוכית אדמה בעבודת יד בציפוי זהב, מיוצר לפי הזמנה בסטודיו שלנו בישראל. זמין בשתי מידות: 30 × 18 ס״מ בהתאמה לפמוטים, או מגש חלה גדול של 38 × 23 ס״מ.",
     "color_en": "Earth",
     "color_he": "אדמה",
-    "measurements": "30cm × 18cm",
+    "measurements": "",
     "price_ils": 617,
+    "sizes": [
+      {
+        "label": "Standard",
+        "label_he": "רגיל",
+        "note_en": "Matches our candlesticks",
+        "note_he": "תואם לפמוטים",
+        "sku": "SAW-TB-013-STANDARD",
+        "range_cm": "30 × 18",
+        "range_in": "11.8 × 7.1",
+        "price_ils": 617
+      },
+      {
+        "label": "Large",
+        "label_he": "גדול",
+        "note_en": "Challah tray",
+        "note_he": "מגש לחלה",
+        "sku": "SAW-TB-013-LARGE",
+        "range_cm": "38 × 23",
+        "range_in": "15 × 9.1",
+        "price_ils": 918
+      }
+    ],
     "photos": [
       "P023_cuaxen"
     ],
+    "require_size_selection": true,
     "personalisable": false
   },
   {
@@ -4015,15 +4107,38 @@
     ],
     "name_en": "Black Gold-Plated Glass Tray",
     "name_he": "מגש זכוכית שחור בציפוי זהב",
-    "description_en": "Handmade black glass tray finished with gold plating. Measures 30 × 18 cm and is made to order in our studio in Israel.",
-    "description_he": "מגש זכוכית שחור בעבודת יד בציפוי זהב. מידותיו 30 × 18 ס״מ והוא מיוצר לפי הזמנה בסטודיו שלנו בישראל.",
+    "description_en": "Handmade black glass tray finished with gold plating and made to order in our studio in Israel. Available in two sizes: 30 × 18 cm to match our candlesticks, or a large 38 × 23 cm challah tray.",
+    "description_he": "מגש זכוכית שחור בעבודת יד בציפוי זהב, מיוצר לפי הזמנה בסטודיו שלנו בישראל. זמין בשתי מידות: 30 × 18 ס״מ בהתאמה לפמוטים, או מגש חלה גדול של 38 × 23 ס״מ.",
     "color_en": "Black",
     "color_he": "שחור",
-    "measurements": "30cm × 18cm",
+    "measurements": "",
     "price_ils": 617,
+    "sizes": [
+      {
+        "label": "Standard",
+        "label_he": "רגיל",
+        "note_en": "Matches our candlesticks",
+        "note_he": "תואם לפמוטים",
+        "sku": "SAW-TB-014-STANDARD",
+        "range_cm": "30 × 18",
+        "range_in": "11.8 × 7.1",
+        "price_ils": 617
+      },
+      {
+        "label": "Large",
+        "label_he": "גדול",
+        "note_en": "Challah tray",
+        "note_he": "מגש לחלה",
+        "sku": "SAW-TB-014-LARGE",
+        "range_cm": "38 × 23",
+        "range_in": "15 × 9.1",
+        "price_ils": 918
+      }
+    ],
     "photos": [
       "Black_tray_gold_wdxp9o"
     ],
+    "require_size_selection": true,
     "personalisable": false
   },
   {
@@ -4036,15 +4151,38 @@
     ],
     "name_en": "Green Gold-Plated Glass Tray",
     "name_he": "מגש זכוכית ירוק בציפוי זהב",
-    "description_en": "Handmade green glass tray finished with gold plating. Measures 30 × 18 cm and is made to order in our studio in Israel.",
-    "description_he": "מגש זכוכית ירוק בעבודת יד בציפוי זהב. מידותיו 30 × 18 ס״מ והוא מיוצר לפי הזמנה בסטודיו שלנו בישראל.",
+    "description_en": "Handmade green glass tray finished with gold plating and made to order in our studio in Israel. Available in two sizes: 30 × 18 cm to match our candlesticks, or a large 38 × 23 cm challah tray.",
+    "description_he": "מגש זכוכית ירוק בעבודת יד בציפוי זהב, מיוצר לפי הזמנה בסטודיו שלנו בישראל. זמין בשתי מידות: 30 × 18 ס״מ בהתאמה לפמוטים, או מגש חלה גדול של 38 × 23 ס״מ.",
     "color_en": "Green",
     "color_he": "ירוק",
-    "measurements": "30cm × 18cm",
+    "measurements": "",
     "price_ils": 617,
+    "sizes": [
+      {
+        "label": "Standard",
+        "label_he": "רגיל",
+        "note_en": "Matches our candlesticks",
+        "note_he": "תואם לפמוטים",
+        "sku": "SAW-TB-015-STANDARD",
+        "range_cm": "30 × 18",
+        "range_in": "11.8 × 7.1",
+        "price_ils": 617
+      },
+      {
+        "label": "Large",
+        "label_he": "גדול",
+        "note_en": "Challah tray",
+        "note_he": "מגש לחלה",
+        "sku": "SAW-TB-015-LARGE",
+        "range_cm": "38 × 23",
+        "range_in": "15 × 9.1",
+        "price_ils": 918
+      }
+    ],
     "photos": [
       "P009_obbnmj"
     ],
+    "require_size_selection": true,
     "personalisable": false
   },
   {
