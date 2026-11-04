@@ -451,6 +451,25 @@ const T_SITE = {
     trust_generations:   'Three generations of artisans',
     trust_shipping:      'Ships worldwide',
     trust_secure:        'Secure ordering',
+
+    // Pre-filled WhatsApp messages. setLang() switches every wa.me link that
+    // carries one of these to the page language, and _he_pages.py bakes the
+    // Hebrew into the /he/ pages from this same list.
+    wa_msg_question:       'Hi, I have a question about Sherman Art Works.',
+    wa_msg_menorahs:       'Hi, I have a question about Hanukkah menorahs.',
+    wa_msg_custom_menorah: 'Hello, I would like to discuss a custom Hanukkah menorah.',
+    wa_msg_shofar:         'Hi, I have a question about choosing a shofar.',
+    wa_msg_mezuzah:        'Hi, I have a question about choosing a mezuzah case.',
+    wa_msg_kiddush:        'Hi, I have a question about choosing a Kiddush cup.',
+    wa_msg_havdalah:       'Hi, I have a question about choosing a Havdalah set.',
+    wa_msg_menorah:        'Hi, I have a question about choosing a Hanukkah menorah.',
+    wa_msg_candlesticks:   'Hi, I have a question about choosing Shabbat candlesticks.',
+    wa_msg_wedding:        'Hi, I have a question about a wedding gift.',
+    wa_msg_mitzvah:        'Hi, I have a question about a bar or bat mitzvah gift.',
+    wa_msg_hanukkah_gift:  'Hi, I am looking for a Hanukkah gift.',
+    wa_msg_glass_art:      "Hi, I'm interested in your handmade glass art",
+    wa_msg_custom:         "Hi, I'm interested in a custom order.",
+    wa_msg_corporate:      "Hi, I'm interested in a corporate or bulk order.",
   },
   he: {
     hn_sale_tag: "מבצע חנוכה",
@@ -559,6 +578,22 @@ const T_SITE = {
     trust_generations:   'שלושה דורות של אומנים',
     trust_shipping:      'משלוחים לכל העולם',
     trust_secure:        'הזמנה מאובטחת',
+
+    wa_msg_question:       'שלום, יש לי שאלה לגבי שרמן ארט וורקס.',
+    wa_msg_menorahs:       'שלום, יש לי שאלה לגבי חנוכיות.',
+    wa_msg_custom_menorah: 'שלום, אשמח לשוחח על חנוכיה בהתאמה אישית.',
+    wa_msg_shofar:         'שלום, יש לי שאלה לגבי בחירת שופר.',
+    wa_msg_mezuzah:        'שלום, יש לי שאלה לגבי בחירת בית מזוזה.',
+    wa_msg_kiddush:        'שלום, יש לי שאלה לגבי בחירת כוס קידוש.',
+    wa_msg_havdalah:       'שלום, יש לי שאלה לגבי בחירת סט הבדלה.',
+    wa_msg_menorah:        'שלום, יש לי שאלה לגבי בחירת חנוכיה.',
+    wa_msg_candlesticks:   'שלום, יש לי שאלה לגבי בחירת פמוטים לשבת.',
+    wa_msg_wedding:        'שלום, יש לי שאלה לגבי מתנה לחתונה.',
+    wa_msg_mitzvah:        'שלום, יש לי שאלה לגבי מתנה לבר או בת מצווה.',
+    wa_msg_hanukkah_gift:  'שלום, אני מחפש/ת מתנה לחנוכה.',
+    wa_msg_glass_art:      'שלום, אני מתעניין/ת באמנות הזכוכית שלכם בעבודת יד.',
+    wa_msg_custom:         'שלום, אני מתעניין/ת בהזמנה אישית.',
+    wa_msg_corporate:      'שלום, אני מתעניין/ת בהזמנה עסקית או בכמות גדולה.',
   }
 };
 
@@ -844,8 +879,9 @@ function setLang(l) {
   var waHero = document.getElementById('waLink');
   if (waHero) {
     waHero.href = 'https://wa.me/' + WA_NUMBER + '?text=' +
-      encodeURIComponent(dict.wa_hero_msg || "Hi, I have a question about Sherman Art Works.");
+      encodeURIComponent(dict.wa_hero_msg || dict.wa_msg_question);
   }
+  localizeWaLinks(dict);
   document.documentElement.lang = l;
   document.documentElement.dir  = l === 'he' ? 'rtl' : 'ltr';
   var btnEN = document.getElementById('btnEN');
@@ -866,6 +902,23 @@ function setLang(l) {
   // an in-page language switch relabels the whole page and leaves them quoting
   // the currency the shopper just switched away from.
   updatePrices();
+}
+
+// The markup's WhatsApp links carry their pre-filled message in English (the
+// /he/ pages have it baked in Hebrew). A link whose message is one of T_SITE's
+// wa_msg_ texts, in either language, is rewritten in this one; any other text,
+// such as a product enquiry the page built itself, is left alone. Nothing is
+// cached on the link, since a product window reuses its button for each item.
+function localizeWaLinks(dict) {
+  var keys = Object.keys(T_SITE.en).filter(function(k) { return k.indexOf('wa_msg_') === 0; });
+  document.querySelectorAll('a[href*="wa.me/"]').forEach(function(a) {
+    var m = a.getAttribute('href').match(/[?&]text=([^&#]*)/);
+    if (!m) return;
+    var text;
+    try { text = decodeURIComponent(m[1]); } catch (e) { return; }
+    var key = keys.find(function(k) { return T_SITE.en[k] === text || T_SITE.he[k] === text; });
+    if (key && dict[key]) a.href = 'https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(dict[key]);
+  });
 }
 
 // ── NAV ─────────────────────────────────────────────────────────
@@ -1368,14 +1421,15 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   }
 
-  // Sync WA links to WA_NUMBER
-  var waMsg = "Hi, I'm interested in your handmade glass art";
+  // Sync WA links to WA_NUMBER, in the page language. This runs after setLang(),
+  // so a fixed English text here would undo its Hebrew on every /he/ page.
+  var waText = T_SITE[currentLang] || T_SITE.en;
   var waFloating = document.getElementById('floatingWa');
-  if (waFloating) waFloating.href = 'https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent("Hi, I have a question about Sherman Art Works.");
+  if (waFloating) waFloating.href = 'https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(waText.wa_msg_question);
   var waDirect = document.getElementById('waDirectLink');
-  if (waDirect) waDirect.href = 'https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(waMsg);
+  if (waDirect) waDirect.href = 'https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(waText.wa_msg_glass_art);
   var waCorp = document.getElementById('waCorporateLink');
-  if (waCorp) waCorp.href = 'https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent("Hi, I'm interested in a corporate or bulk order.");
+  if (waCorp) waCorp.href = 'https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(waText.wa_msg_corporate);
 });
 
 // A random order for these product ids, kept for the rest of the visit (per

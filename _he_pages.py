@@ -24,6 +24,7 @@ import os
 import re
 import json
 import datetime
+from urllib.parse import quote, unquote
 from bs4 import BeautifulSoup, NavigableString
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
@@ -563,6 +564,10 @@ def build_product_records():
 T_SITE_HE = parse_he_dict(read(os.path.join(ROOT, "js/site.js")), "const T_SITE")
 T_SITE_EN = parse_he_dict(read(os.path.join(ROOT, "js/site.js")), "const T_SITE", "en")
 
+# Pre-filled WhatsApp messages, English -> Hebrew, from T_SITE's wa_msg_ keys.
+WA_MSG_HE = {T_SITE_EN[k]: T_SITE_HE[k] for k in T_SITE_EN
+             if k.startswith("wa_msg_") and T_SITE_HE.get(k)}
+
 # ProductGroup headings are page-level copy, not product copy, so they have no
 # name_he/description_he to borrow from PRODUCTS. Keyed by productGroupID.
 PRODUCT_GROUP_HE = {
@@ -900,6 +905,14 @@ def translate_page(page):
     for img in soup.find_all("img"):
         if img.get("alt", "").strip() in ALT_SUPP:
             img["alt"] = ALT_SUPP[img["alt"].strip()]
+
+    # 2d) pre-filled WhatsApp messages (floating button, contact and guide
+    #     CTAs) → Hebrew, the same swap setLang() makes at runtime.
+    for a in soup.select('a[href*="wa.me/"]'):
+        base, sep, text = a["href"].partition("?text=")
+        msg = WA_MSG_HE.get(unquote(text)) if sep else None
+        if msg:
+            a["href"] = base + sep + quote(msg)
 
     # 3) homepage "from ₪…" cards: localise the leading label.
     for el in soup.select(".cat-card-from"):
