@@ -35,10 +35,10 @@ HERO_IMAGE = "Blue_Pamotim_gold_1_kdduli"
 
 # id, page, photo, min price in shekels
 CARDS = [
-    ("gc1", "candlesticks-gold-plated.html", "Blue_Pamotim_gold_1_kdduli", 680),
+    ("gc1", "candlesticks-gold-plated.html", "Blue_Pamotim_gold_1_kdduli", 677),
     ("gc2", "kiddush-cups-gold-plated.html", "Blue_high_cup_gold_1_an740y", 552),
-    ("gc3", "trays-bowls-gold-plated.html", "Black_tray_gold_wdxp9o", 441),
-    ("gc4", "havdalah-sets-gold-plated.html", "Black_havdalah_set_gold_zblb7f", 1467),
+    ("gc3", "trays-bowls-gold-plated.html", "Black_tray_gold_wdxp9o", 438),
+    ("gc4", "havdalah-sets-gold-plated.html", "Black_havdalah_set_gold_zblb7f", 1466),
 ]
 
 # Overrides applied to both language halves of the page's T_PAGE dict, and to

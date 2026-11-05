@@ -23,7 +23,7 @@ const PRODUCTS = [
     "color_en": "Pearl White",
     "color_he": "לבן פנינה",
     "measurements": "33 × 27 × 3 cm",
-    "price_ils": 1250,
+    "price_ils": 1248,
     "photos": ["Milky_White_half_moon_1_-_silver_ttc6at", "Milky_White_half_moon_2_-_silver_q3lz8v", "Milky_White_half_moon_3_-_silver_reeeie", "Milky_White_half_moon_background_-_silver_nxowqq"]
   },
   {
@@ -39,7 +39,7 @@ const PRODUCTS = [
     "color_en": "Blue",
     "color_he": "כחול",
     "measurements": "33 × 27 × 3 cm",
-    "price_ils": 1250,
+    "price_ils": 1248,
     "photos": ["Blue_half_moon_1_e0o5wz", "Blue_half_moon_2_ocuegh", "Blue_half_moon_3_klwete", "Blue_half_moon_background_zmhcrr"]
   },
   {
@@ -55,7 +55,7 @@ const PRODUCTS = [
     "color_en": "Clear",
     "color_he": "שקוף",
     "measurements": "33 × 27 × 3 cm",
-    "price_ils": 1250,
+    "price_ils": 1248,
     "photos": ["2A5122CB-4A50-418F-B48E-5BC43B361568_ebt4zv", "D199294E-ADDF-48CE-8CD8-09F0C4A8D643_qft7pd", "Clear_half_moon_3_hwjdft", "Clear_half_moon_background_jy9pgu"]
   },
   {
@@ -71,7 +71,7 @@ const PRODUCTS = [
     "color_en": "Emerald Green",
     "color_he": "ירוק",
     "measurements": "33 × 27 × 3 cm",
-    "price_ils": 1250,
+    "price_ils": 1248,
     "photos": ["Emerald_green_half_moon_1_itf3yn", "Emerald_green_half_moon_2_dnxs9u", "Emerald_green_half_moon_3_zlnmzd", "Emerald_green_half_moon_background_q2b72c"]
   },
   {
@@ -87,7 +87,7 @@ const PRODUCTS = [
     "color_en": "Light Blue",
     "color_he": "כחול בהיר",
     "measurements": "33 × 27 × 3 cm",
-    "price_ils": 1250,
+    "price_ils": 1248,
     "photos": ["Light_blue_half_moon_1_dbpnlp", "Light_blue_half_moon_2_yau3xy", "Light_blue_half_moon_3_ouk5rl", "Light_blue_half_moon_background_qzperf"]
   },
   {
@@ -103,7 +103,7 @@ const PRODUCTS = [
     "color_en": "Terracotta",
     "color_he": "נחושת",
     "measurements": "33 × 27 × 3 cm",
-    "price_ils": 1250,
+    "price_ils": 1248,
     "photos": ["terracotta_half_moon_1_y1v1ic", "terracotta_half_moon_2_yrhy9s", "terracotta_half_moon_3_ywv7rj", "terracotta_half_moon_background_uw7o6k"]
   },
   {
@@ -119,7 +119,7 @@ const PRODUCTS = [
     "color_en": "Turquoise",
     "color_he": "טורקיז",
     "measurements": "33 × 27 × 3 cm",
-    "price_ils": 1250,
+    "price_ils": 1248,
     "photos": ["Turquoise_half_moon_1_ceudgv", "Turquoise_half_moon_2_kyqxnf", "Turquoise_half_moon_3_cq7rim", "Turquoise_half_moon_background_hfcply"]
   },
   {
@@ -135,7 +135,7 @@ const PRODUCTS = [
     "color_en": "Pearl White",
     "color_he": "לבן פנינה",
     "measurements": "33 × 27 × 3 cm",
-    "price_ils": 1250,
+    "price_ils": 1248,
     "photos": ["Milky_White_half_moon_1_wjh6hb", "Milky_White_half_moon_2_se9yd2", "Milky_White_half_moon_3_mqrfy8", "Milky_White_half_moon_background_iykolz"]
   },
   {
@@ -151,7 +151,7 @@ const PRODUCTS = [
     "color_en": "Blue",
     "color_he": "כחול",
     "measurements": "33 × 27 × 3 cm",
-    "price_ils": 1250,
+    "price_ils": 1248,
     "photos": ["Blue_half_moon_1_t0poip", "Blue_half_moon_2_wo3gr0", "Blue_half_moon_3_wjjz67", "Blue_half_moon_background_i84r6q"]
   },
   {
@@ -167,7 +167,7 @@ const PRODUCTS = [
     "color_en": "Clear",
     "color_he": "שקוף",
     "measurements": "33 × 27 × 3 cm",
-    "price_ils": 1250,
+    "price_ils": 1248,
     "photos": ["Clear_half_moon_1_srrspn", "Clear_half_moon_2_na9z9t", "Clear_half_moon_3_v5vtad", "Clear_half_moon_background_msob92"]
   },
   {
@@ -183,7 +183,7 @@ const PRODUCTS = [
     "color_en": "Emerald Green",
     "color_he": "ירוק",
     "measurements": "33 × 27 × 3 cm",
-    "price_ils": 1250,
+    "price_ils": 1248,
     "photos": ["Emerald_green_half_moon_1_tdocav", "Emerald_green_half_moon_2_v91bsk", "Emerald_green_half_moon_3_nvknok", "Emerald_green_half_moon_background_bhiwg1"]
   },
   {
@@ -199,7 +199,7 @@ const PRODUCTS = [
     "color_en": "Light Blue",
     "color_he": "כחול בהיר",
     "measurements": "33 × 27 × 3 cm",
-    "price_ils": 1250,
+    "price_ils": 1248,
     "photos": ["Light_blue_half_moon_1_kc0n3y", "Light_blue_half_moon_2_eepwtj", "Light_blue_half_moon_3_vffybz", "Light_blue_half_moon_background_jaiksx"]
   },
   {
@@ -215,7 +215,7 @@ const PRODUCTS = [
     "color_en": "Terracotta",
     "color_he": "נחושת",
     "measurements": "33 × 27 × 3 cm",
-    "price_ils": 1250,
+    "price_ils": 1248,
     "photos": ["Rose_gold_half_moon_1_ubcvyo", "Rose_gold_half_moon_2_csbuke", "Rose_gold_half_moon_3_s3dx7l", "Rose_gold_half_moon_background_fov1d5"]
   },
   {
@@ -231,7 +231,7 @@ const PRODUCTS = [
     "color_en": "Turquoise",
     "color_he": "טורקיז",
     "measurements": "33 × 27 × 3 cm",
-    "price_ils": 1250,
+    "price_ils": 1248,
     "photos": ["Turquoise_half_moon_1_vcjaid", "Turquoise_half_moon_2_tpjunj", "Turquoise_half_moon_3_sy475y", "Turquoise_half_moon_background_bsn7mn"]
   },
   {
@@ -247,7 +247,7 @@ const PRODUCTS = [
     "color_en": "Pearl White",
     "color_he": "לבן פנינה",
     "measurements": "33 × 27 × 3 cm",
-    "price_ils": 1250,
+    "price_ils": 1248,
     "photos": ["Milky_White_rectangle_1_yfnzjz", "Milky_White_rectangle_2_s9zgwq", "Milky_White_rectangle_3_vmvupe", "Milky_White_rectangle_background_dcp10j"]
   },
   {
@@ -263,7 +263,7 @@ const PRODUCTS = [
     "color_en": "Blue",
     "color_he": "כחול",
     "measurements": "33 × 27 × 3 cm",
-    "price_ils": 1250,
+    "price_ils": 1248,
     "photos": ["Blue_rectangle_1_czurvw", "Blue_rectangle_2_swwbtc", "Blue_rectangle_3_t24djm", "Blue_rectangle_background_ucn6zl"]
   },
   {
@@ -279,7 +279,7 @@ const PRODUCTS = [
     "color_en": "Clear",
     "color_he": "שקוף",
     "measurements": "33 × 27 × 3 cm",
-    "price_ils": 1250,
+    "price_ils": 1248,
     "photos": ["Clear_rectangle_1_keun1e", "Clear_rectangle_2_c4gtbs", "Clear_rectangle_3_lnsohj", "Clear_rectangle_background_e4pof8"]
   },
   {
@@ -295,7 +295,7 @@ const PRODUCTS = [
     "color_en": "Emerald Green",
     "color_he": "ירוק",
     "measurements": "33 × 27 × 3 cm",
-    "price_ils": 1250,
+    "price_ils": 1248,
     "photos": ["Emerald_green_rectangle_1_dzgryh", "Emerald_green_rectangle_2_ydnevt", "Emerald_green_rectangle_3_czc3d9", "Emerald_green_rectangle_background_m4e3ee"]
   },
   {
@@ -311,7 +311,7 @@ const PRODUCTS = [
     "color_en": "Light Blue",
     "color_he": "כחול בהיר",
     "measurements": "33 × 27 × 3 cm",
-    "price_ils": 1250,
+    "price_ils": 1248,
     "photos": ["Light_blue_rectangle_1_x9ipra", "Light_blue_rectangle_2_ddfwao", "Light_blue_rectangle_3_jfmrpq", "Light_blue_rectangle_background_j59xd7"]
   },
   {
@@ -327,7 +327,7 @@ const PRODUCTS = [
     "color_en": "Terracotta",
     "color_he": "נחושת",
     "measurements": "33 × 27 × 3 cm",
-    "price_ils": 1250,
+    "price_ils": 1248,
     "photos": ["Terracotta_rectangle_1_argxek", "Terracotta_rectangle_2_zngoqy", "Terracotta_rectangle_3_nebnrj", "Terracotta_rectangle_background_dmlfay"]
   },
   {
@@ -343,7 +343,7 @@ const PRODUCTS = [
     "color_en": "Turquoise",
     "color_he": "טורקיז",
     "measurements": "33 × 27 × 3 cm",
-    "price_ils": 1250,
+    "price_ils": 1248,
     "photos": ["Turquoise_rectangle_1_xibpwt", "Turquoise_rectangle_2_hfk6wi", "Turquoise_rectangle_3_byc78v", "Turquoise_rectangle_background_hrp0sk"]
   },
   {
@@ -359,7 +359,7 @@ const PRODUCTS = [
     "color_en": "Pearl White",
     "color_he": "לבן פנינה",
     "measurements": "33 × 27 × 3 cm",
-    "price_ils": 1250,
+    "price_ils": 1248,
     "photos": ["Milky_White_rectangle_1_k0jjem", "Milky_White_rectangle_2_yxhfxu", "Milky_White_rectangle_3_xvaamr", "Milky_White_rectangle_background_q5qxok"]
   },
   {
@@ -375,7 +375,7 @@ const PRODUCTS = [
     "color_en": "Blue",
     "color_he": "כחול",
     "measurements": "33 × 27 × 3 cm",
-    "price_ils": 1250,
+    "price_ils": 1248,
     "photos": ["Blue_rectangle_1_j59egc", "Blue_rectangle_2_opczbf", "Blue_rectangle_3_x2mee5", "Blue_rectangle_background_ckmhzs"]
   },
   {
@@ -391,7 +391,7 @@ const PRODUCTS = [
     "color_en": "Clear",
     "color_he": "שקוף",
     "measurements": "33 × 27 × 3 cm",
-    "price_ils": 1250,
+    "price_ils": 1248,
     "photos": ["Clear_rectangle_1_vy0zrs", "Clear_rectangle_2_gyaoh1", "Clear_rectangle_3_zgtixg", "Clear_rectangle_background_yzypyo"]
   },
   {
@@ -407,7 +407,7 @@ const PRODUCTS = [
     "color_en": "Emerald Green",
     "color_he": "ירוק",
     "measurements": "33 × 27 × 3 cm",
-    "price_ils": 1250,
+    "price_ils": 1248,
     "photos": ["Emerald_green_rectangle_1_jyejd7", "Emerald_green_rectangle_2_zz2r4f", "Emerald_green_rectangle_3_npff9m", "Emerald_green_rectangle_background_sarekd"]
   },
   {
@@ -423,7 +423,7 @@ const PRODUCTS = [
     "color_en": "Light Blue",
     "color_he": "כחול בהיר",
     "measurements": "33 × 27 × 3 cm",
-    "price_ils": 1250,
+    "price_ils": 1248,
     "photos": ["Light_blue_rectangle_1_xu5kjt", "Light_blue_rectangle_2_sgqnuu", "Light_blue_rectangle_3_n9gynq", "Light_blue_rectangle_background_nim46w"]
   },
   {
@@ -439,7 +439,7 @@ const PRODUCTS = [
     "color_en": "Terracotta",
     "color_he": "נחושת",
     "measurements": "33 × 27 × 3 cm",
-    "price_ils": 1250,
+    "price_ils": 1248,
     "photos": ["Terracotta_rectangle_1_cavxmq", "Terracotta_rectangle_2_xmqc1w", "Terracotta_rectangle_3_xmn8sr", "Terracotta_rectangle_background_iquffw"]
   },
   {
@@ -455,7 +455,7 @@ const PRODUCTS = [
     "color_en": "Turquoise",
     "color_he": "טורקיז",
     "measurements": "33 × 27 × 3 cm",
-    "price_ils": 1250,
+    "price_ils": 1248,
     "photos": ["Turquoise_rectangle_1_wfkqr4", "Turquoise_rectangle_2_lu5ta3", "Turquoise_rectangle_3_lrasn3", "Turquoise_rectangle_background_mjlymh"]
   },
   {
@@ -471,7 +471,7 @@ const PRODUCTS = [
     "color_en": "Pearl White",
     "color_he": "לבן פנינה",
     "measurements": "33 × 27 × 3 cm",
-    "price_ils": 1250,
+    "price_ils": 1248,
     "photos": ["Milky_White_trapeze_1_vncpfv", "Milky_White_trapeze_2_oju4jo", "Milky_White_trapeze_3_oqi3wk", "Milky_White_trapeze_background_ajuz5p"]
   },
   {
@@ -487,7 +487,7 @@ const PRODUCTS = [
     "color_en": "Blue",
     "color_he": "כחול",
     "measurements": "33 × 27 × 3 cm",
-    "price_ils": 1250,
+    "price_ils": 1248,
     "photos": ["Blue_trapeze_1_s9amc8", "Blue_trapeze_2_oz7kqr", "Blue_trapeze_3_w5pztt", "Blue_trapeze_background_nrjtkl"]
   },
   {
@@ -503,7 +503,7 @@ const PRODUCTS = [
     "color_en": "Clear",
     "color_he": "שקוף",
     "measurements": "33 × 27 × 3 cm",
-    "price_ils": 1250,
+    "price_ils": 1248,
     "photos": ["Clear_trapeze_1_qwfjx7", "Clear_trapeze_2_pdyfki", "Clear_trapeze_3_vd0hyu", "Clear_trapeze_background_bxcx4p"]
   },
   {
@@ -519,7 +519,7 @@ const PRODUCTS = [
     "color_en": "Emerald Green",
     "color_he": "ירוק",
     "measurements": "33 × 27 × 3 cm",
-    "price_ils": 1250,
+    "price_ils": 1248,
     "photos": ["Emerald_green_trapeze_1_wsf6hm", "Emerald_green_trapeze_2_nnss8j", "Emerald_green_trapeze_3_a9bwpw", "Emerald_green_trapeze_background_koditk"]
   },
   {
@@ -535,7 +535,7 @@ const PRODUCTS = [
     "color_en": "Light Blue",
     "color_he": "כחול בהיר",
     "measurements": "33 × 27 × 3 cm",
-    "price_ils": 1250,
+    "price_ils": 1248,
     "photos": ["Light_blue_trapeze_1_emd22s", "Light_blue_trapeze_2_bncvmi", "Light_blue_trapeze_3_gwm9ha", "Light_blue_trapeze_background_nydsyq"]
   },
   {
@@ -551,7 +551,7 @@ const PRODUCTS = [
     "color_en": "Terracotta",
     "color_he": "נחושת",
     "measurements": "33 × 27 × 3 cm",
-    "price_ils": 1250,
+    "price_ils": 1248,
     "photos": ["Terracotta_trapeze_1_vhiphv", "Terracotta_trapeze_2_bomukz", "Terracotta_trapeze_3_utlf5o", "Terracotta_trapeze_background_eivdsv"]
   },
   {
@@ -567,7 +567,7 @@ const PRODUCTS = [
     "color_en": "Turquoise",
     "color_he": "טורקיז",
     "measurements": "33 × 27 × 3 cm",
-    "price_ils": 1250,
+    "price_ils": 1248,
     "photos": ["Turquoise_trapeze_1_eocand", "Turquoise_trapeze_2_w6lzvw", "Turquoise_trapeze_3_frqbwx", "Turquoise_trapeze_background_ihwzv1"]
   },
   {
@@ -583,7 +583,7 @@ const PRODUCTS = [
     "color_en": "Pearl White",
     "color_he": "לבן פנינה",
     "measurements": "33 × 27 × 3 cm",
-    "price_ils": 1250,
+    "price_ils": 1248,
     "photos": ["Milky_White_trapeze_1_lg7bvx", "Milky_White_trapeze_2_gvvt3r", "Milky_White_trapeze_3_ywodse", "Milky_White_trapeze_background_kptfgt"]
   },
   {
@@ -599,7 +599,7 @@ const PRODUCTS = [
     "color_en": "Blue",
     "color_he": "כחול",
     "measurements": "33 × 27 × 3 cm",
-    "price_ils": 1250,
+    "price_ils": 1248,
     "photos": ["Blue_trapeze_1_gc1jbn", "Blue_trapeze_2_zvkrit", "Blue_trapeze_3_ygf2bx", "Blue_trapeze_background_tfb5gx"]
   },
   {
@@ -615,7 +615,7 @@ const PRODUCTS = [
     "color_en": "Clear",
     "color_he": "שקוף",
     "measurements": "33 × 27 × 3 cm",
-    "price_ils": 1250,
+    "price_ils": 1248,
     "photos": ["Clear_trapeze_1_ktepum", "Clear_trapeze_2_pjw1ci", "Clear_trapeze_3_v8u5to", "Clear_trapeze_background_ghct5v"]
   },
   {
@@ -631,7 +631,7 @@ const PRODUCTS = [
     "color_en": "Emerald Green",
     "color_he": "ירוק",
     "measurements": "33 × 27 × 3 cm",
-    "price_ils": 1250,
+    "price_ils": 1248,
     "photos": ["Emerald_green_trapeze_1_fsbta0", "Emerald_green_trapeze_2_veiyht", "Emerald_green_trapeze_3_ia94nz", "Emerald_green_trapeze_background_pr9eq5"]
   },
   {
@@ -647,7 +647,7 @@ const PRODUCTS = [
     "color_en": "Light Blue",
     "color_he": "כחול בהיר",
     "measurements": "33 × 27 × 3 cm",
-    "price_ils": 1250,
+    "price_ils": 1248,
     "photos": ["Light_blue_trapeze_1_olnws2", "Light_blue_trapeze_2_etjk0l", "Light_blue_trapeze_3_q2mds5", "Light_blue_trapeze_background_ol02g2"]
   },
   {
@@ -663,7 +663,7 @@ const PRODUCTS = [
     "color_en": "Terracotta",
     "color_he": "נחושת",
     "measurements": "33 × 27 × 3 cm",
-    "price_ils": 1250,
+    "price_ils": 1248,
     "photos": ["Terracotta_trapeze_1_uj1bod", "Terracotta_trapeze_2_hhqa2z", "Terracotta_trapeze_3_eii7yg", "Terracotta_trapeze_background_rnhlhh"]
   },
   {
@@ -679,7 +679,7 @@ const PRODUCTS = [
     "color_en": "Turquoise",
     "color_he": "טורקיז",
     "measurements": "33 × 27 × 3 cm",
-    "price_ils": 1250,
+    "price_ils": 1248,
     "photos": ["Turquoise_trapeze_1_mckfrc", "Turquoise_trapeze_2_m4lnex", "Turquoise_trapeze_3_oaqadm", "Turquoise_trapeze_background_umoblf"]
   },
   {
@@ -695,7 +695,7 @@ const PRODUCTS = [
     "color_en": "White and Blue",
     "color_he": "כחול־לבן",
     "measurements": "33 × 27 × 3 cm",
-    "price_ils": 1250,
+    "price_ils": 1248,
     "photos": ["White_and_blue_half_moon_1_cvncvl", "White_and_blue_half_moon_2_m66faz", "White_and_blue_half_moon_3_nyqihk", "White_and_blue_half_moon_background_wrhepu"]
   },
   {
@@ -711,7 +711,7 @@ const PRODUCTS = [
     "color_en": "White and Blue",
     "color_he": "כחול־לבן",
     "measurements": "33 × 27 × 3 cm",
-    "price_ils": 1250,
+    "price_ils": 1248,
     "photos": ["White_and_blue_half_moon_1_nxn5qv", "White_and_blue_half_moon_2_zmknq1", "White_and_blue_half_moon_3_cnizia", "White_and_blue_half_moon_background_tkirb6"]
   },
   {
@@ -727,7 +727,7 @@ const PRODUCTS = [
     "color_en": "White and Blue",
     "color_he": "כחול־לבן",
     "measurements": "33 × 27 × 3 cm",
-    "price_ils": 1250,
+    "price_ils": 1248,
     "photos": ["White_and_blue_menorah_1_y3dhck", "White_and_blue_menorah_2_b63e4d", "White_and_blue_menorah_3_wrhbvq", "White_and_blue_menorah_background_wrkfxu"]
   },
   {
@@ -743,7 +743,7 @@ const PRODUCTS = [
     "color_en": "White and Blue",
     "color_he": "כחול־לבן",
     "measurements": "33 × 27 × 3 cm",
-    "price_ils": 1250,
+    "price_ils": 1248,
     "photos": ["White_and_blue_rectangle_1_uoxhmt", "White_and_blue_rectangle_2_m660q8", "White_and_blue_rectangle_3_upa2xs", "White_and_blue_rectangle_background_opqkqv"]
   },
   {
@@ -759,7 +759,7 @@ const PRODUCTS = [
     "color_en": "White and Blue",
     "color_he": "כחול־לבן",
     "measurements": "33 × 27 × 3 cm",
-    "price_ils": 1250,
+    "price_ils": 1248,
     "photos": ["White_and_blue_trapeze_1_dlgj5w", "White_and_blue_trapeze_2_bkkwba", "White_and_blue_trapeze_3_bierya", "White_and_blue_trapeze_background_cvaxre"]
   },
   {
@@ -775,7 +775,7 @@ const PRODUCTS = [
     "color_en": "White and Blue",
     "color_he": "כחול־לבן",
     "measurements": "33 × 27 × 3 cm",
-    "price_ils": 1250,
+    "price_ils": 1248,
     "photos": ["White_and_blue_trapeze_1_gnv8fl", "White_and_blue_trapeze_2_ys9vpv", "White_and_blue_trapeze_3_diuovq", "White_and_blue_trapeze_background_fszbh8"]
   }
 ];

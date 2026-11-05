@@ -18,45 +18,45 @@
 // price table but are not offered for the decorated range, so do not add them.
 const KUDU_SIZES = [
   { label: 'S',  range_cm: '70-79',   range_in: '28-31', price_ils: 1336 },
-  { label: 'M',  range_cm: '80-89',   range_in: '32-35', price_ils: 1439 },
-  { label: 'L',  range_cm: '90-99',   range_in: '35-39', price_ils: 1559 },
+  { label: 'M',  range_cm: '80-89',   range_in: '32-35', price_ils: 1438 },
+  { label: 'L',  range_cm: '90-99',   range_in: '35-39', price_ils: 1558 },
   { label: 'XL', range_cm: '100-109', range_in: '39-43', price_ils: 1877 },
-  { label: 'J',  range_cm: '110-119', range_in: '43-47', price_ils: 1939 },
+  { label: 'J',  range_cm: '110-119', range_in: '43-47', price_ils: 1938 },
   { label: 'XJ', range_cm: '120-129', range_in: '47-51', price_ils: 2666 },
 ];
 
 // Decorated ram's designs. The full ram's range - unlike the kudu line, no
 // sizes are held back - at Plain column pricing.
 const RAMS_SIZES = [
-  { label: 'XS', range_cm: '30-34', range_in: '12-13', price_ils: 460 },
+  { label: 'XS', range_cm: '30-34', range_in: '12-13', price_ils: 458 },
   { label: 'S',  range_cm: '35-39', range_in: '14-15', price_ils: 547 },
   { label: 'M',  range_cm: '40-44', range_in: '16-17', price_ils: 784 },
   { label: 'L',  range_cm: '45-49', range_in: '18-19', price_ils: 1006 },
   { label: 'XL', range_cm: '50-54', range_in: '20-21', price_ils: 1252 },
   { label: 'J',  range_cm: '55-59', range_in: '22-23', price_ils: 1423 },
-  { label: 'XJ', range_cm: '60-65', range_in: '24-26', price_ils: 2605 },
+  { label: 'XJ', range_cm: '60-65', range_in: '24-26', price_ils: 2604 },
 ];
 
 // Ram's-horn custom: the full ram's range, Custom column pricing.
 const RAMS_CUSTOM_SIZES = [
-  { label: 'XS', range_cm: '30-34', range_in: '12-13', price_ils: 817 },
-  { label: 'S',  range_cm: '35-39', range_in: '14-15', price_ils: 939 },
+  { label: 'XS', range_cm: '30-34', range_in: '12-13', price_ils: 816 },
+  { label: 'S',  range_cm: '35-39', range_in: '14-15', price_ils: 938 },
   { label: 'M',  range_cm: '40-44', range_in: '16-17', price_ils: 1171 },
-  { label: 'L',  range_cm: '45-49', range_in: '18-19', price_ils: 1390 },
+  { label: 'L',  range_cm: '45-49', range_in: '18-19', price_ils: 1388 },
   { label: 'XL', range_cm: '50-54', range_in: '20-21', price_ils: 1642 },
   { label: 'J',  range_cm: '55-59', range_in: '22-23', price_ils: 1812 },
-  { label: 'XJ', range_cm: '60-65', range_in: '24-26', price_ils: 2990 },
+  { label: 'XJ', range_cm: '60-65', range_in: '24-26', price_ils: 2988 },
 ];
 
 // Kudu custom: unlike the decorated kudu designs, this one IS made in Mini and
 // XS, so it spans the full kudu range. Custom column pricing.
 const KUDU_CUSTOM_SIZES = [
   { label: 'Mini', range_cm: '50-59',   range_in: '20-23', price_ils: 1427 },
-  { label: 'XS',   range_cm: '60-69',   range_in: '24-27', price_ils: 1569 },
-  { label: 'S',    range_cm: '70-79',   range_in: '28-31', price_ils: 1720 },
+  { label: 'XS',   range_cm: '60-69',   range_in: '24-27', price_ils: 1568 },
+  { label: 'S',    range_cm: '70-79',   range_in: '28-31', price_ils: 1718 },
   { label: 'M',    range_cm: '80-89',   range_in: '32-35', price_ils: 1823 },
-  { label: 'L',    range_cm: '90-99',   range_in: '35-39', price_ils: 1945 },
-  { label: 'XL',   range_cm: '100-109', range_in: '39-43', price_ils: 2271 },
+  { label: 'L',    range_cm: '90-99',   range_in: '35-39', price_ils: 1943 },
+  { label: 'XL',   range_cm: '100-109', range_in: '39-43', price_ils: 2268 },
   { label: 'J',    range_cm: '110-119', range_in: '43-47', price_ils: 2325 },
   { label: 'XJ',   range_cm: '120-129', range_in: '47-51', price_ils: 3046 },
 ];

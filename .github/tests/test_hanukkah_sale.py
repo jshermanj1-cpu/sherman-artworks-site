@@ -20,7 +20,7 @@ class HanukkahSale(unittest.TestCase):
 
     def test_feed_sale_is_limited_and_dated(self):
         ns = "{http://base.google.com/ns/1.0}"
-        for filename, regular, discounted in [("merchant-feed.xml", "1250.00 ILS", "1000.00 ILS"), ("merchant-feed-us.xml", "420.00 USD", "336.00 USD")]:
+        for filename, regular, discounted in [("merchant-feed.xml", "1248.00 ILS", "998.00 ILS"), ("merchant-feed-us.xml", "420.00 USD", "336.00 USD")]:
             items = ET.parse(ROOT / filename).getroot().findall("./channel/item")
             # The ShoppingIL sale dates its own items; this test owns the menorahs'.
             on_sale = [i for i in items if i.findtext(ns + "sale_price_effective_date") == START + "/" + END]

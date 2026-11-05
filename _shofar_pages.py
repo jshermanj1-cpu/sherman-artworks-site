@@ -35,7 +35,7 @@ COLOR_NOTE = "* Colors and measurements may appear slightly different in person,
 
 # Minimum price per size ladder - the "from ₪X" on a card, for the no-JS view.
 SIZE_MIN = {
-    "RAMS_SIZES": 460, "RAMS_CUSTOM_SIZES": 817,
+    "RAMS_SIZES": 458, "RAMS_CUSTOM_SIZES": 816,
     "KUDU_SIZES": 1336, "KUDU_CUSTOM_SIZES": 1427,
 }
 
