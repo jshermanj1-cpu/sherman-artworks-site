@@ -1509,7 +1509,9 @@ function searchPriceRanges() {
   return [
     { key: '', label: t.any, min: 0, max: Infinity },
     { key: 'low', label: t.under + fmt(a), min: 0, max: a },
-    { key: 'mid', label: fmt(a) + ' - ' + fmt(b), min: a, max: b },
+    // ltr: in a Hebrew page the bidi algorithm would otherwise print the range
+    // back to front, as the card measurements once did.
+    { key: 'mid', label: fmt(a) + ' - ' + fmt(b), min: a, max: b, ltr: true },
     { key: 'high', label: t.over + fmt(b), min: b, max: Infinity }
   ];
 }
@@ -1601,7 +1603,7 @@ function renderSiteSearch() {
   prices.innerHTML = ranges.map(function(r) {
     var on = r.key === _searchPrice;
     return '<button type="button" class="cat-switch-item' + (on ? ' active' : '') + '" aria-pressed="' + (on ? 'true' : 'false') +
-      '" onclick="setSearchPrice(\'' + r.key + '\')">' + escapeHtml(r.label) + '</button>';
+      '" onclick="setSearchPrice(\'' + r.key + '\')">' + (r.ltr ? '<bdi dir="ltr">' + escapeHtml(r.label) + '</bdi>' : escapeHtml(r.label)) + '</button>';
   }).join('');
   if (!_searchProducts) return;
   var words = input.value.toLowerCase().split(/\s+/).filter(Boolean);
