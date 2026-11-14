@@ -954,6 +954,56 @@ function renderCustomNote() {
 // on every language and currency toggle. The static cards keep a fixed order.
 let productDisplayOrder = null;
 
+// Finish and glass-colour filters above the grid. Forty-eight cards at one price
+// are hard to scan, so a shopper who wants "blue" or "gold-tone" can narrow the
+// grid without opening a card. The shuffled order is kept; filters only hide.
+let filterFinish = "";
+let filterColor = "";
+
+function setMenorahFilter(kind, value) {
+  if (kind === "finish") filterFinish = value;
+  else filterColor = value;
+  renderProducts();
+}
+
+function filterChipHtml(kind, value, label, active) {
+  return '<button type="button" class="cat-switch-item' + (active ? " active" : "") + '" aria-pressed="' +
+    (active ? "true" : "false") + "\" onclick=\"setMenorahFilter('" + kind + "','" + value + "')\">" +
+    escapeHtml(label) + "</button>";
+}
+
+function renderFilters(grid, entries) {
+  let bar = document.getElementById("menorahFilters");
+  if (!bar) {
+    bar = document.createElement("div");
+    bar.id = "menorahFilters";
+    bar.className = "menorah-filters";
+    grid.parentNode.insertBefore(bar, grid);
+  }
+  const he = currentLang === "he";
+  const colors = [];
+  entries.forEach(function(entry) {
+    if (!colors.some(function(c) { return c.key === entry.p.color_en; })) {
+      colors.push({ key: entry.p.color_en, label: productColor(entry.p) });
+    }
+  });
+  colors.sort(function(a, b) { return a.label.localeCompare(b.label, he ? "he" : "en"); });
+  const all = he ? "הכול" : "All";
+  bar.innerHTML =
+    '<div class="menorah-filter-row" role="group" aria-label="' + (he ? "סינון לפי גוון המתכת" : "Filter by finish") + '">' +
+    '<span class="menorah-filter-label">' + (he ? "גוון המתכת" : "Finish") + "</span>" +
+    filterChipHtml("finish", "", all, !filterFinish) +
+    FINISHES.map(function(f) {
+      return filterChipHtml("finish", f.key, pageText(f.label), filterFinish === f.key);
+    }).join("") + "</div>" +
+    '<div class="menorah-filter-row" role="group" aria-label="' + (he ? "סינון לפי צבע הזכוכית" : "Filter by glass color") + '">' +
+    '<span class="menorah-filter-label">' + (he ? "צבע הזכוכית" : "Glass color") + "</span>" +
+    filterChipHtml("color", "", all, !filterColor) +
+    colors.map(function(c) {
+      return filterChipHtml("color", c.key, c.label, filterColor === c.key);
+    }).join("") + "</div>";
+}
+
 function renderProducts() {
   renderCustomNote();
   const grid = document.getElementById("grid-products");
@@ -965,12 +1015,18 @@ function renderProducts() {
       return !shape || entry.p.shape === shape;
     });
   }
-  grid.innerHTML = productDisplayOrder
-    .map(function(entry) { return buildProductCard(entry.p, entry.idx); })
-    .join("");
+  renderFilters(grid, productDisplayOrder);
+  const shown = productDisplayOrder.filter(function(entry) {
+    return (!filterFinish || entry.p.finish === filterFinish) &&
+      (!filterColor || entry.p.color_en === filterColor);
+  });
+  grid.innerHTML = shown.length
+    ? shown.map(function(entry) { return buildProductCard(entry.p, entry.idx); }).join("")
+    : '<p class="menorah-filter-empty">' + (currentLang === "he"
+        ? "אין כרגע חנוכיה בשילוב הזה. נסו גוון או צבע אחר."
+        : "No menorah in that combination right now. Try another finish or color.") + "</p>";
 }
 
-// The same glass colour in another finish or shape: change one, keep the rest.
 function variantIndex(product, finish, shape) {
   return PRODUCTS.findIndex(function(item) {
     return item.finish === finish && item.shape === shape && item.color_en === product.color_en;

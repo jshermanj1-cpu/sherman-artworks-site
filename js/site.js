@@ -1464,3 +1464,176 @@ function shuffledProductEntries(products) {
     return { p: products[index], idx: index };
   });
 }
+
+// ── SITE SEARCH ─────────────────────────────────────────────────
+// A magnifier in the header opens a search window over the whole catalogue,
+// with price ranges so it also answers "a gift under $200". The catalogue is
+// data/products.json, fetched the first time the window opens and not before,
+// so pages that never search pay nothing for it. Results link to each
+// product's own page. Products with no page are left out: the ones held back
+// until they have a photo ("active": false) and the hidden horn goblets.
+var _searchProducts = null;
+var _searchPrice = '';
+var _searchReturnFocus = null;
+
+var SEARCH_CATEGORIES = {
+  'hanukkah-menorahs': 'cat9_title', 'kiddush-cups': 'cat3_title', 'candlesticks': 'cat1_title',
+  'shofars': 'cat7_title', 'trays-bowls': 'cat4_title', 'havdalah-sets': 'cat8_title', 'mezuzahs': 'cat6_title'
+};
+
+var SEARCH_TEXT = {
+  en: { open: 'Search the shop', title: 'Search the shop', placeholder: 'Menorah, blue, Kiddush cup...', close: 'Close search',
+        price: 'Price', any: 'Any price', under: 'Under ', over: 'Over ', from: 'from ',
+        hint: 'Type a product, color or collection, or pick a price range.',
+        none: 'Nothing matches that. Try a shorter word, or ask us on WhatsApp.',
+        loading: 'Loading the catalogue...', failed: 'The catalogue did not load. Please try again.',
+        count: ' pieces', more: 'Showing the first 30. Add a word to narrow it down.' },
+  he: { open: 'חיפוש בחנות', title: 'חיפוש בחנות', placeholder: 'חנוכיה, כחול, כוס קידוש...', close: 'סגירת החיפוש',
+        price: 'מחיר', any: 'כל מחיר', under: 'עד ', over: 'מעל ', from: 'החל מ-',
+        hint: 'הקלידו מוצר, צבע או קולקציה, או בחרו טווח מחירים.',
+        none: 'לא נמצאו תוצאות. נסו מילה קצרה יותר, או כתבו לנו בוואטסאפ.',
+        loading: 'טוען את הקטלוג...', failed: 'הקטלוג לא נטען. נסו שוב.',
+        count: ' פריטים', more: 'מוצגים 30 הראשונים. הוסיפו מילה כדי לצמצם.' }
+};
+
+function searchText() { return SEARCH_TEXT[currentLang === 'he' ? 'he' : 'en']; }
+
+// Round figures in the currency the page is quoting, so the ranges read as a
+// shopper would say them in either one.
+function searchPriceRanges() {
+  var usd = activeCurrency() === 'USD';
+  var sym = usd ? '$' : '₪';
+  var a = usd ? 200 : 600, b = usd ? 400 : 1200;
+  var fmt = function(n) { return sym + n.toLocaleString('en-US'); };
+  var t = searchText();
+  return [
+    { key: '', label: t.any, min: 0, max: Infinity },
+    { key: 'low', label: t.under + fmt(a), min: 0, max: a },
+    { key: 'mid', label: fmt(a) + ' - ' + fmt(b), min: a, max: b },
+    { key: 'high', label: t.over + fmt(b), min: b, max: Infinity }
+  ];
+}
+
+function searchPriceOf(product) {
+  return priceParts(product.price_ils, 0, activeCurrency(), product.id).sale;
+}
+
+function initSiteSearch() {
+  var nav = document.querySelector('nav');
+  if (!nav || document.getElementById('search-icon-btn')) return;
+  var btn = document.createElement('button');
+  btn.id = 'search-icon-btn';
+  btn.type = 'button';
+  btn.className = 'search-icon-btn';
+  btn.setAttribute('aria-label', searchText().open);
+  btn.onclick = openSiteSearch;
+  btn.innerHTML = '<svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>';
+  var before = document.getElementById('cart-icon-btn') || document.getElementById('hamburger');
+  if (before) nav.insertBefore(btn, before); else nav.appendChild(btn);
+}
+
+function openSiteSearch() {
+  var t = searchText();
+  var box = document.getElementById('siteSearch');
+  if (!box) {
+    box = document.createElement('div');
+    box.id = 'siteSearch';
+    box.className = 'site-search';
+    box.setAttribute('role', 'dialog');
+    box.setAttribute('aria-modal', 'true');
+    box.addEventListener('click', function(e) { if (e.target === box) closeSiteSearch(); });
+    box.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeSiteSearch(); });
+    document.body.appendChild(box);
+  }
+  box.setAttribute('aria-label', t.title);
+  box.setAttribute('dir', currentLang === 'he' ? 'rtl' : 'ltr');
+  box.innerHTML =
+    '<div class="site-search-panel">' +
+    '<div class="site-search-top"><input type="search" id="siteSearchInput" class="site-search-input" autocomplete="off" ' +
+    'placeholder="' + escapeHtml(t.placeholder) + '" aria-label="' + escapeHtml(t.title) + '" oninput="renderSiteSearch()" />' +
+    '<button type="button" class="site-search-close" aria-label="' + escapeHtml(t.close) + '" onclick="closeSiteSearch()">&times;</button></div>' +
+    '<div class="site-search-prices" id="siteSearchPrices" role="group" aria-label="' + escapeHtml(t.price) + '"></div>' +
+    '<p class="site-search-status" id="siteSearchStatus" aria-live="polite"></p>' +
+    '<ul class="site-search-results" id="siteSearchResults" role="list"></ul></div>';
+  _searchReturnFocus = document.activeElement;
+  box.classList.add('open');
+  document.body.style.overflow = 'hidden';
+  document.getElementById('siteSearchInput').focus();
+  renderSiteSearch();
+  if (_searchProducts) return;
+  document.getElementById('siteSearchStatus').textContent = t.loading;
+  fetch('/data/products.json')
+    .then(function(r) { if (!r.ok) throw new Error(r.status); return r.json(); })
+    .then(function(list) {
+      _searchProducts = list.filter(function(p) {
+        return p.active !== false && SEARCH_CATEGORIES[p.category] && p.price_ils && p.photos && p.photos.length;
+      });
+      renderSiteSearch();
+    })
+    .catch(function() {
+      var status = document.getElementById('siteSearchStatus');
+      if (status) status.textContent = searchText().failed;
+    });
+}
+
+function closeSiteSearch() {
+  var box = document.getElementById('siteSearch');
+  if (!box) return;
+  box.classList.remove('open');
+  document.body.style.overflow = '';
+  if (_searchReturnFocus && _searchReturnFocus.focus) _searchReturnFocus.focus();
+}
+
+function setSearchPrice(key) {
+  _searchPrice = key;
+  renderSiteSearch();
+}
+
+function renderSiteSearch() {
+  var input = document.getElementById('siteSearchInput');
+  var listEl = document.getElementById('siteSearchResults');
+  var status = document.getElementById('siteSearchStatus');
+  var prices = document.getElementById('siteSearchPrices');
+  if (!input || !listEl) return;
+  var t = searchText();
+  var he = currentLang === 'he';
+  var ranges = searchPriceRanges();
+  prices.innerHTML = ranges.map(function(r) {
+    var on = r.key === _searchPrice;
+    return '<button type="button" class="cat-switch-item' + (on ? ' active' : '') + '" aria-pressed="' + (on ? 'true' : 'false') +
+      '" onclick="setSearchPrice(\'' + r.key + '\')">' + escapeHtml(r.label) + '</button>';
+  }).join('');
+  if (!_searchProducts) return;
+  var words = input.value.toLowerCase().split(/\s+/).filter(Boolean);
+  var range = ranges.filter(function(r) { return r.key === _searchPrice; })[0] || ranges[0];
+  if (!words.length && !range.key) {
+    listEl.innerHTML = '';
+    status.textContent = t.hint;
+    return;
+  }
+  var found = _searchProducts.filter(function(p) {
+    var price = searchPriceOf(p);
+    if (price < range.min || price >= range.max) return false;
+    if (!words.length) return true;
+    var catKey = SEARCH_CATEGORIES[p.category];
+    var hay = [p.name_en, p.name_he, p.description_en, p.description_he, p.color_en, p.color_he, p.sku,
+      T_SITE.en[catKey], T_SITE.he[catKey]].join(' ').toLowerCase();
+    return words.every(function(w) { return hay.indexOf(w) > -1; });
+  }).sort(function(a, b) { return searchPriceOf(a) - searchPriceOf(b); });
+  if (!found.length) {
+    listEl.innerHTML = '';
+    status.textContent = t.none;
+    return;
+  }
+  status.textContent = found.length + t.count + (found.length > 30 ? '. ' + t.more : '');
+  listEl.innerHTML = found.slice(0, 30).map(function(p) {
+    var name = he ? p.name_he : p.name_en;
+    return '<li><a class="site-search-item" href="' + productPageUrl(p) + '">' +
+      '<img src="' + CDN + '/w_160,h_160,c_pad,b_white,q_auto,f_auto/' + p.photos[0] + '.jpg" alt="" width="64" height="64" loading="lazy" />' +
+      '<span class="site-search-name">' + escapeHtml(name) + '</span>' +
+      '<span class="site-search-price">' + (p.category === 'shofars' ? escapeHtml(t.from) : '') +
+      formatMoney(p.price_ils, 0, null, p.id) + '</span></a></li>';
+  }).join('');
+}
+
+document.addEventListener('DOMContentLoaded', initSiteSearch);
