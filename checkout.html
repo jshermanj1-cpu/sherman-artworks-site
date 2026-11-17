@@ -428,6 +428,8 @@
       '</div>';
 
     renderCheckoutDetails();
+    var ilPriceEl = document.querySelector('[data-ship-price="IL"]');
+    if (ilPriceEl) ilPriceEl.textContent = _israelShipPrice();
 
     if (actionsEl) {
       // Card payment leads when it is switched on, with WhatsApp kept directly
@@ -484,6 +486,13 @@
   // Re-rendered on a delivery change as well as a language change, because
   // collecting asks for a different set of fields. Safe to blow away: the values
   // are saved first and read back out of `saved` below, so nothing typed is lost.
+  // What the Israel option costs this shopper: "$11" to a dollar reader, "₪35"
+  // otherwise. Falls back to the shekel figure against a cart.js cached from
+  // before Israel had a dollar price, rather than printing a blank.
+  function _israelShipPrice() {
+    return typeof israelShippingLabel === 'function' ? israelShippingLabel() : '₪35';
+  }
+
   var _detailsLang = null;
   var _detailsDelivery = null;
   function renderCheckoutDetails() {
@@ -528,7 +537,9 @@
         '<div class="ship-zone-row" role="radiogroup" aria-label="' + escapeAttr(t.checkout_ship_title) + '">' +
           '<label class="ship-zone">' +
             '<input type="radio" name="shipZone" value="IL"' + (!pickup && zone === 'IL' ? ' checked' : '') + ' onchange="setShipZone(this.value);setDeliveryMethod(\'ship\');syncShipZoneUi()" />' +
-            '<span>' + escapeHtml(t.checkout_ship_il) + '</span><span class="ship-zone-price">₪35</span>' +
+            // Refreshed by renderCheckout() too: this block is not rebuilt when
+            // only the currency changes, and the figure follows the currency.
+            '<span>' + escapeHtml(t.checkout_ship_il) + '</span><span class="ship-zone-price" data-ship-price="IL">' + escapeHtml(_israelShipPrice()) + '</span>' +
           '</label>' +
           '<label class="ship-zone">' +
             // Zone first, then the method: the method is what re-renders this
@@ -705,10 +716,10 @@
     // Prices are deliberately not sent. The backend reprices the whole cart from
     // the catalogue, so anything we put here would be ignored anyway - and the
     // shorter payload is one less thing that can disagree with the truth.
-    // The currency this page is quoting in. The backend decides whether it can
-    // honour it - the terminal has to settle dollars, and an Israel-bound order
-    // is always charged in shekels - so this is a request, not an instruction,
-    // and the response says what was actually used.
+    // The currency this page is quoting in, wherever the order is going. The
+    // backend decides whether it can honour it - the terminal has to settle
+    // dollars - so this is a request, not an instruction, and the response says
+    // what was actually used.
     var payCur = activeCurrency();
 
     var payload = {

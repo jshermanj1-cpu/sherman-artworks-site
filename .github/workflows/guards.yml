@@ -37,6 +37,12 @@ jobs:
           python .github/tests/test_hanukkah_sale.py
           python .github/tests/test_shoppingil_sale.py
 
+      # The figure the checkout sends for the backend's totals check. When the
+      # two sides cannot reproduce each other's number, the first Pay press of a
+      # correct order is turned away.
+      - name: Checkout totals check
+        run: node --test .github/tests/checkout-pay-check.test.cjs
+
       - name: Invariants
         run: python _guards.py
 

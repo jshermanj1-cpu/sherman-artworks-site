@@ -588,8 +588,16 @@ function getCartLaunchSavingsIn(cur) {
 // ── SHIPPING ───────────────────────────────────────────────────
 // Never waived, and each rate is authoritative in the currency it is quoted in:
 // ₪35 inside Israel, $45 everywhere else.
+//
+// Israel carries a fixed dollar figure as well, for the shopper who reads the
+// site in dollars and has the order sent to an Israeli address: they are quoted
+// and charged in dollars like any other dollar reader. It is a price of its own
+// rather than ₪35 at the day's rate, because a converted figure gets rounded by
+// whoever converts it - this page made it $11 where the payments Worker made it
+// $11.03, and those three cents turned away the first Pay press of every such
+// order. Mirrors SHIPPING in the Worker's src/pricing.js - if one changes, both do.
 var SHIP_KEY = 'sa_ship';
-var SHIPPING = { IL: { ils: 35 }, INTL: { usd: 45 } };
+var SHIPPING = { IL: { ils: 35, usd: 11 }, INTL: { usd: 45 } };
 
 function getShipZone() {
   try {
@@ -664,29 +672,34 @@ function getShippingIls() {
   return Math.round(SHIPPING.INTL.usd * _shipCostRate());
 }
 
-// Shipping in whichever currency is being displayed. Each zone is authoritative
-// in the currency it is quoted in and converts into the other one; the pinned $5
-// catalogue rounding is deliberately NOT used here, because it would turn ₪35 of
-// Israeli shipping into "$15", which is not a figure anybody is charging.
+// Shipping in whichever currency is being displayed. Israel has a fixed figure
+// in each currency, so nothing is converted and the day's rate cannot move it.
+// International is quoted in dollars and costed in shekels at the cost rate.
+// The pinned $5 catalogue rounding is deliberately NOT used anywhere here: it
+// would turn ₪35 of Israeli shipping into "$15", which nobody is charging.
 function getShippingIn(cur) {
   // Nothing shipped is nothing to charge, and zero is zero in both currencies.
   if (isPickup()) return 0;
   var zone = effectiveShipZone();
-  if (zone === 'IL') {
-    return cur === 'ILS'
-      ? SHIPPING.IL.ils
-      : Math.max(1, Math.round(SHIPPING.IL.ils / _shipCostRate()));
-  }
+  if (zone === 'IL') return cur === 'ILS' ? SHIPPING.IL.ils : SHIPPING.IL.usd;
   return cur === 'USD' ? SHIPPING.INTL.usd : getShippingIls();
 }
 
-// The figure as the owner quotes it - "₪35" or "$45", and "₪0" for an order
-// nobody is posting. Deliberately a zero rather than the word "free": shipping
-// is never waived here, and a collected order is not shipping at all. (Writing
-// that claim out in full, even in a comment, is what _guards.py looks for.)
+// Israel's postage as this shopper is charged it: "$11" to a dollar reader,
+// "₪35" to everybody else.
+function israelShippingLabel() {
+  var usd = typeof activeCurrency === 'function' && activeCurrency() === 'USD';
+  return usd ? '$' + SHIPPING.IL.usd : '₪' + SHIPPING.IL.ils;
+}
+
+// The figure as the owner quotes it - "₪35" (or "$11" in dollars) for Israel,
+// "$45" abroad, and "₪0" for an order nobody is posting. Deliberately a zero
+// rather than the word "free": shipping is never waived here, and a collected
+// order is not shipping at all. (Writing that claim out in full, even in a
+// comment, is what _guards.py looks for.)
 function getShippingLabel() {
   if (isPickup()) return '₪0';
-  return effectiveShipZone() === 'IL' ? '₪' + SHIPPING.IL.ils : '$' + SHIPPING.INTL.usd;
+  return effectiveShipZone() === 'IL' ? israelShippingLabel() : '$' + SHIPPING.INTL.usd;
 }
 
 function getOrderTotal() { return getCartTotal() + getShippingIls(); }
