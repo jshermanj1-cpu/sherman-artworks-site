@@ -224,7 +224,7 @@ function renderModalColorPicker(product) {
     : [];
   if (family.length < 2) {
     row.style.display = "none";
-    options.innerHTML = "";
+    options.replaceChildren();
     return;
   }
   options.innerHTML = family.map(({ item, index }) => {
@@ -260,7 +260,7 @@ function renderModal() {
   document.getElementById("modalNameAlt").textContent = altName;
   document.getElementById("modalDesc").textContent = productDescription(product);
   document.getElementById("modalPrice").innerHTML = formatProductPrice(product.price_ils);
-  document.getElementById("modalMainImg").src = CDN + "/q_auto,f_auto/" + product.photos[0] + ".jpg";
+  document.getElementById("modalMainImg").src = CDN + "/w_1200,q_auto,f_auto/" + product.photos[0] + ".jpg";
   document.getElementById("modalMainImg").alt = name;
   document.getElementById("modalOrderCta").href = productWhatsApp(product);
   renderModalColorPicker(product);

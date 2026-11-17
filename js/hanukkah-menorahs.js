@@ -1125,7 +1125,7 @@ function renderModal() {
   const soon = document.getElementById("modalPhotoSoon");
   if (currentPhotoIdx >= photos.length) currentPhotoIdx = 0;
   if (photos.length) {
-    main.src = CDN + "/q_auto,f_auto/" + photos[currentPhotoIdx] + ".jpg";
+    main.src = CDN + "/w_1200,q_auto,f_auto/" + photos[currentPhotoIdx] + ".jpg";
     main.alt = photos.length > 1 ? name + " - photo " + (currentPhotoIdx + 1) + " of " + photos.length : name;
     main.style.display = "";
     soon.style.display = "none";

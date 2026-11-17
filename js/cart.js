@@ -218,7 +218,8 @@ function cartGoToItem(idx, e) {
   for (var i = 0; i < PRODUCTS.length; i++) { if (PRODUCTS[i].id === item.slug) { pIdx = i; break; } }
   if (pIdx < 0) return;
   if (e) e.preventDefault();
-  closeCartDrawer();
+  // At once, so the page is no longer inert when the product window takes focus.
+  closeCartDrawer(true);
   var card = document.getElementById(item.slug);
   if (card) card.scrollIntoView({ block: 'center' });
   openModal(pIdx);
@@ -798,6 +799,14 @@ function saveShippingAddress() {
   return addr;
 }
 
+// The address is kept only until the order it was typed for has gone: a
+// browser is no place to hold a name, phone and street for longer than that
+// (privacy.html says so). Called once a card payment succeeds and once a
+// WhatsApp order is sent. sa_ship, the chosen destination, stays.
+function forgetShippingAddress() {
+  try { localStorage.removeItem(ADDR_KEY); } catch (e) {}
+}
+
 // Duck-typed hook that site.js already calls on language, currency and
 // exchange-rate changes. Shipping is the one figure that moves with all three.
 function renderShipping() {
@@ -1139,13 +1148,11 @@ function renderCartDrawer() {
 }
 
 // ── OPEN / CLOSE ────────────────────────────────────────────────
+// The drawer is a modal <dialog>; the shared open and close helpers in
+// js/site.js handle Escape, the click outside, focus and the slide-out.
 function openCartDrawer() {
   renderCartDrawer();
-  var drawer  = document.getElementById('cart-drawer');
-  var overlay = document.getElementById('cart-overlay');
-  if (drawer)  drawer.classList.add('open');
-  if (overlay) overlay.classList.add('open');
-  document.body.style.overflow = 'hidden';
+  saOpenDialog(document.getElementById('cart-drawer'));
   ga4CheckoutStep('view_cart');
 }
 
@@ -1153,17 +1160,17 @@ function openCartDrawer() {
 // passes through the card checkout, so it is reported as its own payment type
 // instead of a begin_checkout, and as the WhatsApp click Google Ads counts.
 function ga4WhatsAppOrder(where) {
+  // Both WhatsApp order buttons call this after their link, address included,
+  // has been built, so the message still carries it.
+  forgetShippingAddress();
   countFunnelCart('whatsapp_order', where);
   ga4CheckoutStep('add_payment_info', { payment_type: 'whatsapp' });
   if (typeof trackGA4 === 'function') trackGA4('whatsapp_click', { location: where });
 }
 
-function closeCartDrawer() {
-  var drawer  = document.getElementById('cart-drawer');
-  var overlay = document.getElementById('cart-overlay');
-  if (drawer)  drawer.classList.remove('open');
-  if (overlay) overlay.classList.remove('open');
-  document.body.style.overflow = '';
+// `instant` skips the slide-out, for when another window opens straight after.
+function closeCartDrawer(instant) {
+  saCloseDialog(document.getElementById('cart-drawer'), instant === true);
 }
 
 // ── DOM INJECTION ───────────────────────────────────────────────
@@ -1174,26 +1181,23 @@ var _LOCK_SVG_SM = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" 
 function _injectCartDrawer() {
   if (document.getElementById('cart-drawer')) return;
 
-  var overlay = document.createElement('div');
-  overlay.id = 'cart-overlay';
-  overlay.className = 'cart-overlay';
-  overlay.addEventListener('click', closeCartDrawer);
-  document.body.appendChild(overlay);
-
-  var drawer = document.createElement('div');
+  var drawer = document.createElement('dialog');
   drawer.id = 'cart-drawer';
   drawer.className = 'cart-drawer';
-  drawer.setAttribute('role', 'dialog');
-  drawer.setAttribute('aria-label', 'Shopping cart');
-  drawer.setAttribute('aria-modal', 'true');
+  // Named by its visible title, so the Hebrew pages announce it in Hebrew.
+  drawer.setAttribute('aria-labelledby', 'cart-drawer-name');
+  saPrepareDialog(drawer);
   drawer.innerHTML =
     '<div class="cart-drawer-header">' +
       '<h2 class="cart-drawer-title">' + _CART_SVG +
-        '<span data-t="cart_title">Cart</span>' +
+        '<span id="cart-drawer-name" data-t="cart_title">Cart</span>' +
         '<span id="cart-item-count" class="cart-header-count">0</span>' +
       '</h2>' +
-      '<button class="cart-close-btn" onclick="closeCartDrawer()" aria-label="Close cart">×</button>' +
+      '<button type="button" class="cart-close-btn" onclick="closeCartDrawer()" aria-label="Close cart">×</button>' +
     '</div>' +
+    // Behind a modal dialog the page's own live region is unreadable, so
+    // "added" and "removed" are announced from in here (a11yAnnounce).
+    '<div class="sr-only" aria-live="polite" aria-atomic="true" data-announce></div>' +
     '<div id="cart-items-list" class="cart-items-list" tabindex="0"></div>' +
     '<div id="cart-drawer-footer" class="cart-drawer-footer" style="display:none">' +
       '<div class="cart-sub-row">' +
@@ -1262,11 +1266,6 @@ function _injectModalCartBtn() {
     '<span data-t="add_cart">Add to Cart</span>';
   ctaStack.insertBefore(btn, ctaStack.firstChild);
 }
-
-// ── ESCAPE KEY ─────────────────────────────────────────────────
-document.addEventListener('keydown', function (e) {
-  if (e.key === 'Escape') closeCartDrawer();
-});
 
 // ── INIT ───────────────────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', function () {

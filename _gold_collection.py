@@ -139,7 +139,7 @@ GRID_CSS = """
     }
 .cat-card-cta {
       display: inline-flex; align-items: center; gap: 0.45rem;
-      font-family: var(--ff-disp); font-size: 0.65rem;
+      font-family: var(--ff-disp); font-size: 0.75rem;
       letter-spacing: 0.15em; text-transform: uppercase;
       color: var(--gold-text, #7d5a00); transition: gap 0.2s;
     }

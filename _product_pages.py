@@ -123,7 +123,7 @@ CATALOG_JS = {"shofars.html": "js/shofar-products.js", "havdalah-sets.html": "js
 CSS = """
     /* Product page (_product_pages.py): the product window laid out as a page. */
     .pp { max-width: 1140px; margin: 0 auto; padding: 1.25rem 1.25rem 3rem; }
-    .pp-breadcrumb { margin: 0.5rem 0 1.25rem; font-size: 0.72rem; display: flex; flex-wrap: wrap;
+    .pp-breadcrumb { margin: 0.5rem 0 1.25rem; font-size: 0.75rem; display: flex; flex-wrap: wrap;
       align-items: center; justify-content: flex-start; gap: 0.35rem; }
     .pp-breadcrumb a { color: var(--brown); }
     .pp-breadcrumb .breadcrumb-sep { margin: 0 0.45rem; color: var(--brown); }
@@ -674,7 +674,7 @@ def size_note(sz, lang):
     note = sz.get("note_he" if lang == "he" else "note_en")
     if not note:
         return ""
-    return ('<span class="variant-size-note" style="font-size: 0.72rem; line-height: 1.3; '
+    return ('<span class="variant-size-note" style="font-size: 0.75rem; line-height: 1.3; '
             f'color: var(--dark); font-style: italic;">{e(note)}</span>')
 
 

@@ -702,6 +702,8 @@ async function loadUsdRate() {
   const rn = document.getElementById('rateNote');
   try {
     if (typeof PAYMENT_API !== 'string' || !PAYMENT_API) throw new Error('no backend');
+    // Not AbortSignal.timeout(): iOS 15 lacks it, and the throw would leave
+    // those shoppers on the estimated rate for good.
     const c = new AbortController();
     const t = setTimeout(function() { c.abort(); }, 6000);
     const res = await fetch(PAYMENT_API + '/rate', { signal: c.signal });
@@ -725,7 +727,7 @@ async function loadUsdRate() {
     if (rn) rn.textContent = 'Est. rate';
   }
   // Duck-typed hooks - only run if page defines them
-  if (typeof renderProducts === 'function') renderProducts();
+  renderProductCards();
   if (typeof renderCheckout === 'function') renderCheckout();
   if (typeof renderPrivacy  === 'function') renderPrivacy();
   if (typeof renderTerms    === 'function') renderTerms();
@@ -822,7 +824,7 @@ function setCurrencyState(cur) {
 
 function applyCurrency(cur) {
   setCurrencyState(cur);
-  if (typeof renderProducts === 'function') renderProducts();
+  renderProductCards();
   updatePrices();
   // Cart surfaces quote prices too, and international shipping is converted from
   // USD - without this the drawer and checkout keep the old currency until the
@@ -889,7 +891,7 @@ function setLang(l) {
   if (btnEN) btnEN.classList.toggle('active', l === 'en');
   if (btnHE) btnHE.classList.toggle('active', l === 'he');
   localStorage.setItem('sa_lang', l);
-  if (typeof renderProducts === 'function') renderProducts();
+  renderProductCards();
   if (typeof renderCheckout === 'function') renderCheckout();
   if (typeof renderPrivacy  === 'function') renderPrivacy();
   if (typeof renderTerms    === 'function') renderTerms();
@@ -902,6 +904,31 @@ function setLang(l) {
   // an in-page language switch relabels the whole page and leaves them quoting
   // the currency the shopper just switched away from.
   updatePrices();
+}
+
+// The shop pages draw every card image with loading="lazy", which holds even the
+// top row back until the page has been laid out. The first four cards on screen
+// are what a visitor sees on arrival, so they load straight away, and the first
+// of them ahead of the rest: it is usually the largest image in view. Pages that
+// already raise an image (the homepage hero, a product page's main photo) keep
+// that one as the only high-priority image.
+function prioritizeCardImages() {
+  var raised = document.querySelector('img[fetchpriority="high"], link[rel="preload"][as="image"]');
+  var shown = 0;
+  document.querySelectorAll('.product-card-img-wrap img').forEach(function(img) {
+    if (shown >= 4 || img.closest('[hidden]')) return;
+    if (img.getAttribute('loading') === 'lazy') img.setAttribute('loading', 'eager');
+    if (shown === 0 && !raised) img.setAttribute('fetchpriority', 'high');
+    shown++;
+  });
+}
+
+// Every repaint of a shop grid from here goes through this, so the top row keeps
+// its head start whichever change (language, currency, exchange rate) caused it.
+function renderProductCards() {
+  if (typeof renderProducts !== 'function') return;
+  renderProducts();
+  prioritizeCardImages();
 }
 
 // The markup's WhatsApp links carry their pre-filled message in English (the
@@ -1027,6 +1054,9 @@ document.addEventListener('click', function(e) {
 // Escape closes dropdown + modal
 document.addEventListener('keydown', function(e) {
   if (e.key !== 'Escape') return;
+  // An open dialog (cart, search) closes itself on Escape. Without this the
+  // same key press would also shut the product window underneath it.
+  if (document.querySelector('dialog[open]')) return;
   document.querySelectorAll('.nav-dropdown-toggle, .mobile-shop-toggle').forEach(function(t) {
     t.setAttribute('aria-expanded', 'false');
     var s = t.nextElementSibling;
@@ -1067,13 +1097,14 @@ function _getConsent() {
 // Opening any page with ?internal=1 marks this browser for good (?internal=0
 // unmarks it), and GA4's Internal traffic data filter drops what it sends.
 function _isInternalVisit() {
-  var q = location.search.match(/[?&]internal=([01])(?:&|$)/);
+  var flag = null;
+  try { flag = new URLSearchParams(location.search).get('internal'); } catch (e) {}
   try {
-    if (q && q[1] === '1') localStorage.setItem('sa_internal', '1');
-    if (q && q[1] === '0') localStorage.removeItem('sa_internal');
+    if (flag === '1') localStorage.setItem('sa_internal', '1');
+    if (flag === '0') localStorage.removeItem('sa_internal');
     return localStorage.getItem('sa_internal') === '1';
   } catch (e) {
-    return !!(q && q[1] === '1');
+    return flag === '1';
   }
 }
 
@@ -1262,10 +1293,103 @@ document.addEventListener('click', function(e) {
 
 // ── ACCESSIBILITY HELPERS ────────────────────────────────────────
 function a11yAnnounce(msg) {
-  var el = document.getElementById('a11y-announce');
-  if (!el) return;
-  el.textContent = '';
-  setTimeout(function() { el.textContent = msg; }, 50);
+  document.querySelectorAll('#a11y-announce, [data-announce]').forEach(function(el) { el.textContent = ''; });
+  // Picked when the text is set, not now: adding to the cart opens the cart
+  // dialog in between, and the page's own region is unreadable behind it.
+  setTimeout(function() {
+    var el = announceRegion();
+    if (el) el.textContent = msg;
+  }, 50);
+}
+
+// An open modal dialog makes the rest of the page inert, and a screen reader
+// reads nothing that changes there, so a dialog speaks through its own region.
+function announceRegion() {
+  var inDialog = document.querySelectorAll('dialog[open] [data-announce]');
+  return inDialog.length ? inDialog[inDialog.length - 1] : document.getElementById('a11y-announce');
+}
+
+// ── NATIVE DIALOGS ──────────────────────────────────────────────
+// The cart and the search open as real modal dialogs (showModal). The browser
+// then makes the page behind inert, keeps focus inside, closes them on Escape,
+// and puts focus back on whatever opened them, so none of that is coded here.
+// What is: closing on a click outside where closedby="any" is missing (Safari),
+// and the slide-out where the browser cannot animate a dialog leaving the top
+// layer (Firefox and Safari have no `overlay` transition yet).
+var _canTransitionDisplay;
+function saTopLayerExit() {
+  if (_canTransitionDisplay === undefined) {
+    _canTransitionDisplay = false;
+    if (window.CSS && CSS.supports && CSS.supports('overlay', 'auto') &&
+        CSS.supports('transition-behavior', 'allow-discrete') && document.body) {
+      // Firefox accepts allow-discrete without honouring it for display, so
+      // probe the behaviour instead of trusting CSS.supports.
+      var probe = document.createElement('div');
+      probe.style.cssText = 'transition: display 1s allow-discrete !important; display: block;';
+      document.body.appendChild(probe);
+      getComputedStyle(probe).display;
+      probe.style.display = 'none';
+      _canTransitionDisplay = getComputedStyle(probe).display === 'block';
+      probe.remove();
+    }
+  }
+  return _canTransitionDisplay;
+}
+
+function saPrepareDialog(dialog) {
+  dialog.setAttribute('closedby', 'any');
+  if (!('closedBy' in HTMLDialogElement.prototype)) {
+    // Press and release both outside the box, so a text selection that ends on
+    // the backdrop does not close it. The pointer position is tested rather than
+    // the target: the dialog is also the target for its own padding.
+    var pressedOutside = false;
+    var outside = function(e) {
+      var r = dialog.getBoundingClientRect();
+      return e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom;
+    };
+    dialog.addEventListener('pointerdown', function(e) { pressedOutside = outside(e); });
+    dialog.addEventListener('pointerup', function(e) {
+      if (pressedOutside && outside(e)) saCloseDialog(dialog);
+      pressedOutside = false;
+    });
+  }
+  // Escape and a click outside arrive as a cancel. Where the browser cannot
+  // animate the close itself, take it over so the dialog still slides away.
+  dialog.addEventListener('cancel', function(e) {
+    if (saTopLayerExit()) return;
+    e.preventDefault();
+    saCloseDialog(dialog);
+  });
+}
+
+function saOpenDialog(dialog) {
+  if (!dialog) return;
+  dialog.removeAttribute('data-closing');
+  if (!dialog.open) dialog.showModal();
+}
+
+// `instant` is for a close that hands straight over to another overlay: the
+// page has to stop being inert at once, not after the slide-out.
+function saCloseDialog(dialog, instant) {
+  if (!dialog || !dialog.open) return;
+  if (instant || saTopLayerExit()) {
+    dialog.removeAttribute('data-closing');
+    dialog.close();
+    return;
+  }
+  dialog.setAttribute('data-closing', '');
+  var anims = dialog.getAnimations ? dialog.getAnimations() : [];
+  var settled = anims.length
+    ? Promise.race([
+        Promise.allSettled(anims.map(function(a) { return a.finished; })),
+        new Promise(function(r) { setTimeout(r, 1000); })
+      ])
+    : Promise.resolve();
+  settled.then(function() {
+    if (!dialog.hasAttribute('data-closing')) return; // opened again meanwhile
+    dialog.removeAttribute('data-closing');
+    dialog.close();
+  });
 }
 
 function initA11y() {
@@ -1327,6 +1451,33 @@ function initA11y() {
   }
 }
 
+// ── PAGE PRELOADING ─────────────────────────────────────────────
+// Chrome and Edge fetch a page in the background once the visitor rests on its
+// link or starts to press it ("moderate"), so the next page opens at once.
+// Firefox and Safari ignore the rules. Prefetch only downloads the HTML: it
+// runs no script, so nothing is counted in GA4 and no cart is touched.
+// Left out: the checkout and payment pages, links with a query string (quote
+// and share links, ?ref= tracking), same-page anchors, new-tab links and
+// downloads. Built here rather than in each page so the 400-odd pages need
+// no new markup.
+function initSpeculationRules() {
+  if (typeof HTMLScriptElement === 'undefined' || !HTMLScriptElement.supports ||
+      !HTMLScriptElement.supports('speculationrules')) return;
+  var skip = [
+    'a[href^="#"]', 'a[href*="?"]', 'a[target="_blank"]', 'a[download]', 'a[rel~="nofollow"]',
+    'a[href*="checkout.html"]', 'a[href*="payment-"]', 'a[href*="quote.html"]', 'a[href*="share.html"]'
+  ].join(', ');
+  var rules = document.createElement('script');
+  rules.type = 'speculationrules';
+  rules.textContent = JSON.stringify({
+    prefetch: [{
+      where: { and: [{ href_matches: '/*' }, { not: { selector_matches: skip } }] },
+      eagerness: 'moderate'
+    }]
+  });
+  document.head.appendChild(rules);
+}
+
 // ── INIT ────────────────────────────────────────────────────────
 // The launch strike-through used to be bolted on here, by re-pointing each
 // page's own formatPrice/formatPriceModal at a wrapper before the first render.
@@ -1379,6 +1530,7 @@ document.addEventListener('DOMContentLoaded', function() {
   try { localStorage.removeItem('sa_cur_explicit'); } catch (e) {}
   initConsent();
   initA11y();
+  initSpeculationRules();
   initLaunchBanner();
   function refreshHanukkahSale() {
     refreshHanukkahOffers();
@@ -1474,7 +1626,6 @@ function shuffledProductEntries(products) {
 // until they have a photo ("active": false) and the hidden horn goblets.
 var _searchProducts = null;
 var _searchPrice = '';
-var _searchReturnFocus = null;
 
 var SEARCH_CATEGORIES = {
   'hanukkah-menorahs': 'cat9_title', 'kiddush-cups': 'cat3_title', 'candlesticks': 'cat1_title',
@@ -1538,29 +1689,25 @@ function openSiteSearch() {
   var t = searchText();
   var box = document.getElementById('siteSearch');
   if (!box) {
-    box = document.createElement('div');
+    // The dialog is the white panel itself, so a click anywhere outside it is
+    // a click on the backdrop.
+    box = document.createElement('dialog');
     box.id = 'siteSearch';
     box.className = 'site-search';
-    box.setAttribute('role', 'dialog');
-    box.setAttribute('aria-modal', 'true');
-    box.addEventListener('click', function(e) { if (e.target === box) closeSiteSearch(); });
-    box.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeSiteSearch(); });
+    saPrepareDialog(box);
     document.body.appendChild(box);
   }
   box.setAttribute('aria-label', t.title);
   box.setAttribute('dir', currentLang === 'he' ? 'rtl' : 'ltr');
   box.innerHTML =
-    '<div class="site-search-panel">' +
-    '<div class="site-search-top"><input type="search" id="siteSearchInput" class="site-search-input" autocomplete="off" ' +
+    '<search class="site-search-top"><input type="search" id="siteSearchInput" class="site-search-input" autocomplete="off" ' +
+    'autocorrect="off" autocapitalize="none" spellcheck="false" enterkeyhint="search" autofocus ' +
     'placeholder="' + escapeHtml(t.placeholder) + '" aria-label="' + escapeHtml(t.title) + '" oninput="renderSiteSearch()" />' +
-    '<button type="button" class="site-search-close" aria-label="' + escapeHtml(t.close) + '" onclick="closeSiteSearch()">&times;</button></div>' +
+    '<button type="button" class="site-search-close" aria-label="' + escapeHtml(t.close) + '" onclick="closeSiteSearch()">&times;</button></search>' +
     '<div class="site-search-prices" id="siteSearchPrices" role="group" aria-label="' + escapeHtml(t.price) + '"></div>' +
     '<p class="site-search-status" id="siteSearchStatus" aria-live="polite"></p>' +
-    '<ul class="site-search-results" id="siteSearchResults" role="list"></ul></div>';
-  _searchReturnFocus = document.activeElement;
-  box.classList.add('open');
-  document.body.style.overflow = 'hidden';
-  document.getElementById('siteSearchInput').focus();
+    '<ul class="site-search-results" id="siteSearchResults" role="list"></ul>';
+  saOpenDialog(box);
   renderSiteSearch();
   if (_searchProducts) return;
   document.getElementById('siteSearchStatus').textContent = t.loading;
@@ -1579,11 +1726,7 @@ function openSiteSearch() {
 }
 
 function closeSiteSearch() {
-  var box = document.getElementById('siteSearch');
-  if (!box) return;
-  box.classList.remove('open');
-  document.body.style.overflow = '';
-  if (_searchReturnFocus && _searchReturnFocus.focus) _searchReturnFocus.focus();
+  saCloseDialog(document.getElementById('siteSearch'));
 }
 
 function setSearchPrice(key) {
@@ -1609,7 +1752,7 @@ function renderSiteSearch() {
   var words = input.value.toLowerCase().split(/\s+/).filter(Boolean);
   var range = ranges.filter(function(r) { return r.key === _searchPrice; })[0] || ranges[0];
   if (!words.length && !range.key) {
-    listEl.innerHTML = '';
+    listEl.replaceChildren();
     status.textContent = t.hint;
     return;
   }
@@ -1623,7 +1766,7 @@ function renderSiteSearch() {
     return words.every(function(w) { return hay.indexOf(w) > -1; });
   }).sort(function(a, b) { return searchPriceOf(a) - searchPriceOf(b); });
   if (!found.length) {
-    listEl.innerHTML = '';
+    listEl.replaceChildren();
     status.textContent = t.none;
     return;
   }
