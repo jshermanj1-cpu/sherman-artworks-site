@@ -1203,11 +1203,33 @@ function loadGA4() {
   document.head.appendChild(s);
 }
 
+// While the banner is up, css/site.css keeps the page and the product window
+// clear of it. It needs the banner's height, which varies with width, language
+// and text size.
+var _consentSizer = null;
+function _makeRoomForConsent(banner) {
+  var root = document.documentElement;
+  function measure() {
+    root.style.setProperty('--consent-h', banner.getBoundingClientRect().height + 'px');
+  }
+  root.classList.add('consent-open');
+  measure();
+  if (typeof ResizeObserver === 'undefined') return;
+  _consentSizer = new ResizeObserver(measure);
+  _consentSizer.observe(banner, { box: 'border-box' });
+}
+
 function hideConsentBanner() {
   var b = document.getElementById('consentBanner');
+  if (_consentSizer) { _consentSizer.disconnect(); _consentSizer = null; }
   if (b) b.remove();
-  var main = document.querySelector('main');
-  if (main) main.focus();
+  document.documentElement.classList.remove('consent-open');
+  document.documentElement.style.removeProperty('--consent-h');
+  // An ad click opens the product window under the banner. Focusing its Add to
+  // Cart keeps that button in view as the window grows back; focusing <main>
+  // would put focus behind the window.
+  var next = document.querySelector('.product-modal.open .cart-cta') || document.querySelector('main');
+  if (next) next.focus();
 }
 function acceptConsent() {
   _setConsent('granted');
@@ -1242,6 +1264,7 @@ function initConsent() {
     '</div>';
   div.addEventListener('keydown', function(e) { if (e.key === 'Escape') declineConsent(); });
   document.body.appendChild(div);
+  _makeRoomForConsent(div);
   setTimeout(function() {
     var btn = document.getElementById('consentAcceptBtn');
     if (btn) btn.focus();

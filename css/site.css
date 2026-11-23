@@ -1078,6 +1078,44 @@ footer .logo-sub  { color: var(--footer-text); }
   .consent-actions { justify-content: center; }
   .consent-btn { flex: 1; padding: 0.4rem 1rem; }
 }
+/* Nothing may sit under the banner (js/site.js sets --consent-h): the page can
+   scroll its last line clear of it, and the product window ends where it starts. */
+.consent-open { scroll-padding-bottom: var(--consent-h, 0px); }
+.consent-open body { padding-bottom: var(--consent-h, 0px); }
+.consent-open .product-modal { bottom: var(--consent-h, 0px); }
+.consent-open .product-modal .modal-inner,
+.consent-open .product-modal .modal-info { max-height: calc(100dvh - var(--consent-h, 0px) - 3rem); }
+/* Until the banner is answered Add to Cart is pinned to the window's foot. The
+   stack's box would confine the sticky button, so it steps aside. */
+.consent-open .product-modal .modal-info { scroll-padding-bottom: 3.5rem; }
+.consent-open .product-modal .modal-cta-stack { display: contents; }
+.consent-open .product-modal .modal-cta-stack > * { flex-shrink: 0; margin-bottom: 0.55rem; }
+.consent-open .product-modal .modal-cta.cart-cta {
+  position: sticky; z-index: 3;
+  /* Sticky measures from inside the column's 2rem padding. */
+  bottom: -2rem;
+  box-shadow: 0 0 0 0.35rem #fff;
+}
+/* A phone has about 400-600px left, so the window also tightens to keep the
+   name and price in view above that button. */
+@media (max-width: 800px) {
+  .consent-open .product-modal { padding: 0.5rem; }
+  .consent-open .product-modal .modal-inner {
+    max-height: calc(100dvh - var(--consent-h, 0px) - 1rem);
+    scroll-padding-bottom: 3.5rem;
+  }
+  .consent-open .product-modal .modal-info     { max-height: none; padding-top: 0.75rem; }
+  .consent-open .product-modal .modal-close    { margin-bottom: -36px; }
+  .consent-open .product-modal .modal-gallery  { padding: 0.75rem; }
+  .consent-open .product-modal .modal-main-wrap { min-height: 72px; }
+  .consent-open .product-modal .modal-main-img {
+    max-height: clamp(72px, calc(100dvh - var(--consent-h, 0px) - 19rem), 40vh);
+  }
+  .consent-open .product-modal .modal-thumbs,
+  .consent-open .product-modal .modal-name-alt { display: none; }
+  .consent-open .product-modal .modal-cta-stack > * { order: 3; }
+  .consent-open .product-modal .modal-cta.cart-cta { bottom: 0; }
+}
 
 /* ── 19. ACCESSIBILITY ───────────────────────────────────────── */
 
@@ -1385,6 +1423,12 @@ a[href$="horn-goblets.html"] { display: none !important; }
 .hn-sale-cta { display: inline-flex; justify-content: center; align-items: center; gap: 25px; background: var(--dark); color: var(--bg); padding: 17px 24px; min-height: 48px; margin-top: 12px; border-radius: 3px; font-size: 0.9375rem; }
 .hn-sale-cta:hover { background: #3c3325; }
 .hn-sale-cta:focus-visible { outline: 3px solid var(--gold-text); outline-offset: 5px; }
+/* The button follows the 20% so the cookie banner cannot cover it on a first
+   visit. It is the column's only link, so the Tab order is unchanged. */
+.hn-sale-copy { display: flex; flex-direction: column; }
+.hn-sale-copy > * { order: 2; }
+.hn-sale-tag,.hn-sale-title,.hn-sale-discount,.hn-sale-cta { order: 1; }
+.hn-sale-copy .hn-sale-cta { align-self: flex-start; margin-top: 20px; }
 .hn-sale-photos { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 12px; }
 .hn-sale-photos figure { margin: 0; min-width: 0; }
 .hn-sale-photo { background: white; aspect-ratio: 1.23; border: 1px solid var(--border); border-radius: 4px; overflow: hidden; padding: 8px; }
@@ -1402,6 +1446,28 @@ a[href$="horn-goblets.html"] { display: none !important; }
   .hn-sale-photo { padding: 3px; }
   .hn-sale-cta { width: 100%; }
   .hn-sale-detail { max-width: none; }
+  .hn-sale-copy .hn-sale-cta { align-self: stretch; margin-top: 16px; }
+  .hn-sale-all { margin-top: 20px; }
+}
+/* Browser bars leave most phones 550-750px tall. */
+@media (max-width:700px) and (max-height:760px) {
+  .studio-strip:has(+ .hn-sale:not([hidden])) { padding-block: 0.75rem; }
+  .hn-sale-inner { padding-top: 18px; }
+  .hn-sale-tag { margin-bottom: 8px; }
+  .hn-sale-title { font-size: 1.625rem; margin-bottom: 10px; }
+  .hn-sale-discount { font-size: 3rem; }
+  .hn-sale-copy .hn-sale-cta { margin-top: 10px; padding-block: 12px; }
+}
+/* Shorter still: the button comes straight after the headline. */
+@media (max-width:700px) and (max-height:640px) {
+  .hn-sale-tag,.hn-sale-title,.hn-sale-cta { order: 0; }
+  .hn-sale-discount { margin-top: 14px; }
+}
+/* On the smallest screens the eyebrow, which repeats the headline, gives way. */
+@media (max-width:700px) and (max-height:600px) {
+  .studio-strip:has(+ .hn-sale:not([hidden])) { padding-block: 0.5rem; }
+  .hn-sale-inner { padding-top: 12px; }
+  .hn-sale-tag { display: none; }
 }
 
 /* ── 22. SITE SEARCH ─────────────────────────────────────────── */
