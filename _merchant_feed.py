@@ -36,6 +36,9 @@ g:custom_label_0 tells ready-to-ship menorahs apart from made-to-order ones for
 the Hanukkah ads (data/ready-to-ship.json, updated from the studio's stock).
 g:custom_label_1 is "menorah" on every menorah, so a campaign inventory filter
 (one value per condition, no OR) can pick out all of them at once.
+
+g:expiration_date takes every menorah out of Shopping ads and free listings at
+MENORAH_ADS_END, in every campaign at once, without touching Google Ads.
 """
 
 import json
@@ -455,6 +458,15 @@ def load_ready_to_ship(products):
 READY = set()
 
 
+# The owner ended the 2026 menorah ads at the close of 30 November, Israel
+# time, four days before the first candle: only in-stock pieces could still
+# arrive, and only in Israel. Google's format is YYYY-MM-DDThh:mm+hhmm, at most
+# a year ahead, and it can take a few hours to bite. Once the date has passed
+# the menorahs stay expired on every refetch, so they stay off until this is
+# moved forward or set to None for next season's Hanukkah ads.
+MENORAH_ADS_END = "2026-12-01T00:00+0200"
+
+
 def stock_label(product):
     """g:custom_label_0 for the Hanukkah ads: menorahs only."""
     if product["category"] != "hanukkah-menorahs":
@@ -531,6 +543,8 @@ def item_lines(product, size, market):
     if label:
         lines.append(tag("custom_label_0", label))
         lines.append(tag("custom_label_1", "menorah"))
+        if MENORAH_ADS_END:
+            lines.append(tag("expiration_date", MENORAH_ADS_END))
 
     lines.extend(
         [
