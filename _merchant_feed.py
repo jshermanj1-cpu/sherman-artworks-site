@@ -39,6 +39,9 @@ g:custom_label_1 is "menorah" on every menorah, so a campaign inventory filter
 
 g:expiration_date takes every menorah out of Shopping ads and free listings at
 MENORAH_ADS_END, in every campaign at once, without touching Google Ads.
+
+g:custom_label_2 names the campaign that sells a product (CAMPAIGN_LABELS), so
+each campaign's inventory filter picks its products with a single value.
 """
 
 import json
@@ -467,6 +470,18 @@ READY = set()
 MENORAH_ADS_END = "2026-12-01T00:00+0200"
 
 
+# g:custom_label_2: the campaign each category belongs to. An inventory filter
+# takes one value per condition and no OR, so a campaign that sells several
+# categories needs them under one label. "shabbat table" is the Israeli test
+# campaign of 3 January - 13 February 2027.
+CAMPAIGN_LABELS = {
+    "candlesticks": "shabbat table",
+    "kiddush-cups": "shabbat table",
+    "trays-bowls": "shabbat table",
+    "havdalah-sets": "shabbat table",
+}
+
+
 def stock_label(product):
     """g:custom_label_0 for the Hanukkah ads: menorahs only."""
     if product["category"] != "hanukkah-menorahs":
@@ -545,6 +560,9 @@ def item_lines(product, size, market):
         lines.append(tag("custom_label_1", "menorah"))
         if MENORAH_ADS_END:
             lines.append(tag("expiration_date", MENORAH_ADS_END))
+    campaign = CAMPAIGN_LABELS.get(product["category"])
+    if campaign:
+        lines.append(tag("custom_label_2", campaign))
 
     lines.extend(
         [
